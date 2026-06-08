@@ -1,0 +1,465 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Dictionary API",
+        "description": "# Overview\nThe Dictionary API is used for getting all the metadata we can query about using UDE.\n### Key Features\n* Get dictionary for your company\n\n",
+        "version": "v20260604alpha1",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "DictionaryService"
+        }
+    ],
+    "paths": {
+        "/dictionary/v20260604alpha1": {
+            "get": {
+                "summary": "Get Dictionary",
+                "description": "Returns the full UDE dictionary for the authenticated company, including all measurements with their dimension and metric fields, operator sets, and metric family definitions.",
+                "operationId": "GetDictionary",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v20260604alpha1GetDictionaryResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "DictionaryService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "Kentik Knowledge Base",
+        "url": "https://kb.kentik.com/"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v20260604alpha1BaseUnit": {
+                "type": "string",
+                "enum": [
+                    "BASE_UNIT_UNSPECIFIED",
+                    "BASE_UNIT_BITS_PER_SECOND",
+                    "BASE_UNIT_PACKETS_PER_SECOND",
+                    "BASE_UNIT_FLOWS_PER_SECOND",
+                    "BASE_UNIT_BYTES",
+                    "BASE_UNIT_PACKETS",
+                    "BASE_UNIT_FLOWS",
+                    "BASE_UNIT_COUNT",
+                    "BASE_UNIT_PERCENT",
+                    "BASE_UNIT_MILLISECONDS",
+                    "BASE_UNIT_RATIO",
+                    "BASE_UNIT_SCORE"
+                ],
+                "default": "BASE_UNIT_UNSPECIFIED"
+            },
+            "v20260604alpha1DimensionField": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "Field key used in queries"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "Human-readable display name"
+                    },
+                    "dataType": {
+                        "$ref": "#/components/schemas/v20260604alpha1FieldDataType"
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "Category used for grouping in the UI"
+                    },
+                    "column": {
+                        "type": "string",
+                        "description": "Underlying storage column name, if applicable"
+                    },
+                    "direction": {
+                        "$ref": "#/components/schemas/v20260604alpha1FieldDirection"
+                    },
+                    "inverse": {
+                        "type": "string",
+                        "description": "Key of the inverse direction field, if any"
+                    },
+                    "values": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Enumerated value map for enum-typed fields"
+                    },
+                    "lastSeen": {
+                        "type": "string",
+                        "description": "ISO-8601 timestamp of when this field was last observed, if available"
+                    },
+                    "operatorSetKey": {
+                        "$ref": "#/components/schemas/v20260604alpha1OperatorSetKey"
+                    },
+                    "filterOnly": {
+                        "type": "boolean",
+                        "description": "When true, the field may only be used as a filter, not a group-by dimension"
+                    },
+                    "filterColumn": {
+                        "type": "string",
+                        "description": "Alternative column name used when this field is applied as a filter"
+                    },
+                    "queryColumn": {
+                        "type": "string",
+                        "description": "Alternative column name used when this field is used in a query group-by"
+                    }
+                },
+                "description": "A field that can be used as a dimension/filter in a query."
+            },
+            "v20260604alpha1FieldDataType": {
+                "type": "string",
+                "enum": [
+                    "FIELD_DATA_TYPE_UNSPECIFIED",
+                    "FIELD_DATA_TYPE_STRING",
+                    "FIELD_DATA_TYPE_INT",
+                    "FIELD_DATA_TYPE_UINT32",
+                    "FIELD_DATA_TYPE_FLOAT",
+                    "FIELD_DATA_TYPE_INET",
+                    "FIELD_DATA_TYPE_BYTES",
+                    "FIELD_DATA_TYPE_ENUM",
+                    "FIELD_DATA_TYPE_BOOL"
+                ],
+                "default": "FIELD_DATA_TYPE_UNSPECIFIED"
+            },
+            "v20260604alpha1FieldDirection": {
+                "type": "string",
+                "enum": [
+                    "FIELD_DIRECTION_UNSPECIFIED",
+                    "FIELD_DIRECTION_SRC",
+                    "FIELD_DIRECTION_DST",
+                    "FIELD_DIRECTION_BI",
+                    "FIELD_DIRECTION_NONE"
+                ],
+                "default": "FIELD_DIRECTION_UNSPECIFIED"
+            },
+            "v20260604alpha1GetDictionaryResponse": {
+                "type": "object",
+                "properties": {
+                    "measurements": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v20260604alpha1MeasurementDetail"
+                        },
+                        "description": "All measurements available for this company"
+                    },
+                    "operatorSets": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v20260604alpha1OperatorSet"
+                        },
+                        "description": "All operator sets used across dimension fields"
+                    },
+                    "metricFamilies": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v20260604alpha1MetricFamilyDef"
+                        },
+                        "description": "All metric family definitions"
+                    }
+                },
+                "title": "GetDictionaryResponse"
+            },
+            "v20260604alpha1MeasurementDetail": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Internal measurement name"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Human-readable display name"
+                    },
+                    "family": {
+                        "$ref": "#/components/schemas/v20260604alpha1MeasurementFamily"
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Optional description of this measurement"
+                    },
+                    "lastSeen": {
+                        "type": "string",
+                        "description": "ISO-8601 timestamp of when this measurement was last observed, if available"
+                    },
+                    "dimensions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v20260604alpha1DimensionField"
+                        },
+                        "description": "Dimension fields available for this measurement"
+                    },
+                    "metrics": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v20260604alpha1MetricField"
+                        },
+                        "description": "Metric fields available for this measurement"
+                    }
+                },
+                "description": "Full detail for a single measurement (e.g. a traffic flow table or NMS measurement)."
+            },
+            "v20260604alpha1MeasurementFamily": {
+                "type": "string",
+                "enum": [
+                    "MEASUREMENT_FAMILY_UNSPECIFIED",
+                    "MEASUREMENT_FAMILY_TRAFFIC",
+                    "MEASUREMENT_FAMILY_NMS",
+                    "MEASUREMENT_FAMILY_NMS_INTERFACES",
+                    "MEASUREMENT_FAMILY_SYNTHETICS",
+                    "MEASUREMENT_FAMILY_BGP",
+                    "MEASUREMENT_FAMILY_EVENTS"
+                ],
+                "default": "MEASUREMENT_FAMILY_UNSPECIFIED"
+            },
+            "v20260604alpha1MetricFamilyDef": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "Unique identifier for the metric family"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "Human-readable display name"
+                    },
+                    "quantity": {
+                        "$ref": "#/components/schemas/v20260604alpha1MetricQuantity"
+                    },
+                    "baseUnit": {
+                        "$ref": "#/components/schemas/v20260604alpha1BaseUnit"
+                    },
+                    "dualAxisCompatible": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Metric family keys compatible for dual-axis rendering"
+                    },
+                    "incompatibleWith": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Metric family keys that cannot be combined with this family"
+                    }
+                },
+                "description": "Definition of a metric family grouping related metrics by quantity and unit."
+            },
+            "v20260604alpha1MetricField": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "Field key used in queries"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "Human-readable display name"
+                    },
+                    "dataType": {
+                        "$ref": "#/components/schemas/v20260604alpha1FieldDataType"
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "Category used for grouping in the UI"
+                    },
+                    "column": {
+                        "type": "string",
+                        "description": "Underlying storage column name, if applicable"
+                    },
+                    "direction": {
+                        "$ref": "#/components/schemas/v20260604alpha1FieldDirection"
+                    },
+                    "inverse": {
+                        "type": "string",
+                        "description": "Key of the inverse direction field, if any"
+                    },
+                    "values": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Enumerated value map for enum-typed fields"
+                    },
+                    "lastSeen": {
+                        "type": "string",
+                        "description": "ISO-8601 timestamp of when this field was last observed, if available"
+                    },
+                    "windowFn": {
+                        "type": "string",
+                        "description": "Window function applied during aggregation, if any"
+                    },
+                    "aggregateFn": {
+                        "type": "string",
+                        "description": "Aggregation function applied to this metric, if any"
+                    },
+                    "expression": {
+                        "type": "string",
+                        "description": "Computed expression used to derive this metric, if any"
+                    },
+                    "dependsOn": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Keys of other metrics this metric depends on"
+                    },
+                    "toBits": {
+                        "type": "boolean",
+                        "description": "When true, the metric value should be converted to bits"
+                    },
+                    "rollup": {
+                        "type": "boolean",
+                        "description": "When true, the metric supports rollup aggregation"
+                    },
+                    "healthyValue": {
+                        "type": "string",
+                        "description": "The value considered healthy for this metric (may be numeric or categorical)"
+                    },
+                    "familyKey": {
+                        "type": "string",
+                        "description": "Key of the MetricFamilyDef this metric belongs to"
+                    },
+                    "baseUnit": {
+                        "$ref": "#/components/schemas/v20260604alpha1BaseUnit"
+                    }
+                },
+                "description": "A field that represents a measurable metric in a query."
+            },
+            "v20260604alpha1MetricQuantity": {
+                "type": "string",
+                "enum": [
+                    "METRIC_QUANTITY_UNSPECIFIED",
+                    "METRIC_QUANTITY_THROUGHPUT",
+                    "METRIC_QUANTITY_PACKET_RATE",
+                    "METRIC_QUANTITY_FLOW_RATE",
+                    "METRIC_QUANTITY_BYTE_TOTAL",
+                    "METRIC_QUANTITY_PACKET_TOTAL",
+                    "METRIC_QUANTITY_FLOW_TOTAL",
+                    "METRIC_QUANTITY_CARDINALITY",
+                    "METRIC_QUANTITY_UTILIZATION_PCT",
+                    "METRIC_QUANTITY_ERROR_RATE",
+                    "METRIC_QUANTITY_LATENCY",
+                    "METRIC_QUANTITY_JITTER",
+                    "METRIC_QUANTITY_LOSS_PCT",
+                    "METRIC_QUANTITY_SAMPLE_RATE",
+                    "METRIC_QUANTITY_GAUGE",
+                    "METRIC_QUANTITY_SCORE"
+                ],
+                "default": "METRIC_QUANTITY_UNSPECIFIED"
+            },
+            "v20260604alpha1Operator": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string",
+                        "description": "Operator key"
+                    },
+                    "label": {
+                        "type": "string",
+                        "description": "Operator display label"
+                    }
+                },
+                "description": "An individual filter operator (e.g. \"equals\", \"contains\")."
+            },
+            "v20260604alpha1OperatorSet": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "$ref": "#/components/schemas/v20260604alpha1OperatorSetKey"
+                    },
+                    "operators": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v20260604alpha1Operator"
+                        },
+                        "description": "Ordered list of operators in this set"
+                    }
+                },
+                "description": "A named group of operators applicable to a given data type."
+            },
+            "v20260604alpha1OperatorSetKey": {
+                "type": "string",
+                "enum": [
+                    "OPERATOR_SET_KEY_UNSPECIFIED",
+                    "OPERATOR_SET_KEY_INT",
+                    "OPERATOR_SET_KEY_STRING",
+                    "OPERATOR_SET_KEY_STRING_REGEX",
+                    "OPERATOR_SET_KEY_INET",
+                    "OPERATOR_SET_KEY_ENUM",
+                    "OPERATOR_SET_KEY_FIELD_REFERENCE"
+                ],
+                "default": "OPERATOR_SET_KEY_UNSPECIFIED"
+            }
+        }
+    }
+}

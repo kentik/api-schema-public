@@ -1,0 +1,353 @@
+syntax = "proto3";
+
+package kentik.dictionary.v20260604alpha1;
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/dictionary/v20260604alpha1;dictionary";
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Dictionary API"
+    version: "v20260604alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description:
+        "# Overview\n"
+            "The Dictionary API is used for getting all the metadata we can query about using UDE."
+            "\n"
+            "### Key Features\n"
+            "* Get dictionary for your company\n"
+            "\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/"
+    description: "Kentik Knowledge Base"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// ========== enums ==========
+
+enum FieldDataType {
+  FIELD_DATA_TYPE_UNSPECIFIED = 0;
+  FIELD_DATA_TYPE_STRING = 1;
+  FIELD_DATA_TYPE_INT = 2;
+  FIELD_DATA_TYPE_UINT32 = 3;
+  FIELD_DATA_TYPE_FLOAT = 4;
+  FIELD_DATA_TYPE_INET = 5;
+  FIELD_DATA_TYPE_BYTES = 6;
+  FIELD_DATA_TYPE_ENUM = 7;
+  FIELD_DATA_TYPE_BOOL = 8;
+}
+
+enum OperatorSetKey {
+  OPERATOR_SET_KEY_UNSPECIFIED = 0;
+  OPERATOR_SET_KEY_INT = 1;
+  OPERATOR_SET_KEY_STRING = 2;
+  OPERATOR_SET_KEY_STRING_REGEX = 3;
+  OPERATOR_SET_KEY_INET = 4;
+  OPERATOR_SET_KEY_ENUM = 5;
+  OPERATOR_SET_KEY_FIELD_REFERENCE = 6;
+}
+
+enum MeasurementFamily {
+  MEASUREMENT_FAMILY_UNSPECIFIED = 0;
+  MEASUREMENT_FAMILY_TRAFFIC = 1;
+  MEASUREMENT_FAMILY_NMS = 2;
+  MEASUREMENT_FAMILY_NMS_INTERFACES = 3;
+  MEASUREMENT_FAMILY_SYNTHETICS = 4;
+  MEASUREMENT_FAMILY_BGP = 5;
+  MEASUREMENT_FAMILY_EVENTS = 6;
+}
+
+enum FieldDirection {
+  FIELD_DIRECTION_UNSPECIFIED = 0;
+  FIELD_DIRECTION_SRC = 1;
+  FIELD_DIRECTION_DST = 2;
+  FIELD_DIRECTION_BI = 3;
+  FIELD_DIRECTION_NONE = 4;
+}
+
+enum MetricQuantity {
+  METRIC_QUANTITY_UNSPECIFIED = 0;
+  METRIC_QUANTITY_THROUGHPUT = 1;
+  METRIC_QUANTITY_PACKET_RATE = 2;
+  METRIC_QUANTITY_FLOW_RATE = 3;
+  METRIC_QUANTITY_BYTE_TOTAL = 4;
+  METRIC_QUANTITY_PACKET_TOTAL = 5;
+  METRIC_QUANTITY_FLOW_TOTAL = 6;
+  METRIC_QUANTITY_CARDINALITY = 7;
+  METRIC_QUANTITY_UTILIZATION_PCT = 8;
+  METRIC_QUANTITY_ERROR_RATE = 9;
+  METRIC_QUANTITY_LATENCY = 10;
+  METRIC_QUANTITY_JITTER = 11;
+  METRIC_QUANTITY_LOSS_PCT = 12;
+  METRIC_QUANTITY_SAMPLE_RATE = 13;
+  METRIC_QUANTITY_GAUGE = 14;
+  METRIC_QUANTITY_SCORE = 15;
+}
+
+enum BaseUnit {
+  BASE_UNIT_UNSPECIFIED = 0;
+  BASE_UNIT_BITS_PER_SECOND = 1;
+  BASE_UNIT_PACKETS_PER_SECOND = 2;
+  BASE_UNIT_FLOWS_PER_SECOND = 3;
+  BASE_UNIT_BYTES = 4;
+  BASE_UNIT_PACKETS = 5;
+  BASE_UNIT_FLOWS = 6;
+  BASE_UNIT_COUNT = 7;
+  BASE_UNIT_PERCENT = 8;
+  BASE_UNIT_MILLISECONDS = 9;
+  BASE_UNIT_RATIO = 10;
+  BASE_UNIT_SCORE = 11;
+}
+
+// ========== models ==========
+
+// An individual filter operator (e.g. "equals", "contains").
+message Operator {
+  string key = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Operator key"}
+  ];
+  string label = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Operator display label"}
+  ];
+}
+
+// A named group of operators applicable to a given data type.
+message OperatorSet {
+  OperatorSetKey key = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Operator set key identifying the applicable data type category"}
+  ];
+  repeated Operator operators = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Ordered list of operators in this set"}
+  ];
+}
+
+// Definition of a metric family grouping related metrics by quantity and unit.
+message MetricFamilyDef {
+  string key = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Unique identifier for the metric family"}
+  ];
+  string label = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Human-readable display name"}
+  ];
+  MetricQuantity quantity = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The kind of quantity this family measures"}
+  ];
+  BaseUnit base_unit = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The base unit for values in this family"}
+  ];
+  // Keys of metric families that can share a dual axis with this family.
+  repeated string dual_axis_compatible = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Metric family keys compatible for dual-axis rendering"}
+  ];
+  // Keys of metric families that cannot be combined with this family.
+  repeated string incompatible_with = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Metric family keys that cannot be combined with this family"}
+  ];
+}
+
+// A field that can be used as a dimension/filter in a query.
+message DimensionField {
+  string key = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Field key used in queries"}
+  ];
+  string label = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Human-readable display name"}
+  ];
+  FieldDataType data_type = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Underlying data type of the field"}
+  ];
+  string category = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Category used for grouping in the UI"}
+  ];
+  string column = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Underlying storage column name, if applicable"}
+  ];
+  FieldDirection direction = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Traffic direction the field applies to"}
+  ];
+  string inverse = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Key of the inverse direction field, if any"}
+  ];
+  // Enumerated value map for enum-typed fields (value key -> display label).
+  map<string, string> values = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Enumerated value map for enum-typed fields"}
+  ];
+  optional string last_seen = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "ISO-8601 timestamp of when this field was last observed, if available"}
+  ];
+  OperatorSetKey operator_set_key = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The operator set applicable to this dimension"}
+  ];
+  bool filter_only = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "When true, the field may only be used as a filter, not a group-by dimension"}
+  ];
+  string filter_column = 12 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Alternative column name used when this field is applied as a filter"}
+  ];
+  string query_column = 13 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Alternative column name used when this field is used in a query group-by"}
+  ];
+}
+
+// A field that represents a measurable metric in a query.
+message MetricField {
+  string key = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Field key used in queries"}
+  ];
+  string label = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Human-readable display name"}
+  ];
+  FieldDataType data_type = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Underlying data type of the field"}
+  ];
+  string category = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Category used for grouping in the UI"}
+  ];
+  string column = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Underlying storage column name, if applicable"}
+  ];
+  FieldDirection direction = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Traffic direction the field applies to"}
+  ];
+  string inverse = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Key of the inverse direction field, if any"}
+  ];
+  map<string, string> values = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Enumerated value map for enum-typed fields"}
+  ];
+  optional string last_seen = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "ISO-8601 timestamp of when this field was last observed, if available"}
+  ];
+  string window_fn = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Window function applied during aggregation, if any"}
+  ];
+  string aggregate_fn = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Aggregation function applied to this metric, if any"}
+  ];
+  string expression = 12 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Computed expression used to derive this metric, if any"}
+  ];
+  repeated string depends_on = 13 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Keys of other metrics this metric depends on"}
+  ];
+  bool to_bits = 14 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "When true, the metric value should be converted to bits"}
+  ];
+  bool rollup = 15 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "When true, the metric supports rollup aggregation"}
+  ];
+  // Stored as string to accommodate both numeric and string healthy value representations.
+  string healthy_value = 16 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The value considered healthy for this metric (may be numeric or categorical)"}
+  ];
+  string family_key = 17 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Key of the MetricFamilyDef this metric belongs to"}
+  ];
+  BaseUnit base_unit = 18 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Base unit for this metric, overriding the family default if set"}
+  ];
+}
+
+// Full detail for a single measurement (e.g. a traffic flow table or NMS measurement).
+message MeasurementDetail {
+  string name = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Internal measurement name"}
+  ];
+  string display_name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Human-readable display name"}
+  ];
+  MeasurementFamily family = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Measurement family category"}
+  ];
+  string description = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Optional description of this measurement"}
+  ];
+  optional string last_seen = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "ISO-8601 timestamp of when this measurement was last observed, if available"}
+  ];
+  repeated DimensionField dimensions = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Dimension fields available for this measurement"}
+  ];
+  repeated MetricField metrics = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Metric fields available for this measurement"}
+  ];
+}
+
+// ========== services ==========
+
+// {{.Name}}
+message GetDictionaryRequest {
+}
+
+// {{.Name}}
+message GetDictionaryResponse {
+  repeated MeasurementDetail measurements = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "All measurements available for this company"}
+  ];
+  repeated OperatorSet operator_sets = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "All operator sets used across dimension fields"}
+  ];
+  repeated MetricFamilyDef metric_families = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "All metric family definitions"}
+  ];
+}
+
+service DictionaryService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "dictionary";
+  option (kentik.core.v202303.backend_type) = "grpc-connect";
+
+
+  rpc GetDictionary(GetDictionaryRequest) returns (GetDictionaryResponse) {
+    option (kentik.core.v202303.method_scope) = "dictionary:read";
+    option (google.api.http) = {
+      get: "/dictionary/v20260604alpha1"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetDictionary"
+      summary: "Get Dictionary"
+      description: "Returns the full UDE dictionary for the authenticated company, including all measurements with their dimension and metric fields, operator sets, and metric family definitions."
+    };
+  }
+}
