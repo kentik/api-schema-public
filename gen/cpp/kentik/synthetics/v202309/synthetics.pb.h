@@ -10899,9 +10899,10 @@ class HealthSettings final : public ::google::protobuf::Message
     kDnsLatencyWarningFieldNumber = 23,
     kDnsLatencyCriticalStddevFieldNumber = 24,
     kDnsLatencyWarningStddevFieldNumber = 25,
+    kThroughputCriticalFieldNumber = 29,
     kPerAgentAlertingFieldNumber = 26,
     kHealthDisabledFieldNumber = 28,
-    kThroughputCriticalFieldNumber = 29,
+    kDisableAlertsFieldNumber = 33,
     kThroughputWarningFieldNumber = 30,
     kThroughputCriticalStddevFieldNumber = 31,
     kThroughputWarningStddevFieldNumber = 32,
@@ -11198,6 +11199,16 @@ class HealthSettings final : public ::google::protobuf::Message
   void _internal_set_dns_latency_warning_stddev(float value);
 
   public:
+  // float throughput_critical = 29 [json_name = "throughputCritical", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_throughput_critical() ;
+  float throughput_critical() const;
+  void set_throughput_critical(float value);
+
+  private:
+  float _internal_throughput_critical() const;
+  void _internal_set_throughput_critical(float value);
+
+  public:
   // bool per_agent_alerting = 26 [json_name = "perAgentAlerting", deprecated = true, (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   [[deprecated]]  void clear_per_agent_alerting() ;
   [[deprecated]] bool per_agent_alerting() const;
@@ -11218,14 +11229,14 @@ class HealthSettings final : public ::google::protobuf::Message
   void _internal_set_health_disabled(bool value);
 
   public:
-  // float throughput_critical = 29 [json_name = "throughputCritical", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_throughput_critical() ;
-  float throughput_critical() const;
-  void set_throughput_critical(float value);
+  // bool disable_alerts = 33 [json_name = "disableAlerts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_disable_alerts() ;
+  bool disable_alerts() const;
+  void set_disable_alerts(bool value);
 
   private:
-  float _internal_throughput_critical() const;
-  void _internal_set_throughput_critical(float value);
+  bool _internal_disable_alerts() const;
+  void _internal_set_disable_alerts(bool value);
 
   public:
   // float throughput_warning = 30 [json_name = "throughputWarning", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -11263,8 +11274,8 @@ class HealthSettings final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      5, 32, 2,
-      94, 2>
+      5, 33, 2,
+      94, 7>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -11311,9 +11322,10 @@ class HealthSettings final : public ::google::protobuf::Message
     float dns_latency_warning_;
     float dns_latency_critical_stddev_;
     float dns_latency_warning_stddev_;
+    float throughput_critical_;
     bool per_agent_alerting_;
     bool health_disabled_;
-    float throughput_critical_;
+    bool disable_alerts_;
     float throughput_warning_;
     float throughput_critical_stddev_;
     float throughput_warning_stddev_;
@@ -24954,6 +24966,28 @@ inline float HealthSettings::_internal_throughput_warning_stddev() const {
 inline void HealthSettings::_internal_set_throughput_warning_stddev(float value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.throughput_warning_stddev_ = value;
+}
+
+// bool disable_alerts = 33 [json_name = "disableAlerts", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void HealthSettings::clear_disable_alerts() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.disable_alerts_ = false;
+}
+inline bool HealthSettings::disable_alerts() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.HealthSettings.disable_alerts)
+  return _internal_disable_alerts();
+}
+inline void HealthSettings::set_disable_alerts(bool value) {
+  _internal_set_disable_alerts(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.HealthSettings.disable_alerts)
+}
+inline bool HealthSettings::_internal_disable_alerts() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.disable_alerts_;
+}
+inline void HealthSettings::_internal_set_disable_alerts(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.disable_alerts_ = value;
 }
 
 // -------------------------------------------------------------------

@@ -2025,6 +2025,10 @@
                         "type": "number",
                         "format": "float",
                         "description": "Threshold for standard deviation (in mbps) of throughput bandwidth to trigger warning alarm"
+                    },
+                    "disableAlerts": {
+                        "type": "boolean",
+                        "description": "Boolean value indicating whether to disable all alerts for this test"
                     }
                 },
                 "title": "HealthSettings"

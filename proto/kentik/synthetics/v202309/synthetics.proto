@@ -979,6 +979,11 @@ message HealthSettings {
       description: "Threshold for standard deviation (in mbps) of throughput bandwidth to trigger warning alarm"
     }
   ];
+  bool disable_alerts = 33 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Boolean value indicating whether to disable all alerts for this test"
+    }
+  ];
 }
 
 // {{.Name}}

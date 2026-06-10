@@ -624,10 +624,11 @@ struct  Kentik__Synthetics__V202309__HealthSettings
   float throughput_warning;
   float throughput_critical_stddev;
   float throughput_warning_stddev;
+  protobuf_c_boolean disable_alerts;
 };
 #define KENTIK__SYNTHETICS__V202309__HEALTH_SETTINGS__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__health_settings__descriptor) \
-    , 0, 0, 0, 0, 0, 0, 0, 0, 0,NULL, 0,NULL, 0, 0, 0, 0, 0, 0, 0, NULL, 0, 0, (char *)protobuf_c_empty_string, 0, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0 }
+    , 0, 0, 0, 0, 0, 0, 0, 0, 0,NULL, 0,NULL, 0, 0, 0, 0, 0, 0, 0, NULL, 0, 0, (char *)protobuf_c_empty_string, 0, 0, 0, 0, 0, NULL, 0, 0, 0, 0, 0, 0 }
 
 
 /*

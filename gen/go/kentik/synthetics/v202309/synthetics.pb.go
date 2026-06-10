@@ -1920,6 +1920,7 @@ type HealthSettings struct {
 	ThroughputWarning        float32          `protobuf:"fixed32,30,opt,name=throughput_warning,json=throughputWarning,proto3" json:"throughput_warning,omitempty"`
 	ThroughputCriticalStddev float32          `protobuf:"fixed32,31,opt,name=throughput_critical_stddev,json=throughputCriticalStddev,proto3" json:"throughput_critical_stddev,omitempty"`
 	ThroughputWarningStddev  float32          `protobuf:"fixed32,32,opt,name=throughput_warning_stddev,json=throughputWarningStddev,proto3" json:"throughput_warning_stddev,omitempty"`
+	DisableAlerts            bool             `protobuf:"varint,33,opt,name=disable_alerts,json=disableAlerts,proto3" json:"disable_alerts,omitempty"`
 	unknownFields            protoimpl.UnknownFields
 	sizeCache                protoimpl.SizeCache
 }
@@ -2178,6 +2179,13 @@ func (x *HealthSettings) GetThroughputWarningStddev() float32 {
 		return x.ThroughputWarningStddev
 	}
 	return 0
+}
+
+func (x *HealthSettings) GetDisableAlerts() bool {
+	if x != nil {
+		return x.DisableAlerts
+	}
+	return false
 }
 
 // {{.Name}}
@@ -5837,7 +5845,7 @@ const file_kentik_synthetics_v202309_synthetics_proto_rawDesc = "" +
 	"\ttime_unit\x18\x02 \x01(\tB1\x92A.2,Time unit for specifying time window (m | h)R\btimeUnit\x12]\n" +
 	"\vtime_window\x18\x03 \x01(\tB<\x92A927Time window for evaluating of test for alarm activationR\n" +
 	"timeWindow\x12|\n" +
-	"\x05times\x18\x04 \x01(\tBf\x92Ac2aNumber of occurrences of unhealthy test status within the time window triggering alarm activationR\x05times\"\xce\"\n" +
+	"\x05times\x18\x04 \x01(\tBf\x92Ac2aNumber of occurrences of unhealthy test status within the time window triggering alarm activationR\x05times\"\xc0#\n" +
 	"\x0eHealthSettings\x12\x7f\n" +
 	"\x10latency_critical\x18\x01 \x01(\x02BT\x92AQ2OThreshold for ping response latency (in microseconds) to trigger critical alarmR\x0flatencyCritical\x12|\n" +
 	"\x0flatency_warning\x18\x02 \x01(\x02BS\x92AP2NThreshold for ping response latency (in microseconds) to trigger warning alarmR\x0elatencyWarning\x12v\n" +
@@ -5873,7 +5881,8 @@ const file_kentik_synthetics_v202309_synthetics_proto_rawDesc = "" +
 	"\x13throughput_critical\x18\x1d \x01(\x02BK\x92AH2FThreshold for throughput bandwidth (in mbps) to trigger critical alarmR\x12throughputCritical\x12y\n" +
 	"\x12throughput_warning\x18\x1e \x01(\x02BJ\x92AG2EThreshold for throughput bandwidth (in mbps) to trigger warning alarmR\x11throughputWarning\x12\x9f\x01\n" +
 	"\x1athroughput_critical_stddev\x18\x1f \x01(\x02Ba\x92A^2\\Threshold for standard deviation (in mbps) of throughput bandwidth to trigger critical alarmR\x18throughputCriticalStddev\x12\x9c\x01\n" +
-	"\x19throughput_warning_stddev\x18  \x01(\x02B`\x92A]2[Threshold for standard deviation (in mbps) of throughput bandwidth to trigger warning alarmR\x17throughputWarningStddev\"X\n" +
+	"\x19throughput_warning_stddev\x18  \x01(\x02B`\x92A]2[Threshold for standard deviation (in mbps) of throughput bandwidth to trigger warning alarmR\x17throughputWarningStddev\x12p\n" +
+	"\x0edisable_alerts\x18! \x01(\bBI\x92AF2DBoolean value indicating whether to disable all alerts for this testR\rdisableAlerts\"X\n" +
 	"\fHostnameTest\x12H\n" +
 	"\x06target\x18\x01 \x01(\tB0\x92A-2+Fully qualified DNS name of the target hostR\x06target\"\xc8\x01\n" +
 	"\x06IpTest\x12>\n" +
