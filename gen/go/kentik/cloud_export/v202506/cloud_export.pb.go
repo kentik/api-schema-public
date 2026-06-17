@@ -1456,9 +1456,9 @@ const file_kentik_cloud_export_v202506_cloud_export_proto_rawDesc = "" +
 	"\fsubscription\x18\x02 \x01(\tB2\x92A/2-GCP Pub/Sub subscription providing flow logs.R\fsubscription\x12a\n" +
 	"\rmetadata_only\x18\x03 \x01(\bB<\x92A927Import only metadata without any flows (default false).R\fmetadataOnly\x12f\n" +
 	"\x11collect_flow_logs\x18\x04 \x01(\bB:\x92A725Import metadata and collect flow logs (default true).R\x0fcollectFlowLogs\x12\xc2\x01\n" +
-	"\x0fcollect_metrics\x18\x05 \x01(\bB\x98\x01\x92A\x94\x012\x91\x01Import metadata and collect metrics data.  Note that flow logs will still be collected unless metadata_only is also set to true. (default false).R\x0ecollectMetrics\"\x93\t\n" +
-	"\rOciProperties\x12i\n" +
-	"\voci_user_id\x18\x01 \x01(\tBI\x92AC2AID of the user created to represent the Kentik cloud export tool.\xe0A\x02R\tociUserId\x12B\n" +
+	"\x0fcollect_metrics\x18\x05 \x01(\bB\x98\x01\x92A\x94\x012\x91\x01Import metadata and collect metrics data.  Note that flow logs will still be collected unless metadata_only is also set to true. (default false).R\x0ecollectMetrics\"\x90\t\n" +
+	"\rOciProperties\x12f\n" +
+	"\voci_user_id\x18\x01 \x01(\tBF\x92AC2AID of the user created to represent the Kentik cloud export tool.R\tociUserId\x12B\n" +
 	"\x0eoci_tenancy_id\x18\x02 \x01(\tB\x1c\x92A\x162\x14OCI Tenancy details.\xe0A\x02R\fociTenancyId\x12b\n" +
 	"\x12oci_compartment_id\x18\x03 \x03(\tB4\x92A12/Compartment IDs from which to collect metadata.R\x10ociCompartmentId\x12l\n" +
 	"\x12oci_default_region\x18\x04 \x01(\tB>\x92A826Default Enabled Region from which to collect metadata.\xe0A\x02R\x10ociDefaultRegion\x12m\n" +

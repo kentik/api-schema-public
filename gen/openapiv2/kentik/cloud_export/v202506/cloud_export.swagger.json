@@ -682,7 +682,6 @@
       },
       "title": "OciProperties",
       "required": [
-        "ociUserId",
         "ociTenancyId",
         "ociDefaultRegion"
       ]

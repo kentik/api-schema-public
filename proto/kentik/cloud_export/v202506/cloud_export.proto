@@ -388,7 +388,6 @@ message GceProperties {
 // {{.Name}}
 message OciProperties {
   string oci_user_id = 1 [
-    (google.api.field_behavior) = REQUIRED,
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
       description: "ID of the user created to represent the Kentik cloud export tool."
     }
