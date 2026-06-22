@@ -156,6 +156,9 @@ extern FlowContext_MetricValueDefaultTypeInternal _FlowContext_MetricValue_defau
 class FlowContext_SiteDetails;
 struct FlowContext_SiteDetailsDefaultTypeInternal;
 extern FlowContext_SiteDetailsDefaultTypeInternal _FlowContext_SiteDetails_default_instance_;
+class JiraCloudContext;
+struct JiraCloudContextDefaultTypeInternal;
+extern JiraCloudContextDefaultTypeInternal _JiraCloudContext_default_instance_;
 class NmsContext;
 struct NmsContextDefaultTypeInternal;
 extern NmsContextDefaultTypeInternal _NmsContext_default_instance_;
@@ -688,7 +691,7 @@ class NmsContext_DatasetInfo final : public ::google::protobuf::Message
     return reinterpret_cast<const NmsContext_DatasetInfo*>(
         &_NmsContext_DatasetInfo_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 31;
+  static constexpr int kIndexInFileMessages = 32;
   friend void swap(NmsContext_DatasetInfo& a, NmsContext_DatasetInfo& b) { a.Swap(&b); }
   inline void Swap(NmsContext_DatasetInfo* other) {
     if (other == this) return;
@@ -1002,6 +1005,220 @@ class NmsContext_AlarmMetricMap_MetricsEntry_DoNotUse final
 };
 // -------------------------------------------------------------------
 
+class JiraCloudContext final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.JiraCloudContext) */ {
+ public:
+  inline JiraCloudContext() : JiraCloudContext(nullptr) {}
+  ~JiraCloudContext() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(JiraCloudContext* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(JiraCloudContext));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR JiraCloudContext(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline JiraCloudContext(const JiraCloudContext& from) : JiraCloudContext(nullptr, from) {}
+  inline JiraCloudContext(JiraCloudContext&& from) noexcept
+      : JiraCloudContext(nullptr, std::move(from)) {}
+  inline JiraCloudContext& operator=(const JiraCloudContext& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline JiraCloudContext& operator=(JiraCloudContext&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const JiraCloudContext& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const JiraCloudContext* internal_default_instance() {
+    return reinterpret_cast<const JiraCloudContext*>(
+        &_JiraCloudContext_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 13;
+  friend void swap(JiraCloudContext& a, JiraCloudContext& b) { a.Swap(&b); }
+  inline void Swap(JiraCloudContext* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(JiraCloudContext* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  JiraCloudContext* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<JiraCloudContext>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const JiraCloudContext& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const JiraCloudContext& from) { JiraCloudContext::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(JiraCloudContext* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.alerting.public.v202505.JiraCloudContext"; }
+
+ protected:
+  explicit JiraCloudContext(::google::protobuf::Arena* arena);
+  JiraCloudContext(::google::protobuf::Arena* arena, const JiraCloudContext& from);
+  JiraCloudContext(::google::protobuf::Arena* arena, JiraCloudContext&& from) noexcept
+      : JiraCloudContext(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kIssueKeyFieldNumber = 1,
+    kIssueUrlFieldNumber = 2,
+  };
+  // string issue_key = 1 [json_name = "issueKey", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_issue_key() ;
+  const std::string& issue_key() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_issue_key(Arg_&& arg, Args_... args);
+  std::string* mutable_issue_key();
+  PROTOBUF_NODISCARD std::string* release_issue_key();
+  void set_allocated_issue_key(std::string* value);
+
+  private:
+  const std::string& _internal_issue_key() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_issue_key(
+      const std::string& value);
+  std::string* _internal_mutable_issue_key();
+
+  public:
+  // string issue_url = 2 [json_name = "issueUrl", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_issue_url() ;
+  const std::string& issue_url() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_issue_url(Arg_&& arg, Args_... args);
+  std::string* mutable_issue_url();
+  PROTOBUF_NODISCARD std::string* release_issue_url();
+  void set_allocated_issue_url(std::string* value);
+
+  private:
+  const std::string& _internal_issue_url() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_issue_url(
+      const std::string& value);
+  std::string* _internal_mutable_issue_url();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.JiraCloudContext)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      74, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const JiraCloudContext& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr issue_key_;
+    ::google::protobuf::internal::ArenaStringPtr issue_url_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto;
+};
+// -------------------------------------------------------------------
+
 class FlowContext_SiteDetails final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.alerting.public.v202505.FlowContext.SiteDetails) */ {
  public:
@@ -1061,7 +1278,7 @@ class FlowContext_SiteDetails final : public ::google::protobuf::Message
     return reinterpret_cast<const FlowContext_SiteDetails*>(
         &_FlowContext_SiteDetails_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 23;
+  static constexpr int kIndexInFileMessages = 24;
   friend void swap(FlowContext_SiteDetails& a, FlowContext_SiteDetails& b) { a.Swap(&b); }
   inline void Swap(FlowContext_SiteDetails* other) {
     if (other == this) return;
@@ -1347,7 +1564,7 @@ class FlowContext_MetricValue final : public ::google::protobuf::Message
     return reinterpret_cast<const FlowContext_MetricValue*>(
         &_FlowContext_MetricValue_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 19;
+  static constexpr int kIndexInFileMessages = 20;
   friend void swap(FlowContext_MetricValue& a, FlowContext_MetricValue& b) { a.Swap(&b); }
   inline void Swap(FlowContext_MetricValue* other) {
     if (other == this) return;
@@ -1555,7 +1772,7 @@ class FlowContext_InterfaceDetails final : public ::google::protobuf::Message
     return reinterpret_cast<const FlowContext_InterfaceDetails*>(
         &_FlowContext_InterfaceDetails_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 22;
+  static constexpr int kIndexInFileMessages = 23;
   friend void swap(FlowContext_InterfaceDetails& a, FlowContext_InterfaceDetails& b) { a.Swap(&b); }
   inline void Swap(FlowContext_InterfaceDetails* other) {
     if (other == this) return;
@@ -1799,7 +2016,7 @@ class FlowContext_DeviceDetails final : public ::google::protobuf::Message
     return reinterpret_cast<const FlowContext_DeviceDetails*>(
         &_FlowContext_DeviceDetails_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 21;
+  static constexpr int kIndexInFileMessages = 22;
   friend void swap(FlowContext_DeviceDetails& a, FlowContext_DeviceDetails& b) { a.Swap(&b); }
   inline void Swap(FlowContext_DeviceDetails* other) {
     if (other == this) return;
@@ -2251,7 +2468,7 @@ class AlertServiceListCommentsRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const AlertServiceListCommentsRequest*>(
         &_AlertServiceListCommentsRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 40;
+  static constexpr int kIndexInFileMessages = 41;
   friend void swap(AlertServiceListCommentsRequest& a, AlertServiceListCommentsRequest& b) { a.Swap(&b); }
   inline void Swap(AlertServiceListCommentsRequest* other) {
     if (other == this) return;
@@ -3047,7 +3264,7 @@ class AlertServiceAddCommentRequest final : public ::google::protobuf::Message
     return reinterpret_cast<const AlertServiceAddCommentRequest*>(
         &_AlertServiceAddCommentRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 38;
+  static constexpr int kIndexInFileMessages = 39;
   friend void swap(AlertServiceAddCommentRequest& a, AlertServiceAddCommentRequest& b) { a.Swap(&b); }
   inline void Swap(AlertServiceAddCommentRequest* other) {
     if (other == this) return;
@@ -3475,7 +3692,7 @@ class NmsContext_AlarmTarget final : public ::google::protobuf::Message
     return reinterpret_cast<const NmsContext_AlarmTarget*>(
         &_NmsContext_AlarmTarget_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 34;
+  static constexpr int kIndexInFileMessages = 35;
   friend void swap(NmsContext_AlarmTarget& a, NmsContext_AlarmTarget& b) { a.Swap(&b); }
   inline void Swap(NmsContext_AlarmTarget* other) {
     if (other == this) return;
@@ -3693,7 +3910,7 @@ class NmsContext_AlarmMetricMap final : public ::google::protobuf::Message
     return reinterpret_cast<const NmsContext_AlarmMetricMap*>(
         &_NmsContext_AlarmMetricMap_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 36;
+  static constexpr int kIndexInFileMessages = 37;
   friend void swap(NmsContext_AlarmMetricMap& a, NmsContext_AlarmMetricMap& b) { a.Swap(&b); }
   inline void Swap(NmsContext_AlarmMetricMap* other) {
     if (other == this) return;
@@ -3891,7 +4108,7 @@ class FlowContext_AlertKeyDetails final : public ::google::protobuf::Message
     return reinterpret_cast<const FlowContext_AlertKeyDetails*>(
         &_FlowContext_AlertKeyDetails_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 20;
+  static constexpr int kIndexInFileMessages = 21;
   friend void swap(FlowContext_AlertKeyDetails& a, FlowContext_AlertKeyDetails& b) { a.Swap(&b); }
   inline void Swap(FlowContext_AlertKeyDetails* other) {
     if (other == this) return;
@@ -4137,13 +4354,14 @@ class ExternalContext final : public ::google::protobuf::Message
   }
   enum ContextCase {
     kServicenow = 1,
+    kJiraCloud = 2,
     CONTEXT_NOT_SET = 0,
   };
   static inline const ExternalContext* internal_default_instance() {
     return reinterpret_cast<const ExternalContext*>(
         &_ExternalContext_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 13;
+  static constexpr int kIndexInFileMessages = 14;
   friend void swap(ExternalContext& a, ExternalContext& b) { a.Swap(&b); }
   inline void Swap(ExternalContext* other) {
     if (other == this) return;
@@ -4231,6 +4449,7 @@ class ExternalContext final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kServicenowFieldNumber = 1,
+    kJiraCloudFieldNumber = 2,
   };
   // .kentik.alerting.public.v202505.ServiceNowContext servicenow = 1 [json_name = "servicenow", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   bool has_servicenow() const;
@@ -4251,17 +4470,37 @@ class ExternalContext final : public ::google::protobuf::Message
   ::kentik::alerting::public_::v202505::ServiceNowContext* _internal_mutable_servicenow();
 
   public:
+  // .kentik.alerting.public.v202505.JiraCloudContext jira_cloud = 2 [json_name = "jiraCloud", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_jira_cloud() const;
+  private:
+  bool _internal_has_jira_cloud() const;
+
+  public:
+  void clear_jira_cloud() ;
+  const ::kentik::alerting::public_::v202505::JiraCloudContext& jira_cloud() const;
+  PROTOBUF_NODISCARD ::kentik::alerting::public_::v202505::JiraCloudContext* release_jira_cloud();
+  ::kentik::alerting::public_::v202505::JiraCloudContext* mutable_jira_cloud();
+  void set_allocated_jira_cloud(::kentik::alerting::public_::v202505::JiraCloudContext* value);
+  void unsafe_arena_set_allocated_jira_cloud(::kentik::alerting::public_::v202505::JiraCloudContext* value);
+  ::kentik::alerting::public_::v202505::JiraCloudContext* unsafe_arena_release_jira_cloud();
+
+  private:
+  const ::kentik::alerting::public_::v202505::JiraCloudContext& _internal_jira_cloud() const;
+  ::kentik::alerting::public_::v202505::JiraCloudContext* _internal_mutable_jira_cloud();
+
+  public:
   void clear_context();
   ContextCase context_case() const;
   // @@protoc_insertion_point(class_scope:kentik.alerting.public.v202505.ExternalContext)
  private:
   class _Internal;
   void set_has_servicenow();
+  void set_has_jira_cloud();
   inline bool has_context() const;
   inline void clear_has_context();
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 1,
+      0, 2, 2,
       0, 2>
       _table_;
 
@@ -4283,6 +4522,7 @@ class ExternalContext final : public ::google::protobuf::Message
       constexpr ContextUnion() : _constinit_{} {}
       ::google::protobuf::internal::ConstantInitialized _constinit_;
       ::kentik::alerting::public_::v202505::ServiceNowContext* servicenow_;
+      ::kentik::alerting::public_::v202505::JiraCloudContext* jira_cloud_;
     } context_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     ::uint32_t _oneof_case_[1];
@@ -4352,7 +4592,7 @@ class AlertServiceSetExternalContextResponse final : public ::google::protobuf::
     return reinterpret_cast<const AlertServiceSetExternalContextResponse*>(
         &_AlertServiceSetExternalContextResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 15;
+  static constexpr int kIndexInFileMessages = 16;
   friend void swap(AlertServiceSetExternalContextResponse& a, AlertServiceSetExternalContextResponse& b) { a.Swap(&b); }
   inline void Swap(AlertServiceSetExternalContextResponse* other) {
     if (other == this) return;
@@ -4548,7 +4788,7 @@ class Alert_Acknowledgement final : public ::google::protobuf::Message
     return reinterpret_cast<const Alert_Acknowledgement*>(
         &_Alert_Acknowledgement_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 16;
+  static constexpr int kIndexInFileMessages = 17;
   friend void swap(Alert_Acknowledgement& a, Alert_Acknowledgement& b) { a.Swap(&b); }
   inline void Swap(Alert_Acknowledgement* other) {
     if (other == this) return;
@@ -4948,7 +5188,7 @@ class AlertServiceSetExternalContextRequest final : public ::google::protobuf::M
     return reinterpret_cast<const AlertServiceSetExternalContextRequest*>(
         &_AlertServiceSetExternalContextRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 14;
+  static constexpr int kIndexInFileMessages = 15;
   friend void swap(AlertServiceSetExternalContextRequest& a, AlertServiceSetExternalContextRequest& b) { a.Swap(&b); }
   inline void Swap(AlertServiceSetExternalContextRequest* other) {
     if (other == this) return;
@@ -5162,7 +5402,7 @@ class AlertServiceListCommentsResponse final : public ::google::protobuf::Messag
     return reinterpret_cast<const AlertServiceListCommentsResponse*>(
         &_AlertServiceListCommentsResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 41;
+  static constexpr int kIndexInFileMessages = 42;
   friend void swap(AlertServiceListCommentsResponse& a, AlertServiceListCommentsResponse& b) { a.Swap(&b); }
   inline void Swap(AlertServiceListCommentsResponse* other) {
     if (other == this) return;
@@ -5359,7 +5599,7 @@ class AlertServiceAddCommentResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const AlertServiceAddCommentResponse*>(
         &_AlertServiceAddCommentResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 39;
+  static constexpr int kIndexInFileMessages = 40;
   friend void swap(AlertServiceAddCommentResponse& a, AlertServiceAddCommentResponse& b) { a.Swap(&b); }
   inline void Swap(AlertServiceAddCommentResponse* other) {
     if (other == this) return;
@@ -5555,7 +5795,7 @@ class FlowContext final : public ::google::protobuf::Message
     return reinterpret_cast<const FlowContext*>(
         &_FlowContext_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 24;
+  static constexpr int kIndexInFileMessages = 25;
   friend void swap(FlowContext& a, FlowContext& b) { a.Swap(&b); }
   inline void Swap(FlowContext* other) {
     if (other == this) return;
@@ -6303,7 +6543,7 @@ class NmsContext_ActivationInfo final : public ::google::protobuf::Message
     return reinterpret_cast<const NmsContext_ActivationInfo*>(
         &_NmsContext_ActivationInfo_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 30;
+  static constexpr int kIndexInFileMessages = 31;
   friend void swap(NmsContext_ActivationInfo& a, NmsContext_ActivationInfo& b) { a.Swap(&b); }
   inline void Swap(NmsContext_ActivationInfo* other) {
     if (other == this) return;
@@ -6778,7 +7018,7 @@ class NmsContext final : public ::google::protobuf::Message
     return reinterpret_cast<const NmsContext*>(
         &_NmsContext_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 37;
+  static constexpr int kIndexInFileMessages = 38;
   friend void swap(NmsContext& a, NmsContext& b) { a.Swap(&b); }
   inline void Swap(NmsContext* other) {
     if (other == this) return;
@@ -7383,7 +7623,7 @@ class Alert final : public ::google::protobuf::Message
     return reinterpret_cast<const Alert*>(
         &_Alert_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 17;
+  static constexpr int kIndexInFileMessages = 18;
   friend void swap(Alert& a, Alert& b) { a.Swap(&b); }
   inline void Swap(Alert* other) {
     if (other == this) return;
@@ -11068,6 +11308,106 @@ inline void ServiceNowContext::set_allocated_incident_url(std::string* value) {
 
 // -------------------------------------------------------------------
 
+// JiraCloudContext
+
+// string issue_key = 1 [json_name = "issueKey", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void JiraCloudContext::clear_issue_key() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.issue_key_.ClearToEmpty();
+}
+inline const std::string& JiraCloudContext::issue_key() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.JiraCloudContext.issue_key)
+  return _internal_issue_key();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void JiraCloudContext::set_issue_key(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.issue_key_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.JiraCloudContext.issue_key)
+}
+inline std::string* JiraCloudContext::mutable_issue_key() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_issue_key();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.JiraCloudContext.issue_key)
+  return _s;
+}
+inline const std::string& JiraCloudContext::_internal_issue_key() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.issue_key_.Get();
+}
+inline void JiraCloudContext::_internal_set_issue_key(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.issue_key_.Set(value, GetArena());
+}
+inline std::string* JiraCloudContext::_internal_mutable_issue_key() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.issue_key_.Mutable( GetArena());
+}
+inline std::string* JiraCloudContext::release_issue_key() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.JiraCloudContext.issue_key)
+  return _impl_.issue_key_.Release();
+}
+inline void JiraCloudContext::set_allocated_issue_key(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.issue_key_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.issue_key_.IsDefault()) {
+    _impl_.issue_key_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.JiraCloudContext.issue_key)
+}
+
+// string issue_url = 2 [json_name = "issueUrl", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void JiraCloudContext::clear_issue_url() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.issue_url_.ClearToEmpty();
+}
+inline const std::string& JiraCloudContext::issue_url() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.JiraCloudContext.issue_url)
+  return _internal_issue_url();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void JiraCloudContext::set_issue_url(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.issue_url_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.JiraCloudContext.issue_url)
+}
+inline std::string* JiraCloudContext::mutable_issue_url() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_issue_url();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.JiraCloudContext.issue_url)
+  return _s;
+}
+inline const std::string& JiraCloudContext::_internal_issue_url() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.issue_url_.Get();
+}
+inline void JiraCloudContext::_internal_set_issue_url(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.issue_url_.Set(value, GetArena());
+}
+inline std::string* JiraCloudContext::_internal_mutable_issue_url() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.issue_url_.Mutable( GetArena());
+}
+inline std::string* JiraCloudContext::release_issue_url() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.JiraCloudContext.issue_url)
+  return _impl_.issue_url_.Release();
+}
+inline void JiraCloudContext::set_allocated_issue_url(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.issue_url_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.issue_url_.IsDefault()) {
+    _impl_.issue_url_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.JiraCloudContext.issue_url)
+}
+
+// -------------------------------------------------------------------
+
 // ExternalContext
 
 // .kentik.alerting.public.v202505.ServiceNowContext servicenow = 1 [json_name = "servicenow", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -11146,6 +11486,85 @@ inline ::kentik::alerting::public_::v202505::ServiceNowContext* ExternalContext:
 inline ::kentik::alerting::public_::v202505::ServiceNowContext* ExternalContext::mutable_servicenow() ABSL_ATTRIBUTE_LIFETIME_BOUND {
   ::kentik::alerting::public_::v202505::ServiceNowContext* _msg = _internal_mutable_servicenow();
   // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.ExternalContext.servicenow)
+  return _msg;
+}
+
+// .kentik.alerting.public.v202505.JiraCloudContext jira_cloud = 2 [json_name = "jiraCloud", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool ExternalContext::has_jira_cloud() const {
+  return context_case() == kJiraCloud;
+}
+inline bool ExternalContext::_internal_has_jira_cloud() const {
+  return context_case() == kJiraCloud;
+}
+inline void ExternalContext::set_has_jira_cloud() {
+  _impl_._oneof_case_[0] = kJiraCloud;
+}
+inline void ExternalContext::clear_jira_cloud() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (context_case() == kJiraCloud) {
+    if (GetArena() == nullptr) {
+      delete _impl_.context_.jira_cloud_;
+    } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+      ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.context_.jira_cloud_);
+    }
+    clear_has_context();
+  }
+}
+inline ::kentik::alerting::public_::v202505::JiraCloudContext* ExternalContext::release_jira_cloud() {
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.ExternalContext.jira_cloud)
+  if (context_case() == kJiraCloud) {
+    clear_has_context();
+    auto* temp = _impl_.context_.jira_cloud_;
+    if (GetArena() != nullptr) {
+      temp = ::google::protobuf::internal::DuplicateIfNonNull(temp);
+    }
+    _impl_.context_.jira_cloud_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline const ::kentik::alerting::public_::v202505::JiraCloudContext& ExternalContext::_internal_jira_cloud() const {
+  return context_case() == kJiraCloud ? *_impl_.context_.jira_cloud_ : reinterpret_cast<::kentik::alerting::public_::v202505::JiraCloudContext&>(::kentik::alerting::public_::v202505::_JiraCloudContext_default_instance_);
+}
+inline const ::kentik::alerting::public_::v202505::JiraCloudContext& ExternalContext::jira_cloud() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.ExternalContext.jira_cloud)
+  return _internal_jira_cloud();
+}
+inline ::kentik::alerting::public_::v202505::JiraCloudContext* ExternalContext::unsafe_arena_release_jira_cloud() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:kentik.alerting.public.v202505.ExternalContext.jira_cloud)
+  if (context_case() == kJiraCloud) {
+    clear_has_context();
+    auto* temp = _impl_.context_.jira_cloud_;
+    _impl_.context_.jira_cloud_ = nullptr;
+    return temp;
+  } else {
+    return nullptr;
+  }
+}
+inline void ExternalContext::unsafe_arena_set_allocated_jira_cloud(::kentik::alerting::public_::v202505::JiraCloudContext* value) {
+  // We rely on the oneof clear method to free the earlier contents
+  // of this oneof. We can directly use the pointer we're given to
+  // set the new value.
+  clear_context();
+  if (value) {
+    set_has_jira_cloud();
+    _impl_.context_.jira_cloud_ = value;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.alerting.public.v202505.ExternalContext.jira_cloud)
+}
+inline ::kentik::alerting::public_::v202505::JiraCloudContext* ExternalContext::_internal_mutable_jira_cloud() {
+  if (context_case() != kJiraCloud) {
+    clear_context();
+    set_has_jira_cloud();
+    _impl_.context_.jira_cloud_ =
+        ::google::protobuf::Message::DefaultConstruct<::kentik::alerting::public_::v202505::JiraCloudContext>(GetArena());
+  }
+  return _impl_.context_.jira_cloud_;
+}
+inline ::kentik::alerting::public_::v202505::JiraCloudContext* ExternalContext::mutable_jira_cloud() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::kentik::alerting::public_::v202505::JiraCloudContext* _msg = _internal_mutable_jira_cloud();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.ExternalContext.jira_cloud)
   return _msg;
 }
 

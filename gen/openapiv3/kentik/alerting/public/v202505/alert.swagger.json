@@ -1317,10 +1317,14 @@
                 "properties": {
                     "servicenow": {
                         "$ref": "#/components/schemas/v202505ServiceNowContext"
+                    },
+                    "jiraCloud": {
+                        "$ref": "#/components/schemas/v202505JiraCloudContext"
                     }
                 },
                 "required": [
-                    "servicenow"
+                    "servicenow",
+                    "jiraCloud"
                 ]
             },
             "v202505FlowContext": {
@@ -1352,6 +1356,23 @@
                         "readOnly": true
                     }
                 }
+            },
+            "v202505JiraCloudContext": {
+                "type": "object",
+                "properties": {
+                    "issueKey": {
+                        "type": "string",
+                        "description": "Jira Cloud issue key, e.g., KEY-123."
+                    },
+                    "issueUrl": {
+                        "type": "string",
+                        "description": "Jira Cloud issue URL, e.g., https://instance.atlassian.net/browse/KEY-123."
+                    }
+                },
+                "required": [
+                    "issueKey",
+                    "issueUrl"
+                ]
             },
             "v202505NmsActivateOrClearConditions": {
                 "type": "object",

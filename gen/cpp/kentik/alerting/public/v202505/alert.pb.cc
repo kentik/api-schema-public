@@ -179,6 +179,36 @@ struct NmsContext_AlarmMetricMap_MetricsEntry_DoNotUseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 NmsContext_AlarmMetricMap_MetricsEntry_DoNotUseDefaultTypeInternal _NmsContext_AlarmMetricMap_MetricsEntry_DoNotUse_default_instance_;
 
+inline constexpr JiraCloudContext::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : issue_key_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        issue_url_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR JiraCloudContext::JiraCloudContext(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct JiraCloudContextDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR JiraCloudContextDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~JiraCloudContextDefaultTypeInternal() {}
+  union {
+    JiraCloudContext _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 JiraCloudContextDefaultTypeInternal _JiraCloudContext_default_instance_;
+
 inline constexpr FlowContext_SiteDetails::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : id_(
@@ -1331,6 +1361,16 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::ServiceNowContext, _impl_.incident_id_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::ServiceNowContext, _impl_.incident_url_),
         ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::JiraCloudContext, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::JiraCloudContext, _impl_.issue_key_),
+        PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::JiraCloudContext, _impl_.issue_url_),
+        ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::ExternalContext, _internal_metadata_),
         ~0u,  // no _extensions_
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::ExternalContext, _impl_._oneof_case_[0]),
@@ -1338,6 +1378,7 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
+        ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::ExternalContext, _impl_.context_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::AlertServiceSetExternalContextRequest, _impl_._has_bits_),
@@ -1722,35 +1763,36 @@ static const ::_pbi::MigrationSchema
         {143, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceClearRequest)},
         {152, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceClearResponse)},
         {161, -1, -1, sizeof(::kentik::alerting::public_::v202505::ServiceNowContext)},
-        {171, -1, -1, sizeof(::kentik::alerting::public_::v202505::ExternalContext)},
-        {181, 191, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceSetExternalContextRequest)},
-        {193, 202, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceSetExternalContextResponse)},
-        {203, 215, -1, sizeof(::kentik::alerting::public_::v202505::Alert_Acknowledgement)},
-        {219, 241, -1, sizeof(::kentik::alerting::public_::v202505::Alert)},
-        {254, 264, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_AlertKeyDetailsEntry_DoNotUse)},
-        {266, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_MetricValue)},
-        {276, 288, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_AlertKeyDetails)},
-        {292, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_DeviceDetails)},
-        {304, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_InterfaceDetails)},
-        {316, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_SiteDetails)},
-        {330, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext)},
-        {342, 352, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_TargetsEntry_DoNotUse)},
-        {354, 364, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_MetricValuesEntry_DoNotUse)},
-        {366, 376, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_PreviousMetricValuesEntry_DoNotUse)},
-        {378, 388, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_DeviceEntry_DoNotUse)},
-        {390, 400, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_GroupKeyEntry_DoNotUse)},
-        {402, 415, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_ActivationInfo)},
-        {419, -1, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_DatasetInfo)},
-        {431, 441, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmTarget_FieldsEntry_DoNotUse)},
-        {443, 453, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmTarget_TagsEntry_DoNotUse)},
-        {455, -1, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmTarget)},
-        {465, 475, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmMetricMap_MetricsEntry_DoNotUse)},
-        {477, -1, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmMetricMap)},
-        {486, 501, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext)},
-        {508, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceAddCommentRequest)},
-        {518, 527, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceAddCommentResponse)},
-        {528, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceListCommentsRequest)},
-        {537, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceListCommentsResponse)},
+        {171, -1, -1, sizeof(::kentik::alerting::public_::v202505::JiraCloudContext)},
+        {181, -1, -1, sizeof(::kentik::alerting::public_::v202505::ExternalContext)},
+        {192, 202, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceSetExternalContextRequest)},
+        {204, 213, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceSetExternalContextResponse)},
+        {214, 226, -1, sizeof(::kentik::alerting::public_::v202505::Alert_Acknowledgement)},
+        {230, 252, -1, sizeof(::kentik::alerting::public_::v202505::Alert)},
+        {265, 275, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_AlertKeyDetailsEntry_DoNotUse)},
+        {277, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_MetricValue)},
+        {287, 299, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_AlertKeyDetails)},
+        {303, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_DeviceDetails)},
+        {315, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_InterfaceDetails)},
+        {327, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext_SiteDetails)},
+        {341, -1, -1, sizeof(::kentik::alerting::public_::v202505::FlowContext)},
+        {353, 363, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_TargetsEntry_DoNotUse)},
+        {365, 375, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_MetricValuesEntry_DoNotUse)},
+        {377, 387, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_PreviousMetricValuesEntry_DoNotUse)},
+        {389, 399, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_DeviceEntry_DoNotUse)},
+        {401, 411, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_GroupKeyEntry_DoNotUse)},
+        {413, 426, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_ActivationInfo)},
+        {430, -1, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_DatasetInfo)},
+        {442, 452, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmTarget_FieldsEntry_DoNotUse)},
+        {454, 464, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmTarget_TagsEntry_DoNotUse)},
+        {466, -1, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmTarget)},
+        {476, 486, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmMetricMap_MetricsEntry_DoNotUse)},
+        {488, -1, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext_AlarmMetricMap)},
+        {497, 512, -1, sizeof(::kentik::alerting::public_::v202505::NmsContext)},
+        {519, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceAddCommentRequest)},
+        {529, 538, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceAddCommentResponse)},
+        {539, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceListCommentsRequest)},
+        {548, -1, -1, sizeof(::kentik::alerting::public_::v202505::AlertServiceListCommentsResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::alerting::public_::v202505::_AlertServiceGetRequest_default_instance_._instance,
@@ -1766,6 +1808,7 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::alerting::public_::v202505::_AlertServiceClearRequest_default_instance_._instance,
     &::kentik::alerting::public_::v202505::_AlertServiceClearResponse_default_instance_._instance,
     &::kentik::alerting::public_::v202505::_ServiceNowContext_default_instance_._instance,
+    &::kentik::alerting::public_::v202505::_JiraCloudContext_default_instance_._instance,
     &::kentik::alerting::public_::v202505::_ExternalContext_default_instance_._instance,
     &::kentik::alerting::public_::v202505::_AlertServiceSetExternalContextRequest_default_instance_._instance,
     &::kentik::alerting::public_::v202505::_AlertServiceSetExternalContextResponse_default_instance_._instance,
@@ -1938,308 +1981,317 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2faler
     "ming Kentik alert, e.g., INC0012345.\340A\002R"
     "\nincidentId\022b\n\014incident_url\030\002 \001(\tB\?\222A927"
     "Incident URL, e.g. https://instance.serv"
-    "ice-now.com/...\340A\002R\013incidentUrl\"\276\001\n\017Exte"
-    "rnalContext\022\237\001\n\nservicenow\030\001 \001(\01321.kenti"
-    "k.alerting.public.v202505.ServiceNowCont"
-    "extBJ\222AD2BThe external context of the al"
-    "ert from servicenow external system.\340A\002H"
-    "\000R\nservicenowB\t\n\007context\"\223\002\n%AlertServic"
-    "eSetExternalContextRequest\022Z\n\010alert_id\030\001"
-    " \001(\tB\?\222A927The ID of the alert to add or"
-    " replace external context.\340A\002R\007alertId\022\215"
-    "\001\n\007context\030\002 \001(\0132/.kentik.alerting.publi"
-    "c.v202505.ExternalContextBB\222A<2:The exte"
-    "rnal context of the alert from an extern"
-    "al system.\340A\002R\007context\"\222\001\n&AlertServiceS"
-    "etExternalContextResponse\022h\n\nupdated_at\030"
-    "\001 \001(\0132\032.google.protobuf.TimestampB-\222A\'2%"
-    "Timestamp of external context update.\340A\003"
-    "R\tupdatedAt\"\260\020\n\005Alert\022:\n\002id\030\001 \001(\tB*\222A$2\""
-    "The ID (UUID format) of the alert.\340A\003R\002i"
-    "d\022g\n\006source\030\002 \001(\0132&.kentik.alerting.publ"
-    "ic.v202505.SourceB\'\222A!2\037The source polic"
-    "y of the alert.\340A\003R\006source\022d\n\rstart_time"
-    "_at\030\004 \001(\0132\032.google.protobuf.TimestampB$\222"
-    "A\0362\034The start time of the alert.\340A\003R\013sta"
-    "rtTimeAt\022^\n\013end_time_at\030\005 \001(\0132\032.google.p"
-    "rotobuf.TimestampB\"\222A\0342\032The end time of "
-    "the alert.\340A\003R\tendTimeAt\022i\n\005state\030\006 \001(\0162"
-    "*.kentik.alerting.public.v202505.AlertSt"
-    "ateB\'\222A!2\037The current state of the alert"
-    ".\340A\003R\005state\022o\n\010severity\030\007 \001(\0162\'.kentik.a"
-    "lerting.types.v202303.SeverityB*\222A$2\"The"
-    " current severity of the alert.\340A\003R\010seve"
-    "rity\022\206\001\n\020highest_severity\030\010 \001(\0162\'.kentik"
-    ".alerting.types.v202303.SeverityB2\222A,2*T"
-    "he highest reached severity of the alert"
-    ".\340A\003R\017highestSeverity\022\220\001\n\017acknowledgemen"
-    "t\030\t \001(\01325.kentik.alerting.public.v202505"
-    ".Alert.AcknowledgementB/\222A)2\'The acknowl"
-    "edgement state of the alert.\340A\003R\017acknowl"
-    "edgement\022\250\001\n\023event_start_time_at\030\n \001(\0132\032"
-    ".google.protobuf.TimestampB]\222AW2UThe tim"
-    "estamp of the first trigger event that c"
-    "aused an alert to eventually activate.\340A"
-    "\003R\020eventStartTimeAt\022t\n\004flow\030\013 \001(\0132+.kent"
-    "ik.alerting.public.v202505.FlowContextB1"
-    "\222A+2)The context of the alert for flow a"
-    "lerts.\340A\003H\000R\004flow\022p\n\003nms\030\014 \001(\0132*.kentik."
-    "alerting.public.v202505.NmsContextB0\222A*2"
-    "(The context of the alert for NMS alerts"
-    ".\340A\003H\000R\003nms\022\\\n\rmitigation_id\030\017 \001(\004B7\222A12"
-    "/ID of the associated mitigation, if app"
-    "licable.\340A\003R\014mitigationId\022\240\001\n\021external_c"
-    "ontexts\030\020 \003(\0132/.kentik.alerting.public.v"
-    "202505.ExternalContextBB\222A<2:External co"
-    "ntexts attached to the alert (e.g. Servi"
-    "ceNow).\340A\003R\020externalContexts\032\244\004\n\017Acknowl"
-    "edgement\022{\n\005state\030\001 \001(\01624.kentik.alertin"
-    "g.public.v202505.AlertAcknowledgementB/\222"
-    "A)2\'The acknowledgement state of the ale"
-    "rt.\340A\003R\005state\022\231\001\n\racked_by_user\030\002 \001(\tBu\222"
-    "Ao2mThe user ID of the user who acknowle"
-    "dged the alert. Present only if the aler"
-    "t has been acknowledged manually.\340A\003R\013ac"
-    "kedByUser\022\221\001\n\013auto_ack_id\030\003 \001(\tBq\222Ak2iTh"
-    "e ID of the auto-ack that acknowledged t"
-    "he alert. Present only if the alert has "
-    "been auto-acknowledged.\340A\003R\tautoAckId\022d\n"
-    "\010acked_at\030\004 \001(\0132\032.google.protobuf.Timest"
-    "ampB-\222A\'2%The timestamp of the acknowled"
-    "gement.\340A\003R\007ackedAtB\t\n\007context\"\345\033\n\013FlowC"
-    "ontext\022\254\001\n\rmetric_values\030\001 \003(\01327.kentik."
-    "alerting.public.v202505.FlowContext.Metr"
-    "icValueBN\222AH2FThe metric values of the a"
-    "lert determined by the policy configurat"
-    "ion.\340A\003R\014metricValues\022\304\001\n\021activation_sta"
-    "tus\030\002 \001(\0162<.kentik.alerting.public.v2025"
-    "05.FlowContext.ActivationStatusBY\222AS2QTh"
-    "e activation status of the alert referri"
-    "ng to potential use of baseline values.\340"
-    "A\003R\020activationStatus\022a\n\016baseline_value\030\003"
-    " \001(\001B:\222A422The baseline value used when "
-    "activating the alert.\340A\003R\rbaselineValue\022"
-    "\313\001\n\021alert_key_details\030\004 \003(\0132@.kentik.ale"
-    "rting.public.v202505.FlowContext.AlertKe"
-    "yDetailsEntryB]\222AW2UThe alert key detail"
-    "s of the alert: each key might be expand"
-    "ed into multiple details.\340A\003R\017alertKeyDe"
-    "tails\032\177\n\024AlertKeyDetailsEntry\022\020\n\003key\030\001 \001"
-    "(\tR\003key\022Q\n\005value\030\002 \001(\0132;.kentik.alerting"
-    ".public.v202505.FlowContext.AlertKeyDeta"
-    "ilsR\005value:\0028\001\032\310\001\n\013MetricValue\022{\n\004name\030\001"
-    " \001(\tBg\222Aa2_The name of the metric value "
-    "(e.g. \'bytes_in\', \'bytes_out\', \'packets_"
-    "in\', \'packets_out\', etc.).\340A\003R\004name\022<\n\005v"
-    "alue\030\002 \001(\001B&\222A 2\036The value of the given "
-    "metric.\340A\003R\005value\032\356\003\n\017AlertKeyDetails\022\177\n"
-    "\006device\030\001 \001(\01329.kentik.alerting.public.v"
-    "202505.FlowContext.DeviceDetailsB,\222A&2$T"
-    "he device details of the alert key.\340A\003R\006"
-    "device\022\213\001\n\tinterface\030\002 \001(\0132<.kentik.aler"
-    "ting.public.v202505.FlowContext.Interfac"
-    "eDetailsB/\222A)2\'The interface details of "
-    "the alert key.\340A\003R\tinterface\022w\n\004site\030\003 \001"
-    "(\01327.kentik.alerting.public.v202505.Flow"
-    "Context.SiteDetailsB*\222A$2\"The site detai"
-    "ls of the alert key.\340A\003R\004site\022S\n\016extende"
-    "d_value\030\004 \001(\tB,\222A&2$The extended value o"
-    "f the alert key.\340A\003R\rextendedValue\032\200\002\n\rD"
-    "eviceDetails\022-\n\002id\030\001 \001(\tB\035\222A\0272\025The ID of"
-    " the device.\340A\003R\002id\0223\n\004name\030\002 \001(\tB\037\222A\0312\027"
-    "The name of the device.\340A\003R\004name\022C\n\004type"
-    "\030\003 \001(\tB/\222A)2\'The type of the device (e.g"
-    ". \'router\').\340A\003R\004type\022F\n\006labels\030\004 \003(\tB.\222"
-    "A(2&The labels associated with the devic"
-    "e.\340A\003R\006labels\032\320\002\n\020InterfaceDetails\022>\n\007sn"
-    "mp_id\030\001 \001(\tB%\222A\0372\035The SNMP ID of the int"
-    "erface.\340A\003R\006snmpId\022U\n\nsnmp_alias\030\002 \001(\tB6"
-    "\222A02.The SNMP alias of the interface (e."
-    "g. \'eth0\').\340A\003R\tsnmpAlias\022K\n\013description"
-    "\030\003 \001(\tB)\222A#2!The description of the inte"
-    "rface.\340A\003R\013description\022X\n\017snmp_speed_mbp"
-    "s\030\004 \001(\003B0\222A*2(The SNMP speed of the inte"
-    "rface in Mbps.\340A\003R\rsnmpSpeedMbps\032\251\003\n\013Sit"
-    "eDetails\022+\n\002id\030\001 \001(\tB\033\222A\0252\023The ID of the"
-    " site.\340A\003R\002id\0221\n\004name\030\002 \001(\tB\035\222A\0272\025The na"
-    "me of the site.\340A\003R\004name\022E\n\010latitude\030\003 \001"
-    "(\tB)\222A&2$The geographic latitude of the "
-    "site.R\010latitude\022K\n\tlongitude\030\004 \001(\tB-\222A\'2"
-    "%The geographic longitude of the site.\340A"
-    "\003R\tlongitude\022S\n\010location\030\005 \001(\tB7\222A12/The"
-    " location of the site (e.g. \'New York, N"
-    "Y\').\340A\003R\010location\022Q\n\007country\030\006 \001(\tB7\222A12"
-    "/The country of the site (e.g. \'United S"
-    "tates\').\340A\003R\007country\"\357\007\n\020ActivationStatu"
-    "s\022!\n\035ACTIVATION_STATUS_UNSPECIFIED\020\000\022\'\n#"
-    "ACTIVATION_STATUS_NOT_USED_BASELINE\020\001\022+\n"
-    "\'ACTIVATION_STATUS_BASELINE_MISSING_SKIP"
-    "\020\002\022.\n*ACTIVATION_STATUS_BASELINE_MISSING"
-    "_TRIGGER\020\003\022)\n%ACTIVATION_STATUS_BASELINE"
-    "_USED_FOUND\020\004\022.\n*ACTIVATION_STATUS_BASEL"
-    "INE_MISSING_DEFAULT\020\005\022-\n)ACTIVATION_STAT"
-    "US_BASELINE_MISSING_LOWEST\020\006\022.\n*ACTIVATI"
-    "ON_STATUS_BASELINE_MISSING_HIGHEST\020\007\022/\n+"
-    "ACTIVATION_STATUS_BASELINE_NOT_FOUND_EXI"
-    "STS\020\010\022*\n&ACTIVATION_STATUS_CURRENT_MISSI"
-    "NG_SKIP\020\t\022-\n)ACTIVATION_STATUS_CURRENT_M"
-    "ISSING_TRIGGER\020\n\022(\n$ACTIVATION_STATUS_CU"
-    "RRENT_USED_FOUND\020\013\022-\n)ACTIVATION_STATUS_"
-    "CURRENT_MISSING_DEFAULT\020\014\022,\n(ACTIVATION_"
-    "STATUS_CURRENT_MISSING_LOWEST\020\r\022-\n)ACTIV"
-    "ATION_STATUS_CURRENT_MISSING_HIGHEST\020\016\022."
-    "\n*ACTIVATION_STATUS_CURRENT_NOT_FOUND_EX"
-    "ISTS\020\017\022@\n<ACTIVATION_STATUS_BASELINE_MIS"
-    "SING_DEFAULT_INSTEAD_OF_LOWEST\020\020\022A\n=ACTI"
-    "VATION_STATUS_BASELINE_MISSING_DEFAULT_I"
-    "NSTEAD_OF_HIGHEST\020\021\022\?\n;ACTIVATION_STATUS"
-    "_CURRENT_MISSING_DEFAULT_INSTEAD_OF_LOWE"
-    "ST\020\022\022@\n<ACTIVATION_STATUS_CURRENT_MISSIN"
-    "G_DEFAULT_INSTEAD_OF_HIGHEST\020\023\"\253\020\n\nNmsCo"
-    "ntext\022b\n\017activation_info\030\001 \001(\01329.kentik."
-    "alerting.public.v202505.NmsContext.Activ"
-    "ationInfoR\016activationInfo\022Y\n\014dataset_inf"
-    "o\030\002 \001(\01326.kentik.alerting.public.v202505"
-    ".NmsContext.DatasetInfoR\013datasetInfo\022Q\n\007"
-    "targets\030\003 \003(\01327.kentik.alerting.public.v"
-    "202505.NmsContext.TargetsEntryR\007targets\022"
-    "a\n\rmetric_values\030\004 \003(\0132<.kentik.alerting"
-    ".public.v202505.NmsContext.MetricValuesE"
-    "ntryR\014metricValues\022z\n\026previous_metric_va"
-    "lues\030\005 \003(\0132D.kentik.alerting.public.v202"
-    "505.NmsContext.PreviousMetricValuesEntry"
-    "R\024previousMetricValues\022N\n\006device\030\006 \003(\01326"
-    ".kentik.alerting.public.v202505.NmsConte"
-    "xt.DeviceEntryR\006device\022U\n\tgroup_key\030\007 \003("
-    "\01328.kentik.alerting.public.v202505.NmsCo"
-    "ntext.GroupKeyEntryR\010groupKey\032r\n\014Targets"
-    "Entry\022\020\n\003key\030\001 \001(\tR\003key\022L\n\005value\030\002 \001(\01326"
-    ".kentik.alerting.public.v202505.NmsConte"
-    "xt.AlarmTargetR\005value:\0028\001\032z\n\021MetricValue"
-    "sEntry\022\020\n\003key\030\001 \001(\tR\003key\022O\n\005value\030\002 \001(\0132"
+    "ice-now.com/...\340A\002R\013incidentUrl\"\316\001\n\020Jira"
+    "CloudContext\022I\n\tissue_key\030\001 \001(\tB,\222A&2$Ji"
+    "ra Cloud issue key, e.g., KEY-123.\340A\002R\010i"
+    "ssueKey\022o\n\tissue_url\030\002 \001(\tBR\222AL2JJira Cl"
+    "oud issue URL, e.g., https://instance.at"
+    "lassian.net/browse/KEY-123.\340A\002R\010issueUrl"
+    "\"\336\002\n\017ExternalContext\022\237\001\n\nservicenow\030\001 \001("
+    "\01321.kentik.alerting.public.v202505.Servi"
+    "ceNowContextBJ\222AD2BThe external context "
+    "of the alert from servicenow external sy"
+    "stem.\340A\002H\000R\nservicenow\022\235\001\n\njira_cloud\030\002 "
+    "\001(\01320.kentik.alerting.public.v202505.Jir"
+    "aCloudContextBJ\222AD2BThe external context"
+    " of the alert from Jira Cloud external s"
+    "ystem.\340A\002H\000R\tjiraCloudB\t\n\007context\"\223\002\n%Al"
+    "ertServiceSetExternalContextRequest\022Z\n\010a"
+    "lert_id\030\001 \001(\tB\?\222A927The ID of the alert "
+    "to add or replace external context.\340A\002R\007"
+    "alertId\022\215\001\n\007context\030\002 \001(\0132/.kentik.alert"
+    "ing.public.v202505.ExternalContextBB\222A<2"
+    ":The external context of the alert from "
+    "an external system.\340A\002R\007context\"\222\001\n&Aler"
+    "tServiceSetExternalContextResponse\022h\n\nup"
+    "dated_at\030\001 \001(\0132\032.google.protobuf.Timesta"
+    "mpB-\222A\'2%Timestamp of external context u"
+    "pdate.\340A\003R\tupdatedAt\"\260\020\n\005Alert\022:\n\002id\030\001 \001"
+    "(\tB*\222A$2\"The ID (UUID format) of the ale"
+    "rt.\340A\003R\002id\022g\n\006source\030\002 \001(\0132&.kentik.aler"
+    "ting.public.v202505.SourceB\'\222A!2\037The sou"
+    "rce policy of the alert.\340A\003R\006source\022d\n\rs"
+    "tart_time_at\030\004 \001(\0132\032.google.protobuf.Tim"
+    "estampB$\222A\0362\034The start time of the alert"
+    ".\340A\003R\013startTimeAt\022^\n\013end_time_at\030\005 \001(\0132\032"
+    ".google.protobuf.TimestampB\"\222A\0342\032The end"
+    " time of the alert.\340A\003R\tendTimeAt\022i\n\005sta"
+    "te\030\006 \001(\0162*.kentik.alerting.public.v20250"
+    "5.AlertStateB\'\222A!2\037The current state of "
+    "the alert.\340A\003R\005state\022o\n\010severity\030\007 \001(\0162\'"
+    ".kentik.alerting.types.v202303.SeverityB"
+    "*\222A$2\"The current severity of the alert."
+    "\340A\003R\010severity\022\206\001\n\020highest_severity\030\010 \001(\016"
+    "2\'.kentik.alerting.types.v202303.Severit"
+    "yB2\222A,2*The highest reached severity of "
+    "the alert.\340A\003R\017highestSeverity\022\220\001\n\017ackno"
+    "wledgement\030\t \001(\01325.kentik.alerting.publi"
+    "c.v202505.Alert.AcknowledgementB/\222A)2\'Th"
+    "e acknowledgement state of the alert.\340A\003"
+    "R\017acknowledgement\022\250\001\n\023event_start_time_a"
+    "t\030\n \001(\0132\032.google.protobuf.TimestampB]\222AW"
+    "2UThe timestamp of the first trigger eve"
+    "nt that caused an alert to eventually ac"
+    "tivate.\340A\003R\020eventStartTimeAt\022t\n\004flow\030\013 \001"
+    "(\0132+.kentik.alerting.public.v202505.Flow"
+    "ContextB1\222A+2)The context of the alert f"
+    "or flow alerts.\340A\003H\000R\004flow\022p\n\003nms\030\014 \001(\0132"
+    "*.kentik.alerting.public.v202505.NmsCont"
+    "extB0\222A*2(The context of the alert for N"
+    "MS alerts.\340A\003H\000R\003nms\022\\\n\rmitigation_id\030\017 "
+    "\001(\004B7\222A12/ID of the associated mitigatio"
+    "n, if applicable.\340A\003R\014mitigationId\022\240\001\n\021e"
+    "xternal_contexts\030\020 \003(\0132/.kentik.alerting"
+    ".public.v202505.ExternalContextBB\222A<2:Ex"
+    "ternal contexts attached to the alert (e"
+    ".g. ServiceNow).\340A\003R\020externalContexts\032\244\004"
+    "\n\017Acknowledgement\022{\n\005state\030\001 \001(\01624.kenti"
+    "k.alerting.public.v202505.AlertAcknowled"
+    "gementB/\222A)2\'The acknowledgement state o"
+    "f the alert.\340A\003R\005state\022\231\001\n\racked_by_user"
+    "\030\002 \001(\tBu\222Ao2mThe user ID of the user who"
+    " acknowledged the alert. Present only if"
+    " the alert has been acknowledged manuall"
+    "y.\340A\003R\013ackedByUser\022\221\001\n\013auto_ack_id\030\003 \001(\t"
+    "Bq\222Ak2iThe ID of the auto-ack that ackno"
+    "wledged the alert. Present only if the a"
+    "lert has been auto-acknowledged.\340A\003R\taut"
+    "oAckId\022d\n\010acked_at\030\004 \001(\0132\032.google.protob"
+    "uf.TimestampB-\222A\'2%The timestamp of the "
+    "acknowledgement.\340A\003R\007ackedAtB\t\n\007context\""
+    "\345\033\n\013FlowContext\022\254\001\n\rmetric_values\030\001 \003(\0132"
+    "7.kentik.alerting.public.v202505.FlowCon"
+    "text.MetricValueBN\222AH2FThe metric values"
+    " of the alert determined by the policy c"
+    "onfiguration.\340A\003R\014metricValues\022\304\001\n\021activ"
+    "ation_status\030\002 \001(\0162<.kentik.alerting.pub"
+    "lic.v202505.FlowContext.ActivationStatus"
+    "BY\222AS2QThe activation status of the aler"
+    "t referring to potential use of baseline"
+    " values.\340A\003R\020activationStatus\022a\n\016baselin"
+    "e_value\030\003 \001(\001B:\222A422The baseline value u"
+    "sed when activating the alert.\340A\003R\rbasel"
+    "ineValue\022\313\001\n\021alert_key_details\030\004 \003(\0132@.k"
+    "entik.alerting.public.v202505.FlowContex"
+    "t.AlertKeyDetailsEntryB]\222AW2UThe alert k"
+    "ey details of the alert: each key might "
+    "be expanded into multiple details.\340A\003R\017a"
+    "lertKeyDetails\032\177\n\024AlertKeyDetailsEntry\022\020"
+    "\n\003key\030\001 \001(\tR\003key\022Q\n\005value\030\002 \001(\0132;.kentik"
+    ".alerting.public.v202505.FlowContext.Ale"
+    "rtKeyDetailsR\005value:\0028\001\032\310\001\n\013MetricValue\022"
+    "{\n\004name\030\001 \001(\tBg\222Aa2_The name of the metr"
+    "ic value (e.g. \'bytes_in\', \'bytes_out\', "
+    "\'packets_in\', \'packets_out\', etc.).\340A\003R\004"
+    "name\022<\n\005value\030\002 \001(\001B&\222A 2\036The value of t"
+    "he given metric.\340A\003R\005value\032\356\003\n\017AlertKeyD"
+    "etails\022\177\n\006device\030\001 \001(\01329.kentik.alerting"
+    ".public.v202505.FlowContext.DeviceDetail"
+    "sB,\222A&2$The device details of the alert "
+    "key.\340A\003R\006device\022\213\001\n\tinterface\030\002 \001(\0132<.ke"
+    "ntik.alerting.public.v202505.FlowContext"
+    ".InterfaceDetailsB/\222A)2\'The interface de"
+    "tails of the alert key.\340A\003R\tinterface\022w\n"
+    "\004site\030\003 \001(\01327.kentik.alerting.public.v20"
+    "2505.FlowContext.SiteDetailsB*\222A$2\"The s"
+    "ite details of the alert key.\340A\003R\004site\022S"
+    "\n\016extended_value\030\004 \001(\tB,\222A&2$The extende"
+    "d value of the alert key.\340A\003R\rextendedVa"
+    "lue\032\200\002\n\rDeviceDetails\022-\n\002id\030\001 \001(\tB\035\222A\0272\025"
+    "The ID of the device.\340A\003R\002id\0223\n\004name\030\002 \001"
+    "(\tB\037\222A\0312\027The name of the device.\340A\003R\004nam"
+    "e\022C\n\004type\030\003 \001(\tB/\222A)2\'The type of the de"
+    "vice (e.g. \'router\').\340A\003R\004type\022F\n\006labels"
+    "\030\004 \003(\tB.\222A(2&The labels associated with "
+    "the device.\340A\003R\006labels\032\320\002\n\020InterfaceDeta"
+    "ils\022>\n\007snmp_id\030\001 \001(\tB%\222A\0372\035The SNMP ID o"
+    "f the interface.\340A\003R\006snmpId\022U\n\nsnmp_alia"
+    "s\030\002 \001(\tB6\222A02.The SNMP alias of the inte"
+    "rface (e.g. \'eth0\').\340A\003R\tsnmpAlias\022K\n\013de"
+    "scription\030\003 \001(\tB)\222A#2!The description of"
+    " the interface.\340A\003R\013description\022X\n\017snmp_"
+    "speed_mbps\030\004 \001(\003B0\222A*2(The SNMP speed of"
+    " the interface in Mbps.\340A\003R\rsnmpSpeedMbp"
+    "s\032\251\003\n\013SiteDetails\022+\n\002id\030\001 \001(\tB\033\222A\0252\023The "
+    "ID of the site.\340A\003R\002id\0221\n\004name\030\002 \001(\tB\035\222A"
+    "\0272\025The name of the site.\340A\003R\004name\022E\n\010lat"
+    "itude\030\003 \001(\tB)\222A&2$The geographic latitud"
+    "e of the site.R\010latitude\022K\n\tlongitude\030\004 "
+    "\001(\tB-\222A\'2%The geographic longitude of th"
+    "e site.\340A\003R\tlongitude\022S\n\010location\030\005 \001(\tB"
+    "7\222A12/The location of the site (e.g. \'Ne"
+    "w York, NY\').\340A\003R\010location\022Q\n\007country\030\006 "
+    "\001(\tB7\222A12/The country of the site (e.g. "
+    "\'United States\').\340A\003R\007country\"\357\007\n\020Activa"
+    "tionStatus\022!\n\035ACTIVATION_STATUS_UNSPECIF"
+    "IED\020\000\022\'\n#ACTIVATION_STATUS_NOT_USED_BASE"
+    "LINE\020\001\022+\n\'ACTIVATION_STATUS_BASELINE_MIS"
+    "SING_SKIP\020\002\022.\n*ACTIVATION_STATUS_BASELIN"
+    "E_MISSING_TRIGGER\020\003\022)\n%ACTIVATION_STATUS"
+    "_BASELINE_USED_FOUND\020\004\022.\n*ACTIVATION_STA"
+    "TUS_BASELINE_MISSING_DEFAULT\020\005\022-\n)ACTIVA"
+    "TION_STATUS_BASELINE_MISSING_LOWEST\020\006\022.\n"
+    "*ACTIVATION_STATUS_BASELINE_MISSING_HIGH"
+    "EST\020\007\022/\n+ACTIVATION_STATUS_BASELINE_NOT_"
+    "FOUND_EXISTS\020\010\022*\n&ACTIVATION_STATUS_CURR"
+    "ENT_MISSING_SKIP\020\t\022-\n)ACTIVATION_STATUS_"
+    "CURRENT_MISSING_TRIGGER\020\n\022(\n$ACTIVATION_"
+    "STATUS_CURRENT_USED_FOUND\020\013\022-\n)ACTIVATIO"
+    "N_STATUS_CURRENT_MISSING_DEFAULT\020\014\022,\n(AC"
+    "TIVATION_STATUS_CURRENT_MISSING_LOWEST\020\r"
+    "\022-\n)ACTIVATION_STATUS_CURRENT_MISSING_HI"
+    "GHEST\020\016\022.\n*ACTIVATION_STATUS_CURRENT_NOT"
+    "_FOUND_EXISTS\020\017\022@\n<ACTIVATION_STATUS_BAS"
+    "ELINE_MISSING_DEFAULT_INSTEAD_OF_LOWEST\020"
+    "\020\022A\n=ACTIVATION_STATUS_BASELINE_MISSING_"
+    "DEFAULT_INSTEAD_OF_HIGHEST\020\021\022\?\n;ACTIVATI"
+    "ON_STATUS_CURRENT_MISSING_DEFAULT_INSTEA"
+    "D_OF_LOWEST\020\022\022@\n<ACTIVATION_STATUS_CURRE"
+    "NT_MISSING_DEFAULT_INSTEAD_OF_HIGHEST\020\023\""
+    "\253\020\n\nNmsContext\022b\n\017activation_info\030\001 \001(\0132"
     "9.kentik.alerting.public.v202505.NmsCont"
-    "ext.AlarmMetricMapR\005value:\0028\001\032\202\001\n\031Previo"
-    "usMetricValuesEntry\022\020\n\003key\030\001 \001(\tR\003key\022O\n"
-    "\005value\030\002 \001(\01329.kentik.alerting.public.v2"
-    "02505.NmsContext.AlarmMetricMapR\005value:\002"
-    "8\001\0329\n\013DeviceEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005v"
-    "alue\030\002 \001(\tR\005value:\0028\001\032;\n\rGroupKeyEntry\022\020"
-    "\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\002"
-    "8\001\032\232\002\n\016ActivationInfo\022X\n\010activate\030\001 \001(\0132"
-    "<.kentik.alerting.public.v202505.NmsActi"
-    "vateOrClearConditionsR\010activate\022C\n\010sever"
-    "ity\030\002 \001(\0162\'.kentik.alerting.types.v20230"
-    "3.SeverityR\010severity\022#\n\014clear_manual\030\003 \001"
-    "(\010H\000R\013clearManual\0226\n\026clear_unless_activa"
-    "ted\030\004 \001(\010H\000R\024clearUnlessActivatedB\014\n\ncle"
-    "ar_type\032\223\001\n\013DatasetInfo\022\037\n\013custom_type\030\001"
-    " \001(\010R\ncustomType\022\036\n\ndimensions\030\002 \003(\tR\ndi"
-    "mensions\022\037\n\013entity_type\030\003 \001(\tR\nentityTyp"
-    "e\022\"\n\014measurements\030\004 \003(\tR\014measurements\032\263\002"
-    "\n\013AlarmTarget\022Z\n\006fields\030\001 \003(\0132B.kentik.a"
-    "lerting.public.v202505.NmsContext.AlarmT"
-    "arget.FieldsEntryR\006fields\022T\n\004tags\030\002 \003(\0132"
-    "@.kentik.alerting.public.v202505.NmsCont"
-    "ext.AlarmTarget.TagsEntryR\004tags\0329\n\013Field"
-    "sEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\001R"
-    "\005value:\0028\001\0327\n\tTagsEntry\022\020\n\003key\030\001 \001(\tR\003ke"
-    "y\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\032\256\001\n\016AlarmMet"
-    "ricMap\022`\n\007metrics\030\001 \003(\0132F.kentik.alertin"
-    "g.public.v202505.NmsContext.AlarmMetricM"
-    "ap.MetricsEntryR\007metrics\032:\n\014MetricsEntry"
-    "\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\001R\005value"
-    ":\0028\001\"\322\001\n\035AlertServiceAddCommentRequest\022M"
-    "\n\010alert_id\030\001 \001(\tB2\222A,2*The ID of the ale"
-    "rt to add the comment to.\340A\002R\007alertId\022b\n"
-    "\004text\030\002 \001(\tBN\222AH2CThe text content of th"
-    "e comment. Maximum length is 5000 charac"
-    "ters.x\210\'\340A\002R\004text\"\207\001\n\036AlertServiceAddCom"
-    "mentResponse\022e\n\007comment\030\001 \001(\0132\'.kentik.a"
-    "lerting.public.v202505.CommentB\"\222A\0342\032The"
-    " newly created comment.\340A\003R\007comment\"o\n\037A"
-    "lertServiceListCommentsRequest\022L\n\010alert_"
-    "id\030\001 \001(\tB1\222A+2)The ID of the alert to li"
-    "st comments for.\340A\002R\007alertId\"\213\001\n AlertSe"
-    "rviceListCommentsResponse\022g\n\010comments\030\001 "
-    "\003(\0132\'.kentik.alerting.public.v202505.Com"
-    "mentB\"\222A\0342\032The comments on the alert.\340A\003"
-    "R\010comments*X\n\nAlertState\022\033\n\027ALERT_STATE_"
-    "UNSPECIFIED\020\000\022\025\n\021ALERT_STATE_CLEAR\020\001\022\026\n\022"
-    "ALERT_STATE_ACTIVE\020\002*\246\001\n\024AlertAcknowledg"
-    "ement\022%\n!ALERT_ACKNOWLEDGEMENT_UNSPECIFI"
-    "ED\020\000\022\"\n\036ALERT_ACKNOWLEDGEMENT_REQUIRED\020\001"
-    "\022\036\n\032ALERT_ACKNOWLEDGEMENT_DONE\020\002\022#\n\037ALER"
-    "T_ACKNOWLEDGEMENT_NOT_ACKED\020\0032\277\021\n\014AlertS"
-    "ervice\022\215\002\n\003Get\0226.kentik.alerting.public."
-    "v202505.AlertServiceGetRequest\0327.kentik."
-    "alerting.public.v202505.AlertServiceGetR"
-    "esponse\"\224\001\222A^\022\tGet Alert\032LReturns an ale"
-    "rt object that contains information abou"
-    "t an individual alert.*\003Get\362\327\002\023admin.ale"
-    "rting:read\202\323\344\223\002\026\022\024/v202505/alerts/{id}\022\230"
-    "\002\n\004List\0227.kentik.alerting.public.v202505"
-    ".AlertServiceListRequest\0328.kentik.alerti"
-    "ng.public.v202505.AlertServiceListRespon"
-    "se\"\234\001\222Ah\022\013List Alerts\032SReturns an array "
-    "of alert objects that contain informatio"
-    "n about individual alerts.*\004List\362\327\002\023admi"
-    "n.alerting:read\202\323\344\223\002\024\"\017/v202505/alerts:\001"
-    "*\022\336\001\n\003Ack\0226.kentik.alerting.public.v2025"
-    "05.AlertServiceAckRequest\0327.kentik.alert"
-    "ing.public.v202505.AlertServiceAckRespon"
-    "se\"f\222A(\022\tAck Alert\032\026Acknowledges an aler"
-    "t.*\003Ack\362\327\002\024admin.alerting:write\202\323\344\223\002\035\"\030/"
-    "v202505/alerts/{id}/ack:\001*\022\213\002\n\005UnAck\0228.k"
-    "entik.alerting.public.v202505.AlertServi"
-    "ceUnAckRequest\0329.kentik.alerting.public."
-    "v202505.AlertServiceUnAckResponse\"\214\001\222AL\022"
-    "\013UnAck Alert\0326Unacknowledges an alert (r"
-    "emoves the acknowledgement).*\005UnAck\362\327\002\024a"
-    "dmin.alerting:write\202\323\344\223\002\037\"\032/v202505/aler"
-    "ts/{id}/unack:\001*\022\336\001\n\005Clear\0228.kentik.aler"
-    "ting.public.v202505.AlertServiceClearReq"
-    "uest\0329.kentik.alerting.public.v202505.Al"
-    "ertServiceClearResponse\"`\222A%\022\014Clear Aler"
-    "ts\032\016Clears alerts.*\005Clear\362\327\002\024admin.alert"
-    "ing:write\202\323\344\223\002\032\"\025/v202505/alerts/clear:\001"
-    "*\022\223\002\n\nAddComment\022=.kentik.alerting.publi"
-    "c.v202505.AlertServiceAddCommentRequest\032"
-    ">.kentik.alerting.public.v202505.AlertSe"
-    "rviceAddCommentResponse\"\205\001\222A<\022\021Add Alert"
-    " Comment\032\033Adds a comment to an alert.*\nA"
-    "ddComment\362\327\002\024admin.alerting:write\202\323\344\223\002(\""
-    "#/v202505/alerts/{alert_id}/comments:\001*\022"
-    "\240\002\n\014ListComments\022\?.kentik.alerting.publi"
-    "c.v202505.AlertServiceListCommentsReques"
-    "t\032@.kentik.alerting.public.v202505.Alert"
-    "ServiceListCommentsResponse\"\214\001\222AG\022\023List "
-    "Alert Comments\032\"Returns all comments for"
-    " an alert.*\014ListComments\362\327\002\023admin.alerti"
-    "ng:read\202\323\344\223\002%\022#/v202505/alerts/{alert_id"
-    "}/comments\022\314\002\n\022SetExternalContext\022E.kent"
+    "ext.ActivationInfoR\016activationInfo\022Y\n\014da"
+    "taset_info\030\002 \001(\01326.kentik.alerting.publi"
+    "c.v202505.NmsContext.DatasetInfoR\013datase"
+    "tInfo\022Q\n\007targets\030\003 \003(\01327.kentik.alerting"
+    ".public.v202505.NmsContext.TargetsEntryR"
+    "\007targets\022a\n\rmetric_values\030\004 \003(\0132<.kentik"
+    ".alerting.public.v202505.NmsContext.Metr"
+    "icValuesEntryR\014metricValues\022z\n\026previous_"
+    "metric_values\030\005 \003(\0132D.kentik.alerting.pu"
+    "blic.v202505.NmsContext.PreviousMetricVa"
+    "luesEntryR\024previousMetricValues\022N\n\006devic"
+    "e\030\006 \003(\01326.kentik.alerting.public.v202505"
+    ".NmsContext.DeviceEntryR\006device\022U\n\tgroup"
+    "_key\030\007 \003(\01328.kentik.alerting.public.v202"
+    "505.NmsContext.GroupKeyEntryR\010groupKey\032r"
+    "\n\014TargetsEntry\022\020\n\003key\030\001 \001(\tR\003key\022L\n\005valu"
+    "e\030\002 \001(\01326.kentik.alerting.public.v202505"
+    ".NmsContext.AlarmTargetR\005value:\0028\001\032z\n\021Me"
+    "tricValuesEntry\022\020\n\003key\030\001 \001(\tR\003key\022O\n\005val"
+    "ue\030\002 \001(\01329.kentik.alerting.public.v20250"
+    "5.NmsContext.AlarmMetricMapR\005value:\0028\001\032\202"
+    "\001\n\031PreviousMetricValuesEntry\022\020\n\003key\030\001 \001("
+    "\tR\003key\022O\n\005value\030\002 \001(\01329.kentik.alerting."
+    "public.v202505.NmsContext.AlarmMetricMap"
+    "R\005value:\0028\001\0329\n\013DeviceEntry\022\020\n\003key\030\001 \001(\tR"
+    "\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\032;\n\rGroupK"
+    "eyEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\t"
+    "R\005value:\0028\001\032\232\002\n\016ActivationInfo\022X\n\010activa"
+    "te\030\001 \001(\0132<.kentik.alerting.public.v20250"
+    "5.NmsActivateOrClearConditionsR\010activate"
+    "\022C\n\010severity\030\002 \001(\0162\'.kentik.alerting.typ"
+    "es.v202303.SeverityR\010severity\022#\n\014clear_m"
+    "anual\030\003 \001(\010H\000R\013clearManual\0226\n\026clear_unle"
+    "ss_activated\030\004 \001(\010H\000R\024clearUnlessActivat"
+    "edB\014\n\nclear_type\032\223\001\n\013DatasetInfo\022\037\n\013cust"
+    "om_type\030\001 \001(\010R\ncustomType\022\036\n\ndimensions\030"
+    "\002 \003(\tR\ndimensions\022\037\n\013entity_type\030\003 \001(\tR\n"
+    "entityType\022\"\n\014measurements\030\004 \003(\tR\014measur"
+    "ements\032\263\002\n\013AlarmTarget\022Z\n\006fields\030\001 \003(\0132B"
+    ".kentik.alerting.public.v202505.NmsConte"
+    "xt.AlarmTarget.FieldsEntryR\006fields\022T\n\004ta"
+    "gs\030\002 \003(\0132@.kentik.alerting.public.v20250"
+    "5.NmsContext.AlarmTarget.TagsEntryR\004tags"
+    "\0329\n\013FieldsEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005val"
+    "ue\030\002 \001(\001R\005value:\0028\001\0327\n\tTagsEntry\022\020\n\003key\030"
+    "\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\032\256\001\n"
+    "\016AlarmMetricMap\022`\n\007metrics\030\001 \003(\0132F.kenti"
+    "k.alerting.public.v202505.NmsContext.Ala"
+    "rmMetricMap.MetricsEntryR\007metrics\032:\n\014Met"
+    "ricsEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001"
+    "(\001R\005value:\0028\001\"\322\001\n\035AlertServiceAddComment"
+    "Request\022M\n\010alert_id\030\001 \001(\tB2\222A,2*The ID o"
+    "f the alert to add the comment to.\340A\002R\007a"
+    "lertId\022b\n\004text\030\002 \001(\tBN\222AH2CThe text cont"
+    "ent of the comment. Maximum length is 50"
+    "00 characters.x\210\'\340A\002R\004text\"\207\001\n\036AlertServ"
+    "iceAddCommentResponse\022e\n\007comment\030\001 \001(\0132\'"
+    ".kentik.alerting.public.v202505.CommentB"
+    "\"\222A\0342\032The newly created comment.\340A\003R\007com"
+    "ment\"o\n\037AlertServiceListCommentsRequest\022"
+    "L\n\010alert_id\030\001 \001(\tB1\222A+2)The ID of the al"
+    "ert to list comments for.\340A\002R\007alertId\"\213\001"
+    "\n AlertServiceListCommentsResponse\022g\n\010co"
+    "mments\030\001 \003(\0132\'.kentik.alerting.public.v2"
+    "02505.CommentB\"\222A\0342\032The comments on the "
+    "alert.\340A\003R\010comments*X\n\nAlertState\022\033\n\027ALE"
+    "RT_STATE_UNSPECIFIED\020\000\022\025\n\021ALERT_STATE_CL"
+    "EAR\020\001\022\026\n\022ALERT_STATE_ACTIVE\020\002*\246\001\n\024AlertA"
+    "cknowledgement\022%\n!ALERT_ACKNOWLEDGEMENT_"
+    "UNSPECIFIED\020\000\022\"\n\036ALERT_ACKNOWLEDGEMENT_R"
+    "EQUIRED\020\001\022\036\n\032ALERT_ACKNOWLEDGEMENT_DONE\020"
+    "\002\022#\n\037ALERT_ACKNOWLEDGEMENT_NOT_ACKED\020\0032\277"
+    "\021\n\014AlertService\022\215\002\n\003Get\0226.kentik.alertin"
+    "g.public.v202505.AlertServiceGetRequest\032"
+    "7.kentik.alerting.public.v202505.AlertSe"
+    "rviceGetResponse\"\224\001\222A^\022\tGet Alert\032LRetur"
+    "ns an alert object that contains informa"
+    "tion about an individual alert.*\003Get\362\327\002\023"
+    "admin.alerting:read\202\323\344\223\002\026\022\024/v202505/aler"
+    "ts/{id}\022\230\002\n\004List\0227.kentik.alerting.publi"
+    "c.v202505.AlertServiceListRequest\0328.kent"
+    "ik.alerting.public.v202505.AlertServiceL"
+    "istResponse\"\234\001\222Ah\022\013List Alerts\032SReturns "
+    "an array of alert objects that contain i"
+    "nformation about individual alerts.*\004Lis"
+    "t\362\327\002\023admin.alerting:read\202\323\344\223\002\024\"\017/v202505"
+    "/alerts:\001*\022\336\001\n\003Ack\0226.kentik.alerting.pub"
+    "lic.v202505.AlertServiceAckRequest\0327.ken"
+    "tik.alerting.public.v202505.AlertService"
+    "AckResponse\"f\222A(\022\tAck Alert\032\026Acknowledge"
+    "s an alert.*\003Ack\362\327\002\024admin.alerting:write"
+    "\202\323\344\223\002\035\"\030/v202505/alerts/{id}/ack:\001*\022\213\002\n\005"
+    "UnAck\0228.kentik.alerting.public.v202505.A"
+    "lertServiceUnAckRequest\0329.kentik.alertin"
+    "g.public.v202505.AlertServiceUnAckRespon"
+    "se\"\214\001\222AL\022\013UnAck Alert\0326Unacknowledges an"
+    " alert (removes the acknowledgement).*\005U"
+    "nAck\362\327\002\024admin.alerting:write\202\323\344\223\002\037\"\032/v20"
+    "2505/alerts/{id}/unack:\001*\022\336\001\n\005Clear\0228.ke"
+    "ntik.alerting.public.v202505.AlertServic"
+    "eClearRequest\0329.kentik.alerting.public.v"
+    "202505.AlertServiceClearResponse\"`\222A%\022\014C"
+    "lear Alerts\032\016Clears alerts.*\005Clear\362\327\002\024ad"
+    "min.alerting:write\202\323\344\223\002\032\"\025/v202505/alert"
+    "s/clear:\001*\022\223\002\n\nAddComment\022=.kentik.alert"
+    "ing.public.v202505.AlertServiceAddCommen"
+    "tRequest\032>.kentik.alerting.public.v20250"
+    "5.AlertServiceAddCommentResponse\"\205\001\222A<\022\021"
+    "Add Alert Comment\032\033Adds a comment to an "
+    "alert.*\nAddComment\362\327\002\024admin.alerting:wri"
+    "te\202\323\344\223\002(\"#/v202505/alerts/{alert_id}/com"
+    "ments:\001*\022\240\002\n\014ListComments\022\?.kentik.alert"
+    "ing.public.v202505.AlertServiceListComme"
+    "ntsRequest\032@.kentik.alerting.public.v202"
+    "505.AlertServiceListCommentsResponse\"\214\001\222"
+    "AG\022\023List Alert Comments\032\"Returns all com"
+    "ments for an alert.*\014ListComments\362\327\002\023adm"
+    "in.alerting:read\202\323\344\223\002%\022#/v202505/alerts/"
+    "{alert_id}/comments\022\314\002\n\022SetExternalConte"
+    "xt\022E.kentik.alerting.public.v202505.Aler"
+    "tServiceSetExternalContextRequest\032F.kent"
     "ik.alerting.public.v202505.AlertServiceS"
-    "etExternalContextRequest\032F.kentik.alerti"
-    "ng.public.v202505.AlertServiceSetExterna"
-    "lContextResponse\"\246\001\222AU\022\036Set External Con"
-    "text for Alert\032\037Add or replace external "
-    "context*\022SetExternalContext\362\327\002\024admin.ale"
-    "rting:write\202\323\344\223\0020\032+/v202505/alerts/{aler"
-    "t_id}/external-context:\001*\032,\312A\023grpc.api.k"
-    "entik.com\352\327\002\016admin.alerting\220\330\002\003B\213\004ZIgith"
-    "ub.com/kentik/api-schema-public/gen/go/k"
-    "entik/alerting/public/v202505\222A\274\003\022\360\001\n\022Al"
-    "erting Alert API\022\211\001# Overview\nThe Alerts"
-    " API provides programmatic access to Ken"
-    "tik\'s Alerts, which allows the retrieval"
-    " and basic manual control of alerts.\"E\n\026"
-    "Kentik API Engineering\022+https://github.c"
-    "om/kentik/api-schema-public2\007v202505*\001\0022"
-    "\020application/json:\020application/jsonZD\n\036\n"
-    "\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031"
-    "\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t"
-    "\n\005token\022\000rB\n\033Kentik Alerts documentation"
-    "\022#https://kb.kentik.com/docs/alertingb\006p"
-    "roto3"
+    "etExternalContextResponse\"\246\001\222AU\022\036Set Ext"
+    "ernal Context for Alert\032\037Add or replace "
+    "external context*\022SetExternalContext\362\327\002\024"
+    "admin.alerting:write\202\323\344\223\0020\032+/v202505/ale"
+    "rts/{alert_id}/external-context:\001*\032,\312A\023g"
+    "rpc.api.kentik.com\352\327\002\016admin.alerting\220\330\002\003"
+    "B\213\004ZIgithub.com/kentik/api-schema-public"
+    "/gen/go/kentik/alerting/public/v202505\222A"
+    "\274\003\022\360\001\n\022Alerting Alert API\022\211\001# Overview\nT"
+    "he Alerts API provides programmatic acce"
+    "ss to Kentik\'s Alerts, which allows the "
+    "retrieval and basic manual control of al"
+    "erts.\"E\n\026Kentik API Engineering\022+https:/"
+    "/github.com/kentik/api-schema-public2\007v2"
+    "02505*\001\0022\020application/json:\020application/"
+    "jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\""
+    "\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005"
+    "email\022\000\n\t\n\005token\022\000rB\n\033Kentik Alerts docu"
+    "mentation\022#https://kb.kentik.com/docs/al"
+    "ertingb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto_deps[13] =
     {
@@ -2261,13 +2313,13 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto = {
     false,
     false,
-    17645,
+    18014,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto,
     "kentik/alerting/public/v202505/alert.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto_once,
     descriptor_table_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto_deps,
     13,
-    42,
+    43,
     schemas,
     file_default_instances,
     TableStruct_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto::offsets,
@@ -6505,6 +6557,266 @@ void ServiceNowContext::InternalSwap(ServiceNowContext* PROTOBUF_RESTRICT other)
 }
 // ===================================================================
 
+class JiraCloudContext::_Internal {
+ public:
+};
+
+JiraCloudContext::JiraCloudContext(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.alerting.public.v202505.JiraCloudContext)
+}
+inline PROTOBUF_NDEBUG_INLINE JiraCloudContext::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::alerting::public_::v202505::JiraCloudContext& from_msg)
+      : issue_key_(arena, from.issue_key_),
+        issue_url_(arena, from.issue_url_),
+        _cached_size_{0} {}
+
+JiraCloudContext::JiraCloudContext(
+    ::google::protobuf::Arena* arena,
+    const JiraCloudContext& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  JiraCloudContext* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.alerting.public.v202505.JiraCloudContext)
+}
+inline PROTOBUF_NDEBUG_INLINE JiraCloudContext::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : issue_key_(arena),
+        issue_url_(arena),
+        _cached_size_{0} {}
+
+inline void JiraCloudContext::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+JiraCloudContext::~JiraCloudContext() {
+  // @@protoc_insertion_point(destructor:kentik.alerting.public.v202505.JiraCloudContext)
+  SharedDtor(*this);
+}
+inline void JiraCloudContext::SharedDtor(MessageLite& self) {
+  JiraCloudContext& this_ = static_cast<JiraCloudContext&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.issue_key_.Destroy();
+  this_._impl_.issue_url_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* JiraCloudContext::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) JiraCloudContext(arena);
+}
+constexpr auto JiraCloudContext::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(JiraCloudContext),
+                                            alignof(JiraCloudContext));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull JiraCloudContext::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_JiraCloudContext_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &JiraCloudContext::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<JiraCloudContext>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &JiraCloudContext::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<JiraCloudContext>(), &JiraCloudContext::ByteSizeLong,
+            &JiraCloudContext::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(JiraCloudContext, _impl_._cached_size_),
+        false,
+    },
+    &JiraCloudContext::kDescriptorMethods,
+    &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2falert_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* JiraCloudContext::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 74, 2> JiraCloudContext::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::alerting::public_::v202505::JiraCloudContext>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string issue_url = 2 [json_name = "issueUrl", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(JiraCloudContext, _impl_.issue_url_)}},
+    // string issue_key = 1 [json_name = "issueKey", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(JiraCloudContext, _impl_.issue_key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string issue_key = 1 [json_name = "issueKey", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(JiraCloudContext, _impl_.issue_key_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string issue_url = 2 [json_name = "issueUrl", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(JiraCloudContext, _impl_.issue_url_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\57\11\11\0\0\0\0\0"
+    "kentik.alerting.public.v202505.JiraCloudContext"
+    "issue_key"
+    "issue_url"
+  }},
+};
+
+PROTOBUF_NOINLINE void JiraCloudContext::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.alerting.public.v202505.JiraCloudContext)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.issue_key_.ClearToEmpty();
+  _impl_.issue_url_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* JiraCloudContext::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const JiraCloudContext& this_ = static_cast<const JiraCloudContext&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* JiraCloudContext::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const JiraCloudContext& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.alerting.public.v202505.JiraCloudContext)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string issue_key = 1 [json_name = "issueKey", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_issue_key().empty()) {
+            const std::string& _s = this_._internal_issue_key();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.public.v202505.JiraCloudContext.issue_key");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // string issue_url = 2 [json_name = "issueUrl", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_issue_url().empty()) {
+            const std::string& _s = this_._internal_issue_url();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.public.v202505.JiraCloudContext.issue_url");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.alerting.public.v202505.JiraCloudContext)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t JiraCloudContext::ByteSizeLong(const MessageLite& base) {
+          const JiraCloudContext& this_ = static_cast<const JiraCloudContext&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t JiraCloudContext::ByteSizeLong() const {
+          const JiraCloudContext& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.alerting.public.v202505.JiraCloudContext)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string issue_key = 1 [json_name = "issueKey", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_issue_key().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_issue_key());
+            }
+            // string issue_url = 2 [json_name = "issueUrl", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_issue_url().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_issue_url());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void JiraCloudContext::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<JiraCloudContext*>(&to_msg);
+  auto& from = static_cast<const JiraCloudContext&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.alerting.public.v202505.JiraCloudContext)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_issue_key().empty()) {
+    _this->_internal_set_issue_key(from._internal_issue_key());
+  }
+  if (!from._internal_issue_url().empty()) {
+    _this->_internal_set_issue_url(from._internal_issue_url());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void JiraCloudContext::CopyFrom(const JiraCloudContext& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.alerting.public.v202505.JiraCloudContext)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void JiraCloudContext::InternalSwap(JiraCloudContext* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.issue_key_, &other->_impl_.issue_key_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.issue_url_, &other->_impl_.issue_url_, arena);
+}
+
+::google::protobuf::Metadata JiraCloudContext::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
 class ExternalContext::_Internal {
  public:
   static constexpr ::int32_t kOneofCaseOffset =
@@ -6523,6 +6835,19 @@ void ExternalContext::set_allocated_servicenow(::kentik::alerting::public_::v202
     _impl_.context_.servicenow_ = servicenow;
   }
   // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.ExternalContext.servicenow)
+}
+void ExternalContext::set_allocated_jira_cloud(::kentik::alerting::public_::v202505::JiraCloudContext* jira_cloud) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  clear_context();
+  if (jira_cloud) {
+    ::google::protobuf::Arena* submessage_arena = jira_cloud->GetArena();
+    if (message_arena != submessage_arena) {
+      jira_cloud = ::google::protobuf::internal::GetOwnedMessage(message_arena, jira_cloud, submessage_arena);
+    }
+    set_has_jira_cloud();
+    _impl_.context_.jira_cloud_ = jira_cloud;
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.ExternalContext.jira_cloud)
 }
 ExternalContext::ExternalContext(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
@@ -6558,6 +6883,9 @@ ExternalContext::ExternalContext(
       break;
       case kServicenow:
         _impl_.context_.servicenow_ = ::google::protobuf::Message::CopyConstruct<::kentik::alerting::public_::v202505::ServiceNowContext>(arena, *from._impl_.context_.servicenow_);
+        break;
+      case kJiraCloud:
+        _impl_.context_.jira_cloud_ = ::google::protobuf::Message::CopyConstruct<::kentik::alerting::public_::v202505::JiraCloudContext>(arena, *from._impl_.context_.jira_cloud_);
         break;
   }
 
@@ -6596,6 +6924,14 @@ void ExternalContext::clear_context() {
         delete _impl_.context_.servicenow_;
       } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
         ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.context_.servicenow_);
+      }
+      break;
+    }
+    case kJiraCloud: {
+      if (GetArena() == nullptr) {
+        delete _impl_.context_.jira_cloud_;
+      } else if (::google::protobuf::internal::DebugHardenClearOneofMessageOnArena()) {
+        ::google::protobuf::internal::MaybePoisonAfterClear(_impl_.context_.jira_cloud_);
       }
       break;
     }
@@ -6643,16 +6979,16 @@ const ::google::protobuf::internal::ClassData* ExternalContext::GetClassData() c
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ExternalContext::_table_ = {
+const ::_pbi::TcParseTable<0, 2, 2, 0, 2> ExternalContext::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    1, 0,  // max_field_number, fast_idx_mask
+    2, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967294,  // skipmap
+    4294967292,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    1,  // num_field_entries
-    1,  // num_aux_entries
+    2,  // num_field_entries
+    2,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -6668,8 +7004,12 @@ const ::_pbi::TcParseTable<0, 1, 1, 0, 2> ExternalContext::_table_ = {
     // .kentik.alerting.public.v202505.ServiceNowContext servicenow = 1 [json_name = "servicenow", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(ExternalContext, _impl_.context_.servicenow_), _Internal::kOneofCaseOffset + 0, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
+    // .kentik.alerting.public.v202505.JiraCloudContext jira_cloud = 2 [json_name = "jiraCloud", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(ExternalContext, _impl_.context_.jira_cloud_), _Internal::kOneofCaseOffset + 0, 1,
+    (0 | ::_fl::kFcOneof | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::alerting::public_::v202505::ServiceNowContext>()},
+    {::_pbi::TcParser::GetTable<::kentik::alerting::public_::v202505::JiraCloudContext>()},
   }}, {{
   }},
 };
@@ -6700,13 +7040,22 @@ PROTOBUF_NOINLINE void ExternalContext::Clear() {
           ::uint32_t cached_has_bits = 0;
           (void)cached_has_bits;
 
-          // .kentik.alerting.public.v202505.ServiceNowContext servicenow = 1 [json_name = "servicenow", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          if (this_.context_case() == kServicenow) {
-            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                1, *this_._impl_.context_.servicenow_, this_._impl_.context_.servicenow_->GetCachedSize(), target,
-                stream);
+          switch (this_.context_case()) {
+            case kServicenow: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  1, *this_._impl_.context_.servicenow_, this_._impl_.context_.servicenow_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
+            case kJiraCloud: {
+              target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                  2, *this_._impl_.context_.jira_cloud_, this_._impl_.context_.jira_cloud_->GetCachedSize(), target,
+                  stream);
+              break;
+            }
+            default:
+              break;
           }
-
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -6735,6 +7084,12 @@ PROTOBUF_NOINLINE void ExternalContext::Clear() {
             case kServicenow: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.context_.servicenow_);
+              break;
+            }
+            // .kentik.alerting.public.v202505.JiraCloudContext jira_cloud = 2 [json_name = "jiraCloud", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            case kJiraCloud: {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.context_.jira_cloud_);
               break;
             }
             case CONTEXT_NOT_SET: {
@@ -6771,6 +7126,15 @@ void ExternalContext::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
               ::google::protobuf::Message::CopyConstruct<::kentik::alerting::public_::v202505::ServiceNowContext>(arena, *from._impl_.context_.servicenow_);
         } else {
           _this->_impl_.context_.servicenow_->MergeFrom(from._internal_servicenow());
+        }
+        break;
+      }
+      case kJiraCloud: {
+        if (oneof_needs_init) {
+          _this->_impl_.context_.jira_cloud_ =
+              ::google::protobuf::Message::CopyConstruct<::kentik::alerting::public_::v202505::JiraCloudContext>(arena, *from._impl_.context_.jira_cloud_);
+        } else {
+          _this->_impl_.context_.jira_cloud_->MergeFrom(from._internal_jira_cloud());
         }
         break;
       }

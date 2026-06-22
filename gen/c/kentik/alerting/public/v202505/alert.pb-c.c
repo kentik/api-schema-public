@@ -592,6 +592,51 @@ void   kentik__alerting__public__v202505__service_now_context__free_unpacked
   assert(message->base.descriptor == &kentik__alerting__public__v202505__service_now_context__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__alerting__public__v202505__jira_cloud_context__init
+                     (Kentik__Alerting__Public__V202505__JiraCloudContext         *message)
+{
+  static const Kentik__Alerting__Public__V202505__JiraCloudContext init_value = KENTIK__ALERTING__PUBLIC__V202505__JIRA_CLOUD_CONTEXT__INIT;
+  *message = init_value;
+}
+size_t kentik__alerting__public__v202505__jira_cloud_context__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__JiraCloudContext *message)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__jira_cloud_context__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__alerting__public__v202505__jira_cloud_context__pack
+                     (const Kentik__Alerting__Public__V202505__JiraCloudContext *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__jira_cloud_context__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__alerting__public__v202505__jira_cloud_context__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__JiraCloudContext *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__jira_cloud_context__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Alerting__Public__V202505__JiraCloudContext *
+       kentik__alerting__public__v202505__jira_cloud_context__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Alerting__Public__V202505__JiraCloudContext *)
+     protobuf_c_message_unpack (&kentik__alerting__public__v202505__jira_cloud_context__descriptor,
+                                allocator, len, data);
+}
+void   kentik__alerting__public__v202505__jira_cloud_context__free_unpacked
+                     (Kentik__Alerting__Public__V202505__JiraCloudContext *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__alerting__public__v202505__jira_cloud_context__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__alerting__public__v202505__external_context__init
                      (Kentik__Alerting__Public__V202505__ExternalContext         *message)
 {
@@ -1963,7 +2008,58 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__service_now_
   (ProtobufCMessageInit) kentik__alerting__public__v202505__service_now_context__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__external_context__field_descriptors[1] =
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__jira_cloud_context__field_descriptors[2] =
+{
+  {
+    "issue_key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__JiraCloudContext, issue_key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "issue_url",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__JiraCloudContext, issue_url),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__alerting__public__v202505__jira_cloud_context__field_indices_by_name[] = {
+  0,   /* field[0] = issue_key */
+  1,   /* field[1] = issue_url */
+};
+static const ProtobufCIntRange kentik__alerting__public__v202505__jira_cloud_context__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__alerting__public__v202505__jira_cloud_context__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.alerting.public.v202505.JiraCloudContext",
+  "JiraCloudContext",
+  "Kentik__Alerting__Public__V202505__JiraCloudContext",
+  "kentik.alerting.public.v202505",
+  sizeof(Kentik__Alerting__Public__V202505__JiraCloudContext),
+  2,
+  kentik__alerting__public__v202505__jira_cloud_context__field_descriptors,
+  kentik__alerting__public__v202505__jira_cloud_context__field_indices_by_name,
+  1,  kentik__alerting__public__v202505__jira_cloud_context__number_ranges,
+  (ProtobufCMessageInit) kentik__alerting__public__v202505__jira_cloud_context__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__external_context__field_descriptors[2] =
 {
   {
     "servicenow",
@@ -1977,14 +2073,27 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__externa
     PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "jira_cloud",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Alerting__Public__V202505__ExternalContext, context_case),
+    offsetof(Kentik__Alerting__Public__V202505__ExternalContext, jira_cloud),
+    &kentik__alerting__public__v202505__jira_cloud_context__descriptor,
+    NULL,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__alerting__public__v202505__external_context__field_indices_by_name[] = {
+  1,   /* field[1] = jira_cloud */
   0,   /* field[0] = servicenow */
 };
 static const ProtobufCIntRange kentik__alerting__public__v202505__external_context__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__external_context__descriptor =
 {
@@ -1994,7 +2103,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__external_con
   "Kentik__Alerting__Public__V202505__ExternalContext",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__ExternalContext),
-  1,
+  2,
   kentik__alerting__public__v202505__external_context__field_descriptors,
   kentik__alerting__public__v202505__external_context__field_indices_by_name,
   1,  kentik__alerting__public__v202505__external_context__number_ranges,

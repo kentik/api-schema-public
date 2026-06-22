@@ -250,7 +250,7 @@ func (x FlowContext_ActivationStatus) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use FlowContext_ActivationStatus.Descriptor instead.
 func (FlowContext_ActivationStatus) EnumDescriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{17, 0}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{18, 0}
 }
 
 type AlertServiceGetRequest struct {
@@ -1047,11 +1047,64 @@ func (x *ServiceNowContext) GetIncidentUrl() string {
 	return ""
 }
 
+type JiraCloudContext struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	IssueKey      string                 `protobuf:"bytes,1,opt,name=issue_key,json=issueKey,proto3" json:"issue_key,omitempty"`
+	IssueUrl      string                 `protobuf:"bytes,2,opt,name=issue_url,json=issueUrl,proto3" json:"issue_url,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *JiraCloudContext) Reset() {
+	*x = JiraCloudContext{}
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *JiraCloudContext) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*JiraCloudContext) ProtoMessage() {}
+
+func (x *JiraCloudContext) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use JiraCloudContext.ProtoReflect.Descriptor instead.
+func (*JiraCloudContext) Descriptor() ([]byte, []int) {
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *JiraCloudContext) GetIssueKey() string {
+	if x != nil {
+		return x.IssueKey
+	}
+	return ""
+}
+
+func (x *JiraCloudContext) GetIssueUrl() string {
+	if x != nil {
+		return x.IssueUrl
+	}
+	return ""
+}
+
 type ExternalContext struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// Types that are valid to be assigned to Context:
 	//
 	//	*ExternalContext_Servicenow
+	//	*ExternalContext_JiraCloud
 	Context       isExternalContext_Context `protobuf_oneof:"context"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -1059,7 +1112,7 @@ type ExternalContext struct {
 
 func (x *ExternalContext) Reset() {
 	*x = ExternalContext{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[13]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[14]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1071,7 +1124,7 @@ func (x *ExternalContext) String() string {
 func (*ExternalContext) ProtoMessage() {}
 
 func (x *ExternalContext) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[13]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[14]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1084,7 +1137,7 @@ func (x *ExternalContext) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ExternalContext.ProtoReflect.Descriptor instead.
 func (*ExternalContext) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{13}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *ExternalContext) GetContext() isExternalContext_Context {
@@ -1103,6 +1156,15 @@ func (x *ExternalContext) GetServicenow() *ServiceNowContext {
 	return nil
 }
 
+func (x *ExternalContext) GetJiraCloud() *JiraCloudContext {
+	if x != nil {
+		if x, ok := x.Context.(*ExternalContext_JiraCloud); ok {
+			return x.JiraCloud
+		}
+	}
+	return nil
+}
+
 type isExternalContext_Context interface {
 	isExternalContext_Context()
 }
@@ -1111,7 +1173,13 @@ type ExternalContext_Servicenow struct {
 	Servicenow *ServiceNowContext `protobuf:"bytes,1,opt,name=servicenow,proto3,oneof"`
 }
 
+type ExternalContext_JiraCloud struct {
+	JiraCloud *JiraCloudContext `protobuf:"bytes,2,opt,name=jira_cloud,json=jiraCloud,proto3,oneof"`
+}
+
 func (*ExternalContext_Servicenow) isExternalContext_Context() {}
+
+func (*ExternalContext_JiraCloud) isExternalContext_Context() {}
 
 type AlertServiceSetExternalContextRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -1123,7 +1191,7 @@ type AlertServiceSetExternalContextRequest struct {
 
 func (x *AlertServiceSetExternalContextRequest) Reset() {
 	*x = AlertServiceSetExternalContextRequest{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[14]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[15]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1135,7 +1203,7 @@ func (x *AlertServiceSetExternalContextRequest) String() string {
 func (*AlertServiceSetExternalContextRequest) ProtoMessage() {}
 
 func (x *AlertServiceSetExternalContextRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[14]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[15]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1148,7 +1216,7 @@ func (x *AlertServiceSetExternalContextRequest) ProtoReflect() protoreflect.Mess
 
 // Deprecated: Use AlertServiceSetExternalContextRequest.ProtoReflect.Descriptor instead.
 func (*AlertServiceSetExternalContextRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{14}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *AlertServiceSetExternalContextRequest) GetAlertId() string {
@@ -1174,7 +1242,7 @@ type AlertServiceSetExternalContextResponse struct {
 
 func (x *AlertServiceSetExternalContextResponse) Reset() {
 	*x = AlertServiceSetExternalContextResponse{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[15]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[16]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1186,7 +1254,7 @@ func (x *AlertServiceSetExternalContextResponse) String() string {
 func (*AlertServiceSetExternalContextResponse) ProtoMessage() {}
 
 func (x *AlertServiceSetExternalContextResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[15]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[16]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1199,7 +1267,7 @@ func (x *AlertServiceSetExternalContextResponse) ProtoReflect() protoreflect.Mes
 
 // Deprecated: Use AlertServiceSetExternalContextResponse.ProtoReflect.Descriptor instead.
 func (*AlertServiceSetExternalContextResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{15}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *AlertServiceSetExternalContextResponse) GetUpdatedAt() *timestamppb.Timestamp {
@@ -1233,7 +1301,7 @@ type Alert struct {
 
 func (x *Alert) Reset() {
 	*x = Alert{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[16]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[17]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1245,7 +1313,7 @@ func (x *Alert) String() string {
 func (*Alert) ProtoMessage() {}
 
 func (x *Alert) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[16]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[17]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1258,7 +1326,7 @@ func (x *Alert) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Alert.ProtoReflect.Descriptor instead.
 func (*Alert) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{16}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *Alert) GetId() string {
@@ -1391,7 +1459,7 @@ type FlowContext struct {
 
 func (x *FlowContext) Reset() {
 	*x = FlowContext{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[17]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[18]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1403,7 +1471,7 @@ func (x *FlowContext) String() string {
 func (*FlowContext) ProtoMessage() {}
 
 func (x *FlowContext) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[17]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[18]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1416,7 +1484,7 @@ func (x *FlowContext) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FlowContext.ProtoReflect.Descriptor instead.
 func (*FlowContext) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{17}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *FlowContext) GetMetricValues() []*FlowContext_MetricValue {
@@ -1465,7 +1533,7 @@ type NmsContext struct {
 
 func (x *NmsContext) Reset() {
 	*x = NmsContext{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[18]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[19]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1477,7 +1545,7 @@ func (x *NmsContext) String() string {
 func (*NmsContext) ProtoMessage() {}
 
 func (x *NmsContext) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[18]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[19]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1490,7 +1558,7 @@ func (x *NmsContext) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NmsContext.ProtoReflect.Descriptor instead.
 func (*NmsContext) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{18}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *NmsContext) GetActivationInfo() *NmsContext_ActivationInfo {
@@ -1552,7 +1620,7 @@ type AlertServiceAddCommentRequest struct {
 
 func (x *AlertServiceAddCommentRequest) Reset() {
 	*x = AlertServiceAddCommentRequest{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[19]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[20]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1564,7 +1632,7 @@ func (x *AlertServiceAddCommentRequest) String() string {
 func (*AlertServiceAddCommentRequest) ProtoMessage() {}
 
 func (x *AlertServiceAddCommentRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[19]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[20]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1577,7 +1645,7 @@ func (x *AlertServiceAddCommentRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AlertServiceAddCommentRequest.ProtoReflect.Descriptor instead.
 func (*AlertServiceAddCommentRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{19}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *AlertServiceAddCommentRequest) GetAlertId() string {
@@ -1603,7 +1671,7 @@ type AlertServiceAddCommentResponse struct {
 
 func (x *AlertServiceAddCommentResponse) Reset() {
 	*x = AlertServiceAddCommentResponse{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[20]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[21]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1615,7 +1683,7 @@ func (x *AlertServiceAddCommentResponse) String() string {
 func (*AlertServiceAddCommentResponse) ProtoMessage() {}
 
 func (x *AlertServiceAddCommentResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[20]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[21]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1628,7 +1696,7 @@ func (x *AlertServiceAddCommentResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AlertServiceAddCommentResponse.ProtoReflect.Descriptor instead.
 func (*AlertServiceAddCommentResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{20}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *AlertServiceAddCommentResponse) GetComment() *Comment {
@@ -1647,7 +1715,7 @@ type AlertServiceListCommentsRequest struct {
 
 func (x *AlertServiceListCommentsRequest) Reset() {
 	*x = AlertServiceListCommentsRequest{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[21]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[22]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1659,7 +1727,7 @@ func (x *AlertServiceListCommentsRequest) String() string {
 func (*AlertServiceListCommentsRequest) ProtoMessage() {}
 
 func (x *AlertServiceListCommentsRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[21]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[22]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1672,7 +1740,7 @@ func (x *AlertServiceListCommentsRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AlertServiceListCommentsRequest.ProtoReflect.Descriptor instead.
 func (*AlertServiceListCommentsRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{21}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *AlertServiceListCommentsRequest) GetAlertId() string {
@@ -1691,7 +1759,7 @@ type AlertServiceListCommentsResponse struct {
 
 func (x *AlertServiceListCommentsResponse) Reset() {
 	*x = AlertServiceListCommentsResponse{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[22]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[23]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1703,7 +1771,7 @@ func (x *AlertServiceListCommentsResponse) String() string {
 func (*AlertServiceListCommentsResponse) ProtoMessage() {}
 
 func (x *AlertServiceListCommentsResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[22]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[23]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1716,7 +1784,7 @@ func (x *AlertServiceListCommentsResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use AlertServiceListCommentsResponse.ProtoReflect.Descriptor instead.
 func (*AlertServiceListCommentsResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{22}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *AlertServiceListCommentsResponse) GetComments() []*Comment {
@@ -1738,7 +1806,7 @@ type Alert_Acknowledgement struct {
 
 func (x *Alert_Acknowledgement) Reset() {
 	*x = Alert_Acknowledgement{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[23]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[24]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1750,7 +1818,7 @@ func (x *Alert_Acknowledgement) String() string {
 func (*Alert_Acknowledgement) ProtoMessage() {}
 
 func (x *Alert_Acknowledgement) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[23]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[24]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1763,7 +1831,7 @@ func (x *Alert_Acknowledgement) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Alert_Acknowledgement.ProtoReflect.Descriptor instead.
 func (*Alert_Acknowledgement) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{16, 0}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{17, 0}
 }
 
 func (x *Alert_Acknowledgement) GetState() AlertAcknowledgement {
@@ -1804,7 +1872,7 @@ type FlowContext_MetricValue struct {
 
 func (x *FlowContext_MetricValue) Reset() {
 	*x = FlowContext_MetricValue{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[25]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[26]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1816,7 +1884,7 @@ func (x *FlowContext_MetricValue) String() string {
 func (*FlowContext_MetricValue) ProtoMessage() {}
 
 func (x *FlowContext_MetricValue) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[25]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[26]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1829,7 +1897,7 @@ func (x *FlowContext_MetricValue) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FlowContext_MetricValue.ProtoReflect.Descriptor instead.
 func (*FlowContext_MetricValue) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{17, 1}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{18, 1}
 }
 
 func (x *FlowContext_MetricValue) GetName() string {
@@ -1858,7 +1926,7 @@ type FlowContext_AlertKeyDetails struct {
 
 func (x *FlowContext_AlertKeyDetails) Reset() {
 	*x = FlowContext_AlertKeyDetails{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[26]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[27]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1870,7 +1938,7 @@ func (x *FlowContext_AlertKeyDetails) String() string {
 func (*FlowContext_AlertKeyDetails) ProtoMessage() {}
 
 func (x *FlowContext_AlertKeyDetails) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[26]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[27]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1883,7 +1951,7 @@ func (x *FlowContext_AlertKeyDetails) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FlowContext_AlertKeyDetails.ProtoReflect.Descriptor instead.
 func (*FlowContext_AlertKeyDetails) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{17, 2}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{18, 2}
 }
 
 func (x *FlowContext_AlertKeyDetails) GetDevice() *FlowContext_DeviceDetails {
@@ -1926,7 +1994,7 @@ type FlowContext_DeviceDetails struct {
 
 func (x *FlowContext_DeviceDetails) Reset() {
 	*x = FlowContext_DeviceDetails{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[27]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[28]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1938,7 +2006,7 @@ func (x *FlowContext_DeviceDetails) String() string {
 func (*FlowContext_DeviceDetails) ProtoMessage() {}
 
 func (x *FlowContext_DeviceDetails) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[27]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[28]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1951,7 +2019,7 @@ func (x *FlowContext_DeviceDetails) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FlowContext_DeviceDetails.ProtoReflect.Descriptor instead.
 func (*FlowContext_DeviceDetails) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{17, 3}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{18, 3}
 }
 
 func (x *FlowContext_DeviceDetails) GetId() string {
@@ -1994,7 +2062,7 @@ type FlowContext_InterfaceDetails struct {
 
 func (x *FlowContext_InterfaceDetails) Reset() {
 	*x = FlowContext_InterfaceDetails{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[28]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[29]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2006,7 +2074,7 @@ func (x *FlowContext_InterfaceDetails) String() string {
 func (*FlowContext_InterfaceDetails) ProtoMessage() {}
 
 func (x *FlowContext_InterfaceDetails) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[28]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[29]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2019,7 +2087,7 @@ func (x *FlowContext_InterfaceDetails) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FlowContext_InterfaceDetails.ProtoReflect.Descriptor instead.
 func (*FlowContext_InterfaceDetails) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{17, 4}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{18, 4}
 }
 
 func (x *FlowContext_InterfaceDetails) GetSnmpId() string {
@@ -2064,7 +2132,7 @@ type FlowContext_SiteDetails struct {
 
 func (x *FlowContext_SiteDetails) Reset() {
 	*x = FlowContext_SiteDetails{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[29]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[30]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2076,7 +2144,7 @@ func (x *FlowContext_SiteDetails) String() string {
 func (*FlowContext_SiteDetails) ProtoMessage() {}
 
 func (x *FlowContext_SiteDetails) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[29]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[30]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2089,7 +2157,7 @@ func (x *FlowContext_SiteDetails) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use FlowContext_SiteDetails.ProtoReflect.Descriptor instead.
 func (*FlowContext_SiteDetails) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{17, 5}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{18, 5}
 }
 
 func (x *FlowContext_SiteDetails) GetId() string {
@@ -2149,7 +2217,7 @@ type NmsContext_ActivationInfo struct {
 
 func (x *NmsContext_ActivationInfo) Reset() {
 	*x = NmsContext_ActivationInfo{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[35]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[36]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2161,7 +2229,7 @@ func (x *NmsContext_ActivationInfo) String() string {
 func (*NmsContext_ActivationInfo) ProtoMessage() {}
 
 func (x *NmsContext_ActivationInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[35]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[36]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2174,7 +2242,7 @@ func (x *NmsContext_ActivationInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NmsContext_ActivationInfo.ProtoReflect.Descriptor instead.
 func (*NmsContext_ActivationInfo) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{18, 5}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{19, 5}
 }
 
 func (x *NmsContext_ActivationInfo) GetActivate() *NmsActivateOrClearConditions {
@@ -2244,7 +2312,7 @@ type NmsContext_DatasetInfo struct {
 
 func (x *NmsContext_DatasetInfo) Reset() {
 	*x = NmsContext_DatasetInfo{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[36]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[37]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2256,7 +2324,7 @@ func (x *NmsContext_DatasetInfo) String() string {
 func (*NmsContext_DatasetInfo) ProtoMessage() {}
 
 func (x *NmsContext_DatasetInfo) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[36]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[37]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2269,7 +2337,7 @@ func (x *NmsContext_DatasetInfo) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NmsContext_DatasetInfo.ProtoReflect.Descriptor instead.
 func (*NmsContext_DatasetInfo) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{18, 6}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{19, 6}
 }
 
 func (x *NmsContext_DatasetInfo) GetCustomType() bool {
@@ -2310,7 +2378,7 @@ type NmsContext_AlarmTarget struct {
 
 func (x *NmsContext_AlarmTarget) Reset() {
 	*x = NmsContext_AlarmTarget{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[37]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[38]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2322,7 +2390,7 @@ func (x *NmsContext_AlarmTarget) String() string {
 func (*NmsContext_AlarmTarget) ProtoMessage() {}
 
 func (x *NmsContext_AlarmTarget) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[37]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[38]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2335,7 +2403,7 @@ func (x *NmsContext_AlarmTarget) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NmsContext_AlarmTarget.ProtoReflect.Descriptor instead.
 func (*NmsContext_AlarmTarget) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{18, 7}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{19, 7}
 }
 
 func (x *NmsContext_AlarmTarget) GetFields() map[string]float64 {
@@ -2361,7 +2429,7 @@ type NmsContext_AlarmMetricMap struct {
 
 func (x *NmsContext_AlarmMetricMap) Reset() {
 	*x = NmsContext_AlarmMetricMap{}
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[38]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[39]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2373,7 +2441,7 @@ func (x *NmsContext_AlarmMetricMap) String() string {
 func (*NmsContext_AlarmMetricMap) ProtoMessage() {}
 
 func (x *NmsContext_AlarmMetricMap) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[38]
+	mi := &file_kentik_alerting_public_v202505_alert_proto_msgTypes[39]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2386,7 +2454,7 @@ func (x *NmsContext_AlarmMetricMap) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use NmsContext_AlarmMetricMap.ProtoReflect.Descriptor instead.
 func (*NmsContext_AlarmMetricMap) Descriptor() ([]byte, []int) {
-	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{18, 8}
+	return file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP(), []int{19, 8}
 }
 
 func (x *NmsContext_AlarmMetricMap) GetMetrics() map[string]float64 {
@@ -2462,11 +2530,16 @@ const file_kentik_alerting_public_v202505_alert_proto_rawDesc = "" +
 	"\x11ServiceNowContext\x12m\n" +
 	"\vincident_id\x18\x01 \x01(\tBL\x92AF2DIncident ID associated with incoming Kentik alert, e.g., INC0012345.\xe0A\x02R\n" +
 	"incidentId\x12b\n" +
-	"\fincident_url\x18\x02 \x01(\tB?\x92A927Incident URL, e.g. https://instance.service-now.com/...\xe0A\x02R\vincidentUrl\"\xbe\x01\n" +
+	"\fincident_url\x18\x02 \x01(\tB?\x92A927Incident URL, e.g. https://instance.service-now.com/...\xe0A\x02R\vincidentUrl\"\xce\x01\n" +
+	"\x10JiraCloudContext\x12I\n" +
+	"\tissue_key\x18\x01 \x01(\tB,\x92A&2$Jira Cloud issue key, e.g., KEY-123.\xe0A\x02R\bissueKey\x12o\n" +
+	"\tissue_url\x18\x02 \x01(\tBR\x92AL2JJira Cloud issue URL, e.g., https://instance.atlassian.net/browse/KEY-123.\xe0A\x02R\bissueUrl\"\xde\x02\n" +
 	"\x0fExternalContext\x12\x9f\x01\n" +
 	"\n" +
 	"servicenow\x18\x01 \x01(\v21.kentik.alerting.public.v202505.ServiceNowContextBJ\x92AD2BThe external context of the alert from servicenow external system.\xe0A\x02H\x00R\n" +
-	"servicenowB\t\n" +
+	"servicenow\x12\x9d\x01\n" +
+	"\n" +
+	"jira_cloud\x18\x02 \x01(\v20.kentik.alerting.public.v202505.JiraCloudContextBJ\x92AD2BThe external context of the alert from Jira Cloud external system.\xe0A\x02H\x00R\tjiraCloudB\t\n" +
 	"\acontext\"\x93\x02\n" +
 	"%AlertServiceSetExternalContextRequest\x12Z\n" +
 	"\balert_id\x18\x01 \x01(\tB?\x92A927The ID of the alert to add or replace external context.\xe0A\x02R\aalertId\x12\x8d\x01\n" +
@@ -2661,7 +2734,7 @@ func file_kentik_alerting_public_v202505_alert_proto_rawDescGZIP() []byte {
 }
 
 var file_kentik_alerting_public_v202505_alert_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_kentik_alerting_public_v202505_alert_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
+var file_kentik_alerting_public_v202505_alert_proto_msgTypes = make([]protoimpl.MessageInfo, 43)
 var file_kentik_alerting_public_v202505_alert_proto_goTypes = []any{
 	(AlertState)(0),                                // 0: kentik.alerting.public.v202505.AlertState
 	(AlertAcknowledgement)(0),                      // 1: kentik.alerting.public.v202505.AlertAcknowledgement
@@ -2679,133 +2752,135 @@ var file_kentik_alerting_public_v202505_alert_proto_goTypes = []any{
 	(*AlertServiceClearRequest)(nil),               // 13: kentik.alerting.public.v202505.AlertServiceClearRequest
 	(*AlertServiceClearResponse)(nil),              // 14: kentik.alerting.public.v202505.AlertServiceClearResponse
 	(*ServiceNowContext)(nil),                      // 15: kentik.alerting.public.v202505.ServiceNowContext
-	(*ExternalContext)(nil),                        // 16: kentik.alerting.public.v202505.ExternalContext
-	(*AlertServiceSetExternalContextRequest)(nil),  // 17: kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest
-	(*AlertServiceSetExternalContextResponse)(nil), // 18: kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse
-	(*Alert)(nil),                                  // 19: kentik.alerting.public.v202505.Alert
-	(*FlowContext)(nil),                            // 20: kentik.alerting.public.v202505.FlowContext
-	(*NmsContext)(nil),                             // 21: kentik.alerting.public.v202505.NmsContext
-	(*AlertServiceAddCommentRequest)(nil),          // 22: kentik.alerting.public.v202505.AlertServiceAddCommentRequest
-	(*AlertServiceAddCommentResponse)(nil),         // 23: kentik.alerting.public.v202505.AlertServiceAddCommentResponse
-	(*AlertServiceListCommentsRequest)(nil),        // 24: kentik.alerting.public.v202505.AlertServiceListCommentsRequest
-	(*AlertServiceListCommentsResponse)(nil),       // 25: kentik.alerting.public.v202505.AlertServiceListCommentsResponse
-	(*Alert_Acknowledgement)(nil),                  // 26: kentik.alerting.public.v202505.Alert.Acknowledgement
-	nil,                                            // 27: kentik.alerting.public.v202505.FlowContext.AlertKeyDetailsEntry
-	(*FlowContext_MetricValue)(nil),                // 28: kentik.alerting.public.v202505.FlowContext.MetricValue
-	(*FlowContext_AlertKeyDetails)(nil),            // 29: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails
-	(*FlowContext_DeviceDetails)(nil),              // 30: kentik.alerting.public.v202505.FlowContext.DeviceDetails
-	(*FlowContext_InterfaceDetails)(nil),           // 31: kentik.alerting.public.v202505.FlowContext.InterfaceDetails
-	(*FlowContext_SiteDetails)(nil),                // 32: kentik.alerting.public.v202505.FlowContext.SiteDetails
-	nil,                                            // 33: kentik.alerting.public.v202505.NmsContext.TargetsEntry
-	nil,                                            // 34: kentik.alerting.public.v202505.NmsContext.MetricValuesEntry
-	nil,                                            // 35: kentik.alerting.public.v202505.NmsContext.PreviousMetricValuesEntry
-	nil,                                            // 36: kentik.alerting.public.v202505.NmsContext.DeviceEntry
-	nil,                                            // 37: kentik.alerting.public.v202505.NmsContext.GroupKeyEntry
-	(*NmsContext_ActivationInfo)(nil),              // 38: kentik.alerting.public.v202505.NmsContext.ActivationInfo
-	(*NmsContext_DatasetInfo)(nil),                 // 39: kentik.alerting.public.v202505.NmsContext.DatasetInfo
-	(*NmsContext_AlarmTarget)(nil),                 // 40: kentik.alerting.public.v202505.NmsContext.AlarmTarget
-	(*NmsContext_AlarmMetricMap)(nil),              // 41: kentik.alerting.public.v202505.NmsContext.AlarmMetricMap
-	nil,                                            // 42: kentik.alerting.public.v202505.NmsContext.AlarmTarget.FieldsEntry
-	nil,                                            // 43: kentik.alerting.public.v202505.NmsContext.AlarmTarget.TagsEntry
-	nil,                                            // 44: kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.MetricsEntry
-	(*Comment)(nil),                                // 45: kentik.alerting.public.v202505.Comment
-	(v202303.Severity)(0),                          // 46: kentik.alerting.types.v202303.Severity
-	(*timestamppb.Timestamp)(nil),                  // 47: google.protobuf.Timestamp
-	(*v202506.PaginationConfig)(nil),               // 48: kentik.alerting.types.v202506.PaginationConfig
-	(*v202506.SortingConfig)(nil),                  // 49: kentik.alerting.types.v202506.SortingConfig
-	(*Source)(nil),                                 // 50: kentik.alerting.public.v202505.Source
-	(*v202303.MultiAttributeFilter)(nil),           // 51: kentik.alerting.types.v202303.MultiAttributeFilter
-	(*v202303.TimeRange)(nil),                      // 52: kentik.alerting.types.v202303.TimeRange
-	(*v202506.PaginationInfo)(nil),                 // 53: kentik.alerting.types.v202506.PaginationInfo
-	(*NmsActivateOrClearConditions)(nil),           // 54: kentik.alerting.public.v202505.NmsActivateOrClearConditions
+	(*JiraCloudContext)(nil),                       // 16: kentik.alerting.public.v202505.JiraCloudContext
+	(*ExternalContext)(nil),                        // 17: kentik.alerting.public.v202505.ExternalContext
+	(*AlertServiceSetExternalContextRequest)(nil),  // 18: kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest
+	(*AlertServiceSetExternalContextResponse)(nil), // 19: kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse
+	(*Alert)(nil),                                  // 20: kentik.alerting.public.v202505.Alert
+	(*FlowContext)(nil),                            // 21: kentik.alerting.public.v202505.FlowContext
+	(*NmsContext)(nil),                             // 22: kentik.alerting.public.v202505.NmsContext
+	(*AlertServiceAddCommentRequest)(nil),          // 23: kentik.alerting.public.v202505.AlertServiceAddCommentRequest
+	(*AlertServiceAddCommentResponse)(nil),         // 24: kentik.alerting.public.v202505.AlertServiceAddCommentResponse
+	(*AlertServiceListCommentsRequest)(nil),        // 25: kentik.alerting.public.v202505.AlertServiceListCommentsRequest
+	(*AlertServiceListCommentsResponse)(nil),       // 26: kentik.alerting.public.v202505.AlertServiceListCommentsResponse
+	(*Alert_Acknowledgement)(nil),                  // 27: kentik.alerting.public.v202505.Alert.Acknowledgement
+	nil,                                            // 28: kentik.alerting.public.v202505.FlowContext.AlertKeyDetailsEntry
+	(*FlowContext_MetricValue)(nil),                // 29: kentik.alerting.public.v202505.FlowContext.MetricValue
+	(*FlowContext_AlertKeyDetails)(nil),            // 30: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails
+	(*FlowContext_DeviceDetails)(nil),              // 31: kentik.alerting.public.v202505.FlowContext.DeviceDetails
+	(*FlowContext_InterfaceDetails)(nil),           // 32: kentik.alerting.public.v202505.FlowContext.InterfaceDetails
+	(*FlowContext_SiteDetails)(nil),                // 33: kentik.alerting.public.v202505.FlowContext.SiteDetails
+	nil,                                            // 34: kentik.alerting.public.v202505.NmsContext.TargetsEntry
+	nil,                                            // 35: kentik.alerting.public.v202505.NmsContext.MetricValuesEntry
+	nil,                                            // 36: kentik.alerting.public.v202505.NmsContext.PreviousMetricValuesEntry
+	nil,                                            // 37: kentik.alerting.public.v202505.NmsContext.DeviceEntry
+	nil,                                            // 38: kentik.alerting.public.v202505.NmsContext.GroupKeyEntry
+	(*NmsContext_ActivationInfo)(nil),              // 39: kentik.alerting.public.v202505.NmsContext.ActivationInfo
+	(*NmsContext_DatasetInfo)(nil),                 // 40: kentik.alerting.public.v202505.NmsContext.DatasetInfo
+	(*NmsContext_AlarmTarget)(nil),                 // 41: kentik.alerting.public.v202505.NmsContext.AlarmTarget
+	(*NmsContext_AlarmMetricMap)(nil),              // 42: kentik.alerting.public.v202505.NmsContext.AlarmMetricMap
+	nil,                                            // 43: kentik.alerting.public.v202505.NmsContext.AlarmTarget.FieldsEntry
+	nil,                                            // 44: kentik.alerting.public.v202505.NmsContext.AlarmTarget.TagsEntry
+	nil,                                            // 45: kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.MetricsEntry
+	(*Comment)(nil),                                // 46: kentik.alerting.public.v202505.Comment
+	(v202303.Severity)(0),                          // 47: kentik.alerting.types.v202303.Severity
+	(*timestamppb.Timestamp)(nil),                  // 48: google.protobuf.Timestamp
+	(*v202506.PaginationConfig)(nil),               // 49: kentik.alerting.types.v202506.PaginationConfig
+	(*v202506.SortingConfig)(nil),                  // 50: kentik.alerting.types.v202506.SortingConfig
+	(*Source)(nil),                                 // 51: kentik.alerting.public.v202505.Source
+	(*v202303.MultiAttributeFilter)(nil),           // 52: kentik.alerting.types.v202303.MultiAttributeFilter
+	(*v202303.TimeRange)(nil),                      // 53: kentik.alerting.types.v202303.TimeRange
+	(*v202506.PaginationInfo)(nil),                 // 54: kentik.alerting.types.v202506.PaginationInfo
+	(*NmsActivateOrClearConditions)(nil),           // 55: kentik.alerting.public.v202505.NmsActivateOrClearConditions
 }
 var file_kentik_alerting_public_v202505_alert_proto_depIdxs = []int32{
-	19, // 0: kentik.alerting.public.v202505.AlertServiceGetResponse.alert:type_name -> kentik.alerting.public.v202505.Alert
+	20, // 0: kentik.alerting.public.v202505.AlertServiceGetResponse.alert:type_name -> kentik.alerting.public.v202505.Alert
 	5,  // 1: kentik.alerting.public.v202505.AlertServiceGetResponse.history:type_name -> kentik.alerting.public.v202505.AlertPhase
-	45, // 2: kentik.alerting.public.v202505.AlertServiceGetResponse.comments:type_name -> kentik.alerting.public.v202505.Comment
-	46, // 3: kentik.alerting.public.v202505.AlertPhase.severity:type_name -> kentik.alerting.types.v202303.Severity
-	47, // 4: kentik.alerting.public.v202505.AlertPhase.start_time_at:type_name -> google.protobuf.Timestamp
-	47, // 5: kentik.alerting.public.v202505.AlertPhase.end_time_at:type_name -> google.protobuf.Timestamp
-	20, // 6: kentik.alerting.public.v202505.AlertPhase.flow:type_name -> kentik.alerting.public.v202505.FlowContext
-	21, // 7: kentik.alerting.public.v202505.AlertPhase.nms:type_name -> kentik.alerting.public.v202505.NmsContext
-	48, // 8: kentik.alerting.public.v202505.AlertServiceListRequest.pagination:type_name -> kentik.alerting.types.v202506.PaginationConfig
-	49, // 9: kentik.alerting.public.v202505.AlertServiceListRequest.sorting:type_name -> kentik.alerting.types.v202506.SortingConfig
+	46, // 2: kentik.alerting.public.v202505.AlertServiceGetResponse.comments:type_name -> kentik.alerting.public.v202505.Comment
+	47, // 3: kentik.alerting.public.v202505.AlertPhase.severity:type_name -> kentik.alerting.types.v202303.Severity
+	48, // 4: kentik.alerting.public.v202505.AlertPhase.start_time_at:type_name -> google.protobuf.Timestamp
+	48, // 5: kentik.alerting.public.v202505.AlertPhase.end_time_at:type_name -> google.protobuf.Timestamp
+	21, // 6: kentik.alerting.public.v202505.AlertPhase.flow:type_name -> kentik.alerting.public.v202505.FlowContext
+	22, // 7: kentik.alerting.public.v202505.AlertPhase.nms:type_name -> kentik.alerting.public.v202505.NmsContext
+	49, // 8: kentik.alerting.public.v202505.AlertServiceListRequest.pagination:type_name -> kentik.alerting.types.v202506.PaginationConfig
+	50, // 9: kentik.alerting.public.v202505.AlertServiceListRequest.sorting:type_name -> kentik.alerting.types.v202506.SortingConfig
 	7,  // 10: kentik.alerting.public.v202505.AlertServiceListRequest.filters:type_name -> kentik.alerting.public.v202505.AlertFilters
-	46, // 11: kentik.alerting.public.v202505.AlertFilters.severities:type_name -> kentik.alerting.types.v202303.Severity
-	50, // 12: kentik.alerting.public.v202505.AlertFilters.sources:type_name -> kentik.alerting.public.v202505.Source
-	51, // 13: kentik.alerting.public.v202505.AlertFilters.keys:type_name -> kentik.alerting.types.v202303.MultiAttributeFilter
+	47, // 11: kentik.alerting.public.v202505.AlertFilters.severities:type_name -> kentik.alerting.types.v202303.Severity
+	51, // 12: kentik.alerting.public.v202505.AlertFilters.sources:type_name -> kentik.alerting.public.v202505.Source
+	52, // 13: kentik.alerting.public.v202505.AlertFilters.keys:type_name -> kentik.alerting.types.v202303.MultiAttributeFilter
 	0,  // 14: kentik.alerting.public.v202505.AlertFilters.states:type_name -> kentik.alerting.public.v202505.AlertState
-	52, // 15: kentik.alerting.public.v202505.AlertFilters.started_at:type_name -> kentik.alerting.types.v202303.TimeRange
-	52, // 16: kentik.alerting.public.v202505.AlertFilters.ended_at:type_name -> kentik.alerting.types.v202303.TimeRange
-	46, // 17: kentik.alerting.public.v202505.AlertFilters.highest_severities:type_name -> kentik.alerting.types.v202303.Severity
-	46, // 18: kentik.alerting.public.v202505.AlertFilters.recent_severities:type_name -> kentik.alerting.types.v202303.Severity
+	53, // 15: kentik.alerting.public.v202505.AlertFilters.started_at:type_name -> kentik.alerting.types.v202303.TimeRange
+	53, // 16: kentik.alerting.public.v202505.AlertFilters.ended_at:type_name -> kentik.alerting.types.v202303.TimeRange
+	47, // 17: kentik.alerting.public.v202505.AlertFilters.highest_severities:type_name -> kentik.alerting.types.v202303.Severity
+	47, // 18: kentik.alerting.public.v202505.AlertFilters.recent_severities:type_name -> kentik.alerting.types.v202303.Severity
 	1,  // 19: kentik.alerting.public.v202505.AlertFilters.ack_states:type_name -> kentik.alerting.public.v202505.AlertAcknowledgement
-	52, // 20: kentik.alerting.public.v202505.AlertFilters.active_at:type_name -> kentik.alerting.types.v202303.TimeRange
-	53, // 21: kentik.alerting.public.v202505.AlertServiceListResponse.pagination:type_name -> kentik.alerting.types.v202506.PaginationInfo
-	19, // 22: kentik.alerting.public.v202505.AlertServiceListResponse.alerts:type_name -> kentik.alerting.public.v202505.Alert
-	19, // 23: kentik.alerting.public.v202505.AlertServiceAckResponse.alert:type_name -> kentik.alerting.public.v202505.Alert
-	19, // 24: kentik.alerting.public.v202505.AlertServiceUnAckResponse.alert:type_name -> kentik.alerting.public.v202505.Alert
+	53, // 20: kentik.alerting.public.v202505.AlertFilters.active_at:type_name -> kentik.alerting.types.v202303.TimeRange
+	54, // 21: kentik.alerting.public.v202505.AlertServiceListResponse.pagination:type_name -> kentik.alerting.types.v202506.PaginationInfo
+	20, // 22: kentik.alerting.public.v202505.AlertServiceListResponse.alerts:type_name -> kentik.alerting.public.v202505.Alert
+	20, // 23: kentik.alerting.public.v202505.AlertServiceAckResponse.alert:type_name -> kentik.alerting.public.v202505.Alert
+	20, // 24: kentik.alerting.public.v202505.AlertServiceUnAckResponse.alert:type_name -> kentik.alerting.public.v202505.Alert
 	15, // 25: kentik.alerting.public.v202505.ExternalContext.servicenow:type_name -> kentik.alerting.public.v202505.ServiceNowContext
-	16, // 26: kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest.context:type_name -> kentik.alerting.public.v202505.ExternalContext
-	47, // 27: kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse.updated_at:type_name -> google.protobuf.Timestamp
-	50, // 28: kentik.alerting.public.v202505.Alert.source:type_name -> kentik.alerting.public.v202505.Source
-	47, // 29: kentik.alerting.public.v202505.Alert.start_time_at:type_name -> google.protobuf.Timestamp
-	47, // 30: kentik.alerting.public.v202505.Alert.end_time_at:type_name -> google.protobuf.Timestamp
-	0,  // 31: kentik.alerting.public.v202505.Alert.state:type_name -> kentik.alerting.public.v202505.AlertState
-	46, // 32: kentik.alerting.public.v202505.Alert.severity:type_name -> kentik.alerting.types.v202303.Severity
-	46, // 33: kentik.alerting.public.v202505.Alert.highest_severity:type_name -> kentik.alerting.types.v202303.Severity
-	26, // 34: kentik.alerting.public.v202505.Alert.acknowledgement:type_name -> kentik.alerting.public.v202505.Alert.Acknowledgement
-	47, // 35: kentik.alerting.public.v202505.Alert.event_start_time_at:type_name -> google.protobuf.Timestamp
-	20, // 36: kentik.alerting.public.v202505.Alert.flow:type_name -> kentik.alerting.public.v202505.FlowContext
-	21, // 37: kentik.alerting.public.v202505.Alert.nms:type_name -> kentik.alerting.public.v202505.NmsContext
-	16, // 38: kentik.alerting.public.v202505.Alert.external_contexts:type_name -> kentik.alerting.public.v202505.ExternalContext
-	28, // 39: kentik.alerting.public.v202505.FlowContext.metric_values:type_name -> kentik.alerting.public.v202505.FlowContext.MetricValue
-	2,  // 40: kentik.alerting.public.v202505.FlowContext.activation_status:type_name -> kentik.alerting.public.v202505.FlowContext.ActivationStatus
-	27, // 41: kentik.alerting.public.v202505.FlowContext.alert_key_details:type_name -> kentik.alerting.public.v202505.FlowContext.AlertKeyDetailsEntry
-	38, // 42: kentik.alerting.public.v202505.NmsContext.activation_info:type_name -> kentik.alerting.public.v202505.NmsContext.ActivationInfo
-	39, // 43: kentik.alerting.public.v202505.NmsContext.dataset_info:type_name -> kentik.alerting.public.v202505.NmsContext.DatasetInfo
-	33, // 44: kentik.alerting.public.v202505.NmsContext.targets:type_name -> kentik.alerting.public.v202505.NmsContext.TargetsEntry
-	34, // 45: kentik.alerting.public.v202505.NmsContext.metric_values:type_name -> kentik.alerting.public.v202505.NmsContext.MetricValuesEntry
-	35, // 46: kentik.alerting.public.v202505.NmsContext.previous_metric_values:type_name -> kentik.alerting.public.v202505.NmsContext.PreviousMetricValuesEntry
-	36, // 47: kentik.alerting.public.v202505.NmsContext.device:type_name -> kentik.alerting.public.v202505.NmsContext.DeviceEntry
-	37, // 48: kentik.alerting.public.v202505.NmsContext.group_key:type_name -> kentik.alerting.public.v202505.NmsContext.GroupKeyEntry
-	45, // 49: kentik.alerting.public.v202505.AlertServiceAddCommentResponse.comment:type_name -> kentik.alerting.public.v202505.Comment
-	45, // 50: kentik.alerting.public.v202505.AlertServiceListCommentsResponse.comments:type_name -> kentik.alerting.public.v202505.Comment
-	1,  // 51: kentik.alerting.public.v202505.Alert.Acknowledgement.state:type_name -> kentik.alerting.public.v202505.AlertAcknowledgement
-	47, // 52: kentik.alerting.public.v202505.Alert.Acknowledgement.acked_at:type_name -> google.protobuf.Timestamp
-	29, // 53: kentik.alerting.public.v202505.FlowContext.AlertKeyDetailsEntry.value:type_name -> kentik.alerting.public.v202505.FlowContext.AlertKeyDetails
-	30, // 54: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails.device:type_name -> kentik.alerting.public.v202505.FlowContext.DeviceDetails
-	31, // 55: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails.interface:type_name -> kentik.alerting.public.v202505.FlowContext.InterfaceDetails
-	32, // 56: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails.site:type_name -> kentik.alerting.public.v202505.FlowContext.SiteDetails
-	40, // 57: kentik.alerting.public.v202505.NmsContext.TargetsEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget
-	41, // 58: kentik.alerting.public.v202505.NmsContext.MetricValuesEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap
-	41, // 59: kentik.alerting.public.v202505.NmsContext.PreviousMetricValuesEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap
-	54, // 60: kentik.alerting.public.v202505.NmsContext.ActivationInfo.activate:type_name -> kentik.alerting.public.v202505.NmsActivateOrClearConditions
-	46, // 61: kentik.alerting.public.v202505.NmsContext.ActivationInfo.severity:type_name -> kentik.alerting.types.v202303.Severity
-	42, // 62: kentik.alerting.public.v202505.NmsContext.AlarmTarget.fields:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget.FieldsEntry
-	43, // 63: kentik.alerting.public.v202505.NmsContext.AlarmTarget.tags:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget.TagsEntry
-	44, // 64: kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.metrics:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.MetricsEntry
-	3,  // 65: kentik.alerting.public.v202505.AlertService.Get:input_type -> kentik.alerting.public.v202505.AlertServiceGetRequest
-	6,  // 66: kentik.alerting.public.v202505.AlertService.List:input_type -> kentik.alerting.public.v202505.AlertServiceListRequest
-	9,  // 67: kentik.alerting.public.v202505.AlertService.Ack:input_type -> kentik.alerting.public.v202505.AlertServiceAckRequest
-	11, // 68: kentik.alerting.public.v202505.AlertService.UnAck:input_type -> kentik.alerting.public.v202505.AlertServiceUnAckRequest
-	13, // 69: kentik.alerting.public.v202505.AlertService.Clear:input_type -> kentik.alerting.public.v202505.AlertServiceClearRequest
-	22, // 70: kentik.alerting.public.v202505.AlertService.AddComment:input_type -> kentik.alerting.public.v202505.AlertServiceAddCommentRequest
-	24, // 71: kentik.alerting.public.v202505.AlertService.ListComments:input_type -> kentik.alerting.public.v202505.AlertServiceListCommentsRequest
-	17, // 72: kentik.alerting.public.v202505.AlertService.SetExternalContext:input_type -> kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest
-	4,  // 73: kentik.alerting.public.v202505.AlertService.Get:output_type -> kentik.alerting.public.v202505.AlertServiceGetResponse
-	8,  // 74: kentik.alerting.public.v202505.AlertService.List:output_type -> kentik.alerting.public.v202505.AlertServiceListResponse
-	10, // 75: kentik.alerting.public.v202505.AlertService.Ack:output_type -> kentik.alerting.public.v202505.AlertServiceAckResponse
-	12, // 76: kentik.alerting.public.v202505.AlertService.UnAck:output_type -> kentik.alerting.public.v202505.AlertServiceUnAckResponse
-	14, // 77: kentik.alerting.public.v202505.AlertService.Clear:output_type -> kentik.alerting.public.v202505.AlertServiceClearResponse
-	23, // 78: kentik.alerting.public.v202505.AlertService.AddComment:output_type -> kentik.alerting.public.v202505.AlertServiceAddCommentResponse
-	25, // 79: kentik.alerting.public.v202505.AlertService.ListComments:output_type -> kentik.alerting.public.v202505.AlertServiceListCommentsResponse
-	18, // 80: kentik.alerting.public.v202505.AlertService.SetExternalContext:output_type -> kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse
-	73, // [73:81] is the sub-list for method output_type
-	65, // [65:73] is the sub-list for method input_type
-	65, // [65:65] is the sub-list for extension type_name
-	65, // [65:65] is the sub-list for extension extendee
-	0,  // [0:65] is the sub-list for field type_name
+	16, // 26: kentik.alerting.public.v202505.ExternalContext.jira_cloud:type_name -> kentik.alerting.public.v202505.JiraCloudContext
+	17, // 27: kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest.context:type_name -> kentik.alerting.public.v202505.ExternalContext
+	48, // 28: kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse.updated_at:type_name -> google.protobuf.Timestamp
+	51, // 29: kentik.alerting.public.v202505.Alert.source:type_name -> kentik.alerting.public.v202505.Source
+	48, // 30: kentik.alerting.public.v202505.Alert.start_time_at:type_name -> google.protobuf.Timestamp
+	48, // 31: kentik.alerting.public.v202505.Alert.end_time_at:type_name -> google.protobuf.Timestamp
+	0,  // 32: kentik.alerting.public.v202505.Alert.state:type_name -> kentik.alerting.public.v202505.AlertState
+	47, // 33: kentik.alerting.public.v202505.Alert.severity:type_name -> kentik.alerting.types.v202303.Severity
+	47, // 34: kentik.alerting.public.v202505.Alert.highest_severity:type_name -> kentik.alerting.types.v202303.Severity
+	27, // 35: kentik.alerting.public.v202505.Alert.acknowledgement:type_name -> kentik.alerting.public.v202505.Alert.Acknowledgement
+	48, // 36: kentik.alerting.public.v202505.Alert.event_start_time_at:type_name -> google.protobuf.Timestamp
+	21, // 37: kentik.alerting.public.v202505.Alert.flow:type_name -> kentik.alerting.public.v202505.FlowContext
+	22, // 38: kentik.alerting.public.v202505.Alert.nms:type_name -> kentik.alerting.public.v202505.NmsContext
+	17, // 39: kentik.alerting.public.v202505.Alert.external_contexts:type_name -> kentik.alerting.public.v202505.ExternalContext
+	29, // 40: kentik.alerting.public.v202505.FlowContext.metric_values:type_name -> kentik.alerting.public.v202505.FlowContext.MetricValue
+	2,  // 41: kentik.alerting.public.v202505.FlowContext.activation_status:type_name -> kentik.alerting.public.v202505.FlowContext.ActivationStatus
+	28, // 42: kentik.alerting.public.v202505.FlowContext.alert_key_details:type_name -> kentik.alerting.public.v202505.FlowContext.AlertKeyDetailsEntry
+	39, // 43: kentik.alerting.public.v202505.NmsContext.activation_info:type_name -> kentik.alerting.public.v202505.NmsContext.ActivationInfo
+	40, // 44: kentik.alerting.public.v202505.NmsContext.dataset_info:type_name -> kentik.alerting.public.v202505.NmsContext.DatasetInfo
+	34, // 45: kentik.alerting.public.v202505.NmsContext.targets:type_name -> kentik.alerting.public.v202505.NmsContext.TargetsEntry
+	35, // 46: kentik.alerting.public.v202505.NmsContext.metric_values:type_name -> kentik.alerting.public.v202505.NmsContext.MetricValuesEntry
+	36, // 47: kentik.alerting.public.v202505.NmsContext.previous_metric_values:type_name -> kentik.alerting.public.v202505.NmsContext.PreviousMetricValuesEntry
+	37, // 48: kentik.alerting.public.v202505.NmsContext.device:type_name -> kentik.alerting.public.v202505.NmsContext.DeviceEntry
+	38, // 49: kentik.alerting.public.v202505.NmsContext.group_key:type_name -> kentik.alerting.public.v202505.NmsContext.GroupKeyEntry
+	46, // 50: kentik.alerting.public.v202505.AlertServiceAddCommentResponse.comment:type_name -> kentik.alerting.public.v202505.Comment
+	46, // 51: kentik.alerting.public.v202505.AlertServiceListCommentsResponse.comments:type_name -> kentik.alerting.public.v202505.Comment
+	1,  // 52: kentik.alerting.public.v202505.Alert.Acknowledgement.state:type_name -> kentik.alerting.public.v202505.AlertAcknowledgement
+	48, // 53: kentik.alerting.public.v202505.Alert.Acknowledgement.acked_at:type_name -> google.protobuf.Timestamp
+	30, // 54: kentik.alerting.public.v202505.FlowContext.AlertKeyDetailsEntry.value:type_name -> kentik.alerting.public.v202505.FlowContext.AlertKeyDetails
+	31, // 55: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails.device:type_name -> kentik.alerting.public.v202505.FlowContext.DeviceDetails
+	32, // 56: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails.interface:type_name -> kentik.alerting.public.v202505.FlowContext.InterfaceDetails
+	33, // 57: kentik.alerting.public.v202505.FlowContext.AlertKeyDetails.site:type_name -> kentik.alerting.public.v202505.FlowContext.SiteDetails
+	41, // 58: kentik.alerting.public.v202505.NmsContext.TargetsEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget
+	42, // 59: kentik.alerting.public.v202505.NmsContext.MetricValuesEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap
+	42, // 60: kentik.alerting.public.v202505.NmsContext.PreviousMetricValuesEntry.value:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap
+	55, // 61: kentik.alerting.public.v202505.NmsContext.ActivationInfo.activate:type_name -> kentik.alerting.public.v202505.NmsActivateOrClearConditions
+	47, // 62: kentik.alerting.public.v202505.NmsContext.ActivationInfo.severity:type_name -> kentik.alerting.types.v202303.Severity
+	43, // 63: kentik.alerting.public.v202505.NmsContext.AlarmTarget.fields:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget.FieldsEntry
+	44, // 64: kentik.alerting.public.v202505.NmsContext.AlarmTarget.tags:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmTarget.TagsEntry
+	45, // 65: kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.metrics:type_name -> kentik.alerting.public.v202505.NmsContext.AlarmMetricMap.MetricsEntry
+	3,  // 66: kentik.alerting.public.v202505.AlertService.Get:input_type -> kentik.alerting.public.v202505.AlertServiceGetRequest
+	6,  // 67: kentik.alerting.public.v202505.AlertService.List:input_type -> kentik.alerting.public.v202505.AlertServiceListRequest
+	9,  // 68: kentik.alerting.public.v202505.AlertService.Ack:input_type -> kentik.alerting.public.v202505.AlertServiceAckRequest
+	11, // 69: kentik.alerting.public.v202505.AlertService.UnAck:input_type -> kentik.alerting.public.v202505.AlertServiceUnAckRequest
+	13, // 70: kentik.alerting.public.v202505.AlertService.Clear:input_type -> kentik.alerting.public.v202505.AlertServiceClearRequest
+	23, // 71: kentik.alerting.public.v202505.AlertService.AddComment:input_type -> kentik.alerting.public.v202505.AlertServiceAddCommentRequest
+	25, // 72: kentik.alerting.public.v202505.AlertService.ListComments:input_type -> kentik.alerting.public.v202505.AlertServiceListCommentsRequest
+	18, // 73: kentik.alerting.public.v202505.AlertService.SetExternalContext:input_type -> kentik.alerting.public.v202505.AlertServiceSetExternalContextRequest
+	4,  // 74: kentik.alerting.public.v202505.AlertService.Get:output_type -> kentik.alerting.public.v202505.AlertServiceGetResponse
+	8,  // 75: kentik.alerting.public.v202505.AlertService.List:output_type -> kentik.alerting.public.v202505.AlertServiceListResponse
+	10, // 76: kentik.alerting.public.v202505.AlertService.Ack:output_type -> kentik.alerting.public.v202505.AlertServiceAckResponse
+	12, // 77: kentik.alerting.public.v202505.AlertService.UnAck:output_type -> kentik.alerting.public.v202505.AlertServiceUnAckResponse
+	14, // 78: kentik.alerting.public.v202505.AlertService.Clear:output_type -> kentik.alerting.public.v202505.AlertServiceClearResponse
+	24, // 79: kentik.alerting.public.v202505.AlertService.AddComment:output_type -> kentik.alerting.public.v202505.AlertServiceAddCommentResponse
+	26, // 80: kentik.alerting.public.v202505.AlertService.ListComments:output_type -> kentik.alerting.public.v202505.AlertServiceListCommentsResponse
+	19, // 81: kentik.alerting.public.v202505.AlertService.SetExternalContext:output_type -> kentik.alerting.public.v202505.AlertServiceSetExternalContextResponse
+	74, // [74:82] is the sub-list for method output_type
+	66, // [66:74] is the sub-list for method input_type
+	66, // [66:66] is the sub-list for extension type_name
+	66, // [66:66] is the sub-list for extension extendee
+	0,  // [0:66] is the sub-list for field type_name
 }
 
 func init() { file_kentik_alerting_public_v202505_alert_proto_init() }
@@ -2820,14 +2895,15 @@ func file_kentik_alerting_public_v202505_alert_proto_init() {
 		(*AlertPhase_Flow)(nil),
 		(*AlertPhase_Nms)(nil),
 	}
-	file_kentik_alerting_public_v202505_alert_proto_msgTypes[13].OneofWrappers = []any{
+	file_kentik_alerting_public_v202505_alert_proto_msgTypes[14].OneofWrappers = []any{
 		(*ExternalContext_Servicenow)(nil),
+		(*ExternalContext_JiraCloud)(nil),
 	}
-	file_kentik_alerting_public_v202505_alert_proto_msgTypes[16].OneofWrappers = []any{
+	file_kentik_alerting_public_v202505_alert_proto_msgTypes[17].OneofWrappers = []any{
 		(*Alert_Flow)(nil),
 		(*Alert_Nms)(nil),
 	}
-	file_kentik_alerting_public_v202505_alert_proto_msgTypes[35].OneofWrappers = []any{
+	file_kentik_alerting_public_v202505_alert_proto_msgTypes[36].OneofWrappers = []any{
 		(*NmsContext_ActivationInfo_ClearManual)(nil),
 		(*NmsContext_ActivationInfo_ClearUnlessActivated)(nil),
 	}
@@ -2837,7 +2913,7 @@ func file_kentik_alerting_public_v202505_alert_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_alerting_public_v202505_alert_proto_rawDesc), len(file_kentik_alerting_public_v202505_alert_proto_rawDesc)),
 			NumEnums:      3,
-			NumMessages:   42,
+			NumMessages:   43,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

@@ -41,6 +41,7 @@ typedef struct Kentik__Alerting__Public__V202505__AlertServiceUnAckResponse Kent
 typedef struct Kentik__Alerting__Public__V202505__AlertServiceClearRequest Kentik__Alerting__Public__V202505__AlertServiceClearRequest;
 typedef struct Kentik__Alerting__Public__V202505__AlertServiceClearResponse Kentik__Alerting__Public__V202505__AlertServiceClearResponse;
 typedef struct Kentik__Alerting__Public__V202505__ServiceNowContext Kentik__Alerting__Public__V202505__ServiceNowContext;
+typedef struct Kentik__Alerting__Public__V202505__JiraCloudContext Kentik__Alerting__Public__V202505__JiraCloudContext;
 typedef struct Kentik__Alerting__Public__V202505__ExternalContext Kentik__Alerting__Public__V202505__ExternalContext;
 typedef struct Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextRequest;
 typedef struct Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse Kentik__Alerting__Public__V202505__AlertServiceSetExternalContextResponse;
@@ -367,9 +368,21 @@ struct  Kentik__Alerting__Public__V202505__ServiceNowContext
     , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
 
 
+struct  Kentik__Alerting__Public__V202505__JiraCloudContext
+{
+  ProtobufCMessage base;
+  char *issue_key;
+  char *issue_url;
+};
+#define KENTIK__ALERTING__PUBLIC__V202505__JIRA_CLOUD_CONTEXT__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__jira_cloud_context__descriptor) \
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
+
+
 typedef enum {
   KENTIK__ALERTING__PUBLIC__V202505__EXTERNAL_CONTEXT__CONTEXT__NOT_SET = 0,
-  KENTIK__ALERTING__PUBLIC__V202505__EXTERNAL_CONTEXT__CONTEXT_SERVICENOW = 1
+  KENTIK__ALERTING__PUBLIC__V202505__EXTERNAL_CONTEXT__CONTEXT_SERVICENOW = 1,
+  KENTIK__ALERTING__PUBLIC__V202505__EXTERNAL_CONTEXT__CONTEXT_JIRA_CLOUD = 2
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__ALERTING__PUBLIC__V202505__EXTERNAL_CONTEXT__CONTEXT__CASE)
 } Kentik__Alerting__Public__V202505__ExternalContext__ContextCase;
 
@@ -378,6 +391,7 @@ struct  Kentik__Alerting__Public__V202505__ExternalContext
   ProtobufCMessage base;
   Kentik__Alerting__Public__V202505__ExternalContext__ContextCase context_case;
   union {
+    Kentik__Alerting__Public__V202505__JiraCloudContext *jira_cloud;
     Kentik__Alerting__Public__V202505__ServiceNowContext *servicenow;
   };
 };
@@ -1030,6 +1044,25 @@ Kentik__Alerting__Public__V202505__ServiceNowContext *
 void   kentik__alerting__public__v202505__service_now_context__free_unpacked
                      (Kentik__Alerting__Public__V202505__ServiceNowContext *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Alerting__Public__V202505__JiraCloudContext methods */
+void   kentik__alerting__public__v202505__jira_cloud_context__init
+                     (Kentik__Alerting__Public__V202505__JiraCloudContext         *message);
+size_t kentik__alerting__public__v202505__jira_cloud_context__get_packed_size
+                     (const Kentik__Alerting__Public__V202505__JiraCloudContext   *message);
+size_t kentik__alerting__public__v202505__jira_cloud_context__pack
+                     (const Kentik__Alerting__Public__V202505__JiraCloudContext   *message,
+                      uint8_t             *out);
+size_t kentik__alerting__public__v202505__jira_cloud_context__pack_to_buffer
+                     (const Kentik__Alerting__Public__V202505__JiraCloudContext   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Alerting__Public__V202505__JiraCloudContext *
+       kentik__alerting__public__v202505__jira_cloud_context__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__alerting__public__v202505__jira_cloud_context__free_unpacked
+                     (Kentik__Alerting__Public__V202505__JiraCloudContext *message,
+                      ProtobufCAllocator *allocator);
 /* Kentik__Alerting__Public__V202505__ExternalContext methods */
 void   kentik__alerting__public__v202505__external_context__init
                      (Kentik__Alerting__Public__V202505__ExternalContext         *message);
@@ -1318,6 +1351,9 @@ typedef void (*Kentik__Alerting__Public__V202505__AlertServiceClearResponse_Clos
 typedef void (*Kentik__Alerting__Public__V202505__ServiceNowContext_Closure)
                  (const Kentik__Alerting__Public__V202505__ServiceNowContext *message,
                   void *closure_data);
+typedef void (*Kentik__Alerting__Public__V202505__JiraCloudContext_Closure)
+                 (const Kentik__Alerting__Public__V202505__JiraCloudContext *message,
+                  void *closure_data);
 typedef void (*Kentik__Alerting__Public__V202505__ExternalContext_Closure)
                  (const Kentik__Alerting__Public__V202505__ExternalContext *message,
                   void *closure_data);
@@ -1510,6 +1546,7 @@ extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_clear_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_clear_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__service_now_context__descriptor;
+extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__jira_cloud_context__descriptor;
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__external_context__descriptor;
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_set_external_context_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__alerting__public__v202505__alert_service_set_external_context_response__descriptor;

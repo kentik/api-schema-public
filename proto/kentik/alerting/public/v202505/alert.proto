@@ -465,12 +465,34 @@ message ServiceNowContext {
   ];
 }
 
+message JiraCloudContext {
+  string issue_key = 1[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Jira Cloud issue key, e.g., KEY-123."
+    }
+  ];
+
+  string issue_url = 2[
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Jira Cloud issue URL, e.g., https://instance.atlassian.net/browse/KEY-123."
+    }
+  ];
+}
+
 message ExternalContext {
   oneof context {
     ServiceNowContext servicenow = 1[
       (google.api.field_behavior) = REQUIRED,
       (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
         description: "The external context of the alert from servicenow external system."
+      }
+    ];
+    JiraCloudContext jira_cloud = 2[
+      (google.api.field_behavior) = REQUIRED,
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "The external context of the alert from Jira Cloud external system."
       }
     ];
   }
