@@ -223,6 +223,22 @@ var file_kentik_core_v202303_annotations_proto_extTypes = []protoimpl.ExtensionI
 		Tag:           "varint,5507,opt,name=method_visibility,enum=kentik.core.v202303.MethodVisibility",
 		Filename:      "kentik/core/v202303/annotations.proto",
 	},
+	{
+		ExtendedType:  (*descriptorpb.FieldOptions)(nil),
+		ExtensionType: (*string)(nil),
+		Field:         5508,
+		Name:          "kentik.core.v202303.display_name",
+		Tag:           "bytes,5508,opt,name=display_name",
+		Filename:      "kentik/core/v202303/annotations.proto",
+	},
+	{
+		ExtendedType:  (*descriptorpb.EnumValueOptions)(nil),
+		ExtensionType: (*string)(nil),
+		Field:         5509,
+		Name:          "kentik.core.v202303.enum_display_name",
+		Tag:           "bytes,5509,opt,name=enum_display_name",
+		Filename:      "kentik/core/v202303/annotations.proto",
+	},
 }
 
 // Extension fields to descriptorpb.ServiceOptions.
@@ -270,6 +286,24 @@ var (
 	E_MethodVisibility = &file_kentik_core_v202303_annotations_proto_extTypes[8]
 )
 
+// Extension fields to descriptorpb.FieldOptions.
+var (
+	// Human-readable label for a message field, for use in UIs and documentation.
+	// Extension names are unique per package (not per extendee), so enum values use
+	// enum_display_name below even though both hold the same kind of string.
+	//
+	// optional string display_name = 5508;
+	E_DisplayName = &file_kentik_core_v202303_annotations_proto_extTypes[9]
+)
+
+// Extension fields to descriptorpb.EnumValueOptions.
+var (
+	// Human-readable label for an enum value, for use in UIs and documentation.
+	//
+	// optional string enum_display_name = 5509;
+	E_EnumDisplayName = &file_kentik_core_v202303_annotations_proto_extTypes[10]
+)
+
 var File_kentik_core_v202303_annotations_proto protoreflect.FileDescriptor
 
 const file_kentik_core_v202303_annotations_proto_rawDesc = "" +
@@ -298,7 +332,9 @@ const file_kentik_core_v202303_annotations_proto_rawDesc = "" +
 	"\x0eprivate_method\x12\x1e.google.protobuf.MethodOptions\x18\x80+ \x01(\bR\rprivateMethod:H\n" +
 	"\x0fmethod_category\x12\x1e.google.protobuf.MethodOptions\x18\x81+ \x01(\tR\x0emethodCategory:L\n" +
 	"\x11method_permission\x12\x1e.google.protobuf.MethodOptions\x18\x82+ \x01(\tR\x10methodPermission:s\n" +
-	"\x11method_visibility\x12\x1e.google.protobuf.MethodOptions\x18\x83+ \x01(\x0e2%.kentik.core.v202303.MethodVisibilityR\x10methodVisibilityBLZJgithub.com/kentik/api-schema-public/gen/go/kentik/core/v202303;kentik_coreb\x06proto3"
+	"\x11method_visibility\x12\x1e.google.protobuf.MethodOptions\x18\x83+ \x01(\x0e2%.kentik.core.v202303.MethodVisibilityR\x10methodVisibility:A\n" +
+	"\fdisplay_name\x12\x1d.google.protobuf.FieldOptions\x18\x84+ \x01(\tR\vdisplayName:N\n" +
+	"\x11enum_display_name\x12!.google.protobuf.EnumValueOptions\x18\x85+ \x01(\tR\x0fenumDisplayNameBLZJgithub.com/kentik/api-schema-public/gen/go/kentik/core/v202303;kentik_coreb\x06proto3"
 
 var (
 	file_kentik_core_v202303_annotations_proto_rawDescOnce sync.Once
@@ -314,10 +350,12 @@ func file_kentik_core_v202303_annotations_proto_rawDescGZIP() []byte {
 
 var file_kentik_core_v202303_annotations_proto_enumTypes = make([]protoimpl.EnumInfo, 2)
 var file_kentik_core_v202303_annotations_proto_goTypes = []any{
-	(ServiceVisibility)(0),              // 0: kentik.core.v202303.ServiceVisibility
-	(MethodVisibility)(0),               // 1: kentik.core.v202303.MethodVisibility
-	(*descriptorpb.ServiceOptions)(nil), // 2: google.protobuf.ServiceOptions
-	(*descriptorpb.MethodOptions)(nil),  // 3: google.protobuf.MethodOptions
+	(ServiceVisibility)(0),                // 0: kentik.core.v202303.ServiceVisibility
+	(MethodVisibility)(0),                 // 1: kentik.core.v202303.MethodVisibility
+	(*descriptorpb.ServiceOptions)(nil),   // 2: google.protobuf.ServiceOptions
+	(*descriptorpb.MethodOptions)(nil),    // 3: google.protobuf.MethodOptions
+	(*descriptorpb.FieldOptions)(nil),     // 4: google.protobuf.FieldOptions
+	(*descriptorpb.EnumValueOptions)(nil), // 5: google.protobuf.EnumValueOptions
 }
 var file_kentik_core_v202303_annotations_proto_depIdxs = []int32{
 	2,  // 0: kentik.core.v202303.service_scope:extendee -> google.protobuf.ServiceOptions
@@ -329,12 +367,14 @@ var file_kentik_core_v202303_annotations_proto_depIdxs = []int32{
 	3,  // 6: kentik.core.v202303.method_category:extendee -> google.protobuf.MethodOptions
 	3,  // 7: kentik.core.v202303.method_permission:extendee -> google.protobuf.MethodOptions
 	3,  // 8: kentik.core.v202303.method_visibility:extendee -> google.protobuf.MethodOptions
-	0,  // 9: kentik.core.v202303.visibility:type_name -> kentik.core.v202303.ServiceVisibility
-	1,  // 10: kentik.core.v202303.method_visibility:type_name -> kentik.core.v202303.MethodVisibility
-	11, // [11:11] is the sub-list for method output_type
-	11, // [11:11] is the sub-list for method input_type
-	9,  // [9:11] is the sub-list for extension type_name
-	0,  // [0:9] is the sub-list for extension extendee
+	4,  // 9: kentik.core.v202303.display_name:extendee -> google.protobuf.FieldOptions
+	5,  // 10: kentik.core.v202303.enum_display_name:extendee -> google.protobuf.EnumValueOptions
+	0,  // 11: kentik.core.v202303.visibility:type_name -> kentik.core.v202303.ServiceVisibility
+	1,  // 12: kentik.core.v202303.method_visibility:type_name -> kentik.core.v202303.MethodVisibility
+	13, // [13:13] is the sub-list for method output_type
+	13, // [13:13] is the sub-list for method input_type
+	11, // [11:13] is the sub-list for extension type_name
+	0,  // [0:11] is the sub-list for extension extendee
 	0,  // [0:0] is the sub-list for field type_name
 }
 
@@ -350,7 +390,7 @@ func file_kentik_core_v202303_annotations_proto_init() {
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_core_v202303_annotations_proto_rawDesc), len(file_kentik_core_v202303_annotations_proto_rawDesc)),
 			NumEnums:      2,
 			NumMessages:   0,
-			NumExtensions: 9,
+			NumExtensions: 11,
 			NumServices:   0,
 		},
 		GoTypes:           file_kentik_core_v202303_annotations_proto_goTypes,

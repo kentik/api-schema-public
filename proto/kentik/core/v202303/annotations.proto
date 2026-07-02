@@ -61,3 +61,15 @@ extend google.protobuf.MethodOptions {
   // method_visibility provides label allowing api owners optionally define a different visibility for an rpc
   MethodVisibility method_visibility = 5507;
 }
+
+extend google.protobuf.FieldOptions {
+  // Human-readable label for a message field, for use in UIs and documentation.
+  // Extension names are unique per package (not per extendee), so enum values use
+  // enum_display_name below even though both hold the same kind of string.
+  string display_name = 5508;
+}
+
+extend google.protobuf.EnumValueOptions {
+  // Human-readable label for an enum value, for use in UIs and documentation.
+  string enum_display_name = 5509;
+}

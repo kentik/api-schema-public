@@ -68,9 +68,13 @@ const char descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2epro
     "thodOptions\030\202+ \001(\tR\020methodPermission:s\n\021"
     "method_visibility\022\036.google.protobuf.Meth"
     "odOptions\030\203+ \001(\0162%.kentik.core.v202303.M"
-    "ethodVisibilityR\020methodVisibilityBLZJgit"
-    "hub.com/kentik/api-schema-public/gen/go/"
-    "kentik/core/v202303;kentik_coreb\006proto3"
+    "ethodVisibilityR\020methodVisibility:A\n\014dis"
+    "play_name\022\035.google.protobuf.FieldOptions"
+    "\030\204+ \001(\tR\013displayName:N\n\021enum_display_nam"
+    "e\022!.google.protobuf.EnumValueOptions\030\205+ "
+    "\001(\tR\017enumDisplayNameBLZJgithub.com/kenti"
+    "k/api-schema-public/gen/go/kentik/core/v"
+    "202303;kentik_coreb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_deps[1] =
     {
@@ -80,7 +84,7 @@ static ::absl::once_flag descriptor_table_kentik_2fcore_2fv202303_2fannotations_
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto = {
     false,
     false,
-    1319,
+    1466,
     descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2eproto,
     "kentik/core/v202303/annotations.proto",
     &descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_once,
@@ -164,6 +168,18 @@ PROTOBUF_CONSTINIT
         ExtensionIdentifier<::google::protobuf::MethodOptions, ::_pbi::EnumTypeTraits< ::kentik::core::v202303::MethodVisibility, ::kentik::core::v202303::MethodVisibility_IsValid>,
                             14, false>
             method_visibility(kMethodVisibilityFieldNumber, static_cast< ::kentik::core::v202303::MethodVisibility >(0));
+const std::string display_name_default("");
+PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 ::_pbi::
+        ExtensionIdentifier<::google::protobuf::FieldOptions, ::_pbi::StringTypeTraits,
+                            9, false>
+            display_name(kDisplayNameFieldNumber, display_name_default);
+const std::string enum_display_name_default("");
+PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 ::_pbi::
+        ExtensionIdentifier<::google::protobuf::EnumValueOptions, ::_pbi::StringTypeTraits,
+                            9, false>
+            enum_display_name(kEnumDisplayNameFieldNumber, enum_display_name_default);
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace v202303
 }  // namespace core
@@ -203,5 +219,11 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::std::false_type
         ::_pbi::ExtensionSet::RegisterEnumExtension(
             &::google::protobuf::MethodOptions::default_instance(), 5507, 14,
             false, false, ::kentik::core::v202303::MethodVisibility_IsValid),
+        ::_pbi::ExtensionSet::RegisterExtension(
+            &::google::protobuf::FieldOptions::default_instance(), 5508, 9,
+            false, false),
+        ::_pbi::ExtensionSet::RegisterExtension(
+            &::google::protobuf::EnumValueOptions::default_instance(), 5509, 9,
+            false, false),
          ::std::false_type{});
 #include "google/protobuf/port_undef.inc"

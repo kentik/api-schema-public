@@ -185,6 +185,16 @@ extern ::google::protobuf::internal::ExtensionIdentifier<
     ::google::protobuf::MethodOptions, ::google::protobuf::internal::EnumTypeTraits< ::kentik::core::v202303::MethodVisibility, ::kentik::core::v202303::MethodVisibility_IsValid>, 14,
     false>
     method_visibility;
+static const int kDisplayNameFieldNumber = 5508;
+extern ::google::protobuf::internal::ExtensionIdentifier<
+    ::google::protobuf::FieldOptions, ::google::protobuf::internal::StringTypeTraits, 9,
+    false>
+    display_name;
+static const int kEnumDisplayNameFieldNumber = 5509;
+extern ::google::protobuf::internal::ExtensionIdentifier<
+    ::google::protobuf::EnumValueOptions, ::google::protobuf::internal::StringTypeTraits, 9,
+    false>
+    enum_display_name;
 
 // ===================================================================
 
