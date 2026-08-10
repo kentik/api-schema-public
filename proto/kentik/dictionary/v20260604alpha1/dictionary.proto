@@ -227,6 +227,9 @@ message DimensionField {
   string query_column = 13 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Alternative column name used when this field is used in a query group-by"}
   ];
+  bool can_count = 14 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "When true, the field can be used with WINDOW_FUNCTION_COUNT"}
+  ];
 }
 
 // A field that represents a measurable metric in a query.

@@ -635,7 +635,7 @@ const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__dimension_
   (ProtobufCMessageInit) kentik__dictionary__v20260604alpha1__dimension_field__values_entry__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__dimension_field__field_descriptors[13] =
+static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__dimension_field__field_descriptors[14] =
 {
   {
     "key",
@@ -793,8 +793,21 @@ static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__dimen
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "can_count",
+    14,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Dictionary__V20260604alpha1__DimensionField, can_count),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__dictionary__v20260604alpha1__dimension_field__field_indices_by_name[] = {
+  13,   /* field[13] = can_count */
   3,   /* field[3] = category */
   4,   /* field[4] = column */
   2,   /* field[2] = data_type */
@@ -812,7 +825,7 @@ static const unsigned kentik__dictionary__v20260604alpha1__dimension_field__fiel
 static const ProtobufCIntRange kentik__dictionary__v20260604alpha1__dimension_field__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 13 }
+  { 0, 14 }
 };
 const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__dimension_field__descriptor =
 {
@@ -822,7 +835,7 @@ const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__dimension_
   "Kentik__Dictionary__V20260604alpha1__DimensionField",
   "kentik.dictionary.v20260604alpha1",
   sizeof(Kentik__Dictionary__V20260604alpha1__DimensionField),
-  13,
+  14,
   kentik__dictionary__v20260604alpha1__dimension_field__field_descriptors,
   kentik__dictionary__v20260604alpha1__dimension_field__field_indices_by_name,
   1,  kentik__dictionary__v20260604alpha1__dimension_field__number_ranges,

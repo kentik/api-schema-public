@@ -205,6 +205,7 @@ struct  Kentik__Dictionary__V20260604alpha1__DimensionField
   protobuf_c_boolean filter_only;
   char *filter_column;
   char *query_column;
+  protobuf_c_boolean can_count;
   Kentik__Dictionary__V20260604alpha1__DimensionField__LastSeenCase _last_seen_case;
   union {
     char *last_seen;
@@ -212,7 +213,7 @@ struct  Kentik__Dictionary__V20260604alpha1__DimensionField
 };
 #define KENTIK__DICTIONARY__V20260604ALPHA1__DIMENSION_FIELD__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__dictionary__v20260604alpha1__dimension_field__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, KENTIK__DICTIONARY__V20260604ALPHA1__FIELD_DATA_TYPE__FIELD_DATA_TYPE_UNSPECIFIED, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, KENTIK__DICTIONARY__V20260604ALPHA1__FIELD_DIRECTION__FIELD_DIRECTION_UNSPECIFIED, (char *)protobuf_c_empty_string, 0,NULL, KENTIK__DICTIONARY__V20260604ALPHA1__OPERATOR_SET_KEY__OPERATOR_SET_KEY_UNSPECIFIED, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, KENTIK__DICTIONARY__V20260604ALPHA1__DIMENSION_FIELD___LAST_SEEN__NOT_SET, {0} }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, KENTIK__DICTIONARY__V20260604ALPHA1__FIELD_DATA_TYPE__FIELD_DATA_TYPE_UNSPECIFIED, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, KENTIK__DICTIONARY__V20260604ALPHA1__FIELD_DIRECTION__FIELD_DIRECTION_UNSPECIFIED, (char *)protobuf_c_empty_string, 0,NULL, KENTIK__DICTIONARY__V20260604ALPHA1__OPERATOR_SET_KEY__OPERATOR_SET_KEY_UNSPECIFIED, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, KENTIK__DICTIONARY__V20260604ALPHA1__DIMENSION_FIELD___LAST_SEEN__NOT_SET, {0} }
 
 
 struct  Kentik__Dictionary__V20260604alpha1__MetricField__ValuesEntry

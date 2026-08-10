@@ -153,6 +153,10 @@
         "queryColumn": {
           "type": "string",
           "description": "Alternative column name used when this field is used in a query group-by"
+        },
+        "canCount": {
+          "type": "boolean",
+          "description": "When true, the field can be used with WINDOW_FUNCTION_COUNT"
         }
       },
       "description": "A field that can be used as a dimension/filter in a query."

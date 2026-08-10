@@ -1926,6 +1926,7 @@ class DimensionField final : public ::google::protobuf::Message
     kDirectionFieldNumber = 6,
     kOperatorSetKeyFieldNumber = 10,
     kFilterOnlyFieldNumber = 11,
+    kCanCountFieldNumber = 14,
   };
   // map<string, string> values = 8 [json_name = "values", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int values_size() const;
@@ -2111,12 +2112,22 @@ class DimensionField final : public ::google::protobuf::Message
   void _internal_set_filter_only(bool value);
 
   public:
+  // bool can_count = 14 [json_name = "canCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_can_count() ;
+  bool can_count() const;
+  void set_can_count(bool value);
+
+  private:
+  bool _internal_can_count() const;
+  void _internal_set_can_count(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.dictionary.v20260604alpha1.DimensionField)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 13, 1,
+      4, 14, 1,
       134, 2>
       _table_;
 
@@ -2152,6 +2163,7 @@ class DimensionField final : public ::google::protobuf::Message
     int direction_;
     int operator_set_key_;
     bool filter_only_;
+    bool can_count_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -3679,6 +3691,28 @@ inline void DimensionField::set_allocated_query_column(std::string* value) {
     _impl_.query_column_.Set("", GetArena());
   }
   // @@protoc_insertion_point(field_set_allocated:kentik.dictionary.v20260604alpha1.DimensionField.query_column)
+}
+
+// bool can_count = 14 [json_name = "canCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DimensionField::clear_can_count() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.can_count_ = false;
+}
+inline bool DimensionField::can_count() const {
+  // @@protoc_insertion_point(field_get:kentik.dictionary.v20260604alpha1.DimensionField.can_count)
+  return _internal_can_count();
+}
+inline void DimensionField::set_can_count(bool value) {
+  _internal_set_can_count(value);
+  // @@protoc_insertion_point(field_set:kentik.dictionary.v20260604alpha1.DimensionField.can_count)
+}
+inline bool DimensionField::_internal_can_count() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.can_count_;
+}
+inline void DimensionField::_internal_set_can_count(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.can_count_ = value;
 }
 
 // -------------------------------------------------------------------

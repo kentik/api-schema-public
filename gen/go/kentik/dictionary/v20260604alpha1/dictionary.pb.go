@@ -642,6 +642,7 @@ type DimensionField struct {
 	FilterOnly     bool              `protobuf:"varint,11,opt,name=filter_only,json=filterOnly,proto3" json:"filter_only,omitempty"`
 	FilterColumn   string            `protobuf:"bytes,12,opt,name=filter_column,json=filterColumn,proto3" json:"filter_column,omitempty"`
 	QueryColumn    string            `protobuf:"bytes,13,opt,name=query_column,json=queryColumn,proto3" json:"query_column,omitempty"`
+	CanCount       bool              `protobuf:"varint,14,opt,name=can_count,json=canCount,proto3" json:"can_count,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
@@ -765,6 +766,13 @@ func (x *DimensionField) GetQueryColumn() string {
 		return x.QueryColumn
 	}
 	return ""
+}
+
+func (x *DimensionField) GetCanCount() bool {
+	if x != nil {
+		return x.CanCount
+	}
+	return false
 }
 
 // A field that represents a measurable metric in a query.
@@ -1157,8 +1165,7 @@ const file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDesc = "" +
 	"\bquantity\x18\x03 \x01(\x0e21.kentik.dictionary.v20260604alpha1.MetricQuantityB.\x92A+2)The kind of quantity this family measuresR\bquantity\x12v\n" +
 	"\tbase_unit\x18\x04 \x01(\x0e2+.kentik.dictionary.v20260604alpha1.BaseUnitB,\x92A)2'The base unit for values in this familyR\bbaseUnit\x12l\n" +
 	"\x14dual_axis_compatible\x18\x05 \x03(\tB:\x92A725Metric family keys compatible for dual-axis renderingR\x12dualAxisCompatible\x12m\n" +
-	"\x11incompatible_with\x18\x06 \x03(\tB@\x92A=2;Metric family keys that cannot be combined with this familyR\x10incompatibleWith\"\xf3\n" +
-	"\n" +
+	"\x11incompatible_with\x18\x06 \x03(\tB@\x92A=2;Metric family keys that cannot be combined with this familyR\x10incompatibleWith\"\xd2\v\n" +
 	"\x0eDimensionField\x120\n" +
 	"\x03key\x18\x01 \x01(\tB\x1e\x92A\x1b2\x19Field key used in queriesR\x03key\x126\n" +
 	"\x05label\x18\x02 \x01(\tB \x92A\x1d2\x1bHuman-readable display nameR\x05label\x12u\n" +
@@ -1174,7 +1181,8 @@ const file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDesc = "" +
 	"\vfilter_only\x18\v \x01(\bBP\x92AM2KWhen true, the field may only be used as a filter, not a group-by dimensionR\n" +
 	"filterOnly\x12m\n" +
 	"\rfilter_column\x18\f \x01(\tBH\x92AE2CAlternative column name used when this field is applied as a filterR\ffilterColumn\x12p\n" +
-	"\fquery_column\x18\r \x01(\tBM\x92AJ2HAlternative column name used when this field is used in a query group-byR\vqueryColumn\x1a9\n" +
+	"\fquery_column\x18\r \x01(\tBM\x92AJ2HAlternative column name used when this field is used in a query group-byR\vqueryColumn\x12]\n" +
+	"\tcan_count\x18\x0e \x01(\bB@\x92A=2;When true, the field can be used with WINDOW_FUNCTION_COUNTR\bcanCount\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\f\n" +
