@@ -160,6 +160,16 @@ extern ::google::protobuf::internal::ExtensionIdentifier<
     ::google::protobuf::ServiceOptions, ::google::protobuf::internal::StringTypeTraits, 9,
     false>
     backend_type;
+static const int kAuthnFieldNumber = 5510;
+extern ::google::protobuf::internal::ExtensionIdentifier<
+    ::google::protobuf::ServiceOptions, ::google::protobuf::internal::StringTypeTraits, 9,
+    false>
+    authn;
+static const int kSignerFieldNumber = 5511;
+extern ::google::protobuf::internal::ExtensionIdentifier<
+    ::google::protobuf::ServiceOptions, ::google::protobuf::internal::StringTypeTraits, 9,
+    false>
+    signer;
 static const int kMethodScopeFieldNumber = 5502;
 extern ::google::protobuf::internal::ExtensionIdentifier<
     ::google::protobuf::MethodOptions, ::google::protobuf::internal::StringTypeTraits, 9,

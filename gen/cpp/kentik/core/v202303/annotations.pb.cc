@@ -58,23 +58,26 @@ const char descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2epro
     "f.ServiceOptions\030\202+ \001(\0162&.kentik.core.v2"
     "02303.ServiceVisibilityR\nvisibility:C\n\014b"
     "ackend_type\022\037.google.protobuf.ServiceOpt"
-    "ions\030\203+ \001(\tR\013backendType:B\n\014method_scope"
-    "\022\036.google.protobuf.MethodOptions\030\376* \001(\tR"
-    "\013methodScope:F\n\016private_method\022\036.google."
-    "protobuf.MethodOptions\030\200+ \001(\010R\rprivateMe"
-    "thod:H\n\017method_category\022\036.google.protobu"
-    "f.MethodOptions\030\201+ \001(\tR\016methodCategory:L"
-    "\n\021method_permission\022\036.google.protobuf.Me"
-    "thodOptions\030\202+ \001(\tR\020methodPermission:s\n\021"
-    "method_visibility\022\036.google.protobuf.Meth"
-    "odOptions\030\203+ \001(\0162%.kentik.core.v202303.M"
-    "ethodVisibilityR\020methodVisibility:A\n\014dis"
-    "play_name\022\035.google.protobuf.FieldOptions"
-    "\030\204+ \001(\tR\013displayName:N\n\021enum_display_nam"
-    "e\022!.google.protobuf.EnumValueOptions\030\205+ "
-    "\001(\tR\017enumDisplayNameBLZJgithub.com/kenti"
-    "k/api-schema-public/gen/go/kentik/core/v"
-    "202303;kentik_coreb\006proto3"
+    "ions\030\203+ \001(\tR\013backendType:6\n\005authn\022\037.goog"
+    "le.protobuf.ServiceOptions\030\206+ \001(\tR\005authn"
+    ":8\n\006signer\022\037.google.protobuf.ServiceOpti"
+    "ons\030\207+ \001(\tR\006signer:B\n\014method_scope\022\036.goo"
+    "gle.protobuf.MethodOptions\030\376* \001(\tR\013metho"
+    "dScope:F\n\016private_method\022\036.google.protob"
+    "uf.MethodOptions\030\200+ \001(\010R\rprivateMethod:H"
+    "\n\017method_category\022\036.google.protobuf.Meth"
+    "odOptions\030\201+ \001(\tR\016methodCategory:L\n\021meth"
+    "od_permission\022\036.google.protobuf.MethodOp"
+    "tions\030\202+ \001(\tR\020methodPermission:s\n\021method"
+    "_visibility\022\036.google.protobuf.MethodOpti"
+    "ons\030\203+ \001(\0162%.kentik.core.v202303.MethodV"
+    "isibilityR\020methodVisibility:A\n\014display_n"
+    "ame\022\035.google.protobuf.FieldOptions\030\204+ \001("
+    "\tR\013displayName:N\n\021enum_display_name\022!.go"
+    "ogle.protobuf.EnumValueOptions\030\205+ \001(\tR\017e"
+    "numDisplayNameBLZJgithub.com/kentik/api-"
+    "schema-public/gen/go/kentik/core/v202303"
+    ";kentik_coreb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_deps[1] =
     {
@@ -84,7 +87,7 @@ static ::absl::once_flag descriptor_table_kentik_2fcore_2fv202303_2fannotations_
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto = {
     false,
     false,
-    1466,
+    1580,
     descriptor_table_protodef_kentik_2fcore_2fv202303_2fannotations_2eproto,
     "kentik/core/v202303/annotations.proto",
     &descriptor_table_kentik_2fcore_2fv202303_2fannotations_2eproto_once,
@@ -140,6 +143,18 @@ PROTOBUF_CONSTINIT
         ExtensionIdentifier<::google::protobuf::ServiceOptions, ::_pbi::StringTypeTraits,
                             9, false>
             backend_type(kBackendTypeFieldNumber, backend_type_default);
+const std::string authn_default("");
+PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 ::_pbi::
+        ExtensionIdentifier<::google::protobuf::ServiceOptions, ::_pbi::StringTypeTraits,
+                            9, false>
+            authn(kAuthnFieldNumber, authn_default);
+const std::string signer_default("");
+PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 ::_pbi::
+        ExtensionIdentifier<::google::protobuf::ServiceOptions, ::_pbi::StringTypeTraits,
+                            9, false>
+            signer(kSignerFieldNumber, signer_default);
 const std::string method_scope_default("");
 PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 ::_pbi::
@@ -203,6 +218,12 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::std::false_type
             false, false, ::kentik::core::v202303::ServiceVisibility_IsValid),
         ::_pbi::ExtensionSet::RegisterExtension(
             &::google::protobuf::ServiceOptions::default_instance(), 5507, 9,
+            false, false),
+        ::_pbi::ExtensionSet::RegisterExtension(
+            &::google::protobuf::ServiceOptions::default_instance(), 5510, 9,
+            false, false),
+        ::_pbi::ExtensionSet::RegisterExtension(
+            &::google::protobuf::ServiceOptions::default_instance(), 5511, 9,
             false, false),
         ::_pbi::ExtensionSet::RegisterExtension(
             &::google::protobuf::MethodOptions::default_instance(), 5502, 9,

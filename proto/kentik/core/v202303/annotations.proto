@@ -46,6 +46,12 @@ extend google.protobuf.ServiceOptions {
   ServiceVisibility visibility = 5506;
   // backend server route option
   string backend_type = 5507;
+  // authn selects the API gateway authentication mode for this service's routes;
+  // empty means the default
+  string authn = 5510;
+  // signer selects the token signing scheme the API gateway mints for this service's
+  // routes: "v1" (the default when empty) or "v2"
+  string signer = 5511;
 }
 
 extend google.protobuf.MethodOptions {
