@@ -200,6 +200,7 @@ type AttributeFilter struct {
 	//	*AttributeFilter_EndsWith
 	//	*AttributeFilter_Contains
 	//	*AttributeFilter_In
+	//	*AttributeFilter_MatchesRegex
 	//	*AttributeFilter_Any
 	Value         isAttributeFilter_Value `protobuf_oneof:"value"`
 	unknownFields protoimpl.UnknownFields
@@ -304,6 +305,15 @@ func (x *AttributeFilter) GetIn() *AttributeFilter_StringArray {
 	return nil
 }
 
+func (x *AttributeFilter) GetMatchesRegex() string {
+	if x != nil {
+		if x, ok := x.Value.(*AttributeFilter_MatchesRegex); ok {
+			return x.MatchesRegex
+		}
+	}
+	return ""
+}
+
 func (x *AttributeFilter) GetAny() bool {
 	if x != nil {
 		if x, ok := x.Value.(*AttributeFilter_Any); ok {
@@ -343,6 +353,16 @@ type AttributeFilter_In struct {
 	In *AttributeFilter_StringArray `protobuf:"bytes,7,opt,name=in,proto3,oneof"`
 }
 
+type AttributeFilter_MatchesRegex struct {
+	// Unanchored: the pattern may match anywhere in the value (`foo` matches
+	// `xfooy`). Use `^` / `$` to require the start or end of the string.
+	// Common dialect for all use cases.
+	// Supported regex features: literals, `.`, `|`, `()` / `(?:)`, `*+?{n,m}`,
+	// `^$`, POSIX classes, `\d \D \s \S \w \W`.
+	// Unsupported regex features: `\b \B \A \z \Q \E \p \P`, and `(?` other than `(?:)`.
+	MatchesRegex string `protobuf:"bytes,9,opt,name=matches_regex,json=matchesRegex,proto3,oneof"`
+}
+
 type AttributeFilter_Any struct {
 	// The equivalent of: value="*.  To use any this value MUST be set to true. Setting not to true
 	// enables us to look for "not-anything", but that predicate does not make much sense.
@@ -361,6 +381,8 @@ func (*AttributeFilter_Contains) isAttributeFilter_Value() {}
 
 func (*AttributeFilter_In) isAttributeFilter_Value() {}
 
+func (*AttributeFilter_MatchesRegex) isAttributeFilter_Value() {}
+
 func (*AttributeFilter_Any) isAttributeFilter_Value() {}
 
 type SimpleAttributeFilter struct {
@@ -374,6 +396,7 @@ type SimpleAttributeFilter struct {
 	//	*SimpleAttributeFilter_EndsWith
 	//	*SimpleAttributeFilter_Contains
 	//	*SimpleAttributeFilter_In
+	//	*SimpleAttributeFilter_MatchesRegex
 	//	*SimpleAttributeFilter_Any
 	Value         isSimpleAttributeFilter_Value `protobuf_oneof:"value"`
 	unknownFields protoimpl.UnknownFields
@@ -462,6 +485,15 @@ func (x *SimpleAttributeFilter) GetIn() *SimpleAttributeFilter_StringArray {
 	return nil
 }
 
+func (x *SimpleAttributeFilter) GetMatchesRegex() string {
+	if x != nil {
+		if x, ok := x.Value.(*SimpleAttributeFilter_MatchesRegex); ok {
+			return x.MatchesRegex
+		}
+	}
+	return ""
+}
+
 func (x *SimpleAttributeFilter) GetAny() bool {
 	if x != nil {
 		if x, ok := x.Value.(*SimpleAttributeFilter_Any); ok {
@@ -495,6 +527,16 @@ type SimpleAttributeFilter_In struct {
 	In *SimpleAttributeFilter_StringArray `protobuf:"bytes,7,opt,name=in,proto3,oneof"`
 }
 
+type SimpleAttributeFilter_MatchesRegex struct {
+	// Unanchored: the pattern may match anywhere in the value (`foo` matches
+	// `xfooy`). Use `^` / `$` to require the start or end of the string.
+	// Common dialect for all use cases.
+	// Supported regex features: literals, `.`, `|`, `()` / `(?:)`, `*+?{n,m}`,
+	// `^$`, POSIX classes, `\d \D \s \S \w \W`.
+	// Unsupported regex features: `\b \B \A \z \Q \E \p \P`, and `(?` other than `(?:)`.
+	MatchesRegex string `protobuf:"bytes,9,opt,name=matches_regex,json=matchesRegex,proto3,oneof"`
+}
+
 type SimpleAttributeFilter_Any struct {
 	// The equivalent of: value="*.  To use any this value MUST be set to true.
 	Any bool `protobuf:"varint,8,opt,name=any,proto3,oneof"`
@@ -509,6 +551,8 @@ func (*SimpleAttributeFilter_EndsWith) isSimpleAttributeFilter_Value() {}
 func (*SimpleAttributeFilter_Contains) isSimpleAttributeFilter_Value() {}
 
 func (*SimpleAttributeFilter_In) isSimpleAttributeFilter_Value() {}
+
+func (*SimpleAttributeFilter_MatchesRegex) isSimpleAttributeFilter_Value() {}
 
 func (*SimpleAttributeFilter_Any) isSimpleAttributeFilter_Value() {}
 
@@ -978,7 +1022,7 @@ const file_kentik_alerting_types_v202303_types_proto_rawDesc = "" +
 	"\afilters\x18\x02 \x03(\v2-.kentik.alerting.types.v202303.KeyValueFilterR\afilters\x1ai\n" +
 	"\vFilterEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12D\n" +
-	"\x05value\x18\x02 \x01(\v2..kentik.alerting.types.v202303.AttributeFilterR\x05value:\x028\x01\"\xc7\x02\n" +
+	"\x05value\x18\x02 \x01(\v2..kentik.alerting.types.v202303.AttributeFilterR\x05value:\x028\x01\"\xee\x02\n" +
 	"\x0fAttributeFilter\x12\x10\n" +
 	"\x03not\x18\x01 \x01(\bR\x03not\x12\x16\n" +
 	"\x05empty\x18\x02 \x01(\bH\x00R\x05empty\x12\x18\n" +
@@ -987,18 +1031,20 @@ const file_kentik_alerting_types_v202303_types_proto_rawDesc = "" +
 	"startsWith\x12\x1d\n" +
 	"\tends_with\x18\x05 \x01(\tH\x00R\bendsWith\x12\x1c\n" +
 	"\bcontains\x18\x06 \x01(\tH\x00R\bcontains\x12L\n" +
-	"\x02in\x18\a \x01(\v2:.kentik.alerting.types.v202303.AttributeFilter.StringArrayH\x00R\x02in\x12\x12\n" +
+	"\x02in\x18\a \x01(\v2:.kentik.alerting.types.v202303.AttributeFilter.StringArrayH\x00R\x02in\x12%\n" +
+	"\rmatches_regex\x18\t \x01(\tH\x00R\fmatchesRegex\x12\x12\n" +
 	"\x03any\x18\b \x01(\bH\x00R\x03any\x1a%\n" +
 	"\vStringArray\x12\x16\n" +
 	"\x06values\x18\x01 \x03(\tR\x06valuesB\a\n" +
-	"\x05value\"\xa9\x02\n" +
+	"\x05value\"\xd0\x02\n" +
 	"\x15SimpleAttributeFilter\x12\x18\n" +
 	"\x06equals\x18\x03 \x01(\tH\x00R\x06equals\x12!\n" +
 	"\vstarts_with\x18\x04 \x01(\tH\x00R\n" +
 	"startsWith\x12\x1d\n" +
 	"\tends_with\x18\x05 \x01(\tH\x00R\bendsWith\x12\x1c\n" +
 	"\bcontains\x18\x06 \x01(\tH\x00R\bcontains\x12R\n" +
-	"\x02in\x18\a \x01(\v2@.kentik.alerting.types.v202303.SimpleAttributeFilter.StringArrayH\x00R\x02in\x12\x12\n" +
+	"\x02in\x18\a \x01(\v2@.kentik.alerting.types.v202303.SimpleAttributeFilter.StringArrayH\x00R\x02in\x12%\n" +
+	"\rmatches_regex\x18\t \x01(\tH\x00R\fmatchesRegex\x12\x12\n" +
 	"\x03any\x18\b \x01(\bH\x00R\x03any\x1a%\n" +
 	"\vStringArray\x12\x16\n" +
 	"\x06values\x18\x01 \x03(\tR\x06valuesB\a\n" +
@@ -1108,6 +1154,7 @@ func file_kentik_alerting_types_v202303_types_proto_init() {
 		(*AttributeFilter_EndsWith)(nil),
 		(*AttributeFilter_Contains)(nil),
 		(*AttributeFilter_In)(nil),
+		(*AttributeFilter_MatchesRegex)(nil),
 		(*AttributeFilter_Any)(nil),
 	}
 	file_kentik_alerting_types_v202303_types_proto_msgTypes[2].OneofWrappers = []any{
@@ -1116,6 +1163,7 @@ func file_kentik_alerting_types_v202303_types_proto_init() {
 		(*SimpleAttributeFilter_EndsWith)(nil),
 		(*SimpleAttributeFilter_Contains)(nil),
 		(*SimpleAttributeFilter_In)(nil),
+		(*SimpleAttributeFilter_MatchesRegex)(nil),
 		(*SimpleAttributeFilter_Any)(nil),
 	}
 	type x struct{}

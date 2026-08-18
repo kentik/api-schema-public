@@ -621,7 +621,7 @@ const ProtobufCMessageDescriptor kentik__alerting__types__v202303__attribute_fil
   (ProtobufCMessageInit) kentik__alerting__types__v202303__attribute_filter__string_array__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__attribute_filter__field_descriptors[8] =
+static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__attribute_filter__field_descriptors[9] =
 {
   {
     "not",
@@ -719,6 +719,18 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__attribut
     PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "matches_regex",
+    9,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Alerting__Types__V202303__AttributeFilter, value_case),
+    offsetof(Kentik__Alerting__Types__V202303__AttributeFilter, matches_regex),
+    NULL,
+    &protobuf_c_empty_string,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__alerting__types__v202303__attribute_filter__field_indices_by_name[] = {
   7,   /* field[7] = any */
@@ -727,13 +739,14 @@ static const unsigned kentik__alerting__types__v202303__attribute_filter__field_
   4,   /* field[4] = ends_with */
   2,   /* field[2] = equals */
   6,   /* field[6] = in */
+  8,   /* field[8] = matches_regex */
   0,   /* field[0] = not */
   3,   /* field[3] = starts_with */
 };
 static const ProtobufCIntRange kentik__alerting__types__v202303__attribute_filter__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 8 }
+  { 0, 9 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__types__v202303__attribute_filter__descriptor =
 {
@@ -743,7 +756,7 @@ const ProtobufCMessageDescriptor kentik__alerting__types__v202303__attribute_fil
   "Kentik__Alerting__Types__V202303__AttributeFilter",
   "kentik.alerting.types.v202303",
   sizeof(Kentik__Alerting__Types__V202303__AttributeFilter),
-  8,
+  9,
   kentik__alerting__types__v202303__attribute_filter__field_descriptors,
   kentik__alerting__types__v202303__attribute_filter__field_indices_by_name,
   1,  kentik__alerting__types__v202303__attribute_filter__number_ranges,
@@ -788,7 +801,7 @@ const ProtobufCMessageDescriptor kentik__alerting__types__v202303__simple_attrib
   (ProtobufCMessageInit) kentik__alerting__types__v202303__simple_attribute_filter__string_array__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__simple_attribute_filter__field_descriptors[6] =
+static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__simple_attribute_filter__field_descriptors[7] =
 {
   {
     "equals",
@@ -862,6 +875,18 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__simple_a
     PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "matches_regex",
+    9,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    offsetof(Kentik__Alerting__Types__V202303__SimpleAttributeFilter, value_case),
+    offsetof(Kentik__Alerting__Types__V202303__SimpleAttributeFilter, matches_regex),
+    NULL,
+    &protobuf_c_empty_string,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__alerting__types__v202303__simple_attribute_filter__field_indices_by_name[] = {
   5,   /* field[5] = any */
@@ -869,12 +894,13 @@ static const unsigned kentik__alerting__types__v202303__simple_attribute_filter_
   2,   /* field[2] = ends_with */
   0,   /* field[0] = equals */
   4,   /* field[4] = in */
+  6,   /* field[6] = matches_regex */
   1,   /* field[1] = starts_with */
 };
 static const ProtobufCIntRange kentik__alerting__types__v202303__simple_attribute_filter__number_ranges[1 + 1] =
 {
   { 3, 0 },
-  { 0, 6 }
+  { 0, 7 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__types__v202303__simple_attribute_filter__descriptor =
 {
@@ -884,7 +910,7 @@ const ProtobufCMessageDescriptor kentik__alerting__types__v202303__simple_attrib
   "Kentik__Alerting__Types__V202303__SimpleAttributeFilter",
   "kentik.alerting.types.v202303",
   sizeof(Kentik__Alerting__Types__V202303__SimpleAttributeFilter),
-  6,
+  7,
   kentik__alerting__types__v202303__simple_attribute_filter__field_descriptors,
   kentik__alerting__types__v202303__simple_attribute_filter__field_indices_by_name,
   1,  kentik__alerting__types__v202303__simple_attribute_filter__number_ranges,

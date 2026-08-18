@@ -99,6 +99,7 @@ typedef enum {
   KENTIK__ALERTING__TYPES__V202303__ATTRIBUTE_FILTER__VALUE_ENDS_WITH = 5,
   KENTIK__ALERTING__TYPES__V202303__ATTRIBUTE_FILTER__VALUE_CONTAINS = 6,
   KENTIK__ALERTING__TYPES__V202303__ATTRIBUTE_FILTER__VALUE_IN = 7,
+  KENTIK__ALERTING__TYPES__V202303__ATTRIBUTE_FILTER__VALUE_MATCHES_REGEX = 9,
   KENTIK__ALERTING__TYPES__V202303__ATTRIBUTE_FILTER__VALUE_ANY = 8
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__ALERTING__TYPES__V202303__ATTRIBUTE_FILTER__VALUE__CASE)
 } Kentik__Alerting__Types__V202303__AttributeFilter__ValueCase;
@@ -115,6 +116,15 @@ struct  Kentik__Alerting__Types__V202303__AttributeFilter
     char *contains;
     char *ends_with;
     char *equals;
+    /*
+     * Unanchored: the pattern may match anywhere in the value (`foo` matches
+     * `xfooy`). Use `^` / `$` to require the start or end of the string.
+     * Common dialect for all use cases.
+     * Supported regex features: literals, `.`, `|`, `()` / `(?:)`, `*+?{n,m}`,
+     * `^$`, POSIX classes, `\d \D \s \S \w \W`.
+     * Unsupported regex features: `\b \B \A \z \Q \E \p \P`, and `(?` other than `(?:)`.
+     */
+    char *matches_regex;
     char *starts_with;
     Kentik__Alerting__Types__V202303__AttributeFilter__StringArray *in;
     /*
@@ -152,6 +162,7 @@ typedef enum {
   KENTIK__ALERTING__TYPES__V202303__SIMPLE_ATTRIBUTE_FILTER__VALUE_ENDS_WITH = 5,
   KENTIK__ALERTING__TYPES__V202303__SIMPLE_ATTRIBUTE_FILTER__VALUE_CONTAINS = 6,
   KENTIK__ALERTING__TYPES__V202303__SIMPLE_ATTRIBUTE_FILTER__VALUE_IN = 7,
+  KENTIK__ALERTING__TYPES__V202303__SIMPLE_ATTRIBUTE_FILTER__VALUE_MATCHES_REGEX = 9,
   KENTIK__ALERTING__TYPES__V202303__SIMPLE_ATTRIBUTE_FILTER__VALUE_ANY = 8
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__ALERTING__TYPES__V202303__SIMPLE_ATTRIBUTE_FILTER__VALUE__CASE)
 } Kentik__Alerting__Types__V202303__SimpleAttributeFilter__ValueCase;
@@ -164,6 +175,15 @@ struct  Kentik__Alerting__Types__V202303__SimpleAttributeFilter
     char *contains;
     char *ends_with;
     char *equals;
+    /*
+     * Unanchored: the pattern may match anywhere in the value (`foo` matches
+     * `xfooy`). Use `^` / `$` to require the start or end of the string.
+     * Common dialect for all use cases.
+     * Supported regex features: literals, `.`, `|`, `()` / `(?:)`, `*+?{n,m}`,
+     * `^$`, POSIX classes, `\d \D \s \S \w \W`.
+     * Unsupported regex features: `\b \B \A \z \Q \E \p \P`, and `(?` other than `(?:)`.
+     */
+    char *matches_regex;
     char *starts_with;
     Kentik__Alerting__Types__V202303__SimpleAttributeFilter__StringArray *in;
     /*

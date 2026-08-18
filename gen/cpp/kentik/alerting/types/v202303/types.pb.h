@@ -1749,6 +1749,7 @@ class SimpleAttributeFilter final : public ::google::protobuf::Message
     kEndsWith = 5,
     kContains = 6,
     kIn = 7,
+    kMatchesRegex = 9,
     kAny = 8,
     VALUE_NOT_SET = 0,
   };
@@ -1849,6 +1850,7 @@ class SimpleAttributeFilter final : public ::google::protobuf::Message
     kEndsWithFieldNumber = 5,
     kContainsFieldNumber = 6,
     kInFieldNumber = 7,
+    kMatchesRegexFieldNumber = 9,
     kAnyFieldNumber = 8,
   };
   // string equals = 3 [json_name = "equals"];
@@ -1938,6 +1940,23 @@ class SimpleAttributeFilter final : public ::google::protobuf::Message
   ::kentik::alerting::types::v202303::SimpleAttributeFilter_StringArray* _internal_mutable_in();
 
   public:
+  // string matches_regex = 9 [json_name = "matchesRegex"];
+  bool has_matches_regex() const;
+  void clear_matches_regex() ;
+  const std::string& matches_regex() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_matches_regex(Arg_&& arg, Args_... args);
+  std::string* mutable_matches_regex();
+  PROTOBUF_NODISCARD std::string* release_matches_regex();
+  void set_allocated_matches_regex(std::string* value);
+
+  private:
+  const std::string& _internal_matches_regex() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_matches_regex(
+      const std::string& value);
+  std::string* _internal_mutable_matches_regex();
+
+  public:
   // bool any = 8 [json_name = "any"];
   bool has_any() const;
   void clear_any() ;
@@ -1959,13 +1978,14 @@ class SimpleAttributeFilter final : public ::google::protobuf::Message
   void set_has_ends_with();
   void set_has_contains();
   void set_has_in();
+  void set_has_matches_regex();
   void set_has_any();
   inline bool has_value() const;
   inline void clear_has_value();
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 6, 1,
-      94, 2>
+      0, 7, 1,
+      107, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1990,6 +2010,7 @@ class SimpleAttributeFilter final : public ::google::protobuf::Message
       ::google::protobuf::internal::ArenaStringPtr ends_with_;
       ::google::protobuf::internal::ArenaStringPtr contains_;
       ::kentik::alerting::types::v202303::SimpleAttributeFilter_StringArray* in_;
+      ::google::protobuf::internal::ArenaStringPtr matches_regex_;
       bool any_;
     } value_;
     ::google::protobuf::internal::CachedSize _cached_size_;
@@ -2261,6 +2282,7 @@ class AttributeFilter final : public ::google::protobuf::Message
     kEndsWith = 5,
     kContains = 6,
     kIn = 7,
+    kMatchesRegex = 9,
     kAny = 8,
     VALUE_NOT_SET = 0,
   };
@@ -2363,6 +2385,7 @@ class AttributeFilter final : public ::google::protobuf::Message
     kEndsWithFieldNumber = 5,
     kContainsFieldNumber = 6,
     kInFieldNumber = 7,
+    kMatchesRegexFieldNumber = 9,
     kAnyFieldNumber = 8,
   };
   // bool not = 1 [json_name = "not"];
@@ -2473,6 +2496,23 @@ class AttributeFilter final : public ::google::protobuf::Message
   ::kentik::alerting::types::v202303::AttributeFilter_StringArray* _internal_mutable_in();
 
   public:
+  // string matches_regex = 9 [json_name = "matchesRegex"];
+  bool has_matches_regex() const;
+  void clear_matches_regex() ;
+  const std::string& matches_regex() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_matches_regex(Arg_&& arg, Args_... args);
+  std::string* mutable_matches_regex();
+  PROTOBUF_NODISCARD std::string* release_matches_regex();
+  void set_allocated_matches_regex(std::string* value);
+
+  private:
+  const std::string& _internal_matches_regex() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_matches_regex(
+      const std::string& value);
+  std::string* _internal_mutable_matches_regex();
+
+  public:
   // bool any = 8 [json_name = "any"];
   bool has_any() const;
   void clear_any() ;
@@ -2495,13 +2535,14 @@ class AttributeFilter final : public ::google::protobuf::Message
   void set_has_ends_with();
   void set_has_contains();
   void set_has_in();
+  void set_has_matches_regex();
   void set_has_any();
   inline bool has_value() const;
   inline void clear_has_value();
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 8, 1,
-      96, 2>
+      0, 9, 1,
+      109, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -2528,6 +2569,7 @@ class AttributeFilter final : public ::google::protobuf::Message
       ::google::protobuf::internal::ArenaStringPtr ends_with_;
       ::google::protobuf::internal::ArenaStringPtr contains_;
       ::kentik::alerting::types::v202303::AttributeFilter_StringArray* in_;
+      ::google::protobuf::internal::ArenaStringPtr matches_regex_;
       bool any_;
     } value_;
     ::google::protobuf::internal::CachedSize _cached_size_;
@@ -3648,6 +3690,91 @@ inline ::kentik::alerting::types::v202303::AttributeFilter_StringArray* Attribut
   return _msg;
 }
 
+// string matches_regex = 9 [json_name = "matchesRegex"];
+inline bool AttributeFilter::has_matches_regex() const {
+  return value_case() == kMatchesRegex;
+}
+inline void AttributeFilter::set_has_matches_regex() {
+  _impl_._oneof_case_[0] = kMatchesRegex;
+}
+inline void AttributeFilter::clear_matches_regex() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value_case() == kMatchesRegex) {
+    _impl_.value_.matches_regex_.Destroy();
+    clear_has_value();
+  }
+}
+inline const std::string& AttributeFilter::matches_regex() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.types.v202303.AttributeFilter.matches_regex)
+  return _internal_matches_regex();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AttributeFilter::set_matches_regex(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value_case() != kMatchesRegex) {
+    clear_value();
+
+    set_has_matches_regex();
+    _impl_.value_.matches_regex_.InitDefault();
+  }
+  _impl_.value_.matches_regex_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.alerting.types.v202303.AttributeFilter.matches_regex)
+}
+inline std::string* AttributeFilter::mutable_matches_regex() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_matches_regex();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.types.v202303.AttributeFilter.matches_regex)
+  return _s;
+}
+inline const std::string& AttributeFilter::_internal_matches_regex() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  if (value_case() != kMatchesRegex) {
+    return ::google::protobuf::internal::GetEmptyStringAlreadyInited();
+  }
+  return _impl_.value_.matches_regex_.Get();
+}
+inline void AttributeFilter::_internal_set_matches_regex(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value_case() != kMatchesRegex) {
+    clear_value();
+
+    set_has_matches_regex();
+    _impl_.value_.matches_regex_.InitDefault();
+  }
+  _impl_.value_.matches_regex_.Set(value, GetArena());
+}
+inline std::string* AttributeFilter::_internal_mutable_matches_regex() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value_case() != kMatchesRegex) {
+    clear_value();
+
+    set_has_matches_regex();
+    _impl_.value_.matches_regex_.InitDefault();
+  }
+  return _impl_.value_.matches_regex_.Mutable( GetArena());
+}
+inline std::string* AttributeFilter::release_matches_regex() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.types.v202303.AttributeFilter.matches_regex)
+  if (value_case() != kMatchesRegex) {
+    return nullptr;
+  }
+  clear_has_value();
+  return _impl_.value_.matches_regex_.Release();
+}
+inline void AttributeFilter::set_allocated_matches_regex(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (has_value()) {
+    clear_value();
+  }
+  if (value != nullptr) {
+    set_has_matches_regex();
+    _impl_.value_.matches_regex_.InitAllocated(value, GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.types.v202303.AttributeFilter.matches_regex)
+}
+
 // bool any = 8 [json_name = "any"];
 inline bool AttributeFilter::has_any() const {
   return value_case() == kAny;
@@ -4179,6 +4306,91 @@ inline ::kentik::alerting::types::v202303::SimpleAttributeFilter_StringArray* Si
   ::kentik::alerting::types::v202303::SimpleAttributeFilter_StringArray* _msg = _internal_mutable_in();
   // @@protoc_insertion_point(field_mutable:kentik.alerting.types.v202303.SimpleAttributeFilter.in)
   return _msg;
+}
+
+// string matches_regex = 9 [json_name = "matchesRegex"];
+inline bool SimpleAttributeFilter::has_matches_regex() const {
+  return value_case() == kMatchesRegex;
+}
+inline void SimpleAttributeFilter::set_has_matches_regex() {
+  _impl_._oneof_case_[0] = kMatchesRegex;
+}
+inline void SimpleAttributeFilter::clear_matches_regex() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value_case() == kMatchesRegex) {
+    _impl_.value_.matches_regex_.Destroy();
+    clear_has_value();
+  }
+}
+inline const std::string& SimpleAttributeFilter::matches_regex() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.types.v202303.SimpleAttributeFilter.matches_regex)
+  return _internal_matches_regex();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void SimpleAttributeFilter::set_matches_regex(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value_case() != kMatchesRegex) {
+    clear_value();
+
+    set_has_matches_regex();
+    _impl_.value_.matches_regex_.InitDefault();
+  }
+  _impl_.value_.matches_regex_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.alerting.types.v202303.SimpleAttributeFilter.matches_regex)
+}
+inline std::string* SimpleAttributeFilter::mutable_matches_regex() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_matches_regex();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.types.v202303.SimpleAttributeFilter.matches_regex)
+  return _s;
+}
+inline const std::string& SimpleAttributeFilter::_internal_matches_regex() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  if (value_case() != kMatchesRegex) {
+    return ::google::protobuf::internal::GetEmptyStringAlreadyInited();
+  }
+  return _impl_.value_.matches_regex_.Get();
+}
+inline void SimpleAttributeFilter::_internal_set_matches_regex(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value_case() != kMatchesRegex) {
+    clear_value();
+
+    set_has_matches_regex();
+    _impl_.value_.matches_regex_.InitDefault();
+  }
+  _impl_.value_.matches_regex_.Set(value, GetArena());
+}
+inline std::string* SimpleAttributeFilter::_internal_mutable_matches_regex() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (value_case() != kMatchesRegex) {
+    clear_value();
+
+    set_has_matches_regex();
+    _impl_.value_.matches_regex_.InitDefault();
+  }
+  return _impl_.value_.matches_regex_.Mutable( GetArena());
+}
+inline std::string* SimpleAttributeFilter::release_matches_regex() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.types.v202303.SimpleAttributeFilter.matches_regex)
+  if (value_case() != kMatchesRegex) {
+    return nullptr;
+  }
+  clear_has_value();
+  return _impl_.value_.matches_regex_.Release();
+}
+inline void SimpleAttributeFilter::set_allocated_matches_regex(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (has_value()) {
+    clear_value();
+  }
+  if (value != nullptr) {
+    set_has_matches_regex();
+    _impl_.value_.matches_regex_.InitAllocated(value, GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.types.v202303.SimpleAttributeFilter.matches_regex)
 }
 
 // bool any = 8 [json_name = "any"];

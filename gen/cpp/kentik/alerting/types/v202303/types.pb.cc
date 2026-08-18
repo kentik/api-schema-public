@@ -434,6 +434,7 @@ const ::uint32_t
         ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
+        ::_pbi::kInvalidFieldOffsetTag,
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::types::v202303::AttributeFilter, _impl_.value_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::types::v202303::SimpleAttributeFilter_StringArray, _internal_metadata_),
@@ -452,6 +453,7 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
+        ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
         ::_pbi::kInvalidFieldOffsetTag,
@@ -553,16 +555,16 @@ static const ::_pbi::MigrationSchema
         {12, -1, -1, sizeof(::kentik::alerting::types::v202303::MultiAttributeFilter)},
         {22, -1, -1, sizeof(::kentik::alerting::types::v202303::AttributeFilter_StringArray)},
         {31, -1, -1, sizeof(::kentik::alerting::types::v202303::AttributeFilter)},
-        {48, -1, -1, sizeof(::kentik::alerting::types::v202303::SimpleAttributeFilter_StringArray)},
-        {57, -1, -1, sizeof(::kentik::alerting::types::v202303::SimpleAttributeFilter)},
-        {72, 82, -1, sizeof(::kentik::alerting::types::v202303::KeyValueFilter)},
-        {84, -1, -1, sizeof(::kentik::alerting::types::v202303::PaginationConfig)},
-        {95, -1, -1, sizeof(::kentik::alerting::types::v202303::PaginationInfo)},
-        {105, -1, -1, sizeof(::kentik::alerting::types::v202303::SortingConfig)},
-        {114, -1, -1, sizeof(::kentik::alerting::types::v202303::SortingField)},
-        {125, 135, -1, sizeof(::kentik::alerting::types::v202303::TimeRange)},
-        {137, 147, -1, sizeof(::kentik::alerting::types::v202303::KeyValue_ValueEntry_DoNotUse)},
-        {149, -1, -1, sizeof(::kentik::alerting::types::v202303::KeyValue)},
+        {49, -1, -1, sizeof(::kentik::alerting::types::v202303::SimpleAttributeFilter_StringArray)},
+        {58, -1, -1, sizeof(::kentik::alerting::types::v202303::SimpleAttributeFilter)},
+        {74, 84, -1, sizeof(::kentik::alerting::types::v202303::KeyValueFilter)},
+        {86, -1, -1, sizeof(::kentik::alerting::types::v202303::PaginationConfig)},
+        {97, -1, -1, sizeof(::kentik::alerting::types::v202303::PaginationInfo)},
+        {107, -1, -1, sizeof(::kentik::alerting::types::v202303::SortingConfig)},
+        {116, -1, -1, sizeof(::kentik::alerting::types::v202303::SortingField)},
+        {127, 137, -1, sizeof(::kentik::alerting::types::v202303::TimeRange)},
+        {139, 149, -1, sizeof(::kentik::alerting::types::v202303::KeyValue_ValueEntry_DoNotUse)},
+        {151, -1, -1, sizeof(::kentik::alerting::types::v202303::KeyValue)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::alerting::types::v202303::_MultiAttributeFilter_FilterEntry_DoNotUse_default_instance_._instance,
@@ -592,52 +594,54 @@ const char descriptor_table_protodef_kentik_2falerting_2ftypes_2fv202303_2ftypes
     "lueFilterR\007filters\032i\n\013FilterEntry\022\020\n\003key"
     "\030\001 \001(\tR\003key\022D\n\005value\030\002 \001(\0132..kentik.aler"
     "ting.types.v202303.AttributeFilterR\005valu"
-    "e:\0028\001\"\307\002\n\017AttributeFilter\022\020\n\003not\030\001 \001(\010R\003"
+    "e:\0028\001\"\356\002\n\017AttributeFilter\022\020\n\003not\030\001 \001(\010R\003"
     "not\022\026\n\005empty\030\002 \001(\010H\000R\005empty\022\030\n\006equals\030\003 "
     "\001(\tH\000R\006equals\022!\n\013starts_with\030\004 \001(\tH\000R\nst"
     "artsWith\022\035\n\tends_with\030\005 \001(\tH\000R\010endsWith\022"
     "\034\n\010contains\030\006 \001(\tH\000R\010contains\022L\n\002in\030\007 \001("
     "\0132:.kentik.alerting.types.v202303.Attrib"
-    "uteFilter.StringArrayH\000R\002in\022\022\n\003any\030\010 \001(\010"
-    "H\000R\003any\032%\n\013StringArray\022\026\n\006values\030\001 \003(\tR\006"
-    "valuesB\007\n\005value\"\251\002\n\025SimpleAttributeFilte"
-    "r\022\030\n\006equals\030\003 \001(\tH\000R\006equals\022!\n\013starts_wi"
-    "th\030\004 \001(\tH\000R\nstartsWith\022\035\n\tends_with\030\005 \001("
-    "\tH\000R\010endsWith\022\034\n\010contains\030\006 \001(\tH\000R\010conta"
-    "ins\022R\n\002in\030\007 \001(\0132@.kentik.alerting.types."
-    "v202303.SimpleAttributeFilter.StringArra"
-    "yH\000R\002in\022\022\n\003any\030\010 \001(\010H\000R\003any\032%\n\013StringArr"
-    "ay\022\026\n\006values\030\001 \003(\tR\006valuesB\007\n\005value\"\236\001\n\016"
-    "KeyValueFilter\022F\n\003key\030\001 \001(\01324.kentik.ale"
-    "rting.types.v202303.SimpleAttributeFilte"
-    "rR\003key\022D\n\005value\030\002 \001(\0132..kentik.alerting."
-    "types.v202303.AttributeFilterR\005value\"p\n\020"
-    "PaginationConfig\022\024\n\005limit\030\001 \001(\004R\005limit\022\026"
-    "\n\006offset\030\002 \001(\004R\006offset\022.\n\023include_total_"
-    "count\030\003 \001(\010R\021includeTotalCount\"[\n\016Pagina"
-    "tionInfo\022\037\n\013total_count\030\001 \001(\004R\ntotalCoun"
-    "t\022(\n\020has_more_results\030\002 \001(\010R\016hasMoreResu"
-    "lts\"T\n\rSortingConfig\022C\n\006fields\030\001 \003(\0132+.k"
-    "entik.alerting.types.v202303.SortingFiel"
-    "dR\006fields\"z\n\014SortingField\022\022\n\004name\030\001 \001(\tR"
-    "\004name\022>\n\005order\030\002 \001(\0162(.kentik.alerting.t"
-    "ypes.v202303.SortOrderR\005order\022\026\n\006values\030"
-    "\003 \003(\tR\006values\"k\n\tTimeRange\0220\n\005start\030\001 \001("
-    "\0132\032.google.protobuf.TimestampR\005start\022,\n\003"
-    "end\030\002 \001(\0132\032.google.protobuf.TimestampR\003e"
-    "nd\"\216\001\n\010KeyValue\022H\n\005value\030\001 \003(\01322.kentik."
-    "alerting.types.v202303.KeyValue.ValueEnt"
-    "ryR\005value\0328\n\nValueEntry\022\020\n\003key\030\001 \001(\tR\003ke"
-    "y\022\024\n\005value\030\002 \001(\tR\005value:\0028\001*\242\001\n\010Severity"
-    "\022\030\n\024SEVERITY_UNSPECIFIED\020\000\022\022\n\016SEVERITY_C"
-    "LEAR\020\001\022\022\n\016SEVERITY_MINOR\020\n\022\024\n\020SEVERITY_W"
-    "ARNING\020\024\022\022\n\016SEVERITY_MAJOR\020(\022\023\n\017SEVERITY"
-    "_SEVERE\020F\022\025\n\021SEVERITY_CRITICAL\020Z*\\\n\tSort"
-    "Order\022\032\n\026SORT_ORDER_UNSPECIFIED\020\000\022\030\n\024SOR"
-    "T_ORDER_ASCENDING\020\001\022\031\n\025SORT_ORDER_DESCEN"
-    "DING\020\002BJZHgithub.com/kentik/api-schema-p"
-    "ublic/gen/go/kentik/alerting/types/v2023"
-    "03b\006proto3"
+    "uteFilter.StringArrayH\000R\002in\022%\n\rmatches_r"
+    "egex\030\t \001(\tH\000R\014matchesRegex\022\022\n\003any\030\010 \001(\010H"
+    "\000R\003any\032%\n\013StringArray\022\026\n\006values\030\001 \003(\tR\006v"
+    "aluesB\007\n\005value\"\320\002\n\025SimpleAttributeFilter"
+    "\022\030\n\006equals\030\003 \001(\tH\000R\006equals\022!\n\013starts_wit"
+    "h\030\004 \001(\tH\000R\nstartsWith\022\035\n\tends_with\030\005 \001(\t"
+    "H\000R\010endsWith\022\034\n\010contains\030\006 \001(\tH\000R\010contai"
+    "ns\022R\n\002in\030\007 \001(\0132@.kentik.alerting.types.v"
+    "202303.SimpleAttributeFilter.StringArray"
+    "H\000R\002in\022%\n\rmatches_regex\030\t \001(\tH\000R\014matches"
+    "Regex\022\022\n\003any\030\010 \001(\010H\000R\003any\032%\n\013StringArray"
+    "\022\026\n\006values\030\001 \003(\tR\006valuesB\007\n\005value\"\236\001\n\016Ke"
+    "yValueFilter\022F\n\003key\030\001 \001(\01324.kentik.alert"
+    "ing.types.v202303.SimpleAttributeFilterR"
+    "\003key\022D\n\005value\030\002 \001(\0132..kentik.alerting.ty"
+    "pes.v202303.AttributeFilterR\005value\"p\n\020Pa"
+    "ginationConfig\022\024\n\005limit\030\001 \001(\004R\005limit\022\026\n\006"
+    "offset\030\002 \001(\004R\006offset\022.\n\023include_total_co"
+    "unt\030\003 \001(\010R\021includeTotalCount\"[\n\016Paginati"
+    "onInfo\022\037\n\013total_count\030\001 \001(\004R\ntotalCount\022"
+    "(\n\020has_more_results\030\002 \001(\010R\016hasMoreResult"
+    "s\"T\n\rSortingConfig\022C\n\006fields\030\001 \003(\0132+.ken"
+    "tik.alerting.types.v202303.SortingFieldR"
+    "\006fields\"z\n\014SortingField\022\022\n\004name\030\001 \001(\tR\004n"
+    "ame\022>\n\005order\030\002 \001(\0162(.kentik.alerting.typ"
+    "es.v202303.SortOrderR\005order\022\026\n\006values\030\003 "
+    "\003(\tR\006values\"k\n\tTimeRange\0220\n\005start\030\001 \001(\0132"
+    "\032.google.protobuf.TimestampR\005start\022,\n\003en"
+    "d\030\002 \001(\0132\032.google.protobuf.TimestampR\003end"
+    "\"\216\001\n\010KeyValue\022H\n\005value\030\001 \003(\01322.kentik.al"
+    "erting.types.v202303.KeyValue.ValueEntry"
+    "R\005value\0328\n\nValueEntry\022\020\n\003key\030\001 \001(\tR\003key\022"
+    "\024\n\005value\030\002 \001(\tR\005value:\0028\001*\242\001\n\010Severity\022\030"
+    "\n\024SEVERITY_UNSPECIFIED\020\000\022\022\n\016SEVERITY_CLE"
+    "AR\020\001\022\022\n\016SEVERITY_MINOR\020\n\022\024\n\020SEVERITY_WAR"
+    "NING\020\024\022\022\n\016SEVERITY_MAJOR\020(\022\023\n\017SEVERITY_S"
+    "EVERE\020F\022\025\n\021SEVERITY_CRITICAL\020Z*\\\n\tSortOr"
+    "der\022\032\n\026SORT_ORDER_UNSPECIFIED\020\000\022\030\n\024SORT_"
+    "ORDER_ASCENDING\020\001\022\031\n\025SORT_ORDER_DESCENDI"
+    "NG\020\002BJZHgithub.com/kentik/api-schema-pub"
+    "lic/gen/go/kentik/alerting/types/v202303"
+    "b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2ftypes_2fv202303_2ftypes_2eproto_deps[1] =
     {
@@ -647,7 +651,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2ftypes_2fv202303_2f
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2ftypes_2fv202303_2ftypes_2eproto = {
     false,
     false,
-    2210,
+    2288,
     descriptor_table_protodef_kentik_2falerting_2ftypes_2fv202303_2ftypes_2eproto,
     "kentik/alerting/types/v202303/types.proto",
     &descriptor_table_kentik_2falerting_2ftypes_2fv202303_2ftypes_2eproto_once,
@@ -1390,6 +1394,9 @@ AttributeFilter::AttributeFilter(
       case kIn:
         _impl_.value_.in_ = ::google::protobuf::Message::CopyConstruct<::kentik::alerting::types::v202303::AttributeFilter_StringArray>(arena, *from._impl_.value_.in_);
         break;
+      case kMatchesRegex:
+        new (&_impl_.value_.matches_regex_) decltype(_impl_.value_.matches_regex_){arena, from._impl_.value_.matches_regex_};
+        break;
       case kAny:
         _impl_.value_.any_ = from._impl_.value_.any_;
         break;
@@ -1454,6 +1461,10 @@ void AttributeFilter::clear_value() {
       }
       break;
     }
+    case kMatchesRegex: {
+      _impl_.value_.matches_regex_.Destroy();
+      break;
+    }
     case kAny: {
       // No need to clear
       break;
@@ -1502,15 +1513,15 @@ const ::google::protobuf::internal::ClassData* AttributeFilter::GetClassData() c
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 8, 1, 96, 2> AttributeFilter::_table_ = {
+const ::_pbi::TcParseTable<0, 9, 1, 109, 2> AttributeFilter::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    8, 0,  // max_field_number, fast_idx_mask
+    9, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967040,  // skipmap
+    4294966784,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    8,  // num_field_entries
+    9,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -1550,15 +1561,19 @@ const ::_pbi::TcParseTable<0, 8, 1, 96, 2> AttributeFilter::_table_ = {
     // bool any = 8 [json_name = "any"];
     {PROTOBUF_FIELD_OFFSET(AttributeFilter, _impl_.value_.any_), _Internal::kOneofCaseOffset + 0, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
+    // string matches_regex = 9 [json_name = "matchesRegex"];
+    {PROTOBUF_FIELD_OFFSET(AttributeFilter, _impl_.value_.matches_regex_), _Internal::kOneofCaseOffset + 0, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::AttributeFilter_StringArray>()},
   }}, {{
-    "\55\0\0\6\13\11\10\0\0\0\0\0\0\0\0\0"
+    "\55\0\0\6\13\11\10\0\0\15\0\0\0\0\0\0"
     "kentik.alerting.types.v202303.AttributeFilter"
     "equals"
     "starts_with"
     "ends_with"
     "contains"
+    "matches_regex"
   }},
 };
 
@@ -1643,6 +1658,13 @@ PROTOBUF_NOINLINE void AttributeFilter::Clear() {
                   8, this_._internal_any(), target);
               break;
             }
+            case kMatchesRegex: {
+              const std::string& _s = this_._internal_matches_regex();
+              ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                  _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.types.v202303.AttributeFilter.matches_regex");
+              target = stream->WriteStringMaybeAliased(9, _s, target);
+              break;
+            }
             default:
               break;
           }
@@ -1709,6 +1731,12 @@ PROTOBUF_NOINLINE void AttributeFilter::Clear() {
             case kIn: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.value_.in_);
+              break;
+            }
+            // string matches_regex = 9 [json_name = "matchesRegex"];
+            case kMatchesRegex: {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_matches_regex());
               break;
             }
             // bool any = 8 [json_name = "any"];
@@ -1786,6 +1814,13 @@ void AttributeFilter::MergeImpl(::google::protobuf::MessageLite& to_msg, const :
         } else {
           _this->_impl_.value_.in_->MergeFrom(from._internal_in());
         }
+        break;
+      }
+      case kMatchesRegex: {
+        if (oneof_needs_init) {
+          _this->_impl_.value_.matches_regex_.InitDefault();
+        }
+        _this->_impl_.value_.matches_regex_.Set(from._internal_matches_regex(), arena);
         break;
       }
       case kAny: {
@@ -2129,6 +2164,9 @@ SimpleAttributeFilter::SimpleAttributeFilter(
       case kIn:
         _impl_.value_.in_ = ::google::protobuf::Message::CopyConstruct<::kentik::alerting::types::v202303::SimpleAttributeFilter_StringArray>(arena, *from._impl_.value_.in_);
         break;
+      case kMatchesRegex:
+        new (&_impl_.value_.matches_regex_) decltype(_impl_.value_.matches_regex_){arena, from._impl_.value_.matches_regex_};
+        break;
       case kAny:
         _impl_.value_.any_ = from._impl_.value_.any_;
         break;
@@ -2188,6 +2226,10 @@ void SimpleAttributeFilter::clear_value() {
       }
       break;
     }
+    case kMatchesRegex: {
+      _impl_.value_.matches_regex_.Destroy();
+      break;
+    }
     case kAny: {
       // No need to clear
       break;
@@ -2236,15 +2278,15 @@ const ::google::protobuf::internal::ClassData* SimpleAttributeFilter::GetClassDa
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 6, 1, 94, 2> SimpleAttributeFilter::_table_ = {
+const ::_pbi::TcParseTable<0, 7, 1, 107, 2> SimpleAttributeFilter::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    8, 0,  // max_field_number, fast_idx_mask
+    9, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967043,  // skipmap
+    4294966787,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    6,  // num_field_entries
+    7,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -2276,15 +2318,19 @@ const ::_pbi::TcParseTable<0, 6, 1, 94, 2> SimpleAttributeFilter::_table_ = {
     // bool any = 8 [json_name = "any"];
     {PROTOBUF_FIELD_OFFSET(SimpleAttributeFilter, _impl_.value_.any_), _Internal::kOneofCaseOffset + 0, 0,
     (0 | ::_fl::kFcOneof | ::_fl::kBool)},
+    // string matches_regex = 9 [json_name = "matchesRegex"];
+    {PROTOBUF_FIELD_OFFSET(SimpleAttributeFilter, _impl_.value_.matches_regex_), _Internal::kOneofCaseOffset + 0, 0,
+    (0 | ::_fl::kFcOneof | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::SimpleAttributeFilter_StringArray>()},
   }}, {{
-    "\63\6\13\11\10\0\0\0"
+    "\63\6\13\11\10\0\0\15"
     "kentik.alerting.types.v202303.SimpleAttributeFilter"
     "equals"
     "starts_with"
     "ends_with"
     "contains"
+    "matches_regex"
   }},
 };
 
@@ -2355,6 +2401,13 @@ PROTOBUF_NOINLINE void SimpleAttributeFilter::Clear() {
                   8, this_._internal_any(), target);
               break;
             }
+            case kMatchesRegex: {
+              const std::string& _s = this_._internal_matches_regex();
+              ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                  _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.types.v202303.SimpleAttributeFilter.matches_regex");
+              target = stream->WriteStringMaybeAliased(9, _s, target);
+              break;
+            }
             default:
               break;
           }
@@ -2410,6 +2463,12 @@ PROTOBUF_NOINLINE void SimpleAttributeFilter::Clear() {
             case kIn: {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.value_.in_);
+              break;
+            }
+            // string matches_regex = 9 [json_name = "matchesRegex"];
+            case kMatchesRegex: {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_matches_regex());
               break;
             }
             // bool any = 8 [json_name = "any"];
@@ -2480,6 +2539,13 @@ void SimpleAttributeFilter::MergeImpl(::google::protobuf::MessageLite& to_msg, c
         } else {
           _this->_impl_.value_.in_->MergeFrom(from._internal_in());
         }
+        break;
+      }
+      case kMatchesRegex: {
+        if (oneof_needs_init) {
+          _this->_impl_.value_.matches_regex_.InitDefault();
+        }
+        _this->_impl_.value_.matches_regex_.Set(from._internal_matches_regex(), arena);
         break;
       }
       case kAny: {

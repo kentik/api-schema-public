@@ -35,6 +35,13 @@ message AttributeFilter {
     string ends_with = 5;
     string contains = 6;
     StringArray in = 7;
+    // Unanchored: the pattern may match anywhere in the value (`foo` matches
+    // `xfooy`). Use `^` / `$` to require the start or end of the string.
+    // Common dialect for all use cases.
+    // Supported regex features: literals, `.`, `|`, `()` / `(?:)`, `*+?{n,m}`,
+    // `^$`, POSIX classes, `\d \D \s \S \w \W`.
+    // Unsupported regex features: `\b \B \A \z \Q \E \p \P`, and `(?` other than `(?:)`.
+    string matches_regex = 9;
 
     // The equivalent of: value="*.  To use any this value MUST be set to true. Setting not to true
     // enables us to look for "not-anything", but that predicate does not make much sense.
@@ -54,6 +61,13 @@ message SimpleAttributeFilter {
     string ends_with = 5;
     string contains = 6;
     StringArray in = 7;
+    // Unanchored: the pattern may match anywhere in the value (`foo` matches
+    // `xfooy`). Use `^` / `$` to require the start or end of the string.
+    // Common dialect for all use cases.
+    // Supported regex features: literals, `.`, `|`, `()` / `(?:)`, `*+?{n,m}`,
+    // `^$`, POSIX classes, `\d \D \s \S \w \W`.
+    // Unsupported regex features: `\b \B \A \z \Q \E \p \P`, and `(?` other than `(?:)`.
+    string matches_regex = 9;
 
     // The equivalent of: value="*.  To use any this value MUST be set to true.
     bool any = 8;
