@@ -171,6 +171,7 @@ enum LandingType : int {
   LANDING_TYPE_SAVED_VIEW = 11,
   LANDING_TYPE_QUICK_VIEW = 12,
   LANDING_TYPE_MARKET_INTELLIGENCE = 13,
+  LANDING_TYPE_AI_ADVISOR = 14,
   LandingType_INT_MIN_SENTINEL_DO_NOT_USE_ =
       std::numeric_limits<::int32_t>::min(),
   LandingType_INT_MAX_SENTINEL_DO_NOT_USE_ =
@@ -180,8 +181,8 @@ enum LandingType : int {
 bool LandingType_IsValid(int value);
 extern const uint32_t LandingType_internal_data_[];
 constexpr LandingType LandingType_MIN = static_cast<LandingType>(0);
-constexpr LandingType LandingType_MAX = static_cast<LandingType>(13);
-constexpr int LandingType_ARRAYSIZE = 13 + 1;
+constexpr LandingType LandingType_MAX = static_cast<LandingType>(14);
+constexpr int LandingType_ARRAYSIZE = 14 + 1;
 const ::google::protobuf::EnumDescriptor*
 LandingType_descriptor();
 template <typename T>
@@ -194,7 +195,7 @@ const std::string& LandingType_Name(T value) {
 template <>
 inline const std::string& LandingType_Name(LandingType value) {
   return ::google::protobuf::internal::NameOfDenseEnum<LandingType_descriptor,
-                                                 0, 13>(
+                                                 0, 14>(
       static_cast<int>(value));
 }
 inline bool LandingType_Parse(absl::string_view name, LandingType* value) {

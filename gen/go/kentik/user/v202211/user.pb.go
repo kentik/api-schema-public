@@ -100,6 +100,7 @@ const (
 	LandingType_LANDING_TYPE_SAVED_VIEW          LandingType = 11
 	LandingType_LANDING_TYPE_QUICK_VIEW          LandingType = 12
 	LandingType_LANDING_TYPE_MARKET_INTELLIGENCE LandingType = 13
+	LandingType_LANDING_TYPE_AI_ADVISOR          LandingType = 14
 )
 
 // Enum value maps for LandingType.
@@ -119,6 +120,7 @@ var (
 		11: "LANDING_TYPE_SAVED_VIEW",
 		12: "LANDING_TYPE_QUICK_VIEW",
 		13: "LANDING_TYPE_MARKET_INTELLIGENCE",
+		14: "LANDING_TYPE_AI_ADVISOR",
 	}
 	LandingType_value = map[string]int32{
 		"LANDING_TYPE_UNSPECIFIED":         0,
@@ -135,6 +137,7 @@ var (
 		"LANDING_TYPE_SAVED_VIEW":          11,
 		"LANDING_TYPE_QUICK_VIEW":          12,
 		"LANDING_TYPE_MARKET_INTELLIGENCE": 13,
+		"LANDING_TYPE_AI_ADVISOR":          14,
 	}
 )
 
@@ -1024,7 +1027,7 @@ const file_kentik_user_v202211_user_proto_rawDesc = "" +
 	"\x10ROLE_UNSPECIFIED\x10\x00\x12\x0f\n" +
 	"\vROLE_MEMBER\x10\x01\x12\x16\n" +
 	"\x12ROLE_ADMINISTRATOR\x10\x02\x12\x1c\n" +
-	"\x18ROLE_SUPER_ADMINISTRATOR\x10\x03*\xad\x03\n" +
+	"\x18ROLE_SUPER_ADMINISTRATOR\x10\x03*\xca\x03\n" +
 	"\vLandingType\x12\x1c\n" +
 	"\x18LANDING_TYPE_UNSPECIFIED\x10\x00\x12\x16\n" +
 	"\x12LANDING_TYPE_LOCAL\x10\x01\x12!\n" +
@@ -1040,7 +1043,8 @@ const file_kentik_user_v202211_user_proto_rawDesc = "" +
 	"\x12\x1b\n" +
 	"\x17LANDING_TYPE_SAVED_VIEW\x10\v\x12\x1b\n" +
 	"\x17LANDING_TYPE_QUICK_VIEW\x10\f\x12$\n" +
-	" LANDING_TYPE_MARKET_INTELLIGENCE\x10\r2\xb0\x0f\n" +
+	" LANDING_TYPE_MARKET_INTELLIGENCE\x10\r\x12\x1b\n" +
+	"\x17LANDING_TYPE_AI_ADVISOR\x10\x0e2\xb0\x0f\n" +
 	"\vUserService\x12\xdf\x01\n" +
 	"\tListUsers\x12%.kentik.user.v202211.ListUsersRequest\x1a&.kentik.user.v202211.ListUsersResponse\"\x82\x01\x92AQ\x12\x0fList all users.\x1a3Returns a list of all user accounts in the company.*\tListUsers\xf2\xd7\x02\x0fadmin.user:read\x82\xd3\xe4\x93\x02\x15\x12\x13/user/v202211/users\x12\xf0\x01\n" +
 	"\aGetUser\x12#.kentik.user.v202211.GetUserRequest\x1a$.kentik.user.v202211.GetUserResponse\"\x99\x01\x92Ac\x12!Get attributes of a user account.\x1a5Returns attributes of a user account specified by ID.*\aGetUser\xf2\xd7\x02\x0fadmin.user:read\x82\xd3\xe4\x93\x02\x1a\x12\x18/user/v202211/users/{id}\x12\xab\x02\n" +

@@ -1470,7 +1470,7 @@ const ProtobufCEnumDescriptor kentik__user__v202211__role__descriptor =
   kentik__user__v202211__role__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCEnumValue kentik__user__v202211__landing_type__enum_values_by_number[14] =
+static const ProtobufCEnumValue kentik__user__v202211__landing_type__enum_values_by_number[15] =
 {
   { "LANDING_TYPE_UNSPECIFIED", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_UNSPECIFIED", 0 },
   { "LANDING_TYPE_LOCAL", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_LOCAL", 1 },
@@ -1486,12 +1486,14 @@ static const ProtobufCEnumValue kentik__user__v202211__landing_type__enum_values
   { "LANDING_TYPE_SAVED_VIEW", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_SAVED_VIEW", 11 },
   { "LANDING_TYPE_QUICK_VIEW", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_QUICK_VIEW", 12 },
   { "LANDING_TYPE_MARKET_INTELLIGENCE", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_MARKET_INTELLIGENCE", 13 },
+  { "LANDING_TYPE_AI_ADVISOR", "KENTIK__USER__V202211__LANDING_TYPE__LANDING_TYPE_AI_ADVISOR", 14 },
 };
 static const ProtobufCIntRange kentik__user__v202211__landing_type__value_ranges[] = {
-{0, 0},{0, 14}
+{0, 0},{0, 15}
 };
-static const ProtobufCEnumValueIndex kentik__user__v202211__landing_type__enum_values_by_name[14] =
+static const ProtobufCEnumValueIndex kentik__user__v202211__landing_type__enum_values_by_name[15] =
 {
+  { "LANDING_TYPE_AI_ADVISOR", 14 },
   { "LANDING_TYPE_ALERTING", 8 },
   { "LANDING_TYPE_DASHBOARD", 10 },
   { "LANDING_TYPE_EXPLORER", 7 },
@@ -1514,9 +1516,9 @@ const ProtobufCEnumDescriptor kentik__user__v202211__landing_type__descriptor =
   "LandingType",
   "Kentik__User__V202211__LandingType",
   "kentik.user.v202211",
-  14,
+  15,
   kentik__user__v202211__landing_type__enum_values_by_number,
-  14,
+  15,
   kentik__user__v202211__landing_type__enum_values_by_name,
   1,
   kentik__user__v202211__landing_type__value_ranges,
