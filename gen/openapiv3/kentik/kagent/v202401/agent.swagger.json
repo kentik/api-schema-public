@@ -1,0 +1,768 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "KAgent Agent API",
+        "description": "Management of Kentik Agents: registration, retrieval, modification, deletion, authorization of unregistered agents, and generation of install commands.\n",
+        "version": "v202401",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "AgentService"
+        }
+    ],
+    "paths": {
+        "/kagent/v202401/agents": {
+            "get": {
+                "summary": "List agents.",
+                "description": "Returns a list of agents in the account, optionally filtered by registration state, IDs or capabilities.",
+                "operationId": "ListAgents",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401ListAgentsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "unregistered",
+                        "description": "list only agents that are not yet registered\n\nIndication whether to list only agents that are not yet registered.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    },
+                    {
+                        "name": "ids",
+                        "description": "optional list of agent IDs to filter by\n\nIDs of the agents to filter by. When empty, all agents are returned.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "capabilities",
+                        "description": "List agents that have at least one of the specified capabilities\n\nCapabilities to filter by. Agents having at least one of the specified capabilities are returned.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "includeDesiredState",
+                        "description": "optionally include the desired state for each agent\n\nIndication whether to include the desired state of each agent in the response.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AgentService"
+                ]
+            },
+            "post": {
+                "summary": "Create an agent.",
+                "description": "Registers a new agent based on configuration in the request and returns it together with the commands for installing it on the target host.",
+                "operationId": "CreateAgent",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401CreateAgentResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202401CreateAgentRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "AgentService"
+                ]
+            }
+        },
+        "/kagent/v202401/agents/authorize/{installId}": {
+            "put": {
+                "summary": "Authorize an unregistered agent.",
+                "description": "Approves the agent installed under the specified install ID and returns the ID assigned to it.",
+                "operationId": "Authorize",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401AuthorizeResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "installId",
+                        "description": "ID of the install to be authorized.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AgentService"
+                ]
+            }
+        },
+        "/kagent/v202401/agents/install-commands": {
+            "post": {
+                "summary": "Generate agent install commands.",
+                "description": "Returns commands for deploying an agent. The commands embed a provisioning token and are ready to execute on the target host.",
+                "operationId": "GenerateInstallCommands",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401GenerateInstallCommandsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202401GenerateInstallCommandsRequest"
+                            }
+                        }
+                    },
+                    "description": "GenerateInstallCommandsRequest\nRequest for GenerateInstallCommands.",
+                    "required": true
+                },
+                "tags": [
+                    "AgentService"
+                ]
+            }
+        },
+        "/kagent/v202401/agents/{agent.id}": {
+            "patch": {
+                "summary": "Update configuration of an agent.",
+                "description": "Updates the attributes of an agent selected by the field mask in the request.",
+                "operationId": "UpdateAgent",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401UpdateAgentResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "agent.id",
+                        "description": "Unique identifier of the agent.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "mask",
+                        "description": "Attributes to be updated. When empty, all mutable attributes are replaced.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "running": {
+                                        "type": "boolean",
+                                        "description": "Indication whether the agent is actively sending heartbeats.",
+                                        "title": "agent is actively sending heartbeats",
+                                        "readOnly": true
+                                    },
+                                    "clusterId": {
+                                        "type": "string",
+                                        "description": "ID of the cluster the agent belongs to.",
+                                        "readOnly": true
+                                    },
+                                    "publicKey": {
+                                        "type": "string",
+                                        "description": "PEM-encoded public key the agent authenticates with.",
+                                        "title": "PEM encoded public key"
+                                    },
+                                    "provisioningToken": {
+                                        "type": "string",
+                                        "description": "Provisioning token the agent registered with.",
+                                        "readOnly": true
+                                    },
+                                    "config": {
+                                        "$ref": "#/components/schemas/kagentv202401AgentConfig"
+                                    },
+                                    "install": {
+                                        "$ref": "#/components/schemas/v202401InstallConfig"
+                                    }
+                                },
+                                "title": "Agent",
+                                "required": [
+                                    "agent"
+                                ]
+                            }
+                        }
+                    },
+                    "description": "Agent",
+                    "required": true
+                },
+                "tags": [
+                    "AgentService"
+                ]
+            },
+            "get": {
+                "summary": "Get agent configuration and state.",
+                "description": "Returns configuration and state of the agent with the specified ID.",
+                "operationId": "GetAgent",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401GetAgentResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "agent.id",
+                        "description": "ID of the agent to be retrieved.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "unregistered",
+                        "description": "get unregistered agent\n\nIndication whether the ID refers to an agent that is not yet registered.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AgentService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete an agent.",
+                "description": "Deletes the agent with the specified ID.",
+                "operationId": "DeleteAgent",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401DeleteAgentResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "agent.id",
+                        "description": "ID of the agent to be deleted.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "unregistered",
+                        "description": "delete unregistered agent\n\nIndication whether the ID refers to an agent that is not yet registered.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "boolean"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AgentService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "Kentik Knowledge Base",
+        "url": "https://kb.kentik.com/"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "kagentv202401AgentConfig": {
+                "type": "object",
+                "properties": {
+                    "created": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Creation timestamp.",
+                        "readOnly": true
+                    },
+                    "edited": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last-modification timestamp.",
+                        "readOnly": true
+                    },
+                    "siteId": {
+                        "type": "string",
+                        "description": "ID of the site the agent is assigned to."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "User-friendly name of the agent."
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the agent."
+                    },
+                    "releaseChannel": {
+                        "type": "string",
+                        "description": "Release channel the agent takes software updates from."
+                    },
+                    "osDistribution": {
+                        "type": "string",
+                        "description": "Override of the OS distribution discovered by the agent.",
+                        "title": "override the OS distribution discovered by the agent"
+                    }
+                },
+                "title": "AgentConfig"
+            },
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202401Agent": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the agent.",
+                        "readOnly": true
+                    },
+                    "running": {
+                        "type": "boolean",
+                        "description": "Indication whether the agent is actively sending heartbeats.",
+                        "title": "agent is actively sending heartbeats",
+                        "readOnly": true
+                    },
+                    "clusterId": {
+                        "type": "string",
+                        "description": "ID of the cluster the agent belongs to.",
+                        "readOnly": true
+                    },
+                    "publicKey": {
+                        "type": "string",
+                        "description": "PEM-encoded public key the agent authenticates with.",
+                        "title": "PEM encoded public key"
+                    },
+                    "provisioningToken": {
+                        "type": "string",
+                        "description": "Provisioning token the agent registered with.",
+                        "readOnly": true
+                    },
+                    "config": {
+                        "$ref": "#/components/schemas/kagentv202401AgentConfig"
+                    },
+                    "install": {
+                        "$ref": "#/components/schemas/v202401InstallConfig"
+                    }
+                },
+                "title": "Agent"
+            },
+            "v202401AgentRegistration": {
+                "type": "object",
+                "properties": {
+                    "publicKey": {
+                        "type": "string",
+                        "description": "PEM-encoded public key the agent authenticates with."
+                    },
+                    "siteId": {
+                        "type": "string",
+                        "description": "ID of the site to assign the agent to."
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "User-friendly name of the agent."
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Description of the agent."
+                    },
+                    "releaseChannel": {
+                        "type": "string",
+                        "description": "Release channel the agent takes software updates from."
+                    },
+                    "clusterId": {
+                        "type": "string",
+                        "description": "ID of the cluster to assign the agent to."
+                    }
+                },
+                "title": "AgentRegistration"
+            },
+            "v202401AuthorizeResponse": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID assigned to the authorized agent."
+                    }
+                },
+                "title": "AuthorizeResponse"
+            },
+            "v202401BootstrapInfo": {
+                "type": "object",
+                "properties": {
+                    "linuxInstallCommand": {
+                        "type": "string",
+                        "description": "Command installing the agent directly on a Linux host. Contains a provisioning token.",
+                        "title": "curl command to install the agent on linux"
+                    },
+                    "dockerInstallCommand": {
+                        "type": "string",
+                        "description": "Command installing the agent as a Docker container. Contains a provisioning token.",
+                        "title": "docker command to install the agent in docker"
+                    },
+                    "provisioningToken": {
+                        "type": "string",
+                        "description": "Provisioning token embedded in the install commands. Treat this value as a credential.",
+                        "title": "provisioning token to use in the install commands; treat as a credential"
+                    }
+                },
+                "title": "BootstrapInfo"
+            },
+            "v202401CreateAgentRequest": {
+                "type": "object",
+                "properties": {
+                    "agent": {
+                        "$ref": "#/components/schemas/v202401AgentRegistration"
+                    },
+                    "config": {
+                        "$ref": "#/components/schemas/v202401RegistrationConfig"
+                    }
+                },
+                "title": "CreateAgentRequest"
+            },
+            "v202401CreateAgentResponse": {
+                "type": "object",
+                "properties": {
+                    "agent": {
+                        "$ref": "#/components/schemas/v202401Agent"
+                    },
+                    "bootstrap": {
+                        "$ref": "#/components/schemas/v202401BootstrapInfo"
+                    }
+                },
+                "title": "CreateAgentResponse"
+            },
+            "v202401DeleteAgentResponse": {
+                "type": "object",
+                "title": "DeleteAgentResponse"
+            },
+            "v202401GenerateInstallCommandsRequest": {
+                "type": "object",
+                "description": "GenerateInstallCommandsRequest\nRequest for GenerateInstallCommands."
+            },
+            "v202401GenerateInstallCommandsResponse": {
+                "type": "object",
+                "properties": {
+                    "bootstrap": {
+                        "$ref": "#/components/schemas/v202401BootstrapInfo"
+                    }
+                },
+                "description": "GenerateInstallCommandsResponse\nResponse containing install commands ready to execute."
+            },
+            "v202401GetAgentResponse": {
+                "type": "object",
+                "properties": {
+                    "agent": {
+                        "$ref": "#/components/schemas/v202401Agent"
+                    }
+                },
+                "title": "GetAgentResponse"
+            },
+            "v202401HostMetadata": {
+                "type": "object",
+                "properties": {
+                    "hostname": {
+                        "type": "string",
+                        "description": "Hostname of the host the agent runs on."
+                    },
+                    "machineId": {
+                        "type": "string",
+                        "description": "Machine identifier of the host the agent runs on."
+                    },
+                    "publicIp": {
+                        "type": "string",
+                        "description": "Public IP address of the host the agent runs on."
+                    },
+                    "privateIp": {
+                        "type": "string",
+                        "description": "Private IP address of the host the agent runs on."
+                    },
+                    "os": {
+                        "type": "string",
+                        "description": "Operating system of the host. One of `linux`, `darwin` or `windows`.",
+                        "title": "linux,darwin,windows"
+                    },
+                    "arch": {
+                        "type": "string",
+                        "description": "CPU architecture of the host, for example `amd64` or `arm64`.",
+                        "title": "amd64,arm64"
+                    }
+                },
+                "title": "HostMetadata\nRead-only metadata about a host system"
+            },
+            "v202401InstallConfig": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier of the install."
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/v202401InstallerType"
+                    },
+                    "hostMetadata": {
+                        "$ref": "#/components/schemas/v202401HostMetadata"
+                    }
+                },
+                "title": "InstallConfig\nDescribes an individual agent install configuration"
+            },
+            "v202401InstallerType": {
+                "type": "string",
+                "enum": [
+                    "INSTALLER_TYPE_UNSPECIFIED",
+                    "INSTALLER_TYPE_LINUX",
+                    "INSTALLER_TYPE_DOCKER"
+                ],
+                "default": "INSTALLER_TYPE_UNSPECIFIED",
+                "description": "- INSTALLER_TYPE_UNSPECIFIED: Invalid value.\n - INSTALLER_TYPE_LINUX: Agent installed directly on a Linux host.\n - INSTALLER_TYPE_DOCKER: Agent installed as a Docker container.",
+                "title": "InstallerType"
+            },
+            "v202401ListAgentsResponse": {
+                "type": "object",
+                "properties": {
+                    "agents": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202401Agent"
+                        },
+                        "description": "List of agent objects."
+                    }
+                },
+                "title": "ListAgentsResponse"
+            },
+            "v202401RegistrationConfig": {
+                "type": "object",
+                "properties": {
+                    "expiresAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Time at which the registration becomes invalid (default one hour after creation)."
+                    },
+                    "allowedPrivateCidrs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Private IP CIDR blocks allowed to register the agent. When empty, any private IP is allowed.",
+                        "title": "Array of private IP CIDR blocks allowed to register the agent. When not set any IP is allowed"
+                    },
+                    "allowedPublicCidrs": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Public IP CIDR blocks allowed to register the agent. When empty, any public IP is allowed.",
+                        "title": "Array of public IP CIDR blocks allowed to register the agent. When not set any IP is allowed"
+                    }
+                },
+                "title": "RegistrationConfig"
+            },
+            "v202401UpdateAgentResponse": {
+                "type": "object",
+                "properties": {
+                    "agent": {
+                        "$ref": "#/components/schemas/v202401Agent"
+                    }
+                },
+                "title": "UpdateAgentResponse"
+            }
+        }
+    }
+}

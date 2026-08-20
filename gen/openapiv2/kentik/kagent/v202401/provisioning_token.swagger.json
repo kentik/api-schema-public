@@ -1,0 +1,420 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "KAgent Provisioning Token API",
+    "description": "Management of provisioning tokens used by Kentik Agents to register without user credentials: creation, retrieval, revocation, and listing of the agents registered with a token.\n",
+    "version": "v202401",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api-schema-public"
+    }
+  },
+  "tags": [
+    {
+      "name": "ProvisioningTokenService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/kagent/v202401/provisioning-tokens": {
+      "get": {
+        "summary": "List provisioning tokens.",
+        "description": "Returns a list of all provisioning tokens in the account.",
+        "operationId": "ListProvisioningTokens",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202401ListProvisioningTokensResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "ProvisioningTokenService"
+        ]
+      },
+      "post": {
+        "summary": "Create a provisioning token.",
+        "description": "Creates a new provisioning token based on configuration in the request and returns it, including its secret value.",
+        "operationId": "CreateProvisioningToken",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202401CreateProvisioningTokenResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202401ProvisioningToken",
+              "description": "Provisioning token configuration."
+            }
+          }
+        ],
+        "tags": [
+          "ProvisioningTokenService"
+        ]
+      }
+    },
+    "/kagent/v202401/provisioning-tokens/{token}": {
+      "get": {
+        "summary": "Get provisioning token configuration and status.",
+        "description": "Returns configuration, usage and revocation status of the provisioning token with the specified value.",
+        "operationId": "GetProvisioningToken",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202401GetProvisioningTokenResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "description": "Value of the provisioning token to be retrieved.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ProvisioningTokenService"
+        ]
+      }
+    },
+    "/kagent/v202401/provisioning-tokens/{token}/agents": {
+      "get": {
+        "summary": "List agents registered with a provisioning token.",
+        "description": "Returns the IDs of all agents that have registered with the provisioning token with the specified value.",
+        "operationId": "ListAgentsByProvisioningToken",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202401ListAgentsByProvisioningTokenResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "description": "Value of the provisioning token to list agents for.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "ProvisioningTokenService"
+        ]
+      }
+    },
+    "/kagent/v202401/provisioning-tokens/{token}/revoke": {
+      "post": {
+        "summary": "Revoke a provisioning token.",
+        "description": "Revokes the provisioning token with the specified value. Agents already registered with the token are not affected, but the token can no longer be used for new registrations.",
+        "operationId": "RevokeProvisioningToken",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202401RevokeProvisioningTokenResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "description": "Value of the provisioning token to be revoked.",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProvisioningTokenServiceRevokeProvisioningTokenBody"
+            }
+          }
+        ],
+        "tags": [
+          "ProvisioningTokenService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "ProvisioningTokenServiceRevokeProvisioningTokenBody": {
+      "type": "object",
+      "properties": {
+        "revokedBy": {
+          "type": "string",
+          "description": "Email of the user revoking the token.",
+          "title": "who is revoking the token"
+        }
+      },
+      "description": "RevokeProvisioningTokenRequest\nRequest message for revoking a provisioning token."
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202401CreateProvisioningTokenResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "$ref": "#/definitions/v202401ProvisioningToken",
+          "description": "Created provisioning token object."
+        }
+      },
+      "description": "CreateProvisioningTokenResponse\nResponse message for creating a provisioning token."
+    },
+    "v202401GetProvisioningTokenResponse": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "$ref": "#/definitions/v202401ProvisioningToken",
+          "description": "Provisioning token object."
+        }
+      },
+      "description": "GetProvisioningTokenResponse\nResponse message for getting a provisioning token."
+    },
+    "v202401ListAgentsByProvisioningTokenResponse": {
+      "type": "object",
+      "properties": {
+        "agents": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "IDs of agents registered with the token."
+        }
+      },
+      "title": "ListAgentsByProvisioningTokenResponse"
+    },
+    "v202401ListProvisioningTokensResponse": {
+      "type": "object",
+      "properties": {
+        "tokens": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v202401ProvisioningToken"
+          },
+          "description": "List of provisioning token objects."
+        }
+      },
+      "description": "ListProvisioningTokensResponse\nResponse message for listing provisioning tokens."
+    },
+    "v202401ProvisioningToken": {
+      "type": "object",
+      "properties": {
+        "token": {
+          "type": "string",
+          "description": "Value of the provisioning token (UUID). Treat this value as a credential.",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "description": "User-friendly name of the token."
+        },
+        "maxUsageCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Maximum number of agents that can register with this token (default 1).",
+          "title": "Maximum number of agents that can use this token. Defaults to 1"
+        },
+        "currentUsageCount": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Number of agents already registered with this token.",
+          "readOnly": true
+        },
+        "expiresAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time at which the token expires (default one hour after creation)."
+        },
+        "allowedPrivateCidrs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Private IP CIDR blocks allowed to use this token. When empty, any private IP is allowed.",
+          "title": "Array of private IP CIDR blocks allowed to use this token. When not set any IP is allowed"
+        },
+        "allowedPublicCidrs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Public IP CIDR blocks allowed to use this token. When empty, any public IP is allowed.",
+          "title": "Array of public IP CIDR blocks allowed to use this token. When not set any IP is allowed"
+        },
+        "clusterId": {
+          "type": "string",
+          "description": "ID of the cluster to assign agents registered with this token to."
+        },
+        "requiresApproval": {
+          "type": "boolean",
+          "description": "Indication whether agents registered with this token are placed on the pending approval list instead of being approved automatically (default false)."
+        },
+        "config": {
+          "$ref": "#/definitions/v202401ProvisioningTokenAgentConfig",
+          "description": "Additional configuration to apply to agents registered with this token."
+        },
+        "revoked": {
+          "$ref": "#/definitions/v202401TokenRevoked",
+          "description": "Revocation details. Set only if the token has been revoked.",
+          "readOnly": true
+        },
+        "createdBy": {
+          "type": "string",
+          "description": "Email of the user who created the token."
+        },
+        "ctime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp.",
+          "readOnly": true
+        },
+        "utime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last-modification timestamp.",
+          "readOnly": true
+        }
+      },
+      "description": "ProvisioningToken\nProvisioningToken represents a provisioning token for automated agent registration."
+    },
+    "v202401ProvisioningTokenAgentConfig": {
+      "type": "object",
+      "properties": {
+        "siteId": {
+          "type": "string",
+          "description": "ID of the site to assign to agents registered with this token."
+        }
+      },
+      "title": "AgentConfig"
+    },
+    "v202401RevokeProvisioningTokenResponse": {
+      "type": "object",
+      "properties": {
+        "revoked": {
+          "$ref": "#/definitions/v202401TokenRevoked",
+          "description": "Revocation details of the token."
+        }
+      },
+      "description": "RevokeProvisioningTokenResponse\nResponse message for revoking a provisioning token."
+    },
+    "v202401TokenRevoked": {
+      "type": "object",
+      "properties": {
+        "revokedBy": {
+          "type": "string",
+          "description": "Email of the user who revoked the token.",
+          "title": "who revoked the token"
+        },
+        "revokedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Time at which the token was revoked.",
+          "readOnly": true
+        }
+      },
+      "title": "TokenRevoked"
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ],
+  "externalDocs": {
+    "description": "Kentik Knowledge Base",
+    "url": "https://kb.kentik.com/"
+  }
+}

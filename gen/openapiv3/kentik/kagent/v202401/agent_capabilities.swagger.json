@@ -1,0 +1,396 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "KAgent Agent Capabilities API",
+        "description": "Management of the capabilities assigned to a Kentik Agent: creation, retrieval, modification and deletion.\n",
+        "version": "v202401",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "AgentCapabilityService"
+        }
+    ],
+    "paths": {
+        "/kagent/v202401/agents/{agentId}/capabilities": {
+            "get": {
+                "summary": "List agent capabilities.",
+                "description": "Returns a list of all capabilities of the specified agent.",
+                "operationId": "ListAgentCapabilities",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401ListAgentCapabilitiesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "agentId",
+                        "description": "ID of the agent.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AgentCapabilityService"
+                ]
+            }
+        },
+        "/kagent/v202401/agents/{agentId}/capabilities/{capability.name}": {
+            "patch": {
+                "summary": "Create or update an agent capability.",
+                "description": "Adds the capability to the agent, or updates it if already present.",
+                "operationId": "UpsertAgentCapability",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401UpsertAgentCapabilityResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "agentId",
+                        "description": "ID of the agent.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "capability.name",
+                        "description": "Name of the capability.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "mask",
+                        "description": "Attributes of the capability to be updated. Paths are snake_case field names of `AgentCapability` and must not be prefixed with `capability.`, for example `bundle_id`, `enabled`, `version`, `channel`, `config_id`, `group_id`, `group_index`. Attributes not listed keep their current value. When empty, the entire capability is replaced.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "bundleId": {
+                                        "type": "string",
+                                        "description": "ID of the bundle the capability software is taken from."
+                                    },
+                                    "enabled": {
+                                        "type": "boolean",
+                                        "description": "Indication whether the capability is enabled on the agent."
+                                    },
+                                    "version": {
+                                        "type": "string",
+                                        "description": "Version of the capability to run."
+                                    },
+                                    "channel": {
+                                        "type": "string",
+                                        "description": "Release channel the capability takes software updates from."
+                                    },
+                                    "configId": {
+                                        "type": "string",
+                                        "description": "ID of the configuration applied to the capability."
+                                    },
+                                    "groupId": {
+                                        "type": "string",
+                                        "description": "ID of the group the capability belongs to."
+                                    },
+                                    "groupIndex": {
+                                        "type": "integer",
+                                        "format": "int32",
+                                        "description": "Index of the capability within its group."
+                                    }
+                                },
+                                "title": "AgentCapability",
+                                "required": [
+                                    "capability"
+                                ]
+                            }
+                        }
+                    },
+                    "description": "AgentCapability",
+                    "required": true
+                },
+                "tags": [
+                    "AgentCapabilityService"
+                ]
+            },
+            "get": {
+                "summary": "Get an agent capability.",
+                "description": "Returns configuration of the named capability of the specified agent.",
+                "operationId": "GetAgentCapability",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401GetAgentCapabilityResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "agentId",
+                        "description": "ID of the agent.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "capability.name",
+                        "description": "Name of the capability to be retrieved.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AgentCapabilityService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete an agent capability.",
+                "description": "Removes the named capability from the specified agent.",
+                "operationId": "DeleteAgentCapability",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401DeleteAgentCapabilityResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "agentId",
+                        "description": "ID of the agent.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "capability.name",
+                        "description": "Name of the capability to be deleted.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "AgentCapabilityService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "Kentik Knowledge Base",
+        "url": "https://kb.kentik.com/"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202401AgentCapability": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the capability."
+                    },
+                    "bundleId": {
+                        "type": "string",
+                        "description": "ID of the bundle the capability software is taken from."
+                    },
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Indication whether the capability is enabled on the agent."
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Version of the capability to run."
+                    },
+                    "channel": {
+                        "type": "string",
+                        "description": "Release channel the capability takes software updates from."
+                    },
+                    "configId": {
+                        "type": "string",
+                        "description": "ID of the configuration applied to the capability."
+                    },
+                    "groupId": {
+                        "type": "string",
+                        "description": "ID of the group the capability belongs to."
+                    },
+                    "groupIndex": {
+                        "type": "integer",
+                        "format": "int32",
+                        "description": "Index of the capability within its group."
+                    }
+                },
+                "title": "AgentCapability"
+            },
+            "v202401DeleteAgentCapabilityResponse": {
+                "type": "object",
+                "title": "DeleteAgentCapabilityResponse"
+            },
+            "v202401GetAgentCapabilityResponse": {
+                "type": "object",
+                "properties": {
+                    "capability": {
+                        "$ref": "#/components/schemas/v202401AgentCapability"
+                    }
+                },
+                "title": "GetAgentCapabilityResponse"
+            },
+            "v202401ListAgentCapabilitiesResponse": {
+                "type": "object",
+                "properties": {
+                    "capabilities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202401AgentCapability"
+                        },
+                        "description": "List of agent capability objects."
+                    }
+                },
+                "title": "ListAgentCapabilitiesResponse"
+            },
+            "v202401UpsertAgentCapabilityResponse": {
+                "type": "object",
+                "properties": {
+                    "capability": {
+                        "$ref": "#/components/schemas/v202401AgentCapability"
+                    }
+                },
+                "title": "UpsertAgentCapabilityResponse"
+            }
+        }
+    }
+}

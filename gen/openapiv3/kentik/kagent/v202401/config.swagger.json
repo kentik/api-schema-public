@@ -1,0 +1,461 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "KAgent Config API",
+        "description": "Management of Kentik Agent capability configurations: creation, retrieval, modification and deletion.\n",
+        "version": "v202401",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "ConfigService"
+        }
+    ],
+    "paths": {
+        "/kagent/v202401/config": {
+            "post": {
+                "summary": "Create a config.",
+                "description": "Creates a new config based on the request and returns it.",
+                "operationId": "CreateConfig",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401CreateConfigResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202401Config"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "ConfigService"
+                ]
+            }
+        },
+        "/kagent/v202401/config/{config.name}": {
+            "patch": {
+                "summary": "Update a config.",
+                "description": "Updates the attributes of a config selected by the field mask in the request.",
+                "operationId": "UpdateConfig",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401UpdateConfigResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "config.name",
+                        "description": "Name of the config.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ConfigServiceUpdateConfigBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "ConfigService"
+                ]
+            },
+            "get": {
+                "summary": "Get a config.",
+                "description": "Returns the config with the specified name.",
+                "operationId": "GetConfig",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401GetConfigResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "config.name",
+                        "description": "Name of the config to be retrieved.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "ConfigService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete a config.",
+                "description": "Deletes the config with the specified name.",
+                "operationId": "DeleteConfig",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401DeleteConfigResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "config.name",
+                        "description": "Name of the config to be deleted.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "ConfigService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "Kentik Knowledge Base",
+        "url": "https://kb.kentik.com/"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "ConfigLayerLayerType": {
+                "type": "string",
+                "enum": [
+                    "LAYER_TYPE_UNSPECIFIED",
+                    "LAYER_TYPE_SEED",
+                    "LAYER_TYPE_GROUP",
+                    "LAYER_TYPE_AGENT"
+                ],
+                "default": "LAYER_TYPE_UNSPECIFIED",
+                "description": "- LAYER_TYPE_UNSPECIFIED: Invalid value.\n - LAYER_TYPE_SEED: seed config\n - LAYER_TYPE_GROUP: capability group config\n - LAYER_TYPE_AGENT: agent config",
+                "title": "LayerType"
+            },
+            "ConfigServiceUpdateConfigBody": {
+                "type": "object",
+                "properties": {
+                    "config": {
+                        "type": "object",
+                        "properties": {
+                            "capability": {
+                                "type": "string",
+                                "description": "Name of the capability the config applies to."
+                            },
+                            "version": {
+                                "type": "string",
+                                "description": "Version of the config, generated by the server.",
+                                "title": "config version is generated by the server",
+                                "readOnly": true
+                            },
+                            "runtime": {
+                                "$ref": "#/components/schemas/v202401RuntimeConfig"
+                            },
+                            "telemetry": {
+                                "$ref": "#/components/schemas/v202401TelemetryConfig"
+                            },
+                            "layers": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/v202401ConfigLayer"
+                                },
+                                "description": "Layers the config is composed of, in order of increasing precedence.",
+                                "title": "config layers, seed, group, agent",
+                                "readOnly": true
+                            }
+                        },
+                        "title": "Config"
+                    },
+                    "mask": {
+                        "type": "string",
+                        "description": "Attributes of the config to be updated. Attributes not listed keep their current value."
+                    }
+                },
+                "title": "UpdateConfigRequest",
+                "required": [
+                    "config",
+                    "mask"
+                ]
+            },
+            "RuntimeConfigEnvVar": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the environment variable."
+                    },
+                    "value": {
+                        "type": "string",
+                        "description": "Value of the environment variable."
+                    },
+                    "origin": {
+                        "type": "string",
+                        "description": "Config layer that provided this variable.",
+                        "title": "indicates the config layer that provided this variable"
+                    }
+                },
+                "title": "EnvVar"
+            },
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202401Config": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the config."
+                    },
+                    "capability": {
+                        "type": "string",
+                        "description": "Name of the capability the config applies to."
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Version of the config, generated by the server.",
+                        "title": "config version is generated by the server",
+                        "readOnly": true
+                    },
+                    "runtime": {
+                        "$ref": "#/components/schemas/v202401RuntimeConfig"
+                    },
+                    "telemetry": {
+                        "$ref": "#/components/schemas/v202401TelemetryConfig"
+                    },
+                    "layers": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202401ConfigLayer"
+                        },
+                        "description": "Layers the config is composed of, in order of increasing precedence.",
+                        "title": "config layers, seed, group, agent",
+                        "readOnly": true
+                    }
+                },
+                "title": "Config"
+            },
+            "v202401ConfigLayer": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Name of the layer."
+                    },
+                    "type": {
+                        "$ref": "#/components/schemas/ConfigLayerLayerType"
+                    }
+                },
+                "title": "ConfigLayer"
+            },
+            "v202401CreateConfigResponse": {
+                "type": "object",
+                "properties": {
+                    "config": {
+                        "$ref": "#/components/schemas/v202401Config"
+                    }
+                },
+                "title": "CreateConfigResponse"
+            },
+            "v202401DeleteConfigResponse": {
+                "type": "object",
+                "title": "DeleteConfigResponse"
+            },
+            "v202401GetConfigResponse": {
+                "type": "object",
+                "properties": {
+                    "config": {
+                        "$ref": "#/components/schemas/v202401Config"
+                    }
+                },
+                "title": "GetConfigResponse"
+            },
+            "v202401RuntimeConfig": {
+                "type": "object",
+                "properties": {
+                    "args": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Command arguments passed to the process.",
+                        "title": "command arguments"
+                    },
+                    "env": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/RuntimeConfigEnvVar"
+                        },
+                        "description": "Environment variables set for the process.",
+                        "title": "environment variables"
+                    },
+                    "binary": {
+                        "type": "string",
+                        "description": "Name of the binary to run.",
+                        "title": "binary name"
+                    },
+                    "linuxCapabilities": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Linux capabilities added to the process.",
+                        "title": "linux capabilities that should be added to the process"
+                    }
+                },
+                "title": "RuntimeConfig"
+            },
+            "v202401TelemetryConfig": {
+                "type": "object",
+                "properties": {
+                    "logsEndpoint": {
+                        "type": "string",
+                        "description": "Endpoint the agent sends logs to."
+                    },
+                    "metricsEndpoint": {
+                        "type": "string",
+                        "description": "Endpoint the agent sends metrics to."
+                    },
+                    "kmetricsEndpoint": {
+                        "type": "string",
+                        "description": "Endpoint the agent sends kmetrics to."
+                    },
+                    "sentryEndpoint": {
+                        "type": "string",
+                        "description": "Endpoint the agent sends crash reports to."
+                    }
+                },
+                "title": "TelemetryConfig"
+            },
+            "v202401UpdateConfigResponse": {
+                "type": "object",
+                "properties": {
+                    "config": {
+                        "$ref": "#/components/schemas/v202401Config"
+                    }
+                },
+                "title": "UpdateConfigResponse"
+            }
+        }
+    }
+}

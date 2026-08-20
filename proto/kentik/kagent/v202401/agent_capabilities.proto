@@ -1,0 +1,309 @@
+syntax = "proto3";
+
+package kentik.kagent.v202401;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/kagent/v202401;kagent";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/duration.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+import "kentik/core/v202303/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "KAgent Agent Capabilities API"
+    version: "v202401"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "Management of the capabilities assigned to a Kentik Agent: creation, retrieval, "
+    "modification and deletion.\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/"
+    description: "Kentik Knowledge Base"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// =======================================================
+// models
+// =======================================================
+
+// {{.Name}}
+message AgentCapability {
+  string name = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the capability."
+    }
+  ];
+  string bundle_id = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the bundle the capability software is taken from."
+    }
+  ];
+  bool enabled = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indication whether the capability is enabled on the agent."
+    }
+  ];
+  string version = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Version of the capability to run."
+    }
+  ];
+  string channel = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Release channel the capability takes software updates from."
+    }
+  ];
+  string config_id = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the configuration applied to the capability."
+    }
+  ];
+  string group_id = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the group the capability belongs to."
+    }
+  ];
+  int32 group_index = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Index of the capability within its group."
+    }
+  ];
+}
+
+// {{.Name}}
+message AgentCapabilityGroup {
+  string group_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the group."
+    }
+  ];
+  int32 index = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Index of this member within the group."
+    }
+  ];
+  int32 running_count = 20 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of group members that are running."
+    }
+  ];
+  int32 standby_count = 21 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of group members that are on standby."
+    }
+  ];
+}
+
+// =======================================================
+// services
+// =======================================================
+
+// {{.Name}}
+message UpsertAgentCapabilityRequest {
+  string agent_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the agent."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  AgentCapability capability = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Capability configuration."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+
+  // Field mask controlling which fields of the AgentCapability are updated.
+  // Paths refer to fields of the AgentCapability message (not prefixed by "capability.").
+  //
+  // When mask is set, only the specified fields are written; all other fields
+  // on the existing capability remain unchanged. When mask is empty or not set,
+  // the entire capability is replaced (full update).
+  //
+  // Examples:
+  //   paths: ["bundle_id"]           — update only the bundle_id, leaving enabled/version/etc. untouched.
+  //   paths: ["enabled"]             — update only the enabled state.
+  //   paths: ["bundle_id", "version"] — update bundle_id and version together.
+  //
+  // NOTE: Use field names as defined in AgentCapability (snake_case proto field names),
+  // e.g. "bundle_id", "enabled", "version", "channel", "config_id", "group_id", "group_index".
+  // Do NOT prefix paths with "capability." — that is incorrect.
+  google.protobuf.FieldMask mask = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Attributes of the capability to be updated. Paths are snake_case field names of "
+      "`AgentCapability` and must not be prefixed with `capability.`, for example `bundle_id`, "
+      "`enabled`, `version`, `channel`, `config_id`, `group_id`, `group_index`. Attributes not listed "
+      "keep their current value. When empty, the entire capability is replaced."
+    }
+  ];
+}
+
+// {{.Name}}
+message UpsertAgentCapabilityResponse {
+  AgentCapability capability = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Created or updated agent capability object."
+    }
+  ];
+}
+
+// {{.Name}}
+message ListAgentCapabilitiesRequest {
+  string agent_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the agent."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message ListAgentCapabilitiesResponse {
+  repeated AgentCapability capabilities = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of agent capability objects."
+    }
+  ];
+}
+
+// {{.Name}}
+message DeleteAgentCapabilityRequest {
+  string agent_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the agent."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string capability = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the capability to be deleted."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message DeleteAgentCapabilityResponse {}
+
+// {{.Name}}
+message GetAgentCapabilityRequest {
+  string agent_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the agent."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string capability = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Name of the capability to be retrieved."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message GetAgentCapabilityResponse {
+  AgentCapability capability = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Agent capability object."
+    }
+  ];
+}
+
+
+service AgentCapabilityService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "ua-admin:write";
+
+  // add or update agent capability if already installed.
+  rpc UpsertAgentCapability(UpsertAgentCapabilityRequest) returns (UpsertAgentCapabilityResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:write";
+    option (google.api.http) = {
+      patch: "/kagent/v202401/agents/{agent_id}/capabilities/{capability.name}",
+      body: "capability"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpsertAgentCapability"
+      summary: "Create or update an agent capability."
+      description: "Adds the capability to the agent, or updates it if already present."
+    };
+  }
+
+  rpc GetAgentCapability(GetAgentCapabilityRequest) returns (GetAgentCapabilityResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:read";
+    option (google.api.http) = {
+      get: "/kagent/v202401/agents/{agent_id}/capabilities/{capability}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetAgentCapability"
+      summary: "Get an agent capability."
+      description: "Returns configuration of the named capability of the specified agent."
+    };
+  }
+
+
+  rpc ListAgentCapabilities(ListAgentCapabilitiesRequest) returns (ListAgentCapabilitiesResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:read";
+    option (google.api.http) = {
+      get: "/kagent/v202401/agents/{agent_id}/capabilities"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListAgentCapabilities"
+      summary: "List agent capabilities."
+      description: "Returns a list of all capabilities of the specified agent."
+    };
+  }
+
+  rpc DeleteAgentCapability(DeleteAgentCapabilityRequest) returns (DeleteAgentCapabilityResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:write";
+    option (google.api.http) = {
+      delete: "/kagent/v202401/agents/{agent_id}/capabilities/{capability}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteAgentCapability"
+      summary: "Delete an agent capability."
+      description: "Removes the named capability from the specified agent."
+    };
+  }
+}

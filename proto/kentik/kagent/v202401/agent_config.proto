@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package kentik.kagent.v202401;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/kagent/v202401;kagent";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+
+
+
+// {{.Name}}
+message AgentConfig {
+  google.protobuf.Timestamp created = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Creation timestamp."
+    }
+  ];
+  google.protobuf.Timestamp edited  = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last-modification timestamp."
+    }
+  ];
+  string site_id     = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the site the agent is assigned to."
+    }
+  ];
+  string name        = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User-friendly name of the agent."
+    }
+  ];
+  string description = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Description of the agent."
+    }
+  ];
+  string release_channel = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Release channel the agent takes software updates from."
+    }
+  ];
+  // override the OS distribution discovered by the agent
+  string os_distribution = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Override of the OS distribution discovered by the agent."
+    }
+  ];
+}
+
+// {{.Name}}
+message TelemetryConfig {
+  string logs_endpoint = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Endpoint the agent sends logs to."
+    }
+  ];
+  string metrics_endpoint = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Endpoint the agent sends metrics to."
+    }
+  ];
+  string kmetrics_endpoint = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Endpoint the agent sends kmetrics to."
+    }
+  ];
+  string sentry_endpoint = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Endpoint the agent sends crash reports to."
+    }
+  ];
+}

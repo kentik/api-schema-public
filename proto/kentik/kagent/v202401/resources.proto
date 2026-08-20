@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package kentik.kagent.v202401;
+
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/kagent/v202401;kagent";
+
+// HostResources represents system-wide resource metrics.
+message HostResources {
+  // Total number of CPU cores available on the host.
+  optional uint32 cpu_num_cores = 1;
+  // Fraction of CPU cores currently in use across the host.
+  optional double cpu_used_cores = 2;
+  // Total available memory on the host, in bytes.
+  optional uint64 mem_total_bytes = 3;
+  // Total memory currently used by the host, in bytes.
+  optional uint64 mem_used_bytes = 4;
+  // Total disk storage capacity, in bytes.
+  optional uint64 disk_total_bytes = 5;
+  // Total disk space currently used, in bytes.
+  optional uint64 disk_used_bytes = 6;
+}
+
+// ProcessResources represents resource metrics for a single process.
+message ProcessResources {
+  // CPU usage of the process as a fraction of a single core.
+  optional double cpu_used_cores = 1;
+  // Memory usage of the process, in bytes.
+  optional uint64 mem_used_bytes = 2;
+  // Disk space currently used by the process, in bytes.
+  optional uint64 disk_used_bytes = 3;
+}

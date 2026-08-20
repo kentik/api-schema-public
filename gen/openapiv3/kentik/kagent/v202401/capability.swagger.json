@@ -1,0 +1,754 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "KAgent Capability API",
+        "version": "v202401",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api"
+        }
+    },
+    "tags": [
+        {
+            "name": "CapabilityReleaseService"
+        },
+        {
+            "name": "CapabilityAdminService"
+        }
+    ],
+    "paths": {
+        "/kagent/v202401/capabilities": {
+            "get": {
+                "summary": "List all capabilities",
+                "operationId": "CapabilityAdminService_ListCapabilities",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401ListCapabilitiesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "CapabilityAdminService"
+                ]
+            },
+            "post": {
+                "summary": "Create a new capability",
+                "operationId": "CapabilityAdminService_CreateCapability",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401CreateCapabilityResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202401Capability"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "CapabilityAdminService"
+                ]
+            }
+        },
+        "/kagent/v202401/capabilities/{capability.name}": {
+            "patch": {
+                "summary": "Update an existing capability",
+                "operationId": "CapabilityAdminService_UpdateCapability",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401UpdateCapabilityResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "capability.name",
+                        "description": "The capability name: one of kagent, kproxy, ranger and so on.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "displayName": {
+                                        "type": "string",
+                                        "example": "NMS",
+                                        "description": "The capability display name"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "",
+                                        "description": "The capability description"
+                                    },
+                                    "seedBundleId": {
+                                        "type": "string",
+                                        "example": "aa650634-f488-420f-bee8-63bbc5906e59",
+                                        "description": "The seed bundle ID"
+                                    },
+                                    "seedConfig": {
+                                        "type": "string",
+                                        "example": "kagent-config-v1",
+                                        "description": "The seed config for the capability"
+                                    }
+                                },
+                                "required": [
+                                    "capability"
+                                ]
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "CapabilityAdminService"
+                ]
+            },
+            "get": {
+                "summary": "Get a capabilities",
+                "operationId": "CapabilityAdminService_GetCapability",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401GetCapabilityResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "capability.name",
+                        "description": "The name of the capability",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CapabilityAdminService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete a capability",
+                "operationId": "CapabilityAdminService_DeleteCapability",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401DeleteCapabilityResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "capability.name",
+                        "description": "The name of the capability to delete",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CapabilityAdminService"
+                ]
+            }
+        },
+        "/kagent/v202401/releases": {
+            "get": {
+                "summary": "GetCapabilityRelease can be used by install/upgrade modules to fetch a single release.",
+                "operationId": "CapabilityReleaseService_GetCapabilityRelease",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401GetCapabilityReleaseResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "os",
+                        "description": "The running program's operating system target: one of darwin, freebsd, linux, and so on.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "arch",
+                        "description": "The running program's architecture target: one of 386, amd64, arm, s390x, and so on.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "channel",
+                        "description": "The release channel: one of alpha, beta, or stable",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "capability",
+                        "description": "The capability name",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "semver",
+                        "description": "The semantic version. Leave it unset to query for the latest release",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "distro",
+                        "description": "The OS distribution. Only applicable to Linux.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CapabilityReleaseService"
+                ]
+            }
+        },
+        "/kagent/v202401/releases/latest": {
+            "get": {
+                "summary": "GetCapabilityLatestReleases can be used by install/upgrade modules to fetch the latest available releases.",
+                "operationId": "CapabilityReleaseService_GetCapabilityLatestReleases",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401GetCapabilityLatestReleasesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "os",
+                        "description": "The running program's operating system target: one of darwin, freebsd, linux, and so on.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "arch",
+                        "description": "The running program's architecture target: one of 386, amd64, arm, s390x, and so on.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "channel",
+                        "description": "The release channel: one of alpha, beta, or stable",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "installId",
+                        "description": "The machine UUID/GUID, which the OS uses for internal needs. All machine IDs are usually generated during system installation and stay constant for all subsequent boots.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "capabilities",
+                        "description": " A list of capabilities names to query. The backend must only return releases for given capabilities (when specified). An empty list means the backend must return the latest available release for all existing capabilities.",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "distro",
+                        "description": "The OS distribution. Only applicable to Linux.",
+                        "in": "query",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "CapabilityReleaseService"
+                ]
+            }
+        },
+        "/kagent/v202401/releases/supported_distros": {
+            "get": {
+                "operationId": "CapabilityReleaseService_GetCapabilitySupportedDistros",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202401GetCapabilitySupportedDistrosResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "capabilities",
+                        "description": "A list of capabilities to get supported distros for. If not specified, the backend returns all distro-based capabilities",
+                        "in": "query",
+                        "required": false,
+                        "explode": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "tags": [
+                    "CapabilityReleaseService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "More about Kentik APIs",
+        "url": "https://docs.kentik.com/api"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202401Capability": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "example": "kagent",
+                        "description": "The capability name: one of kagent, kproxy, ranger and so on."
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "example": "NMS",
+                        "description": "The capability display name"
+                    },
+                    "description": {
+                        "type": "string",
+                        "example": "",
+                        "description": "The capability description"
+                    },
+                    "seedBundleId": {
+                        "type": "string",
+                        "example": "aa650634-f488-420f-bee8-63bbc5906e59",
+                        "description": "The seed bundle ID"
+                    },
+                    "seedConfig": {
+                        "type": "string",
+                        "example": "kagent-config-v1",
+                        "description": "The seed config for the capability"
+                    }
+                }
+            },
+            "v202401CapabilityDistro": {
+                "type": "object",
+                "properties": {
+                    "distro": {
+                        "type": "string",
+                        "example": "debian-12",
+                        "description": "The OS distribution"
+                    },
+                    "arch": {
+                        "type": "string",
+                        "example": "amd64",
+                        "description": "The OS architecture"
+                    },
+                    "os": {
+                        "type": "string",
+                        "example": "linux",
+                        "description": "The OS name"
+                    }
+                }
+            },
+            "v202401CapabilityRelease": {
+                "type": "object",
+                "properties": {
+                    "capability": {
+                        "type": "string",
+                        "example": "kagent",
+                        "description": "The capability name: one of kagent, kproxy, ranger and so on."
+                    },
+                    "semver": {
+                        "type": "string",
+                        "example": "v1.0.0",
+                        "description": "The semantic version."
+                    },
+                    "downloadUrls": {
+                        "type": "array",
+                        "example": [
+                            "https://github.com/kentik/kentik/releases/download/v1.22.0/kagent_Linux_arm64.tar.gz"
+                        ],
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "A list of accepted URLs to download the capability"
+                    },
+                    "checksum": {
+                        "type": "string",
+                        "example": "a8c2a6e5c7fec5452b288fb6aad3ffb38c245e69272ad17de1ecbcb5ab6464d3",
+                        "description": "The hex-encoded checksum",
+                        "title": "deprecated, use provenance field instead"
+                    },
+                    "checksumAlgorithm": {
+                        "type": "string",
+                        "example": "sha256",
+                        "description": "The checksum algorithm: one of sha256, md5, and so on...",
+                        "title": "deprecated, use provenance field instead"
+                    },
+                    "provenance": {
+                        "type": "string",
+                        "description": "Provenance data in intoto format"
+                    },
+                    "supportedDistros": {
+                        "type": "array",
+                        "example": [
+                            "debian-12",
+                            "ubuntu-20"
+                        ],
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of supported distributions for this release. Only applicable for capabilities that generate distro specific binaries, such as kproxy. "
+                    },
+                    "compatibility": {
+                        "$ref": "#/components/schemas/v202401CompatibilityInfo"
+                    }
+                },
+                "title": "CapabilityRelease"
+            },
+            "v202401CapabilitySupportedDistro": {
+                "type": "object",
+                "properties": {
+                    "capability": {
+                        "type": "string"
+                    },
+                    "distros": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202401CapabilityDistro"
+                        }
+                    }
+                }
+            },
+            "v202401CompatibilityInfo": {
+                "type": "object",
+                "properties": {
+                    "tier": {
+                        "type": "integer",
+                        "format": "int32",
+                        "example": 2,
+                        "description": "The compatibility tier: 1=exact match, 2=same-family (agent newer), 3=same-family (agent older), 4=cross-family",
+                        "title": "The compatibility tier (1=exact, 2=same-family-newer, 3=same-family-older, 4=cross-family)"
+                    },
+                    "tierName": {
+                        "type": "string",
+                        "example": "same-family-newer",
+                        "description": "Human-readable name for the compatibility tier",
+                        "title": "Human-readable tier name"
+                    },
+                    "requestedDistro": {
+                        "type": "string",
+                        "example": "ubuntu-25",
+                        "description": "The distro reported by the agent",
+                        "title": "The distro that the agent reported"
+                    },
+                    "matchedDistro": {
+                        "type": "string",
+                        "example": "ubuntu-24",
+                        "description": "The distro of the binary that will be served",
+                        "title": "The distro of the binary being served"
+                    },
+                    "message": {
+                        "type": "string",
+                        "example": "using ubuntu-24 binary on ubuntu-25 system",
+                        "description": "Human-readable explanation of the compatibility decision",
+                        "title": "Human-readable message explaining the fallback"
+                    }
+                },
+                "title": "CompatibilityInfo provides details when a distro fallback was used"
+            },
+            "v202401CreateCapabilityResponse": {
+                "type": "object",
+                "properties": {
+                    "capability": {
+                        "$ref": "#/components/schemas/v202401Capability"
+                    }
+                }
+            },
+            "v202401DeleteCapabilityResponse": {
+                "type": "object"
+            },
+            "v202401GetCapabilityLatestReleasesResponse": {
+                "type": "object",
+                "properties": {
+                    "releases": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202401CapabilityRelease"
+                        },
+                        "title": "A list containing all latest releases"
+                    }
+                },
+                "title": "GetCapabilityLatestReleasesResponse"
+            },
+            "v202401GetCapabilityReleaseResponse": {
+                "type": "object",
+                "properties": {
+                    "release": {
+                        "$ref": "#/components/schemas/v202401CapabilityRelease"
+                    }
+                }
+            },
+            "v202401GetCapabilityResponse": {
+                "type": "object",
+                "properties": {
+                    "capability": {
+                        "$ref": "#/components/schemas/v202401Capability"
+                    }
+                }
+            },
+            "v202401GetCapabilitySupportedDistrosResponse": {
+                "type": "object",
+                "properties": {
+                    "capabilities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202401CapabilitySupportedDistro"
+                        },
+                        "description": "The list of distro-based capabilities with their respective supported distributions"
+                    }
+                },
+                "title": "GetCapabilitySupportedDistrosResponse"
+            },
+            "v202401ListCapabilitiesResponse": {
+                "type": "object",
+                "properties": {
+                    "capabilities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202401Capability"
+                        },
+                        "description": "The list of capabilities"
+                    }
+                }
+            },
+            "v202401UpdateCapabilityResponse": {
+                "type": "object",
+                "properties": {
+                    "capability": {
+                        "$ref": "#/components/schemas/v202401Capability"
+                    }
+                }
+            }
+        }
+    }
+}

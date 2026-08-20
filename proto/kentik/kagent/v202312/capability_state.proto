@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package kentik.kagent.v202312;
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "kentik/monitoring/v1/component.proto";
+
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/kagent/v202312;kagent";
+
+message CapabilityState {
+  // Deprecated: Use component_state.health.status instead.
+  // Health represents the legacy capability health states.
+  // These map naturally to monitoring.v1.HealthStatus (see inline comments).
+  enum Health {
+    option deprecated = true;
+    HEALTH_UNSPECIFIED = 0; // -> HEALTH_STATUS_UNSPECIFIED: not set or unknown.
+    HEALTH_OK = 1; // -> HEALTH_STATUS_HEALTHY: fully operational.
+    HEALTH_WARNING = 5; // -> HEALTH_STATUS_WARNING: functioning but a potential issue detected.
+    HEALTH_DEGRADED = 4; // -> HEALTH_STATUS_DEGRADED: non-critical dependencies failing but holding up.
+    HEALTH_FAILING = 2; // -> HEALTH_STATUS_CRITICAL: capability is failing.
+    HEALTH_UNKNOWN = 3; // -> HEALTH_STATUS_DOWN: agent can't talk to the capability.
+  }
+  // Deprecated: Use component_state.health.status instead.
+  Health status = 1 [deprecated = true];
+  // Deprecated: Use component_state.timestamp instead.
+  google.protobuf.Timestamp timestamp = 2 [deprecated = true];
+  // Deprecated: Use component_state.health.message instead.
+  map<string, string> errors = 3 [deprecated = true];
+  // Arbitrary metadata associated with the capability state.
+  google.protobuf.Struct metadata = 4;
+  // Privileges required or granted for this capability.
+  string privileges = 5;
+
+  // The canonical way to expose capability state. Provides lifecycle phase,
+  // health status, probe signals, graduated health scores, and metrics in a
+  // structured form. Supersedes status, timestamp, and errors fields above.
+  monitoring.v1.ComponentState component_state = 100;
+}

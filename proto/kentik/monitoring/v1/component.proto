@@ -1,0 +1,613 @@
+syntax = "proto3";
+package kentik.monitoring.v1;
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/monitoring/v1;monitoring";
+
+// LifecyclePhase represents where in its lifecycle a component currently is.
+// Named "Phase" to align with Kubernetes Pod phase terminology.
+//
+// This provides informational lifecycle context that complements the binary
+// probe signals in Probes. While probes tell orchestrators WHAT TO DO,
+// lifecycle phase tells humans WHERE the component is in its lifecycle.
+//
+// Relationship to Probes:
+//   INITIALIZING -> probes.startup.ok is false, liveness/readiness not yet evaluated
+//   RUNNING      -> probes.startup.ok is true, liveness/readiness are meaningful
+//   TERMINATING  -> probes.readiness.ok is false (draining), liveness.ok may still be true
+//   TERMINATED   -> all probes are irrelevant (component no longer reporting)
+//
+// Analogy to Kubernetes:
+//   INITIALIZING ~ Pod phase "Pending" (containers starting)
+//   RUNNING      ~ Pod phase "Running" (at least one container running)
+//   TERMINATING  ~ Pod has deletionTimestamp set (graceful shutdown in progress)
+//   TERMINATED   ~ Pod phase "Succeeded" or "Failed" (all containers stopped)
+enum LifecyclePhase {
+  LIFECYCLE_PHASE_UNSPECIFIED = 0;   // unknown or not set
+  LIFECYCLE_PHASE_INITIALIZING = 100; // component is starting up, not yet ready
+  LIFECYCLE_PHASE_RUNNING = 200;      // component is operational
+  LIFECYCLE_PHASE_TERMINATING = 300;  // component is shutting down gracefully
+  LIFECYCLE_PHASE_TERMINATED = 400;   // component has stopped
+}
+
+// Probe represents the result of a single health check.
+// Modeled after Kubernetes probe semantics: binary pass/fail with optional diagnostic context.
+//
+// This is intentionally simple -- probes answer a yes/no question.
+// For graduated health assessment, see the Health message.
+message Probe {
+  // Whether the probe check passed.
+  bool ok = 1;
+
+  // Optional human-readable reason when the probe fails.
+  // Provides diagnostic context for debugging (e.g., "dependency X unreachable", "deadlock detected").
+  // Should be empty/unset when ok is true.
+  optional string message = 2;
+}
+
+// Probes contains Kubernetes-compatible probe signals for a component.
+// Each probe maps directly to a K8s probe type, providing binary actionable signals
+// that orchestrators use to make lifecycle decisions.
+//
+// The three signals are orthogonal:
+//   - A component can be started but not ready (loading caches, waiting for dependencies)
+//   - A component can be live but not ready (graceful shutdown, backpressure)
+//   - A component cannot be live without being started (startup is a prerequisite for liveness)
+//
+// Mapping to K8s probe endpoints:
+//   /startupz  -> startup.ok
+//   /healthz   -> liveness.ok
+//   /readyz    -> readiness.ok
+//
+// Mapping to K8s orchestrator actions:
+//   startup.ok == false   -> keep waiting, do not check liveness or readiness
+//   liveness.ok == false  -> restart the container/process
+//   readiness.ok == false -> remove from service endpoints (stop routing traffic)
+//
+// For hierarchical components, parent probe status is typically derived from children:
+//   parent.startup   = ALL children started (AND)
+//   parent.liveness  = ALL children live (AND)
+//   parent.readiness = ALL children ready (AND, or quorum-based depending on component type)
+message Probes {
+  // Has this component completed its initialization sequence?
+  // Maps to Kubernetes startup probe.
+  //
+  // While startup.ok is false, liveness and readiness probes should not be evaluated
+  // (following K8s semantics where startup probe must pass before other probes activate).
+  //
+  // This is typically a one-shot signal: once true, it stays true for the
+  // lifetime of the component. It resets only on restart.
+  Probe startup = 1;
+
+  // Is this component fundamentally alive and not deadlocked?
+  // Maps to Kubernetes liveness probe.
+  //
+  // When liveness.ok is false, the component should be restarted.
+  // This should only fail for unrecoverable internal errors such as:
+  //   - Deadlocks
+  //   - Corrupted internal state
+  //   - Stuck event loops
+  //
+  // Important: transient dependency failures (database down, upstream timeout)
+  // should cause readiness failure, NOT liveness failure. Restarting won't
+  // fix an external dependency being down.
+  Probe liveness = 2;
+
+  // Can this component serve traffic and fulfill its purpose right now?
+  // Maps to Kubernetes readiness probe.
+  //
+  // When readiness.ok is false, traffic should not be routed to this component.
+  // This signal can toggle dynamically based on:
+  //   - Dependency health (database connection lost)
+  //   - Backpressure (queue full, rate limiting)
+  //   - Graceful shutdown (draining connections)
+  //   - Warmup (caches not yet populated after startup)
+  //
+  // Unlike liveness, readiness failure does NOT trigger a restart.
+  // The component remains running and is expected to recover.
+  Probe readiness = 3;
+}
+
+// HealthStatus represents the health state derived from a health score.
+// States range from healthy operation to complete failure, enabling
+// graduated alerting and response strategies.
+enum HealthStatus {
+  HEALTH_STATUS_UNSPECIFIED = 0;
+  HEALTH_STATUS_HEALTHY = 100; // everything is fine
+  HEALTH_STATUS_WARNING = 200; // early signs of stress, monitor closely
+  HEALTH_STATUS_DEGRADED = 300; // noticeable impact, action recommended
+  HEALTH_STATUS_CRITICAL = 400; // severe impact, immediate action required
+  HEALTH_STATUS_DOWN = 500; // not functioning
+}
+
+// Health represents the observability health state of a component.
+// Provides graduated health assessment for dashboards, alerting, and trend analysis.
+//
+// Health is COMPLEMENTARY to Probes -- they serve different consumers:
+//   Probes -> orchestrators (K8s): "What action should I take?" (binary)
+//   Health      -> humans & dashboards: "How well is this performing?" (graduated)
+//
+// A component can have:
+//   probes.readiness.ok = true + health.status = WARNING
+//     -> Still serving traffic, but approaching resource limits (alert the team)
+//   probes.readiness.ok = false + health.status = DEGRADED
+//     -> Not serving traffic, dependency issues (investigate)
+//   probes.liveness.ok = false + health.status = DOWN
+//     -> Component needs restart, complete failure
+message Health {
+  // Graduated health status for observability and alerting.
+  // Unlike probe signals (binary), this provides nuanced health levels
+  // for dashboards and graduated alerting strategies.
+  HealthStatus status = 1;
+
+  // Numerical health score in the range [0.0, 1.0], where:
+  //   1.0 = perfect health, all metrics within optimal thresholds
+  //   0.0 = complete failure or unavailability
+  //
+  // Calculated from weighted metric evaluations and child component scores.
+  // When present, status is typically derived from this score using configurable
+  // thresholds (e.g., >=0.9 = HEALTHY, >=0.7 = WARNING, >=0.5 = DEGRADED,
+  // >=0.2 = CRITICAL, <0.2 = DOWN).
+  //
+  // Optional to support components that only report categorical status.
+  optional float score = 2;
+
+  // Human-readable explanation of the current health status.
+  // Provides context for alerts and dashboards.
+  // Examples: "Memory usage at 92%", "3 of 5 replicas healthy", "All systems nominal"
+  optional string message = 3;
+}
+
+// MetricType represents the type of metric for storage and aggregation.
+// Different types require different collection and interpretation strategies.
+// Note: Rate semantics are captured in MetricRateUnit, not here.
+enum MetricType {
+  METRIC_TYPE_UNSPECIFIED = 0; // unknown or not set
+  METRIC_TYPE_GAUGE = 1; // instantaneous value that can go up or down (e.g., memory usage, requests/sec)
+  METRIC_TYPE_COUNTER = 2; // monotonically increasing cumulative value (e.g., total requests, bytes sent)
+  METRIC_TYPE_HISTOGRAM = 3; // distribution of values with buckets (e.g., latency percentiles)
+}
+
+// MetricEntity represents what activity or operation is being observed.
+// This describes activities that happen ON or THROUGH a component, not the component itself.
+// The component type is already specified in ComponentState.type.
+// Entities are organized by operational category for clarity.
+enum MetricEntity {
+  METRIC_ENTITY_UNSPECIFIED = 0; // unknown or not applicable (use for resource utilization metrics)
+
+  // Request and query operations (1-9)
+  METRIC_ENTITY_REQUESTS = 1; // HTTP or API requests
+  METRIC_ENTITY_QUERIES = 2; // database queries, search queries
+
+  // Network operations (10-19)
+  METRIC_ENTITY_FLOWS = 10; // network flows
+  METRIC_ENTITY_CONNECTIONS = 11; // connections (network, database, etc.)
+  METRIC_ENTITY_PACKETS = 12; // network packets
+  METRIC_ENTITY_BYTES = 13; // raw byte transfer (network, disk I/O)
+
+  // Data persistence operations (20-29)
+  METRIC_ENTITY_READS = 20; // read operations
+  METRIC_ENTITY_WRITES = 21; // write operations
+  METRIC_ENTITY_TRANSACTIONS = 22; // database or business transactions
+  METRIC_ENTITY_RECORDS = 23; // database records, event records, log records
+
+  // Message and event operations (30-39)
+  METRIC_ENTITY_MESSAGES = 30; // messages (e.g., queue messages, pub/sub)
+  METRIC_ENTITY_EVENTS = 31; // events (application, system, business)
+  METRIC_ENTITY_LOGS = 32; // log entries or log lines
+
+  // Task and batch operations (40-49)
+  METRIC_ENTITY_TASKS = 40; // tasks or jobs
+  METRIC_ENTITY_OPERATIONS = 41; // generic operations
+  METRIC_ENTITY_BATCHES = 42; // batch operations, bulk processing
+
+  // Storage and caching (50-59)
+  METRIC_ENTITY_ITEMS = 50; // items (e.g., cached items, stored items, files)
+  METRIC_ENTITY_DATA = 51; // data transfer or storage (generic)
+  METRIC_ENTITY_BLOCKS = 52; // storage blocks, memory blocks
+  METRIC_ENTITY_REPLICAS = 53; // data replicas, replica sync operations
+  METRIC_ENTITY_SNAPSHOTS = 54; // system snapshots, backup snapshots
+
+  // Concurrency and system resources (60-69)
+  METRIC_ENTITY_THREADS = 60; // OS threads, thread pool threads
+  METRIC_ENTITY_PROCESSES = 61; // OS processes
+  METRIC_ENTITY_GOROUTINES = 62; // goroutines, coroutines, lightweight threads
+  METRIC_ENTITY_LOCKS = 63; // concurrency locks, mutex operations
+
+  // User and client activity (70-79)
+  METRIC_ENTITY_SESSIONS = 70; // user sessions, authentication sessions
+  METRIC_ENTITY_USERS = 71; // active users, concurrent users
+  METRIC_ENTITY_CLIENTS = 72; // connected clients, client connections
+
+  // Observability and diagnostics (80-89)
+  METRIC_ENTITY_ERRORS = 80; // error events (distinct from failed operations)
+  METRIC_ENTITY_SPANS = 81; // distributed tracing spans
+  METRIC_ENTITY_ALERTS = 82; // generated alerts
+}
+
+// MetricMeasurement represents how the entity is being measured.
+// This defines the type of measurement being taken on the entity.
+// Can be combined with MetricRateUnit to express rates (e.g., COUNT + PER_SECOND = items/sec).
+enum MetricMeasurement {
+  METRIC_MEASUREMENT_UNSPECIFIED = 0; // unknown measurement type
+  METRIC_MEASUREMENT_COUNT = 1; // discrete count of items (e.g., request count, or requests/sec when combined with rate_unit)
+  METRIC_MEASUREMENT_DURATION = 2; // time duration or latency (e.g., request latency, uptime)
+  METRIC_MEASUREMENT_SIZE = 3; // data size in bytes (e.g., memory usage, or bytes/sec when combined with rate_unit)
+  // Dimensionless fraction in [0.0, 1.0] for proportions, utilization, or hit rates.
+  // Examples: CPU utilization 0.85 = 85%; cache hit ratio 0.97 = 97%.
+  METRIC_MEASUREMENT_RATIO = 4; // dimensionless fraction
+}
+
+// MetricDurationUnit represents the unit for duration measurements.
+// Only applicable when measurement type is DURATION.
+enum MetricDurationUnit {
+  METRIC_DURATION_UNIT_UNSPECIFIED = 0; // use default or not applicable
+  METRIC_DURATION_UNIT_NANOSECONDS = 1; // nanoseconds (high-precision latency)
+  METRIC_DURATION_UNIT_MICROSECONDS = 2; // microseconds
+  METRIC_DURATION_UNIT_MILLISECONDS = 3; // milliseconds (typical request latency)
+  METRIC_DURATION_UNIT_SECONDS = 4; // seconds (timeout, uptime)
+  METRIC_DURATION_UNIT_MINUTES = 5; // minutes
+  METRIC_DURATION_UNIT_HOURS = 6; // hours
+}
+
+// MetricRateUnit represents the time dimension for rate metrics.
+// When set to anything other than UNSPECIFIED, the metric represents a rate of change.
+// Applies to any measurement type: COUNT becomes items/sec, SIZE becomes bytes/sec, etc.
+enum MetricRateUnit {
+  METRIC_RATE_UNIT_UNSPECIFIED = 0; // not a rate, absolute/instantaneous value
+  METRIC_RATE_UNIT_PER_SECOND = 1; // per second (e.g., requests/sec, bytes/sec, errors/sec)
+  METRIC_RATE_UNIT_PER_MINUTE = 2; // per minute (e.g., requests/min)
+  METRIC_RATE_UNIT_PER_HOUR = 3; // per hour (e.g., requests/hour)
+}
+
+// MetricCategory classifies metrics using USE and RED methodology.
+// USE (Utilization, Saturation, Errors) for resources: CPU, memory, disk, network.
+// RED (Rate, Errors, Duration) for services: request throughput, failures, latency.
+enum MetricCategory {
+  METRIC_CATEGORY_UNSPECIFIED = 0; // unknown or uncategorized
+  METRIC_CATEGORY_UTILIZATION = 1; // USE: % of resource capacity being used (CPU, memory, disk space)
+  METRIC_CATEGORY_SATURATION = 2; // USE: degree of resource overload (queue length, wait time, dropped packets)
+  METRIC_CATEGORY_ERRORS = 3; // USE/RED: error events and rates (failures, retries, exceptions)
+  METRIC_CATEGORY_LATENCY = 4; // RED (Duration): response time, processing delay (p50, p95, p99)
+  METRIC_CATEGORY_TRAFFIC = 5; // RED (Rate): throughput, requests/sec, bytes/sec, transactions/sec
+  METRIC_CATEGORY_AVAILABILITY = 6; // uptime percentage, reachability, success rate (complement of error rate)
+}
+
+// ComponentType represents the type of component being monitored.
+// Types are organized by architectural layer and function to enable
+// appropriate metric collection and health evaluation strategies.
+// Each layer has 100 reserved values to allow for future expansion.
+enum ComponentType {
+  COMPONENT_TYPE_UNSPECIFIED = 0; // unknown or not set
+  COMPONENT_TYPE_GENERIC = 1; // generic component without specific type
+  COMPONENT_TYPE_GROUP = 2; // logical grouping of components
+
+  // System-level components (100-199)
+  COMPONENT_TYPE_BACKEND = 100; // backend service or application
+  COMPONENT_TYPE_FRONTEND = 101; // frontend service or application
+  COMPONENT_TYPE_CLUSTER = 102; // collection of nodes working together
+  COMPONENT_TYPE_NODE = 103; // logical cluster member or process (use compute types for physical/virtual machines)
+  COMPONENT_TYPE_AGENT = 104; // monitoring or collection agent
+  COMPONENT_TYPE_CAPABILITY = 105; // specific service capability or feature
+
+  // Application components (200-299)
+  COMPONENT_TYPE_RECEIVER = 200; // data ingestion, capture, or input component
+  COMPONENT_TYPE_FILTER = 201; // data filtering or routing logic
+  COMPONENT_TYPE_PROCESSOR = 202; // data transformation, enrichment, or aggregation
+  COMPONENT_TYPE_POLLER = 203; // active polling component for external data
+  COMPONENT_TYPE_SCHEDULER = 204; // task scheduling and coordination
+  COMPONENT_TYPE_ORCHESTRATOR = 205; // workflow management and orchestration
+  COMPONENT_TYPE_SENDER = 206; // data export, upload, or output component
+  COMPONENT_TYPE_PROXY = 207; // proxy or gateway for requests
+  COMPONENT_TYPE_ROUTER = 208; // message or request router
+  COMPONENT_TYPE_WORKER = 209; // background worker or job processor
+  COMPONENT_TYPE_CHANNEL = 210; // a pipe or conduit for data between components
+  COMPONENT_TYPE_BUFFER = 211; // temporary storage to manage speed differences
+  COMPONENT_TYPE_SINK = 212; // a final destination where data is dropped or stored
+  COMPONENT_TYPE_CONNECTION = 213; // active connection to external resource (e.g., database, service, network socket)
+  COMPONENT_TYPE_RECONCILER = 214; // component that ensures consistency between systems
+  COMPONENT_TYPE_EVENT_LOOP = 215; // component that handles asynchronous events
+  COMPONENT_TYPE_CONFIG_MANAGER = 216; // component that manages configuration lifecycle
+  COMPONENT_TYPE_SUPERVISOR = 217; // component that monitors and restarts child processes
+
+  // Storage and buffer components (300-399)
+  COMPONENT_TYPE_CACHE = 300; // in-memory cache (e.g., Redis, Memcached)
+  COMPONENT_TYPE_QUEUE = 301; // message queue or buffer (e.g., Kafka, RabbitMQ)
+  COMPONENT_TYPE_DATABASE = 302; // relational or NoSQL database instance
+  COMPONENT_TYPE_OBJECT_STORAGE = 303; // object/blob storage (e.g., S3, Azure Blob, GCS)
+  COMPONENT_TYPE_TIMESERIES_DATABASE = 304; // time-series database (e.g., InfluxDB, Prometheus, TimescaleDB)
+  COMPONENT_TYPE_KEY_VALUE_STORE = 305; // distributed key-value store (e.g., etcd, Consul, DynamoDB)
+  COMPONENT_TYPE_DOCUMENT_DATABASE = 306; // document database (e.g., MongoDB, CouchDB, Firestore)
+  COMPONENT_TYPE_SEARCH_INDEX = 307; // search engine or index (e.g., Elasticsearch, Solr, Algolia)
+  COMPONENT_TYPE_STREAM = 308; // event stream or streaming platform (e.g., Kafka Streams, Kinesis)
+
+  // Hardware resource components (400-499)
+  COMPONENT_TYPE_MEMORY = 400; // RAM or memory subsystem
+  COMPONENT_TYPE_DISK = 401; // disk storage device
+  COMPONENT_TYPE_FILESYSTEM = 402; // filesystem mount or volume
+  COMPONENT_TYPE_NETWORK = 403; // network interface or subsystem
+  COMPONENT_TYPE_CPU = 404; // CPU or processor
+  COMPONENT_TYPE_GPU = 405; // GPU or graphics processor
+
+  // Compute resource components (500-599)
+  COMPONENT_TYPE_SERVER = 500; // physical server or bare metal machine
+  COMPONENT_TYPE_VM = 501; // virtual machine or instance
+  COMPONENT_TYPE_CONTAINER = 502; // container (e.g., Docker container)
+  COMPONENT_TYPE_POD = 503; // Kubernetes pod (group of containers)
+  COMPONENT_TYPE_NAMESPACE = 504; // Kubernetes or container namespace
+  COMPONENT_TYPE_JAIL = 505; // FreeBSD jail or similar OS-level virtualization
+  COMPONENT_TYPE_LAMBDA = 506; // serverless function or FaaS (e.g., AWS Lambda, Azure Functions)
+
+  // Network infrastructure components (600-699)
+  COMPONENT_TYPE_LOAD_BALANCER = 600; // load balancer (e.g., HAProxy, ALB, NLB, nginx)
+  COMPONENT_TYPE_FIREWALL = 601; // firewall appliance or software firewall
+  COMPONENT_TYPE_VPN = 602; // VPN endpoint or gateway
+  COMPONENT_TYPE_SWITCH = 603; // network switch
+  COMPONENT_TYPE_PHYSICAL_ROUTER = 604; // physical network router (distinct from application router)
+  COMPONENT_TYPE_DNS = 605; // DNS server or service
+  COMPONENT_TYPE_CDN = 606; // content delivery network node or edge location
+
+  // External dependencies (700-799)
+  COMPONENT_TYPE_EXTERNAL_API = 700; // third-party API dependency
+  COMPONENT_TYPE_CLOUD_SERVICE = 701; // managed cloud service (e.g., AWS S3, Azure SQL, GCP services)
+  COMPONENT_TYPE_SAAS = 702; // SaaS application dependency
+
+  // State and data components (800-899)
+  // These represent passive data or state that can be monitored for validity, freshness, or compliance
+  COMPONENT_TYPE_CONFIG = 800; // configuration file or settings (monitor validity, freshness, version)
+  COMPONENT_TYPE_SCHEMA = 801; // data schema or API schema (monitor compatibility, validation)
+  COMPONENT_TYPE_CERTIFICATE = 802; // TLS/SSL certificate (monitor expiration, validity)
+  COMPONENT_TYPE_CREDENTIAL = 803; // credential or secret (monitor expiration, rotation)
+}
+
+// MetricDefinition describes a metric's metadata and characteristics.
+// This provides the schema for understanding and interpreting metric values.
+// Note: The ToHealth mapping function is not included as it's a runtime concern.
+message MetricDefinition {
+  string name = 1; // unique identifier for the metric (e.g., "cpu_utilization", "request_latency_p95", "requests_per_sec")
+  string description = 2; // human-readable explanation of what the metric measures
+  MetricEntity entity = 3; // what is being measured (e.g., REQUESTS, CPU, DATA)
+  MetricMeasurement measurement = 4; // how it's being measured (e.g., COUNT, DURATION, SIZE, PERCENTAGE)
+  MetricDurationUnit duration_unit = 5; // time unit for duration measurements (only when measurement=DURATION)
+  MetricRateUnit rate_unit = 6; // time dimension (UNSPECIFIED for absolute values, PER_SECOND/PER_MINUTE/PER_HOUR for rates)
+  MetricType type = 7; // metric type affecting how it should be collected and aggregated
+  MetricCategory category = 8; // USE/RED classification for monitoring strategy
+}
+
+// ---------------------------------------------------------------------------
+// Local evaluation messages
+//
+// These messages describe metric snapshots for local, human-oriented
+// consumption: health checks, component state trees, HTTP status pages,
+// and LLM-readable diagnostics.
+//
+// They intentionally carry *derived* values (scalars, percentiles)
+// rather than instrumentation internals (bucket distributions, label
+// descriptors). Raw data stays on the collection/scraping path
+// and never enters these messages.
+//
+// Design rationale:
+//   - Consumers should not have to reverse-engineer a polymorphic
+//     message to extract a single number.
+//   - Percentiles (p50, p95, p99) are what humans and health checks
+//     compare against thresholds; raw cumulative bucket counts are not.
+//   - Computing derived values once at snapshot time keeps the logic
+//     in the metric implementation rather than scattering it across
+//     every consumer.
+// ---------------------------------------------------------------------------
+
+// Percentile represents a single pre-computed percentile from a histogram.
+//
+// Percentiles are computed by a streaming quantile estimator
+// maintained alongside the histogram. They represent the values that
+// matter to humans and health checks — e.g., "p95 latency is 120 ms" —
+// with higher accuracy than bucket-boundary interpolation.
+message Percentile {
+  // The quantile this percentile represents (e.g., 0.5, 0.95, 0.99).
+  double quantile = 1;
+  // The observed value at this quantile.
+  double value = 2;
+}
+
+// HistogramValue represents a histogram snapshot with pre-computed percentiles.
+//
+// Unlike a histogram exposition format (which carries cumulative bucket
+// counts for a scraping server to aggregate), this message carries
+// streaming-estimated percentile values for local consumers. The raw
+// bucket distribution remains internal to the collection path.
+message HistogramValue {
+  // Total number of observations.
+  uint64 sample_count = 1;
+  // Sum of all observed values.
+  double sample_sum = 2;
+  // Pre-computed percentiles ordered by quantile ascending.
+  // Produced by a streaming quantile estimator that
+  // runs alongside the histogram.
+  // Default quantiles are 0.5, 0.95, and 0.99 unless a different set
+  // is configured by the producer or collection pipeline.
+  repeated Percentile percentiles = 3;
+}
+
+// MetricValue holds the point-in-time value of a single metric series.
+//
+// Every variant represents the locally-meaningful value of the metric,
+// not its instrumentation wire representation:
+//   - Counter / Gauge → scalar (the current count or gauge reading)
+//   - Rate            → scalar (the computed rate, not the raw counter)
+//   - Histogram       → pre-computed percentiles (not raw buckets)
+message MetricValue {
+  oneof value {
+    // Scalar value for counter, gauge, and rate metrics.
+    double scalar = 1;
+    // Pre-computed percentiles for histogram metrics.
+    HistogramValue histogram = 2;
+  }
+}
+
+// MetricSample represents a single series within a metric.
+//
+// For single-series metrics (Counter, Gauge, Histogram, Rate) there is
+// exactly one sample with empty labels. For multi-series metrics
+// (CounterVec, GaugeVec, HistogramVec) each label combination produces
+// an independent sample.
+message MetricSample {
+  // Label key-value pairs identifying this series.
+  // Examples: {"method": "GET", "status": "200"}.
+  // Empty for single-series metrics.
+  map<string, string> labels = 1;
+  // The locally-meaningful metric value for this label combination.
+  MetricValue value = 2;
+}
+
+// Metric represents a metric with its definition and current value.
+// Combines the metric schema (definition) with its actual measured value.
+message Metric {
+  MetricDefinition definition = 1; // metadata describing the metric
+  // All metric series for local evaluation. Each sample carries a
+  // locally-meaningful value (scalar or pre-computed percentiles),
+  // not a raw instrumentation exposition format.
+  // Single-series metrics have exactly one sample with empty labels.
+  // Multi-series (Vec) metrics have one sample per label set.
+  repeated MetricSample samples = 2;
+}
+
+// LinkType classifies the kind of resource a link points to.
+// This enables consumers to render or prioritize links contextually
+// (e.g., showing dashboard links prominently in an incident view).
+enum LinkType {
+  LINK_TYPE_UNSPECIFIED = 0;      // unknown or uncategorized link
+  LINK_TYPE_DASHBOARD = 1;        // observability dashboard (e.g., Grafana, Datadog)
+  LINK_TYPE_LOGS = 2;             // log viewer or log search (e.g., Kibana, Loki, CloudWatch Logs)
+  LINK_TYPE_TRACES = 3;           // distributed tracing UI (e.g., Jaeger, Tempo, Zipkin)
+  LINK_TYPE_DOCUMENTATION = 4;    // internal or external documentation (e.g., runbook, wiki, README)
+  LINK_TYPE_RUNBOOK = 5;          // operational runbook or playbook for incident response
+  LINK_TYPE_SOURCE_CODE = 6;      // source code repository or file (e.g., GitHub, GitLab)
+  LINK_TYPE_TICKET = 7;           // issue tracker or ticket (e.g., Jira, GitHub Issues, PagerDuty)
+  LINK_TYPE_ALERTING = 8;         // alerting rule or alert detail page
+  LINK_TYPE_EXTERNAL = 9;         // external resource not covered by other types
+}
+
+// Link represents a reference to an external resource related to a component.
+// Links provide contextual navigation for troubleshooting, such as pointers to
+// dashboards, log views, runbooks, source code, or documentation.
+//
+// Example links for a database component:
+//   { type: DASHBOARD, title: "Database Metrics", url: "https://grafana.internal/d/db-metrics" }
+//   { type: LOGS, title: "Database Logs", url: "https://kibana.internal/app/logs?query=service:db" }
+//   { type: RUNBOOK, title: "Database Failover Procedure", url: "https://wiki.internal/runbooks/db-failover" }
+message Link {
+  // Classification of the linked resource.
+  LinkType type = 1;
+
+  // Short human-readable title for display (e.g., "Grafana Dashboard", "Error Logs").
+  string title = 2;
+
+  // URL of the external resource.
+  string url = 3;
+}
+
+// ComponentState represents the state of a component in a hierarchical system.
+// Designed for Kubernetes-native environments with first-class probe support.
+//
+// The state model has three complementary layers (mirroring K8s architecture):
+//
+//   +-------------------+
+//   | Lifecycle Phase    |  WHERE is this component in its lifecycle?
+//   | (informational)    |  Answers: initializing / running / terminating / terminated
+//   +-------------------+
+//   |  Probe Status      |  WHAT SHOULD the orchestrator do?
+//   |  (actionable)      |  Answers: wait / restart / stop routing traffic
+//   +-------------------+
+//   |     Health         |  HOW WELL is this component performing?
+//   | (observability)    |  Answers: healthy / warning / degraded / critical / down
+//   +-------------------+
+//
+// Example: A database component during normal operation with high memory:
+//   lifecycle_phase = RUNNING
+//   probes = { startup: {ok: true}, liveness: {ok: true}, readiness: {ok: true} }
+//   health = { status: WARNING, score: 0.75, message: "Memory usage at 88%" }
+//
+// Example: A component losing its upstream dependency:
+//   lifecycle_phase = RUNNING
+//   probes = { startup: {ok: true}, liveness: {ok: true}, readiness: {ok: false, message: "upstream API unreachable"} }
+//   health = { status: DEGRADED, score: 0.4, message: "Cannot reach upstream API" }
+//
+// Example: A component during graceful shutdown:
+//   lifecycle_phase = TERMINATING
+//   probes = { startup: {ok: true}, liveness: {ok: true}, readiness: {ok: false, message: "shutting down"} }
+//   health = { status: HEALTHY, score: 1.0, message: "Draining connections" }
+message ComponentState {
+  // Component identifier (e.g., "api-server", "database-primary", "eth0")
+  string name = 1;
+
+  // Type classification for appropriate monitoring strategy
+  ComponentType type = 2;
+
+  // Human-readable description of this component's role and the impact when it is not healthy.
+  // Intended for LLMs and operators to quickly understand what this component does and why it matters.
+  // Examples:
+  //   "Primary ingestion pipeline for flow data. When unhealthy, flow records are lost."
+  //   "DNS resolver cache. When degraded, query latency increases significantly."
+  optional string description = 10;
+
+  // Lifecycle phase: informational context about where in its lifecycle this component is.
+  // Complements probes by providing human-readable lifecycle context.
+  LifecyclePhase lifecycle_phase = 3;
+
+  // Kubernetes-compatible probe signals: actionable binary signals for orchestration.
+  // These drive automated decisions: restart, stop routing traffic, or keep waiting.
+  // See Probes documentation for detailed semantics and K8s mapping.
+  Probes probes = 4;
+
+  // Observability health assessment: graduated health data for dashboards and alerting.
+  // Derived from metrics evaluation and child component health states.
+  // See Health documentation for how it complements Probes.
+  Health health = 5;
+
+  // Sub-components forming a hierarchical health tree.
+  // Parent probe status is typically derived from children's probe status.
+  // Examples: nodes within a cluster, workers within a processor, interfaces within a network component.
+  repeated ComponentState children = 6;
+
+  // Metrics collected for this component, each with its definition and current value.
+  // These drive both health score calculation and provide raw observability data.
+  repeated Metric metrics = 7;
+
+  // Key-value labels for cross-cutting correlation and external matching.
+  // Inspired by Kubernetes labels, these enable:
+  //   - Correlating components beyond the parent-child hierarchy (e.g., all components
+  //     serving the same tenant, belonging to the same pipeline, or in the same region)
+  //   - Matching components with external services/resources (e.g., linking a cache
+  //     component to its Redis instance, or a queue component to its Kafka cluster)
+  //   - Filtering and grouping in dashboards and alerting rules
+  map<string, string> labels = 9;
+
+  // Links to external resources for troubleshooting and context.
+  // Examples: Grafana dashboards, log views, runbooks, source code, documentation.
+  // These help operators quickly navigate to relevant tools during incident response.
+  repeated Link links = 8;
+
+  // Arbitrary non-identifying metadata attached to the component.
+  // Analogous to Kubernetes annotations: unlike labels (which are for identification
+  // and selection), annotations hold auxiliary data used by tools, automation, and
+  // external systems. The data is not used for filtering or grouping.
+  //
+  // Use annotations to attach information that:
+  //   - Drives notification templates and alerting context (e.g., team contacts, escalation tier)
+  //   - Enables autonomous systems to trigger custom workflows and actions
+  //   - Records tool-specific configuration or operational hints
+  //   - Stores data too large, structured, or non-identifying for labels
+  //
+  // Struct is used instead of map<string,string> to support nested and typed values.
+  google.protobuf.Struct annotations = 11;
+
+  // Optional time at which this component state was observed/captured.
+  // For top-level snapshot payloads, producers should set this to the snapshot time.
+  // For nested children, this may be omitted when the child state is part of the same
+  // enclosing snapshot and does not have a distinct capture time. Populate it on a
+  // child only when that child was observed independently or at a meaningfully
+  // different time than its parent.
+  google.protobuf.Timestamp timestamp = 12;
+}

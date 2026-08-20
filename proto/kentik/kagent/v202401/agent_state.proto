@@ -1,0 +1,144 @@
+syntax = "proto3";
+
+package kentik.kagent.v202401;
+
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "kentik/core/v202303/annotations.proto";
+import "kentik/kagent/v202312/capability_state.proto";
+import "kentik/kagent/v202401/agent_capabilities.proto";
+import "kentik/kagent/v202401/agent_config.proto";
+import "kentik/kagent/v202401/config.proto";
+import "kentik/kagent/v202401/capability.proto";
+import "kentik/kagent/v202401/resources.proto";
+
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/kagent/v202401;kagent";
+
+message AgentDesiredState {
+  message CapabilityState {
+    AgentCapability capability = 1;
+    AgentCapabilityGroup group = 4;
+    CapabilityRelease release = 2; // best-effort, if not present agent should use the attribute `version` and call GetCapabilityRelease.
+    Config config = 3;
+  }
+  message AgentState {
+    string version = 1;
+    string channel = 2;
+    string bundle_id = 4;
+    string config_id = 6;
+    CapabilityRelease release = 3; // best-effort, if not present agent should use the attribute `version` and call GetCapabilityRelease.
+    Config config = 5;
+  }
+
+  AgentState agent = 1;
+  repeated CapabilityState capabilities = 2;
+  int64 version = 3; // state version
+  google.protobuf.Timestamp current_time = 4; // server time when the state was created
+}
+
+message AgentCurrentState {
+  AgentState agent = 2;
+  repeated CapabilityCurrentState capabilities = 3;
+  message AgentState {
+    string version = 1; // kentik agent version
+    string bundle_id = 10;
+    string config_id = 11;
+    string config_version = 12;
+    string supervisor_version = 15;
+    google.protobuf.Timestamp last_seen = 2;
+    string reconcile_error = 3;
+    google.protobuf.Duration reconcile_interval = 4;
+    string last_error = 5;
+    int64 pid = 6;
+    google.protobuf.Timestamp started_at = 7;
+    google.protobuf.Timestamp current_time = 14; // agent time when the state was created
+    AgentHealthState health = 8 [(google.api.field_behavior) = OUTPUT_ONLY];
+    AgentHealthStateV2 health_v2 = 32 [(google.api.field_behavior) = OUTPUT_ONLY];
+    string os_distribution = 9;
+    string privileges = 13;
+    ProcessResources resources = 30; // resources used by the agent process
+    HostResources host_resources = 31; // system-wide resource availability / usage
+    optional double mem_used_percent = 20; // deprecated
+    optional uint64 mem_free_bytes = 24; // deprecated
+    optional uint32 cpu_total_cores = 25; // deprecated
+    optional double cpu_used_percent = 21; // deprecated
+    optional double disk_used_percent = 22; // deprecated
+    optional uint64 disk_free_bytes = 23; // deprecated
+  }
+}
+
+message OSMetadata {
+  string name = 1;
+  string vendor = 2;
+  string release = 3;
+  string version = 4;
+  map<string, string> release_metadata = 5; // metadata collected from /etc/os-release
+}
+
+message CapabilityCurrentState {
+  string name = 1;
+  string version = 2;
+  bool installed = 3;
+  bool running = 4;
+  string bundle_id = 5;
+  int32 restarts = 6;
+  // The number of consecutive exits with an error while the process is considered to be in a crash loop.
+  // This value is reset when the process runs successfully long enough to no longer be treated as a crash loop.
+  optional int32 crash_loop_count = 16;
+  // The number of consecutive restarts regardless of exit status (crash or clean shutdown)
+  // while the process is considered to be in a restart loop.
+  // This value is reset when the process runs successfully long enough to no longer be treated as a restart loop.
+  optional int32 restart_loop_count = 24;
+  string last_error = 7;
+  int64 pid = 8;
+  string config_id = 14;
+  string group_id = 18;
+  string config_version = 15;
+  string privileges = 17;
+  google.protobuf.Timestamp started_at = 9;
+  google.protobuf.Timestamp stopped_at = 10;
+  CapabilityHealthState health = 11 [(google.api.field_behavior) = OUTPUT_ONLY];
+  CapabilityHealthStateV2 health_v2 = 23 [(google.api.field_behavior) = OUTPUT_ONLY];
+  bool enabled = 12;
+  v202312.CapabilityState state = 13;
+  optional double cpu_used_cores = 20; // deprecated
+  optional uint64 mem_used_bytes = 21; // deprecated
+  ProcessResources resources = 22; // resources used by the capability process
+}
+
+enum AgentHealthState {
+  AGENT_HEALTH_STATE_UNSPECIFIED = 0;
+  AGENT_HEALTH_STATE_HEALTHY = 1; // running without errors and up-to-date
+  AGENT_HEALTH_STATE_DEGRADED = 4; // running with non-critical dependencies failing, but the UA is holding up.
+  AGENT_HEALTH_STATE_UNHEALTHY = 2; // running with errors
+  AGENT_HEALTH_STATE_OFFLINE = 3; // offline
+}
+
+enum CapabilityHealthState {
+  CAPABILITY_HEALTH_STATE_UNSPECIFIED = 0;
+  CAPABILITY_HEALTH_STATE_HEALTHY = 1; // running without errors
+  CAPABILITY_HEALTH_STATE_DEGRADED = 4; // running with non-critical dependencies failing, but the capability is holding up.
+  CAPABILITY_HEALTH_STATE_UNHEALTHY = 2; // crashed or with errors
+  CAPABILITY_HEALTH_STATE_DISABLED = 3; // not running
+}
+
+enum AgentHealthStateV2 {
+  AGENT_HEALTH_STATE_V2_UNSPECIFIED = 0;
+  AGENT_HEALTH_STATE_V2_HEALTHY = 100;   // everything is fine
+  AGENT_HEALTH_STATE_V2_WARNING = 200;   // early signs of stress, monitor closely
+  AGENT_HEALTH_STATE_V2_DEGRADED = 300;  // noticeable impact, action recommended
+  AGENT_HEALTH_STATE_V2_CRITICAL = 400;  // severe impact, immediate action required
+  AGENT_HEALTH_STATE_V2_DOWN = 500;      // not functioning
+}
+
+enum CapabilityHealthStateV2 {
+  CAPABILITY_HEALTH_STATE_V2_UNSPECIFIED = 0;
+  CAPABILITY_HEALTH_STATE_V2_DISABLED = 1;    // not running
+  CAPABILITY_HEALTH_STATE_V2_HEALTHY = 100;   // everything is fine
+  CAPABILITY_HEALTH_STATE_V2_WARNING = 200;   // early signs of stress, monitor closely
+  CAPABILITY_HEALTH_STATE_V2_DEGRADED = 300;  // noticeable impact, action recommended
+  CAPABILITY_HEALTH_STATE_V2_CRITICAL = 400;  // severe impact, immediate action required
+  CAPABILITY_HEALTH_STATE_V2_DOWN = 500;      // not functioning
+}

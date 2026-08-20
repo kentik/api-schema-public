@@ -1,0 +1,541 @@
+syntax = "proto3";
+
+package kentik.kagent.v202401;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/kagent/v202401;kagent";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/api/visibility.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+import "kentik/kagent/v202401/capability.proto";
+import "kentik/kagent/v202401/agent_capabilities.proto";
+import "kentik/kagent/v202401/agent_config.proto";
+import "kentik/kagent/v202401/agent_state.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "KAgent Agent API"
+    version: "v202401"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "Management of Kentik Agents: registration, retrieval, modification, deletion, "
+    "authorization of unregistered agents, and generation of install commands.\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/"
+    description: "Kentik Knowledge Base"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// =======================================================
+// models
+// =======================================================
+
+// {{.Name}}
+// Read-only metadata about a host system
+message HostMetadata {
+  string hostname = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Hostname of the host the agent runs on."
+    }
+  ];
+  string machine_id = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Machine identifier of the host the agent runs on."
+    }
+  ];
+  string public_ip = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Public IP address of the host the agent runs on."
+    }
+  ];
+  string private_ip = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Private IP address of the host the agent runs on."
+    }
+  ];
+  // linux,darwin,windows
+  string os = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Operating system of the host. One of `linux`, `darwin` or `windows`."
+    }
+  ];
+  // amd64,arm64
+  string arch = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "CPU architecture of the host, for example `amd64` or `arm64`."
+    }
+  ];
+}
+
+// {{.Name}}
+// Describes an individual agent install configuration
+message InstallConfig {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique identifier of the install."
+    }
+  ];
+  InstallerType type = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Installation method used to deploy the agent."
+    }
+  ];
+  HostMetadata host_metadata = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Metadata of the host the agent was installed on."
+    }
+  ];
+}
+
+// {{.Name}}
+enum InstallerType {
+  // Invalid value.
+  INSTALLER_TYPE_UNSPECIFIED = 0;
+  // Agent installed directly on a Linux host.
+  INSTALLER_TYPE_LINUX = 1;
+  // Agent installed as a Docker container.
+  INSTALLER_TYPE_DOCKER = 2;
+}
+
+// {{.Name}}
+message Agent {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique identifier of the agent."
+    }
+  ];
+  // agent is actively sending heartbeats
+  bool running = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indication whether the agent is actively sending heartbeats."
+    }
+  ];
+  optional string cluster_id = 7 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the cluster the agent belongs to."
+    }
+  ];
+  // PEM encoded public key
+  string public_key = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "PEM-encoded public key the agent authenticates with."
+    }
+  ];
+  string provisioning_token = 9 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Provisioning token the agent registered with."
+    }
+  ];
+  AgentConfig config = 20 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User-supplied configuration of the agent."
+    }
+  ];
+  InstallConfig install = 30 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Details of how and where the agent was installed."
+    }
+  ];
+  // Internal reconciliation detail; kept out of published API docs.
+  AgentDesiredState desired_state = 40 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (google.api.field_visibility).restriction = "INTERNAL",
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "State Kentik intends the agent to converge on."
+    }
+  ];
+  // Internal agent telemetry; kept out of published API docs.
+  AgentCurrentState current_state = 50 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (google.api.field_visibility).restriction = "INTERNAL",
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "State most recently reported by the agent."
+    }
+  ];
+}
+
+
+
+
+// =======================================================
+// services / RPCs
+// =======================================================
+
+// {{.Name}}
+message GetAgentRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the agent to be retrieved."
+    }
+  ];
+  // get unregistered agent
+  bool unregistered = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indication whether the ID refers to an agent that is not yet registered."
+    }
+  ];
+}
+
+// {{.Name}}
+message GetAgentResponse {
+  Agent agent = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Agent object."
+    }
+  ];
+}
+
+
+// {{.Name}}
+message ListAgentsRequest {
+  // list only agents that are not yet registered
+  bool unregistered = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indication whether to list only agents that are not yet registered."
+    }
+  ];
+  // optional list of agent IDs to filter by
+  repeated string ids = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IDs of the agents to filter by. When empty, all agents are returned."
+    }
+  ];
+  // List agents that have at least one of the specified capabilities
+  repeated string capabilities = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Capabilities to filter by. Agents having at least one of the specified capabilities are returned."
+    }
+  ];
+  // optionally include the desired state for each agent
+  bool include_desired_state = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indication whether to include the desired state of each agent in the response."
+    }
+  ];
+}
+
+// {{.Name}}
+message ListAgentsResponse {
+  repeated Agent agents = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of agent objects."
+    }
+  ];
+}
+
+// {{.Name}}
+message UpdateAgentRequest {
+  Agent agent = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Agent configuration. The `id` attribute identifies the agent to be updated."
+    }
+  ];
+  google.protobuf.FieldMask mask = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Attributes to be updated. When empty, all mutable attributes are replaced."
+    }
+  ];
+}
+
+// {{.Name}}
+message UpdateAgentResponse {
+  Agent agent = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Updated agent object."
+    }
+  ];
+}
+
+// {{.Name}}
+message DeleteAgentRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the agent to be deleted."
+    }
+  ];
+  // delete unregistered agent
+  bool unregistered = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indication whether the ID refers to an agent that is not yet registered."
+    }
+  ];
+}
+
+// {{.Name}}
+message DeleteAgentResponse {}
+
+// {{.Name}}
+message AuthorizeRequest {
+  string install_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the install to be authorized."
+    }
+  ];
+}
+
+// {{.Name}}
+message AuthorizeResponse {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID assigned to the authorized agent."
+    }
+  ];
+}
+
+// {{.Name}}
+message AgentRegistration {
+  string public_key = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "PEM-encoded public key the agent authenticates with."
+    }
+  ];
+  string site_id     = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the site to assign the agent to."
+    }
+  ];
+  string name        = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User-friendly name of the agent."
+    }
+  ];
+  string description = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Description of the agent."
+    }
+  ];
+  string release_channel = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Release channel the agent takes software updates from."
+    }
+  ];
+  optional string cluster_id = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the cluster to assign the agent to."
+    }
+  ];
+}
+
+// {{.Name}}
+message RegistrationConfig {
+  // Determines when the registration becomes invalid. Defaults to 1 hour from creation if not set.
+  google.protobuf.Timestamp expires_at = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Time at which the registration becomes invalid (default one hour after creation)."
+    }
+  ];
+  // Array of private IP CIDR blocks allowed to register the agent. When not set any IP is allowed
+  repeated string allowed_private_cidrs = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Private IP CIDR blocks allowed to register the agent. When empty, any private IP is allowed."
+    }
+  ];
+  // Array of public IP CIDR blocks allowed to register the agent. When not set any IP is allowed
+  repeated string allowed_public_cidrs = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Public IP CIDR blocks allowed to register the agent. When empty, any public IP is allowed."
+    }
+  ];
+}
+
+// {{.Name}}
+message CreateAgentRequest {
+  AgentRegistration agent = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Configuration of the agent to be registered."
+    }
+  ];
+  RegistrationConfig config = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Constraints that apply to the registration."
+    }
+  ];
+}
+
+// {{.Name}}
+message BootstrapInfo {
+  // curl command to install the agent on linux
+  string linux_install_command = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Command installing the agent directly on a Linux host. Contains a provisioning token."
+    }
+  ];
+  // docker command to install the agent in docker
+  string docker_install_command = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Command installing the agent as a Docker container. Contains a provisioning token."
+    }
+  ];
+  // provisioning token to use in the install commands; treat as a credential
+  string provisioning_token = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Provisioning token embedded in the install commands. Treat this value as a credential."
+    }
+  ];
+}
+
+// {{.Name}}
+message CreateAgentResponse {
+  Agent agent = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Created agent object."
+    }
+  ];
+  BootstrapInfo bootstrap = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Commands for installing the agent on the target host."
+    }
+  ];
+}
+
+// {{.Name}}
+// Request for GenerateInstallCommands.
+message GenerateInstallCommandsRequest {}
+
+// {{.Name}}
+// Response containing install commands ready to execute.
+message GenerateInstallCommandsResponse {
+  BootstrapInfo bootstrap = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Commands for installing an agent on a target host."
+    }
+  ];
+}
+
+// AgentService is the API to manage kentik agents
+service AgentService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "ua-admin:write";
+
+  rpc CreateAgent(CreateAgentRequest) returns (CreateAgentResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:write";
+    option (google.api.http) = {
+      post: "/kagent/v202401/agents",
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateAgent"
+      summary: "Create an agent."
+      description: "Registers a new agent based on configuration in the request and returns it together with the commands for installing it on the target host."
+    };
+  }
+
+  rpc GetAgent(GetAgentRequest) returns (GetAgentResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:read";
+    option (google.api.http) = {
+      get: "/kagent/v202401/agents/{id}",
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetAgent"
+      summary: "Get agent configuration and state."
+      description: "Returns configuration and state of the agent with the specified ID."
+    };
+  }
+  rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:read";
+    option (google.api.http) = {
+      get: "/kagent/v202401/agents",
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListAgents"
+      summary: "List agents."
+      description: "Returns a list of agents in the account, optionally filtered by registration state, IDs or capabilities."
+    };
+  }
+  rpc UpdateAgent(UpdateAgentRequest) returns (UpdateAgentResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:write";
+    option (google.api.http) = {
+      patch: "/kagent/v202401/agents/{agent.id}",
+      body: "agent"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateAgent"
+      summary: "Update configuration of an agent."
+      description: "Updates the attributes of an agent selected by the field mask in the request."
+    };
+  }
+  rpc DeleteAgent(DeleteAgentRequest) returns (DeleteAgentResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:write";
+    option (google.api.http) = {
+      delete: "/kagent/v202401/agents/{id}",
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteAgent"
+      summary: "Delete an agent."
+      description: "Deletes the agent with the specified ID."
+    };
+  }
+  // Authorize unregistered agent
+  rpc Authorize(AuthorizeRequest) returns (AuthorizeResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:write";
+    option (google.api.http) = {
+      put: "/kagent/v202401/agents/authorize/{install_id}",
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Authorize"
+      summary: "Authorize an unregistered agent."
+      description: "Approves the agent installed under the specified install ID and returns the ID assigned to it."
+    };
+  }
+  // Generate install commands for deploying an agent. Commands embed a provisioning token
+  // and are ready to execute on the target host.
+  rpc GenerateInstallCommands(GenerateInstallCommandsRequest) returns (GenerateInstallCommandsResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:write";
+    option (google.api.http) = {
+      post: "/kagent/v202401/agents/install-commands",
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GenerateInstallCommands"
+      summary: "Generate agent install commands."
+      description: "Returns commands for deploying an agent. The commands embed a provisioning token and are ready to execute on the target host."
+    };
+  }
+}

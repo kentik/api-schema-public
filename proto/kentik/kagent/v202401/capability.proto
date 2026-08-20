@@ -1,0 +1,400 @@
+syntax = "proto3";
+
+package kentik.kagent.v202401;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/kagent/v202401;kagent";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/struct.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "google/protobuf/timestamp.proto";
+
+import "kentik/core/v202303/annotations.proto";
+
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "KAgent Capability API"
+    version: "v202401"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api"
+    }
+  }
+  external_docs: {
+    url: "https://docs.kentik.com/api"
+    description: "More about Kentik APIs"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+
+// {{.Name}}
+message CapabilityRelease {
+  string capability = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"kagent\"",
+    description: "The capability name: one of kagent, kproxy, ranger and so on."
+  }];
+  string semver = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"v1.0.0\"",
+    description: "The semantic version."
+  }];
+  repeated string download_urls = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "[\"https://github.com/kentik/kentik/releases/download/v1.22.0/kagent_Linux_arm64.tar.gz\"]",
+    description: "A list of accepted URLs to download the capability"
+  }];
+  string checksum = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"a8c2a6e5c7fec5452b288fb6aad3ffb38c245e69272ad17de1ecbcb5ab6464d3\"",
+    description: "The hex-encoded checksum"
+  }]; // deprecated, use provenance field instead
+  string checksum_algorithm = 5 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"sha256\"",
+    description: "The checksum algorithm: one of sha256, md5, and so on..."
+  }]; // deprecated, use provenance field instead
+  string provenance = 6 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "Provenance data in intoto format"
+  }];
+  repeated string supported_distros = 7 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "[\"debian-12\", \"ubuntu-20\"]",
+    description: "The list of supported distributions for this release. Only applicable for capabilities that generate distro specific binaries, such as kproxy. "
+  }];
+  // Compatibility information when a distro fallback was used.
+  // Only populated when the matched distro differs from the requested distro.
+  CompatibilityInfo compatibility = 8 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "Compatibility information when a distro fallback was used. Only present when the served binary's distro differs from the agent's reported distro."
+  }];
+}
+
+// CompatibilityInfo provides details when a distro fallback was used
+message CompatibilityInfo {
+  // The compatibility tier (1=exact, 2=same-family-newer, 3=same-family-older, 4=cross-family)
+  int32 tier = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "2",
+    description: "The compatibility tier: 1=exact match, 2=same-family (agent newer), 3=same-family (agent older), 4=cross-family"
+  }];
+  // Human-readable tier name
+  string tier_name = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"same-family-newer\"",
+    description: "Human-readable name for the compatibility tier"
+  }];
+  // The distro that the agent reported
+  string requested_distro = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"ubuntu-25\"",
+    description: "The distro reported by the agent"
+  }];
+  // The distro of the binary being served
+  string matched_distro = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"ubuntu-24\"",
+    description: "The distro of the binary that will be served"
+  }];
+  // Human-readable message explaining the fallback
+  string message = 5 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"using ubuntu-24 binary on ubuntu-25 system\"",
+    description: "Human-readable explanation of the compatibility decision"
+  }];
+}
+
+// {{.Name}}
+message GetCapabilityReleaseRequest {
+  string os = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"linux\"",
+    description: "The running program's operating system target: one of darwin, freebsd, linux, and so on."
+  }];
+  string arch = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"amd64\"",
+    description: "The running program's architecture target: one of 386, amd64, arm, s390x, and so on."
+  }];
+  string channel = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"stable\"",
+    description: "The release channel: one of alpha, beta, or stable"
+  }];
+  string capability = 5 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"kagent\"",
+    description: "The capability name"
+  }];
+  optional string semver = 6 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"v1.0.0\"",
+    description: "The semantic version. Leave it unset to query for the latest release"
+  }];
+  string distro = 7 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"debian-12\"",
+    description: "The OS distribution. Only applicable to Linux."
+  }];
+}
+
+message GetCapabilityReleaseResponse {
+  CapabilityRelease release = 1;
+}
+
+// {{.Name}}
+message GetCapabilityLatestReleasesRequest {
+  string os = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"linux\"",
+    description: "The running program's operating system target: one of darwin, freebsd, linux, and so on."
+  }];
+  string arch = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"amd64\"",
+    description: "The running program's architecture target: one of 386, amd64, arm, s390x, and so on."
+  }];
+  string channel = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"stable\"",
+    description: "The release channel: one of alpha, beta, or stable"
+  }];
+  string install_id = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"f6cf27b1-3dbc-450b-8d00-2e256b23e4dc\"",
+    description: "The machine UUID/GUID, which the OS uses for internal needs. All machine IDs are usually generated during system installation and stay constant for all subsequent boots."
+  }];
+  repeated string capabilities = 5 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"kagent,kproxy\"",
+    description: " A list of capabilities names to query. The backend must only return releases for given capabilities (when specified). An empty list means the backend must return the latest available release for all existing capabilities."
+  }];
+  string distro = 6 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"debian-12\"",
+    description: "The OS distribution. Only applicable to Linux."
+  }];
+}
+
+message GetCapabilitySupportedDistrosRequest {
+  repeated string capabilities = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "A list of capabilities to get supported distros for. If not specified, the backend returns all distro-based capabilities"
+  }];
+}
+
+message CapabilitySupportedDistro {
+  string capability = 1;
+  repeated CapabilityDistro distros = 2;
+}
+
+message CapabilityDistro {
+  string distro = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"debian-12\"",
+    description: "The OS distribution"
+  }];
+  string arch = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"amd64\"",
+    description: "The OS architecture"
+  }];
+  string os = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"linux\"",
+    description: "The OS name"
+  }];
+}
+
+// {{.Name}}
+message GetCapabilitySupportedDistrosResponse {
+  repeated CapabilitySupportedDistro capabilities = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    description: "The list of distro-based capabilities with their respective supported distributions"
+  }];
+}
+
+// {{.Name}}
+message GetCapabilityLatestReleasesResponse {
+  // A list containing all latest releases
+  repeated CapabilityRelease releases = 1;
+}
+
+service CapabilityReleaseService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PROTECTED;
+  option (kentik.core.v202303.service_scope) = "agents:write";
+
+  // {{.Name}} can be used by install/upgrade modules to fetch a single release.
+  rpc GetCapabilityRelease(GetCapabilityReleaseRequest) returns (GetCapabilityReleaseResponse) {
+    option (kentik.core.v202303.method_scope) = "agents:write";
+    option (google.api.http) = {get: "/kagent/v202401/releases"};
+  }
+
+  // {{.Name}} can be used by install/upgrade modules to fetch the latest available releases.
+  rpc GetCapabilityLatestReleases(GetCapabilityLatestReleasesRequest) returns (GetCapabilityLatestReleasesResponse) {
+    option (kentik.core.v202303.method_scope) = "agents:write";
+    option (google.api.http) = {get: "/kagent/v202401/releases/latest"};
+  }
+
+  rpc GetCapabilitySupportedDistros(GetCapabilitySupportedDistrosRequest) returns (GetCapabilitySupportedDistrosResponse) {
+    option (kentik.core.v202303.method_scope) = "agents:read";
+    option (google.api.http) = {get: "/kagent/v202401/releases/supported_distros"};
+  }
+}
+
+message Capability {
+  string name = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"kagent\"",
+    description: "The capability name: one of kagent, kproxy, ranger and so on."
+  }];
+
+  string display_name = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"NMS\"",
+    description: "The capability display name"
+  }];
+
+  string description = 3 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"\"",
+    description: "The capability description"
+  }];
+
+  string seed_bundle_id = 4 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"aa650634-f488-420f-bee8-63bbc5906e59\"",
+    description: "The seed bundle ID"
+  }];
+
+  string seed_config = 5 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    example: "\"kagent-config-v1\"",
+    description: "The seed config for the capability"
+  }];
+}
+
+service CapabilityAdminService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PRIVATE;
+  option (kentik.core.v202303.service_scope) = "agents:write";
+
+  // Create a new capability
+  rpc CreateCapability(CreateCapabilityRequest) returns (CreateCapabilityResponse) {
+    option (kentik.core.v202303.method_scope) = "agents:write";
+    option (google.api.http) = {
+      post: "/kagent/v202401/capabilities"
+      body: "capability"
+    };
+  }
+
+  // Update an existing capability
+  rpc UpdateCapability(UpdateCapabilityRequest) returns (UpdateCapabilityResponse) {
+    option (kentik.core.v202303.method_scope) = "agents:write";
+    option (google.api.http) = {
+      patch: "/kagent/v202401/capabilities/{capability.name}"
+      body: "capability"
+    };
+  }
+
+  // Delete a capability
+  rpc DeleteCapability(DeleteCapabilityRequest) returns (DeleteCapabilityResponse) {
+    option (kentik.core.v202303.method_scope) = "agents:write";
+    option (google.api.http) = {
+      delete: "/kagent/v202401/capabilities/{name}"
+    };
+  }
+
+  // Get a capabilities
+  rpc GetCapability(GetCapabilityRequest) returns (GetCapabilityResponse) {
+    option (kentik.core.v202303.method_scope) = "agents:read";
+    option (google.api.http) = {
+      get: "/kagent/v202401/capabilities/{name}"
+    };
+  }
+
+  // List all capabilities
+  rpc ListCapabilities(ListCapabilitiesRequest) returns (ListCapabilitiesResponse) {
+    option (kentik.core.v202303.method_scope) = "agents:read";
+    option (google.api.http) = {
+      get: "/kagent/v202401/capabilities"
+    };
+  }
+}
+
+message CreateCapabilityRequest {
+  Capability capability = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The capability to create"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+message CreateCapabilityResponse {
+  Capability capability = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The created capability"
+    }
+  ];
+}
+
+message UpdateCapabilityRequest {
+  Capability capability = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The capability to update"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  google.protobuf.FieldMask update_mask = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The fields to update"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+message UpdateCapabilityResponse {
+  Capability capability = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The updated capability"
+    }
+  ];
+}
+message DeleteCapabilityRequest {
+  string name = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The name of the capability to delete"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+message DeleteCapabilityResponse {}
+
+message ListCapabilitiesRequest {}
+
+message ListCapabilitiesResponse {
+  repeated Capability capabilities = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The list of capabilities"
+    }
+  ];
+}
+
+message GetCapabilityRequest {
+  string name = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The name of the capability"
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+message GetCapabilityResponse {
+  Capability capability = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The capability"
+    }
+  ];
+}

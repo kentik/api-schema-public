@@ -1,0 +1,365 @@
+syntax = "proto3";
+
+package kentik.kagent.v202401;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/kagent/v202401;kagent";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "KAgent Provisioning Token API"
+    version: "v202401"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "Management of provisioning tokens used by Kentik Agents to register without "
+    "user credentials: creation, retrieval, revocation, and listing of the agents registered with a token.\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/"
+    description: "Kentik Knowledge Base"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// =======================================================
+// models
+// =======================================================
+
+// {{.Name}}
+// ProvisioningToken represents a provisioning token for automated agent registration.
+message ProvisioningToken {
+  // {{.Name}}
+  message AgentConfig {
+    // The site ID to assign to agents registered with this token.
+    optional string site_id = 1 [
+      (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+        description: "ID of the site to assign to agents registered with this token."
+      }
+    ];
+  }
+
+  // The actual provisioning token (UUID). Treat as a credential.
+  string token = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Value of the provisioning token (UUID). Treat this value as a credential."
+    }
+  ];
+  // User-friendly name for the token.
+  optional string name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "User-friendly name of the token."
+    }
+  ];
+  // Maximum number of agents that can use this token. Defaults to 1
+  optional int32 max_usage_count = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Maximum number of agents that can register with this token (default 1)."
+    }
+  ];
+  // Current number of agents registered with this token.
+  int32 current_usage_count = 4 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of agents already registered with this token."
+    }
+  ];
+  // Token expiration time. Defaults to 1 hour from creation if not set.
+  google.protobuf.Timestamp expires_at = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Time at which the token expires (default one hour after creation)."
+    }
+  ];
+  // Array of private IP CIDR blocks allowed to use this token. When not set any IP is allowed
+  repeated string allowed_private_cidrs = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Private IP CIDR blocks allowed to use this token. When empty, any private IP is allowed."
+    }
+  ];
+  // Array of public IP CIDR blocks allowed to use this token. When not set any IP is allowed
+  repeated string allowed_public_cidrs = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Public IP CIDR blocks allowed to use this token. When empty, any public IP is allowed."
+    }
+  ];
+  // Optional cluster to assign agents to.
+  optional string cluster_id = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the cluster to assign agents registered with this token to."
+    }
+  ];
+  // When true, agents registered with this token go to the pending approval list instead of being auto-approved (default: false).
+  optional bool requires_approval = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indication whether agents registered with this token are placed on the pending approval list instead of being approved automatically (default false)."
+    }
+  ];
+  // Additional config to apply to agents registered with this token.
+  optional AgentConfig config = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Additional configuration to apply to agents registered with this token."
+    }
+  ];
+  // Revocation details. Set only once the token has been revoked.
+  TokenRevoked revoked = 11 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Revocation details. Set only if the token has been revoked."
+    }
+  ];
+  // Email of user who created the token.
+  string created_by = 12 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Email of the user who created the token."
+    }
+  ];
+  // The timestamp when the token was created.
+  google.protobuf.Timestamp ctime = 13 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Creation timestamp."
+    }
+  ];
+  // The timestamp when the token was last updated.
+  google.protobuf.Timestamp utime = 14 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Last-modification timestamp."
+    }
+  ];
+}
+
+// {{.Name}}
+message TokenRevoked {
+  // who revoked the token
+  string revoked_by = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Email of the user who revoked the token."
+    }
+  ];
+  google.protobuf.Timestamp revoked_at = 3 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Time at which the token was revoked."
+    }
+  ];
+}
+
+// =======================================================
+// services / RPCs
+// =======================================================
+
+// {{.Name}}
+// Request message for creating a provisioning token.
+message CreateProvisioningTokenRequest {
+  ProvisioningToken token = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Provisioning token configuration."
+    }
+  ];
+}
+
+// {{.Name}}
+// Response message for creating a provisioning token.
+message CreateProvisioningTokenResponse {
+  ProvisioningToken token = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Created provisioning token object."
+    }
+  ];
+}
+
+// {{.Name}}
+// Request message for listing provisioning tokens.
+message ListProvisioningTokensRequest {}
+
+// {{.Name}}
+// Response message for listing provisioning tokens.
+message ListProvisioningTokensResponse {
+  repeated ProvisioningToken tokens = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "List of provisioning token objects."
+    }
+  ];
+}
+
+// {{.Name}}
+// Request message for getting a provisioning token.
+message GetProvisioningTokenRequest {
+  string token = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Value of the provisioning token to be retrieved."
+    }
+  ];
+}
+
+// {{.Name}}
+// Response message for getting a provisioning token.
+message GetProvisioningTokenResponse {
+  ProvisioningToken token = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Provisioning token object."
+    }
+  ];
+}
+
+// {{.Name}}
+// Request message for revoking a provisioning token.
+message RevokeProvisioningTokenRequest {
+  string token = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Value of the provisioning token to be revoked."
+    }
+  ];
+  // who is revoking the token
+  string revoked_by = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Email of the user revoking the token."
+    }
+  ];
+}
+
+// {{.Name}}
+// Response message for revoking a provisioning token.
+message RevokeProvisioningTokenResponse {
+  TokenRevoked revoked = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Revocation details of the token."
+    }
+  ];
+}
+
+// {{.Name}}
+message ListAgentsByProvisioningTokenRequest {
+  // The provisioning token to list agents for.
+  string token = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Value of the provisioning token to list agents for."
+    }
+  ];
+}
+
+// {{.Name}}
+message ListAgentsByProvisioningTokenResponse {
+  // Agent IDs registered with this token.
+  repeated string agents = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IDs of agents registered with the token."
+    }
+  ];
+}
+
+service ProvisioningTokenService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "ua-admin:write";
+
+  // Create a provisioning token.
+  rpc CreateProvisioningToken(CreateProvisioningTokenRequest) returns (CreateProvisioningTokenResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:write";
+    option (google.api.http) = {
+      post: "/kagent/v202401/provisioning-tokens",
+      body: "token"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateProvisioningToken"
+      summary: "Create a provisioning token."
+      description: "Creates a new provisioning token based on configuration in the request and returns it, including its secret value."
+    };
+  }
+
+  // List provisioning tokens.
+  rpc ListProvisioningTokens(ListProvisioningTokensRequest) returns (ListProvisioningTokensResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:write";
+    option (google.api.http) = {
+      get: "/kagent/v202401/provisioning-tokens",
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListProvisioningTokens"
+      summary: "List provisioning tokens."
+      description: "Returns a list of all provisioning tokens in the account."
+    };
+  }
+
+  // Get a provisioning token.
+  rpc GetProvisioningToken(GetProvisioningTokenRequest) returns (GetProvisioningTokenResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:write";
+    option (google.api.http) = {
+      get: "/kagent/v202401/provisioning-tokens/{token}",
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetProvisioningToken"
+      summary: "Get provisioning token configuration and status."
+      description: "Returns configuration, usage and revocation status of the provisioning token with the specified value."
+    };
+  }
+
+  // Revoke a provisioning token.
+  rpc RevokeProvisioningToken(RevokeProvisioningTokenRequest) returns (RevokeProvisioningTokenResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:write";
+    option (google.api.http) = {
+      post: "/kagent/v202401/provisioning-tokens/{token}/revoke",
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "RevokeProvisioningToken"
+      summary: "Revoke a provisioning token."
+      description: "Revokes the provisioning token with the specified value. Agents already registered with the token are not affected, but the token can no longer be used for new registrations."
+    };
+  }
+
+  // List agents registered with a provisioning token.
+  rpc ListAgentsByProvisioningToken(ListAgentsByProvisioningTokenRequest) returns (ListAgentsByProvisioningTokenResponse) {
+    option (kentik.core.v202303.method_scope) = "ua-admin:write";
+    option (google.api.http) = {
+      get: "/kagent/v202401/provisioning-tokens/{token}/agents",
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListAgentsByProvisioningToken"
+      summary: "List agents registered with a provisioning token."
+      description: "Returns the IDs of all agents that have registered with the provisioning token with the specified value."
+    };
+  }
+}
