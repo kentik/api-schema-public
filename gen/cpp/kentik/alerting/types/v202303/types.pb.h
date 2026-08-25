@@ -2981,6 +2981,7 @@ class MultiAttributeFilter final : public ::google::protobuf::Message
   enum : int {
     kFilterFieldNumber = 1,
     kFiltersFieldNumber = 2,
+    kStrictFieldNumber = 3,
   };
   // map<string, .kentik.alerting.types.v202303.AttributeFilter> filter = 1 [json_name = "filter", deprecated = true];
   [[deprecated]]  int filter_size() const;
@@ -3014,12 +3015,22 @@ class MultiAttributeFilter final : public ::google::protobuf::Message
   const ::kentik::alerting::types::v202303::KeyValueFilter& filters(int index) const;
   ::kentik::alerting::types::v202303::KeyValueFilter* add_filters();
   const ::google::protobuf::RepeatedPtrField<::kentik::alerting::types::v202303::KeyValueFilter>& filters() const;
+  // bool strict = 3 [json_name = "strict"];
+  void clear_strict() ;
+  bool strict() const;
+  void set_strict(bool value);
+
+  private:
+  bool _internal_strict() const;
+  void _internal_set_strict(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.alerting.types.v202303.MultiAttributeFilter)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 2, 3,
+      1, 3, 3,
       65, 2>
       _table_;
 
@@ -3042,6 +3053,7 @@ class MultiAttributeFilter final : public ::google::protobuf::Message
                       ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE>
         filter_;
     ::google::protobuf::RepeatedPtrField< ::kentik::alerting::types::v202303::KeyValueFilter > filters_;
+    bool strict_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -3142,6 +3154,28 @@ inline ::google::protobuf::RepeatedPtrField<::kentik::alerting::types::v202303::
 MultiAttributeFilter::_internal_mutable_filters() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.filters_;
+}
+
+// bool strict = 3 [json_name = "strict"];
+inline void MultiAttributeFilter::clear_strict() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.strict_ = false;
+}
+inline bool MultiAttributeFilter::strict() const {
+  // @@protoc_insertion_point(field_get:kentik.alerting.types.v202303.MultiAttributeFilter.strict)
+  return _internal_strict();
+}
+inline void MultiAttributeFilter::set_strict(bool value) {
+  _internal_set_strict(value);
+  // @@protoc_insertion_point(field_set:kentik.alerting.types.v202303.MultiAttributeFilter.strict)
+}
+inline bool MultiAttributeFilter::_internal_strict() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.strict_;
+}
+inline void MultiAttributeFilter::_internal_set_strict(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.strict_ = value;
 }
 
 // -------------------------------------------------------------------

@@ -137,8 +137,19 @@ type MultiAttributeFilter struct {
 	// Deprecated: Use MultiAttributeFilter.filters instead.
 	//
 	// Deprecated: Marked as deprecated in kentik/alerting/types/v202303/types.proto.
-	Filter        map[string]*AttributeFilter `protobuf:"bytes,1,rep,name=filter,proto3" json:"filter,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	Filters       []*KeyValueFilter           `protobuf:"bytes,2,rep,name=filters,proto3" json:"filters,omitempty"`
+	Filter  map[string]*AttributeFilter `protobuf:"bytes,1,rep,name=filter,proto3" json:"filter,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Filters []*KeyValueFilter           `protobuf:"bytes,2,rep,name=filters,proto3" json:"filters,omitempty"`
+	// When true, matching requires that there are no extra grouping-key
+	// attributes that were not tested by any filter.
+	//
+	// example:
+	//
+	//	filters = [{ key: {equals: "i_device_id"}, value: {equals: "1001"} }]
+	//	strict = true
+	//
+	//	key i_device_id=1001                         - matches
+	//	key i_device_id=1001, inet_src=ipv4          - does not match
+	Strict        bool `protobuf:"varint,3,opt,name=strict,proto3" json:"strict,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -186,6 +197,13 @@ func (x *MultiAttributeFilter) GetFilters() []*KeyValueFilter {
 		return x.Filters
 	}
 	return nil
+}
+
+func (x *MultiAttributeFilter) GetStrict() bool {
+	if x != nil {
+		return x.Strict
+	}
+	return false
 }
 
 type AttributeFilter struct {
@@ -1016,10 +1034,11 @@ var File_kentik_alerting_types_v202303_types_proto protoreflect.FileDescriptor
 
 const file_kentik_alerting_types_v202303_types_proto_rawDesc = "" +
 	"\n" +
-	")kentik/alerting/types/v202303/types.proto\x12\x1dkentik.alerting.types.v202303\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa7\x02\n" +
+	")kentik/alerting/types/v202303/types.proto\x12\x1dkentik.alerting.types.v202303\x1a\x1fgoogle/protobuf/timestamp.proto\"\xbf\x02\n" +
 	"\x14MultiAttributeFilter\x12[\n" +
 	"\x06filter\x18\x01 \x03(\v2?.kentik.alerting.types.v202303.MultiAttributeFilter.FilterEntryB\x02\x18\x01R\x06filter\x12G\n" +
-	"\afilters\x18\x02 \x03(\v2-.kentik.alerting.types.v202303.KeyValueFilterR\afilters\x1ai\n" +
+	"\afilters\x18\x02 \x03(\v2-.kentik.alerting.types.v202303.KeyValueFilterR\afilters\x12\x16\n" +
+	"\x06strict\x18\x03 \x01(\bR\x06strict\x1ai\n" +
 	"\vFilterEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12D\n" +
 	"\x05value\x18\x02 \x01(\v2..kentik.alerting.types.v202303.AttributeFilterR\x05value:\x028\x01\"\xee\x02\n" +

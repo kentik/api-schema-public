@@ -356,6 +356,7 @@ inline constexpr MultiAttributeFilter::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : filter_{},
         filters_{},
+        strict_{false},
         _cached_size_{0} {}
 
 template <typename>
@@ -409,6 +410,7 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::types::v202303::MultiAttributeFilter, _impl_.filter_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::types::v202303::MultiAttributeFilter, _impl_.filters_),
+        PROTOBUF_FIELD_OFFSET(::kentik::alerting::types::v202303::MultiAttributeFilter, _impl_.strict_),
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::types::v202303::AttributeFilter_StringArray, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -553,18 +555,18 @@ static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, 10, -1, sizeof(::kentik::alerting::types::v202303::MultiAttributeFilter_FilterEntry_DoNotUse)},
         {12, -1, -1, sizeof(::kentik::alerting::types::v202303::MultiAttributeFilter)},
-        {22, -1, -1, sizeof(::kentik::alerting::types::v202303::AttributeFilter_StringArray)},
-        {31, -1, -1, sizeof(::kentik::alerting::types::v202303::AttributeFilter)},
-        {49, -1, -1, sizeof(::kentik::alerting::types::v202303::SimpleAttributeFilter_StringArray)},
-        {58, -1, -1, sizeof(::kentik::alerting::types::v202303::SimpleAttributeFilter)},
-        {74, 84, -1, sizeof(::kentik::alerting::types::v202303::KeyValueFilter)},
-        {86, -1, -1, sizeof(::kentik::alerting::types::v202303::PaginationConfig)},
-        {97, -1, -1, sizeof(::kentik::alerting::types::v202303::PaginationInfo)},
-        {107, -1, -1, sizeof(::kentik::alerting::types::v202303::SortingConfig)},
-        {116, -1, -1, sizeof(::kentik::alerting::types::v202303::SortingField)},
-        {127, 137, -1, sizeof(::kentik::alerting::types::v202303::TimeRange)},
-        {139, 149, -1, sizeof(::kentik::alerting::types::v202303::KeyValue_ValueEntry_DoNotUse)},
-        {151, -1, -1, sizeof(::kentik::alerting::types::v202303::KeyValue)},
+        {23, -1, -1, sizeof(::kentik::alerting::types::v202303::AttributeFilter_StringArray)},
+        {32, -1, -1, sizeof(::kentik::alerting::types::v202303::AttributeFilter)},
+        {50, -1, -1, sizeof(::kentik::alerting::types::v202303::SimpleAttributeFilter_StringArray)},
+        {59, -1, -1, sizeof(::kentik::alerting::types::v202303::SimpleAttributeFilter)},
+        {75, 85, -1, sizeof(::kentik::alerting::types::v202303::KeyValueFilter)},
+        {87, -1, -1, sizeof(::kentik::alerting::types::v202303::PaginationConfig)},
+        {98, -1, -1, sizeof(::kentik::alerting::types::v202303::PaginationInfo)},
+        {108, -1, -1, sizeof(::kentik::alerting::types::v202303::SortingConfig)},
+        {117, -1, -1, sizeof(::kentik::alerting::types::v202303::SortingField)},
+        {128, 138, -1, sizeof(::kentik::alerting::types::v202303::TimeRange)},
+        {140, 150, -1, sizeof(::kentik::alerting::types::v202303::KeyValue_ValueEntry_DoNotUse)},
+        {152, -1, -1, sizeof(::kentik::alerting::types::v202303::KeyValue)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::alerting::types::v202303::_MultiAttributeFilter_FilterEntry_DoNotUse_default_instance_._instance,
@@ -586,62 +588,62 @@ const char descriptor_table_protodef_kentik_2falerting_2ftypes_2fv202303_2ftypes
     protodesc_cold) = {
     "\n)kentik/alerting/types/v202303/types.pr"
     "oto\022\035kentik.alerting.types.v202303\032\037goog"
-    "le/protobuf/timestamp.proto\"\247\002\n\024MultiAtt"
+    "le/protobuf/timestamp.proto\"\277\002\n\024MultiAtt"
     "ributeFilter\022[\n\006filter\030\001 \003(\0132\?.kentik.al"
     "erting.types.v202303.MultiAttributeFilte"
     "r.FilterEntryB\002\030\001R\006filter\022G\n\007filters\030\002 \003"
     "(\0132-.kentik.alerting.types.v202303.KeyVa"
-    "lueFilterR\007filters\032i\n\013FilterEntry\022\020\n\003key"
-    "\030\001 \001(\tR\003key\022D\n\005value\030\002 \001(\0132..kentik.aler"
-    "ting.types.v202303.AttributeFilterR\005valu"
-    "e:\0028\001\"\356\002\n\017AttributeFilter\022\020\n\003not\030\001 \001(\010R\003"
-    "not\022\026\n\005empty\030\002 \001(\010H\000R\005empty\022\030\n\006equals\030\003 "
-    "\001(\tH\000R\006equals\022!\n\013starts_with\030\004 \001(\tH\000R\nst"
-    "artsWith\022\035\n\tends_with\030\005 \001(\tH\000R\010endsWith\022"
-    "\034\n\010contains\030\006 \001(\tH\000R\010contains\022L\n\002in\030\007 \001("
-    "\0132:.kentik.alerting.types.v202303.Attrib"
-    "uteFilter.StringArrayH\000R\002in\022%\n\rmatches_r"
-    "egex\030\t \001(\tH\000R\014matchesRegex\022\022\n\003any\030\010 \001(\010H"
-    "\000R\003any\032%\n\013StringArray\022\026\n\006values\030\001 \003(\tR\006v"
-    "aluesB\007\n\005value\"\320\002\n\025SimpleAttributeFilter"
-    "\022\030\n\006equals\030\003 \001(\tH\000R\006equals\022!\n\013starts_wit"
-    "h\030\004 \001(\tH\000R\nstartsWith\022\035\n\tends_with\030\005 \001(\t"
-    "H\000R\010endsWith\022\034\n\010contains\030\006 \001(\tH\000R\010contai"
-    "ns\022R\n\002in\030\007 \001(\0132@.kentik.alerting.types.v"
-    "202303.SimpleAttributeFilter.StringArray"
-    "H\000R\002in\022%\n\rmatches_regex\030\t \001(\tH\000R\014matches"
-    "Regex\022\022\n\003any\030\010 \001(\010H\000R\003any\032%\n\013StringArray"
-    "\022\026\n\006values\030\001 \003(\tR\006valuesB\007\n\005value\"\236\001\n\016Ke"
-    "yValueFilter\022F\n\003key\030\001 \001(\01324.kentik.alert"
-    "ing.types.v202303.SimpleAttributeFilterR"
-    "\003key\022D\n\005value\030\002 \001(\0132..kentik.alerting.ty"
-    "pes.v202303.AttributeFilterR\005value\"p\n\020Pa"
-    "ginationConfig\022\024\n\005limit\030\001 \001(\004R\005limit\022\026\n\006"
-    "offset\030\002 \001(\004R\006offset\022.\n\023include_total_co"
-    "unt\030\003 \001(\010R\021includeTotalCount\"[\n\016Paginati"
-    "onInfo\022\037\n\013total_count\030\001 \001(\004R\ntotalCount\022"
-    "(\n\020has_more_results\030\002 \001(\010R\016hasMoreResult"
-    "s\"T\n\rSortingConfig\022C\n\006fields\030\001 \003(\0132+.ken"
-    "tik.alerting.types.v202303.SortingFieldR"
-    "\006fields\"z\n\014SortingField\022\022\n\004name\030\001 \001(\tR\004n"
-    "ame\022>\n\005order\030\002 \001(\0162(.kentik.alerting.typ"
-    "es.v202303.SortOrderR\005order\022\026\n\006values\030\003 "
-    "\003(\tR\006values\"k\n\tTimeRange\0220\n\005start\030\001 \001(\0132"
-    "\032.google.protobuf.TimestampR\005start\022,\n\003en"
-    "d\030\002 \001(\0132\032.google.protobuf.TimestampR\003end"
-    "\"\216\001\n\010KeyValue\022H\n\005value\030\001 \003(\01322.kentik.al"
-    "erting.types.v202303.KeyValue.ValueEntry"
-    "R\005value\0328\n\nValueEntry\022\020\n\003key\030\001 \001(\tR\003key\022"
-    "\024\n\005value\030\002 \001(\tR\005value:\0028\001*\242\001\n\010Severity\022\030"
-    "\n\024SEVERITY_UNSPECIFIED\020\000\022\022\n\016SEVERITY_CLE"
-    "AR\020\001\022\022\n\016SEVERITY_MINOR\020\n\022\024\n\020SEVERITY_WAR"
-    "NING\020\024\022\022\n\016SEVERITY_MAJOR\020(\022\023\n\017SEVERITY_S"
-    "EVERE\020F\022\025\n\021SEVERITY_CRITICAL\020Z*\\\n\tSortOr"
-    "der\022\032\n\026SORT_ORDER_UNSPECIFIED\020\000\022\030\n\024SORT_"
-    "ORDER_ASCENDING\020\001\022\031\n\025SORT_ORDER_DESCENDI"
-    "NG\020\002BJZHgithub.com/kentik/api-schema-pub"
-    "lic/gen/go/kentik/alerting/types/v202303"
-    "b\006proto3"
+    "lueFilterR\007filters\022\026\n\006strict\030\003 \001(\010R\006stri"
+    "ct\032i\n\013FilterEntry\022\020\n\003key\030\001 \001(\tR\003key\022D\n\005v"
+    "alue\030\002 \001(\0132..kentik.alerting.types.v2023"
+    "03.AttributeFilterR\005value:\0028\001\"\356\002\n\017Attrib"
+    "uteFilter\022\020\n\003not\030\001 \001(\010R\003not\022\026\n\005empty\030\002 \001"
+    "(\010H\000R\005empty\022\030\n\006equals\030\003 \001(\tH\000R\006equals\022!\n"
+    "\013starts_with\030\004 \001(\tH\000R\nstartsWith\022\035\n\tends"
+    "_with\030\005 \001(\tH\000R\010endsWith\022\034\n\010contains\030\006 \001("
+    "\tH\000R\010contains\022L\n\002in\030\007 \001(\0132:.kentik.alert"
+    "ing.types.v202303.AttributeFilter.String"
+    "ArrayH\000R\002in\022%\n\rmatches_regex\030\t \001(\tH\000R\014ma"
+    "tchesRegex\022\022\n\003any\030\010 \001(\010H\000R\003any\032%\n\013String"
+    "Array\022\026\n\006values\030\001 \003(\tR\006valuesB\007\n\005value\"\320"
+    "\002\n\025SimpleAttributeFilter\022\030\n\006equals\030\003 \001(\t"
+    "H\000R\006equals\022!\n\013starts_with\030\004 \001(\tH\000R\nstart"
+    "sWith\022\035\n\tends_with\030\005 \001(\tH\000R\010endsWith\022\034\n\010"
+    "contains\030\006 \001(\tH\000R\010contains\022R\n\002in\030\007 \001(\0132@"
+    ".kentik.alerting.types.v202303.SimpleAtt"
+    "ributeFilter.StringArrayH\000R\002in\022%\n\rmatche"
+    "s_regex\030\t \001(\tH\000R\014matchesRegex\022\022\n\003any\030\010 \001"
+    "(\010H\000R\003any\032%\n\013StringArray\022\026\n\006values\030\001 \003(\t"
+    "R\006valuesB\007\n\005value\"\236\001\n\016KeyValueFilter\022F\n\003"
+    "key\030\001 \001(\01324.kentik.alerting.types.v20230"
+    "3.SimpleAttributeFilterR\003key\022D\n\005value\030\002 "
+    "\001(\0132..kentik.alerting.types.v202303.Attr"
+    "ibuteFilterR\005value\"p\n\020PaginationConfig\022\024"
+    "\n\005limit\030\001 \001(\004R\005limit\022\026\n\006offset\030\002 \001(\004R\006of"
+    "fset\022.\n\023include_total_count\030\003 \001(\010R\021inclu"
+    "deTotalCount\"[\n\016PaginationInfo\022\037\n\013total_"
+    "count\030\001 \001(\004R\ntotalCount\022(\n\020has_more_resu"
+    "lts\030\002 \001(\010R\016hasMoreResults\"T\n\rSortingConf"
+    "ig\022C\n\006fields\030\001 \003(\0132+.kentik.alerting.typ"
+    "es.v202303.SortingFieldR\006fields\"z\n\014Sorti"
+    "ngField\022\022\n\004name\030\001 \001(\tR\004name\022>\n\005order\030\002 \001"
+    "(\0162(.kentik.alerting.types.v202303.SortO"
+    "rderR\005order\022\026\n\006values\030\003 \003(\tR\006values\"k\n\tT"
+    "imeRange\0220\n\005start\030\001 \001(\0132\032.google.protobu"
+    "f.TimestampR\005start\022,\n\003end\030\002 \001(\0132\032.google"
+    ".protobuf.TimestampR\003end\"\216\001\n\010KeyValue\022H\n"
+    "\005value\030\001 \003(\01322.kentik.alerting.types.v20"
+    "2303.KeyValue.ValueEntryR\005value\0328\n\nValue"
+    "Entry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005"
+    "value:\0028\001*\242\001\n\010Severity\022\030\n\024SEVERITY_UNSPE"
+    "CIFIED\020\000\022\022\n\016SEVERITY_CLEAR\020\001\022\022\n\016SEVERITY"
+    "_MINOR\020\n\022\024\n\020SEVERITY_WARNING\020\024\022\022\n\016SEVERI"
+    "TY_MAJOR\020(\022\023\n\017SEVERITY_SEVERE\020F\022\025\n\021SEVER"
+    "ITY_CRITICAL\020Z*\\\n\tSortOrder\022\032\n\026SORT_ORDE"
+    "R_UNSPECIFIED\020\000\022\030\n\024SORT_ORDER_ASCENDING\020"
+    "\001\022\031\n\025SORT_ORDER_DESCENDING\020\002BJZHgithub.c"
+    "om/kentik/api-schema-public/gen/go/kenti"
+    "k/alerting/types/v202303b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2ftypes_2fv202303_2ftypes_2eproto_deps[1] =
     {
@@ -651,7 +653,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2ftypes_2fv202303_2f
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2ftypes_2fv202303_2ftypes_2eproto = {
     false,
     false,
-    2288,
+    2312,
     descriptor_table_protodef_kentik_2falerting_2ftypes_2fv202303_2ftypes_2eproto,
     "kentik/alerting/types/v202303/types.proto",
     &descriptor_table_kentik_2falerting_2ftypes_2fv202303_2ftypes_2eproto_once,
@@ -811,6 +813,7 @@ MultiAttributeFilter::MultiAttributeFilter(
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.strict_ = from._impl_.strict_;
 
   // @@protoc_insertion_point(copy_constructor:kentik.alerting.types.v202303.MultiAttributeFilter)
 }
@@ -823,6 +826,7 @@ inline PROTOBUF_NDEBUG_INLINE MultiAttributeFilter::Impl_::Impl_(
 
 inline void MultiAttributeFilter::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.strict_ = {};
 }
 MultiAttributeFilter::~MultiAttributeFilter() {
   // @@protoc_insertion_point(destructor:kentik.alerting.types.v202303.MultiAttributeFilter)
@@ -891,15 +895,15 @@ const ::google::protobuf::internal::ClassData* MultiAttributeFilter::GetClassDat
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 2, 3, 65, 2> MultiAttributeFilter::_table_ = {
+const ::_pbi::TcParseTable<1, 3, 3, 65, 2> MultiAttributeFilter::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    2, 0,  // max_field_number, fast_idx_mask
+    3, 8,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967288,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    3,  // num_field_entries
     3,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -912,6 +916,9 @@ const ::_pbi::TcParseTable<0, 2, 3, 65, 2> MultiAttributeFilter::_table_ = {
     // repeated .kentik.alerting.types.v202303.KeyValueFilter filters = 2 [json_name = "filters"];
     {::_pbi::TcParser::FastMtR1,
      {18, 63, 0, PROTOBUF_FIELD_OFFSET(MultiAttributeFilter, _impl_.filters_)}},
+    // bool strict = 3 [json_name = "strict"];
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(MultiAttributeFilter, _impl_.strict_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(MultiAttributeFilter, _impl_.strict_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -921,6 +928,9 @@ const ::_pbi::TcParseTable<0, 2, 3, 65, 2> MultiAttributeFilter::_table_ = {
     // repeated .kentik.alerting.types.v202303.KeyValueFilter filters = 2 [json_name = "filters"];
     {PROTOBUF_FIELD_OFFSET(MultiAttributeFilter, _impl_.filters_), 0, 0,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // bool strict = 3 [json_name = "strict"];
+    {PROTOBUF_FIELD_OFFSET(MultiAttributeFilter, _impl_.strict_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::KeyValueFilter>()},
     {::_pbi::TcParser::GetMapAuxInfo<
@@ -944,6 +954,7 @@ PROTOBUF_NOINLINE void MultiAttributeFilter::Clear() {
 
   _impl_.filter_.Clear();
   _impl_.filters_.Clear();
+  _impl_.strict_ = false;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1000,6 +1011,13 @@ PROTOBUF_NOINLINE void MultiAttributeFilter::Clear() {
                     target, stream);
           }
 
+          // bool strict = 3 [json_name = "strict"];
+          if (this_._internal_strict() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteBoolToArray(
+                3, this_._internal_strict(), target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1043,6 +1061,12 @@ PROTOBUF_NOINLINE void MultiAttributeFilter::Clear() {
               }
             }
           }
+           {
+            // bool strict = 3 [json_name = "strict"];
+            if (this_._internal_strict() != 0) {
+              total_size += 2;
+            }
+          }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
         }
@@ -1058,6 +1082,9 @@ void MultiAttributeFilter::MergeImpl(::google::protobuf::MessageLite& to_msg, co
   _this->_impl_.filter_.MergeFrom(from._impl_.filter_);
   _this->_internal_mutable_filters()->MergeFrom(
       from._internal_filters());
+  if (from._internal_strict() != 0) {
+    _this->_impl_.strict_ = from._impl_.strict_;
+  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -1074,6 +1101,7 @@ void MultiAttributeFilter::InternalSwap(MultiAttributeFilter* PROTOBUF_RESTRICT 
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   _impl_.filter_.InternalSwap(&other->_impl_.filter_);
   _impl_.filters_.InternalSwap(&other->_impl_.filters_);
+        swap(_impl_.strict_, other->_impl_.strict_);
 }
 
 ::google::protobuf::Metadata MultiAttributeFilter::GetMetadata() const {

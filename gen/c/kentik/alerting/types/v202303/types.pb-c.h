@@ -74,10 +74,20 @@ struct  Kentik__Alerting__Types__V202303__MultiAttributeFilter
   Kentik__Alerting__Types__V202303__MultiAttributeFilter__FilterEntry **filter PROTOBUF_C__DEPRECATED;
   size_t n_filters;
   Kentik__Alerting__Types__V202303__KeyValueFilter **filters;
+  /*
+   * When true, matching requires that there are no extra grouping-key
+   * attributes that were not tested by any filter.
+   * example:
+   *   filters = [{ key: {equals: "i_device_id"}, value: {equals: "1001"} }]
+   *   strict = true
+   *   key i_device_id=1001                         - matches
+   *   key i_device_id=1001, inet_src=ipv4          - does not match
+   */
+  protobuf_c_boolean strict;
 };
 #define KENTIK__ALERTING__TYPES__V202303__MULTI_ATTRIBUTE_FILTER__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__types__v202303__multi_attribute_filter__descriptor) \
-    , 0,NULL, 0,NULL }
+    , 0,NULL, 0,NULL, 0 }
 
 
 struct  Kentik__Alerting__Types__V202303__AttributeFilter__StringArray

@@ -19,7 +19,19 @@ enum Severity {
 message MultiAttributeFilter {
   // Deprecated: Use MultiAttributeFilter.filters instead.
   map<string, AttributeFilter> filter = 1 [deprecated=true];
+
   repeated KeyValueFilter filters = 2;
+
+  // When true, matching requires that there are no extra grouping-key
+  // attributes that were not tested by any filter.
+  //
+  // example:
+  //   filters = [{ key: {equals: "i_device_id"}, value: {equals: "1001"} }]
+  //   strict = true
+  //
+  //   key i_device_id=1001                         - matches
+  //   key i_device_id=1001, inet_src=ipv4          - does not match
+  bool strict = 3;
 }
 
 message AttributeFilter {

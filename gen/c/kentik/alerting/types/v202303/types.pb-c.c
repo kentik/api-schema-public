@@ -532,7 +532,7 @@ const ProtobufCMessageDescriptor kentik__alerting__types__v202303__multi_attribu
   (ProtobufCMessageInit) kentik__alerting__types__v202303__multi_attribute_filter__filter_entry__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__multi_attribute_filter__field_descriptors[2] =
+static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__multi_attribute_filter__field_descriptors[3] =
 {
   {
     "filter",
@@ -558,15 +558,28 @@ static const ProtobufCFieldDescriptor kentik__alerting__types__v202303__multi_at
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "strict",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Types__V202303__MultiAttributeFilter, strict),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__alerting__types__v202303__multi_attribute_filter__field_indices_by_name[] = {
   0,   /* field[0] = filter */
   1,   /* field[1] = filters */
+  2,   /* field[2] = strict */
 };
 static const ProtobufCIntRange kentik__alerting__types__v202303__multi_attribute_filter__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 2 }
+  { 0, 3 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__types__v202303__multi_attribute_filter__descriptor =
 {
@@ -576,7 +589,7 @@ const ProtobufCMessageDescriptor kentik__alerting__types__v202303__multi_attribu
   "Kentik__Alerting__Types__V202303__MultiAttributeFilter",
   "kentik.alerting.types.v202303",
   sizeof(Kentik__Alerting__Types__V202303__MultiAttributeFilter),
-  2,
+  3,
   kentik__alerting__types__v202303__multi_attribute_filter__field_descriptors,
   kentik__alerting__types__v202303__multi_attribute_filter__field_indices_by_name,
   1,  kentik__alerting__types__v202303__multi_attribute_filter__number_ranges,
