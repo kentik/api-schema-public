@@ -113,7 +113,12 @@
                 "default": "CONFIG_ENCODING_UNSPECIFIED"
             },
             "v202511DeleteDeviceConfigurationResponse": {
-                "type": "object"
+                "type": "object",
+                "properties": {
+                    "orphanedRevision": {
+                        "$ref": "#/components/schemas/v202511Revision"
+                    }
+                }
             },
             "v202511Device": {
                 "type": "object",

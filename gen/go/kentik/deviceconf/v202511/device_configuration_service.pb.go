@@ -943,9 +943,12 @@ func (x *DeleteDeviceConfigurationRequest) GetRevision() string {
 }
 
 type DeleteDeviceConfigurationResponse struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// If set, the revision whose diff against its predecessor is now empty after the delete.
+	// This occurs when the two neighbors of the deleted revision have identical config bodies.
+	OrphanedRevision *Revision `protobuf:"bytes,1,opt,name=orphaned_revision,json=orphanedRevision,proto3" json:"orphaned_revision,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
 }
 
 func (x *DeleteDeviceConfigurationResponse) Reset() {
@@ -976,6 +979,13 @@ func (x *DeleteDeviceConfigurationResponse) ProtoReflect() protoreflect.Message 
 // Deprecated: Use DeleteDeviceConfigurationResponse.ProtoReflect.Descriptor instead.
 func (*DeleteDeviceConfigurationResponse) Descriptor() ([]byte, []int) {
 	return file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *DeleteDeviceConfigurationResponse) GetOrphanedRevision() *Revision {
+	if x != nil {
+		return x.OrphanedRevision
+	}
+	return nil
 }
 
 var File_kentik_deviceconf_v202511_device_configuration_service_proto protoreflect.FileDescriptor
@@ -1034,8 +1044,9 @@ const file_kentik_deviceconf_v202511_device_configuration_service_proto_rawDesc 
 	"\x19UpdateCommandAclsResponse\"[\n" +
 	" DeleteDeviceConfigurationRequest\x12\x1b\n" +
 	"\tdevice_id\x18\x01 \x01(\tR\bdeviceId\x12\x1a\n" +
-	"\brevision\x18\x02 \x01(\tR\brevision\"#\n" +
-	"!DeleteDeviceConfigurationResponse2\xcc\r\n" +
+	"\brevision\x18\x02 \x01(\tR\brevision\"u\n" +
+	"!DeleteDeviceConfigurationResponse\x12P\n" +
+	"\x11orphaned_revision\x18\x01 \x01(\v2#.kentik.deviceconf.v202511.RevisionR\x10orphanedRevision2\xcc\r\n" +
 	"\x1aDeviceConfigurationService\x12\x9c\x01\n" +
 	"\x14GetDeviceAssignments\x126.kentik.deviceconf.v202511.GetDeviceAssignmentsRequest\x1a7.kentik.deviceconf.v202511.GetDeviceAssignmentsResponse\"\x13\xf2\xd7\x02\x0fdeviceconf:read\x12\xac\x01\n" +
 	"\x19UpdateDeviceConfiguration\x12;.kentik.deviceconf.v202511.UpdateDeviceConfigurationRequest\x1a<.kentik.deviceconf.v202511.UpdateDeviceConfigurationResponse\"\x14\xf2\xd7\x02\x10deviceconf:write\x12\xa2\x01\n" +
@@ -1108,32 +1119,33 @@ var file_kentik_deviceconf_v202511_device_configuration_service_proto_depIdxs = 
 	28, // 11: kentik.deviceconf.v202511.ExecuteCommandResponse.command_result:type_name -> kentik.deviceconf.v202511.CommandResult
 	29, // 12: kentik.deviceconf.v202511.GetCommandAclsResponse.acls:type_name -> kentik.deviceconf.v202511.CommandAcl
 	29, // 13: kentik.deviceconf.v202511.UpdateCommandAclsRequest.acls:type_name -> kentik.deviceconf.v202511.CommandAcl
-	22, // 14: kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse.ConfigsEntry.value:type_name -> kentik.deviceconf.v202511.Snapshot
-	0,  // 15: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceAssignments:input_type -> kentik.deviceconf.v202511.GetDeviceAssignmentsRequest
-	2,  // 16: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateDeviceConfiguration:input_type -> kentik.deviceconf.v202511.UpdateDeviceConfigurationRequest
-	4,  // 17: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceConfiguration:input_type -> kentik.deviceconf.v202511.GetDeviceConfigurationRequest
-	6,  // 18: kentik.deviceconf.v202511.DeviceConfigurationService.GetLatestDeviceConfigurations:input_type -> kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest
-	8,  // 19: kentik.deviceconf.v202511.DeviceConfigurationService.ListDeviceConfigurationRevisions:input_type -> kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest
-	10, // 20: kentik.deviceconf.v202511.DeviceConfigurationService.RequestDeviceConfigurationFetch:input_type -> kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest
-	12, // 21: kentik.deviceconf.v202511.DeviceConfigurationService.ExecuteCommand:input_type -> kentik.deviceconf.v202511.ExecuteCommandRequest
-	14, // 22: kentik.deviceconf.v202511.DeviceConfigurationService.GetCommandAcls:input_type -> kentik.deviceconf.v202511.GetCommandAclsRequest
-	16, // 23: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateCommandAcls:input_type -> kentik.deviceconf.v202511.UpdateCommandAclsRequest
-	18, // 24: kentik.deviceconf.v202511.DeviceConfigurationService.DeleteDeviceConfiguration:input_type -> kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest
-	1,  // 25: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceAssignments:output_type -> kentik.deviceconf.v202511.GetDeviceAssignmentsResponse
-	3,  // 26: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateDeviceConfiguration:output_type -> kentik.deviceconf.v202511.UpdateDeviceConfigurationResponse
-	5,  // 27: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceConfiguration:output_type -> kentik.deviceconf.v202511.GetDeviceConfigurationResponse
-	7,  // 28: kentik.deviceconf.v202511.DeviceConfigurationService.GetLatestDeviceConfigurations:output_type -> kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse
-	9,  // 29: kentik.deviceconf.v202511.DeviceConfigurationService.ListDeviceConfigurationRevisions:output_type -> kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsResponse
-	11, // 30: kentik.deviceconf.v202511.DeviceConfigurationService.RequestDeviceConfigurationFetch:output_type -> kentik.deviceconf.v202511.RequestDeviceConfigurationFetchResponse
-	13, // 31: kentik.deviceconf.v202511.DeviceConfigurationService.ExecuteCommand:output_type -> kentik.deviceconf.v202511.ExecuteCommandResponse
-	15, // 32: kentik.deviceconf.v202511.DeviceConfigurationService.GetCommandAcls:output_type -> kentik.deviceconf.v202511.GetCommandAclsResponse
-	17, // 33: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateCommandAcls:output_type -> kentik.deviceconf.v202511.UpdateCommandAclsResponse
-	19, // 34: kentik.deviceconf.v202511.DeviceConfigurationService.DeleteDeviceConfiguration:output_type -> kentik.deviceconf.v202511.DeleteDeviceConfigurationResponse
-	25, // [25:35] is the sub-list for method output_type
-	15, // [15:25] is the sub-list for method input_type
-	15, // [15:15] is the sub-list for extension type_name
-	15, // [15:15] is the sub-list for extension extendee
-	0,  // [0:15] is the sub-list for field type_name
+	24, // 14: kentik.deviceconf.v202511.DeleteDeviceConfigurationResponse.orphaned_revision:type_name -> kentik.deviceconf.v202511.Revision
+	22, // 15: kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse.ConfigsEntry.value:type_name -> kentik.deviceconf.v202511.Snapshot
+	0,  // 16: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceAssignments:input_type -> kentik.deviceconf.v202511.GetDeviceAssignmentsRequest
+	2,  // 17: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateDeviceConfiguration:input_type -> kentik.deviceconf.v202511.UpdateDeviceConfigurationRequest
+	4,  // 18: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceConfiguration:input_type -> kentik.deviceconf.v202511.GetDeviceConfigurationRequest
+	6,  // 19: kentik.deviceconf.v202511.DeviceConfigurationService.GetLatestDeviceConfigurations:input_type -> kentik.deviceconf.v202511.GetLatestDeviceConfigurationsRequest
+	8,  // 20: kentik.deviceconf.v202511.DeviceConfigurationService.ListDeviceConfigurationRevisions:input_type -> kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsRequest
+	10, // 21: kentik.deviceconf.v202511.DeviceConfigurationService.RequestDeviceConfigurationFetch:input_type -> kentik.deviceconf.v202511.RequestDeviceConfigurationFetchRequest
+	12, // 22: kentik.deviceconf.v202511.DeviceConfigurationService.ExecuteCommand:input_type -> kentik.deviceconf.v202511.ExecuteCommandRequest
+	14, // 23: kentik.deviceconf.v202511.DeviceConfigurationService.GetCommandAcls:input_type -> kentik.deviceconf.v202511.GetCommandAclsRequest
+	16, // 24: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateCommandAcls:input_type -> kentik.deviceconf.v202511.UpdateCommandAclsRequest
+	18, // 25: kentik.deviceconf.v202511.DeviceConfigurationService.DeleteDeviceConfiguration:input_type -> kentik.deviceconf.v202511.DeleteDeviceConfigurationRequest
+	1,  // 26: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceAssignments:output_type -> kentik.deviceconf.v202511.GetDeviceAssignmentsResponse
+	3,  // 27: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateDeviceConfiguration:output_type -> kentik.deviceconf.v202511.UpdateDeviceConfigurationResponse
+	5,  // 28: kentik.deviceconf.v202511.DeviceConfigurationService.GetDeviceConfiguration:output_type -> kentik.deviceconf.v202511.GetDeviceConfigurationResponse
+	7,  // 29: kentik.deviceconf.v202511.DeviceConfigurationService.GetLatestDeviceConfigurations:output_type -> kentik.deviceconf.v202511.GetLatestDeviceConfigurationsResponse
+	9,  // 30: kentik.deviceconf.v202511.DeviceConfigurationService.ListDeviceConfigurationRevisions:output_type -> kentik.deviceconf.v202511.ListDeviceConfigurationRevisionsResponse
+	11, // 31: kentik.deviceconf.v202511.DeviceConfigurationService.RequestDeviceConfigurationFetch:output_type -> kentik.deviceconf.v202511.RequestDeviceConfigurationFetchResponse
+	13, // 32: kentik.deviceconf.v202511.DeviceConfigurationService.ExecuteCommand:output_type -> kentik.deviceconf.v202511.ExecuteCommandResponse
+	15, // 33: kentik.deviceconf.v202511.DeviceConfigurationService.GetCommandAcls:output_type -> kentik.deviceconf.v202511.GetCommandAclsResponse
+	17, // 34: kentik.deviceconf.v202511.DeviceConfigurationService.UpdateCommandAcls:output_type -> kentik.deviceconf.v202511.UpdateCommandAclsResponse
+	19, // 35: kentik.deviceconf.v202511.DeviceConfigurationService.DeleteDeviceConfiguration:output_type -> kentik.deviceconf.v202511.DeleteDeviceConfigurationResponse
+	26, // [26:36] is the sub-list for method output_type
+	16, // [16:26] is the sub-list for method input_type
+	16, // [16:16] is the sub-list for extension type_name
+	16, // [16:16] is the sub-list for extension extendee
+	0,  // [0:16] is the sub-list for field type_name
 }
 
 func init() { file_kentik_deviceconf_v202511_device_configuration_service_proto_init() }

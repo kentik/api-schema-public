@@ -119,7 +119,13 @@
       "default": "CONFIG_ENCODING_UNSPECIFIED"
     },
     "v202511DeleteDeviceConfigurationResponse": {
-      "type": "object"
+      "type": "object",
+      "properties": {
+        "orphanedRevision": {
+          "$ref": "#/definitions/v202511Revision",
+          "description": "If set, the revision whose diff against its predecessor is now empty after the delete.\nThis occurs when the two neighbors of the deleted revision have identical config bodies."
+        }
+      }
     },
     "v202511Device": {
       "type": "object",

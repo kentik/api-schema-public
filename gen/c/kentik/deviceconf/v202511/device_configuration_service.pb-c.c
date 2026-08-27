@@ -1755,9 +1755,29 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__delete_device_conf
   (ProtobufCMessageInit) kentik__deviceconf__v202511__delete_device_configuration_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-#define kentik__deviceconf__v202511__delete_device_configuration_response__field_descriptors NULL
-#define kentik__deviceconf__v202511__delete_device_configuration_response__field_indices_by_name NULL
-#define kentik__deviceconf__v202511__delete_device_configuration_response__number_ranges NULL
+static const ProtobufCFieldDescriptor kentik__deviceconf__v202511__delete_device_configuration_response__field_descriptors[1] =
+{
+  {
+    "orphaned_revision",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse, orphaned_revision),
+    &kentik__deviceconf__v202511__revision__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__deviceconf__v202511__delete_device_configuration_response__field_indices_by_name[] = {
+  0,   /* field[0] = orphaned_revision */
+};
+static const ProtobufCIntRange kentik__deviceconf__v202511__delete_device_configuration_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
 const ProtobufCMessageDescriptor kentik__deviceconf__v202511__delete_device_configuration_response__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
@@ -1766,10 +1786,10 @@ const ProtobufCMessageDescriptor kentik__deviceconf__v202511__delete_device_conf
   "Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse",
   "kentik.deviceconf.v202511",
   sizeof(Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse),
-  0,
+  1,
   kentik__deviceconf__v202511__delete_device_configuration_response__field_descriptors,
   kentik__deviceconf__v202511__delete_device_configuration_response__field_indices_by_name,
-  0,  kentik__deviceconf__v202511__delete_device_configuration_response__number_ranges,
+  1,  kentik__deviceconf__v202511__delete_device_configuration_response__number_ranges,
   (ProtobufCMessageInit) kentik__deviceconf__v202511__delete_device_configuration_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

@@ -312,10 +312,15 @@ struct  Kentik__Deviceconf__V202511__DeleteDeviceConfigurationRequest
 struct  Kentik__Deviceconf__V202511__DeleteDeviceConfigurationResponse
 {
   ProtobufCMessage base;
+  /*
+   * If set, the revision whose diff against its predecessor is now empty after the delete.
+   * This occurs when the two neighbors of the deleted revision have identical config bodies.
+   */
+  Kentik__Deviceconf__V202511__Revision *orphaned_revision;
 };
 #define KENTIK__DEVICECONF__V202511__DELETE_DEVICE_CONFIGURATION_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__deviceconf__v202511__delete_device_configuration_response__descriptor) \
-     }
+    , NULL }
 
 
 /* Kentik__Deviceconf__V202511__GetDeviceAssignmentsRequest methods */

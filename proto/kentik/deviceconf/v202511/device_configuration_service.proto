@@ -250,8 +250,8 @@ message RequestDeviceConfigurationFetchResponse {
 }
 
 message ExecuteCommandRequest {
-  DeviceCommand    device_command = 1;
-  MessageSignature signature      = 2;
+  DeviceCommand device_command = 1;
+  MessageSignature signature = 2;
   google.protobuf.Duration timeout = 3;
 }
 
@@ -279,4 +279,7 @@ message DeleteDeviceConfigurationRequest {
 }
 
 message DeleteDeviceConfigurationResponse {
+  // If set, the revision whose diff against its predecessor is now empty after the delete.
+  // This occurs when the two neighbors of the deleted revision have identical config bodies.
+  Revision orphaned_revision = 1;
 }
