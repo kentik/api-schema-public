@@ -1,0 +1,327 @@
+syntax = "proto3";
+
+package kentik.rbux.v202607alpha1;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/rbux/v202607alpha1;rbux";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+import "kentik/saved_filter/v202501alpha1/saved_filter_message.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "RBUX Focus Scope API"
+    version: "v202607alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description:
+      "# Overview\n"
+      "The RBUX Focus Scope API enables programmatic management of Focus Scopes: named, reusable "
+      "data scopes that drive a customized default view of a user's data (inventory, Data/Metrics "
+      "Explorer, dashboards, etc.).\n"
+      "\n"
+      "A Focus Scope combines goal-oriented dimensions (sites, device labels, asset tags) with a "
+      "canonical KDE filter tree (the same shape as Saved Filters). Scopes are a soft default, not "
+      "access control: they are applied within the ceiling of what RBAC permits and can always be "
+      "switched off by the user.\n"
+      "\n"
+      "### Key Features\n"
+      "* Create, read, update, and delete reusable Focus Scopes\n"
+      "\n"
+      "Entitlement to a scope is granted through RBAC role sets, which are managed outside this API. "
+      "There is no per-user scope assignment.\n"
+      "\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/"
+    description: "Kentik Knowledge Base"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// ========== models ==========
+
+// {{.Name}}
+message AssetTagSelector {
+  string tag_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Asset tag key identifier."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  repeated string values = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Asset tag values to match for the given tag key."
+    }
+  ];
+}
+
+// {{.Name}}
+message ScopeDimensions {
+  repeated int64 sites = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Site identifiers included in the scope."
+    }
+  ];
+  repeated int64 labels = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Label identifiers included in the scope."
+    }
+  ];
+  repeated AssetTagSelector asset_tags = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Customer-defined asset tag selectors included in the scope."
+    }
+  ];
+}
+
+// {{.Name}}
+message ScopeConfig {
+  ScopeDimensions dimensions = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Goal-oriented selectors (sites, device labels, asset tags) offered by the UI. "
+        "Compiled down into the canonical filter tree at query time."
+    }
+  ];
+  kentik.saved_filter.v202501alpha1.SavedFilterFilters filters = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Canonical KDE filter tree, identical in shape to Saved Filters. May embed a filter "
+        "tree and/or reference existing saved filters by id."
+    }
+  ];
+}
+
+// {{.Name}}
+message Scope {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique identifier for the Focus Scope."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  string name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "A unique name for the Focus Scope within the company."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+  string description = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The Focus Scope's description."
+    }
+  ];
+  ScopeConfig scope = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The scope payload: dimensions plus the canonical filter tree."
+    }
+  ];
+  string created_by = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Identifier of the user who created the Focus Scope."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  google.protobuf.Timestamp created_date = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date-time of scope creation, in UTC."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+  google.protobuf.Timestamp updated_date = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Date-time of most-recent scope edit, in UTC."
+    },
+    (google.api.field_behavior) = OUTPUT_ONLY
+  ];
+}
+
+// ========== services ==========
+
+// ---------- Focus Scopes ----------
+
+// {{.Name}}
+message ListScopesRequest {}
+
+// {{.Name}}
+message ListScopesResponse {
+  repeated Scope scopes = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The company's Focus Scopes."
+    }
+  ];
+}
+
+// {{.Name}}
+message GetScopeRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Identifier of the Focus Scope to retrieve."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message GetScopeResponse {
+  Scope scope = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The requested Focus Scope."
+    }
+  ];
+}
+
+// {{.Name}}
+message CreateScopeRequest {
+  Scope scope = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The Focus Scope to create."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message CreateScopeResponse {
+  Scope scope = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The created Focus Scope."
+    }
+  ];
+}
+
+// {{.Name}}
+message UpdateScopeRequest {
+  Scope scope = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The Focus Scope values to update."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message UpdateScopeResponse {
+  Scope scope = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The updated Focus Scope."
+    }
+  ];
+}
+
+// {{.Name}}
+message DeleteScopeRequest {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Identifier of the Focus Scope to delete."
+    },
+    (google.api.field_behavior) = REQUIRED
+  ];
+}
+
+// {{.Name}}
+message DeleteScopeResponse {}
+
+
+service ScopeService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.backend_type) = "grpc-connect";
+
+  rpc ListScopes(ListScopesRequest) returns (ListScopesResponse) {
+    option (kentik.core.v202303.method_permission) = "rbux.scope::read";
+    option (google.api.http) = {
+      get: "/rbux/v202607alpha1/scopes"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListScopes"
+      summary: "List Focus Scopes"
+      description: "Returns all Focus Scopes for the user's company."
+    };
+  }
+
+  rpc GetScope(GetScopeRequest) returns (GetScopeResponse) {
+    option (kentik.core.v202303.method_permission) = "rbux.scope::read";
+    option (google.api.http) = {
+      get: "/rbux/v202607alpha1/scopes/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetScope"
+      summary: "Get Focus Scope"
+      description: "Returns a single Focus Scope by id."
+    };
+  }
+
+  rpc CreateScope(CreateScopeRequest) returns (CreateScopeResponse) {
+    option (kentik.core.v202303.method_permission) = "rbux.scope::create";
+    option (google.api.http) = {
+      post: "/rbux/v202607alpha1/scopes"
+      body: "scope"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateScope"
+      summary: "Create Focus Scope"
+      description: "Creates and returns a new Focus Scope."
+    };
+  }
+
+  rpc UpdateScope(UpdateScopeRequest) returns (UpdateScopeResponse) {
+    option (kentik.core.v202303.method_permission) = "rbux.scope::update";
+    option (google.api.http) = {
+      put: "/rbux/v202607alpha1/scopes/{scope.id}"
+      body: "scope"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateScope"
+      summary: "Update Focus Scope"
+      description: "Updates and returns an existing Focus Scope."
+    };
+  }
+
+  rpc DeleteScope(DeleteScopeRequest) returns (DeleteScopeResponse) {
+    option (kentik.core.v202303.method_permission) = "rbux.scope::delete";
+    option (google.api.http) = {
+      delete: "/rbux/v202607alpha1/scopes/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteScope"
+      summary: "Delete Focus Scope"
+      description: "Deletes a Focus Scope."
+    };
+  }
+}

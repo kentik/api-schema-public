@@ -1,0 +1,631 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "RBUX Focus Scope API",
+        "description": "# Overview\nThe RBUX Focus Scope API enables programmatic management of Focus Scopes: named, reusable data scopes that drive a customized default view of a user's data (inventory, Data/Metrics Explorer, dashboards, etc.).\n\nA Focus Scope combines goal-oriented dimensions (sites, device labels, asset tags) with a canonical KDE filter tree (the same shape as Saved Filters). Scopes are a soft default, not access control: they are applied within the ceiling of what RBAC permits and can always be switched off by the user.\n\n### Key Features\n* Create, read, update, and delete reusable Focus Scopes\n\nEntitlement to a scope is granted through RBAC role sets, which are managed outside this API. There is no per-user scope assignment.\n\n",
+        "version": "v202607alpha1",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "ScopeService"
+        }
+    ],
+    "paths": {
+        "/rbux/v202607alpha1/scopes": {
+            "get": {
+                "summary": "List Focus Scopes",
+                "description": "Returns all Focus Scopes for the user's company.",
+                "operationId": "ListScopes",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202607alpha1ListScopesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "ScopeService"
+                ]
+            },
+            "post": {
+                "summary": "Create Focus Scope",
+                "description": "Creates and returns a new Focus Scope.",
+                "operationId": "CreateScope",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202607alpha1CreateScopeResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202607alpha1Scope"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "ScopeService"
+                ]
+            }
+        },
+        "/rbux/v202607alpha1/scopes/{id}": {
+            "get": {
+                "summary": "Get Focus Scope",
+                "description": "Returns a single Focus Scope by id.",
+                "operationId": "GetScope",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202607alpha1GetScopeResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "Identifier of the Focus Scope to retrieve.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "ScopeService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete Focus Scope",
+                "description": "Deletes a Focus Scope.",
+                "operationId": "DeleteScope",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202607alpha1DeleteScopeResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "Identifier of the Focus Scope to delete.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "ScopeService"
+                ]
+            },
+            "put": {
+                "summary": "Update Focus Scope",
+                "description": "Updates and returns an existing Focus Scope.",
+                "operationId": "UpdateScope",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202607alpha1UpdateScopeResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "Unique identifier for the Focus Scope.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "A unique name for the Focus Scope within the company."
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "description": "The Focus Scope's description."
+                                    },
+                                    "scope": {
+                                        "$ref": "#/components/schemas/v202607alpha1ScopeConfig"
+                                    },
+                                    "createdBy": {
+                                        "type": "string",
+                                        "description": "Identifier of the user who created the Focus Scope.",
+                                        "readOnly": true
+                                    },
+                                    "createdDate": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Date-time of scope creation, in UTC.",
+                                        "readOnly": true
+                                    },
+                                    "updatedDate": {
+                                        "type": "string",
+                                        "format": "date-time",
+                                        "description": "Date-time of most-recent scope edit, in UTC.",
+                                        "readOnly": true
+                                    }
+                                },
+                                "title": "Scope",
+                                "required": [
+                                    "name",
+                                    "scope"
+                                ]
+                            }
+                        }
+                    },
+                    "description": "Scope",
+                    "required": true
+                },
+                "tags": [
+                    "ScopeService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "Kentik Knowledge Base",
+        "url": "https://kb.kentik.com/"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202501alpha1FilterField": {
+                "type": "string",
+                "enum": [
+                    "FILTER_FIELD_UNSPECIFIED",
+                    "FILTER_FIELD_DST_AS",
+                    "FILTER_FIELD_DST_NEXTHOP_AS",
+                    "FILTER_FIELD_DST_SECOND_ASN",
+                    "FILTER_FIELD_DST_THIRD_ASN",
+                    "FILTER_FIELD_DST_BGP_ASPATH",
+                    "FILTER_FIELD_DST_BGP_COMMUNITY",
+                    "FILTER_FIELD_DST_ETH_MAC",
+                    "FILTER_FIELD_DST_FLOW_TAGS",
+                    "FILTER_FIELD_DST_GEO",
+                    "FILTER_FIELD_DST_GEO_REGION",
+                    "FILTER_FIELD_DST_GEO_CITY",
+                    "FILTER_FIELD_DST_ROUTE_LENGTH",
+                    "FILTER_FIELD_INET_DST_ADDR",
+                    "FILTER_FIELD_IPV4_DST_ROUTE_PREFIX",
+                    "FILTER_FIELD_IPV4_DST_NEXT_HOP",
+                    "FILTER_FIELD_L4_DST_PORT",
+                    "FILTER_FIELD_OUTPUT_PORT",
+                    "FILTER_FIELD_I_OUTPUT_SNMP_ALIAS",
+                    "FILTER_FIELD_I_OUTPUT_INTERFACE_DESCRIPTION",
+                    "FILTER_FIELD_SRC_AS",
+                    "FILTER_FIELD_SRC_NEXTHOP_AS",
+                    "FILTER_FIELD_SRC_SECOND_ASN",
+                    "FILTER_FIELD_SRC_THIRD_ASN",
+                    "FILTER_FIELD_SRC_BGP_ASPATH",
+                    "FILTER_FIELD_SRC_BGP_COMMUNITY",
+                    "FILTER_FIELD_SRC_ETH_MAC",
+                    "FILTER_FIELD_SRC_FLOW_TAGS",
+                    "FILTER_FIELD_SRC_GEO",
+                    "FILTER_FIELD_SRC_GEO_REGION",
+                    "FILTER_FIELD_SRC_GEO_CITY",
+                    "FILTER_FIELD_SRC_ROUTE_LENGTH",
+                    "FILTER_FIELD_INET_SRC_ADDR",
+                    "FILTER_FIELD_IPV4_SRC_ROUTE_PREFIX",
+                    "FILTER_FIELD_IPV4_SRC_NEXT_HOP",
+                    "FILTER_FIELD_L4_SRC_PORT",
+                    "FILTER_FIELD_INPUT_PORT",
+                    "FILTER_FIELD_I_INPUT_SNMP_ALIAS",
+                    "FILTER_FIELD_I_INPUT_INTERFACE_DESCRIPTION",
+                    "FILTER_FIELD_BOTH_PKTS",
+                    "FILTER_FIELD_I_DEVICE_NAME",
+                    "FILTER_FIELD_PROTOCOL",
+                    "FILTER_FIELD_TCP_FLAGS",
+                    "FILTER_FIELD_TCP_FLAGS_RAW",
+                    "FILTER_FIELD_TCP_RETRANSMIT",
+                    "FILTER_FIELD_TOS",
+                    "FILTER_FIELD_VLAN_IN",
+                    "FILTER_FIELD_VLAN_OUT"
+                ],
+                "default": "FILTER_FIELD_UNSPECIFIED",
+                "title": "- FILTER_FIELD_DST_AS: default value"
+            },
+            "v202501alpha1FilterOperator": {
+                "type": "string",
+                "enum": [
+                    "FILTER_OPERATOR_UNSPECIFIED",
+                    "FILTER_OPERATOR_EQUAL",
+                    "FILTER_OPERATOR_NOT_EQUAL",
+                    "FILTER_OPERATOR_CONTAINS",
+                    "FILTER_OPERATOR_NOT_CONTAINS",
+                    "FILTER_OPERATOR_REGEX_CONTAINS",
+                    "FILTER_OPERATOR_REGEX_NOT_CONTAINS",
+                    "FILTER_OPERATOR_GREATER_THAN",
+                    "FILTER_OPERATOR_LESS_THAN",
+                    "FILTER_OPERATOR_BITWISE_AND"
+                ],
+                "default": "FILTER_OPERATOR_UNSPECIFIED",
+                "title": "- FILTER_OPERATOR_EQUAL: \"=\", default value\n - FILTER_OPERATOR_NOT_EQUAL: \"<>\"\n - FILTER_OPERATOR_CONTAINS: \"ILIKE\"\n - FILTER_OPERATOR_NOT_CONTAINS: \"NOT ILIKE\"\n - FILTER_OPERATOR_REGEX_CONTAINS: \"~\"\n - FILTER_OPERATOR_REGEX_NOT_CONTAINS: \"!~\"\n - FILTER_OPERATOR_GREATER_THAN: \">\"\n - FILTER_OPERATOR_LESS_THAN: \"<\"\n - FILTER_OPERATOR_BITWISE_AND: \"&\""
+            },
+            "v202501alpha1SavedFilterFilter": {
+                "type": "object",
+                "properties": {
+                    "filterField": {
+                        "$ref": "#/components/schemas/v202501alpha1FilterField"
+                    },
+                    "operator": {
+                        "$ref": "#/components/schemas/v202501alpha1FilterOperator"
+                    },
+                    "filterValue": {
+                        "type": "string",
+                        "description": "Value to perform equality comparisons."
+                    },
+                    "filterFieldString": {
+                        "type": "string",
+                        "description": "String representation of filter field."
+                    },
+                    "metric": {
+                        "type": "string",
+                        "description": "Filter field as metric for data series."
+                    },
+                    "aggregate": {
+                        "type": "string",
+                        "description": "Aggregating function."
+                    },
+                    "rightFilterField": {
+                        "type": "string",
+                        "description": "Right field operand."
+                    }
+                }
+            },
+            "v202501alpha1SavedFilterFilterGroup": {
+                "type": "object",
+                "properties": {
+                    "any": {
+                        "type": "boolean",
+                        "description": "Whether to require matches against ALL or ANY filter. Defaults to requiring a match for all."
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501alpha1SavedFilterFilter"
+                        },
+                        "description": "Filters to operate against."
+                    },
+                    "not": {
+                        "type": "boolean",
+                        "description": "Whether or not to NOT() the filter group. Defaults to false."
+                    },
+                    "savedFilterIds": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501alpha1SavedFilterFilterId"
+                        },
+                        "description": "Include reference of other saved filters in this filter group."
+                    },
+                    "nestedFilterGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501alpha1SavedFilterFilterGroup"
+                        },
+                        "description": "Include nested filter group."
+                    }
+                }
+            },
+            "v202501alpha1SavedFilterFilterId": {
+                "type": "object",
+                "properties": {
+                    "filterId": {
+                        "type": "string",
+                        "description": "ID of reference saved filter."
+                    },
+                    "isNot": {
+                        "type": "boolean",
+                        "description": "Include/Exclude of the reference saved filter."
+                    }
+                }
+            },
+            "v202501alpha1SavedFilterFilters": {
+                "type": "object",
+                "properties": {
+                    "any": {
+                        "type": "boolean",
+                        "description": "Whether to require matches against ALL or ANY filter. Defaults to requiring a match for all."
+                    },
+                    "filterGroups": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202501alpha1SavedFilterFilterGroup"
+                        },
+                        "description": "Individual groups of filters. This allows matches of e.g. ANY(ALL(x), ANY(y))."
+                    }
+                },
+                "required": [
+                    "filterGroups"
+                ]
+            },
+            "v202607alpha1AssetTagSelector": {
+                "type": "object",
+                "properties": {
+                    "tagId": {
+                        "type": "string",
+                        "description": "Asset tag key identifier."
+                    },
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Asset tag values to match for the given tag key."
+                    }
+                },
+                "title": "AssetTagSelector",
+                "required": [
+                    "tagId"
+                ]
+            },
+            "v202607alpha1CreateScopeResponse": {
+                "type": "object",
+                "properties": {
+                    "scope": {
+                        "$ref": "#/components/schemas/v202607alpha1Scope"
+                    }
+                },
+                "title": "CreateScopeResponse"
+            },
+            "v202607alpha1DeleteScopeResponse": {
+                "type": "object",
+                "title": "DeleteScopeResponse"
+            },
+            "v202607alpha1GetScopeResponse": {
+                "type": "object",
+                "properties": {
+                    "scope": {
+                        "$ref": "#/components/schemas/v202607alpha1Scope"
+                    }
+                },
+                "title": "GetScopeResponse"
+            },
+            "v202607alpha1ListScopesResponse": {
+                "type": "object",
+                "properties": {
+                    "scopes": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202607alpha1Scope"
+                        },
+                        "description": "The company's Focus Scopes."
+                    }
+                },
+                "title": "ListScopesResponse"
+            },
+            "v202607alpha1Scope": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique identifier for the Focus Scope.",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A unique name for the Focus Scope within the company."
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "The Focus Scope's description."
+                    },
+                    "scope": {
+                        "$ref": "#/components/schemas/v202607alpha1ScopeConfig"
+                    },
+                    "createdBy": {
+                        "type": "string",
+                        "description": "Identifier of the user who created the Focus Scope.",
+                        "readOnly": true
+                    },
+                    "createdDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Date-time of scope creation, in UTC.",
+                        "readOnly": true
+                    },
+                    "updatedDate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Date-time of most-recent scope edit, in UTC.",
+                        "readOnly": true
+                    }
+                },
+                "title": "Scope",
+                "required": [
+                    "name"
+                ]
+            },
+            "v202607alpha1ScopeConfig": {
+                "type": "object",
+                "properties": {
+                    "dimensions": {
+                        "$ref": "#/components/schemas/v202607alpha1ScopeDimensions"
+                    },
+                    "filters": {
+                        "$ref": "#/components/schemas/v202501alpha1SavedFilterFilters"
+                    }
+                },
+                "title": "ScopeConfig"
+            },
+            "v202607alpha1ScopeDimensions": {
+                "type": "object",
+                "properties": {
+                    "sites": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "int64"
+                        },
+                        "description": "Site identifiers included in the scope."
+                    },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "format": "int64"
+                        },
+                        "description": "Label identifiers included in the scope."
+                    },
+                    "assetTags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202607alpha1AssetTagSelector"
+                        },
+                        "description": "Customer-defined asset tag selectors included in the scope."
+                    }
+                },
+                "title": "ScopeDimensions"
+            },
+            "v202607alpha1UpdateScopeResponse": {
+                "type": "object",
+                "properties": {
+                    "scope": {
+                        "$ref": "#/components/schemas/v202607alpha1Scope"
+                    }
+                },
+                "title": "UpdateScopeResponse"
+            }
+        }
+    }
+}
