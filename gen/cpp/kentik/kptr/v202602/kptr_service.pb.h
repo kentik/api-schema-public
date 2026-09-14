@@ -64,6 +64,12 @@ extern GetNetworkRangeAssignmentsRequestDefaultTypeInternal _GetNetworkRangeAssi
 class GetNetworkRangeAssignmentsResponse;
 struct GetNetworkRangeAssignmentsResponseDefaultTypeInternal;
 extern GetNetworkRangeAssignmentsResponseDefaultTypeInternal _GetNetworkRangeAssignmentsResponse_default_instance_;
+class ListResolvedAddressesRequest;
+struct ListResolvedAddressesRequestDefaultTypeInternal;
+extern ListResolvedAddressesRequestDefaultTypeInternal _ListResolvedAddressesRequest_default_instance_;
+class ListResolvedAddressesResponse;
+struct ListResolvedAddressesResponseDefaultTypeInternal;
+extern ListResolvedAddressesResponseDefaultTypeInternal _ListResolvedAddressesResponse_default_instance_;
 class ResolveAddressesRequest;
 struct ResolveAddressesRequestDefaultTypeInternal;
 extern ResolveAddressesRequestDefaultTypeInternal _ResolveAddressesRequest_default_instance_;
@@ -436,6 +442,151 @@ class ResolveAddressesRequest final : public ::google::protobuf::Message
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fkptr_2fv202602_2fkptr_5fservice_2eproto;
+};
+// -------------------------------------------------------------------
+
+class ListResolvedAddressesRequest final : public ::google::protobuf::internal::ZeroFieldsBase
+/* @@protoc_insertion_point(class_definition:kentik.kptr.v202602.ListResolvedAddressesRequest) */ {
+ public:
+  inline ListResolvedAddressesRequest() : ListResolvedAddressesRequest(nullptr) {}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ListResolvedAddressesRequest* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ListResolvedAddressesRequest));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ListResolvedAddressesRequest(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline ListResolvedAddressesRequest(const ListResolvedAddressesRequest& from) : ListResolvedAddressesRequest(nullptr, from) {}
+  inline ListResolvedAddressesRequest(ListResolvedAddressesRequest&& from) noexcept
+      : ListResolvedAddressesRequest(nullptr, std::move(from)) {}
+  inline ListResolvedAddressesRequest& operator=(const ListResolvedAddressesRequest& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ListResolvedAddressesRequest& operator=(ListResolvedAddressesRequest&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ListResolvedAddressesRequest& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ListResolvedAddressesRequest* internal_default_instance() {
+    return reinterpret_cast<const ListResolvedAddressesRequest*>(
+        &_ListResolvedAddressesRequest_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 6;
+  friend void swap(ListResolvedAddressesRequest& a, ListResolvedAddressesRequest& b) { a.Swap(&b); }
+  inline void Swap(ListResolvedAddressesRequest* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ListResolvedAddressesRequest* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ListResolvedAddressesRequest* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::internal::ZeroFieldsBase::DefaultConstruct<ListResolvedAddressesRequest>(arena);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
+  inline void CopyFrom(const ListResolvedAddressesRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
+  }
+  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
+  void MergeFrom(const ListResolvedAddressesRequest& from) {
+    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
+  }
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.kptr.v202602.ListResolvedAddressesRequest"; }
+
+ protected:
+  explicit ListResolvedAddressesRequest(::google::protobuf::Arena* arena);
+  ListResolvedAddressesRequest(::google::protobuf::Arena* arena, const ListResolvedAddressesRequest& from);
+  ListResolvedAddressesRequest(::google::protobuf::Arena* arena, ListResolvedAddressesRequest&& from) noexcept
+      : ListResolvedAddressesRequest(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  // @@protoc_insertion_point(class_scope:kentik.kptr.v202602.ListResolvedAddressesRequest)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 0, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const ListResolvedAddressesRequest& from_msg);
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
   friend struct ::TableStruct_kentik_2fkptr_2fv202602_2fkptr_5fservice_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1179,6 +1330,203 @@ class ResolveAddressesResponse final : public ::google::protobuf::Message
   union { Impl_ _impl_; };
   friend struct ::TableStruct_kentik_2fkptr_2fv202602_2fkptr_5fservice_2eproto;
 };
+// -------------------------------------------------------------------
+
+class ListResolvedAddressesResponse final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.kptr.v202602.ListResolvedAddressesResponse) */ {
+ public:
+  inline ListResolvedAddressesResponse() : ListResolvedAddressesResponse(nullptr) {}
+  ~ListResolvedAddressesResponse() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(ListResolvedAddressesResponse* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(ListResolvedAddressesResponse));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR ListResolvedAddressesResponse(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline ListResolvedAddressesResponse(const ListResolvedAddressesResponse& from) : ListResolvedAddressesResponse(nullptr, from) {}
+  inline ListResolvedAddressesResponse(ListResolvedAddressesResponse&& from) noexcept
+      : ListResolvedAddressesResponse(nullptr, std::move(from)) {}
+  inline ListResolvedAddressesResponse& operator=(const ListResolvedAddressesResponse& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline ListResolvedAddressesResponse& operator=(ListResolvedAddressesResponse&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const ListResolvedAddressesResponse& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const ListResolvedAddressesResponse* internal_default_instance() {
+    return reinterpret_cast<const ListResolvedAddressesResponse*>(
+        &_ListResolvedAddressesResponse_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 7;
+  friend void swap(ListResolvedAddressesResponse& a, ListResolvedAddressesResponse& b) { a.Swap(&b); }
+  inline void Swap(ListResolvedAddressesResponse* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(ListResolvedAddressesResponse* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  ListResolvedAddressesResponse* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<ListResolvedAddressesResponse>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ListResolvedAddressesResponse& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ListResolvedAddressesResponse& from) { ListResolvedAddressesResponse::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ListResolvedAddressesResponse* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.kptr.v202602.ListResolvedAddressesResponse"; }
+
+ protected:
+  explicit ListResolvedAddressesResponse(::google::protobuf::Arena* arena);
+  ListResolvedAddressesResponse(::google::protobuf::Arena* arena, const ListResolvedAddressesResponse& from);
+  ListResolvedAddressesResponse(::google::protobuf::Arena* arena, ListResolvedAddressesResponse&& from) noexcept
+      : ListResolvedAddressesResponse(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kResultsFieldNumber = 1,
+  };
+  // repeated .kentik.kptr.v202602.PtrResult results = 1 [json_name = "results"];
+  int results_size() const;
+  private:
+  int _internal_results_size() const;
+
+  public:
+  void clear_results() ;
+  ::kentik::kptr::v202602::PtrResult* mutable_results(int index);
+  ::google::protobuf::RepeatedPtrField<::kentik::kptr::v202602::PtrResult>* mutable_results();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::kentik::kptr::v202602::PtrResult>& _internal_results() const;
+  ::google::protobuf::RepeatedPtrField<::kentik::kptr::v202602::PtrResult>* _internal_mutable_results();
+  public:
+  const ::kentik::kptr::v202602::PtrResult& results(int index) const;
+  ::kentik::kptr::v202602::PtrResult* add_results();
+  const ::google::protobuf::RepeatedPtrField<::kentik::kptr::v202602::PtrResult>& results() const;
+  // @@protoc_insertion_point(class_scope:kentik.kptr.v202602.ListResolvedAddressesResponse)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 1,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const ListResolvedAddressesResponse& from_msg);
+    ::google::protobuf::RepeatedPtrField< ::kentik::kptr::v202602::PtrResult > results_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fkptr_2fv202602_2fkptr_5fservice_2eproto;
+};
 
 // ===================================================================
 
@@ -1430,6 +1778,59 @@ ResolveAddressesResponse::_internal_results() const {
 }
 inline ::google::protobuf::RepeatedPtrField<::kentik::kptr::v202602::PtrResult>*
 ResolveAddressesResponse::_internal_mutable_results() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.results_;
+}
+
+// -------------------------------------------------------------------
+
+// ListResolvedAddressesRequest
+
+// -------------------------------------------------------------------
+
+// ListResolvedAddressesResponse
+
+// repeated .kentik.kptr.v202602.PtrResult results = 1 [json_name = "results"];
+inline int ListResolvedAddressesResponse::_internal_results_size() const {
+  return _internal_results().size();
+}
+inline int ListResolvedAddressesResponse::results_size() const {
+  return _internal_results_size();
+}
+inline ::kentik::kptr::v202602::PtrResult* ListResolvedAddressesResponse::mutable_results(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.kptr.v202602.ListResolvedAddressesResponse.results)
+  return _internal_mutable_results()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::kptr::v202602::PtrResult>* ListResolvedAddressesResponse::mutable_results()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.kptr.v202602.ListResolvedAddressesResponse.results)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_results();
+}
+inline const ::kentik::kptr::v202602::PtrResult& ListResolvedAddressesResponse::results(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.kptr.v202602.ListResolvedAddressesResponse.results)
+  return _internal_results().Get(index);
+}
+inline ::kentik::kptr::v202602::PtrResult* ListResolvedAddressesResponse::add_results() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::kentik::kptr::v202602::PtrResult* _add = _internal_mutable_results()->Add();
+  // @@protoc_insertion_point(field_add:kentik.kptr.v202602.ListResolvedAddressesResponse.results)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::kptr::v202602::PtrResult>& ListResolvedAddressesResponse::results() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.kptr.v202602.ListResolvedAddressesResponse.results)
+  return _internal_results();
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::kptr::v202602::PtrResult>&
+ListResolvedAddressesResponse::_internal_results() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.results_;
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::kptr::v202602::PtrResult>*
+ListResolvedAddressesResponse::_internal_mutable_results() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.results_;
 }

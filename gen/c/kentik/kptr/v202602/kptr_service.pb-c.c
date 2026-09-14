@@ -277,6 +277,96 @@ void   kentik__kptr__v202602__resolve_addresses_response__free_unpacked
   assert(message->base.descriptor == &kentik__kptr__v202602__resolve_addresses_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__kptr__v202602__list_resolved_addresses_request__init
+                     (Kentik__Kptr__V202602__ListResolvedAddressesRequest         *message)
+{
+  static const Kentik__Kptr__V202602__ListResolvedAddressesRequest init_value = KENTIK__KPTR__V202602__LIST_RESOLVED_ADDRESSES_REQUEST__INIT;
+  *message = init_value;
+}
+size_t kentik__kptr__v202602__list_resolved_addresses_request__get_packed_size
+                     (const Kentik__Kptr__V202602__ListResolvedAddressesRequest *message)
+{
+  assert(message->base.descriptor == &kentik__kptr__v202602__list_resolved_addresses_request__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__kptr__v202602__list_resolved_addresses_request__pack
+                     (const Kentik__Kptr__V202602__ListResolvedAddressesRequest *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__kptr__v202602__list_resolved_addresses_request__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__kptr__v202602__list_resolved_addresses_request__pack_to_buffer
+                     (const Kentik__Kptr__V202602__ListResolvedAddressesRequest *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__kptr__v202602__list_resolved_addresses_request__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Kptr__V202602__ListResolvedAddressesRequest *
+       kentik__kptr__v202602__list_resolved_addresses_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Kptr__V202602__ListResolvedAddressesRequest *)
+     protobuf_c_message_unpack (&kentik__kptr__v202602__list_resolved_addresses_request__descriptor,
+                                allocator, len, data);
+}
+void   kentik__kptr__v202602__list_resolved_addresses_request__free_unpacked
+                     (Kentik__Kptr__V202602__ListResolvedAddressesRequest *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__kptr__v202602__list_resolved_addresses_request__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__kptr__v202602__list_resolved_addresses_response__init
+                     (Kentik__Kptr__V202602__ListResolvedAddressesResponse         *message)
+{
+  static const Kentik__Kptr__V202602__ListResolvedAddressesResponse init_value = KENTIK__KPTR__V202602__LIST_RESOLVED_ADDRESSES_RESPONSE__INIT;
+  *message = init_value;
+}
+size_t kentik__kptr__v202602__list_resolved_addresses_response__get_packed_size
+                     (const Kentik__Kptr__V202602__ListResolvedAddressesResponse *message)
+{
+  assert(message->base.descriptor == &kentik__kptr__v202602__list_resolved_addresses_response__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__kptr__v202602__list_resolved_addresses_response__pack
+                     (const Kentik__Kptr__V202602__ListResolvedAddressesResponse *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__kptr__v202602__list_resolved_addresses_response__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__kptr__v202602__list_resolved_addresses_response__pack_to_buffer
+                     (const Kentik__Kptr__V202602__ListResolvedAddressesResponse *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__kptr__v202602__list_resolved_addresses_response__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Kptr__V202602__ListResolvedAddressesResponse *
+       kentik__kptr__v202602__list_resolved_addresses_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Kptr__V202602__ListResolvedAddressesResponse *)
+     protobuf_c_message_unpack (&kentik__kptr__v202602__list_resolved_addresses_response__descriptor,
+                                allocator, len, data);
+}
+void   kentik__kptr__v202602__list_resolved_addresses_response__free_unpacked
+                     (Kentik__Kptr__V202602__ListResolvedAddressesResponse *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__kptr__v202602__list_resolved_addresses_response__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 static const ProtobufCFieldDescriptor kentik__kptr__v202602__update_address_names_request__field_descriptors[1] =
 {
   {
@@ -465,14 +555,72 @@ const ProtobufCMessageDescriptor kentik__kptr__v202602__resolve_addresses_respon
   (ProtobufCMessageInit) kentik__kptr__v202602__resolve_addresses_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCMethodDescriptor kentik__kptr__v202602__kptr_service__method_descriptors[3] =
+#define kentik__kptr__v202602__list_resolved_addresses_request__field_descriptors NULL
+#define kentik__kptr__v202602__list_resolved_addresses_request__field_indices_by_name NULL
+#define kentik__kptr__v202602__list_resolved_addresses_request__number_ranges NULL
+const ProtobufCMessageDescriptor kentik__kptr__v202602__list_resolved_addresses_request__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.kptr.v202602.ListResolvedAddressesRequest",
+  "ListResolvedAddressesRequest",
+  "Kentik__Kptr__V202602__ListResolvedAddressesRequest",
+  "kentik.kptr.v202602",
+  sizeof(Kentik__Kptr__V202602__ListResolvedAddressesRequest),
+  0,
+  kentik__kptr__v202602__list_resolved_addresses_request__field_descriptors,
+  kentik__kptr__v202602__list_resolved_addresses_request__field_indices_by_name,
+  0,  kentik__kptr__v202602__list_resolved_addresses_request__number_ranges,
+  (ProtobufCMessageInit) kentik__kptr__v202602__list_resolved_addresses_request__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__kptr__v202602__list_resolved_addresses_response__field_descriptors[1] =
+{
+  {
+    "results",
+    1,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Kptr__V202602__ListResolvedAddressesResponse, n_results),
+    offsetof(Kentik__Kptr__V202602__ListResolvedAddressesResponse, results),
+    &kentik__kptr__v202602__ptr_result__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__kptr__v202602__list_resolved_addresses_response__field_indices_by_name[] = {
+  0,   /* field[0] = results */
+};
+static const ProtobufCIntRange kentik__kptr__v202602__list_resolved_addresses_response__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__kptr__v202602__list_resolved_addresses_response__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.kptr.v202602.ListResolvedAddressesResponse",
+  "ListResolvedAddressesResponse",
+  "Kentik__Kptr__V202602__ListResolvedAddressesResponse",
+  "kentik.kptr.v202602",
+  sizeof(Kentik__Kptr__V202602__ListResolvedAddressesResponse),
+  1,
+  kentik__kptr__v202602__list_resolved_addresses_response__field_descriptors,
+  kentik__kptr__v202602__list_resolved_addresses_response__field_indices_by_name,
+  1,  kentik__kptr__v202602__list_resolved_addresses_response__number_ranges,
+  (ProtobufCMessageInit) kentik__kptr__v202602__list_resolved_addresses_response__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCMethodDescriptor kentik__kptr__v202602__kptr_service__method_descriptors[4] =
 {
   { "GetNetworkRangeAssignments", &kentik__kptr__v202602__get_network_range_assignments_request__descriptor, &kentik__kptr__v202602__get_network_range_assignments_response__descriptor },
   { "UpdateAddressNames", &kentik__kptr__v202602__update_address_names_request__descriptor, &kentik__kptr__v202602__update_address_names_response__descriptor },
   { "ResolveAddresses", &kentik__kptr__v202602__resolve_addresses_request__descriptor, &kentik__kptr__v202602__resolve_addresses_response__descriptor },
+  { "ListResolvedAddresses", &kentik__kptr__v202602__list_resolved_addresses_request__descriptor, &kentik__kptr__v202602__list_resolved_addresses_response__descriptor },
 };
 const unsigned kentik__kptr__v202602__kptr_service__method_indices_by_name[] = {
   0,        /* GetNetworkRangeAssignments */
+  3,        /* ListResolvedAddresses */
   2,        /* ResolveAddresses */
   1         /* UpdateAddressNames */
 };
@@ -483,7 +631,7 @@ const ProtobufCServiceDescriptor kentik__kptr__v202602__kptr_service__descriptor
   "KptrService",
   "Kentik__Kptr__V202602__KptrService",
   "kentik.kptr.v202602",
-  3,
+  4,
   kentik__kptr__v202602__kptr_service__method_descriptors,
   kentik__kptr__v202602__kptr_service__method_indices_by_name
 };
@@ -510,6 +658,14 @@ void kentik__kptr__v202602__kptr_service__resolve_addresses(ProtobufCService *se
 {
   assert(service->descriptor == &kentik__kptr__v202602__kptr_service__descriptor);
   service->invoke(service, 2, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
+}
+void kentik__kptr__v202602__kptr_service__list_resolved_addresses(ProtobufCService *service,
+                                                                  const Kentik__Kptr__V202602__ListResolvedAddressesRequest *input,
+                                                                  Kentik__Kptr__V202602__ListResolvedAddressesResponse_Closure closure,
+                                                                  void *closure_data)
+{
+  assert(service->descriptor == &kentik__kptr__v202602__kptr_service__descriptor);
+  service->invoke(service, 3, (const ProtobufCMessage *) input, (ProtobufCClosure) closure, closure_data);
 }
 void kentik__kptr__v202602__kptr_service__init (Kentik__Kptr__V202602__KptrService_Service *service,
                                                 Kentik__Kptr__V202602__KptrService_ServiceDestroy destroy)

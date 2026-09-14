@@ -22,6 +22,7 @@ const (
 	KptrService_GetNetworkRangeAssignments_FullMethodName = "/kentik.kptr.v202602.KptrService/GetNetworkRangeAssignments"
 	KptrService_UpdateAddressNames_FullMethodName         = "/kentik.kptr.v202602.KptrService/UpdateAddressNames"
 	KptrService_ResolveAddresses_FullMethodName           = "/kentik.kptr.v202602.KptrService/ResolveAddresses"
+	KptrService_ListResolvedAddresses_FullMethodName      = "/kentik.kptr.v202602.KptrService/ListResolvedAddresses"
 )
 
 // KptrServiceClient is the client API for KptrService service.
@@ -64,6 +65,18 @@ type KptrServiceClient interface {
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
 	ResolveAddresses(ctx context.Context, in *ResolveAddressesRequest, opts ...grpc.CallOption) (*ResolveAddressesResponse, error)
+	// Get the full set of resolved IP address to hostname mappings for the company.
+	// This is intended for clients (e.g. chfclient) that want to periodically pull
+	// the entire resolved-address table and cache it locally, instead of performing
+	// synchronous per-flow lookups via ResolveAddresses.
+	//
+	// External clients MUST set the following gRPC metadata:
+	// - x-ch-auth-email
+	// - x-ch-auth-api-token
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID)
+	ListResolvedAddresses(ctx context.Context, in *ListResolvedAddressesRequest, opts ...grpc.CallOption) (*ListResolvedAddressesResponse, error)
 }
 
 type kptrServiceClient struct {
@@ -98,6 +111,16 @@ func (c *kptrServiceClient) ResolveAddresses(ctx context.Context, in *ResolveAdd
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ResolveAddressesResponse)
 	err := c.cc.Invoke(ctx, KptrService_ResolveAddresses_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *kptrServiceClient) ListResolvedAddresses(ctx context.Context, in *ListResolvedAddressesRequest, opts ...grpc.CallOption) (*ListResolvedAddressesResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListResolvedAddressesResponse)
+	err := c.cc.Invoke(ctx, KptrService_ListResolvedAddresses_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -144,6 +167,18 @@ type KptrServiceServer interface {
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
 	ResolveAddresses(context.Context, *ResolveAddressesRequest) (*ResolveAddressesResponse, error)
+	// Get the full set of resolved IP address to hostname mappings for the company.
+	// This is intended for clients (e.g. chfclient) that want to periodically pull
+	// the entire resolved-address table and cache it locally, instead of performing
+	// synchronous per-flow lookups via ResolveAddresses.
+	//
+	// External clients MUST set the following gRPC metadata:
+	// - x-ch-auth-email
+	// - x-ch-auth-api-token
+	//
+	// Internal clients MUST set the following gRPC metadata:
+	// - x-kt-cid (Company ID)
+	ListResolvedAddresses(context.Context, *ListResolvedAddressesRequest) (*ListResolvedAddressesResponse, error)
 }
 
 // UnimplementedKptrServiceServer should be embedded to have
@@ -161,6 +196,9 @@ func (UnimplementedKptrServiceServer) UpdateAddressNames(context.Context, *Updat
 }
 func (UnimplementedKptrServiceServer) ResolveAddresses(context.Context, *ResolveAddressesRequest) (*ResolveAddressesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResolveAddresses not implemented")
+}
+func (UnimplementedKptrServiceServer) ListResolvedAddresses(context.Context, *ListResolvedAddressesRequest) (*ListResolvedAddressesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListResolvedAddresses not implemented")
 }
 func (UnimplementedKptrServiceServer) testEmbeddedByValue() {}
 
@@ -236,6 +274,24 @@ func _KptrService_ResolveAddresses_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _KptrService_ListResolvedAddresses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListResolvedAddressesRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(KptrServiceServer).ListResolvedAddresses(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: KptrService_ListResolvedAddresses_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(KptrServiceServer).ListResolvedAddresses(ctx, req.(*ListResolvedAddressesRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // KptrService_ServiceDesc is the grpc.ServiceDesc for KptrService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -254,6 +310,10 @@ var KptrService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ResolveAddresses",
 			Handler:    _KptrService_ResolveAddresses_Handler,
+		},
+		{
+			MethodName: "ListResolvedAddresses",
+			Handler:    _KptrService_ListResolvedAddresses_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

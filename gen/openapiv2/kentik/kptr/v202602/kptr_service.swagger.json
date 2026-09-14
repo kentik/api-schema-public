@@ -57,6 +57,18 @@
         }
       }
     },
+    "v202602ListResolvedAddressesResponse": {
+      "type": "object",
+      "properties": {
+        "results": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v202602PtrResult"
+          }
+        }
+      }
+    },
     "v202602PtrResult": {
       "type": "object",
       "properties": {

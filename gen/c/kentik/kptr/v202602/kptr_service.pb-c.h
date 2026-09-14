@@ -24,6 +24,8 @@ typedef struct Kentik__Kptr__V202602__GetNetworkRangeAssignmentsRequest Kentik__
 typedef struct Kentik__Kptr__V202602__GetNetworkRangeAssignmentsResponse Kentik__Kptr__V202602__GetNetworkRangeAssignmentsResponse;
 typedef struct Kentik__Kptr__V202602__ResolveAddressesRequest Kentik__Kptr__V202602__ResolveAddressesRequest;
 typedef struct Kentik__Kptr__V202602__ResolveAddressesResponse Kentik__Kptr__V202602__ResolveAddressesResponse;
+typedef struct Kentik__Kptr__V202602__ListResolvedAddressesRequest Kentik__Kptr__V202602__ListResolvedAddressesRequest;
+typedef struct Kentik__Kptr__V202602__ListResolvedAddressesResponse Kentik__Kptr__V202602__ListResolvedAddressesResponse;
 
 
 /* --- enums --- */
@@ -93,6 +95,26 @@ struct  Kentik__Kptr__V202602__ResolveAddressesResponse
 };
 #define KENTIK__KPTR__V202602__RESOLVE_ADDRESSES_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__kptr__v202602__resolve_addresses_response__descriptor) \
+    , 0,NULL }
+
+
+struct  Kentik__Kptr__V202602__ListResolvedAddressesRequest
+{
+  ProtobufCMessage base;
+};
+#define KENTIK__KPTR__V202602__LIST_RESOLVED_ADDRESSES_REQUEST__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__kptr__v202602__list_resolved_addresses_request__descriptor) \
+     }
+
+
+struct  Kentik__Kptr__V202602__ListResolvedAddressesResponse
+{
+  ProtobufCMessage base;
+  size_t n_results;
+  Kentik__Kptr__V202602__PtrResult **results;
+};
+#define KENTIK__KPTR__V202602__LIST_RESOLVED_ADDRESSES_RESPONSE__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__kptr__v202602__list_resolved_addresses_response__descriptor) \
     , 0,NULL }
 
 
@@ -210,6 +232,44 @@ Kentik__Kptr__V202602__ResolveAddressesResponse *
 void   kentik__kptr__v202602__resolve_addresses_response__free_unpacked
                      (Kentik__Kptr__V202602__ResolveAddressesResponse *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Kptr__V202602__ListResolvedAddressesRequest methods */
+void   kentik__kptr__v202602__list_resolved_addresses_request__init
+                     (Kentik__Kptr__V202602__ListResolvedAddressesRequest         *message);
+size_t kentik__kptr__v202602__list_resolved_addresses_request__get_packed_size
+                     (const Kentik__Kptr__V202602__ListResolvedAddressesRequest   *message);
+size_t kentik__kptr__v202602__list_resolved_addresses_request__pack
+                     (const Kentik__Kptr__V202602__ListResolvedAddressesRequest   *message,
+                      uint8_t             *out);
+size_t kentik__kptr__v202602__list_resolved_addresses_request__pack_to_buffer
+                     (const Kentik__Kptr__V202602__ListResolvedAddressesRequest   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Kptr__V202602__ListResolvedAddressesRequest *
+       kentik__kptr__v202602__list_resolved_addresses_request__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__kptr__v202602__list_resolved_addresses_request__free_unpacked
+                     (Kentik__Kptr__V202602__ListResolvedAddressesRequest *message,
+                      ProtobufCAllocator *allocator);
+/* Kentik__Kptr__V202602__ListResolvedAddressesResponse methods */
+void   kentik__kptr__v202602__list_resolved_addresses_response__init
+                     (Kentik__Kptr__V202602__ListResolvedAddressesResponse         *message);
+size_t kentik__kptr__v202602__list_resolved_addresses_response__get_packed_size
+                     (const Kentik__Kptr__V202602__ListResolvedAddressesResponse   *message);
+size_t kentik__kptr__v202602__list_resolved_addresses_response__pack
+                     (const Kentik__Kptr__V202602__ListResolvedAddressesResponse   *message,
+                      uint8_t             *out);
+size_t kentik__kptr__v202602__list_resolved_addresses_response__pack_to_buffer
+                     (const Kentik__Kptr__V202602__ListResolvedAddressesResponse   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Kptr__V202602__ListResolvedAddressesResponse *
+       kentik__kptr__v202602__list_resolved_addresses_response__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__kptr__v202602__list_resolved_addresses_response__free_unpacked
+                     (Kentik__Kptr__V202602__ListResolvedAddressesResponse *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Kentik__Kptr__V202602__UpdateAddressNamesRequest_Closure)
@@ -230,6 +290,12 @@ typedef void (*Kentik__Kptr__V202602__ResolveAddressesRequest_Closure)
 typedef void (*Kentik__Kptr__V202602__ResolveAddressesResponse_Closure)
                  (const Kentik__Kptr__V202602__ResolveAddressesResponse *message,
                   void *closure_data);
+typedef void (*Kentik__Kptr__V202602__ListResolvedAddressesRequest_Closure)
+                 (const Kentik__Kptr__V202602__ListResolvedAddressesRequest *message,
+                  void *closure_data);
+typedef void (*Kentik__Kptr__V202602__ListResolvedAddressesResponse_Closure)
+                 (const Kentik__Kptr__V202602__ListResolvedAddressesResponse *message,
+                  void *closure_data);
 
 /* --- services --- */
 
@@ -249,6 +315,10 @@ struct Kentik__Kptr__V202602__KptrService_Service
                             const Kentik__Kptr__V202602__ResolveAddressesRequest *input,
                             Kentik__Kptr__V202602__ResolveAddressesResponse_Closure closure,
                             void *closure_data);
+  void (*list_resolved_addresses)(Kentik__Kptr__V202602__KptrService_Service *service,
+                                  const Kentik__Kptr__V202602__ListResolvedAddressesRequest *input,
+                                  Kentik__Kptr__V202602__ListResolvedAddressesResponse_Closure closure,
+                                  void *closure_data);
 };
 typedef void (*Kentik__Kptr__V202602__KptrService_ServiceDestroy)(Kentik__Kptr__V202602__KptrService_Service *);
 void kentik__kptr__v202602__kptr_service__init (Kentik__Kptr__V202602__KptrService_Service *service,
@@ -259,7 +329,8 @@ void kentik__kptr__v202602__kptr_service__init (Kentik__Kptr__V202602__KptrServi
     { KENTIK__KPTR__V202602__KPTR_SERVICE__BASE_INIT,\
       function_prefix__ ## get_network_range_assignments,\
       function_prefix__ ## update_address_names,\
-      function_prefix__ ## resolve_addresses  }
+      function_prefix__ ## resolve_addresses,\
+      function_prefix__ ## list_resolved_addresses  }
 void kentik__kptr__v202602__kptr_service__get_network_range_assignments(ProtobufCService *service,
                                                                         const Kentik__Kptr__V202602__GetNetworkRangeAssignmentsRequest *input,
                                                                         Kentik__Kptr__V202602__GetNetworkRangeAssignmentsResponse_Closure closure,
@@ -272,6 +343,10 @@ void kentik__kptr__v202602__kptr_service__resolve_addresses(ProtobufCService *se
                                                             const Kentik__Kptr__V202602__ResolveAddressesRequest *input,
                                                             Kentik__Kptr__V202602__ResolveAddressesResponse_Closure closure,
                                                             void *closure_data);
+void kentik__kptr__v202602__kptr_service__list_resolved_addresses(ProtobufCService *service,
+                                                                  const Kentik__Kptr__V202602__ListResolvedAddressesRequest *input,
+                                                                  Kentik__Kptr__V202602__ListResolvedAddressesResponse_Closure closure,
+                                                                  void *closure_data);
 
 /* --- descriptors --- */
 
@@ -281,6 +356,8 @@ extern const ProtobufCMessageDescriptor kentik__kptr__v202602__get_network_range
 extern const ProtobufCMessageDescriptor kentik__kptr__v202602__get_network_range_assignments_response__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kptr__v202602__resolve_addresses_request__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kptr__v202602__resolve_addresses_response__descriptor;
+extern const ProtobufCMessageDescriptor kentik__kptr__v202602__list_resolved_addresses_request__descriptor;
+extern const ProtobufCMessageDescriptor kentik__kptr__v202602__list_resolved_addresses_response__descriptor;
 extern const ProtobufCServiceDescriptor kentik__kptr__v202602__kptr_service__descriptor;
 
 PROTOBUF_C__END_DECLS

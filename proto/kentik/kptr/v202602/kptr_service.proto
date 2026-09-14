@@ -60,6 +60,22 @@ service KptrService {
   rpc ResolveAddresses(ResolveAddressesRequest) returns (ResolveAddressesResponse) {
     option (kentik.core.v202303.method_scope) = "kptr:read";
   }
+
+  // Get the full set of resolved IP address to hostname mappings for the company.
+  // This is intended for clients (e.g. chfclient) that want to periodically pull
+  // the entire resolved-address table and cache it locally, instead of performing
+  // synchronous per-flow lookups via ResolveAddresses.
+  //
+  // External clients MUST set the following gRPC metadata:
+  // - x-ch-auth-email
+  // - x-ch-auth-api-token
+  //
+  // Internal clients MUST set the following gRPC metadata:
+  // - x-kt-cid (Company ID)
+  //
+  rpc ListResolvedAddresses(ListResolvedAddressesRequest) returns (ListResolvedAddressesResponse) {
+    option (kentik.core.v202303.method_scope) = "kptr:read";
+  }
 }
 
 message UpdateAddressNamesRequest {
@@ -84,5 +100,12 @@ message ResolveAddressesRequest {
 }
 
 message ResolveAddressesResponse {
+  repeated PtrResult results = 1;
+}
+
+message ListResolvedAddressesRequest {
+}
+
+message ListResolvedAddressesResponse {
   repeated PtrResult results = 1;
 }

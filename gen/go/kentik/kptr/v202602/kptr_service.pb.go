@@ -272,6 +272,86 @@ func (x *ResolveAddressesResponse) GetResults() []*PtrResult {
 	return nil
 }
 
+type ListResolvedAddressesRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListResolvedAddressesRequest) Reset() {
+	*x = ListResolvedAddressesRequest{}
+	mi := &file_kentik_kptr_v202602_kptr_service_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListResolvedAddressesRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListResolvedAddressesRequest) ProtoMessage() {}
+
+func (x *ListResolvedAddressesRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_kptr_v202602_kptr_service_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListResolvedAddressesRequest.ProtoReflect.Descriptor instead.
+func (*ListResolvedAddressesRequest) Descriptor() ([]byte, []int) {
+	return file_kentik_kptr_v202602_kptr_service_proto_rawDescGZIP(), []int{6}
+}
+
+type ListResolvedAddressesResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Results       []*PtrResult           `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListResolvedAddressesResponse) Reset() {
+	*x = ListResolvedAddressesResponse{}
+	mi := &file_kentik_kptr_v202602_kptr_service_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListResolvedAddressesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListResolvedAddressesResponse) ProtoMessage() {}
+
+func (x *ListResolvedAddressesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_kptr_v202602_kptr_service_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListResolvedAddressesResponse.ProtoReflect.Descriptor instead.
+func (*ListResolvedAddressesResponse) Descriptor() ([]byte, []int) {
+	return file_kentik_kptr_v202602_kptr_service_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *ListResolvedAddressesResponse) GetResults() []*PtrResult {
+	if x != nil {
+		return x.Results
+	}
+	return nil
+}
+
 var File_kentik_kptr_v202602_kptr_service_proto protoreflect.FileDescriptor
 
 const file_kentik_kptr_v202602_kptr_service_proto_rawDesc = "" +
@@ -286,12 +366,16 @@ const file_kentik_kptr_v202602_kptr_service_proto_rawDesc = "" +
 	"\x17ResolveAddressesRequest\x12!\n" +
 	"\fip_addresses\x18\x01 \x03(\tR\vipAddresses\"T\n" +
 	"\x18ResolveAddressesResponse\x128\n" +
-	"\aresults\x18\x01 \x03(\v2\x1e.kentik.kptr.v202602.PtrResultR\aresults2\xc8\x03\n" +
+	"\aresults\x18\x01 \x03(\v2\x1e.kentik.kptr.v202602.PtrResultR\aresults\"\x1e\n" +
+	"\x1cListResolvedAddressesRequest\"Y\n" +
+	"\x1dListResolvedAddressesResponse\x128\n" +
+	"\aresults\x18\x01 \x03(\v2\x1e.kentik.kptr.v202602.PtrResultR\aresults2\xd8\x04\n" +
 	"\vKptrService\x12\x9c\x01\n" +
 	"\x1aGetNetworkRangeAssignments\x126.kentik.kptr.v202602.GetNetworkRangeAssignmentsRequest\x1a7.kentik.kptr.v202602.GetNetworkRangeAssignmentsResponse\"\r\xf2\xd7\x02\tkptr:read\x12\x85\x01\n" +
 	"\x12UpdateAddressNames\x12..kentik.kptr.v202602.UpdateAddressNamesRequest\x1a/.kentik.kptr.v202602.UpdateAddressNamesResponse\"\x0e\xf2\xd7\x02\n" +
 	"kptr:write\x12~\n" +
-	"\x10ResolveAddresses\x12,.kentik.kptr.v202602.ResolveAddressesRequest\x1a-.kentik.kptr.v202602.ResolveAddressesResponse\"\r\xf2\xd7\x02\tkptr:read\x1a\x12\xea\xd7\x02\n" +
+	"\x10ResolveAddresses\x12,.kentik.kptr.v202602.ResolveAddressesRequest\x1a-.kentik.kptr.v202602.ResolveAddressesResponse\"\r\xf2\xd7\x02\tkptr:read\x12\x8d\x01\n" +
+	"\x15ListResolvedAddresses\x121.kentik.kptr.v202602.ListResolvedAddressesRequest\x1a2.kentik.kptr.v202602.ListResolvedAddressesResponse\"\r\xf2\xd7\x02\tkptr:read\x1a\x12\xea\xd7\x02\n" +
 	"kptr:admin\x90\xd8\x02\x03BEZCgithub.com/kentik/api-schema-public/gen/go/kentik/kptr/v202602;kptrb\x06proto3"
 
 var (
@@ -306,7 +390,7 @@ func file_kentik_kptr_v202602_kptr_service_proto_rawDescGZIP() []byte {
 	return file_kentik_kptr_v202602_kptr_service_proto_rawDescData
 }
 
-var file_kentik_kptr_v202602_kptr_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_kentik_kptr_v202602_kptr_service_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
 var file_kentik_kptr_v202602_kptr_service_proto_goTypes = []any{
 	(*UpdateAddressNamesRequest)(nil),          // 0: kentik.kptr.v202602.UpdateAddressNamesRequest
 	(*UpdateAddressNamesResponse)(nil),         // 1: kentik.kptr.v202602.UpdateAddressNamesResponse
@@ -314,22 +398,27 @@ var file_kentik_kptr_v202602_kptr_service_proto_goTypes = []any{
 	(*GetNetworkRangeAssignmentsResponse)(nil), // 3: kentik.kptr.v202602.GetNetworkRangeAssignmentsResponse
 	(*ResolveAddressesRequest)(nil),            // 4: kentik.kptr.v202602.ResolveAddressesRequest
 	(*ResolveAddressesResponse)(nil),           // 5: kentik.kptr.v202602.ResolveAddressesResponse
-	(*PtrResult)(nil),                          // 6: kentik.kptr.v202602.PtrResult
+	(*ListResolvedAddressesRequest)(nil),       // 6: kentik.kptr.v202602.ListResolvedAddressesRequest
+	(*ListResolvedAddressesResponse)(nil),      // 7: kentik.kptr.v202602.ListResolvedAddressesResponse
+	(*PtrResult)(nil),                          // 8: kentik.kptr.v202602.PtrResult
 }
 var file_kentik_kptr_v202602_kptr_service_proto_depIdxs = []int32{
-	6, // 0: kentik.kptr.v202602.UpdateAddressNamesRequest.address_names:type_name -> kentik.kptr.v202602.PtrResult
-	6, // 1: kentik.kptr.v202602.ResolveAddressesResponse.results:type_name -> kentik.kptr.v202602.PtrResult
-	2, // 2: kentik.kptr.v202602.KptrService.GetNetworkRangeAssignments:input_type -> kentik.kptr.v202602.GetNetworkRangeAssignmentsRequest
-	0, // 3: kentik.kptr.v202602.KptrService.UpdateAddressNames:input_type -> kentik.kptr.v202602.UpdateAddressNamesRequest
-	4, // 4: kentik.kptr.v202602.KptrService.ResolveAddresses:input_type -> kentik.kptr.v202602.ResolveAddressesRequest
-	3, // 5: kentik.kptr.v202602.KptrService.GetNetworkRangeAssignments:output_type -> kentik.kptr.v202602.GetNetworkRangeAssignmentsResponse
-	1, // 6: kentik.kptr.v202602.KptrService.UpdateAddressNames:output_type -> kentik.kptr.v202602.UpdateAddressNamesResponse
-	5, // 7: kentik.kptr.v202602.KptrService.ResolveAddresses:output_type -> kentik.kptr.v202602.ResolveAddressesResponse
-	5, // [5:8] is the sub-list for method output_type
-	2, // [2:5] is the sub-list for method input_type
-	2, // [2:2] is the sub-list for extension type_name
-	2, // [2:2] is the sub-list for extension extendee
-	0, // [0:2] is the sub-list for field type_name
+	8, // 0: kentik.kptr.v202602.UpdateAddressNamesRequest.address_names:type_name -> kentik.kptr.v202602.PtrResult
+	8, // 1: kentik.kptr.v202602.ResolveAddressesResponse.results:type_name -> kentik.kptr.v202602.PtrResult
+	8, // 2: kentik.kptr.v202602.ListResolvedAddressesResponse.results:type_name -> kentik.kptr.v202602.PtrResult
+	2, // 3: kentik.kptr.v202602.KptrService.GetNetworkRangeAssignments:input_type -> kentik.kptr.v202602.GetNetworkRangeAssignmentsRequest
+	0, // 4: kentik.kptr.v202602.KptrService.UpdateAddressNames:input_type -> kentik.kptr.v202602.UpdateAddressNamesRequest
+	4, // 5: kentik.kptr.v202602.KptrService.ResolveAddresses:input_type -> kentik.kptr.v202602.ResolveAddressesRequest
+	6, // 6: kentik.kptr.v202602.KptrService.ListResolvedAddresses:input_type -> kentik.kptr.v202602.ListResolvedAddressesRequest
+	3, // 7: kentik.kptr.v202602.KptrService.GetNetworkRangeAssignments:output_type -> kentik.kptr.v202602.GetNetworkRangeAssignmentsResponse
+	1, // 8: kentik.kptr.v202602.KptrService.UpdateAddressNames:output_type -> kentik.kptr.v202602.UpdateAddressNamesResponse
+	5, // 9: kentik.kptr.v202602.KptrService.ResolveAddresses:output_type -> kentik.kptr.v202602.ResolveAddressesResponse
+	7, // 10: kentik.kptr.v202602.KptrService.ListResolvedAddresses:output_type -> kentik.kptr.v202602.ListResolvedAddressesResponse
+	7, // [7:11] is the sub-list for method output_type
+	3, // [3:7] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_kentik_kptr_v202602_kptr_service_proto_init() }
@@ -344,7 +433,7 @@ func file_kentik_kptr_v202602_kptr_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_kptr_v202602_kptr_service_proto_rawDesc), len(file_kentik_kptr_v202602_kptr_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   8,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
