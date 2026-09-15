@@ -22,10 +22,11 @@ message MultiAttributeFilter {
 
   repeated KeyValueFilter filters = 2;
 
-  // When true, matching requires that there are no extra grouping-key
-  // attributes that were not tested by any filter.
+  // Every filter must match at least one grouping-key attribute. When true,
+  // every grouping-key attribute must also match at least one filter. A filter
+  // may match multiple attributes.
   //
-  // example:
+  // Example:
   //   filters = [{ key: {equals: "i_device_id"}, value: {equals: "1001"} }]
   //   strict = true
   //

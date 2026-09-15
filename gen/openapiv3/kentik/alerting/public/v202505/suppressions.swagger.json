@@ -445,7 +445,7 @@
                     },
                     "strict": {
                         "type": "boolean",
-                        "description": "When true, matching requires that there are no extra grouping-key\nattributes that were not tested by any filter.\n\nexample:\n  filters = [{ key: {equals: \"i_device_id\"}, value: {equals: \"1001\"} }]\n  strict = true\n\n  key i_device_id=1001                         - matches\n  key i_device_id=1001, inet_src=ipv4          - does not match"
+                        "description": "Every filter must match at least one grouping-key attribute. When true,\nevery grouping-key attribute must also match at least one filter. A filter\nmay match multiple attributes.\n\nExample:\n  filters = [{ key: {equals: \"i_device_id\"}, value: {equals: \"1001\"} }]\n  strict = true\n\n  key i_device_id=1001                         - matches\n  key i_device_id=1001, inet_src=ipv4          - does not match"
                     }
                 }
             },

@@ -75,9 +75,10 @@ struct  Kentik__Alerting__Types__V202303__MultiAttributeFilter
   size_t n_filters;
   Kentik__Alerting__Types__V202303__KeyValueFilter **filters;
   /*
-   * When true, matching requires that there are no extra grouping-key
-   * attributes that were not tested by any filter.
-   * example:
+   * Every filter must match at least one grouping-key attribute. When true,
+   * every grouping-key attribute must also match at least one filter. A filter
+   * may match multiple attributes.
+   * Example:
    *   filters = [{ key: {equals: "i_device_id"}, value: {equals: "1001"} }]
    *   strict = true
    *   key i_device_id=1001                         - matches

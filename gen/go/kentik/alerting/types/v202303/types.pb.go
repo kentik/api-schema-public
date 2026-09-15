@@ -139,10 +139,11 @@ type MultiAttributeFilter struct {
 	// Deprecated: Marked as deprecated in kentik/alerting/types/v202303/types.proto.
 	Filter  map[string]*AttributeFilter `protobuf:"bytes,1,rep,name=filter,proto3" json:"filter,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	Filters []*KeyValueFilter           `protobuf:"bytes,2,rep,name=filters,proto3" json:"filters,omitempty"`
-	// When true, matching requires that there are no extra grouping-key
-	// attributes that were not tested by any filter.
+	// Every filter must match at least one grouping-key attribute. When true,
+	// every grouping-key attribute must also match at least one filter. A filter
+	// may match multiple attributes.
 	//
-	// example:
+	// Example:
 	//
 	//	filters = [{ key: {equals: "i_device_id"}, value: {equals: "1001"} }]
 	//	strict = true
