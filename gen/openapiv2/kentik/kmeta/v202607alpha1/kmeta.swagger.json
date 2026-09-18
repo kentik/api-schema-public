@@ -1,0 +1,355 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Kmeta API",
+    "description": "# Overview\nThe Kmeta API provides management of ServiceNow integration configurations.\n",
+    "version": "v202607alpha1",
+    "contact": {
+      "name": "Kentik API Engineering",
+      "url": "https://github.com/kentik/api-schema-public"
+    }
+  },
+  "tags": [
+    {
+      "name": "KmetaService"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/kmeta/v202607alpha1/{cid}/servicenow/config": {
+      "get": {
+        "summary": "List ServiceNow Configs",
+        "description": "Returns all ServiceNow integration configurations for the specified company.",
+        "operationId": "ListServiceNowConfigs",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202607alpha1ListServiceNowConfigsResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "KmetaService"
+        ]
+      },
+      "post": {
+        "summary": "Create ServiceNow Config",
+        "description": "Creates a new ServiceNow integration configuration for the specified company.",
+        "operationId": "CreateServiceNowConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202607alpha1CreateServiceNowConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "config",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202607alpha1ServiceNowConfig"
+            }
+          }
+        ],
+        "tags": [
+          "KmetaService"
+        ]
+      }
+    },
+    "/kmeta/v202607alpha1/{cid}/servicenow/config/{id}": {
+      "get": {
+        "summary": "Get ServiceNow Config",
+        "description": "Returns a single ServiceNow integration configuration.",
+        "operationId": "GetServiceNowConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202607alpha1GetServiceNowConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "KmetaService"
+        ]
+      },
+      "delete": {
+        "summary": "Delete ServiceNow Config",
+        "description": "Deletes a ServiceNow integration configuration.",
+        "operationId": "DeleteServiceNowConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202607alpha1DeleteServiceNowConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "KmetaService"
+        ]
+      },
+      "put": {
+        "summary": "Update ServiceNow Config",
+        "description": "Updates an existing ServiceNow integration configuration.",
+        "operationId": "UpdateServiceNowConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v202607alpha1UpdateServiceNowConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "cid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "config",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v202607alpha1ServiceNowConfig"
+            }
+          }
+        ],
+        "tags": [
+          "KmetaService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v202607alpha1CreateServiceNowConfigResponse": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/v202607alpha1ServiceNowConfig"
+        }
+      }
+    },
+    "v202607alpha1DeleteServiceNowConfigResponse": {
+      "type": "object"
+    },
+    "v202607alpha1GetServiceNowConfigResponse": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/v202607alpha1ServiceNowConfig"
+        }
+      }
+    },
+    "v202607alpha1ListServiceNowConfigsResponse": {
+      "type": "object",
+      "properties": {
+        "configs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/v202607alpha1ServiceNowConfig"
+          }
+        }
+      }
+    },
+    "v202607alpha1ServiceNowConfig": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the ServiceNow configuration.",
+          "readOnly": true
+        },
+        "companyId": {
+          "type": "string",
+          "description": "Company ID that owns this configuration.",
+          "readOnly": true
+        },
+        "name": {
+          "type": "string",
+          "description": "Human-readable name for this ServiceNow configuration."
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional description of this configuration."
+        },
+        "deviceStagingTableName": {
+          "type": "string",
+          "description": "ServiceNow staging table name for device data import."
+        },
+        "pushFrequencySeconds": {
+          "type": "integer",
+          "format": "int32",
+          "description": "Frequency in seconds at which data is pushed to ServiceNow."
+        },
+        "proxyAgentId": {
+          "type": "string",
+          "description": "ID of the proxy agent used for ServiceNow connectivity."
+        },
+        "credentialVaultId": {
+          "type": "string",
+          "description": "ID of the credential vault entry containing ServiceNow authentication."
+        },
+        "enabled": {
+          "type": "boolean",
+          "description": "Whether this configuration is actively polling and pushing."
+        },
+        "apiUrl": {
+          "type": "string",
+          "description": "Base URL of the ServiceNow instance (e.g. https://instance.service-now.com)."
+        }
+      },
+      "required": [
+        "name",
+        "apiUrl"
+      ]
+    },
+    "v202607alpha1UpdateServiceNowConfigResponse": {
+      "type": "object",
+      "properties": {
+        "config": {
+          "$ref": "#/definitions/v202607alpha1ServiceNowConfig"
+        }
+      }
+    }
+  },
+  "securityDefinitions": {
+    "email": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-Email",
+      "in": "header"
+    },
+    "token": {
+      "type": "apiKey",
+      "name": "X-CH-Auth-API-Token",
+      "in": "header"
+    }
+  },
+  "security": [
+    {
+      "email": [],
+      "token": []
+    }
+  ]
+}

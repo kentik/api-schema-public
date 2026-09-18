@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+package kentik.kmeta.v202607alpha1;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/kmeta/v202607alpha1;kmeta";
+
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+message ServiceNowConfig {
+  string id = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Unique identifier for the ServiceNow configuration."
+    }
+  ];
+
+  string company_id = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Company ID that owns this configuration."
+    }
+  ];
+
+  string name = 3 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Human-readable name for this ServiceNow configuration."
+    }
+  ];
+
+  string description = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Optional description of this configuration."
+    }
+  ];
+
+  string device_staging_table_name = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ServiceNow staging table name for device data import."
+    }
+  ];
+
+  int32 push_frequency_seconds = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Frequency in seconds at which data is pushed to ServiceNow."
+    }
+  ];
+
+  string proxy_agent_id = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the proxy agent used for ServiceNow connectivity."
+    }
+  ];
+
+  string credential_vault_id = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the credential vault entry containing ServiceNow authentication."
+    }
+  ];
+
+  bool enabled = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Whether this configuration is actively polling and pushing."
+    }
+  ];
+
+  string api_url = 10 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Base URL of the ServiceNow instance (e.g. https://instance.service-now.com)."
+    }
+  ];
+}

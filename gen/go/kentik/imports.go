@@ -34,6 +34,7 @@ import (
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/journeys/v202406"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/kagent/v202312"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/kagent/v202401"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/kmeta/v202607alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/kmi/v202212"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/kptr/v202602"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/ktbgp/v202501"

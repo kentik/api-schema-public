@@ -1,0 +1,166 @@
+syntax = "proto3";
+
+package kentik.kmeta.v202607alpha1;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/kmeta/v202607alpha1;kmeta";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+import "kentik/core/v202303/annotations.proto";
+import "kentik/kmeta/v202607alpha1/kmeta_message.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Kmeta API"
+    version: "v202607alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description: "# Overview\n"
+        "The Kmeta API provides management of ServiceNow integration configurations.\n"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// --- Request/Response Messages ---
+
+message ListServiceNowConfigsRequest {
+  string cid = 1;
+}
+
+message ListServiceNowConfigsResponse {
+  repeated ServiceNowConfig configs = 1;
+}
+
+message GetServiceNowConfigRequest {
+  string cid = 1;
+  string id = 2;
+}
+
+message GetServiceNowConfigResponse {
+  ServiceNowConfig config = 1;
+}
+
+message CreateServiceNowConfigRequest {
+  string cid = 1;
+  ServiceNowConfig config = 2;
+}
+
+message CreateServiceNowConfigResponse {
+  ServiceNowConfig config = 1;
+}
+
+message UpdateServiceNowConfigRequest {
+  string cid = 1;
+  string id = 2;
+  ServiceNowConfig config = 3;
+}
+
+message UpdateServiceNowConfigResponse {
+  ServiceNowConfig config = 1;
+}
+
+message DeleteServiceNowConfigRequest {
+  string cid = 1;
+  string id = 2;
+}
+
+message DeleteServiceNowConfigResponse {
+}
+
+// --- Service Definition ---
+
+service KmetaService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.kmeta";
+
+  rpc ListServiceNowConfigs(ListServiceNowConfigsRequest) returns (ListServiceNowConfigsResponse) {
+    option (google.api.http) = {
+      get: "/kmeta/v202607alpha1/{cid}/servicenow/config"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "ListServiceNowConfigs"
+      summary: "List ServiceNow Configs"
+      description: "Returns all ServiceNow integration configurations for the specified company."
+    };
+  }
+
+  rpc GetServiceNowConfig(GetServiceNowConfigRequest) returns (GetServiceNowConfigResponse) {
+    option (google.api.http) = {
+      get: "/kmeta/v202607alpha1/{cid}/servicenow/config/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetServiceNowConfig"
+      summary: "Get ServiceNow Config"
+      description: "Returns a single ServiceNow integration configuration."
+    };
+  }
+
+  rpc CreateServiceNowConfig(CreateServiceNowConfigRequest) returns (CreateServiceNowConfigResponse) {
+    option (google.api.http) = {
+      post: "/kmeta/v202607alpha1/{cid}/servicenow/config"
+      body: "config"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "CreateServiceNowConfig"
+      summary: "Create ServiceNow Config"
+      description: "Creates a new ServiceNow integration configuration for the specified company."
+    };
+  }
+
+  rpc UpdateServiceNowConfig(UpdateServiceNowConfigRequest) returns (UpdateServiceNowConfigResponse) {
+    option (google.api.http) = {
+      put: "/kmeta/v202607alpha1/{cid}/servicenow/config/{id}"
+      body: "config"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "UpdateServiceNowConfig"
+      summary: "Update ServiceNow Config"
+      description: "Updates an existing ServiceNow integration configuration."
+    };
+  }
+
+  rpc DeleteServiceNowConfig(DeleteServiceNowConfigRequest) returns (DeleteServiceNowConfigResponse) {
+    option (google.api.http) = {
+      delete: "/kmeta/v202607alpha1/{cid}/servicenow/config/{id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "DeleteServiceNowConfig"
+      summary: "Delete ServiceNow Config"
+      description: "Deletes a ServiceNow integration configuration."
+    };
+  }
+}
