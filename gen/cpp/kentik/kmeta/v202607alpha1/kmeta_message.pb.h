@@ -228,7 +228,7 @@ class ServiceNowConfig final : public ::google::protobuf::Message
     kDescriptionFieldNumber = 4,
     kDeviceStagingTableNameFieldNumber = 5,
     kProxyAgentIdFieldNumber = 7,
-    kCredentialVaultIdFieldNumber = 8,
+    kCredentialVaultNameFieldNumber = 8,
     kApiUrlFieldNumber = 10,
     kPushFrequencySecondsFieldNumber = 6,
     kEnabledFieldNumber = 9,
@@ -329,20 +329,20 @@ class ServiceNowConfig final : public ::google::protobuf::Message
   std::string* _internal_mutable_proxy_agent_id();
 
   public:
-  // string credential_vault_id = 8 [json_name = "credentialVaultId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-  void clear_credential_vault_id() ;
-  const std::string& credential_vault_id() const;
+  // string credential_vault_name = 8 [json_name = "credentialVaultName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_credential_vault_name() ;
+  const std::string& credential_vault_name() const;
   template <typename Arg_ = const std::string&, typename... Args_>
-  void set_credential_vault_id(Arg_&& arg, Args_... args);
-  std::string* mutable_credential_vault_id();
-  PROTOBUF_NODISCARD std::string* release_credential_vault_id();
-  void set_allocated_credential_vault_id(std::string* value);
+  void set_credential_vault_name(Arg_&& arg, Args_... args);
+  std::string* mutable_credential_vault_name();
+  PROTOBUF_NODISCARD std::string* release_credential_vault_name();
+  void set_allocated_credential_vault_name(std::string* value);
 
   private:
-  const std::string& _internal_credential_vault_id() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_credential_vault_id(
+  const std::string& _internal_credential_vault_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_credential_vault_name(
       const std::string& value);
-  std::string* _internal_mutable_credential_vault_id();
+  std::string* _internal_mutable_credential_vault_name();
 
   public:
   // string api_url = 10 [json_name = "apiUrl", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -387,7 +387,7 @@ class ServiceNowConfig final : public ::google::protobuf::Message
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
       4, 10, 0,
-      152, 2>
+      154, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -410,7 +410,7 @@ class ServiceNowConfig final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr description_;
     ::google::protobuf::internal::ArenaStringPtr device_staging_table_name_;
     ::google::protobuf::internal::ArenaStringPtr proxy_agent_id_;
-    ::google::protobuf::internal::ArenaStringPtr credential_vault_id_;
+    ::google::protobuf::internal::ArenaStringPtr credential_vault_name_;
     ::google::protobuf::internal::ArenaStringPtr api_url_;
     ::int32_t push_frequency_seconds_;
     bool enabled_;
@@ -747,52 +747,52 @@ inline void ServiceNowConfig::set_allocated_proxy_agent_id(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:kentik.kmeta.v202607alpha1.ServiceNowConfig.proxy_agent_id)
 }
 
-// string credential_vault_id = 8 [json_name = "credentialVaultId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-inline void ServiceNowConfig::clear_credential_vault_id() {
+// string credential_vault_name = 8 [json_name = "credentialVaultName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void ServiceNowConfig::clear_credential_vault_name() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.credential_vault_id_.ClearToEmpty();
+  _impl_.credential_vault_name_.ClearToEmpty();
 }
-inline const std::string& ServiceNowConfig::credential_vault_id() const
+inline const std::string& ServiceNowConfig::credential_vault_name() const
     ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:kentik.kmeta.v202607alpha1.ServiceNowConfig.credential_vault_id)
-  return _internal_credential_vault_id();
+  // @@protoc_insertion_point(field_get:kentik.kmeta.v202607alpha1.ServiceNowConfig.credential_vault_name)
+  return _internal_credential_vault_name();
 }
 template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void ServiceNowConfig::set_credential_vault_id(Arg_&& arg,
+inline PROTOBUF_ALWAYS_INLINE void ServiceNowConfig::set_credential_vault_name(Arg_&& arg,
                                                      Args_... args) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.credential_vault_id_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:kentik.kmeta.v202607alpha1.ServiceNowConfig.credential_vault_id)
+  _impl_.credential_vault_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.kmeta.v202607alpha1.ServiceNowConfig.credential_vault_name)
 }
-inline std::string* ServiceNowConfig::mutable_credential_vault_id() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_credential_vault_id();
-  // @@protoc_insertion_point(field_mutable:kentik.kmeta.v202607alpha1.ServiceNowConfig.credential_vault_id)
+inline std::string* ServiceNowConfig::mutable_credential_vault_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_credential_vault_name();
+  // @@protoc_insertion_point(field_mutable:kentik.kmeta.v202607alpha1.ServiceNowConfig.credential_vault_name)
   return _s;
 }
-inline const std::string& ServiceNowConfig::_internal_credential_vault_id() const {
+inline const std::string& ServiceNowConfig::_internal_credential_vault_name() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  return _impl_.credential_vault_id_.Get();
+  return _impl_.credential_vault_name_.Get();
 }
-inline void ServiceNowConfig::_internal_set_credential_vault_id(const std::string& value) {
+inline void ServiceNowConfig::_internal_set_credential_vault_name(const std::string& value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.credential_vault_id_.Set(value, GetArena());
+  _impl_.credential_vault_name_.Set(value, GetArena());
 }
-inline std::string* ServiceNowConfig::_internal_mutable_credential_vault_id() {
+inline std::string* ServiceNowConfig::_internal_mutable_credential_vault_name() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  return _impl_.credential_vault_id_.Mutable( GetArena());
+  return _impl_.credential_vault_name_.Mutable( GetArena());
 }
-inline std::string* ServiceNowConfig::release_credential_vault_id() {
+inline std::string* ServiceNowConfig::release_credential_vault_name() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:kentik.kmeta.v202607alpha1.ServiceNowConfig.credential_vault_id)
-  return _impl_.credential_vault_id_.Release();
+  // @@protoc_insertion_point(field_release:kentik.kmeta.v202607alpha1.ServiceNowConfig.credential_vault_name)
+  return _impl_.credential_vault_name_.Release();
 }
-inline void ServiceNowConfig::set_allocated_credential_vault_id(std::string* value) {
+inline void ServiceNowConfig::set_allocated_credential_vault_name(std::string* value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
-  _impl_.credential_vault_id_.SetAllocated(value, GetArena());
-  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.credential_vault_id_.IsDefault()) {
-    _impl_.credential_vault_id_.Set("", GetArena());
+  _impl_.credential_vault_name_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.credential_vault_name_.IsDefault()) {
+    _impl_.credential_vault_name_.Set("", GetArena());
   }
-  // @@protoc_insertion_point(field_set_allocated:kentik.kmeta.v202607alpha1.ServiceNowConfig.credential_vault_id)
+  // @@protoc_insertion_point(field_set_allocated:kentik.kmeta.v202607alpha1.ServiceNowConfig.credential_vault_name)
 }
 
 // bool enabled = 9 [json_name = "enabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {

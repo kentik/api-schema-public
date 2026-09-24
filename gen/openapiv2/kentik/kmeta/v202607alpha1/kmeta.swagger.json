@@ -307,9 +307,9 @@
           "type": "string",
           "description": "ID of the proxy agent used for ServiceNow connectivity."
         },
-        "credentialVaultId": {
+        "credentialVaultName": {
           "type": "string",
-          "description": "ID of the credential vault entry containing ServiceNow authentication."
+          "description": "Name of the credential vault entry containing ServiceNow authentication. Always resolves to the latest version of this name."
         },
         "enabled": {
           "type": "boolean",

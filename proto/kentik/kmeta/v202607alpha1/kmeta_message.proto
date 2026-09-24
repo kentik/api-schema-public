@@ -52,9 +52,9 @@ message ServiceNowConfig {
     }
   ];
 
-  string credential_vault_id = 8 [
+  string credential_vault_name = 8 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "ID of the credential vault entry containing ServiceNow authentication."
+      description: "Name of the credential vault entry containing ServiceNow authentication. Always resolves to the latest version of this name."
     }
   ];
 

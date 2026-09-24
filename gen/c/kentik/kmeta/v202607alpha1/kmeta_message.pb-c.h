@@ -35,7 +35,7 @@ struct  Kentik__Kmeta__V202607alpha1__ServiceNowConfig
   char *device_staging_table_name;
   int32_t push_frequency_seconds;
   char *proxy_agent_id;
-  char *credential_vault_id;
+  char *credential_vault_name;
   protobuf_c_boolean enabled;
   char *api_url;
 };

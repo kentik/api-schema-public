@@ -139,12 +139,12 @@ static const ProtobufCFieldDescriptor kentik__kmeta__v202607alpha1__service_now_
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "credential_vault_id",
+    "credential_vault_name",
     8,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
-    offsetof(Kentik__Kmeta__V202607alpha1__ServiceNowConfig, credential_vault_id),
+    offsetof(Kentik__Kmeta__V202607alpha1__ServiceNowConfig, credential_vault_name),
     NULL,
     &protobuf_c_empty_string,
     0,             /* flags */
@@ -178,7 +178,7 @@ static const ProtobufCFieldDescriptor kentik__kmeta__v202607alpha1__service_now_
 static const unsigned kentik__kmeta__v202607alpha1__service_now_config__field_indices_by_name[] = {
   9,   /* field[9] = api_url */
   1,   /* field[1] = company_id */
-  7,   /* field[7] = credential_vault_id */
+  7,   /* field[7] = credential_vault_name */
   3,   /* field[3] = description */
   4,   /* field[4] = device_staging_table_name */
   8,   /* field[8] = enabled */

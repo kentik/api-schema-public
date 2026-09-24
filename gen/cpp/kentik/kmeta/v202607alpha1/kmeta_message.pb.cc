@@ -48,7 +48,7 @@ inline constexpr ServiceNowConfig::Impl_::Impl_(
         proxy_agent_id_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        credential_vault_id_(
+        credential_vault_name_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         api_url_(
@@ -102,7 +102,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::kmeta::v202607alpha1::ServiceNowConfig, _impl_.device_staging_table_name_),
         PROTOBUF_FIELD_OFFSET(::kentik::kmeta::v202607alpha1::ServiceNowConfig, _impl_.push_frequency_seconds_),
         PROTOBUF_FIELD_OFFSET(::kentik::kmeta::v202607alpha1::ServiceNowConfig, _impl_.proxy_agent_id_),
-        PROTOBUF_FIELD_OFFSET(::kentik::kmeta::v202607alpha1::ServiceNowConfig, _impl_.credential_vault_id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kmeta::v202607alpha1::ServiceNowConfig, _impl_.credential_vault_name_),
         PROTOBUF_FIELD_OFFSET(::kentik::kmeta::v202607alpha1::ServiceNowConfig, _impl_.enabled_),
         PROTOBUF_FIELD_OFFSET(::kentik::kmeta::v202607alpha1::ServiceNowConfig, _impl_.api_url_),
 };
@@ -119,7 +119,7 @@ const char descriptor_table_protodef_kentik_2fkmeta_2fv202607alpha1_2fkmeta_5fme
     "\n.kentik/kmeta/v202607alpha1/kmeta_messa"
     "ge.proto\022\032kentik.kmeta.v202607alpha1\032\037go"
     "ogle/api/field_behavior.proto\032.protoc-ge"
-    "n-openapiv2/options/annotations.proto\"\363\007"
+    "n-openapiv2/options/annotations.proto\"\257\010"
     "\n\020ServiceNowConfig\022K\n\002id\030\001 \001(\tB;\222A523Uni"
     "que identifier for the ServiceNow config"
     "uration.\340A\003R\002id\022O\n\ncompany_id\030\002 \001(\tB0\222A*"
@@ -137,17 +137,18 @@ const char descriptor_table_protodef_kentik_2fkmeta_2fv202607alpha1_2fkmeta_5fme
     ".R\024pushFrequencySeconds\022b\n\016proxy_agent_i"
     "d\030\007 \001(\tB<\222A927ID of the proxy agent used"
     " for ServiceNow connectivity.R\014proxyAgen"
-    "tId\022{\n\023credential_vault_id\030\010 \001(\tBK\222AH2FI"
-    "D of the credential vault entry containi"
-    "ng ServiceNow authentication.R\021credentia"
-    "lVaultId\022Z\n\007enabled\030\t \001(\010B@\222A=2;Whether "
-    "this configuration is actively polling a"
-    "nd pushing.R\007enabled\022m\n\007api_url\030\n \001(\tBT\222"
-    "AN2LBase URL of the ServiceNow instance "
-    "(e.g. https://instance.service-now.com)."
-    "\340A\002R\006apiUrlBMZKgithub.com/kentik/api-sch"
-    "ema-public/gen/go/kentik/kmeta/v202607al"
-    "pha1;kmetab\006proto3"
+    "tId\022\266\001\n\025credential_vault_name\030\010 \001(\tB\201\001\222A"
+    "~2|Name of the credential vault entry co"
+    "ntaining ServiceNow authentication. Alwa"
+    "ys resolves to the latest version of thi"
+    "s name.R\023credentialVaultName\022Z\n\007enabled\030"
+    "\t \001(\010B@\222A=2;Whether this configuration i"
+    "s actively polling and pushing.R\007enabled"
+    "\022m\n\007api_url\030\n \001(\tBT\222AN2LBase URL of the "
+    "ServiceNow instance (e.g. https://instan"
+    "ce.service-now.com).\340A\002R\006apiUrlBMZKgithu"
+    "b.com/kentik/api-schema-public/gen/go/ke"
+    "ntik/kmeta/v202607alpha1;kmetab\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fkmeta_2fv202607alpha1_2fkmeta_5fmessage_2eproto_deps[2] =
     {
@@ -158,7 +159,7 @@ static ::absl::once_flag descriptor_table_kentik_2fkmeta_2fv202607alpha1_2fkmeta
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fkmeta_2fv202607alpha1_2fkmeta_5fmessage_2eproto = {
     false,
     false,
-    1258,
+    1318,
     descriptor_table_protodef_kentik_2fkmeta_2fv202607alpha1_2fkmeta_5fmessage_2eproto,
     "kentik/kmeta/v202607alpha1/kmeta_message.proto",
     &descriptor_table_kentik_2fkmeta_2fv202607alpha1_2fkmeta_5fmessage_2eproto_once,
@@ -198,7 +199,7 @@ inline PROTOBUF_NDEBUG_INLINE ServiceNowConfig::Impl_::Impl_(
         description_(arena, from.description_),
         device_staging_table_name_(arena, from.device_staging_table_name_),
         proxy_agent_id_(arena, from.proxy_agent_id_),
-        credential_vault_id_(arena, from.credential_vault_id_),
+        credential_vault_name_(arena, from.credential_vault_name_),
         api_url_(arena, from.api_url_),
         _cached_size_{0} {}
 
@@ -234,7 +235,7 @@ inline PROTOBUF_NDEBUG_INLINE ServiceNowConfig::Impl_::Impl_(
         description_(arena),
         device_staging_table_name_(arena),
         proxy_agent_id_(arena),
-        credential_vault_id_(arena),
+        credential_vault_name_(arena),
         api_url_(arena),
         _cached_size_{0} {}
 
@@ -261,7 +262,7 @@ inline void ServiceNowConfig::SharedDtor(MessageLite& self) {
   this_._impl_.description_.Destroy();
   this_._impl_.device_staging_table_name_.Destroy();
   this_._impl_.proxy_agent_id_.Destroy();
-  this_._impl_.credential_vault_id_.Destroy();
+  this_._impl_.credential_vault_name_.Destroy();
   this_._impl_.api_url_.Destroy();
   this_._impl_.~Impl_();
 }
@@ -302,7 +303,7 @@ const ::google::protobuf::internal::ClassData* ServiceNowConfig::GetClassData() 
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 10, 0, 152, 2> ServiceNowConfig::_table_ = {
+const ::_pbi::TcParseTable<4, 10, 0, 154, 2> ServiceNowConfig::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -342,9 +343,9 @@ const ::_pbi::TcParseTable<4, 10, 0, 152, 2> ServiceNowConfig::_table_ = {
     // string proxy_agent_id = 7 [json_name = "proxyAgentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastUS1,
      {58, 63, 0, PROTOBUF_FIELD_OFFSET(ServiceNowConfig, _impl_.proxy_agent_id_)}},
-    // string credential_vault_id = 8 [json_name = "credentialVaultId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    // string credential_vault_name = 8 [json_name = "credentialVaultName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastUS1,
-     {66, 63, 0, PROTOBUF_FIELD_OFFSET(ServiceNowConfig, _impl_.credential_vault_id_)}},
+     {66, 63, 0, PROTOBUF_FIELD_OFFSET(ServiceNowConfig, _impl_.credential_vault_name_)}},
     // bool enabled = 9 [json_name = "enabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ServiceNowConfig, _impl_.enabled_), 63>(),
      {72, 63, 0, PROTOBUF_FIELD_OFFSET(ServiceNowConfig, _impl_.enabled_)}},
@@ -380,8 +381,8 @@ const ::_pbi::TcParseTable<4, 10, 0, 152, 2> ServiceNowConfig::_table_ = {
     // string proxy_agent_id = 7 [json_name = "proxyAgentId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(ServiceNowConfig, _impl_.proxy_agent_id_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // string credential_vault_id = 8 [json_name = "credentialVaultId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(ServiceNowConfig, _impl_.credential_vault_id_), 0, 0,
+    // string credential_vault_name = 8 [json_name = "credentialVaultName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(ServiceNowConfig, _impl_.credential_vault_name_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // bool enabled = 9 [json_name = "enabled", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(ServiceNowConfig, _impl_.enabled_), 0, 0,
@@ -392,7 +393,7 @@ const ::_pbi::TcParseTable<4, 10, 0, 152, 2> ServiceNowConfig::_table_ = {
   }},
   // no aux_entries
   {{
-    "\53\2\12\4\13\31\0\16\23\0\7\0\0\0\0\0"
+    "\53\2\12\4\13\31\0\16\25\0\7\0\0\0\0\0"
     "kentik.kmeta.v202607alpha1.ServiceNowConfig"
     "id"
     "company_id"
@@ -400,7 +401,7 @@ const ::_pbi::TcParseTable<4, 10, 0, 152, 2> ServiceNowConfig::_table_ = {
     "description"
     "device_staging_table_name"
     "proxy_agent_id"
-    "credential_vault_id"
+    "credential_vault_name"
     "api_url"
   }},
 };
@@ -418,7 +419,7 @@ PROTOBUF_NOINLINE void ServiceNowConfig::Clear() {
   _impl_.description_.ClearToEmpty();
   _impl_.device_staging_table_name_.ClearToEmpty();
   _impl_.proxy_agent_id_.ClearToEmpty();
-  _impl_.credential_vault_id_.ClearToEmpty();
+  _impl_.credential_vault_name_.ClearToEmpty();
   _impl_.api_url_.ClearToEmpty();
   ::memset(&_impl_.push_frequency_seconds_, 0, static_cast<::size_t>(
       reinterpret_cast<char*>(&_impl_.enabled_) -
@@ -496,11 +497,11 @@ PROTOBUF_NOINLINE void ServiceNowConfig::Clear() {
             target = stream->WriteStringMaybeAliased(7, _s, target);
           }
 
-          // string credential_vault_id = 8 [json_name = "credentialVaultId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          if (!this_._internal_credential_vault_id().empty()) {
-            const std::string& _s = this_._internal_credential_vault_id();
+          // string credential_vault_name = 8 [json_name = "credentialVaultName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_credential_vault_name().empty()) {
+            const std::string& _s = this_._internal_credential_vault_name();
             ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kmeta.v202607alpha1.ServiceNowConfig.credential_vault_id");
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kmeta.v202607alpha1.ServiceNowConfig.credential_vault_name");
             target = stream->WriteStringMaybeAliased(8, _s, target);
           }
 
@@ -574,10 +575,10 @@ PROTOBUF_NOINLINE void ServiceNowConfig::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_proxy_agent_id());
             }
-            // string credential_vault_id = 8 [json_name = "credentialVaultId", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-            if (!this_._internal_credential_vault_id().empty()) {
+            // string credential_vault_name = 8 [json_name = "credentialVaultName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_credential_vault_name().empty()) {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                              this_._internal_credential_vault_id());
+                                              this_._internal_credential_vault_name());
             }
             // string api_url = 10 [json_name = "apiUrl", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             if (!this_._internal_api_url().empty()) {
@@ -624,8 +625,8 @@ void ServiceNowConfig::MergeImpl(::google::protobuf::MessageLite& to_msg, const 
   if (!from._internal_proxy_agent_id().empty()) {
     _this->_internal_set_proxy_agent_id(from._internal_proxy_agent_id());
   }
-  if (!from._internal_credential_vault_id().empty()) {
-    _this->_internal_set_credential_vault_id(from._internal_credential_vault_id());
+  if (!from._internal_credential_vault_name().empty()) {
+    _this->_internal_set_credential_vault_name(from._internal_credential_vault_name());
   }
   if (!from._internal_api_url().empty()) {
     _this->_internal_set_api_url(from._internal_api_url());
@@ -658,7 +659,7 @@ void ServiceNowConfig::InternalSwap(ServiceNowConfig* PROTOBUF_RESTRICT other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, &other->_impl_.description_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.device_staging_table_name_, &other->_impl_.device_staging_table_name_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.proxy_agent_id_, &other->_impl_.proxy_agent_id_, arena);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.credential_vault_id_, &other->_impl_.credential_vault_id_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.credential_vault_name_, &other->_impl_.credential_vault_name_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.api_url_, &other->_impl_.api_url_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(ServiceNowConfig, _impl_.enabled_)

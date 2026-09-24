@@ -32,7 +32,7 @@ type ServiceNowConfig struct {
 	DeviceStagingTableName string                 `protobuf:"bytes,5,opt,name=device_staging_table_name,json=deviceStagingTableName,proto3" json:"device_staging_table_name,omitempty"`
 	PushFrequencySeconds   int32                  `protobuf:"varint,6,opt,name=push_frequency_seconds,json=pushFrequencySeconds,proto3" json:"push_frequency_seconds,omitempty"`
 	ProxyAgentId           string                 `protobuf:"bytes,7,opt,name=proxy_agent_id,json=proxyAgentId,proto3" json:"proxy_agent_id,omitempty"`
-	CredentialVaultId      string                 `protobuf:"bytes,8,opt,name=credential_vault_id,json=credentialVaultId,proto3" json:"credential_vault_id,omitempty"`
+	CredentialVaultName    string                 `protobuf:"bytes,8,opt,name=credential_vault_name,json=credentialVaultName,proto3" json:"credential_vault_name,omitempty"`
 	Enabled                bool                   `protobuf:"varint,9,opt,name=enabled,proto3" json:"enabled,omitempty"`
 	ApiUrl                 string                 `protobuf:"bytes,10,opt,name=api_url,json=apiUrl,proto3" json:"api_url,omitempty"`
 	unknownFields          protoimpl.UnknownFields
@@ -118,9 +118,9 @@ func (x *ServiceNowConfig) GetProxyAgentId() string {
 	return ""
 }
 
-func (x *ServiceNowConfig) GetCredentialVaultId() string {
+func (x *ServiceNowConfig) GetCredentialVaultName() string {
 	if x != nil {
-		return x.CredentialVaultId
+		return x.CredentialVaultName
 	}
 	return ""
 }
@@ -143,7 +143,7 @@ var File_kentik_kmeta_v202607alpha1_kmeta_message_proto protoreflect.FileDescrip
 
 const file_kentik_kmeta_v202607alpha1_kmeta_message_proto_rawDesc = "" +
 	"\n" +
-	".kentik/kmeta/v202607alpha1/kmeta_message.proto\x12\x1akentik.kmeta.v202607alpha1\x1a\x1fgoogle/api/field_behavior.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"\xf3\a\n" +
+	".kentik/kmeta/v202607alpha1/kmeta_message.proto\x12\x1akentik.kmeta.v202607alpha1\x1a\x1fgoogle/api/field_behavior.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\"\xaf\b\n" +
 	"\x10ServiceNowConfig\x12K\n" +
 	"\x02id\x18\x01 \x01(\tB;\x92A523Unique identifier for the ServiceNow configuration.\xe0A\x03R\x02id\x12O\n" +
 	"\n" +
@@ -152,8 +152,8 @@ const file_kentik_kmeta_v202607alpha1_kmeta_message_proto_rawDesc = "" +
 	"\vdescription\x18\x04 \x01(\tB0\x92A-2+Optional description of this configuration.R\vdescription\x12u\n" +
 	"\x19device_staging_table_name\x18\x05 \x01(\tB:\x92A725ServiceNow staging table name for device data import.R\x16deviceStagingTableName\x12v\n" +
 	"\x16push_frequency_seconds\x18\x06 \x01(\x05B@\x92A=2;Frequency in seconds at which data is pushed to ServiceNow.R\x14pushFrequencySeconds\x12b\n" +
-	"\x0eproxy_agent_id\x18\a \x01(\tB<\x92A927ID of the proxy agent used for ServiceNow connectivity.R\fproxyAgentId\x12{\n" +
-	"\x13credential_vault_id\x18\b \x01(\tBK\x92AH2FID of the credential vault entry containing ServiceNow authentication.R\x11credentialVaultId\x12Z\n" +
+	"\x0eproxy_agent_id\x18\a \x01(\tB<\x92A927ID of the proxy agent used for ServiceNow connectivity.R\fproxyAgentId\x12\xb6\x01\n" +
+	"\x15credential_vault_name\x18\b \x01(\tB\x81\x01\x92A~2|Name of the credential vault entry containing ServiceNow authentication. Always resolves to the latest version of this name.R\x13credentialVaultName\x12Z\n" +
 	"\aenabled\x18\t \x01(\bB@\x92A=2;Whether this configuration is actively polling and pushing.R\aenabled\x12m\n" +
 	"\aapi_url\x18\n" +
 	" \x01(\tBT\x92AN2LBase URL of the ServiceNow instance (e.g. https://instance.service-now.com).\xe0A\x02R\x06apiUrlBMZKgithub.com/kentik/api-schema-public/gen/go/kentik/kmeta/v202607alpha1;kmetab\x06proto3"
