@@ -195,6 +195,18 @@ message Suppression {
       description: "The time when the suppression configuration was last modified."
     }
   ];
+  string display_name = 11[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The name of the suppression configuration."
+    }
+  ];
+  repeated kentik.alerting.types.v202303.Severity severities = 12[
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The alarm severities the suppression applies to."
+    }
+  ];
 }
 
 message SuppressionServiceCreateRequest {

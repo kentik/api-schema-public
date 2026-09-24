@@ -40,6 +40,8 @@ type Suppression struct {
 	EndTimeAt     *timestamppb.Timestamp        `protobuf:"bytes,8,opt,name=end_time_at,json=endTimeAt,proto3" json:"end_time_at,omitempty"`
 	CreatedAt     *timestamppb.Timestamp        `protobuf:"bytes,9,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
 	ModifiedAt    *timestamppb.Timestamp        `protobuf:"bytes,10,opt,name=modified_at,json=modifiedAt,proto3" json:"modified_at,omitempty"`
+	DisplayName   string                        `protobuf:"bytes,11,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	Severities    []v202303.Severity            `protobuf:"varint,12,rep,packed,name=severities,proto3,enum=kentik.alerting.types.v202303.Severity" json:"severities,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -140,6 +142,20 @@ func (x *Suppression) GetCreatedAt() *timestamppb.Timestamp {
 func (x *Suppression) GetModifiedAt() *timestamppb.Timestamp {
 	if x != nil {
 		return x.ModifiedAt
+	}
+	return nil
+}
+
+func (x *Suppression) GetDisplayName() string {
+	if x != nil {
+		return x.DisplayName
+	}
+	return ""
+}
+
+func (x *Suppression) GetSeverities() []v202303.Severity {
+	if x != nil {
+		return x.Severities
 	}
 	return nil
 }
@@ -696,8 +712,7 @@ var File_kentik_alerting_public_v202505_suppressions_proto protoreflect.FileDesc
 
 const file_kentik_alerting_public_v202505_suppressions_proto_rawDesc = "" +
 	"\n" +
-	"1kentik/alerting/public/v202505/suppressions.proto\x12\x1ekentik.alerting.public.v202505\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\x1a)kentik/alerting/types/v202303/types.proto\x1a.kentik/alerting/types/v202506/pagination.proto\x1a+kentik/alerting/types/v202506/sorting.proto\x1a+kentik/alerting/public/v202505/common.proto\"\x90\n" +
-	"\n" +
+	"1kentik/alerting/public/v202505/suppressions.proto\x12\x1ekentik.alerting.public.v202505\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a.protoc-gen-openapiv2/options/annotations.proto\x1a%kentik/core/v202303/annotations.proto\x1a)kentik/alerting/types/v202303/types.proto\x1a.kentik/alerting/types/v202506/pagination.proto\x1a+kentik/alerting/types/v202506/sorting.proto\x1a+kentik/alerting/public/v202505/common.proto\"\xeb\v\n" +
 	"\vSuppression\x12@\n" +
 	"\x02id\x18\x01 \x01(\tB0\x92A*2(The ID of the suppression configuration.\xe0A\x03R\x02id\x12l\n" +
 	"\auser_id\x18\x02 \x01(\tBS\x92AM2KThe ID of the user who most recently updated the suppression configuration.\xe0A\x03R\x06userId\x12x\n" +
@@ -712,7 +727,11 @@ const file_kentik_alerting_public_v202505_suppressions_proto_rawDesc = "" +
 	"created_at\x18\t \x01(\v2\x1a.google.protobuf.TimestampB@\x92A:28The time when the suppression configuration was created.\xe0A\x03R\tcreatedAt\x12\x83\x01\n" +
 	"\vmodified_at\x18\n" +
 	" \x01(\v2\x1a.google.protobuf.TimestampBF\x92A@2>The time when the suppression configuration was last modified.\xe0A\x03R\n" +
-	"modifiedAt\"\xa2\x01\n" +
+	"modifiedAt\x12U\n" +
+	"\fdisplay_name\x18\v \x01(\tB2\x92A,2*The name of the suppression configuration.\xe0A\x01R\vdisplayName\x12\x81\x01\n" +
+	"\n" +
+	"severities\x18\f \x03(\x0e2'.kentik.alerting.types.v202303.SeverityB8\x92A220The alarm severities the suppression applies to.\xe0A\x01R\n" +
+	"severities\"\xa2\x01\n" +
 	"\x1fSuppressionServiceCreateRequest\x12\x7f\n" +
 	"\vsuppression\x18\x01 \x01(\v2+.kentik.alerting.public.v202505.SuppressionB0\x92A*2(The suppression configuration to create.\xe0A\x02R\vsuppression\"\xab\x01\n" +
 	" SuppressionServiceCreateResponse\x12\x86\x01\n" +
@@ -797,10 +816,11 @@ var file_kentik_alerting_public_v202505_suppressions_proto_goTypes = []any{
 	(*Source)(nil),                            // 12: kentik.alerting.public.v202505.Source
 	(*v202303.MultiAttributeFilter)(nil),      // 13: kentik.alerting.types.v202303.MultiAttributeFilter
 	(*timestamppb.Timestamp)(nil),             // 14: google.protobuf.Timestamp
-	(*v202506.PaginationConfig)(nil),          // 15: kentik.alerting.types.v202506.PaginationConfig
-	(*v202506.SortingConfig)(nil),             // 16: kentik.alerting.types.v202506.SortingConfig
-	(*v202303.TimeRange)(nil),                 // 17: kentik.alerting.types.v202303.TimeRange
-	(*v202506.PaginationInfo)(nil),            // 18: kentik.alerting.types.v202506.PaginationInfo
+	(v202303.Severity)(0),                     // 15: kentik.alerting.types.v202303.Severity
+	(*v202506.PaginationConfig)(nil),          // 16: kentik.alerting.types.v202506.PaginationConfig
+	(*v202506.SortingConfig)(nil),             // 17: kentik.alerting.types.v202506.SortingConfig
+	(*v202303.TimeRange)(nil),                 // 18: kentik.alerting.types.v202303.TimeRange
+	(*v202506.PaginationInfo)(nil),            // 19: kentik.alerting.types.v202506.PaginationInfo
 }
 var file_kentik_alerting_public_v202505_suppressions_proto_depIdxs = []int32{
 	12, // 0: kentik.alerting.public.v202505.Suppression.source:type_name -> kentik.alerting.public.v202505.Source
@@ -809,36 +829,37 @@ var file_kentik_alerting_public_v202505_suppressions_proto_depIdxs = []int32{
 	14, // 3: kentik.alerting.public.v202505.Suppression.end_time_at:type_name -> google.protobuf.Timestamp
 	14, // 4: kentik.alerting.public.v202505.Suppression.created_at:type_name -> google.protobuf.Timestamp
 	14, // 5: kentik.alerting.public.v202505.Suppression.modified_at:type_name -> google.protobuf.Timestamp
-	0,  // 6: kentik.alerting.public.v202505.SuppressionServiceCreateRequest.suppression:type_name -> kentik.alerting.public.v202505.Suppression
-	0,  // 7: kentik.alerting.public.v202505.SuppressionServiceCreateResponse.suppression:type_name -> kentik.alerting.public.v202505.Suppression
-	0,  // 8: kentik.alerting.public.v202505.SuppressionServiceGetResponse.suppression:type_name -> kentik.alerting.public.v202505.Suppression
-	15, // 9: kentik.alerting.public.v202505.SuppressionServiceListRequest.pagination:type_name -> kentik.alerting.types.v202506.PaginationConfig
-	16, // 10: kentik.alerting.public.v202505.SuppressionServiceListRequest.sorting:type_name -> kentik.alerting.types.v202506.SortingConfig
-	6,  // 11: kentik.alerting.public.v202505.SuppressionServiceListRequest.filters:type_name -> kentik.alerting.public.v202505.SuppressionFilters
-	12, // 12: kentik.alerting.public.v202505.SuppressionFilters.sources:type_name -> kentik.alerting.public.v202505.Source
-	17, // 13: kentik.alerting.public.v202505.SuppressionFilters.created_at:type_name -> kentik.alerting.types.v202303.TimeRange
-	17, // 14: kentik.alerting.public.v202505.SuppressionFilters.modified_at:type_name -> kentik.alerting.types.v202303.TimeRange
-	17, // 15: kentik.alerting.public.v202505.SuppressionFilters.start_time_at:type_name -> kentik.alerting.types.v202303.TimeRange
-	17, // 16: kentik.alerting.public.v202505.SuppressionFilters.end_time_at:type_name -> kentik.alerting.types.v202303.TimeRange
-	18, // 17: kentik.alerting.public.v202505.SuppressionServiceListResponse.pagination:type_name -> kentik.alerting.types.v202506.PaginationInfo
-	0,  // 18: kentik.alerting.public.v202505.SuppressionServiceListResponse.suppressions:type_name -> kentik.alerting.public.v202505.Suppression
-	0,  // 19: kentik.alerting.public.v202505.SuppressionServiceReplaceRequest.suppression:type_name -> kentik.alerting.public.v202505.Suppression
-	0,  // 20: kentik.alerting.public.v202505.SuppressionServiceReplaceResponse.suppression:type_name -> kentik.alerting.public.v202505.Suppression
-	1,  // 21: kentik.alerting.public.v202505.SuppressionService.Create:input_type -> kentik.alerting.public.v202505.SuppressionServiceCreateRequest
-	3,  // 22: kentik.alerting.public.v202505.SuppressionService.Get:input_type -> kentik.alerting.public.v202505.SuppressionServiceGetRequest
-	5,  // 23: kentik.alerting.public.v202505.SuppressionService.List:input_type -> kentik.alerting.public.v202505.SuppressionServiceListRequest
-	8,  // 24: kentik.alerting.public.v202505.SuppressionService.Replace:input_type -> kentik.alerting.public.v202505.SuppressionServiceReplaceRequest
-	10, // 25: kentik.alerting.public.v202505.SuppressionService.Delete:input_type -> kentik.alerting.public.v202505.SuppressionServiceDeleteRequest
-	2,  // 26: kentik.alerting.public.v202505.SuppressionService.Create:output_type -> kentik.alerting.public.v202505.SuppressionServiceCreateResponse
-	4,  // 27: kentik.alerting.public.v202505.SuppressionService.Get:output_type -> kentik.alerting.public.v202505.SuppressionServiceGetResponse
-	7,  // 28: kentik.alerting.public.v202505.SuppressionService.List:output_type -> kentik.alerting.public.v202505.SuppressionServiceListResponse
-	9,  // 29: kentik.alerting.public.v202505.SuppressionService.Replace:output_type -> kentik.alerting.public.v202505.SuppressionServiceReplaceResponse
-	11, // 30: kentik.alerting.public.v202505.SuppressionService.Delete:output_type -> kentik.alerting.public.v202505.SuppressionServiceDeleteResponse
-	26, // [26:31] is the sub-list for method output_type
-	21, // [21:26] is the sub-list for method input_type
-	21, // [21:21] is the sub-list for extension type_name
-	21, // [21:21] is the sub-list for extension extendee
-	0,  // [0:21] is the sub-list for field type_name
+	15, // 6: kentik.alerting.public.v202505.Suppression.severities:type_name -> kentik.alerting.types.v202303.Severity
+	0,  // 7: kentik.alerting.public.v202505.SuppressionServiceCreateRequest.suppression:type_name -> kentik.alerting.public.v202505.Suppression
+	0,  // 8: kentik.alerting.public.v202505.SuppressionServiceCreateResponse.suppression:type_name -> kentik.alerting.public.v202505.Suppression
+	0,  // 9: kentik.alerting.public.v202505.SuppressionServiceGetResponse.suppression:type_name -> kentik.alerting.public.v202505.Suppression
+	16, // 10: kentik.alerting.public.v202505.SuppressionServiceListRequest.pagination:type_name -> kentik.alerting.types.v202506.PaginationConfig
+	17, // 11: kentik.alerting.public.v202505.SuppressionServiceListRequest.sorting:type_name -> kentik.alerting.types.v202506.SortingConfig
+	6,  // 12: kentik.alerting.public.v202505.SuppressionServiceListRequest.filters:type_name -> kentik.alerting.public.v202505.SuppressionFilters
+	12, // 13: kentik.alerting.public.v202505.SuppressionFilters.sources:type_name -> kentik.alerting.public.v202505.Source
+	18, // 14: kentik.alerting.public.v202505.SuppressionFilters.created_at:type_name -> kentik.alerting.types.v202303.TimeRange
+	18, // 15: kentik.alerting.public.v202505.SuppressionFilters.modified_at:type_name -> kentik.alerting.types.v202303.TimeRange
+	18, // 16: kentik.alerting.public.v202505.SuppressionFilters.start_time_at:type_name -> kentik.alerting.types.v202303.TimeRange
+	18, // 17: kentik.alerting.public.v202505.SuppressionFilters.end_time_at:type_name -> kentik.alerting.types.v202303.TimeRange
+	19, // 18: kentik.alerting.public.v202505.SuppressionServiceListResponse.pagination:type_name -> kentik.alerting.types.v202506.PaginationInfo
+	0,  // 19: kentik.alerting.public.v202505.SuppressionServiceListResponse.suppressions:type_name -> kentik.alerting.public.v202505.Suppression
+	0,  // 20: kentik.alerting.public.v202505.SuppressionServiceReplaceRequest.suppression:type_name -> kentik.alerting.public.v202505.Suppression
+	0,  // 21: kentik.alerting.public.v202505.SuppressionServiceReplaceResponse.suppression:type_name -> kentik.alerting.public.v202505.Suppression
+	1,  // 22: kentik.alerting.public.v202505.SuppressionService.Create:input_type -> kentik.alerting.public.v202505.SuppressionServiceCreateRequest
+	3,  // 23: kentik.alerting.public.v202505.SuppressionService.Get:input_type -> kentik.alerting.public.v202505.SuppressionServiceGetRequest
+	5,  // 24: kentik.alerting.public.v202505.SuppressionService.List:input_type -> kentik.alerting.public.v202505.SuppressionServiceListRequest
+	8,  // 25: kentik.alerting.public.v202505.SuppressionService.Replace:input_type -> kentik.alerting.public.v202505.SuppressionServiceReplaceRequest
+	10, // 26: kentik.alerting.public.v202505.SuppressionService.Delete:input_type -> kentik.alerting.public.v202505.SuppressionServiceDeleteRequest
+	2,  // 27: kentik.alerting.public.v202505.SuppressionService.Create:output_type -> kentik.alerting.public.v202505.SuppressionServiceCreateResponse
+	4,  // 28: kentik.alerting.public.v202505.SuppressionService.Get:output_type -> kentik.alerting.public.v202505.SuppressionServiceGetResponse
+	7,  // 29: kentik.alerting.public.v202505.SuppressionService.List:output_type -> kentik.alerting.public.v202505.SuppressionServiceListResponse
+	9,  // 30: kentik.alerting.public.v202505.SuppressionService.Replace:output_type -> kentik.alerting.public.v202505.SuppressionServiceReplaceResponse
+	11, // 31: kentik.alerting.public.v202505.SuppressionService.Delete:output_type -> kentik.alerting.public.v202505.SuppressionServiceDeleteResponse
+	27, // [27:32] is the sub-list for method output_type
+	22, // [22:27] is the sub-list for method input_type
+	22, // [22:22] is the sub-list for extension type_name
+	22, // [22:22] is the sub-list for extension extendee
+	0,  // [0:22] is the sub-list for field type_name
 }
 
 func init() { file_kentik_alerting_public_v202505_suppressions_proto_init() }

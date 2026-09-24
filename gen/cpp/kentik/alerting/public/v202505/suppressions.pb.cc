@@ -162,6 +162,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr Suppression::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
+        severities_{},
+        _severities_cached_byte_size_{0},
         id_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
@@ -169,6 +171,9 @@ inline constexpr Suppression::Impl_::Impl_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         comment_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        display_name_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
         source_{nullptr},
@@ -378,6 +383,8 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::Suppression, _impl_.end_time_at_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::Suppression, _impl_.created_at_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::Suppression, _impl_.modified_at_),
+        PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::Suppression, _impl_.display_name_),
+        PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::Suppression, _impl_.severities_),
         ~0u,
         ~0u,
         0,
@@ -388,6 +395,8 @@ const ::uint32_t
         3,
         4,
         5,
+        ~0u,
+        ~0u,
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::SuppressionServiceCreateRequest, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::alerting::public_::v202505::SuppressionServiceCreateRequest, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -516,18 +525,18 @@ const ::uint32_t
 
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-        {0, 18, -1, sizeof(::kentik::alerting::public_::v202505::Suppression)},
-        {28, 37, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceCreateRequest)},
-        {38, 47, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceCreateResponse)},
-        {48, -1, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceGetRequest)},
-        {57, 66, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceGetResponse)},
-        {67, 78, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceListRequest)},
-        {81, 96, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionFilters)},
-        {103, 113, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceListResponse)},
-        {115, 124, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceReplaceRequest)},
-        {125, 134, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceReplaceResponse)},
-        {135, -1, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceDeleteRequest)},
-        {144, -1, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceDeleteResponse)},
+        {0, 20, -1, sizeof(::kentik::alerting::public_::v202505::Suppression)},
+        {32, 41, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceCreateRequest)},
+        {42, 51, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceCreateResponse)},
+        {52, -1, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceGetRequest)},
+        {61, 70, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceGetResponse)},
+        {71, 82, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceListRequest)},
+        {85, 100, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionFilters)},
+        {107, 117, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceListResponse)},
+        {119, 128, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceReplaceRequest)},
+        {129, 138, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceReplaceResponse)},
+        {139, -1, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceDeleteRequest)},
+        {148, -1, -1, sizeof(::kentik::alerting::public_::v202505::SuppressionServiceDeleteResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::alerting::public_::v202505::_Suppression_default_instance_._instance,
@@ -557,7 +566,7 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fsupp
     "roto\032.kentik/alerting/types/v202506/pagi"
     "nation.proto\032+kentik/alerting/types/v202"
     "506/sorting.proto\032+kentik/alerting/publi"
-    "c/v202505/common.proto\"\220\n\n\013Suppression\022@"
+    "c/v202505/common.proto\"\353\013\n\013Suppression\022@"
     "\n\002id\030\001 \001(\tB0\222A*2(The ID of the suppressi"
     "on configuration.\340A\003R\002id\022l\n\007user_id\030\002 \001("
     "\tBS\222AM2KThe ID of the user who most rece"
@@ -590,129 +599,135 @@ const char descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fsupp
     "_at\030\n \001(\0132\032.google.protobuf.TimestampBF\222"
     "A@2>The time when the suppression config"
     "uration was last modified.\340A\003R\nmodifiedA"
-    "t\"\242\001\n\037SuppressionServiceCreateRequest\022\177\n"
-    "\013suppression\030\001 \001(\0132+.kentik.alerting.pub"
-    "lic.v202505.SuppressionB0\222A*2(The suppre"
-    "ssion configuration to create.\340A\002R\013suppr"
-    "ession\"\253\001\n SuppressionServiceCreateRespo"
-    "nse\022\206\001\n\013suppression\030\001 \001(\0132+.kentik.alert"
-    "ing.public.v202505.SuppressionB7\222A12/The"
-    " suppression configuration that was crea"
-    "ted.\340A\003R\013suppression\"g\n\034SuppressionServi"
-    "ceGetRequest\022G\n\002id\030\001 \001(\tB7\222A12/The ID of"
-    " the suppression configuration to get.\340A"
-    "\002R\002id\"\252\001\n\035SuppressionServiceGetResponse\022"
-    "\210\001\n\013suppression\030\001 \001(\0132+.kentik.alerting."
-    "public.v202505.SuppressionB9\222A321The sup"
-    "pression configuration that was retrieve"
-    "d.\340A\003R\013suppression\"\264\003\n\035SuppressionServic"
-    "eListRequest\022\213\001\n\npagination\030\001 \001(\0132/.kent"
-    "ik.alerting.types.v202506.PaginationConf"
-    "igB:\222A422The pagination configuration fo"
-    "r the list request.\340A\001R\npagination\022\177\n\007so"
-    "rting\030\002 \001(\0132,.kentik.alerting.types.v202"
-    "506.SortingConfigB7\222A12/The sorting conf"
-    "iguration for the list request.\340A\001R\007sort"
-    "ing\022\203\001\n\007filters\030\003 \001(\01322.kentik.alerting."
-    "public.v202505.SuppressionFiltersB5\222A/2-"
-    "The suppression filters for the list req"
-    "uest.\340A\001R\007filters\"\336\007\n\022SuppressionFilters"
-    "\022c\n\017suppression_ids\030\001 \003(\tB:\222A422The IDs "
-    "of the suppression configurations to lis"
-    "t.\340A\001R\016suppressionIds\022\214\001\n\007sources\030\003 \003(\0132"
-    "&.kentik.alerting.public.v202505.SourceB"
-    "J\222AD2BThe source policies the suppressio"
-    "n configurations are applied to.\340A\001R\007sou"
-    "rces\022c\n\010user_ids\030\004 \003(\tBH\222AB2@The IDs of "
-    "the users who created the suppression co"
-    "nfigurations.\340A\001R\007userIds\022\227\001\n\ncreated_at"
-    "\030\005 \001(\0132(.kentik.alerting.types.v202303.T"
-    "imeRangeBN\222AH2FThe time range for the cr"
-    "eated time of the suppression configurat"
-    "ions.\340A\001R\tcreatedAt\022\232\001\n\013modified_at\030\006 \001("
-    "\0132(.kentik.alerting.types.v202303.TimeRa"
-    "ngeBO\222AI2GThe time range for the modifie"
-    "d time of the suppression configurations"
-    ".\340A\001R\nmodifiedAt\022\232\001\n\rstart_time_at\030\007 \001(\013"
-    "2(.kentik.alerting.types.v202303.TimeRan"
-    "geBL\222AF2DThe time range for the start ti"
-    "me of the suppression configurations.\340A\001"
-    "R\013startTimeAt\022\224\001\n\013end_time_at\030\010 \001(\0132(.ke"
-    "ntik.alerting.types.v202303.TimeRangeBJ\222"
-    "AD2BThe time range for the end time of t"
-    "he suppression configurations.\340A\001R\tendTi"
-    "meAtJ\004\010\002\020\003\"\313\002\n\036SuppressionServiceListRes"
-    "ponse\022\210\001\n\npagination\030\001 \001(\0132-.kentik.aler"
-    "ting.types.v202506.PaginationInfoB9\222A321"
-    "The pagination information for the list "
-    "response.\340A\003R\npagination\022\235\001\n\014suppression"
-    "s\030\002 \003(\0132+.kentik.alerting.public.v202505"
-    ".SuppressionBL\222AF2DThe suppression confi"
-    "gurations that were found matching the f"
-    "ilters.\340A\003R\014suppressions\"\245\001\n Suppression"
-    "ServiceReplaceRequest\022\200\001\n\013suppression\030\001 "
-    "\001(\0132+.kentik.alerting.public.v202505.Sup"
-    "pressionB1\222A+2)The suppression configura"
-    "tion to replace.\340A\002R\013suppression\"\273\001\n!Sup"
-    "pressionServiceReplaceResponse\022\225\001\n\013suppr"
-    "ession\030\001 \001(\0132+.kentik.alerting.public.v2"
-    "02505.SuppressionBF\222A@2>Current suppress"
-    "ion configuration after the replace oper"
-    "ation.\340A\003R\013suppression\"m\n\037SuppressionSer"
-    "viceDeleteRequest\022J\n\002id\030\001 \001(\tB:\222A422The "
-    "ID of the suppression configuration to d"
-    "elete.\340A\002R\002id\"\"\n SuppressionServiceDelet"
-    "eResponse2\231\013\n\022SuppressionService\022\217\002\n\006Cre"
-    "ate\022\?.kentik.alerting.public.v202505.Sup"
-    "pressionServiceCreateRequest\032@.kentik.al"
-    "erting.public.v202505.SuppressionService"
-    "CreateResponse\"\201\001\222AF\022\022Create Suppression"
-    "\032(Creates a new suppression configuratio"
-    "n.*\006Create\362\327\002\024admin.alerting:write\202\323\344\223\002\032"
-    "\"\025/v202505/suppressions:\001*\022\374\001\n\003Get\022<.ken"
-    "tik.alerting.public.v202505.SuppressionS"
-    "erviceGetRequest\032=.kentik.alerting.publi"
-    "c.v202505.SuppressionServiceGetResponse\""
-    "x\222A<\022\017Get Suppression\032$Returns a suppres"
-    "sion configuration.*\003Get\362\327\002\023admin.alerti"
-    "ng:read\202\323\344\223\002\034\022\032/v202505/suppressions/{id"
-    "}\022\217\002\n\004List\022=.kentik.alerting.public.v202"
-    "505.SuppressionServiceListRequest\032>.kent"
-    "ik.alerting.public.v202505.SuppressionSe"
-    "rviceListResponse\"\207\001\222AH\022\021List Suppressio"
-    "ns\032-Returns a list of suppression config"
-    "urations.*\004List\362\327\002\023admin.alerting:read\202\323"
-    "\344\223\002\037\"\032/v202505/suppressions/list:\001*\022\242\002\n\007"
-    "Replace\022@.kentik.alerting.public.v202505"
-    ".SuppressionServiceReplaceRequest\032A.kent"
-    "ik.alerting.public.v202505.SuppressionSe"
-    "rviceReplaceResponse\"\221\001\222AE\022\023Replace Supp"
-    "ression\032%Replaces a suppression configur"
-    "ation.*\007Replace\362\327\002\024admin.alerting:write\202"
-    "\323\344\223\002+2&/v202505/suppressions/{suppressio"
-    "n.id}:\001*\022\214\002\n\006Delete\022\?.kentik.alerting.pu"
-    "blic.v202505.SuppressionServiceDeleteReq"
-    "uest\032@.kentik.alerting.public.v202505.Su"
-    "ppressionServiceDeleteResponse\"\177\222AB\022\022Del"
-    "ete Suppression\032$Deletes a suppression c"
-    "onfiguration.*\006Delete\362\327\002\024admin.alerting:"
-    "write\202\323\344\223\002\034*\032/v202505/suppressions/{id}\032"
-    ",\312A\023grpc.api.kentik.com\352\327\002\016admin.alertin"
-    "g\220\330\002\003B\275\004ZIgithub.com/kentik/api-schema-p"
-    "ublic/gen/go/kentik/alerting/public/v202"
-    "505\222A\356\003\022\242\002\n\031Alerting Suppressions API\022\264\001"
-    "# Overview\nThe Alerts Suppressions API p"
-    "rovides programmatic access to Kentik\'s "
-    "capabilities of configuring and managing"
-    " alert suppressions, preventing alerts f"
-    "rom being activated.\"E\n\026Kentik API Engin"
-    "eering\022+https://github.com/kentik/api-sc"
-    "hema-public2\007v202505*\001\0022\020application/jso"
-    "n:\020application/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH"
-    "-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-AP"
-    "I-Token \002b\026\n\t\n\005email\022\000\n\t\n\005token\022\000rB\n\033Ken"
-    "tik Alerts documentation\022#https://kb.ken"
-    "tik.com/docs/alertingb\006proto3"
+    "t\022U\n\014display_name\030\013 \001(\tB2\222A,2*The name o"
+    "f the suppression configuration.\340A\001R\013dis"
+    "playName\022\201\001\n\nseverities\030\014 \003(\0162\'.kentik.a"
+    "lerting.types.v202303.SeverityB8\222A220The"
+    " alarm severities the suppression applie"
+    "s to.\340A\001R\nseverities\"\242\001\n\037SuppressionServ"
+    "iceCreateRequest\022\177\n\013suppression\030\001 \001(\0132+."
+    "kentik.alerting.public.v202505.Suppressi"
+    "onB0\222A*2(The suppression configuration t"
+    "o create.\340A\002R\013suppression\"\253\001\n Suppressio"
+    "nServiceCreateResponse\022\206\001\n\013suppression\030\001"
+    " \001(\0132+.kentik.alerting.public.v202505.Su"
+    "ppressionB7\222A12/The suppression configur"
+    "ation that was created.\340A\003R\013suppression\""
+    "g\n\034SuppressionServiceGetRequest\022G\n\002id\030\001 "
+    "\001(\tB7\222A12/The ID of the suppression conf"
+    "iguration to get.\340A\002R\002id\"\252\001\n\035Suppression"
+    "ServiceGetResponse\022\210\001\n\013suppression\030\001 \001(\013"
+    "2+.kentik.alerting.public.v202505.Suppre"
+    "ssionB9\222A321The suppression configuratio"
+    "n that was retrieved.\340A\003R\013suppression\"\264\003"
+    "\n\035SuppressionServiceListRequest\022\213\001\n\npagi"
+    "nation\030\001 \001(\0132/.kentik.alerting.types.v20"
+    "2506.PaginationConfigB:\222A422The paginati"
+    "on configuration for the list request.\340A"
+    "\001R\npagination\022\177\n\007sorting\030\002 \001(\0132,.kentik."
+    "alerting.types.v202506.SortingConfigB7\222A"
+    "12/The sorting configuration for the lis"
+    "t request.\340A\001R\007sorting\022\203\001\n\007filters\030\003 \001(\013"
+    "22.kentik.alerting.public.v202505.Suppre"
+    "ssionFiltersB5\222A/2-The suppression filte"
+    "rs for the list request.\340A\001R\007filters\"\336\007\n"
+    "\022SuppressionFilters\022c\n\017suppression_ids\030\001"
+    " \003(\tB:\222A422The IDs of the suppression co"
+    "nfigurations to list.\340A\001R\016suppressionIds"
+    "\022\214\001\n\007sources\030\003 \003(\0132&.kentik.alerting.pub"
+    "lic.v202505.SourceBJ\222AD2BThe source poli"
+    "cies the suppression configurations are "
+    "applied to.\340A\001R\007sources\022c\n\010user_ids\030\004 \003("
+    "\tBH\222AB2@The IDs of the users who created"
+    " the suppression configurations.\340A\001R\007use"
+    "rIds\022\227\001\n\ncreated_at\030\005 \001(\0132(.kentik.alert"
+    "ing.types.v202303.TimeRangeBN\222AH2FThe ti"
+    "me range for the created time of the sup"
+    "pression configurations.\340A\001R\tcreatedAt\022\232"
+    "\001\n\013modified_at\030\006 \001(\0132(.kentik.alerting.t"
+    "ypes.v202303.TimeRangeBO\222AI2GThe time ra"
+    "nge for the modified time of the suppres"
+    "sion configurations.\340A\001R\nmodifiedAt\022\232\001\n\r"
+    "start_time_at\030\007 \001(\0132(.kentik.alerting.ty"
+    "pes.v202303.TimeRangeBL\222AF2DThe time ran"
+    "ge for the start time of the suppression"
+    " configurations.\340A\001R\013startTimeAt\022\224\001\n\013end"
+    "_time_at\030\010 \001(\0132(.kentik.alerting.types.v"
+    "202303.TimeRangeBJ\222AD2BThe time range fo"
+    "r the end time of the suppression config"
+    "urations.\340A\001R\tendTimeAtJ\004\010\002\020\003\"\313\002\n\036Suppre"
+    "ssionServiceListResponse\022\210\001\n\npagination\030"
+    "\001 \001(\0132-.kentik.alerting.types.v202506.Pa"
+    "ginationInfoB9\222A321The pagination inform"
+    "ation for the list response.\340A\003R\npaginat"
+    "ion\022\235\001\n\014suppressions\030\002 \003(\0132+.kentik.aler"
+    "ting.public.v202505.SuppressionBL\222AF2DTh"
+    "e suppression configurations that were f"
+    "ound matching the filters.\340A\003R\014suppressi"
+    "ons\"\245\001\n SuppressionServiceReplaceRequest"
+    "\022\200\001\n\013suppression\030\001 \001(\0132+.kentik.alerting"
+    ".public.v202505.SuppressionB1\222A+2)The su"
+    "ppression configuration to replace.\340A\002R\013"
+    "suppression\"\273\001\n!SuppressionServiceReplac"
+    "eResponse\022\225\001\n\013suppression\030\001 \001(\0132+.kentik"
+    ".alerting.public.v202505.SuppressionBF\222A"
+    "@2>Current suppression configuration aft"
+    "er the replace operation.\340A\003R\013suppressio"
+    "n\"m\n\037SuppressionServiceDeleteRequest\022J\n\002"
+    "id\030\001 \001(\tB:\222A422The ID of the suppression"
+    " configuration to delete.\340A\002R\002id\"\"\n Supp"
+    "ressionServiceDeleteResponse2\231\013\n\022Suppres"
+    "sionService\022\217\002\n\006Create\022\?.kentik.alerting"
+    ".public.v202505.SuppressionServiceCreate"
+    "Request\032@.kentik.alerting.public.v202505"
+    ".SuppressionServiceCreateResponse\"\201\001\222AF\022"
+    "\022Create Suppression\032(Creates a new suppr"
+    "ession configuration.*\006Create\362\327\002\024admin.a"
+    "lerting:write\202\323\344\223\002\032\"\025/v202505/suppressio"
+    "ns:\001*\022\374\001\n\003Get\022<.kentik.alerting.public.v"
+    "202505.SuppressionServiceGetRequest\032=.ke"
+    "ntik.alerting.public.v202505.Suppression"
+    "ServiceGetResponse\"x\222A<\022\017Get Suppression"
+    "\032$Returns a suppression configuration.*\003"
+    "Get\362\327\002\023admin.alerting:read\202\323\344\223\002\034\022\032/v2025"
+    "05/suppressions/{id}\022\217\002\n\004List\022=.kentik.a"
+    "lerting.public.v202505.SuppressionServic"
+    "eListRequest\032>.kentik.alerting.public.v2"
+    "02505.SuppressionServiceListResponse\"\207\001\222"
+    "AH\022\021List Suppressions\032-Returns a list of"
+    " suppression configurations.*\004List\362\327\002\023ad"
+    "min.alerting:read\202\323\344\223\002\037\"\032/v202505/suppre"
+    "ssions/list:\001*\022\242\002\n\007Replace\022@.kentik.aler"
+    "ting.public.v202505.SuppressionServiceRe"
+    "placeRequest\032A.kentik.alerting.public.v2"
+    "02505.SuppressionServiceReplaceResponse\""
+    "\221\001\222AE\022\023Replace Suppression\032%Replaces a s"
+    "uppression configuration.*\007Replace\362\327\002\024ad"
+    "min.alerting:write\202\323\344\223\002+2&/v202505/suppr"
+    "essions/{suppression.id}:\001*\022\214\002\n\006Delete\022\?"
+    ".kentik.alerting.public.v202505.Suppress"
+    "ionServiceDeleteRequest\032@.kentik.alertin"
+    "g.public.v202505.SuppressionServiceDelet"
+    "eResponse\"\177\222AB\022\022Delete Suppression\032$Dele"
+    "tes a suppression configuration.*\006Delete"
+    "\362\327\002\024admin.alerting:write\202\323\344\223\002\034*\032/v202505"
+    "/suppressions/{id}\032,\312A\023grpc.api.kentik.c"
+    "om\352\327\002\016admin.alerting\220\330\002\003B\275\004ZIgithub.com/"
+    "kentik/api-schema-public/gen/go/kentik/a"
+    "lerting/public/v202505\222A\356\003\022\242\002\n\031Alerting "
+    "Suppressions API\022\264\001# Overview\nThe Alerts"
+    " Suppressions API provides programmatic "
+    "access to Kentik\'s capabilities of confi"
+    "guring and managing alert suppressions, "
+    "preventing alerts from being activated.\""
+    "E\n\026Kentik API Engineering\022+https://githu"
+    "b.com/kentik/api-schema-public2\007v202505*"
+    "\001\0022\020application/json:\020application/jsonZD"
+    "\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005toke"
+    "n\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email\022"
+    "\000\n\t\n\005token\022\000rB\n\033Kentik Alerts documentat"
+    "ion\022#https://kb.kentik.com/docs/alerting"
+    "b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fsuppressions_2eproto_deps[11] =
     {
@@ -732,7 +747,7 @@ static ::absl::once_flag descriptor_table_kentik_2falerting_2fpublic_2fv202505_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fsuppressions_2eproto = {
     false,
     false,
-    6709,
+    6928,
     descriptor_table_protodef_kentik_2falerting_2fpublic_2fv202505_2fsuppressions_2eproto,
     "kentik/alerting/public/v202505/suppressions.proto",
     &descriptor_table_kentik_2falerting_2fpublic_2fv202505_2fsuppressions_2eproto_once,
@@ -803,9 +818,12 @@ inline PROTOBUF_NDEBUG_INLINE Suppression::Impl_::Impl_(
     const Impl_& from, const ::kentik::alerting::public_::v202505::Suppression& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
+        severities_{visibility, arena, from.severities_},
+        _severities_cached_byte_size_{0},
         id_(arena, from.id_),
         user_id_(arena, from.user_id_),
-        comment_(arena, from.comment_) {}
+        comment_(arena, from.comment_),
+        display_name_(arena, from.display_name_) {}
 
 Suppression::Suppression(
     ::google::protobuf::Arena* arena,
@@ -847,9 +865,12 @@ inline PROTOBUF_NDEBUG_INLINE Suppression::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : _cached_size_{0},
+        severities_{visibility, arena},
+        _severities_cached_byte_size_{0},
         id_(arena),
         user_id_(arena),
-        comment_(arena) {}
+        comment_(arena),
+        display_name_(arena) {}
 
 inline void Suppression::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
@@ -871,6 +892,7 @@ inline void Suppression::SharedDtor(MessageLite& self) {
   this_._impl_.id_.Destroy();
   this_._impl_.user_id_.Destroy();
   this_._impl_.comment_.Destroy();
+  this_._impl_.display_name_.Destroy();
   delete this_._impl_.source_;
   delete this_._impl_.key_filter_;
   delete this_._impl_.start_time_at_;
@@ -885,8 +907,20 @@ inline void* Suppression::PlacementNew_(const void*, void* mem,
   return ::new (mem) Suppression(arena);
 }
 constexpr auto Suppression::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Suppression),
-                                            alignof(Suppression));
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(Suppression, _impl_.severities_) +
+          decltype(Suppression::_impl_.severities_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(Suppression), alignof(Suppression), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&Suppression::PlacementNew_,
+                                 sizeof(Suppression),
+                                 alignof(Suppression));
+  }
 }
 PROTOBUF_CONSTINIT
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
@@ -916,15 +950,15 @@ const ::google::protobuf::internal::ClassData* Suppression::GetClassData() const
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 10, 6, 75, 2> Suppression::_table_ = {
+const ::_pbi::TcParseTable<4, 12, 6, 87, 2> Suppression::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(Suppression, _impl_._has_bits_),
     0, // no _extensions_
-    10, 120,  // max_field_number, fast_idx_mask
+    12, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294966272,  // skipmap
+    4294963200,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    10,  // num_field_entries
+    12,  // num_field_entries
     6,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -965,8 +999,12 @@ const ::_pbi::TcParseTable<4, 10, 6, 75, 2> Suppression::_table_ = {
     // .google.protobuf.Timestamp modified_at = 10 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtS1,
      {82, 5, 5, PROTOBUF_FIELD_OFFSET(Suppression, _impl_.modified_at_)}},
-    {::_pbi::TcParser::MiniParse, {}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // string display_name = 11 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {90, 63, 0, PROTOBUF_FIELD_OFFSET(Suppression, _impl_.display_name_)}},
+    // repeated .kentik.alerting.types.v202303.Severity severities = 12 [json_name = "severities", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastV32P1,
+     {98, 63, 0, PROTOBUF_FIELD_OFFSET(Suppression, _impl_.severities_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
@@ -1003,6 +1041,12 @@ const ::_pbi::TcParseTable<4, 10, 6, 75, 2> Suppression::_table_ = {
     // .google.protobuf.Timestamp modified_at = 10 [json_name = "modifiedAt", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(Suppression, _impl_.modified_at_), _Internal::kHasBitsOffset + 5, 5,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+    // string display_name = 11 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(Suppression, _impl_.display_name_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // repeated .kentik.alerting.types.v202303.Severity severities = 12 [json_name = "severities", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(Suppression, _impl_.severities_), -1, 0,
+    (0 | ::_fl::kFcRepeated | ::_fl::kPackedOpenEnum)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::alerting::public_::v202505::Source>()},
     {::_pbi::TcParser::GetTable<::kentik::alerting::types::v202303::MultiAttributeFilter>()},
@@ -1011,11 +1055,12 @@ const ::_pbi::TcParseTable<4, 10, 6, 75, 2> Suppression::_table_ = {
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
   }}, {{
-    "\52\2\7\0\0\0\7\0\0\0\0\0\0\0\0\0"
+    "\52\2\7\0\0\0\7\0\0\0\0\14\0\0\0\0"
     "kentik.alerting.public.v202505.Suppression"
     "id"
     "user_id"
     "comment"
+    "display_name"
   }},
 };
 
@@ -1026,9 +1071,11 @@ PROTOBUF_NOINLINE void Suppression::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.severities_.Clear();
   _impl_.id_.ClearToEmpty();
   _impl_.user_id_.ClearToEmpty();
   _impl_.comment_.ClearToEmpty();
+  _impl_.display_name_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x0000003fu) {
     if (cached_has_bits & 0x00000001u) {
@@ -1150,6 +1197,24 @@ PROTOBUF_NOINLINE void Suppression::Clear() {
                 stream);
           }
 
+          // string display_name = 11 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_display_name().empty()) {
+            const std::string& _s = this_._internal_display_name();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.alerting.public.v202505.Suppression.display_name");
+            target = stream->WriteStringMaybeAliased(11, _s, target);
+          }
+
+          // repeated .kentik.alerting.types.v202303.Severity severities = 12 [json_name = "severities", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          {
+            std::size_t byte_size =
+                                              this_._impl_._severities_cached_byte_size_.Get();
+            if (byte_size > 0) {
+              target = stream->WriteEnumPacked(
+                  12, this_._internal_severities(), byte_size, target);
+            }
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -1175,6 +1240,13 @@ PROTOBUF_NOINLINE void Suppression::Clear() {
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
            {
+            // repeated .kentik.alerting.types.v202303.Severity severities = 12 [json_name = "severities", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size += ::_pbi::WireFormatLite::EnumSizeWithPackedTagSize(
+                  this_._internal_severities(), 1, this_._impl_._severities_cached_byte_size_);
+            }
+          }
+           {
             // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             if (!this_._internal_id().empty()) {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -1189,6 +1261,11 @@ PROTOBUF_NOINLINE void Suppression::Clear() {
             if (!this_._internal_comment().empty()) {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_comment());
+            }
+            // string display_name = 11 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_display_name().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_display_name());
             }
           }
           cached_has_bits = this_._impl_._has_bits_[0];
@@ -1243,6 +1320,7 @@ void Suppression::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::goo
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_internal_mutable_severities()->MergeFrom(from._internal_severities());
   if (!from._internal_id().empty()) {
     _this->_internal_set_id(from._internal_id());
   }
@@ -1251,6 +1329,9 @@ void Suppression::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::goo
   }
   if (!from._internal_comment().empty()) {
     _this->_internal_set_comment(from._internal_comment());
+  }
+  if (!from._internal_display_name().empty()) {
+    _this->_internal_set_display_name(from._internal_display_name());
   }
   cached_has_bits = from._impl_._has_bits_[0];
   if (cached_has_bits & 0x0000003fu) {
@@ -1330,9 +1411,11 @@ void Suppression::InternalSwap(Suppression* PROTOBUF_RESTRICT other) {
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.severities_.InternalSwap(&other->_impl_.severities_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, &other->_impl_.id_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.user_id_, &other->_impl_.user_id_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.comment_, &other->_impl_.comment_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.display_name_, &other->_impl_.display_name_, arena);
   ::google::protobuf::internal::memswap<
       PROTOBUF_FIELD_OFFSET(Suppression, _impl_.strict_)
       + sizeof(Suppression::_impl_.strict_)

@@ -449,6 +449,19 @@
                     }
                 }
             },
+            "v202303Severity": {
+                "type": "string",
+                "enum": [
+                    "SEVERITY_UNSPECIFIED",
+                    "SEVERITY_CLEAR",
+                    "SEVERITY_MINOR",
+                    "SEVERITY_WARNING",
+                    "SEVERITY_MAJOR",
+                    "SEVERITY_SEVERE",
+                    "SEVERITY_CRITICAL"
+                ],
+                "default": "SEVERITY_UNSPECIFIED"
+            },
             "v202303SimpleAttributeFilter": {
                 "type": "object",
                 "properties": {
@@ -583,6 +596,17 @@
                         "format": "date-time",
                         "description": "The time when the suppression configuration was last modified.",
                         "readOnly": true
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The name of the suppression configuration."
+                    },
+                    "severities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202303Severity"
+                        },
+                        "description": "The alarm severities the suppression applies to."
                     }
                 },
                 "required": [
@@ -733,6 +757,17 @@
                                 "format": "date-time",
                                 "description": "The time when the suppression configuration was last modified.",
                                 "readOnly": true
+                            },
+                            "displayName": {
+                                "type": "string",
+                                "description": "The name of the suppression configuration."
+                            },
+                            "severities": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/v202303Severity"
+                                },
+                                "description": "The alarm severities the suppression applies to."
                             }
                         }
                     }

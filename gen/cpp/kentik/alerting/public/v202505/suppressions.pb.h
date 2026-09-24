@@ -1349,9 +1349,11 @@ class Suppression final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
+    kSeveritiesFieldNumber = 12,
     kIdFieldNumber = 1,
     kUserIdFieldNumber = 2,
     kCommentFieldNumber = 6,
+    kDisplayNameFieldNumber = 11,
     kSourceFieldNumber = 3,
     kKeyFilterFieldNumber = 4,
     kStartTimeAtFieldNumber = 7,
@@ -1360,6 +1362,25 @@ class Suppression final : public ::google::protobuf::Message
     kModifiedAtFieldNumber = 10,
     kStrictFieldNumber = 5,
   };
+  // repeated .kentik.alerting.types.v202303.Severity severities = 12 [json_name = "severities", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int severities_size() const;
+  private:
+  int _internal_severities_size() const;
+
+  public:
+  void clear_severities() ;
+  public:
+  ::kentik::alerting::types::v202303::Severity severities(int index) const;
+  void set_severities(int index, ::kentik::alerting::types::v202303::Severity value);
+  void add_severities(::kentik::alerting::types::v202303::Severity value);
+  const ::google::protobuf::RepeatedField<int>& severities() const;
+  ::google::protobuf::RepeatedField<int>* mutable_severities();
+
+  private:
+  const ::google::protobuf::RepeatedField<int>& _internal_severities() const;
+  ::google::protobuf::RepeatedField<int>* _internal_mutable_severities();
+
+  public:
   // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_id() ;
   const std::string& id() const;
@@ -1406,6 +1427,22 @@ class Suppression final : public ::google::protobuf::Message
   inline PROTOBUF_ALWAYS_INLINE void _internal_set_comment(
       const std::string& value);
   std::string* _internal_mutable_comment();
+
+  public:
+  // string display_name = 11 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_display_name() ;
+  const std::string& display_name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_display_name(Arg_&& arg, Args_... args);
+  std::string* mutable_display_name();
+  PROTOBUF_NODISCARD std::string* release_display_name();
+  void set_allocated_display_name(std::string* value);
+
+  private:
+  const std::string& _internal_display_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_display_name(
+      const std::string& value);
+  std::string* _internal_mutable_display_name();
 
   public:
   // .kentik.alerting.public.v202505.Source source = 3 [json_name = "source", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1513,8 +1550,8 @@ class Suppression final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 10, 6,
-      75, 2>
+      4, 12, 6,
+      87, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1533,9 +1570,12 @@ class Suppression final : public ::google::protobuf::Message
                           const Suppression& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedField<int> severities_;
+    ::google::protobuf::internal::CachedSize _severities_cached_byte_size_;
     ::google::protobuf::internal::ArenaStringPtr id_;
     ::google::protobuf::internal::ArenaStringPtr user_id_;
     ::google::protobuf::internal::ArenaStringPtr comment_;
+    ::google::protobuf::internal::ArenaStringPtr display_name_;
     ::kentik::alerting::public_::v202505::Source* source_;
     ::kentik::alerting::types::v202303::MultiAttributeFilter* key_filter_;
     ::google::protobuf::Timestamp* start_time_at_;
@@ -3470,6 +3510,99 @@ inline void Suppression::set_allocated_modified_at(::google::protobuf::Timestamp
 
   _impl_.modified_at_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
   // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.Suppression.modified_at)
+}
+
+// string display_name = 11 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void Suppression::clear_display_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.display_name_.ClearToEmpty();
+}
+inline const std::string& Suppression::display_name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.Suppression.display_name)
+  return _internal_display_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Suppression::set_display_name(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.display_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.Suppression.display_name)
+}
+inline std::string* Suppression::mutable_display_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_display_name();
+  // @@protoc_insertion_point(field_mutable:kentik.alerting.public.v202505.Suppression.display_name)
+  return _s;
+}
+inline const std::string& Suppression::_internal_display_name() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.display_name_.Get();
+}
+inline void Suppression::_internal_set_display_name(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.display_name_.Set(value, GetArena());
+}
+inline std::string* Suppression::_internal_mutable_display_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.display_name_.Mutable( GetArena());
+}
+inline std::string* Suppression::release_display_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.alerting.public.v202505.Suppression.display_name)
+  return _impl_.display_name_.Release();
+}
+inline void Suppression::set_allocated_display_name(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.display_name_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.display_name_.IsDefault()) {
+    _impl_.display_name_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.alerting.public.v202505.Suppression.display_name)
+}
+
+// repeated .kentik.alerting.types.v202303.Severity severities = 12 [json_name = "severities", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int Suppression::_internal_severities_size() const {
+  return _internal_severities().size();
+}
+inline int Suppression::severities_size() const {
+  return _internal_severities_size();
+}
+inline void Suppression::clear_severities() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.severities_.Clear();
+}
+inline ::kentik::alerting::types::v202303::Severity Suppression::severities(int index) const {
+  // @@protoc_insertion_point(field_get:kentik.alerting.public.v202505.Suppression.severities)
+  return static_cast<::kentik::alerting::types::v202303::Severity>(_internal_severities().Get(index));
+}
+inline void Suppression::set_severities(int index, ::kentik::alerting::types::v202303::Severity value) {
+  _internal_mutable_severities()->Set(index, value);
+  // @@protoc_insertion_point(field_set:kentik.alerting.public.v202505.Suppression.severities)
+}
+inline void Suppression::add_severities(::kentik::alerting::types::v202303::Severity value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _internal_mutable_severities()->Add(value);
+  // @@protoc_insertion_point(field_add:kentik.alerting.public.v202505.Suppression.severities)
+}
+inline const ::google::protobuf::RepeatedField<int>& Suppression::severities() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.alerting.public.v202505.Suppression.severities)
+  return _internal_severities();
+}
+inline ::google::protobuf::RepeatedField<int>* Suppression::mutable_severities()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.alerting.public.v202505.Suppression.severities)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_severities();
+}
+inline const ::google::protobuf::RepeatedField<int>& Suppression::_internal_severities()
+    const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.severities_;
+}
+inline ::google::protobuf::RepeatedField<int>* Suppression::_internal_mutable_severities() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.severities_;
 }
 
 // -------------------------------------------------------------------

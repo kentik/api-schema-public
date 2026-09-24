@@ -58,10 +58,13 @@ struct  Kentik__Alerting__Public__V202505__Suppression
   Google__Protobuf__Timestamp *end_time_at;
   Google__Protobuf__Timestamp *created_at;
   Google__Protobuf__Timestamp *modified_at;
+  char *display_name;
+  size_t n_severities;
+  Kentik__Alerting__Types__V202303__Severity *severities;
 };
 #define KENTIK__ALERTING__PUBLIC__V202505__SUPPRESSION__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__alerting__public__v202505__suppression__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, 0, (char *)protobuf_c_empty_string, NULL, NULL, NULL, NULL }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, 0, (char *)protobuf_c_empty_string, NULL, NULL, NULL, NULL, (char *)protobuf_c_empty_string, 0,NULL }
 
 
 struct  Kentik__Alerting__Public__V202505__SuppressionServiceCreateRequest

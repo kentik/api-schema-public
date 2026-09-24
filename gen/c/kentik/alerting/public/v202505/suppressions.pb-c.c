@@ -547,7 +547,7 @@ void   kentik__alerting__public__v202505__suppression_service_delete_response__f
   assert(message->base.descriptor == &kentik__alerting__public__v202505__suppression_service_delete_response__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__suppression__field_descriptors[10] =
+static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__suppression__field_descriptors[12] =
 {
   {
     "id",
@@ -669,14 +669,40 @@ static const ProtobufCFieldDescriptor kentik__alerting__public__v202505__suppres
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "display_name",
+    11,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Alerting__Public__V202505__Suppression, display_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "severities",
+    12,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_ENUM,
+    offsetof(Kentik__Alerting__Public__V202505__Suppression, n_severities),
+    offsetof(Kentik__Alerting__Public__V202505__Suppression, severities),
+    &kentik__alerting__types__v202303__severity__descriptor,
+    NULL,
+    PROTOBUF_C_FIELD_FLAG_PACKED,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__alerting__public__v202505__suppression__field_indices_by_name[] = {
   5,   /* field[5] = comment */
   8,   /* field[8] = created_at */
+  10,   /* field[10] = display_name */
   7,   /* field[7] = end_time_at */
   0,   /* field[0] = id */
   3,   /* field[3] = key_filter */
   9,   /* field[9] = modified_at */
+  11,   /* field[11] = severities */
   2,   /* field[2] = source */
   6,   /* field[6] = start_time_at */
   4,   /* field[4] = strict */
@@ -685,7 +711,7 @@ static const unsigned kentik__alerting__public__v202505__suppression__field_indi
 static const ProtobufCIntRange kentik__alerting__public__v202505__suppression__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 10 }
+  { 0, 12 }
 };
 const ProtobufCMessageDescriptor kentik__alerting__public__v202505__suppression__descriptor =
 {
@@ -695,7 +721,7 @@ const ProtobufCMessageDescriptor kentik__alerting__public__v202505__suppression_
   "Kentik__Alerting__Public__V202505__Suppression",
   "kentik.alerting.public.v202505",
   sizeof(Kentik__Alerting__Public__V202505__Suppression),
-  10,
+  12,
   kentik__alerting__public__v202505__suppression__field_descriptors,
   kentik__alerting__public__v202505__suppression__field_indices_by_name,
   1,  kentik__alerting__public__v202505__suppression__number_ranges,
