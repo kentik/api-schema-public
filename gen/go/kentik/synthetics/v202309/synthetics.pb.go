@@ -5835,10 +5835,10 @@ const file_kentik_synthetics_v202309_synthetics_proto_rawDesc = "" +
 	"filter_ids\x18\x04 \x03(\rB(\x92A%2#List of IDs to include in the groupR\tfilterIds\"\x8c\x02\n" +
 	"\x14GroupedAlertSettings\x12p\n" +
 	"\adefault\x18\x01 \x01(\v2..kentik.synthetics.v202309.GroupedAlertSettingB&\x92A#2!Default grouped alerting settingsR\adefault\x12\x81\x01\n" +
-	"\toverrides\x18\x02 \x03(\v2..kentik.synthetics.v202309.GroupedAlertSettingB3\x92A02.Overrides to default grouped alerting settingsR\toverrides\"\x9c\x03\n" +
+	"\toverrides\x18\x02 \x03(\v2..kentik.synthetics.v202309.GroupedAlertSettingB3\x92A02.Overrides to default grouped alerting settingsR\toverrides\"\xe1\x03\n" +
 	"\x10AlertingSettings\x12\x90\x01\n" +
-	"\x1ddisable_warning_notifications\x18\x01 \x01(\bBL\x92AI2GBoolean indicating whether to disable warning-level alert notificationsR\x1bdisableWarningNotifications\x12m\n" +
-	"\ralerting_type\x18\x02 \x01(\x0e2'.kentik.synthetics.v202309.AlertingTypeB\x1f\x92A\x1c2\x1aAlerting type for the testR\falertingType\x12\x85\x01\n" +
+	"\x1ddisable_warning_notifications\x18\x01 \x01(\bBL\x92AI2GBoolean indicating whether to disable warning-level alert notificationsR\x1bdisableWarningNotifications\x12\xb1\x01\n" +
+	"\ralerting_type\x18\x02 \x01(\x0e2'.kentik.synthetics.v202309.AlertingTypeBc\x92A`2^Alerting type for the test: per-agent (ALERTING_TYPE_AGENT) or grouped (ALERTING_TYPE_GROUPED)R\falertingType\x12\x85\x01\n" +
 	"\x16grouped_alert_settings\x18\x03 \x01(\v2/.kentik.synthetics.v202309.GroupedAlertSettingsB\x1e\x92A\x1b2\x19Grouped alerting settingsR\x14groupedAlertSettings\"\xc6\x03\n" +
 	"\x12ActivationSettings\x12\x82\x01\n" +
 	"\fgrace_period\x18\x01 \x01(\tB_\x92A\\2ZPeriod of healthy status in minutes within the time window not cancelling alarm activationR\vgracePeriod\x12N\n" +
@@ -6197,8 +6197,8 @@ const file_kentik_synthetics_v202309_synthetics_proto_rawDesc = "" +
 	"\x10UpdateAgentAlert\x122.kentik.synthetics.v202309.UpdateAgentAlertRequest\x1a3.kentik.synthetics.v202309.UpdateAgentAlertResponse\"\x8b\x02\x92A\xa2\x01\x12#Update an agent alert configuration\x1aiUpdates an existing agent alert configuration with the time threshold and notification channels provided.*\x10UpdateAgentAlert\xf2\xd7\x02\x16admin.synthetics:write\x92\xd8\x02\x18synthetics.agent::update\x82\xd3\xe4\x93\x02):\x01*\x1a$/synthetics/v202309/agentAlerts/{id}\x12\xba\x02\n" +
 	"\rGetAgentAlert\x12/.kentik.synthetics.v202309.GetAgentAlertRequest\x1a0.kentik.synthetics.v202309.GetAgentAlertResponse\"\xc5\x01\x92Ac\x12 Get an agent alert configuration\x1a0Retrieves an existing agent alert configuration.*\rGetAgentAlert\xf2\xd7\x02\x15admin.synthetics:read\x92\xd8\x02\x16synthetics.agent::read\x82\xd3\xe4\x93\x02&\x12$/synthetics/v202309/agentAlerts/{id}\x12\xde\x02\n" +
 	"\x0fListAgentAlerts\x121.kentik.synthetics.v202309.ListAgentAlertsRequest\x1a2.kentik.synthetics.v202309.ListAgentAlertsResponse\"\xe3\x01\x92A\x85\x01\x12\x1fList agent alert configurations\x1aQLists all agent alert configurations, optionally filtered by a list of agent ids.*\x0fListAgentAlerts\xf2\xd7\x02\x15admin.synthetics:read\x92\xd8\x02\x16synthetics.agent::read\x82\xd3\xe4\x93\x02!\x12\x1f/synthetics/v202309/agentAlerts\x12\xca\x02\n" +
-	"\x10DeleteAgentAlert\x122.kentik.synthetics.v202309.DeleteAgentAlertRequest\x1a3.kentik.synthetics.v202309.DeleteAgentAlertResponse\"\xcc\x01\x92Ag\x12#Delete an agent alert configuration\x1a.Deletes an existing agent alert configuration.*\x10DeleteAgentAlert\xf2\xd7\x02\x16admin.synthetics:write\x92\xd8\x02\x18synthetics.agent::delete\x82\xd3\xe4\x93\x02&*$/synthetics/v202309/agentAlerts/{id}\x1a.\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\x10admin.synthetics\x90\xd8\x02\x03B\xcbB\x92A\xf6A\x12\x8c@\n" +
-	"\x19Synthetics Monitoring API\x12\x9e?# Overview\n" +
+	"\x10DeleteAgentAlert\x122.kentik.synthetics.v202309.DeleteAgentAlertRequest\x1a3.kentik.synthetics.v202309.DeleteAgentAlertResponse\"\xcc\x01\x92Ag\x12#Delete an agent alert configuration\x1a.Deletes an existing agent alert configuration.*\x10DeleteAgentAlert\xf2\xd7\x02\x16admin.synthetics:write\x92\xd8\x02\x18synthetics.agent::delete\x82\xd3\xe4\x93\x02&*$/synthetics/v202309/agentAlerts/{id}\x1a.\xcaA\x13grpc.api.kentik.com\xea\xd7\x02\x10admin.synthetics\x90\xd8\x02\x03B\xc1D\x92A\xecC\x12\x82B\n" +
+	"\x19Synthetics Monitoring API\x12\x94A# Overview\n" +
 	"The Synthetics Monitoring API provides programmatic access to Kentik's [synthetic monitoring system](https://kb.kentik.com/v4/Ma00.htm). The API consists of two endpoints:\n" +
 	"| Endpoint | Purpose |\n" +
 	"|-----------|---------|\n" +
@@ -6272,6 +6272,7 @@ const file_kentik_synthetics_v202309_synthetics_proto_rawDesc = "" +
 	"| trace | A TestTraceSettings object that configures the trace task of the test | NO (default depends on test type) |\n" +
 	"| throughput | A TestThroughputSettings object that configures the throughput task of the test | NO (default depends on test type) |\n" +
 	"| tasks | List of names of the tasks that will be executed for this test | YES |\n" +
+	"| alerting | An AlertingSettings object that configures alerting behavior for the test: alerting type (per-agent or grouped), whether warning notifications are suppressed, and grouped alerting settings | NO (default alerting type is per-agent) |\n" +
 	"\n" +
 	"### Type-specific Settings\n" +
 	"Each test type has its own configuration object that represents the settings for that type. These type-specific objects are referenced by the attributes in `Test.settings`:\n" +

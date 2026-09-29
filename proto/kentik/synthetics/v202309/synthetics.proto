@@ -103,6 +103,7 @@ option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
 		"| trace | A TestTraceSettings object that configures the trace task of the test | NO (default depends on test type) |\n"
     "| throughput | A TestThroughputSettings object that configures the throughput task of the test | NO (default depends on test type) |\n"
 		"| tasks | List of names of the tasks that will be executed for this test | YES |\n"
+		"| alerting | An AlertingSettings object that configures alerting behavior for the test: alerting type (per-agent or grouped), whether warning notifications are suppressed, and grouped alerting settings | NO (default alerting type is per-agent) |\n"
 	"\n"
 	"### Type-specific Settings\n"
 	"Each test type has its own configuration object that represents the settings for that type. These type-specific "
@@ -780,7 +781,7 @@ message AlertingSettings {
 
   AlertingType alerting_type = 2 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-      description: "Alerting type for the test"
+      description: "Alerting type for the test: per-agent (ALERTING_TYPE_AGENT) or grouped (ALERTING_TYPE_GROUPED)"
     }
   ];
 
