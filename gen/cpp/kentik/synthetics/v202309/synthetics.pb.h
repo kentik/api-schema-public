@@ -13441,6 +13441,8 @@ class AgentMetadata final : public ::google::protobuf::Message
     kPublicIpv4AddressesFieldNumber = 2,
     kPrivateIpv6AddressesFieldNumber = 3,
     kPublicIpv6AddressesFieldNumber = 4,
+    kStaticIpv4FieldNumber = 5,
+    kStaticIpv6FieldNumber = 6,
   };
   // repeated .kentik.synthetics.v202309.AgentMetadata.IpValue private_ipv4_addresses = 1 [json_name = "privateIpv4Addresses", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int private_ipv4_addresses_size() const;
@@ -13510,12 +13512,32 @@ class AgentMetadata final : public ::google::protobuf::Message
   const ::kentik::synthetics::v202309::AgentMetadata_IpValue& public_ipv6_addresses(int index) const;
   ::kentik::synthetics::v202309::AgentMetadata_IpValue* add_public_ipv6_addresses();
   const ::google::protobuf::RepeatedPtrField<::kentik::synthetics::v202309::AgentMetadata_IpValue>& public_ipv6_addresses() const;
+  // bool static_ipv4 = 5 [json_name = "staticIpv4", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_static_ipv4() ;
+  bool static_ipv4() const;
+  void set_static_ipv4(bool value);
+
+  private:
+  bool _internal_static_ipv4() const;
+  void _internal_set_static_ipv4(bool value);
+
+  public:
+  // bool static_ipv6 = 6 [json_name = "staticIpv6", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_static_ipv6() ;
+  bool static_ipv6() const;
+  void set_static_ipv6(bool value);
+
+  private:
+  bool _internal_static_ipv6() const;
+  void _internal_set_static_ipv6(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.synthetics.v202309.AgentMetadata)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 4, 4,
+      3, 6, 4,
       0, 2>
       _table_;
 
@@ -13537,6 +13559,8 @@ class AgentMetadata final : public ::google::protobuf::Message
     ::google::protobuf::RepeatedPtrField< ::kentik::synthetics::v202309::AgentMetadata_IpValue > public_ipv4_addresses_;
     ::google::protobuf::RepeatedPtrField< ::kentik::synthetics::v202309::AgentMetadata_IpValue > private_ipv6_addresses_;
     ::google::protobuf::RepeatedPtrField< ::kentik::synthetics::v202309::AgentMetadata_IpValue > public_ipv6_addresses_;
+    bool static_ipv4_;
+    bool static_ipv6_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -20473,6 +20497,50 @@ inline ::google::protobuf::RepeatedPtrField<::kentik::synthetics::v202309::Agent
 AgentMetadata::_internal_mutable_public_ipv6_addresses() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.public_ipv6_addresses_;
+}
+
+// bool static_ipv4 = 5 [json_name = "staticIpv4", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AgentMetadata::clear_static_ipv4() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.static_ipv4_ = false;
+}
+inline bool AgentMetadata::static_ipv4() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.AgentMetadata.static_ipv4)
+  return _internal_static_ipv4();
+}
+inline void AgentMetadata::set_static_ipv4(bool value) {
+  _internal_set_static_ipv4(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.AgentMetadata.static_ipv4)
+}
+inline bool AgentMetadata::_internal_static_ipv4() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.static_ipv4_;
+}
+inline void AgentMetadata::_internal_set_static_ipv4(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.static_ipv4_ = value;
+}
+
+// bool static_ipv6 = 6 [json_name = "staticIpv6", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AgentMetadata::clear_static_ipv6() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.static_ipv6_ = false;
+}
+inline bool AgentMetadata::static_ipv6() const {
+  // @@protoc_insertion_point(field_get:kentik.synthetics.v202309.AgentMetadata.static_ipv6)
+  return _internal_static_ipv6();
+}
+inline void AgentMetadata::set_static_ipv6(bool value) {
+  _internal_set_static_ipv6(value);
+  // @@protoc_insertion_point(field_set:kentik.synthetics.v202309.AgentMetadata.static_ipv6)
+}
+inline bool AgentMetadata::_internal_static_ipv6() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.static_ipv6_;
+}
+inline void AgentMetadata::_internal_set_static_ipv6(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.static_ipv6_ = value;
 }
 
 // -------------------------------------------------------------------

@@ -367,10 +367,12 @@ struct  Kentik__Synthetics__V202309__AgentMetadata
   Kentik__Synthetics__V202309__AgentMetadata__IpValue **private_ipv6_addresses;
   size_t n_public_ipv6_addresses;
   Kentik__Synthetics__V202309__AgentMetadata__IpValue **public_ipv6_addresses;
+  protobuf_c_boolean static_ipv4;
+  protobuf_c_boolean static_ipv6;
 };
 #define KENTIK__SYNTHETICS__V202309__AGENT_METADATA__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__synthetics__v202309__agent_metadata__descriptor) \
-    , 0,NULL, 0,NULL, 0,NULL, 0,NULL }
+    , 0,NULL, 0,NULL, 0,NULL, 0,NULL, 0, 0 }
 
 
 /*

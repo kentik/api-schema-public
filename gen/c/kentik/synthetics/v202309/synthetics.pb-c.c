@@ -3970,7 +3970,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__agent_metadata__ip
   (ProtobufCMessageInit) kentik__synthetics__v202309__agent_metadata__ip_value__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__synthetics__v202309__agent_metadata__field_descriptors[4] =
+static const ProtobufCFieldDescriptor kentik__synthetics__v202309__agent_metadata__field_descriptors[6] =
 {
   {
     "private_ipv4_addresses",
@@ -4020,17 +4020,43 @@ static const ProtobufCFieldDescriptor kentik__synthetics__v202309__agent_metadat
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "static_ipv4",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__AgentMetadata, static_ipv4),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "static_ipv6",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Synthetics__V202309__AgentMetadata, static_ipv6),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__synthetics__v202309__agent_metadata__field_indices_by_name[] = {
   0,   /* field[0] = private_ipv4_addresses */
   2,   /* field[2] = private_ipv6_addresses */
   1,   /* field[1] = public_ipv4_addresses */
   3,   /* field[3] = public_ipv6_addresses */
+  4,   /* field[4] = static_ipv4 */
+  5,   /* field[5] = static_ipv6 */
 };
 static const ProtobufCIntRange kentik__synthetics__v202309__agent_metadata__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 4 }
+  { 0, 6 }
 };
 const ProtobufCMessageDescriptor kentik__synthetics__v202309__agent_metadata__descriptor =
 {
@@ -4040,7 +4066,7 @@ const ProtobufCMessageDescriptor kentik__synthetics__v202309__agent_metadata__de
   "Kentik__Synthetics__V202309__AgentMetadata",
   "kentik.synthetics.v202309",
   sizeof(Kentik__Synthetics__V202309__AgentMetadata),
-  4,
+  6,
   kentik__synthetics__v202309__agent_metadata__field_descriptors,
   kentik__synthetics__v202309__agent_metadata__field_indices_by_name,
   1,  kentik__synthetics__v202309__agent_metadata__number_ranges,

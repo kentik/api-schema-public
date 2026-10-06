@@ -821,6 +821,8 @@ type AgentMetadata struct {
 	PublicIpv4Addresses  []*AgentMetadata_IpValue `protobuf:"bytes,2,rep,name=public_ipv4_addresses,json=publicIpv4Addresses,proto3" json:"public_ipv4_addresses,omitempty"`
 	PrivateIpv6Addresses []*AgentMetadata_IpValue `protobuf:"bytes,3,rep,name=private_ipv6_addresses,json=privateIpv6Addresses,proto3" json:"private_ipv6_addresses,omitempty"`
 	PublicIpv6Addresses  []*AgentMetadata_IpValue `protobuf:"bytes,4,rep,name=public_ipv6_addresses,json=publicIpv6Addresses,proto3" json:"public_ipv6_addresses,omitempty"`
+	StaticIpv4           bool                     `protobuf:"varint,5,opt,name=static_ipv4,json=staticIpv4,proto3" json:"static_ipv4,omitempty"`
+	StaticIpv6           bool                     `protobuf:"varint,6,opt,name=static_ipv6,json=staticIpv6,proto3" json:"static_ipv6,omitempty"`
 	unknownFields        protoimpl.UnknownFields
 	sizeCache            protoimpl.SizeCache
 }
@@ -881,6 +883,20 @@ func (x *AgentMetadata) GetPublicIpv6Addresses() []*AgentMetadata_IpValue {
 		return x.PublicIpv6Addresses
 	}
 	return nil
+}
+
+func (x *AgentMetadata) GetStaticIpv4() bool {
+	if x != nil {
+		return x.StaticIpv4
+	}
+	return false
+}
+
+func (x *AgentMetadata) GetStaticIpv6() bool {
+	if x != nil {
+		return x.StaticIpv6
+	}
+	return false
 }
 
 // {{.Name}}
@@ -5750,12 +5766,16 @@ const file_kentik_synthetics_v202309_synthetics_proto_rawDesc = "" +
 	"\n" +
 	"agent_impl\x18\x18 \x01(\x0e2(.kentik.synthetics.v202309.ImplementTypeB\x03\xe0A\x03R\tagentImpl\x12N\n" +
 	"\x06labels\x18\x19 \x03(\tB6\x92A321List of names of labels associated with the agentR\x06labels\x12\x90\x01\n" +
-	"\bmetadata\x18\x1a \x01(\v2(.kentik.synthetics.v202309.AgentMetadataBJ\x92AG2EAdditional information about agent's configuration and run-time stateR\bmetadata\"\xe8\x04\n" +
+	"\bmetadata\x18\x1a \x01(\v2(.kentik.synthetics.v202309.AgentMetadataBJ\x92AG2EAdditional information about agent's configuration and run-time stateR\bmetadata\"\xda\x06\n" +
 	"\rAgentMetadata\x12\x8b\x01\n" +
 	"\x16private_ipv4_addresses\x18\x01 \x03(\v20.kentik.synthetics.v202309.AgentMetadata.IpValueB#\x92A 2\x1eList of private IPv4 addressesR\x14privateIpv4Addresses\x12\x8b\x01\n" +
 	"\x15public_ipv4_addresses\x18\x02 \x03(\v20.kentik.synthetics.v202309.AgentMetadata.IpValueB%\x92A\x1f2\x1dList of public IPv4 addresses\xe0A\x03R\x13publicIpv4Addresses\x12\x8b\x01\n" +
 	"\x16private_ipv6_addresses\x18\x03 \x03(\v20.kentik.synthetics.v202309.AgentMetadata.IpValueB#\x92A 2\x1eList of private IPv6 addressesR\x14privateIpv6Addresses\x12\x8b\x01\n" +
-	"\x15public_ipv6_addresses\x18\x04 \x03(\v20.kentik.synthetics.v202309.AgentMetadata.IpValueB%\x92A\x1f2\x1dList of public IPv6 addresses\xe0A\x03R\x13publicIpv6Addresses\x1a\x1f\n" +
+	"\x15public_ipv6_addresses\x18\x04 \x03(\v20.kentik.synthetics.v202309.AgentMetadata.IpValueB%\x92A\x1f2\x1dList of public IPv6 addresses\xe0A\x03R\x13publicIpv6Addresses\x12w\n" +
+	"\vstatic_ipv4\x18\x05 \x01(\bBV\x92AP2NIndicates whether the agent's public IPv4 address is static (does not change).\xe0A\x03R\n" +
+	"staticIpv4\x12w\n" +
+	"\vstatic_ipv6\x18\x06 \x01(\bBV\x92AP2NIndicates whether the agent's public IPv6 address is static (does not change).\xe0A\x03R\n" +
+	"staticIpv6\x1a\x1f\n" +
 	"\aIpValue\x12\x14\n" +
 	"\x05value\x18\x01 \x01(\tR\x05value\"\xb1\x06\n" +
 	"\x04Test\x12-\n" +

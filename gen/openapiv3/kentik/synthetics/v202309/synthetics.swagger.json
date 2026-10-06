@@ -1286,6 +1286,16 @@
                         },
                         "description": "List of public IPv6 addresses",
                         "readOnly": true
+                    },
+                    "staticIpv4": {
+                        "type": "boolean",
+                        "description": "Indicates whether the agent's public IPv4 address is static (does not change).",
+                        "readOnly": true
+                    },
+                    "staticIpv6": {
+                        "type": "boolean",
+                        "description": "Indicates whether the agent's public IPv6 address is static (does not change).",
+                        "readOnly": true
                     }
                 },
                 "title": "AgentMetadata"

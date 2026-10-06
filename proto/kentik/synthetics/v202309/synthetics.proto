@@ -368,6 +368,18 @@ message AgentMetadata {
       description: "List of public IPv6 addresses"
     }
   ];
+  bool static_ipv4 = 5 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indicates whether the agent's public IPv4 address is static (does not change)."
+    }
+  ];
+  bool static_ipv6 = 6 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Indicates whether the agent's public IPv6 address is static (does not change)."
+    }
+  ];
 
   message IpValue {
     string value = 1;
