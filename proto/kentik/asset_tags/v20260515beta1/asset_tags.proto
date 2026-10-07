@@ -251,7 +251,7 @@ service AssetTagsService {
   option (kentik.core.v202303.backend_type) = "grpc-connect";
 
   rpc ListTagKeys(ListTagKeysRequest) returns (ListTagKeysResponse) {
-    option (kentik.core.v202303.method_scope) = "admin.device:read";
+    option (kentik.core.v202303.method_permission) = "asset_tag::read";
     option (google.api.http) = {
       get: "/asset_tags/v20260515beta1/keys"
     };
@@ -263,7 +263,7 @@ service AssetTagsService {
   }
 
   rpc GetTagKey(GetTagKeyRequest) returns (GetTagKeyResponse) {
-    option (kentik.core.v202303.method_scope) = "admin.device:read";
+    option (kentik.core.v202303.method_permission) = "asset_tag::read";
     option (google.api.http) = {
       get: "/asset_tags/v20260515beta1/keys/{id}"
     };
@@ -275,7 +275,7 @@ service AssetTagsService {
   }
 
   rpc CreateTagKey(CreateTagKeyRequest) returns (CreateTagKeyResponse) {
-    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (kentik.core.v202303.method_permission) = "asset_tag::create";
     option (google.api.http) = {
       post: "/asset_tags/v20260515beta1/keys"
       body: "*"
@@ -288,7 +288,7 @@ service AssetTagsService {
   }
 
   rpc UpdateTagKey(UpdateTagKeyRequest) returns (UpdateTagKeyResponse) {
-    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (kentik.core.v202303.method_permission) = "asset_tag::update";
     option (google.api.http) = {
       put: "/asset_tags/v20260515beta1/keys/{id}"
       body: "*"
@@ -301,7 +301,7 @@ service AssetTagsService {
   }
 
   rpc DeleteTagKey(DeleteTagKeyRequest) returns (DeleteTagKeyResponse) {
-    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (kentik.core.v202303.method_permission) = "asset_tag::delete";
     option (google.api.http) = {
       delete: "/asset_tags/v20260515beta1/keys/{id}"
     };
@@ -313,7 +313,7 @@ service AssetTagsService {
   }
 
   rpc ListTagValues(ListTagValuesRequest) returns (ListTagValuesResponse) {
-    option (kentik.core.v202303.method_scope) = "admin.device:read";
+    option (kentik.core.v202303.method_permission) = "asset_tag::read";
     option (google.api.http) = {
       get: "/asset_tags/v20260515beta1/keys/{tag_id}/{asset_type}/values"
     };
@@ -325,7 +325,7 @@ service AssetTagsService {
   }
 
   rpc GetTagValues(GetTagValuesRequest) returns (GetTagValuesResponse) {
-    option (kentik.core.v202303.method_scope) = "admin.device:read";
+    option (kentik.core.v202303.method_permission) = "asset_tag::read";
     option (google.api.http) = {
       get: "/asset_tags/v20260515beta1/assets/{asset_type}/{asset_id}/values"
     };
@@ -337,7 +337,7 @@ service AssetTagsService {
   }
 
   rpc SetTagValues(SetTagValuesRequest) returns (SetTagValuesResponse) {
-    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (kentik.core.v202303.method_permission) = "asset_tag::update";
     option (google.api.http) = {
       put: "/asset_tags/v20260515beta1/values"
       body: "*"
@@ -350,7 +350,7 @@ service AssetTagsService {
   }
 
   rpc DeleteTagValues(DeleteTagValuesRequest) returns (DeleteTagValuesResponse) {
-    option (kentik.core.v202303.method_scope) = "admin.device:write";
+    option (kentik.core.v202303.method_permission) = "asset_tag::delete";
     option (google.api.http) = {
       post: "/asset_tags/v20260515beta1/values/delete"
       body: "*"
