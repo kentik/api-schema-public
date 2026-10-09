@@ -45,6 +45,7 @@ import (
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/monitoring/v1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/net/v202303"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/network_class/v202109alpha1"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/nms/v202505"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/notification_channel/v202204alpha1"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/notification_channel/v202210"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/pathfinder/v202505beta1"

@@ -1,0 +1,221 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "kentik/nms/v202505/metrics_schema.proto",
+        "version": "version not set"
+    },
+    "tags": [
+        {
+            "name": "MetricsSchemaService"
+        }
+    ],
+    "paths": {
+        "/nms/v202505/metrics_schema": {
+            "get": {
+                "operationId": "MetricsSchemaService_GetMetricsSchema",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202505GetMetricsSchemaResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "MetricsSchemaService"
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202505FieldDisplay": {
+                "type": "object",
+                "properties": {
+                    "precision": {
+                        "type": "integer",
+                        "format": "int64"
+                    }
+                }
+            },
+            "v202505FieldSchema": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "$ref": "#/components/schemas/v202505FieldType"
+                    },
+                    "column": {
+                        "type": "string"
+                    },
+                    "mask": {
+                        "type": "string",
+                        "format": "int64"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "unit": {
+                        "type": "string"
+                    },
+                    "label": {
+                        "type": "string"
+                    },
+                    "values": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        }
+                    },
+                    "lastSeen": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "supportedUsages": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505Usage"
+                        }
+                    },
+                    "queryColumn": {
+                        "type": "string"
+                    },
+                    "enrichment": {
+                        "type": "string"
+                    },
+                    "display": {
+                        "$ref": "#/components/schemas/v202505FieldDisplay"
+                    },
+                    "isPrimaryKey": {
+                        "type": "boolean",
+                        "title": "note - only dimensions can be primary keys, not metrics"
+                    }
+                }
+            },
+            "v202505FieldType": {
+                "type": "string",
+                "enum": [
+                    "FIELD_TYPE_UNSPECIFIED",
+                    "FIELD_TYPE_INT",
+                    "FIELD_TYPE_FLOAT",
+                    "FIELD_TYPE_STRING"
+                ],
+                "default": "FIELD_TYPE_UNSPECIFIED"
+            },
+            "v202505GetMetricsSchemaResponse": {
+                "type": "object",
+                "properties": {
+                    "schema": {
+                        "$ref": "#/components/schemas/v202505MetricsSchema"
+                    }
+                }
+            },
+            "v202505MeasurementSchema": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "entityType": {
+                        "type": "string"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "appProtocol": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "sourceTimestampColumn": {
+                        "type": "string"
+                    },
+                    "dimensions": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/v202505FieldSchema"
+                        }
+                    },
+                    "metrics": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/v202505FieldSchema"
+                        }
+                    },
+                    "lastSeen": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202505MetricsSchema": {
+                "type": "object",
+                "properties": {
+                    "measurements": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/v202505MeasurementSchema"
+                        },
+                        "title": "measurements by name"
+                    }
+                }
+            },
+            "v202505Usage": {
+                "type": "string",
+                "enum": [
+                    "USAGE_UNSPECIFIED",
+                    "USAGE_QUERY",
+                    "USAGE_KMETRICS_ALERT",
+                    "USAGE_FLOW_ALERT"
+                ],
+                "default": "USAGE_UNSPECIFIED"
+            }
+        }
+    }
+}

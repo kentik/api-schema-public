@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package kentik.nms.v202505;
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/protobuf/timestamp.proto";
+import "kentik/core/v202303/annotations.proto";
+
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/nms/v202505;measurement_schema";
+
+enum FieldType {
+  FIELD_TYPE_UNSPECIFIED = 0;
+  FIELD_TYPE_INT = 1;
+  FIELD_TYPE_FLOAT = 2;
+  FIELD_TYPE_STRING = 3;
+}
+
+enum Usage {
+  USAGE_UNSPECIFIED = 0;
+  USAGE_QUERY = 1;
+  USAGE_KMETRICS_ALERT = 2;
+  USAGE_FLOW_ALERT = 3;
+}
+
+message FieldDisplay {
+  optional uint32 precision = 1;
+}
+
+message FieldSchema {
+  FieldType type = 1;
+  string column = 2;
+  int64 mask = 3;
+
+  optional string description = 4;
+  optional string unit = 5;
+  optional string label = 6;
+  map<string, string> values = 7;
+
+  google.protobuf.Timestamp last_seen = 8;
+  repeated Usage supported_usages = 9;
+
+  string query_column = 10;
+  string enrichment = 11;
+
+  FieldDisplay display = 12;
+
+  bool is_primary_key = 13; // note - only dimensions can be primary keys, not metrics
+}
+
+message MeasurementSchema {
+  int32 id = 1;
+  optional string entity_type = 2;
+  optional string description = 3;
+  int32 app_protocol = 4;
+  string source_timestamp_column = 5;
+  map<string, FieldSchema> dimensions = 6;
+  map<string, FieldSchema> metrics = 7;
+
+  google.protobuf.Timestamp last_seen = 8;
+
+  repeated string tags = 9;
+}
+
+message MetricsSchema {
+  // measurements by name
+  map<string, MeasurementSchema> measurements = 1;
+}
+
+message GetMetricsSchemaRequest {}
+
+message GetMetricsSchemaResponse {
+  MetricsSchema schema = 1;
+}
+
+service MetricsSchemaService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "metrics:read";
+
+  rpc GetMetricsSchema(GetMetricsSchemaRequest) returns (GetMetricsSchemaResponse) {
+    option (kentik.core.v202303.method_scope) = "metrics:read";
+    option (google.api.http) = {get: "/nms/v202505/metrics_schema"};
+  }
+}
