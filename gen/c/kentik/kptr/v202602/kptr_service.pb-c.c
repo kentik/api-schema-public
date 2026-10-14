@@ -555,9 +555,42 @@ const ProtobufCMessageDescriptor kentik__kptr__v202602__resolve_addresses_respon
   (ProtobufCMessageInit) kentik__kptr__v202602__resolve_addresses_response__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-#define kentik__kptr__v202602__list_resolved_addresses_request__field_descriptors NULL
-#define kentik__kptr__v202602__list_resolved_addresses_request__field_indices_by_name NULL
-#define kentik__kptr__v202602__list_resolved_addresses_request__number_ranges NULL
+static const ProtobufCFieldDescriptor kentik__kptr__v202602__list_resolved_addresses_request__field_descriptors[2] =
+{
+  {
+    "page_size",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT32,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kptr__V202602__ListResolvedAddressesRequest, page_size),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "page_token",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kptr__V202602__ListResolvedAddressesRequest, page_token),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__kptr__v202602__list_resolved_addresses_request__field_indices_by_name[] = {
+  0,   /* field[0] = page_size */
+  1,   /* field[1] = page_token */
+};
+static const ProtobufCIntRange kentik__kptr__v202602__list_resolved_addresses_request__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
 const ProtobufCMessageDescriptor kentik__kptr__v202602__list_resolved_addresses_request__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
@@ -566,14 +599,14 @@ const ProtobufCMessageDescriptor kentik__kptr__v202602__list_resolved_addresses_
   "Kentik__Kptr__V202602__ListResolvedAddressesRequest",
   "kentik.kptr.v202602",
   sizeof(Kentik__Kptr__V202602__ListResolvedAddressesRequest),
-  0,
+  2,
   kentik__kptr__v202602__list_resolved_addresses_request__field_descriptors,
   kentik__kptr__v202602__list_resolved_addresses_request__field_indices_by_name,
-  0,  kentik__kptr__v202602__list_resolved_addresses_request__number_ranges,
+  1,  kentik__kptr__v202602__list_resolved_addresses_request__number_ranges,
   (ProtobufCMessageInit) kentik__kptr__v202602__list_resolved_addresses_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__kptr__v202602__list_resolved_addresses_response__field_descriptors[1] =
+static const ProtobufCFieldDescriptor kentik__kptr__v202602__list_resolved_addresses_response__field_descriptors[2] =
 {
   {
     "results",
@@ -587,14 +620,27 @@ static const ProtobufCFieldDescriptor kentik__kptr__v202602__list_resolved_addre
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "next_page_token",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kptr__V202602__ListResolvedAddressesResponse, next_page_token),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__kptr__v202602__list_resolved_addresses_response__field_indices_by_name[] = {
+  1,   /* field[1] = next_page_token */
   0,   /* field[0] = results */
 };
 static const ProtobufCIntRange kentik__kptr__v202602__list_resolved_addresses_response__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor kentik__kptr__v202602__list_resolved_addresses_response__descriptor =
 {
@@ -604,7 +650,7 @@ const ProtobufCMessageDescriptor kentik__kptr__v202602__list_resolved_addresses_
   "Kentik__Kptr__V202602__ListResolvedAddressesResponse",
   "kentik.kptr.v202602",
   sizeof(Kentik__Kptr__V202602__ListResolvedAddressesResponse),
-  1,
+  2,
   kentik__kptr__v202602__list_resolved_addresses_response__field_descriptors,
   kentik__kptr__v202602__list_resolved_addresses_response__field_indices_by_name,
   1,  kentik__kptr__v202602__list_resolved_addresses_response__number_ranges,

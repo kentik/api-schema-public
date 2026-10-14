@@ -274,6 +274,8 @@ func (x *ResolveAddressesResponse) GetResults() []*PtrResult {
 
 type ListResolvedAddressesRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
+	PageSize      int32                  `protobuf:"varint,1,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`
+	PageToken     string                 `protobuf:"bytes,2,opt,name=page_token,json=pageToken,proto3" json:"page_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -308,9 +310,24 @@ func (*ListResolvedAddressesRequest) Descriptor() ([]byte, []int) {
 	return file_kentik_kptr_v202602_kptr_service_proto_rawDescGZIP(), []int{6}
 }
 
+func (x *ListResolvedAddressesRequest) GetPageSize() int32 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *ListResolvedAddressesRequest) GetPageToken() string {
+	if x != nil {
+		return x.PageToken
+	}
+	return ""
+}
+
 type ListResolvedAddressesResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Results       []*PtrResult           `protobuf:"bytes,1,rep,name=results,proto3" json:"results,omitempty"`
+	NextPageToken string                 `protobuf:"bytes,2,opt,name=next_page_token,json=nextPageToken,proto3" json:"next_page_token,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -352,6 +369,13 @@ func (x *ListResolvedAddressesResponse) GetResults() []*PtrResult {
 	return nil
 }
 
+func (x *ListResolvedAddressesResponse) GetNextPageToken() string {
+	if x != nil {
+		return x.NextPageToken
+	}
+	return ""
+}
+
 var File_kentik_kptr_v202602_kptr_service_proto protoreflect.FileDescriptor
 
 const file_kentik_kptr_v202602_kptr_service_proto_rawDesc = "" +
@@ -366,10 +390,14 @@ const file_kentik_kptr_v202602_kptr_service_proto_rawDesc = "" +
 	"\x17ResolveAddressesRequest\x12!\n" +
 	"\fip_addresses\x18\x01 \x03(\tR\vipAddresses\"T\n" +
 	"\x18ResolveAddressesResponse\x128\n" +
-	"\aresults\x18\x01 \x03(\v2\x1e.kentik.kptr.v202602.PtrResultR\aresults\"\x1e\n" +
-	"\x1cListResolvedAddressesRequest\"Y\n" +
+	"\aresults\x18\x01 \x03(\v2\x1e.kentik.kptr.v202602.PtrResultR\aresults\"Z\n" +
+	"\x1cListResolvedAddressesRequest\x12\x1b\n" +
+	"\tpage_size\x18\x01 \x01(\x05R\bpageSize\x12\x1d\n" +
+	"\n" +
+	"page_token\x18\x02 \x01(\tR\tpageToken\"\x81\x01\n" +
 	"\x1dListResolvedAddressesResponse\x128\n" +
-	"\aresults\x18\x01 \x03(\v2\x1e.kentik.kptr.v202602.PtrResultR\aresults2\xd8\x04\n" +
+	"\aresults\x18\x01 \x03(\v2\x1e.kentik.kptr.v202602.PtrResultR\aresults\x12&\n" +
+	"\x0fnext_page_token\x18\x02 \x01(\tR\rnextPageToken2\xd8\x04\n" +
 	"\vKptrService\x12\x9c\x01\n" +
 	"\x1aGetNetworkRangeAssignments\x126.kentik.kptr.v202602.GetNetworkRangeAssignmentsRequest\x1a7.kentik.kptr.v202602.GetNetworkRangeAssignmentsResponse\"\r\xf2\xd7\x02\tkptr:read\x12\x85\x01\n" +
 	"\x12UpdateAddressNames\x12..kentik.kptr.v202602.UpdateAddressNamesRequest\x1a/.kentik.kptr.v202602.UpdateAddressNamesResponse\"\x0e\xf2\xd7\x02\n" +

@@ -101,10 +101,12 @@ struct  Kentik__Kptr__V202602__ResolveAddressesResponse
 struct  Kentik__Kptr__V202602__ListResolvedAddressesRequest
 {
   ProtobufCMessage base;
+  int32_t page_size;
+  char *page_token;
 };
 #define KENTIK__KPTR__V202602__LIST_RESOLVED_ADDRESSES_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__kptr__v202602__list_resolved_addresses_request__descriptor) \
-     }
+    , 0, (char *)protobuf_c_empty_string }
 
 
 struct  Kentik__Kptr__V202602__ListResolvedAddressesResponse
@@ -112,10 +114,11 @@ struct  Kentik__Kptr__V202602__ListResolvedAddressesResponse
   ProtobufCMessage base;
   size_t n_results;
   Kentik__Kptr__V202602__PtrResult **results;
+  char *next_page_token;
 };
 #define KENTIK__KPTR__V202602__LIST_RESOLVED_ADDRESSES_RESPONSE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__kptr__v202602__list_resolved_addresses_response__descriptor) \
-    , 0,NULL }
+    , 0,NULL, (char *)protobuf_c_empty_string }
 
 
 /* Kentik__Kptr__V202602__UpdateAddressNamesRequest methods */

@@ -66,6 +66,9 @@
             "type": "object",
             "$ref": "#/definitions/v202602PtrResult"
           }
+        },
+        "nextPageToken": {
+          "type": "string"
         }
       }
     },

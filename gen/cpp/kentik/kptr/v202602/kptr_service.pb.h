@@ -446,10 +446,11 @@ class ResolveAddressesRequest final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
-class ListResolvedAddressesRequest final : public ::google::protobuf::internal::ZeroFieldsBase
+class ListResolvedAddressesRequest final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.kptr.v202602.ListResolvedAddressesRequest) */ {
  public:
   inline ListResolvedAddressesRequest() : ListResolvedAddressesRequest(nullptr) {}
+  ~ListResolvedAddressesRequest() PROTOBUF_FINAL;
 
 #if defined(PROTOBUF_CUSTOM_VTABLE)
   void operator delete(ListResolvedAddressesRequest* msg, std::destroying_delete_t) {
@@ -523,21 +524,49 @@ class ListResolvedAddressesRequest final : public ::google::protobuf::internal::
   // implements Message ----------------------------------------------
 
   ListResolvedAddressesRequest* New(::google::protobuf::Arena* arena = nullptr) const {
-    return ::google::protobuf::internal::ZeroFieldsBase::DefaultConstruct<ListResolvedAddressesRequest>(arena);
+    return ::google::protobuf::Message::DefaultConstruct<ListResolvedAddressesRequest>(arena);
   }
-  using ::google::protobuf::internal::ZeroFieldsBase::CopyFrom;
-  inline void CopyFrom(const ListResolvedAddressesRequest& from) {
-    ::google::protobuf::internal::ZeroFieldsBase::CopyImpl(*this, from);
-  }
-  using ::google::protobuf::internal::ZeroFieldsBase::MergeFrom;
-  void MergeFrom(const ListResolvedAddressesRequest& from) {
-    ::google::protobuf::internal::ZeroFieldsBase::MergeImpl(*this, from);
-  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const ListResolvedAddressesRequest& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const ListResolvedAddressesRequest& from) { ListResolvedAddressesRequest::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
 
   public:
   bool IsInitialized() const {
     return true;
   }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(ListResolvedAddressesRequest* other);
  private:
   template <typename T>
   friend ::absl::string_view(
@@ -562,13 +591,43 @@ class ListResolvedAddressesRequest final : public ::google::protobuf::internal::
   // nested types ----------------------------------------------------
 
   // accessors -------------------------------------------------------
+  enum : int {
+    kPageTokenFieldNumber = 2,
+    kPageSizeFieldNumber = 1,
+  };
+  // string page_token = 2 [json_name = "pageToken"];
+  void clear_page_token() ;
+  const std::string& page_token() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_page_token(Arg_&& arg, Args_... args);
+  std::string* mutable_page_token();
+  PROTOBUF_NODISCARD std::string* release_page_token();
+  void set_allocated_page_token(std::string* value);
+
+  private:
+  const std::string& _internal_page_token() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_page_token(
+      const std::string& value);
+  std::string* _internal_mutable_page_token();
+
+  public:
+  // int32 page_size = 1 [json_name = "pageSize"];
+  void clear_page_size() ;
+  ::int32_t page_size() const;
+  void set_page_size(::int32_t value);
+
+  private:
+  ::int32_t _internal_page_size() const;
+  void _internal_set_page_size(::int32_t value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.kptr.v202602.ListResolvedAddressesRequest)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 0, 0,
-      0, 2>
+      1, 2, 0,
+      67, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -585,8 +644,12 @@ class ListResolvedAddressesRequest final : public ::google::protobuf::internal::
     inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const ListResolvedAddressesRequest& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr page_token_;
+    ::int32_t page_size_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
+  union { Impl_ _impl_; };
   friend struct ::TableStruct_kentik_2fkptr_2fv202602_2fkptr_5fservice_2eproto;
 };
 // -------------------------------------------------------------------
@@ -1479,6 +1542,7 @@ class ListResolvedAddressesResponse final : public ::google::protobuf::Message
   // accessors -------------------------------------------------------
   enum : int {
     kResultsFieldNumber = 1,
+    kNextPageTokenFieldNumber = 2,
   };
   // repeated .kentik.kptr.v202602.PtrResult results = 1 [json_name = "results"];
   int results_size() const;
@@ -1497,13 +1561,29 @@ class ListResolvedAddressesResponse final : public ::google::protobuf::Message
   const ::kentik::kptr::v202602::PtrResult& results(int index) const;
   ::kentik::kptr::v202602::PtrResult* add_results();
   const ::google::protobuf::RepeatedPtrField<::kentik::kptr::v202602::PtrResult>& results() const;
+  // string next_page_token = 2 [json_name = "nextPageToken"];
+  void clear_next_page_token() ;
+  const std::string& next_page_token() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_next_page_token(Arg_&& arg, Args_... args);
+  std::string* mutable_next_page_token();
+  PROTOBUF_NODISCARD std::string* release_next_page_token();
+  void set_allocated_next_page_token(std::string* value);
+
+  private:
+  const std::string& _internal_next_page_token() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_next_page_token(
+      const std::string& value);
+  std::string* _internal_mutable_next_page_token();
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.kptr.v202602.ListResolvedAddressesResponse)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      0, 1, 1,
-      0, 2>
+      1, 2, 1,
+      73, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1521,6 +1601,7 @@ class ListResolvedAddressesResponse final : public ::google::protobuf::Message
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const ListResolvedAddressesResponse& from_msg);
     ::google::protobuf::RepeatedPtrField< ::kentik::kptr::v202602::PtrResult > results_;
+    ::google::protobuf::internal::ArenaStringPtr next_page_token_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1786,6 +1867,76 @@ ResolveAddressesResponse::_internal_mutable_results() {
 
 // ListResolvedAddressesRequest
 
+// int32 page_size = 1 [json_name = "pageSize"];
+inline void ListResolvedAddressesRequest::clear_page_size() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.page_size_ = 0;
+}
+inline ::int32_t ListResolvedAddressesRequest::page_size() const {
+  // @@protoc_insertion_point(field_get:kentik.kptr.v202602.ListResolvedAddressesRequest.page_size)
+  return _internal_page_size();
+}
+inline void ListResolvedAddressesRequest::set_page_size(::int32_t value) {
+  _internal_set_page_size(value);
+  // @@protoc_insertion_point(field_set:kentik.kptr.v202602.ListResolvedAddressesRequest.page_size)
+}
+inline ::int32_t ListResolvedAddressesRequest::_internal_page_size() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.page_size_;
+}
+inline void ListResolvedAddressesRequest::_internal_set_page_size(::int32_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.page_size_ = value;
+}
+
+// string page_token = 2 [json_name = "pageToken"];
+inline void ListResolvedAddressesRequest::clear_page_token() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.page_token_.ClearToEmpty();
+}
+inline const std::string& ListResolvedAddressesRequest::page_token() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.kptr.v202602.ListResolvedAddressesRequest.page_token)
+  return _internal_page_token();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ListResolvedAddressesRequest::set_page_token(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.page_token_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.kptr.v202602.ListResolvedAddressesRequest.page_token)
+}
+inline std::string* ListResolvedAddressesRequest::mutable_page_token() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_page_token();
+  // @@protoc_insertion_point(field_mutable:kentik.kptr.v202602.ListResolvedAddressesRequest.page_token)
+  return _s;
+}
+inline const std::string& ListResolvedAddressesRequest::_internal_page_token() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.page_token_.Get();
+}
+inline void ListResolvedAddressesRequest::_internal_set_page_token(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.page_token_.Set(value, GetArena());
+}
+inline std::string* ListResolvedAddressesRequest::_internal_mutable_page_token() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.page_token_.Mutable( GetArena());
+}
+inline std::string* ListResolvedAddressesRequest::release_page_token() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.kptr.v202602.ListResolvedAddressesRequest.page_token)
+  return _impl_.page_token_.Release();
+}
+inline void ListResolvedAddressesRequest::set_allocated_page_token(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.page_token_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.page_token_.IsDefault()) {
+    _impl_.page_token_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.kptr.v202602.ListResolvedAddressesRequest.page_token)
+}
+
 // -------------------------------------------------------------------
 
 // ListResolvedAddressesResponse
@@ -1833,6 +1984,54 @@ inline ::google::protobuf::RepeatedPtrField<::kentik::kptr::v202602::PtrResult>*
 ListResolvedAddressesResponse::_internal_mutable_results() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.results_;
+}
+
+// string next_page_token = 2 [json_name = "nextPageToken"];
+inline void ListResolvedAddressesResponse::clear_next_page_token() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.next_page_token_.ClearToEmpty();
+}
+inline const std::string& ListResolvedAddressesResponse::next_page_token() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.kptr.v202602.ListResolvedAddressesResponse.next_page_token)
+  return _internal_next_page_token();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void ListResolvedAddressesResponse::set_next_page_token(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.next_page_token_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.kptr.v202602.ListResolvedAddressesResponse.next_page_token)
+}
+inline std::string* ListResolvedAddressesResponse::mutable_next_page_token() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_next_page_token();
+  // @@protoc_insertion_point(field_mutable:kentik.kptr.v202602.ListResolvedAddressesResponse.next_page_token)
+  return _s;
+}
+inline const std::string& ListResolvedAddressesResponse::_internal_next_page_token() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.next_page_token_.Get();
+}
+inline void ListResolvedAddressesResponse::_internal_set_next_page_token(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.next_page_token_.Set(value, GetArena());
+}
+inline std::string* ListResolvedAddressesResponse::_internal_mutable_next_page_token() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.next_page_token_.Mutable( GetArena());
+}
+inline std::string* ListResolvedAddressesResponse::release_next_page_token() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.kptr.v202602.ListResolvedAddressesResponse.next_page_token)
+  return _impl_.next_page_token_.Release();
+}
+inline void ListResolvedAddressesResponse::set_allocated_next_page_token(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.next_page_token_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.next_page_token_.IsDefault()) {
+    _impl_.next_page_token_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.kptr.v202602.ListResolvedAddressesResponse.next_page_token)
 }
 
 #ifdef __GNUC__

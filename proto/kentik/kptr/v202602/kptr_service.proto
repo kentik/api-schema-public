@@ -104,8 +104,11 @@ message ResolveAddressesResponse {
 }
 
 message ListResolvedAddressesRequest {
+  int32 page_size = 1;
+  string page_token = 2;
 }
 
 message ListResolvedAddressesResponse {
   repeated PtrResult results = 1;
+  string next_page_token = 2;
 }

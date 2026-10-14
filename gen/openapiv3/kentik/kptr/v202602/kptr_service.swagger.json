@@ -59,6 +59,9 @@
                         "items": {
                             "$ref": "#/components/schemas/v202602PtrResult"
                         }
+                    },
+                    "nextPageToken": {
+                        "type": "string"
                     }
                 }
             },
