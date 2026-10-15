@@ -142,6 +142,141 @@ void   kentik__dictionary__v20260604alpha1__metric_family_def__free_unpacked
   assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__metric_family_def__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__dictionary__v20260604alpha1__asset_tag__init
+                     (Kentik__Dictionary__V20260604alpha1__AssetTag         *message)
+{
+  static const Kentik__Dictionary__V20260604alpha1__AssetTag init_value = KENTIK__DICTIONARY__V20260604ALPHA1__ASSET_TAG__INIT;
+  *message = init_value;
+}
+size_t kentik__dictionary__v20260604alpha1__asset_tag__get_packed_size
+                     (const Kentik__Dictionary__V20260604alpha1__AssetTag *message)
+{
+  assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__asset_tag__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__dictionary__v20260604alpha1__asset_tag__pack
+                     (const Kentik__Dictionary__V20260604alpha1__AssetTag *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__asset_tag__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__dictionary__v20260604alpha1__asset_tag__pack_to_buffer
+                     (const Kentik__Dictionary__V20260604alpha1__AssetTag *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__asset_tag__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Dictionary__V20260604alpha1__AssetTag *
+       kentik__dictionary__v20260604alpha1__asset_tag__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Dictionary__V20260604alpha1__AssetTag *)
+     protobuf_c_message_unpack (&kentik__dictionary__v20260604alpha1__asset_tag__descriptor,
+                                allocator, len, data);
+}
+void   kentik__dictionary__v20260604alpha1__asset_tag__free_unpacked
+                     (Kentik__Dictionary__V20260604alpha1__AssetTag *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__asset_tag__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__dictionary__v20260604alpha1__app_protocol_metadata__init
+                     (Kentik__Dictionary__V20260604alpha1__AppProtocolMetadata         *message)
+{
+  static const Kentik__Dictionary__V20260604alpha1__AppProtocolMetadata init_value = KENTIK__DICTIONARY__V20260604ALPHA1__APP_PROTOCOL_METADATA__INIT;
+  *message = init_value;
+}
+size_t kentik__dictionary__v20260604alpha1__app_protocol_metadata__get_packed_size
+                     (const Kentik__Dictionary__V20260604alpha1__AppProtocolMetadata *message)
+{
+  assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__app_protocol_metadata__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__dictionary__v20260604alpha1__app_protocol_metadata__pack
+                     (const Kentik__Dictionary__V20260604alpha1__AppProtocolMetadata *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__app_protocol_metadata__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__dictionary__v20260604alpha1__app_protocol_metadata__pack_to_buffer
+                     (const Kentik__Dictionary__V20260604alpha1__AppProtocolMetadata *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__app_protocol_metadata__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Dictionary__V20260604alpha1__AppProtocolMetadata *
+       kentik__dictionary__v20260604alpha1__app_protocol_metadata__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Dictionary__V20260604alpha1__AppProtocolMetadata *)
+     protobuf_c_message_unpack (&kentik__dictionary__v20260604alpha1__app_protocol_metadata__descriptor,
+                                allocator, len, data);
+}
+void   kentik__dictionary__v20260604alpha1__app_protocol_metadata__free_unpacked
+                     (Kentik__Dictionary__V20260604alpha1__AppProtocolMetadata *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__app_protocol_metadata__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__dictionary__v20260604alpha1__app_protocol__init
+                     (Kentik__Dictionary__V20260604alpha1__AppProtocol         *message)
+{
+  static const Kentik__Dictionary__V20260604alpha1__AppProtocol init_value = KENTIK__DICTIONARY__V20260604ALPHA1__APP_PROTOCOL__INIT;
+  *message = init_value;
+}
+size_t kentik__dictionary__v20260604alpha1__app_protocol__get_packed_size
+                     (const Kentik__Dictionary__V20260604alpha1__AppProtocol *message)
+{
+  assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__app_protocol__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__dictionary__v20260604alpha1__app_protocol__pack
+                     (const Kentik__Dictionary__V20260604alpha1__AppProtocol *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__app_protocol__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__dictionary__v20260604alpha1__app_protocol__pack_to_buffer
+                     (const Kentik__Dictionary__V20260604alpha1__AppProtocol *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__app_protocol__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Dictionary__V20260604alpha1__AppProtocol *
+       kentik__dictionary__v20260604alpha1__app_protocol__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Dictionary__V20260604alpha1__AppProtocol *)
+     protobuf_c_message_unpack (&kentik__dictionary__v20260604alpha1__app_protocol__descriptor,
+                                allocator, len, data);
+}
+void   kentik__dictionary__v20260604alpha1__app_protocol__free_unpacked
+                     (Kentik__Dictionary__V20260604alpha1__AppProtocol *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__app_protocol__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__dictionary__v20260604alpha1__dimension_field__values_entry__init
                      (Kentik__Dictionary__V20260604alpha1__DimensionField__ValuesEntry         *message)
 {
@@ -333,6 +468,12 @@ void   kentik__dictionary__v20260604alpha1__get_dictionary_request__free_unpacke
     return;
   assert(message->base.descriptor == &kentik__dictionary__v20260604alpha1__get_dictionary_request__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__dictionary__v20260604alpha1__get_dictionary_response__app_protocols_entry__init
+                     (Kentik__Dictionary__V20260604alpha1__GetDictionaryResponse__AppProtocolsEntry         *message)
+{
+  static const Kentik__Dictionary__V20260604alpha1__GetDictionaryResponse__AppProtocolsEntry init_value = KENTIK__DICTIONARY__V20260604ALPHA1__GET_DICTIONARY_RESPONSE__APP_PROTOCOLS_ENTRY__INIT;
+  *message = init_value;
 }
 void   kentik__dictionary__v20260604alpha1__get_dictionary_response__init
                      (Kentik__Dictionary__V20260604alpha1__GetDictionaryResponse         *message)
@@ -584,6 +725,185 @@ const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__metric_fam
   (ProtobufCMessageInit) kentik__dictionary__v20260604alpha1__metric_family_def__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__asset_tag__field_descriptors[2] =
+{
+  {
+    "name",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Dictionary__V20260604alpha1__AssetTag, name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "display_name",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Dictionary__V20260604alpha1__AssetTag, display_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__dictionary__v20260604alpha1__asset_tag__field_indices_by_name[] = {
+  1,   /* field[1] = display_name */
+  0,   /* field[0] = name */
+};
+static const ProtobufCIntRange kentik__dictionary__v20260604alpha1__asset_tag__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__asset_tag__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.dictionary.v20260604alpha1.AssetTag",
+  "AssetTag",
+  "Kentik__Dictionary__V20260604alpha1__AssetTag",
+  "kentik.dictionary.v20260604alpha1",
+  sizeof(Kentik__Dictionary__V20260604alpha1__AssetTag),
+  2,
+  kentik__dictionary__v20260604alpha1__asset_tag__field_descriptors,
+  kentik__dictionary__v20260604alpha1__asset_tag__field_indices_by_name,
+  1,  kentik__dictionary__v20260604alpha1__asset_tag__number_ranges,
+  (ProtobufCMessageInit) kentik__dictionary__v20260604alpha1__asset_tag__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__app_protocol_metadata__field_descriptors[1] =
+{
+  {
+    "full_data_only",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    offsetof(Kentik__Dictionary__V20260604alpha1__AppProtocolMetadata, _full_data_only_case),
+    offsetof(Kentik__Dictionary__V20260604alpha1__AppProtocolMetadata, full_data_only),
+    NULL,
+    NULL,
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__dictionary__v20260604alpha1__app_protocol_metadata__field_indices_by_name[] = {
+  0,   /* field[0] = full_data_only */
+};
+static const ProtobufCIntRange kentik__dictionary__v20260604alpha1__app_protocol_metadata__number_ranges[1 + 1] =
+{
+  { 2, 0 },
+  { 0, 1 }
+};
+const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__app_protocol_metadata__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.dictionary.v20260604alpha1.AppProtocolMetadata",
+  "AppProtocolMetadata",
+  "Kentik__Dictionary__V20260604alpha1__AppProtocolMetadata",
+  "kentik.dictionary.v20260604alpha1",
+  sizeof(Kentik__Dictionary__V20260604alpha1__AppProtocolMetadata),
+  1,
+  kentik__dictionary__v20260604alpha1__app_protocol_metadata__field_descriptors,
+  kentik__dictionary__v20260604alpha1__app_protocol_metadata__field_indices_by_name,
+  1,  kentik__dictionary__v20260604alpha1__app_protocol_metadata__number_ranges,
+  (ProtobufCMessageInit) kentik__dictionary__v20260604alpha1__app_protocol_metadata__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__app_protocol__field_descriptors[5] =
+{
+  {
+    "id",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_UINT64,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Dictionary__V20260604alpha1__AppProtocol, id),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "display_name",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Dictionary__V20260604alpha1__AppProtocol, display_name),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "add_to_standard_fields",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Dictionary__V20260604alpha1__AppProtocol, add_to_standard_fields),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "status",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Dictionary__V20260604alpha1__AppProtocol, status),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "metadata",
+    5,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Dictionary__V20260604alpha1__AppProtocol, metadata),
+    &kentik__dictionary__v20260604alpha1__app_protocol_metadata__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__dictionary__v20260604alpha1__app_protocol__field_indices_by_name[] = {
+  2,   /* field[2] = add_to_standard_fields */
+  1,   /* field[1] = display_name */
+  0,   /* field[0] = id */
+  4,   /* field[4] = metadata */
+  3,   /* field[3] = status */
+};
+static const ProtobufCIntRange kentik__dictionary__v20260604alpha1__app_protocol__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 5 }
+};
+const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__app_protocol__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.dictionary.v20260604alpha1.AppProtocol",
+  "AppProtocol",
+  "Kentik__Dictionary__V20260604alpha1__AppProtocol",
+  "kentik.dictionary.v20260604alpha1",
+  sizeof(Kentik__Dictionary__V20260604alpha1__AppProtocol),
+  5,
+  kentik__dictionary__v20260604alpha1__app_protocol__field_descriptors,
+  kentik__dictionary__v20260604alpha1__app_protocol__field_indices_by_name,
+  1,  kentik__dictionary__v20260604alpha1__app_protocol__number_ranges,
+  (ProtobufCMessageInit) kentik__dictionary__v20260604alpha1__app_protocol__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__dimension_field__values_entry__field_descriptors[2] =
 {
   {
@@ -635,7 +955,7 @@ const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__dimension_
   (ProtobufCMessageInit) kentik__dictionary__v20260604alpha1__dimension_field__values_entry__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__dimension_field__field_descriptors[14] =
+static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__dimension_field__field_descriptors[15] =
 {
   {
     "key",
@@ -805,6 +1125,18 @@ static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__dimen
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "shared",
+    15,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Dictionary__V20260604alpha1__DimensionField, shared),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__dictionary__v20260604alpha1__dimension_field__field_indices_by_name[] = {
   13,   /* field[13] = can_count */
@@ -820,12 +1152,13 @@ static const unsigned kentik__dictionary__v20260604alpha1__dimension_field__fiel
   8,   /* field[8] = last_seen */
   9,   /* field[9] = operator_set_key */
   12,   /* field[12] = query_column */
+  14,   /* field[14] = shared */
   7,   /* field[7] = values */
 };
 static const ProtobufCIntRange kentik__dictionary__v20260604alpha1__dimension_field__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 14 }
+  { 0, 15 }
 };
 const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__dimension_field__descriptor =
 {
@@ -835,7 +1168,7 @@ const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__dimension_
   "Kentik__Dictionary__V20260604alpha1__DimensionField",
   "kentik.dictionary.v20260604alpha1",
   sizeof(Kentik__Dictionary__V20260604alpha1__DimensionField),
-  14,
+  15,
   kentik__dictionary__v20260604alpha1__dimension_field__field_descriptors,
   kentik__dictionary__v20260604alpha1__dimension_field__field_indices_by_name,
   1,  kentik__dictionary__v20260604alpha1__dimension_field__number_ranges,
@@ -893,7 +1226,7 @@ const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__metric_fie
   (ProtobufCMessageInit) kentik__dictionary__v20260604alpha1__metric_field__values_entry__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__metric_field__field_descriptors[18] =
+static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__metric_field__field_descriptors[19] =
 {
   {
     "key",
@@ -1111,6 +1444,18 @@ static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__metri
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "shared",
+    19,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Dictionary__V20260604alpha1__MetricField, shared),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__dictionary__v20260604alpha1__metric_field__field_indices_by_name[] = {
   10,   /* field[10] = aggregate_fn */
@@ -1128,6 +1473,7 @@ static const unsigned kentik__dictionary__v20260604alpha1__metric_field__field_i
   1,   /* field[1] = label */
   8,   /* field[8] = last_seen */
   14,   /* field[14] = rollup */
+  18,   /* field[18] = shared */
   13,   /* field[13] = to_bits */
   7,   /* field[7] = values */
   9,   /* field[9] = window_fn */
@@ -1135,7 +1481,7 @@ static const unsigned kentik__dictionary__v20260604alpha1__metric_field__field_i
 static const ProtobufCIntRange kentik__dictionary__v20260604alpha1__metric_field__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 18 }
+  { 0, 19 }
 };
 const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__metric_field__descriptor =
 {
@@ -1145,7 +1491,7 @@ const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__metric_fie
   "Kentik__Dictionary__V20260604alpha1__MetricField",
   "kentik.dictionary.v20260604alpha1",
   sizeof(Kentik__Dictionary__V20260604alpha1__MetricField),
-  18,
+  19,
   kentik__dictionary__v20260604alpha1__metric_field__field_descriptors,
   kentik__dictionary__v20260604alpha1__metric_field__field_indices_by_name,
   1,  kentik__dictionary__v20260604alpha1__metric_field__number_ranges,
@@ -1286,7 +1632,58 @@ const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__get_dictio
   (ProtobufCMessageInit) kentik__dictionary__v20260604alpha1__get_dictionary_request__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__get_dictionary_response__field_descriptors[3] =
+static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__get_dictionary_response__app_protocols_entry__field_descriptors[2] =
+{
+  {
+    "key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Dictionary__V20260604alpha1__GetDictionaryResponse__AppProtocolsEntry, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Dictionary__V20260604alpha1__GetDictionaryResponse__AppProtocolsEntry, value),
+    &kentik__dictionary__v20260604alpha1__app_protocol__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__dictionary__v20260604alpha1__get_dictionary_response__app_protocols_entry__field_indices_by_name[] = {
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
+};
+static const ProtobufCIntRange kentik__dictionary__v20260604alpha1__get_dictionary_response__app_protocols_entry__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__get_dictionary_response__app_protocols_entry__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.dictionary.v20260604alpha1.GetDictionaryResponse.AppProtocolsEntry",
+  "AppProtocolsEntry",
+  "Kentik__Dictionary__V20260604alpha1__GetDictionaryResponse__AppProtocolsEntry",
+  "kentik.dictionary.v20260604alpha1",
+  sizeof(Kentik__Dictionary__V20260604alpha1__GetDictionaryResponse__AppProtocolsEntry),
+  2,
+  kentik__dictionary__v20260604alpha1__get_dictionary_response__app_protocols_entry__field_descriptors,
+  kentik__dictionary__v20260604alpha1__get_dictionary_response__app_protocols_entry__field_indices_by_name,
+  1,  kentik__dictionary__v20260604alpha1__get_dictionary_response__app_protocols_entry__number_ranges,
+  (ProtobufCMessageInit) kentik__dictionary__v20260604alpha1__get_dictionary_response__app_protocols_entry__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__get_dictionary_response__field_descriptors[5] =
 {
   {
     "measurements",
@@ -1324,8 +1721,34 @@ static const ProtobufCFieldDescriptor kentik__dictionary__v20260604alpha1__get_d
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "asset_tags",
+    4,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Dictionary__V20260604alpha1__GetDictionaryResponse, n_asset_tags),
+    offsetof(Kentik__Dictionary__V20260604alpha1__GetDictionaryResponse, asset_tags),
+    &kentik__dictionary__v20260604alpha1__asset_tag__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "app_protocols",
+    5,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Dictionary__V20260604alpha1__GetDictionaryResponse, n_app_protocols),
+    offsetof(Kentik__Dictionary__V20260604alpha1__GetDictionaryResponse, app_protocols),
+    &kentik__dictionary__v20260604alpha1__get_dictionary_response__app_protocols_entry__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__dictionary__v20260604alpha1__get_dictionary_response__field_indices_by_name[] = {
+  4,   /* field[4] = app_protocols */
+  3,   /* field[3] = asset_tags */
   0,   /* field[0] = measurements */
   2,   /* field[2] = metric_families */
   1,   /* field[1] = operator_sets */
@@ -1333,7 +1756,7 @@ static const unsigned kentik__dictionary__v20260604alpha1__get_dictionary_respon
 static const ProtobufCIntRange kentik__dictionary__v20260604alpha1__get_dictionary_response__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 3 }
+  { 0, 5 }
 };
 const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__get_dictionary_response__descriptor =
 {
@@ -1343,7 +1766,7 @@ const ProtobufCMessageDescriptor kentik__dictionary__v20260604alpha1__get_dictio
   "Kentik__Dictionary__V20260604alpha1__GetDictionaryResponse",
   "kentik.dictionary.v20260604alpha1",
   sizeof(Kentik__Dictionary__V20260604alpha1__GetDictionaryResponse),
-  3,
+  5,
   kentik__dictionary__v20260604alpha1__get_dictionary_response__field_descriptors,
   kentik__dictionary__v20260604alpha1__get_dictionary_response__field_indices_by_name,
   1,  kentik__dictionary__v20260604alpha1__get_dictionary_response__number_ranges,

@@ -99,6 +99,54 @@
                     }
                 }
             },
+            "v20260604alpha1AppProtocol": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "format": "uint64",
+                        "description": "Unique identifier for the app protocol"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Human-readable display name"
+                    },
+                    "addToStandardFields": {
+                        "type": "boolean",
+                        "description": "When true, this AppProtocol is able to use shared fields"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "Will always be 'A' for Active"
+                    },
+                    "metadata": {
+                        "$ref": "#/components/schemas/v20260604alpha1AppProtocolMetadata"
+                    }
+                }
+            },
+            "v20260604alpha1AppProtocolMetadata": {
+                "type": "object",
+                "properties": {
+                    "fullDataOnly": {
+                        "type": "boolean",
+                        "description": "If true, this AppProtocol can only be used with Full Data, not Fast Data"
+                    }
+                }
+            },
+            "v20260604alpha1AssetTag": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Unique identifier for the asset tag"
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "Human-readable display name"
+                    }
+                },
+                "title": "User defined tags that can be assigned to devices"
+            },
             "v20260604alpha1BaseUnit": {
                 "type": "string",
                 "enum": [
@@ -175,6 +223,10 @@
                     "canCount": {
                         "type": "boolean",
                         "description": "When true, the field can be used with WINDOW_FUNCTION_COUNT"
+                    },
+                    "shared": {
+                        "type": "boolean",
+                        "description": "When true, the field can be used in child measurements"
                     }
                 },
                 "description": "A field that can be used as a dimension/filter in a query."
@@ -228,6 +280,20 @@
                             "$ref": "#/components/schemas/v20260604alpha1MetricFamilyDef"
                         },
                         "description": "All metric family definitions"
+                    },
+                    "assetTags": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v20260604alpha1AssetTag"
+                        },
+                        "description": "All asset tag definitions"
+                    },
+                    "appProtocols": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/v20260604alpha1AppProtocol"
+                        },
+                        "description": "All AppProtocol definitions"
                     }
                 },
                 "title": "GetDictionaryResponse"
@@ -395,6 +461,10 @@
                     },
                     "baseUnit": {
                         "$ref": "#/components/schemas/v20260604alpha1BaseUnit"
+                    },
+                    "shared": {
+                        "type": "boolean",
+                        "description": "When true, the metric can be used in child measurements"
                     }
                 },
                 "description": "A field that represents a measurable metric in a query."

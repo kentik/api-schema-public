@@ -64,6 +64,15 @@ extern const ::google::protobuf::internal::DescriptorTable
 namespace kentik {
 namespace dictionary {
 namespace v20260604alpha1 {
+class AppProtocol;
+struct AppProtocolDefaultTypeInternal;
+extern AppProtocolDefaultTypeInternal _AppProtocol_default_instance_;
+class AppProtocolMetadata;
+struct AppProtocolMetadataDefaultTypeInternal;
+extern AppProtocolMetadataDefaultTypeInternal _AppProtocolMetadata_default_instance_;
+class AssetTag;
+struct AssetTagDefaultTypeInternal;
+extern AssetTagDefaultTypeInternal _AssetTag_default_instance_;
 class DimensionField;
 struct DimensionFieldDefaultTypeInternal;
 extern DimensionFieldDefaultTypeInternal _DimensionField_default_instance_;
@@ -76,6 +85,9 @@ extern GetDictionaryRequestDefaultTypeInternal _GetDictionaryRequest_default_ins
 class GetDictionaryResponse;
 struct GetDictionaryResponseDefaultTypeInternal;
 extern GetDictionaryResponseDefaultTypeInternal _GetDictionaryResponse_default_instance_;
+class GetDictionaryResponse_AppProtocolsEntry_DoNotUse;
+struct GetDictionaryResponse_AppProtocolsEntry_DoNotUseDefaultTypeInternal;
+extern GetDictionaryResponse_AppProtocolsEntry_DoNotUseDefaultTypeInternal _GetDictionaryResponse_AppProtocolsEntry_DoNotUse_default_instance_;
 class MeasurementDetail;
 struct MeasurementDetailDefaultTypeInternal;
 extern MeasurementDetailDefaultTypeInternal _MeasurementDetail_default_instance_;
@@ -950,7 +962,7 @@ class GetDictionaryRequest final : public ::google::protobuf::internal::ZeroFiel
     return reinterpret_cast<const GetDictionaryRequest*>(
         &_GetDictionaryRequest_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 8;
+  static constexpr int kIndexInFileMessages = 11;
   friend void swap(GetDictionaryRequest& a, GetDictionaryRequest& b) { a.Swap(&b); }
   inline void Swap(GetDictionaryRequest* other) {
     if (other == this) return;
@@ -1073,6 +1085,412 @@ class DimensionField_ValuesEntry_DoNotUse final
                              ::google::protobuf::Arena* arena);
   static constexpr auto InternalNewImpl_();
   static const ::google::protobuf::internal::ClassDataFull _class_data_;
+};
+// -------------------------------------------------------------------
+
+class AssetTag final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.dictionary.v20260604alpha1.AssetTag) */ {
+ public:
+  inline AssetTag() : AssetTag(nullptr) {}
+  ~AssetTag() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(AssetTag* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(AssetTag));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR AssetTag(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline AssetTag(const AssetTag& from) : AssetTag(nullptr, from) {}
+  inline AssetTag(AssetTag&& from) noexcept
+      : AssetTag(nullptr, std::move(from)) {}
+  inline AssetTag& operator=(const AssetTag& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AssetTag& operator=(AssetTag&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AssetTag& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AssetTag* internal_default_instance() {
+    return reinterpret_cast<const AssetTag*>(
+        &_AssetTag_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 3;
+  friend void swap(AssetTag& a, AssetTag& b) { a.Swap(&b); }
+  inline void Swap(AssetTag* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AssetTag* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AssetTag* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<AssetTag>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AssetTag& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const AssetTag& from) { AssetTag::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(AssetTag* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.dictionary.v20260604alpha1.AssetTag"; }
+
+ protected:
+  explicit AssetTag(::google::protobuf::Arena* arena);
+  AssetTag(::google::protobuf::Arena* arena, const AssetTag& from);
+  AssetTag(::google::protobuf::Arena* arena, AssetTag&& from) noexcept
+      : AssetTag(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kNameFieldNumber = 1,
+    kDisplayNameFieldNumber = 2,
+  };
+  // string name = 1 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_name() ;
+  const std::string& name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_name(Arg_&& arg, Args_... args);
+  std::string* mutable_name();
+  PROTOBUF_NODISCARD std::string* release_name();
+  void set_allocated_name(std::string* value);
+
+  private:
+  const std::string& _internal_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_name(
+      const std::string& value);
+  std::string* _internal_mutable_name();
+
+  public:
+  // string display_name = 2 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_display_name() ;
+  const std::string& display_name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_display_name(Arg_&& arg, Args_... args);
+  std::string* mutable_display_name();
+  PROTOBUF_NODISCARD std::string* release_display_name();
+  void set_allocated_display_name(std::string* value);
+
+  private:
+  const std::string& _internal_display_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_display_name(
+      const std::string& value);
+  std::string* _internal_mutable_display_name();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.dictionary.v20260604alpha1.AssetTag)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      67, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const AssetTag& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr name_;
+    ::google::protobuf::internal::ArenaStringPtr display_name_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto;
+};
+// -------------------------------------------------------------------
+
+class AppProtocolMetadata final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.dictionary.v20260604alpha1.AppProtocolMetadata) */ {
+ public:
+  inline AppProtocolMetadata() : AppProtocolMetadata(nullptr) {}
+  ~AppProtocolMetadata() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(AppProtocolMetadata* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(AppProtocolMetadata));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR AppProtocolMetadata(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline AppProtocolMetadata(const AppProtocolMetadata& from) : AppProtocolMetadata(nullptr, from) {}
+  inline AppProtocolMetadata(AppProtocolMetadata&& from) noexcept
+      : AppProtocolMetadata(nullptr, std::move(from)) {}
+  inline AppProtocolMetadata& operator=(const AppProtocolMetadata& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AppProtocolMetadata& operator=(AppProtocolMetadata&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AppProtocolMetadata& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AppProtocolMetadata* internal_default_instance() {
+    return reinterpret_cast<const AppProtocolMetadata*>(
+        &_AppProtocolMetadata_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 4;
+  friend void swap(AppProtocolMetadata& a, AppProtocolMetadata& b) { a.Swap(&b); }
+  inline void Swap(AppProtocolMetadata* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AppProtocolMetadata* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AppProtocolMetadata* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<AppProtocolMetadata>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AppProtocolMetadata& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const AppProtocolMetadata& from) { AppProtocolMetadata::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(AppProtocolMetadata* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.dictionary.v20260604alpha1.AppProtocolMetadata"; }
+
+ protected:
+  explicit AppProtocolMetadata(::google::protobuf::Arena* arena);
+  AppProtocolMetadata(::google::protobuf::Arena* arena, const AppProtocolMetadata& from);
+  AppProtocolMetadata(::google::protobuf::Arena* arena, AppProtocolMetadata&& from) noexcept
+      : AppProtocolMetadata(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kFullDataOnlyFieldNumber = 2,
+  };
+  // optional bool full_data_only = 2 [json_name = "fullDataOnly", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_full_data_only() const;
+  void clear_full_data_only() ;
+  bool full_data_only() const;
+  void set_full_data_only(bool value);
+
+  private:
+  bool _internal_full_data_only() const;
+  void _internal_set_full_data_only(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.dictionary.v20260604alpha1.AppProtocolMetadata)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      0, 1, 0,
+      0, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const AppProtocolMetadata& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    bool full_data_only_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto;
 };
 // -------------------------------------------------------------------
 
@@ -1344,7 +1762,7 @@ class MetricField final : public ::google::protobuf::Message
     return reinterpret_cast<const MetricField*>(
         &_MetricField_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 6;
+  static constexpr int kIndexInFileMessages = 9;
   friend void swap(MetricField& a, MetricField& b) { a.Swap(&b); }
   inline void Swap(MetricField* other) {
     if (other == this) return;
@@ -1448,6 +1866,7 @@ class MetricField final : public ::google::protobuf::Message
     kDirectionFieldNumber = 6,
     kToBitsFieldNumber = 14,
     kRollupFieldNumber = 15,
+    kSharedFieldNumber = 19,
     kBaseUnitFieldNumber = 18,
   };
   // map<string, string> values = 8 [json_name = "values", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -1704,6 +2123,16 @@ class MetricField final : public ::google::protobuf::Message
   void _internal_set_rollup(bool value);
 
   public:
+  // bool shared = 19 [json_name = "shared", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_shared() ;
+  bool shared() const;
+  void set_shared(bool value);
+
+  private:
+  bool _internal_shared() const;
+  void _internal_set_shared(bool value);
+
+  public:
   // .kentik.dictionary.v20260604alpha1.BaseUnit base_unit = 18 [json_name = "baseUnit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_base_unit() ;
   ::kentik::dictionary::v20260604alpha1::BaseUnit base_unit() const;
@@ -1719,7 +2148,7 @@ class MetricField final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      5, 18, 1,
+      5, 19, 1,
       178, 2>
       _table_;
 
@@ -1759,6 +2188,7 @@ class MetricField final : public ::google::protobuf::Message
     int direction_;
     bool to_bits_;
     bool rollup_;
+    bool shared_;
     int base_unit_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1826,7 +2256,7 @@ class DimensionField final : public ::google::protobuf::Message
     return reinterpret_cast<const DimensionField*>(
         &_DimensionField_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 4;
+  static constexpr int kIndexInFileMessages = 7;
   friend void swap(DimensionField& a, DimensionField& b) { a.Swap(&b); }
   inline void Swap(DimensionField* other) {
     if (other == this) return;
@@ -1927,6 +2357,7 @@ class DimensionField final : public ::google::protobuf::Message
     kOperatorSetKeyFieldNumber = 10,
     kFilterOnlyFieldNumber = 11,
     kCanCountFieldNumber = 14,
+    kSharedFieldNumber = 15,
   };
   // map<string, string> values = 8 [json_name = "values", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int values_size() const;
@@ -2122,12 +2553,22 @@ class DimensionField final : public ::google::protobuf::Message
   void _internal_set_can_count(bool value);
 
   public:
+  // bool shared = 15 [json_name = "shared", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_shared() ;
+  bool shared() const;
+  void set_shared(bool value);
+
+  private:
+  bool _internal_shared() const;
+  void _internal_set_shared(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.dictionary.v20260604alpha1.DimensionField)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 14, 1,
+      4, 15, 1,
       134, 2>
       _table_;
 
@@ -2164,6 +2605,263 @@ class DimensionField final : public ::google::protobuf::Message
     int operator_set_key_;
     bool filter_only_;
     bool can_count_;
+    bool shared_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto;
+};
+// -------------------------------------------------------------------
+
+class AppProtocol final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.dictionary.v20260604alpha1.AppProtocol) */ {
+ public:
+  inline AppProtocol() : AppProtocol(nullptr) {}
+  ~AppProtocol() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(AppProtocol* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(AppProtocol));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR AppProtocol(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline AppProtocol(const AppProtocol& from) : AppProtocol(nullptr, from) {}
+  inline AppProtocol(AppProtocol&& from) noexcept
+      : AppProtocol(nullptr, std::move(from)) {}
+  inline AppProtocol& operator=(const AppProtocol& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline AppProtocol& operator=(AppProtocol&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const AppProtocol& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const AppProtocol* internal_default_instance() {
+    return reinterpret_cast<const AppProtocol*>(
+        &_AppProtocol_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 5;
+  friend void swap(AppProtocol& a, AppProtocol& b) { a.Swap(&b); }
+  inline void Swap(AppProtocol* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(AppProtocol* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  AppProtocol* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<AppProtocol>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const AppProtocol& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const AppProtocol& from) { AppProtocol::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(AppProtocol* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.dictionary.v20260604alpha1.AppProtocol"; }
+
+ protected:
+  explicit AppProtocol(::google::protobuf::Arena* arena);
+  AppProtocol(::google::protobuf::Arena* arena, const AppProtocol& from);
+  AppProtocol(::google::protobuf::Arena* arena, AppProtocol&& from) noexcept
+      : AppProtocol(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kDisplayNameFieldNumber = 2,
+    kStatusFieldNumber = 4,
+    kMetadataFieldNumber = 5,
+    kIdFieldNumber = 1,
+    kAddToStandardFieldsFieldNumber = 3,
+  };
+  // string display_name = 2 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_display_name() ;
+  const std::string& display_name() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_display_name(Arg_&& arg, Args_... args);
+  std::string* mutable_display_name();
+  PROTOBUF_NODISCARD std::string* release_display_name();
+  void set_allocated_display_name(std::string* value);
+
+  private:
+  const std::string& _internal_display_name() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_display_name(
+      const std::string& value);
+  std::string* _internal_mutable_display_name();
+
+  public:
+  // string status = 4 [json_name = "status", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_status() ;
+  const std::string& status() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_status(Arg_&& arg, Args_... args);
+  std::string* mutable_status();
+  PROTOBUF_NODISCARD std::string* release_status();
+  void set_allocated_status(std::string* value);
+
+  private:
+  const std::string& _internal_status() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_status(
+      const std::string& value);
+  std::string* _internal_mutable_status();
+
+  public:
+  // .kentik.dictionary.v20260604alpha1.AppProtocolMetadata metadata = 5 [json_name = "metadata", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_metadata() const;
+  void clear_metadata() ;
+  const ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata& metadata() const;
+  PROTOBUF_NODISCARD ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* release_metadata();
+  ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* mutable_metadata();
+  void set_allocated_metadata(::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* value);
+  void unsafe_arena_set_allocated_metadata(::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* value);
+  ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* unsafe_arena_release_metadata();
+
+  private:
+  const ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata& _internal_metadata() const;
+  ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* _internal_mutable_metadata();
+
+  public:
+  // uint64 id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_id() ;
+  ::uint64_t id() const;
+  void set_id(::uint64_t value);
+
+  private:
+  ::uint64_t _internal_id() const;
+  void _internal_set_id(::uint64_t value);
+
+  public:
+  // bool add_to_standard_fields = 3 [json_name = "addToStandardFields", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_add_to_standard_fields() ;
+  bool add_to_standard_fields() const;
+  void set_add_to_standard_fields(bool value);
+
+  private:
+  bool _internal_add_to_standard_fields() const;
+  void _internal_set_add_to_standard_fields(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.dictionary.v20260604alpha1.AppProtocol)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      3, 5, 1,
+      72, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const AppProtocol& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr display_name_;
+    ::google::protobuf::internal::ArenaStringPtr status_;
+    ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* metadata_;
+    ::uint64_t id_;
+    bool add_to_standard_fields_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -2230,7 +2928,7 @@ class MeasurementDetail final : public ::google::protobuf::Message
     return reinterpret_cast<const MeasurementDetail*>(
         &_MeasurementDetail_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 7;
+  static constexpr int kIndexInFileMessages = 10;
   friend void swap(MeasurementDetail& a, MeasurementDetail& b) { a.Swap(&b); }
   inline void Swap(MeasurementDetail* other) {
     if (other == this) return;
@@ -2473,6 +3171,45 @@ class MeasurementDetail final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class GetDictionaryResponse_AppProtocolsEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          std::string, ::google::protobuf::Message,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE> {
+ public:
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      std::string, ::google::protobuf::Message,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE>;
+  GetDictionaryResponse_AppProtocolsEntry_DoNotUse();
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR GetDictionaryResponse_AppProtocolsEntry_DoNotUse(
+      ::google::protobuf::internal::ConstantInitialized);
+  explicit GetDictionaryResponse_AppProtocolsEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const GetDictionaryResponse_AppProtocolsEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const GetDictionaryResponse_AppProtocolsEntry_DoNotUse*>(
+        &_GetDictionaryResponse_AppProtocolsEntry_DoNotUse_default_instance_);
+  }
+
+
+ private:
+  friend class ::google::protobuf::MessageLite;
+  friend struct ::TableStruct_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 1,
+      85, 2>
+      _table_;
+
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+};
+// -------------------------------------------------------------------
+
 class GetDictionaryResponse final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.dictionary.v20260604alpha1.GetDictionaryResponse) */ {
  public:
@@ -2532,7 +3269,7 @@ class GetDictionaryResponse final : public ::google::protobuf::Message
     return reinterpret_cast<const GetDictionaryResponse*>(
         &_GetDictionaryResponse_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 9;
+  static constexpr int kIndexInFileMessages = 13;
   friend void swap(GetDictionaryResponse& a, GetDictionaryResponse& b) { a.Swap(&b); }
   inline void Swap(GetDictionaryResponse* other) {
     if (other == this) return;
@@ -2622,6 +3359,8 @@ class GetDictionaryResponse final : public ::google::protobuf::Message
     kMeasurementsFieldNumber = 1,
     kOperatorSetsFieldNumber = 2,
     kMetricFamiliesFieldNumber = 3,
+    kAssetTagsFieldNumber = 4,
+    kAppProtocolsFieldNumber = 5,
   };
   // repeated .kentik.dictionary.v20260604alpha1.MeasurementDetail measurements = 1 [json_name = "measurements", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   int measurements_size() const;
@@ -2674,13 +3413,45 @@ class GetDictionaryResponse final : public ::google::protobuf::Message
   const ::kentik::dictionary::v20260604alpha1::MetricFamilyDef& metric_families(int index) const;
   ::kentik::dictionary::v20260604alpha1::MetricFamilyDef* add_metric_families();
   const ::google::protobuf::RepeatedPtrField<::kentik::dictionary::v20260604alpha1::MetricFamilyDef>& metric_families() const;
+  // repeated .kentik.dictionary.v20260604alpha1.AssetTag asset_tags = 4 [json_name = "assetTags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int asset_tags_size() const;
+  private:
+  int _internal_asset_tags_size() const;
+
+  public:
+  void clear_asset_tags() ;
+  ::kentik::dictionary::v20260604alpha1::AssetTag* mutable_asset_tags(int index);
+  ::google::protobuf::RepeatedPtrField<::kentik::dictionary::v20260604alpha1::AssetTag>* mutable_asset_tags();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::kentik::dictionary::v20260604alpha1::AssetTag>& _internal_asset_tags() const;
+  ::google::protobuf::RepeatedPtrField<::kentik::dictionary::v20260604alpha1::AssetTag>* _internal_mutable_asset_tags();
+  public:
+  const ::kentik::dictionary::v20260604alpha1::AssetTag& asset_tags(int index) const;
+  ::kentik::dictionary::v20260604alpha1::AssetTag* add_asset_tags();
+  const ::google::protobuf::RepeatedPtrField<::kentik::dictionary::v20260604alpha1::AssetTag>& asset_tags() const;
+  // map<string, .kentik.dictionary.v20260604alpha1.AppProtocol> app_protocols = 5 [json_name = "appProtocols", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  int app_protocols_size() const;
+  private:
+  int _internal_app_protocols_size() const;
+
+  public:
+  void clear_app_protocols() ;
+  const ::google::protobuf::Map<std::string, ::kentik::dictionary::v20260604alpha1::AppProtocol>& app_protocols() const;
+  ::google::protobuf::Map<std::string, ::kentik::dictionary::v20260604alpha1::AppProtocol>* mutable_app_protocols();
+
+  private:
+  const ::google::protobuf::Map<std::string, ::kentik::dictionary::v20260604alpha1::AppProtocol>& _internal_app_protocols() const;
+  ::google::protobuf::Map<std::string, ::kentik::dictionary::v20260604alpha1::AppProtocol>* _internal_mutable_app_protocols();
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.dictionary.v20260604alpha1.GetDictionaryResponse)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 3,
-      0, 2>
+      2, 5, 6,
+      77, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -2700,6 +3471,11 @@ class GetDictionaryResponse final : public ::google::protobuf::Message
     ::google::protobuf::RepeatedPtrField< ::kentik::dictionary::v20260604alpha1::MeasurementDetail > measurements_;
     ::google::protobuf::RepeatedPtrField< ::kentik::dictionary::v20260604alpha1::OperatorSet > operator_sets_;
     ::google::protobuf::RepeatedPtrField< ::kentik::dictionary::v20260604alpha1::MetricFamilyDef > metric_families_;
+    ::google::protobuf::RepeatedPtrField< ::kentik::dictionary::v20260604alpha1::AssetTag > asset_tags_;
+    ::google::protobuf::internal::MapField<GetDictionaryResponse_AppProtocolsEntry_DoNotUse, std::string, ::kentik::dictionary::v20260604alpha1::AppProtocol,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_MESSAGE>
+        app_protocols_;
     ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -3164,6 +3940,378 @@ inline ::google::protobuf::RepeatedPtrField<std::string>*
 MetricFamilyDef::_internal_mutable_incompatible_with() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.incompatible_with_;
+}
+
+// -------------------------------------------------------------------
+
+// AssetTag
+
+// string name = 1 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AssetTag::clear_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.name_.ClearToEmpty();
+}
+inline const std::string& AssetTag::name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.dictionary.v20260604alpha1.AssetTag.name)
+  return _internal_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AssetTag::set_name(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.dictionary.v20260604alpha1.AssetTag.name)
+}
+inline std::string* AssetTag::mutable_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_name();
+  // @@protoc_insertion_point(field_mutable:kentik.dictionary.v20260604alpha1.AssetTag.name)
+  return _s;
+}
+inline const std::string& AssetTag::_internal_name() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.name_.Get();
+}
+inline void AssetTag::_internal_set_name(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.name_.Set(value, GetArena());
+}
+inline std::string* AssetTag::_internal_mutable_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.name_.Mutable( GetArena());
+}
+inline std::string* AssetTag::release_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.dictionary.v20260604alpha1.AssetTag.name)
+  return _impl_.name_.Release();
+}
+inline void AssetTag::set_allocated_name(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.name_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.name_.IsDefault()) {
+    _impl_.name_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.dictionary.v20260604alpha1.AssetTag.name)
+}
+
+// string display_name = 2 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AssetTag::clear_display_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.display_name_.ClearToEmpty();
+}
+inline const std::string& AssetTag::display_name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.dictionary.v20260604alpha1.AssetTag.display_name)
+  return _internal_display_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AssetTag::set_display_name(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.display_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.dictionary.v20260604alpha1.AssetTag.display_name)
+}
+inline std::string* AssetTag::mutable_display_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_display_name();
+  // @@protoc_insertion_point(field_mutable:kentik.dictionary.v20260604alpha1.AssetTag.display_name)
+  return _s;
+}
+inline const std::string& AssetTag::_internal_display_name() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.display_name_.Get();
+}
+inline void AssetTag::_internal_set_display_name(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.display_name_.Set(value, GetArena());
+}
+inline std::string* AssetTag::_internal_mutable_display_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.display_name_.Mutable( GetArena());
+}
+inline std::string* AssetTag::release_display_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.dictionary.v20260604alpha1.AssetTag.display_name)
+  return _impl_.display_name_.Release();
+}
+inline void AssetTag::set_allocated_display_name(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.display_name_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.display_name_.IsDefault()) {
+    _impl_.display_name_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.dictionary.v20260604alpha1.AssetTag.display_name)
+}
+
+// -------------------------------------------------------------------
+
+// AppProtocolMetadata
+
+// optional bool full_data_only = 2 [json_name = "fullDataOnly", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool AppProtocolMetadata::has_full_data_only() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline void AppProtocolMetadata::clear_full_data_only() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.full_data_only_ = false;
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline bool AppProtocolMetadata::full_data_only() const {
+  // @@protoc_insertion_point(field_get:kentik.dictionary.v20260604alpha1.AppProtocolMetadata.full_data_only)
+  return _internal_full_data_only();
+}
+inline void AppProtocolMetadata::set_full_data_only(bool value) {
+  _internal_set_full_data_only(value);
+  _impl_._has_bits_[0] |= 0x00000001u;
+  // @@protoc_insertion_point(field_set:kentik.dictionary.v20260604alpha1.AppProtocolMetadata.full_data_only)
+}
+inline bool AppProtocolMetadata::_internal_full_data_only() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.full_data_only_;
+}
+inline void AppProtocolMetadata::_internal_set_full_data_only(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.full_data_only_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// AppProtocol
+
+// uint64 id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AppProtocol::clear_id() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.id_ = ::uint64_t{0u};
+}
+inline ::uint64_t AppProtocol::id() const {
+  // @@protoc_insertion_point(field_get:kentik.dictionary.v20260604alpha1.AppProtocol.id)
+  return _internal_id();
+}
+inline void AppProtocol::set_id(::uint64_t value) {
+  _internal_set_id(value);
+  // @@protoc_insertion_point(field_set:kentik.dictionary.v20260604alpha1.AppProtocol.id)
+}
+inline ::uint64_t AppProtocol::_internal_id() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.id_;
+}
+inline void AppProtocol::_internal_set_id(::uint64_t value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.id_ = value;
+}
+
+// string display_name = 2 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AppProtocol::clear_display_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.display_name_.ClearToEmpty();
+}
+inline const std::string& AppProtocol::display_name() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.dictionary.v20260604alpha1.AppProtocol.display_name)
+  return _internal_display_name();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AppProtocol::set_display_name(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.display_name_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.dictionary.v20260604alpha1.AppProtocol.display_name)
+}
+inline std::string* AppProtocol::mutable_display_name() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_display_name();
+  // @@protoc_insertion_point(field_mutable:kentik.dictionary.v20260604alpha1.AppProtocol.display_name)
+  return _s;
+}
+inline const std::string& AppProtocol::_internal_display_name() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.display_name_.Get();
+}
+inline void AppProtocol::_internal_set_display_name(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.display_name_.Set(value, GetArena());
+}
+inline std::string* AppProtocol::_internal_mutable_display_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.display_name_.Mutable( GetArena());
+}
+inline std::string* AppProtocol::release_display_name() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.dictionary.v20260604alpha1.AppProtocol.display_name)
+  return _impl_.display_name_.Release();
+}
+inline void AppProtocol::set_allocated_display_name(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.display_name_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.display_name_.IsDefault()) {
+    _impl_.display_name_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.dictionary.v20260604alpha1.AppProtocol.display_name)
+}
+
+// bool add_to_standard_fields = 3 [json_name = "addToStandardFields", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AppProtocol::clear_add_to_standard_fields() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.add_to_standard_fields_ = false;
+}
+inline bool AppProtocol::add_to_standard_fields() const {
+  // @@protoc_insertion_point(field_get:kentik.dictionary.v20260604alpha1.AppProtocol.add_to_standard_fields)
+  return _internal_add_to_standard_fields();
+}
+inline void AppProtocol::set_add_to_standard_fields(bool value) {
+  _internal_set_add_to_standard_fields(value);
+  // @@protoc_insertion_point(field_set:kentik.dictionary.v20260604alpha1.AppProtocol.add_to_standard_fields)
+}
+inline bool AppProtocol::_internal_add_to_standard_fields() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.add_to_standard_fields_;
+}
+inline void AppProtocol::_internal_set_add_to_standard_fields(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.add_to_standard_fields_ = value;
+}
+
+// string status = 4 [json_name = "status", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void AppProtocol::clear_status() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.status_.ClearToEmpty();
+}
+inline const std::string& AppProtocol::status() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.dictionary.v20260604alpha1.AppProtocol.status)
+  return _internal_status();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void AppProtocol::set_status(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.status_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.dictionary.v20260604alpha1.AppProtocol.status)
+}
+inline std::string* AppProtocol::mutable_status() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_status();
+  // @@protoc_insertion_point(field_mutable:kentik.dictionary.v20260604alpha1.AppProtocol.status)
+  return _s;
+}
+inline const std::string& AppProtocol::_internal_status() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.status_.Get();
+}
+inline void AppProtocol::_internal_set_status(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.status_.Set(value, GetArena());
+}
+inline std::string* AppProtocol::_internal_mutable_status() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.status_.Mutable( GetArena());
+}
+inline std::string* AppProtocol::release_status() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.dictionary.v20260604alpha1.AppProtocol.status)
+  return _impl_.status_.Release();
+}
+inline void AppProtocol::set_allocated_status(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.status_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.status_.IsDefault()) {
+    _impl_.status_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.dictionary.v20260604alpha1.AppProtocol.status)
+}
+
+// .kentik.dictionary.v20260604alpha1.AppProtocolMetadata metadata = 5 [json_name = "metadata", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool AppProtocol::has_metadata() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.metadata_ != nullptr);
+  return value;
+}
+inline void AppProtocol::clear_metadata() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.metadata_ != nullptr) _impl_.metadata_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+inline const ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata& AppProtocol::_internal_metadata() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* p = _impl_.metadata_;
+  return p != nullptr ? *p : reinterpret_cast<const ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata&>(::kentik::dictionary::v20260604alpha1::_AppProtocolMetadata_default_instance_);
+}
+inline const ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata& AppProtocol::metadata() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.dictionary.v20260604alpha1.AppProtocol.metadata)
+  return _internal_metadata();
+}
+inline void AppProtocol::unsafe_arena_set_allocated_metadata(::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.metadata_);
+  }
+  _impl_.metadata_ = reinterpret_cast<::kentik::dictionary::v20260604alpha1::AppProtocolMetadata*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.dictionary.v20260604alpha1.AppProtocol.metadata)
+}
+inline ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* AppProtocol::release_metadata() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* released = _impl_.metadata_;
+  _impl_.metadata_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* AppProtocol::unsafe_arena_release_metadata() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.dictionary.v20260604alpha1.AppProtocol.metadata)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* temp = _impl_.metadata_;
+  _impl_.metadata_ = nullptr;
+  return temp;
+}
+inline ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* AppProtocol::_internal_mutable_metadata() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.metadata_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::kentik::dictionary::v20260604alpha1::AppProtocolMetadata>(GetArena());
+    _impl_.metadata_ = reinterpret_cast<::kentik::dictionary::v20260604alpha1::AppProtocolMetadata*>(p);
+  }
+  return _impl_.metadata_;
+}
+inline ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* AppProtocol::mutable_metadata() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* _msg = _internal_mutable_metadata();
+  // @@protoc_insertion_point(field_mutable:kentik.dictionary.v20260604alpha1.AppProtocol.metadata)
+  return _msg;
+}
+inline void AppProtocol::set_allocated_metadata(::kentik::dictionary::v20260604alpha1::AppProtocolMetadata* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete (_impl_.metadata_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = (value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.metadata_ = reinterpret_cast<::kentik::dictionary::v20260604alpha1::AppProtocolMetadata*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.dictionary.v20260604alpha1.AppProtocol.metadata)
 }
 
 // -------------------------------------------------------------------
@@ -3713,6 +4861,28 @@ inline bool DimensionField::_internal_can_count() const {
 inline void DimensionField::_internal_set_can_count(bool value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.can_count_ = value;
+}
+
+// bool shared = 15 [json_name = "shared", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void DimensionField::clear_shared() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.shared_ = false;
+}
+inline bool DimensionField::shared() const {
+  // @@protoc_insertion_point(field_get:kentik.dictionary.v20260604alpha1.DimensionField.shared)
+  return _internal_shared();
+}
+inline void DimensionField::set_shared(bool value) {
+  _internal_set_shared(value);
+  // @@protoc_insertion_point(field_set:kentik.dictionary.v20260604alpha1.DimensionField.shared)
+}
+inline bool DimensionField::_internal_shared() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.shared_;
+}
+inline void DimensionField::_internal_set_shared(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.shared_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -4472,6 +5642,28 @@ inline void MetricField::_internal_set_base_unit(::kentik::dictionary::v20260604
   _impl_.base_unit_ = value;
 }
 
+// bool shared = 19 [json_name = "shared", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void MetricField::clear_shared() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.shared_ = false;
+}
+inline bool MetricField::shared() const {
+  // @@protoc_insertion_point(field_get:kentik.dictionary.v20260604alpha1.MetricField.shared)
+  return _internal_shared();
+}
+inline void MetricField::set_shared(bool value) {
+  _internal_set_shared(value);
+  // @@protoc_insertion_point(field_set:kentik.dictionary.v20260604alpha1.MetricField.shared)
+}
+inline bool MetricField::_internal_shared() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.shared_;
+}
+inline void MetricField::_internal_set_shared(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.shared_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // MeasurementDetail
@@ -4815,6 +6007,8 @@ MeasurementDetail::_internal_mutable_metrics() {
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // GetDictionaryResponse
 
 // repeated .kentik.dictionary.v20260604alpha1.MeasurementDetail measurements = 1 [json_name = "measurements", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
@@ -4962,6 +6156,83 @@ inline ::google::protobuf::RepeatedPtrField<::kentik::dictionary::v20260604alpha
 GetDictionaryResponse::_internal_mutable_metric_families() {
   ::google::protobuf::internal::TSanRead(&_impl_);
   return &_impl_.metric_families_;
+}
+
+// repeated .kentik.dictionary.v20260604alpha1.AssetTag asset_tags = 4 [json_name = "assetTags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int GetDictionaryResponse::_internal_asset_tags_size() const {
+  return _internal_asset_tags().size();
+}
+inline int GetDictionaryResponse::asset_tags_size() const {
+  return _internal_asset_tags_size();
+}
+inline void GetDictionaryResponse::clear_asset_tags() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.asset_tags_.Clear();
+}
+inline ::kentik::dictionary::v20260604alpha1::AssetTag* GetDictionaryResponse::mutable_asset_tags(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.dictionary.v20260604alpha1.GetDictionaryResponse.asset_tags)
+  return _internal_mutable_asset_tags()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::dictionary::v20260604alpha1::AssetTag>* GetDictionaryResponse::mutable_asset_tags()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.dictionary.v20260604alpha1.GetDictionaryResponse.asset_tags)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_asset_tags();
+}
+inline const ::kentik::dictionary::v20260604alpha1::AssetTag& GetDictionaryResponse::asset_tags(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.dictionary.v20260604alpha1.GetDictionaryResponse.asset_tags)
+  return _internal_asset_tags().Get(index);
+}
+inline ::kentik::dictionary::v20260604alpha1::AssetTag* GetDictionaryResponse::add_asset_tags() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::kentik::dictionary::v20260604alpha1::AssetTag* _add = _internal_mutable_asset_tags()->Add();
+  // @@protoc_insertion_point(field_add:kentik.dictionary.v20260604alpha1.GetDictionaryResponse.asset_tags)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::dictionary::v20260604alpha1::AssetTag>& GetDictionaryResponse::asset_tags() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.dictionary.v20260604alpha1.GetDictionaryResponse.asset_tags)
+  return _internal_asset_tags();
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::dictionary::v20260604alpha1::AssetTag>&
+GetDictionaryResponse::_internal_asset_tags() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.asset_tags_;
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::dictionary::v20260604alpha1::AssetTag>*
+GetDictionaryResponse::_internal_mutable_asset_tags() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.asset_tags_;
+}
+
+// map<string, .kentik.dictionary.v20260604alpha1.AppProtocol> app_protocols = 5 [json_name = "appProtocols", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline int GetDictionaryResponse::_internal_app_protocols_size() const {
+  return _internal_app_protocols().size();
+}
+inline int GetDictionaryResponse::app_protocols_size() const {
+  return _internal_app_protocols_size();
+}
+inline void GetDictionaryResponse::clear_app_protocols() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.app_protocols_.Clear();
+}
+inline const ::google::protobuf::Map<std::string, ::kentik::dictionary::v20260604alpha1::AppProtocol>& GetDictionaryResponse::_internal_app_protocols() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.app_protocols_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, ::kentik::dictionary::v20260604alpha1::AppProtocol>& GetDictionaryResponse::app_protocols() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:kentik.dictionary.v20260604alpha1.GetDictionaryResponse.app_protocols)
+  return _internal_app_protocols();
+}
+inline ::google::protobuf::Map<std::string, ::kentik::dictionary::v20260604alpha1::AppProtocol>* GetDictionaryResponse::_internal_mutable_app_protocols() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.app_protocols_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, ::kentik::dictionary::v20260604alpha1::AppProtocol>* GetDictionaryResponse::mutable_app_protocols() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:kentik.dictionary.v20260604alpha1.GetDictionaryResponse.app_protocols)
+  return _internal_mutable_app_protocols();
 }
 
 #ifdef __GNUC__

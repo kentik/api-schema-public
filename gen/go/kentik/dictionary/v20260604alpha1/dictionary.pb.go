@@ -625,6 +625,179 @@ func (x *MetricFamilyDef) GetIncompatibleWith() []string {
 	return nil
 }
 
+// User defined tags that can be assigned to devices
+type AssetTag struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
+	DisplayName   string                 `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AssetTag) Reset() {
+	*x = AssetTag{}
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AssetTag) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AssetTag) ProtoMessage() {}
+
+func (x *AssetTag) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AssetTag.ProtoReflect.Descriptor instead.
+func (*AssetTag) Descriptor() ([]byte, []int) {
+	return file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *AssetTag) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *AssetTag) GetDisplayName() string {
+	if x != nil {
+		return x.DisplayName
+	}
+	return ""
+}
+
+type AppProtocolMetadata struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	FullDataOnly  *bool                  `protobuf:"varint,2,opt,name=full_data_only,json=fullDataOnly,proto3,oneof" json:"full_data_only,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AppProtocolMetadata) Reset() {
+	*x = AppProtocolMetadata{}
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AppProtocolMetadata) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AppProtocolMetadata) ProtoMessage() {}
+
+func (x *AppProtocolMetadata) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AppProtocolMetadata.ProtoReflect.Descriptor instead.
+func (*AppProtocolMetadata) Descriptor() ([]byte, []int) {
+	return file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *AppProtocolMetadata) GetFullDataOnly() bool {
+	if x != nil && x.FullDataOnly != nil {
+		return *x.FullDataOnly
+	}
+	return false
+}
+
+type AppProtocol struct {
+	state               protoimpl.MessageState `protogen:"open.v1"`
+	Id                  uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	DisplayName         string                 `protobuf:"bytes,2,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`
+	AddToStandardFields bool                   `protobuf:"varint,3,opt,name=add_to_standard_fields,json=addToStandardFields,proto3" json:"add_to_standard_fields,omitempty"`
+	Status              string                 `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
+	Metadata            *AppProtocolMetadata   `protobuf:"bytes,5,opt,name=metadata,proto3" json:"metadata,omitempty"`
+	unknownFields       protoimpl.UnknownFields
+	sizeCache           protoimpl.SizeCache
+}
+
+func (x *AppProtocol) Reset() {
+	*x = AppProtocol{}
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AppProtocol) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AppProtocol) ProtoMessage() {}
+
+func (x *AppProtocol) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AppProtocol.ProtoReflect.Descriptor instead.
+func (*AppProtocol) Descriptor() ([]byte, []int) {
+	return file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP(), []int{5}
+}
+
+func (x *AppProtocol) GetId() uint64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *AppProtocol) GetDisplayName() string {
+	if x != nil {
+		return x.DisplayName
+	}
+	return ""
+}
+
+func (x *AppProtocol) GetAddToStandardFields() bool {
+	if x != nil {
+		return x.AddToStandardFields
+	}
+	return false
+}
+
+func (x *AppProtocol) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *AppProtocol) GetMetadata() *AppProtocolMetadata {
+	if x != nil {
+		return x.Metadata
+	}
+	return nil
+}
+
 // A field that can be used as a dimension/filter in a query.
 type DimensionField struct {
 	state     protoimpl.MessageState `protogen:"open.v1"`
@@ -643,13 +816,14 @@ type DimensionField struct {
 	FilterColumn   string            `protobuf:"bytes,12,opt,name=filter_column,json=filterColumn,proto3" json:"filter_column,omitempty"`
 	QueryColumn    string            `protobuf:"bytes,13,opt,name=query_column,json=queryColumn,proto3" json:"query_column,omitempty"`
 	CanCount       bool              `protobuf:"varint,14,opt,name=can_count,json=canCount,proto3" json:"can_count,omitempty"`
+	Shared         bool              `protobuf:"varint,15,opt,name=shared,proto3" json:"shared,omitempty"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
 
 func (x *DimensionField) Reset() {
 	*x = DimensionField{}
-	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[3]
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -661,7 +835,7 @@ func (x *DimensionField) String() string {
 func (*DimensionField) ProtoMessage() {}
 
 func (x *DimensionField) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[3]
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -674,7 +848,7 @@ func (x *DimensionField) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use DimensionField.ProtoReflect.Descriptor instead.
 func (*DimensionField) Descriptor() ([]byte, []int) {
-	return file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP(), []int{3}
+	return file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *DimensionField) GetKey() string {
@@ -775,6 +949,13 @@ func (x *DimensionField) GetCanCount() bool {
 	return false
 }
 
+func (x *DimensionField) GetShared() bool {
+	if x != nil {
+		return x.Shared
+	}
+	return false
+}
+
 // A field that represents a measurable metric in a query.
 type MetricField struct {
 	state       protoimpl.MessageState `protogen:"open.v1"`
@@ -797,13 +978,14 @@ type MetricField struct {
 	HealthyValue  string   `protobuf:"bytes,16,opt,name=healthy_value,json=healthyValue,proto3" json:"healthy_value,omitempty"`
 	FamilyKey     string   `protobuf:"bytes,17,opt,name=family_key,json=familyKey,proto3" json:"family_key,omitempty"`
 	BaseUnit      BaseUnit `protobuf:"varint,18,opt,name=base_unit,json=baseUnit,proto3,enum=kentik.dictionary.v20260604alpha1.BaseUnit" json:"base_unit,omitempty"`
+	Shared        bool     `protobuf:"varint,19,opt,name=shared,proto3" json:"shared,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
 
 func (x *MetricField) Reset() {
 	*x = MetricField{}
-	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[4]
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -815,7 +997,7 @@ func (x *MetricField) String() string {
 func (*MetricField) ProtoMessage() {}
 
 func (x *MetricField) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[4]
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -828,7 +1010,7 @@ func (x *MetricField) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MetricField.ProtoReflect.Descriptor instead.
 func (*MetricField) Descriptor() ([]byte, []int) {
-	return file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP(), []int{4}
+	return file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *MetricField) GetKey() string {
@@ -957,6 +1139,13 @@ func (x *MetricField) GetBaseUnit() BaseUnit {
 	return BaseUnit_BASE_UNIT_UNSPECIFIED
 }
 
+func (x *MetricField) GetShared() bool {
+	if x != nil {
+		return x.Shared
+	}
+	return false
+}
+
 // Full detail for a single measurement (e.g. a traffic flow table or NMS measurement).
 type MeasurementDetail struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -973,7 +1162,7 @@ type MeasurementDetail struct {
 
 func (x *MeasurementDetail) Reset() {
 	*x = MeasurementDetail{}
-	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[5]
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[8]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -985,7 +1174,7 @@ func (x *MeasurementDetail) String() string {
 func (*MeasurementDetail) ProtoMessage() {}
 
 func (x *MeasurementDetail) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[5]
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[8]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -998,7 +1187,7 @@ func (x *MeasurementDetail) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use MeasurementDetail.ProtoReflect.Descriptor instead.
 func (*MeasurementDetail) Descriptor() ([]byte, []int) {
-	return file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP(), []int{5}
+	return file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *MeasurementDetail) GetName() string {
@@ -1059,7 +1248,7 @@ type GetDictionaryRequest struct {
 
 func (x *GetDictionaryRequest) Reset() {
 	*x = GetDictionaryRequest{}
-	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[6]
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[9]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1071,7 +1260,7 @@ func (x *GetDictionaryRequest) String() string {
 func (*GetDictionaryRequest) ProtoMessage() {}
 
 func (x *GetDictionaryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[6]
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[9]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1084,22 +1273,24 @@ func (x *GetDictionaryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDictionaryRequest.ProtoReflect.Descriptor instead.
 func (*GetDictionaryRequest) Descriptor() ([]byte, []int) {
-	return file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP(), []int{6}
+	return file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP(), []int{9}
 }
 
 // {{.Name}}
 type GetDictionaryResponse struct {
-	state          protoimpl.MessageState `protogen:"open.v1"`
-	Measurements   []*MeasurementDetail   `protobuf:"bytes,1,rep,name=measurements,proto3" json:"measurements,omitempty"`
-	OperatorSets   []*OperatorSet         `protobuf:"bytes,2,rep,name=operator_sets,json=operatorSets,proto3" json:"operator_sets,omitempty"`
-	MetricFamilies []*MetricFamilyDef     `protobuf:"bytes,3,rep,name=metric_families,json=metricFamilies,proto3" json:"metric_families,omitempty"`
+	state          protoimpl.MessageState  `protogen:"open.v1"`
+	Measurements   []*MeasurementDetail    `protobuf:"bytes,1,rep,name=measurements,proto3" json:"measurements,omitempty"`
+	OperatorSets   []*OperatorSet          `protobuf:"bytes,2,rep,name=operator_sets,json=operatorSets,proto3" json:"operator_sets,omitempty"`
+	MetricFamilies []*MetricFamilyDef      `protobuf:"bytes,3,rep,name=metric_families,json=metricFamilies,proto3" json:"metric_families,omitempty"`
+	AssetTags      []*AssetTag             `protobuf:"bytes,4,rep,name=asset_tags,json=assetTags,proto3" json:"asset_tags,omitempty"`
+	AppProtocols   map[string]*AppProtocol `protobuf:"bytes,5,rep,name=app_protocols,json=appProtocols,proto3" json:"app_protocols,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
 	unknownFields  protoimpl.UnknownFields
 	sizeCache      protoimpl.SizeCache
 }
 
 func (x *GetDictionaryResponse) Reset() {
 	*x = GetDictionaryResponse{}
-	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[7]
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[10]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1111,7 +1302,7 @@ func (x *GetDictionaryResponse) String() string {
 func (*GetDictionaryResponse) ProtoMessage() {}
 
 func (x *GetDictionaryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[7]
+	mi := &file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[10]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1124,7 +1315,7 @@ func (x *GetDictionaryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetDictionaryResponse.ProtoReflect.Descriptor instead.
 func (*GetDictionaryResponse) Descriptor() ([]byte, []int) {
-	return file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP(), []int{7}
+	return file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *GetDictionaryResponse) GetMeasurements() []*MeasurementDetail {
@@ -1148,6 +1339,20 @@ func (x *GetDictionaryResponse) GetMetricFamilies() []*MetricFamilyDef {
 	return nil
 }
 
+func (x *GetDictionaryResponse) GetAssetTags() []*AssetTag {
+	if x != nil {
+		return x.AssetTags
+	}
+	return nil
+}
+
+func (x *GetDictionaryResponse) GetAppProtocols() map[string]*AppProtocol {
+	if x != nil {
+		return x.AppProtocols
+	}
+	return nil
+}
+
 var File_kentik_dictionary_v20260604alpha1_dictionary_proto protoreflect.FileDescriptor
 
 const file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDesc = "" +
@@ -1165,7 +1370,19 @@ const file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDesc = "" +
 	"\bquantity\x18\x03 \x01(\x0e21.kentik.dictionary.v20260604alpha1.MetricQuantityB.\x92A+2)The kind of quantity this family measuresR\bquantity\x12v\n" +
 	"\tbase_unit\x18\x04 \x01(\x0e2+.kentik.dictionary.v20260604alpha1.BaseUnitB,\x92A)2'The base unit for values in this familyR\bbaseUnit\x12l\n" +
 	"\x14dual_axis_compatible\x18\x05 \x03(\tB:\x92A725Metric family keys compatible for dual-axis renderingR\x12dualAxisCompatible\x12m\n" +
-	"\x11incompatible_with\x18\x06 \x03(\tB@\x92A=2;Metric family keys that cannot be combined with this familyR\x10incompatibleWith\"\xd2\v\n" +
+	"\x11incompatible_with\x18\x06 \x03(\tB@\x92A=2;Metric family keys that cannot be combined with this familyR\x10incompatibleWith\"\x8d\x01\n" +
+	"\bAssetTag\x12<\n" +
+	"\x04name\x18\x01 \x01(\tB(\x92A%2#Unique identifier for the asset tagR\x04name\x12C\n" +
+	"\fdisplay_name\x18\x02 \x01(\tB \x92A\x1d2\x1bHuman-readable display nameR\vdisplayName\"\xa2\x01\n" +
+	"\x13AppProtocolMetadata\x12x\n" +
+	"\x0efull_data_only\x18\x02 \x01(\bBM\x92AJ2HIf true, this AppProtocol can only be used with Full Data, not Fast DataH\x00R\ffullDataOnly\x88\x01\x01B\x11\n" +
+	"\x0f_full_data_only\"\xae\x03\n" +
+	"\vAppProtocol\x12;\n" +
+	"\x02id\x18\x01 \x01(\x04B+\x92A(2&Unique identifier for the app protocolR\x02id\x12C\n" +
+	"\fdisplay_name\x18\x02 \x01(\tB \x92A\x1d2\x1bHuman-readable display nameR\vdisplayName\x12r\n" +
+	"\x16add_to_standard_fields\x18\x03 \x01(\bB=\x92A:28When true, this AppProtocol is able to use shared fieldsR\x13addToStandardFields\x12:\n" +
+	"\x06status\x18\x04 \x01(\tB\"\x92A\x1f2\x1dWill always be 'A' for ActiveR\x06status\x12m\n" +
+	"\bmetadata\x18\x05 \x01(\v26.kentik.dictionary.v20260604alpha1.AppProtocolMetadataB\x19\x92A\x162\x14AppProtocol metadataR\bmetadata\"\xa7\f\n" +
 	"\x0eDimensionField\x120\n" +
 	"\x03key\x18\x01 \x01(\tB\x1e\x92A\x1b2\x19Field key used in queriesR\x03key\x126\n" +
 	"\x05label\x18\x02 \x01(\tB \x92A\x1d2\x1bHuman-readable display nameR\x05label\x12u\n" +
@@ -1182,12 +1399,13 @@ const file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDesc = "" +
 	"filterOnly\x12m\n" +
 	"\rfilter_column\x18\f \x01(\tBH\x92AE2CAlternative column name used when this field is applied as a filterR\ffilterColumn\x12p\n" +
 	"\fquery_column\x18\r \x01(\tBM\x92AJ2HAlternative column name used when this field is used in a query group-byR\vqueryColumn\x12]\n" +
-	"\tcan_count\x18\x0e \x01(\bB@\x92A=2;When true, the field can be used with WINDOW_FUNCTION_COUNTR\bcanCount\x1a9\n" +
+	"\tcan_count\x18\x0e \x01(\bB@\x92A=2;When true, the field can be used with WINDOW_FUNCTION_COUNTR\bcanCount\x12S\n" +
+	"\x06shared\x18\x0f \x01(\bB;\x92A826When true, the field can be used in child measurementsR\x06shared\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\f\n" +
 	"\n" +
-	"_last_seen\"\xf0\r\n" +
+	"_last_seen\"\xc6\x0e\n" +
 	"\vMetricField\x120\n" +
 	"\x03key\x18\x01 \x01(\tB\x1e\x92A\x1b2\x19Field key used in queriesR\x03key\x126\n" +
 	"\x05label\x18\x02 \x01(\tB \x92A\x1d2\x1bHuman-readable display nameR\x05label\x12u\n" +
@@ -1211,7 +1429,8 @@ const file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDesc = "" +
 	"\rhealthy_value\x18\x10 \x01(\tBQ\x92AN2LThe value considered healthy for this metric (may be numeric or categorical)R\fhealthyValue\x12U\n" +
 	"\n" +
 	"family_key\x18\x11 \x01(\tB6\x92A321Key of the MetricFamilyDef this metric belongs toR\tfamilyKey\x12\x8e\x01\n" +
-	"\tbase_unit\x18\x12 \x01(\x0e2+.kentik.dictionary.v20260604alpha1.BaseUnitBD\x92AA2?Base unit for this metric, overriding the family default if setR\bbaseUnit\x1a9\n" +
+	"\tbase_unit\x18\x12 \x01(\x0e2+.kentik.dictionary.v20260604alpha1.BaseUnitBD\x92AA2?Base unit for this metric, overriding the family default if setR\bbaseUnit\x12T\n" +
+	"\x06shared\x18\x13 \x01(\bB<\x92A927When true, the metric can be used in child measurementsR\x06shared\x1a9\n" +
 	"\vValuesEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\f\n" +
@@ -1229,11 +1448,17 @@ const file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDesc = "" +
 	"\ametrics\x18\a \x03(\v2..kentik.dictionary.v20260604alpha1.MetricFieldB1\x92A.2,Metric fields available for this measurementR\ametricsB\f\n" +
 	"\n" +
 	"_last_seen\"\x16\n" +
-	"\x14GetDictionaryRequest\"\xb0\x03\n" +
+	"\x14GetDictionaryRequest\"\xa1\x06\n" +
 	"\x15GetDictionaryResponse\x12\x8a\x01\n" +
 	"\fmeasurements\x18\x01 \x03(\v24.kentik.dictionary.v20260604alpha1.MeasurementDetailB0\x92A-2+All measurements available for this companyR\fmeasurements\x12\x88\x01\n" +
 	"\roperator_sets\x18\x02 \x03(\v2..kentik.dictionary.v20260604alpha1.OperatorSetB3\x92A02.All operator sets used across dimension fieldsR\foperatorSets\x12\x7f\n" +
-	"\x0fmetric_families\x18\x03 \x03(\v22.kentik.dictionary.v20260604alpha1.MetricFamilyDefB\"\x92A\x1f2\x1dAll metric family definitionsR\x0emetricFamilies*\x85\x02\n" +
+	"\x0fmetric_families\x18\x03 \x03(\v22.kentik.dictionary.v20260604alpha1.MetricFamilyDefB\"\x92A\x1f2\x1dAll metric family definitionsR\x0emetricFamilies\x12j\n" +
+	"\n" +
+	"asset_tags\x18\x04 \x03(\v2+.kentik.dictionary.v20260604alpha1.AssetTagB\x1e\x92A\x1b2\x19All asset tag definitionsR\tassetTags\x12\x91\x01\n" +
+	"\rapp_protocols\x18\x05 \x03(\v2J.kentik.dictionary.v20260604alpha1.GetDictionaryResponse.AppProtocolsEntryB \x92A\x1d2\x1bAll AppProtocol definitionsR\fappProtocols\x1ao\n" +
+	"\x11AppProtocolsEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12D\n" +
+	"\x05value\x18\x02 \x01(\v2..kentik.dictionary.v20260604alpha1.AppProtocolR\x05value:\x028\x01*\x85\x02\n" +
 	"\rFieldDataType\x12\x1f\n" +
 	"\x1bFIELD_DATA_TYPE_UNSPECIFIED\x10\x00\x12\x1a\n" +
 	"\x16FIELD_DATA_TYPE_STRING\x10\x01\x12\x17\n" +
@@ -1331,7 +1556,7 @@ func file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDescGZIP() []byt
 }
 
 var file_kentik_dictionary_v20260604alpha1_dictionary_proto_enumTypes = make([]protoimpl.EnumInfo, 6)
-var file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
+var file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_kentik_dictionary_v20260604alpha1_dictionary_proto_goTypes = []any{
 	(FieldDataType)(0),            // 0: kentik.dictionary.v20260604alpha1.FieldDataType
 	(OperatorSetKey)(0),           // 1: kentik.dictionary.v20260604alpha1.OperatorSetKey
@@ -1342,40 +1567,48 @@ var file_kentik_dictionary_v20260604alpha1_dictionary_proto_goTypes = []any{
 	(*Operator)(nil),              // 6: kentik.dictionary.v20260604alpha1.Operator
 	(*OperatorSet)(nil),           // 7: kentik.dictionary.v20260604alpha1.OperatorSet
 	(*MetricFamilyDef)(nil),       // 8: kentik.dictionary.v20260604alpha1.MetricFamilyDef
-	(*DimensionField)(nil),        // 9: kentik.dictionary.v20260604alpha1.DimensionField
-	(*MetricField)(nil),           // 10: kentik.dictionary.v20260604alpha1.MetricField
-	(*MeasurementDetail)(nil),     // 11: kentik.dictionary.v20260604alpha1.MeasurementDetail
-	(*GetDictionaryRequest)(nil),  // 12: kentik.dictionary.v20260604alpha1.GetDictionaryRequest
-	(*GetDictionaryResponse)(nil), // 13: kentik.dictionary.v20260604alpha1.GetDictionaryResponse
-	nil,                           // 14: kentik.dictionary.v20260604alpha1.DimensionField.ValuesEntry
-	nil,                           // 15: kentik.dictionary.v20260604alpha1.MetricField.ValuesEntry
+	(*AssetTag)(nil),              // 9: kentik.dictionary.v20260604alpha1.AssetTag
+	(*AppProtocolMetadata)(nil),   // 10: kentik.dictionary.v20260604alpha1.AppProtocolMetadata
+	(*AppProtocol)(nil),           // 11: kentik.dictionary.v20260604alpha1.AppProtocol
+	(*DimensionField)(nil),        // 12: kentik.dictionary.v20260604alpha1.DimensionField
+	(*MetricField)(nil),           // 13: kentik.dictionary.v20260604alpha1.MetricField
+	(*MeasurementDetail)(nil),     // 14: kentik.dictionary.v20260604alpha1.MeasurementDetail
+	(*GetDictionaryRequest)(nil),  // 15: kentik.dictionary.v20260604alpha1.GetDictionaryRequest
+	(*GetDictionaryResponse)(nil), // 16: kentik.dictionary.v20260604alpha1.GetDictionaryResponse
+	nil,                           // 17: kentik.dictionary.v20260604alpha1.DimensionField.ValuesEntry
+	nil,                           // 18: kentik.dictionary.v20260604alpha1.MetricField.ValuesEntry
+	nil,                           // 19: kentik.dictionary.v20260604alpha1.GetDictionaryResponse.AppProtocolsEntry
 }
 var file_kentik_dictionary_v20260604alpha1_dictionary_proto_depIdxs = []int32{
 	1,  // 0: kentik.dictionary.v20260604alpha1.OperatorSet.key:type_name -> kentik.dictionary.v20260604alpha1.OperatorSetKey
 	6,  // 1: kentik.dictionary.v20260604alpha1.OperatorSet.operators:type_name -> kentik.dictionary.v20260604alpha1.Operator
 	4,  // 2: kentik.dictionary.v20260604alpha1.MetricFamilyDef.quantity:type_name -> kentik.dictionary.v20260604alpha1.MetricQuantity
 	5,  // 3: kentik.dictionary.v20260604alpha1.MetricFamilyDef.base_unit:type_name -> kentik.dictionary.v20260604alpha1.BaseUnit
-	0,  // 4: kentik.dictionary.v20260604alpha1.DimensionField.data_type:type_name -> kentik.dictionary.v20260604alpha1.FieldDataType
-	3,  // 5: kentik.dictionary.v20260604alpha1.DimensionField.direction:type_name -> kentik.dictionary.v20260604alpha1.FieldDirection
-	14, // 6: kentik.dictionary.v20260604alpha1.DimensionField.values:type_name -> kentik.dictionary.v20260604alpha1.DimensionField.ValuesEntry
-	1,  // 7: kentik.dictionary.v20260604alpha1.DimensionField.operator_set_key:type_name -> kentik.dictionary.v20260604alpha1.OperatorSetKey
-	0,  // 8: kentik.dictionary.v20260604alpha1.MetricField.data_type:type_name -> kentik.dictionary.v20260604alpha1.FieldDataType
-	3,  // 9: kentik.dictionary.v20260604alpha1.MetricField.direction:type_name -> kentik.dictionary.v20260604alpha1.FieldDirection
-	15, // 10: kentik.dictionary.v20260604alpha1.MetricField.values:type_name -> kentik.dictionary.v20260604alpha1.MetricField.ValuesEntry
-	5,  // 11: kentik.dictionary.v20260604alpha1.MetricField.base_unit:type_name -> kentik.dictionary.v20260604alpha1.BaseUnit
-	2,  // 12: kentik.dictionary.v20260604alpha1.MeasurementDetail.family:type_name -> kentik.dictionary.v20260604alpha1.MeasurementFamily
-	9,  // 13: kentik.dictionary.v20260604alpha1.MeasurementDetail.dimensions:type_name -> kentik.dictionary.v20260604alpha1.DimensionField
-	10, // 14: kentik.dictionary.v20260604alpha1.MeasurementDetail.metrics:type_name -> kentik.dictionary.v20260604alpha1.MetricField
-	11, // 15: kentik.dictionary.v20260604alpha1.GetDictionaryResponse.measurements:type_name -> kentik.dictionary.v20260604alpha1.MeasurementDetail
-	7,  // 16: kentik.dictionary.v20260604alpha1.GetDictionaryResponse.operator_sets:type_name -> kentik.dictionary.v20260604alpha1.OperatorSet
-	8,  // 17: kentik.dictionary.v20260604alpha1.GetDictionaryResponse.metric_families:type_name -> kentik.dictionary.v20260604alpha1.MetricFamilyDef
-	12, // 18: kentik.dictionary.v20260604alpha1.DictionaryService.GetDictionary:input_type -> kentik.dictionary.v20260604alpha1.GetDictionaryRequest
-	13, // 19: kentik.dictionary.v20260604alpha1.DictionaryService.GetDictionary:output_type -> kentik.dictionary.v20260604alpha1.GetDictionaryResponse
-	19, // [19:20] is the sub-list for method output_type
-	18, // [18:19] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	10, // 4: kentik.dictionary.v20260604alpha1.AppProtocol.metadata:type_name -> kentik.dictionary.v20260604alpha1.AppProtocolMetadata
+	0,  // 5: kentik.dictionary.v20260604alpha1.DimensionField.data_type:type_name -> kentik.dictionary.v20260604alpha1.FieldDataType
+	3,  // 6: kentik.dictionary.v20260604alpha1.DimensionField.direction:type_name -> kentik.dictionary.v20260604alpha1.FieldDirection
+	17, // 7: kentik.dictionary.v20260604alpha1.DimensionField.values:type_name -> kentik.dictionary.v20260604alpha1.DimensionField.ValuesEntry
+	1,  // 8: kentik.dictionary.v20260604alpha1.DimensionField.operator_set_key:type_name -> kentik.dictionary.v20260604alpha1.OperatorSetKey
+	0,  // 9: kentik.dictionary.v20260604alpha1.MetricField.data_type:type_name -> kentik.dictionary.v20260604alpha1.FieldDataType
+	3,  // 10: kentik.dictionary.v20260604alpha1.MetricField.direction:type_name -> kentik.dictionary.v20260604alpha1.FieldDirection
+	18, // 11: kentik.dictionary.v20260604alpha1.MetricField.values:type_name -> kentik.dictionary.v20260604alpha1.MetricField.ValuesEntry
+	5,  // 12: kentik.dictionary.v20260604alpha1.MetricField.base_unit:type_name -> kentik.dictionary.v20260604alpha1.BaseUnit
+	2,  // 13: kentik.dictionary.v20260604alpha1.MeasurementDetail.family:type_name -> kentik.dictionary.v20260604alpha1.MeasurementFamily
+	12, // 14: kentik.dictionary.v20260604alpha1.MeasurementDetail.dimensions:type_name -> kentik.dictionary.v20260604alpha1.DimensionField
+	13, // 15: kentik.dictionary.v20260604alpha1.MeasurementDetail.metrics:type_name -> kentik.dictionary.v20260604alpha1.MetricField
+	14, // 16: kentik.dictionary.v20260604alpha1.GetDictionaryResponse.measurements:type_name -> kentik.dictionary.v20260604alpha1.MeasurementDetail
+	7,  // 17: kentik.dictionary.v20260604alpha1.GetDictionaryResponse.operator_sets:type_name -> kentik.dictionary.v20260604alpha1.OperatorSet
+	8,  // 18: kentik.dictionary.v20260604alpha1.GetDictionaryResponse.metric_families:type_name -> kentik.dictionary.v20260604alpha1.MetricFamilyDef
+	9,  // 19: kentik.dictionary.v20260604alpha1.GetDictionaryResponse.asset_tags:type_name -> kentik.dictionary.v20260604alpha1.AssetTag
+	19, // 20: kentik.dictionary.v20260604alpha1.GetDictionaryResponse.app_protocols:type_name -> kentik.dictionary.v20260604alpha1.GetDictionaryResponse.AppProtocolsEntry
+	11, // 21: kentik.dictionary.v20260604alpha1.GetDictionaryResponse.AppProtocolsEntry.value:type_name -> kentik.dictionary.v20260604alpha1.AppProtocol
+	15, // 22: kentik.dictionary.v20260604alpha1.DictionaryService.GetDictionary:input_type -> kentik.dictionary.v20260604alpha1.GetDictionaryRequest
+	16, // 23: kentik.dictionary.v20260604alpha1.DictionaryService.GetDictionary:output_type -> kentik.dictionary.v20260604alpha1.GetDictionaryResponse
+	23, // [23:24] is the sub-list for method output_type
+	22, // [22:23] is the sub-list for method input_type
+	22, // [22:22] is the sub-list for extension type_name
+	22, // [22:22] is the sub-list for extension extendee
+	0,  // [0:22] is the sub-list for field type_name
 }
 
 func init() { file_kentik_dictionary_v20260604alpha1_dictionary_proto_init() }
@@ -1383,16 +1616,17 @@ func file_kentik_dictionary_v20260604alpha1_dictionary_proto_init() {
 	if File_kentik_dictionary_v20260604alpha1_dictionary_proto != nil {
 		return
 	}
-	file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[3].OneofWrappers = []any{}
 	file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[4].OneofWrappers = []any{}
-	file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[5].OneofWrappers = []any{}
+	file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[6].OneofWrappers = []any{}
+	file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[7].OneofWrappers = []any{}
+	file_kentik_dictionary_v20260604alpha1_dictionary_proto_msgTypes[8].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDesc), len(file_kentik_dictionary_v20260604alpha1_dictionary_proto_rawDesc)),
 			NumEnums:      6,
-			NumMessages:   10,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

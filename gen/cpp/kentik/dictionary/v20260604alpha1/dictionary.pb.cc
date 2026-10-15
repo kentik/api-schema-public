@@ -146,6 +146,61 @@ struct DimensionField_ValuesEntry_DoNotUseDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DimensionField_ValuesEntry_DoNotUseDefaultTypeInternal _DimensionField_ValuesEntry_DoNotUse_default_instance_;
 
+inline constexpr AssetTag::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        display_name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR AssetTag::AssetTag(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct AssetTagDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR AssetTagDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AssetTagDefaultTypeInternal() {}
+  union {
+    AssetTag _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AssetTagDefaultTypeInternal _AssetTag_default_instance_;
+
+inline constexpr AppProtocolMetadata::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        full_data_only_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR AppProtocolMetadata::AppProtocolMetadata(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct AppProtocolMetadataDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR AppProtocolMetadataDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AppProtocolMetadataDefaultTypeInternal() {}
+  union {
+    AppProtocolMetadata _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AppProtocolMetadataDefaultTypeInternal _AppProtocolMetadata_default_instance_;
+
 inline constexpr OperatorSet::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : operators_{},
@@ -214,6 +269,7 @@ inline constexpr MetricField::Impl_::Impl_(
         direction_{static_cast< ::kentik::dictionary::v20260604alpha1::FieldDirection >(0)},
         to_bits_{false},
         rollup_{false},
+        shared_{false},
         base_unit_{static_cast< ::kentik::dictionary::v20260604alpha1::BaseUnit >(0)} {}
 
 template <typename>
@@ -268,7 +324,8 @@ inline constexpr DimensionField::Impl_::Impl_(
         direction_{static_cast< ::kentik::dictionary::v20260604alpha1::FieldDirection >(0)},
         operator_set_key_{static_cast< ::kentik::dictionary::v20260604alpha1::OperatorSetKey >(0)},
         filter_only_{false},
-        can_count_{false} {}
+        can_count_{false},
+        shared_{false} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR DimensionField::DimensionField(::_pbi::ConstantInitialized)
@@ -289,6 +346,39 @@ struct DimensionFieldDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 DimensionFieldDefaultTypeInternal _DimensionField_default_instance_;
+
+inline constexpr AppProtocol::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        display_name_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        status_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        metadata_{nullptr},
+        id_{::uint64_t{0u}},
+        add_to_standard_fields_{false} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR AppProtocol::AppProtocol(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct AppProtocolDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR AppProtocolDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AppProtocolDefaultTypeInternal() {}
+  union {
+    AppProtocol _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AppProtocolDefaultTypeInternal _AppProtocol_default_instance_;
 
 inline constexpr MeasurementDetail::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -328,12 +418,32 @@ struct MeasurementDetailDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MeasurementDetailDefaultTypeInternal _MeasurementDetail_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR GetDictionaryResponse_AppProtocolsEntry_DoNotUse::GetDictionaryResponse_AppProtocolsEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : GetDictionaryResponse_AppProtocolsEntry_DoNotUse::MapEntry(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : GetDictionaryResponse_AppProtocolsEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct GetDictionaryResponse_AppProtocolsEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR GetDictionaryResponse_AppProtocolsEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~GetDictionaryResponse_AppProtocolsEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    GetDictionaryResponse_AppProtocolsEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 GetDictionaryResponse_AppProtocolsEntry_DoNotUseDefaultTypeInternal _GetDictionaryResponse_AppProtocolsEntry_DoNotUse_default_instance_;
 
 inline constexpr GetDictionaryResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : measurements_{},
         operator_sets_{},
         metric_families_{},
+        asset_tags_{},
+        app_protocols_{},
         _cached_size_{0} {}
 
 template <typename>
@@ -398,6 +508,44 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::MetricFamilyDef, _impl_.base_unit_),
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::MetricFamilyDef, _impl_.dual_axis_compatible_),
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::MetricFamilyDef, _impl_.incompatible_with_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::AssetTag, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::AssetTag, _impl_.name_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::AssetTag, _impl_.display_name_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::AppProtocolMetadata, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::AppProtocolMetadata, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::AppProtocolMetadata, _impl_.full_data_only_),
+        0,
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::AppProtocol, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::AppProtocol, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::AppProtocol, _impl_.id_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::AppProtocol, _impl_.display_name_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::AppProtocol, _impl_.add_to_standard_fields_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::AppProtocol, _impl_.status_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::AppProtocol, _impl_.metadata_),
+        ~0u,
+        ~0u,
+        ~0u,
+        ~0u,
+        0,
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::DimensionField_ValuesEntry_DoNotUse, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::DimensionField_ValuesEntry_DoNotUse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -432,6 +580,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::DimensionField, _impl_.filter_column_),
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::DimensionField, _impl_.query_column_),
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::DimensionField, _impl_.can_count_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::DimensionField, _impl_.shared_),
         ~0u,
         ~0u,
         ~0u,
@@ -441,6 +590,7 @@ const ::uint32_t
         ~0u,
         ~0u,
         0,
+        ~0u,
         ~0u,
         ~0u,
         ~0u,
@@ -484,6 +634,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::MetricField, _impl_.healthy_value_),
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::MetricField, _impl_.family_key_),
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::MetricField, _impl_.base_unit_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::MetricField, _impl_.shared_),
         ~0u,
         ~0u,
         ~0u,
@@ -493,6 +644,7 @@ const ::uint32_t
         ~0u,
         ~0u,
         0,
+        ~0u,
         ~0u,
         ~0u,
         ~0u,
@@ -532,6 +684,18 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::GetDictionaryResponse_AppProtocolsEntry_DoNotUse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::GetDictionaryResponse_AppProtocolsEntry_DoNotUse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::GetDictionaryResponse_AppProtocolsEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::GetDictionaryResponse_AppProtocolsEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::GetDictionaryResponse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -543,6 +707,8 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::GetDictionaryResponse, _impl_.measurements_),
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::GetDictionaryResponse, _impl_.operator_sets_),
         PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::GetDictionaryResponse, _impl_.metric_families_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::GetDictionaryResponse, _impl_.asset_tags_),
+        PROTOBUF_FIELD_OFFSET(::kentik::dictionary::v20260604alpha1::GetDictionaryResponse, _impl_.app_protocols_),
 };
 
 static const ::_pbi::MigrationSchema
@@ -550,24 +716,32 @@ static const ::_pbi::MigrationSchema
         {0, -1, -1, sizeof(::kentik::dictionary::v20260604alpha1::Operator)},
         {10, -1, -1, sizeof(::kentik::dictionary::v20260604alpha1::OperatorSet)},
         {20, -1, -1, sizeof(::kentik::dictionary::v20260604alpha1::MetricFamilyDef)},
-        {34, 44, -1, sizeof(::kentik::dictionary::v20260604alpha1::DimensionField_ValuesEntry_DoNotUse)},
-        {46, 68, -1, sizeof(::kentik::dictionary::v20260604alpha1::DimensionField)},
-        {82, 92, -1, sizeof(::kentik::dictionary::v20260604alpha1::MetricField_ValuesEntry_DoNotUse)},
-        {94, 120, -1, sizeof(::kentik::dictionary::v20260604alpha1::MetricField)},
-        {138, 153, -1, sizeof(::kentik::dictionary::v20260604alpha1::MeasurementDetail)},
-        {160, -1, -1, sizeof(::kentik::dictionary::v20260604alpha1::GetDictionaryRequest)},
-        {168, -1, -1, sizeof(::kentik::dictionary::v20260604alpha1::GetDictionaryResponse)},
+        {34, -1, -1, sizeof(::kentik::dictionary::v20260604alpha1::AssetTag)},
+        {44, 53, -1, sizeof(::kentik::dictionary::v20260604alpha1::AppProtocolMetadata)},
+        {54, 67, -1, sizeof(::kentik::dictionary::v20260604alpha1::AppProtocol)},
+        {72, 82, -1, sizeof(::kentik::dictionary::v20260604alpha1::DimensionField_ValuesEntry_DoNotUse)},
+        {84, 107, -1, sizeof(::kentik::dictionary::v20260604alpha1::DimensionField)},
+        {122, 132, -1, sizeof(::kentik::dictionary::v20260604alpha1::MetricField_ValuesEntry_DoNotUse)},
+        {134, 161, -1, sizeof(::kentik::dictionary::v20260604alpha1::MetricField)},
+        {180, 195, -1, sizeof(::kentik::dictionary::v20260604alpha1::MeasurementDetail)},
+        {202, -1, -1, sizeof(::kentik::dictionary::v20260604alpha1::GetDictionaryRequest)},
+        {210, 220, -1, sizeof(::kentik::dictionary::v20260604alpha1::GetDictionaryResponse_AppProtocolsEntry_DoNotUse)},
+        {222, -1, -1, sizeof(::kentik::dictionary::v20260604alpha1::GetDictionaryResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::dictionary::v20260604alpha1::_Operator_default_instance_._instance,
     &::kentik::dictionary::v20260604alpha1::_OperatorSet_default_instance_._instance,
     &::kentik::dictionary::v20260604alpha1::_MetricFamilyDef_default_instance_._instance,
+    &::kentik::dictionary::v20260604alpha1::_AssetTag_default_instance_._instance,
+    &::kentik::dictionary::v20260604alpha1::_AppProtocolMetadata_default_instance_._instance,
+    &::kentik::dictionary::v20260604alpha1::_AppProtocol_default_instance_._instance,
     &::kentik::dictionary::v20260604alpha1::_DimensionField_ValuesEntry_DoNotUse_default_instance_._instance,
     &::kentik::dictionary::v20260604alpha1::_DimensionField_default_instance_._instance,
     &::kentik::dictionary::v20260604alpha1::_MetricField_ValuesEntry_DoNotUse_default_instance_._instance,
     &::kentik::dictionary::v20260604alpha1::_MetricField_default_instance_._instance,
     &::kentik::dictionary::v20260604alpha1::_MeasurementDetail_default_instance_._instance,
     &::kentik::dictionary::v20260604alpha1::_GetDictionaryRequest_default_instance_._instance,
+    &::kentik::dictionary::v20260604alpha1::_GetDictionaryResponse_AppProtocolsEntry_DoNotUse_default_instance_._instance,
     &::kentik::dictionary::v20260604alpha1::_GetDictionaryResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
@@ -603,187 +777,219 @@ const char descriptor_table_protodef_kentik_2fdictionary_2fv20260604alpha1_2fdic
     "xisCompatible\022m\n\021incompatible_with\030\006 \003(\t"
     "B@\222A=2;Metric family keys that cannot be"
     " combined with this familyR\020incompatible"
-    "With\"\322\013\n\016DimensionField\0220\n\003key\030\001 \001(\tB\036\222A"
-    "\0332\031Field key used in queriesR\003key\0226\n\005lab"
-    "el\030\002 \001(\tB \222A\0352\033Human-readable display na"
-    "meR\005label\022u\n\tdata_type\030\003 \001(\01620.kentik.di"
-    "ctionary.v20260604alpha1.FieldDataTypeB&"
-    "\222A#2!Underlying data type of the fieldR\010"
-    "dataType\022E\n\010category\030\004 \001(\tB)\222A&2$Categor"
-    "y used for grouping in the UIR\010category\022"
-    "J\n\006column\030\005 \001(\tB2\222A/2-Underlying storage"
-    " column name, if applicableR\006column\022|\n\td"
-    "irection\030\006 \001(\01621.kentik.dictionary.v2026"
-    "0604alpha1.FieldDirectionB+\222A(2&Traffic "
-    "direction the field applies toR\tdirectio"
-    "n\022I\n\007inverse\030\007 \001(\tB/\222A,2*Key of the inve"
-    "rse direction field, if anyR\007inverse\022\206\001\n"
-    "\006values\030\010 \003(\0132=.kentik.dictionary.v20260"
-    "604alpha1.DimensionField.ValuesEntryB/\222A"
-    ",2*Enumerated value map for enum-typed f"
-    "ieldsR\006values\022l\n\tlast_seen\030\t \001(\tBJ\222AG2EI"
-    "SO-8601 timestamp of when this field was"
-    " last observed, if availableH\000R\010lastSeen"
-    "\210\001\001\022\217\001\n\020operator_set_key\030\n \001(\01621.kentik."
-    "dictionary.v20260604alpha1.OperatorSetKe"
-    "yB2\222A/2-The operator set applicable to t"
-    "his dimensionR\016operatorSetKey\022q\n\013filter_"
-    "only\030\013 \001(\010BP\222AM2KWhen true, the field ma"
-    "y only be used as a filter, not a group-"
-    "by dimensionR\nfilterOnly\022m\n\rfilter_colum"
-    "n\030\014 \001(\tBH\222AE2CAlternative column name us"
-    "ed when this field is applied as a filte"
-    "rR\014filterColumn\022p\n\014query_column\030\r \001(\tBM\222"
-    "AJ2HAlternative column name used when th"
-    "is field is used in a query group-byR\013qu"
-    "eryColumn\022]\n\tcan_count\030\016 \001(\010B@\222A=2;When "
-    "true, the field can be used with WINDOW_"
-    "FUNCTION_COUNTR\010canCount\0329\n\013ValuesEntry\022"
-    "\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:"
-    "\0028\001B\014\n\n_last_seen\"\360\r\n\013MetricField\0220\n\003key"
-    "\030\001 \001(\tB\036\222A\0332\031Field key used in queriesR\003"
-    "key\0226\n\005label\030\002 \001(\tB \222A\0352\033Human-readable "
-    "display nameR\005label\022u\n\tdata_type\030\003 \001(\01620"
-    ".kentik.dictionary.v20260604alpha1.Field"
-    "DataTypeB&\222A#2!Underlying data type of t"
-    "he fieldR\010dataType\022E\n\010category\030\004 \001(\tB)\222A"
-    "&2$Category used for grouping in the UIR"
-    "\010category\022J\n\006column\030\005 \001(\tB2\222A/2-Underlyi"
-    "ng storage column name, if applicableR\006c"
-    "olumn\022|\n\tdirection\030\006 \001(\01621.kentik.dictio"
-    "nary.v20260604alpha1.FieldDirectionB+\222A("
-    "2&Traffic direction the field applies to"
-    "R\tdirection\022I\n\007inverse\030\007 \001(\tB/\222A,2*Key o"
-    "f the inverse direction field, if anyR\007i"
-    "nverse\022\203\001\n\006values\030\010 \003(\0132:.kentik.diction"
-    "ary.v20260604alpha1.MetricField.ValuesEn"
-    "tryB/\222A,2*Enumerated value map for enum-"
-    "typed fieldsR\006values\022l\n\tlast_seen\030\t \001(\tB"
-    "J\222AG2EISO-8601 timestamp of when this fi"
-    "eld was last observed, if availableH\000R\010l"
-    "astSeen\210\001\001\022T\n\twindow_fn\030\n \001(\tB7\222A422Wind"
-    "ow function applied during aggregation, "
-    "if anyR\010windowFn\022[\n\014aggregate_fn\030\013 \001(\tB8"
-    "\222A523Aggregation function applied to thi"
-    "s metric, if anyR\013aggregateFn\022[\n\nexpress"
-    "ion\030\014 \001(\tB;\222A826Computed expression used"
-    " to derive this metric, if anyR\nexpressi"
-    "on\022P\n\ndepends_on\030\r \003(\tB1\222A.2,Keys of oth"
-    "er metrics this metric depends onR\tdepen"
-    "dsOn\022U\n\007to_bits\030\016 \001(\010B<\222A927When true, t"
-    "he metric value should be converted to b"
-    "itsR\006toBits\022N\n\006rollup\030\017 \001(\010B6\222A321When t"
-    "rue, the metric supports rollup aggregat"
-    "ionR\006rollup\022v\n\rhealthy_value\030\020 \001(\tBQ\222AN2"
-    "LThe value considered healthy for this m"
-    "etric (may be numeric or categorical)R\014h"
-    "ealthyValue\022U\n\nfamily_key\030\021 \001(\tB6\222A321Ke"
-    "y of the MetricFamilyDef this metric bel"
-    "ongs toR\tfamilyKey\022\216\001\n\tbase_unit\030\022 \001(\0162+"
-    ".kentik.dictionary.v20260604alpha1.BaseU"
-    "nitBD\222AA2\?Base unit for this metric, ove"
-    "rriding the family default if setR\010baseU"
-    "nit\0329\n\013ValuesEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005"
-    "value\030\002 \001(\tR\005value:\0028\001B\014\n\n_last_seen\"\326\005\n"
-    "\021MeasurementDetail\0222\n\004name\030\001 \001(\tB\036\222A\0332\031I"
-    "nternal measurement nameR\004name\022C\n\014displa"
+    "With\"\215\001\n\010AssetTag\022<\n\004name\030\001 \001(\tB(\222A%2#Un"
+    "ique identifier for the asset tagR\004name\022"
+    "C\n\014display_name\030\002 \001(\tB \222A\0352\033Human-readab"
+    "le display nameR\013displayName\"\242\001\n\023AppProt"
+    "ocolMetadata\022x\n\016full_data_only\030\002 \001(\010BM\222A"
+    "J2HIf true, this AppProtocol can only be"
+    " used with Full Data, not Fast DataH\000R\014f"
+    "ullDataOnly\210\001\001B\021\n\017_full_data_only\"\256\003\n\013Ap"
+    "pProtocol\022;\n\002id\030\001 \001(\004B+\222A(2&Unique ident"
+    "ifier for the app protocolR\002id\022C\n\014displa"
     "y_name\030\002 \001(\tB \222A\0352\033Human-readable displa"
-    "y nameR\013displayName\022n\n\006family\030\003 \001(\01624.ke"
-    "ntik.dictionary.v20260604alpha1.Measurem"
-    "entFamilyB \222A\0352\033Measurement family categ"
-    "oryR\006family\022O\n\013description\030\004 \001(\tB-\222A*2(O"
-    "ptional description of this measurementR"
-    "\013description\022r\n\tlast_seen\030\005 \001(\tBP\222AM2KIS"
-    "O-8601 timestamp of when this measuremen"
-    "t was last observed, if availableH\000R\010las"
-    "tSeen\210\001\001\022\207\001\n\ndimensions\030\006 \003(\01321.kentik.d"
-    "ictionary.v20260604alpha1.DimensionField"
-    "B4\222A12/Dimension fields available for th"
-    "is measurementR\ndimensions\022{\n\007metrics\030\007 "
-    "\003(\0132..kentik.dictionary.v20260604alpha1."
-    "MetricFieldB1\222A.2,Metric fields availabl"
-    "e for this measurementR\007metricsB\014\n\n_last"
-    "_seen\"\026\n\024GetDictionaryRequest\"\260\003\n\025GetDic"
-    "tionaryResponse\022\212\001\n\014measurements\030\001 \003(\01324"
-    ".kentik.dictionary.v20260604alpha1.Measu"
-    "rementDetailB0\222A-2+All measurements avai"
-    "lable for this companyR\014measurements\022\210\001\n"
-    "\roperator_sets\030\002 \003(\0132..kentik.dictionary"
-    ".v20260604alpha1.OperatorSetB3\222A02.All o"
-    "perator sets used across dimension field"
-    "sR\014operatorSets\022\177\n\017metric_families\030\003 \003(\013"
-    "22.kentik.dictionary.v20260604alpha1.Met"
-    "ricFamilyDefB\"\222A\0372\035All metric family def"
-    "initionsR\016metricFamilies*\205\002\n\rFieldDataTy"
-    "pe\022\037\n\033FIELD_DATA_TYPE_UNSPECIFIED\020\000\022\032\n\026F"
-    "IELD_DATA_TYPE_STRING\020\001\022\027\n\023FIELD_DATA_TY"
-    "PE_INT\020\002\022\032\n\026FIELD_DATA_TYPE_UINT32\020\003\022\031\n\025"
-    "FIELD_DATA_TYPE_FLOAT\020\004\022\030\n\024FIELD_DATA_TY"
-    "PE_INET\020\005\022\031\n\025FIELD_DATA_TYPE_BYTES\020\006\022\030\n\024"
-    "FIELD_DATA_TYPE_ENUM\020\007\022\030\n\024FIELD_DATA_TYP"
-    "E_BOOL\020\010*\350\001\n\016OperatorSetKey\022 \n\034OPERATOR_"
-    "SET_KEY_UNSPECIFIED\020\000\022\030\n\024OPERATOR_SET_KE"
-    "Y_INT\020\001\022\033\n\027OPERATOR_SET_KEY_STRING\020\002\022!\n\035"
-    "OPERATOR_SET_KEY_STRING_REGEX\020\003\022\031\n\025OPERA"
-    "TOR_SET_KEY_INET\020\004\022\031\n\025OPERATOR_SET_KEY_E"
-    "NUM\020\005\022$\n OPERATOR_SET_KEY_FIELD_REFERENC"
-    "E\020\006*\370\001\n\021MeasurementFamily\022\"\n\036MEASUREMENT"
-    "_FAMILY_UNSPECIFIED\020\000\022\036\n\032MEASUREMENT_FAM"
-    "ILY_TRAFFIC\020\001\022\032\n\026MEASUREMENT_FAMILY_NMS\020"
-    "\002\022%\n!MEASUREMENT_FAMILY_NMS_INTERFACES\020\003"
-    "\022!\n\035MEASUREMENT_FAMILY_SYNTHETICS\020\004\022\032\n\026M"
-    "EASUREMENT_FAMILY_BGP\020\005\022\035\n\031MEASUREMENT_F"
-    "AMILY_EVENTS\020\006*\225\001\n\016FieldDirection\022\037\n\033FIE"
-    "LD_DIRECTION_UNSPECIFIED\020\000\022\027\n\023FIELD_DIRE"
-    "CTION_SRC\020\001\022\027\n\023FIELD_DIRECTION_DST\020\002\022\026\n\022"
-    "FIELD_DIRECTION_BI\020\003\022\030\n\024FIELD_DIRECTION_"
-    "NONE\020\004*\207\004\n\016MetricQuantity\022\037\n\033METRIC_QUAN"
-    "TITY_UNSPECIFIED\020\000\022\036\n\032METRIC_QUANTITY_TH"
-    "ROUGHPUT\020\001\022\037\n\033METRIC_QUANTITY_PACKET_RAT"
-    "E\020\002\022\035\n\031METRIC_QUANTITY_FLOW_RATE\020\003\022\036\n\032ME"
-    "TRIC_QUANTITY_BYTE_TOTAL\020\004\022 \n\034METRIC_QUA"
-    "NTITY_PACKET_TOTAL\020\005\022\036\n\032METRIC_QUANTITY_"
-    "FLOW_TOTAL\020\006\022\037\n\033METRIC_QUANTITY_CARDINAL"
-    "ITY\020\007\022#\n\037METRIC_QUANTITY_UTILIZATION_PCT"
-    "\020\010\022\036\n\032METRIC_QUANTITY_ERROR_RATE\020\t\022\033\n\027ME"
-    "TRIC_QUANTITY_LATENCY\020\n\022\032\n\026METRIC_QUANTI"
-    "TY_JITTER\020\013\022\034\n\030METRIC_QUANTITY_LOSS_PCT\020"
-    "\014\022\037\n\033METRIC_QUANTITY_SAMPLE_RATE\020\r\022\031\n\025ME"
-    "TRIC_QUANTITY_GAUGE\020\016\022\031\n\025METRIC_QUANTITY"
-    "_SCORE\020\017*\271\002\n\010BaseUnit\022\031\n\025BASE_UNIT_UNSPE"
-    "CIFIED\020\000\022\035\n\031BASE_UNIT_BITS_PER_SECOND\020\001\022"
-    " \n\034BASE_UNIT_PACKETS_PER_SECOND\020\002\022\036\n\032BAS"
-    "E_UNIT_FLOWS_PER_SECOND\020\003\022\023\n\017BASE_UNIT_B"
-    "YTES\020\004\022\025\n\021BASE_UNIT_PACKETS\020\005\022\023\n\017BASE_UN"
-    "IT_FLOWS\020\006\022\023\n\017BASE_UNIT_COUNT\020\007\022\025\n\021BASE_"
-    "UNIT_PERCENT\020\010\022\032\n\026BASE_UNIT_MILLISECONDS"
-    "\020\t\022\023\n\017BASE_UNIT_RATIO\020\n\022\023\n\017BASE_UNIT_SCO"
-    "RE\020\0132\340\003\n\021DictionaryService\022\220\003\n\rGetDictio"
-    "nary\0227.kentik.dictionary.v20260604alpha1"
-    ".GetDictionaryRequest\0328.kentik.dictionar"
-    "y.v20260604alpha1.GetDictionaryResponse\""
-    "\213\002\222A\321\001\022\016Get Dictionary\032\257\001Returns the ful"
-    "l UDE dictionary for the authenticated c"
-    "ompany, including all measurements with "
-    "their dimension and metric fields, opera"
-    "tor sets, and metric family definitions."
-    "*\rGetDictionary\362\327\002\017dictionary:read\202\323\344\223\002\035"
-    "\022\033/dictionary/v20260604alpha1\0328\312A\023grpc.a"
-    "pi.kentik.com\352\327\002\ndictionary\220\330\002\003\232\330\002\014grpc-"
-    "connectB\226\004ZWgithub.com/kentik/api-schema"
-    "-public/gen/go/kentik/dictionary/v202606"
-    "04alpha1;dictionary\222A\271\003\022\200\002\n\016Dictionary A"
-    "PI\022\225\001# Overview\nThe Dictionary API is us"
-    "ed for getting all the metadata we can q"
-    "uery about using UDE.\n### Key Features\n*"
-    " Get dictionary for your company\n\n\"E\n\026Ke"
-    "ntik API Engineering\022+https://github.com"
-    "/kentik/api-schema-public2\017v20260604alph"
-    "a1*\001\0022\020application/json:\020application/jso"
-    "nZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005t"
-    "oken\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005ema"
-    "il\022\000\n\t\n\005token\022\000r/\n\025Kentik Knowledge Base"
-    "\022\026https://kb.kentik.com/b\006proto3"
+    "y nameR\013displayName\022r\n\026add_to_standard_f"
+    "ields\030\003 \001(\010B=\222A:28When true, this AppPro"
+    "tocol is able to use shared fieldsR\023addT"
+    "oStandardFields\022:\n\006status\030\004 \001(\tB\"\222A\0372\035Wi"
+    "ll always be \'A\' for ActiveR\006status\022m\n\010m"
+    "etadata\030\005 \001(\01326.kentik.dictionary.v20260"
+    "604alpha1.AppProtocolMetadataB\031\222A\0262\024AppP"
+    "rotocol metadataR\010metadata\"\247\014\n\016Dimension"
+    "Field\0220\n\003key\030\001 \001(\tB\036\222A\0332\031Field key used "
+    "in queriesR\003key\0226\n\005label\030\002 \001(\tB \222A\0352\033Hum"
+    "an-readable display nameR\005label\022u\n\tdata_"
+    "type\030\003 \001(\01620.kentik.dictionary.v20260604"
+    "alpha1.FieldDataTypeB&\222A#2!Underlying da"
+    "ta type of the fieldR\010dataType\022E\n\010catego"
+    "ry\030\004 \001(\tB)\222A&2$Category used for groupin"
+    "g in the UIR\010category\022J\n\006column\030\005 \001(\tB2\222"
+    "A/2-Underlying storage column name, if a"
+    "pplicableR\006column\022|\n\tdirection\030\006 \001(\01621.k"
+    "entik.dictionary.v20260604alpha1.FieldDi"
+    "rectionB+\222A(2&Traffic direction the fiel"
+    "d applies toR\tdirection\022I\n\007inverse\030\007 \001(\t"
+    "B/\222A,2*Key of the inverse direction fiel"
+    "d, if anyR\007inverse\022\206\001\n\006values\030\010 \003(\0132=.ke"
+    "ntik.dictionary.v20260604alpha1.Dimensio"
+    "nField.ValuesEntryB/\222A,2*Enumerated valu"
+    "e map for enum-typed fieldsR\006values\022l\n\tl"
+    "ast_seen\030\t \001(\tBJ\222AG2EISO-8601 timestamp "
+    "of when this field was last observed, if"
+    " availableH\000R\010lastSeen\210\001\001\022\217\001\n\020operator_s"
+    "et_key\030\n \001(\01621.kentik.dictionary.v202606"
+    "04alpha1.OperatorSetKeyB2\222A/2-The operat"
+    "or set applicable to this dimensionR\016ope"
+    "ratorSetKey\022q\n\013filter_only\030\013 \001(\010BP\222AM2KW"
+    "hen true, the field may only be used as "
+    "a filter, not a group-by dimensionR\nfilt"
+    "erOnly\022m\n\rfilter_column\030\014 \001(\tBH\222AE2CAlte"
+    "rnative column name used when this field"
+    " is applied as a filterR\014filterColumn\022p\n"
+    "\014query_column\030\r \001(\tBM\222AJ2HAlternative co"
+    "lumn name used when this field is used i"
+    "n a query group-byR\013queryColumn\022]\n\tcan_c"
+    "ount\030\016 \001(\010B@\222A=2;When true, the field ca"
+    "n be used with WINDOW_FUNCTION_COUNTR\010ca"
+    "nCount\022S\n\006shared\030\017 \001(\010B;\222A826When true, "
+    "the field can be used in child measureme"
+    "ntsR\006shared\0329\n\013ValuesEntry\022\020\n\003key\030\001 \001(\tR"
+    "\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001B\014\n\n_last_"
+    "seen\"\306\016\n\013MetricField\0220\n\003key\030\001 \001(\tB\036\222A\0332\031"
+    "Field key used in queriesR\003key\0226\n\005label\030"
+    "\002 \001(\tB \222A\0352\033Human-readable display nameR"
+    "\005label\022u\n\tdata_type\030\003 \001(\01620.kentik.dicti"
+    "onary.v20260604alpha1.FieldDataTypeB&\222A#"
+    "2!Underlying data type of the fieldR\010dat"
+    "aType\022E\n\010category\030\004 \001(\tB)\222A&2$Category u"
+    "sed for grouping in the UIR\010category\022J\n\006"
+    "column\030\005 \001(\tB2\222A/2-Underlying storage co"
+    "lumn name, if applicableR\006column\022|\n\tdire"
+    "ction\030\006 \001(\01621.kentik.dictionary.v2026060"
+    "4alpha1.FieldDirectionB+\222A(2&Traffic dir"
+    "ection the field applies toR\tdirection\022I"
+    "\n\007inverse\030\007 \001(\tB/\222A,2*Key of the inverse"
+    " direction field, if anyR\007inverse\022\203\001\n\006va"
+    "lues\030\010 \003(\0132:.kentik.dictionary.v20260604"
+    "alpha1.MetricField.ValuesEntryB/\222A,2*Enu"
+    "merated value map for enum-typed fieldsR"
+    "\006values\022l\n\tlast_seen\030\t \001(\tBJ\222AG2EISO-860"
+    "1 timestamp of when this field was last "
+    "observed, if availableH\000R\010lastSeen\210\001\001\022T\n"
+    "\twindow_fn\030\n \001(\tB7\222A422Window function a"
+    "pplied during aggregation, if anyR\010windo"
+    "wFn\022[\n\014aggregate_fn\030\013 \001(\tB8\222A523Aggregat"
+    "ion function applied to this metric, if "
+    "anyR\013aggregateFn\022[\n\nexpression\030\014 \001(\tB;\222A"
+    "826Computed expression used to derive th"
+    "is metric, if anyR\nexpression\022P\n\ndepends"
+    "_on\030\r \003(\tB1\222A.2,Keys of other metrics th"
+    "is metric depends onR\tdependsOn\022U\n\007to_bi"
+    "ts\030\016 \001(\010B<\222A927When true, the metric val"
+    "ue should be converted to bitsR\006toBits\022N"
+    "\n\006rollup\030\017 \001(\010B6\222A321When true, the metr"
+    "ic supports rollup aggregationR\006rollup\022v"
+    "\n\rhealthy_value\030\020 \001(\tBQ\222AN2LThe value co"
+    "nsidered healthy for this metric (may be"
+    " numeric or categorical)R\014healthyValue\022U"
+    "\n\nfamily_key\030\021 \001(\tB6\222A321Key of the Metr"
+    "icFamilyDef this metric belongs toR\tfami"
+    "lyKey\022\216\001\n\tbase_unit\030\022 \001(\0162+.kentik.dicti"
+    "onary.v20260604alpha1.BaseUnitBD\222AA2\?Bas"
+    "e unit for this metric, overriding the f"
+    "amily default if setR\010baseUnit\022T\n\006shared"
+    "\030\023 \001(\010B<\222A927When true, the metric can b"
+    "e used in child measurementsR\006shared\0329\n\013"
+    "ValuesEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002"
+    " \001(\tR\005value:\0028\001B\014\n\n_last_seen\"\326\005\n\021Measur"
+    "ementDetail\0222\n\004name\030\001 \001(\tB\036\222A\0332\031Internal"
+    " measurement nameR\004name\022C\n\014display_name\030"
+    "\002 \001(\tB \222A\0352\033Human-readable display nameR"
+    "\013displayName\022n\n\006family\030\003 \001(\01624.kentik.di"
+    "ctionary.v20260604alpha1.MeasurementFami"
+    "lyB \222A\0352\033Measurement family categoryR\006fa"
+    "mily\022O\n\013description\030\004 \001(\tB-\222A*2(Optional"
+    " description of this measurementR\013descri"
+    "ption\022r\n\tlast_seen\030\005 \001(\tBP\222AM2KISO-8601 "
+    "timestamp of when this measurement was l"
+    "ast observed, if availableH\000R\010lastSeen\210\001"
+    "\001\022\207\001\n\ndimensions\030\006 \003(\01321.kentik.dictiona"
+    "ry.v20260604alpha1.DimensionFieldB4\222A12/"
+    "Dimension fields available for this meas"
+    "urementR\ndimensions\022{\n\007metrics\030\007 \003(\0132..k"
+    "entik.dictionary.v20260604alpha1.MetricF"
+    "ieldB1\222A.2,Metric fields available for t"
+    "his measurementR\007metricsB\014\n\n_last_seen\"\026"
+    "\n\024GetDictionaryRequest\"\241\006\n\025GetDictionary"
+    "Response\022\212\001\n\014measurements\030\001 \003(\01324.kentik"
+    ".dictionary.v20260604alpha1.MeasurementD"
+    "etailB0\222A-2+All measurements available f"
+    "or this companyR\014measurements\022\210\001\n\roperat"
+    "or_sets\030\002 \003(\0132..kentik.dictionary.v20260"
+    "604alpha1.OperatorSetB3\222A02.All operator"
+    " sets used across dimension fieldsR\014oper"
+    "atorSets\022\177\n\017metric_families\030\003 \003(\01322.kent"
+    "ik.dictionary.v20260604alpha1.MetricFami"
+    "lyDefB\"\222A\0372\035All metric family definition"
+    "sR\016metricFamilies\022j\n\nasset_tags\030\004 \003(\0132+."
+    "kentik.dictionary.v20260604alpha1.AssetT"
+    "agB\036\222A\0332\031All asset tag definitionsR\tasse"
+    "tTags\022\221\001\n\rapp_protocols\030\005 \003(\0132J.kentik.d"
+    "ictionary.v20260604alpha1.GetDictionaryR"
+    "esponse.AppProtocolsEntryB \222A\0352\033All AppP"
+    "rotocol definitionsR\014appProtocols\032o\n\021App"
+    "ProtocolsEntry\022\020\n\003key\030\001 \001(\tR\003key\022D\n\005valu"
+    "e\030\002 \001(\0132..kentik.dictionary.v20260604alp"
+    "ha1.AppProtocolR\005value:\0028\001*\205\002\n\rFieldData"
+    "Type\022\037\n\033FIELD_DATA_TYPE_UNSPECIFIED\020\000\022\032\n"
+    "\026FIELD_DATA_TYPE_STRING\020\001\022\027\n\023FIELD_DATA_"
+    "TYPE_INT\020\002\022\032\n\026FIELD_DATA_TYPE_UINT32\020\003\022\031"
+    "\n\025FIELD_DATA_TYPE_FLOAT\020\004\022\030\n\024FIELD_DATA_"
+    "TYPE_INET\020\005\022\031\n\025FIELD_DATA_TYPE_BYTES\020\006\022\030"
+    "\n\024FIELD_DATA_TYPE_ENUM\020\007\022\030\n\024FIELD_DATA_T"
+    "YPE_BOOL\020\010*\350\001\n\016OperatorSetKey\022 \n\034OPERATO"
+    "R_SET_KEY_UNSPECIFIED\020\000\022\030\n\024OPERATOR_SET_"
+    "KEY_INT\020\001\022\033\n\027OPERATOR_SET_KEY_STRING\020\002\022!"
+    "\n\035OPERATOR_SET_KEY_STRING_REGEX\020\003\022\031\n\025OPE"
+    "RATOR_SET_KEY_INET\020\004\022\031\n\025OPERATOR_SET_KEY"
+    "_ENUM\020\005\022$\n OPERATOR_SET_KEY_FIELD_REFERE"
+    "NCE\020\006*\370\001\n\021MeasurementFamily\022\"\n\036MEASUREME"
+    "NT_FAMILY_UNSPECIFIED\020\000\022\036\n\032MEASUREMENT_F"
+    "AMILY_TRAFFIC\020\001\022\032\n\026MEASUREMENT_FAMILY_NM"
+    "S\020\002\022%\n!MEASUREMENT_FAMILY_NMS_INTERFACES"
+    "\020\003\022!\n\035MEASUREMENT_FAMILY_SYNTHETICS\020\004\022\032\n"
+    "\026MEASUREMENT_FAMILY_BGP\020\005\022\035\n\031MEASUREMENT"
+    "_FAMILY_EVENTS\020\006*\225\001\n\016FieldDirection\022\037\n\033F"
+    "IELD_DIRECTION_UNSPECIFIED\020\000\022\027\n\023FIELD_DI"
+    "RECTION_SRC\020\001\022\027\n\023FIELD_DIRECTION_DST\020\002\022\026"
+    "\n\022FIELD_DIRECTION_BI\020\003\022\030\n\024FIELD_DIRECTIO"
+    "N_NONE\020\004*\207\004\n\016MetricQuantity\022\037\n\033METRIC_QU"
+    "ANTITY_UNSPECIFIED\020\000\022\036\n\032METRIC_QUANTITY_"
+    "THROUGHPUT\020\001\022\037\n\033METRIC_QUANTITY_PACKET_R"
+    "ATE\020\002\022\035\n\031METRIC_QUANTITY_FLOW_RATE\020\003\022\036\n\032"
+    "METRIC_QUANTITY_BYTE_TOTAL\020\004\022 \n\034METRIC_Q"
+    "UANTITY_PACKET_TOTAL\020\005\022\036\n\032METRIC_QUANTIT"
+    "Y_FLOW_TOTAL\020\006\022\037\n\033METRIC_QUANTITY_CARDIN"
+    "ALITY\020\007\022#\n\037METRIC_QUANTITY_UTILIZATION_P"
+    "CT\020\010\022\036\n\032METRIC_QUANTITY_ERROR_RATE\020\t\022\033\n\027"
+    "METRIC_QUANTITY_LATENCY\020\n\022\032\n\026METRIC_QUAN"
+    "TITY_JITTER\020\013\022\034\n\030METRIC_QUANTITY_LOSS_PC"
+    "T\020\014\022\037\n\033METRIC_QUANTITY_SAMPLE_RATE\020\r\022\031\n\025"
+    "METRIC_QUANTITY_GAUGE\020\016\022\031\n\025METRIC_QUANTI"
+    "TY_SCORE\020\017*\271\002\n\010BaseUnit\022\031\n\025BASE_UNIT_UNS"
+    "PECIFIED\020\000\022\035\n\031BASE_UNIT_BITS_PER_SECOND\020"
+    "\001\022 \n\034BASE_UNIT_PACKETS_PER_SECOND\020\002\022\036\n\032B"
+    "ASE_UNIT_FLOWS_PER_SECOND\020\003\022\023\n\017BASE_UNIT"
+    "_BYTES\020\004\022\025\n\021BASE_UNIT_PACKETS\020\005\022\023\n\017BASE_"
+    "UNIT_FLOWS\020\006\022\023\n\017BASE_UNIT_COUNT\020\007\022\025\n\021BAS"
+    "E_UNIT_PERCENT\020\010\022\032\n\026BASE_UNIT_MILLISECON"
+    "DS\020\t\022\023\n\017BASE_UNIT_RATIO\020\n\022\023\n\017BASE_UNIT_S"
+    "CORE\020\0132\340\003\n\021DictionaryService\022\220\003\n\rGetDict"
+    "ionary\0227.kentik.dictionary.v20260604alph"
+    "a1.GetDictionaryRequest\0328.kentik.diction"
+    "ary.v20260604alpha1.GetDictionaryRespons"
+    "e\"\213\002\222A\321\001\022\016Get Dictionary\032\257\001Returns the f"
+    "ull UDE dictionary for the authenticated"
+    " company, including all measurements wit"
+    "h their dimension and metric fields, ope"
+    "rator sets, and metric family definition"
+    "s.*\rGetDictionary\362\327\002\017dictionary:read\202\323\344\223"
+    "\002\035\022\033/dictionary/v20260604alpha1\0328\312A\023grpc"
+    ".api.kentik.com\352\327\002\ndictionary\220\330\002\003\232\330\002\014grp"
+    "c-connectB\226\004ZWgithub.com/kentik/api-sche"
+    "ma-public/gen/go/kentik/dictionary/v2026"
+    "0604alpha1;dictionary\222A\271\003\022\200\002\n\016Dictionary"
+    " API\022\225\001# Overview\nThe Dictionary API is "
+    "used for getting all the metadata we can"
+    " query about using UDE.\n### Key Features"
+    "\n* Get dictionary for your company\n\n\"E\n\026"
+    "Kentik API Engineering\022+https://github.c"
+    "om/kentik/api-schema-public2\017v20260604al"
+    "pha1*\001\0022\020application/json:\020application/j"
+    "sonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n"
+    "\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005e"
+    "mail\022\000\n\t\n\005token\022\000r/\n\025Kentik Knowledge Ba"
+    "se\022\026https://kb.kentik.com/b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto_deps[5] =
     {
@@ -797,13 +1003,13 @@ static ::absl::once_flag descriptor_table_kentik_2fdictionary_2fv20260604alpha1_
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto = {
     false,
     false,
-    8472,
+    9754,
     descriptor_table_protodef_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto,
     "kentik/dictionary/v20260604alpha1/dictionary.proto",
     &descriptor_table_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto_once,
     descriptor_table_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto_deps,
     5,
-    10,
+    14,
     schemas,
     file_default_instances,
     TableStruct_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto::offsets,
@@ -1800,6 +2006,861 @@ void MetricFamilyDef::InternalSwap(MetricFamilyDef* PROTOBUF_RESTRICT other) {
 }
 // ===================================================================
 
+class AssetTag::_Internal {
+ public:
+};
+
+AssetTag::AssetTag(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.dictionary.v20260604alpha1.AssetTag)
+}
+inline PROTOBUF_NDEBUG_INLINE AssetTag::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::dictionary::v20260604alpha1::AssetTag& from_msg)
+      : name_(arena, from.name_),
+        display_name_(arena, from.display_name_),
+        _cached_size_{0} {}
+
+AssetTag::AssetTag(
+    ::google::protobuf::Arena* arena,
+    const AssetTag& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  AssetTag* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+
+  // @@protoc_insertion_point(copy_constructor:kentik.dictionary.v20260604alpha1.AssetTag)
+}
+inline PROTOBUF_NDEBUG_INLINE AssetTag::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : name_(arena),
+        display_name_(arena),
+        _cached_size_{0} {}
+
+inline void AssetTag::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+}
+AssetTag::~AssetTag() {
+  // @@protoc_insertion_point(destructor:kentik.dictionary.v20260604alpha1.AssetTag)
+  SharedDtor(*this);
+}
+inline void AssetTag::SharedDtor(MessageLite& self) {
+  AssetTag& this_ = static_cast<AssetTag&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.name_.Destroy();
+  this_._impl_.display_name_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* AssetTag::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) AssetTag(arena);
+}
+constexpr auto AssetTag::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(AssetTag),
+                                            alignof(AssetTag));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull AssetTag::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_AssetTag_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &AssetTag::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<AssetTag>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &AssetTag::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<AssetTag>(), &AssetTag::ByteSizeLong,
+            &AssetTag::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(AssetTag, _impl_._cached_size_),
+        false,
+    },
+    &AssetTag::kDescriptorMethods,
+    &descriptor_table_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* AssetTag::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 67, 2> AssetTag::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::dictionary::v20260604alpha1::AssetTag>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // string display_name = 2 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(AssetTag, _impl_.display_name_)}},
+    // string name = 1 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(AssetTag, _impl_.name_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string name = 1 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(AssetTag, _impl_.name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string display_name = 2 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(AssetTag, _impl_.display_name_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+  }},
+  // no aux_entries
+  {{
+    "\52\4\14\0\0\0\0\0"
+    "kentik.dictionary.v20260604alpha1.AssetTag"
+    "name"
+    "display_name"
+  }},
+};
+
+PROTOBUF_NOINLINE void AssetTag::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.dictionary.v20260604alpha1.AssetTag)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.name_.ClearToEmpty();
+  _impl_.display_name_.ClearToEmpty();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* AssetTag::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const AssetTag& this_ = static_cast<const AssetTag&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* AssetTag::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const AssetTag& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.dictionary.v20260604alpha1.AssetTag)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string name = 1 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_name().empty()) {
+            const std::string& _s = this_._internal_name();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.dictionary.v20260604alpha1.AssetTag.name");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // string display_name = 2 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_display_name().empty()) {
+            const std::string& _s = this_._internal_display_name();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.dictionary.v20260604alpha1.AssetTag.display_name");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.dictionary.v20260604alpha1.AssetTag)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t AssetTag::ByteSizeLong(const MessageLite& base) {
+          const AssetTag& this_ = static_cast<const AssetTag&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t AssetTag::ByteSizeLong() const {
+          const AssetTag& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.dictionary.v20260604alpha1.AssetTag)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string name = 1 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_name().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_name());
+            }
+            // string display_name = 2 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_display_name().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_display_name());
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void AssetTag::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<AssetTag*>(&to_msg);
+  auto& from = static_cast<const AssetTag&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.dictionary.v20260604alpha1.AssetTag)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_name().empty()) {
+    _this->_internal_set_name(from._internal_name());
+  }
+  if (!from._internal_display_name().empty()) {
+    _this->_internal_set_display_name(from._internal_display_name());
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void AssetTag::CopyFrom(const AssetTag& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.dictionary.v20260604alpha1.AssetTag)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void AssetTag::InternalSwap(AssetTag* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.display_name_, &other->_impl_.display_name_, arena);
+}
+
+::google::protobuf::Metadata AssetTag::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class AppProtocolMetadata::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<AppProtocolMetadata>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(AppProtocolMetadata, _impl_._has_bits_);
+};
+
+AppProtocolMetadata::AppProtocolMetadata(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.dictionary.v20260604alpha1.AppProtocolMetadata)
+}
+AppProtocolMetadata::AppProtocolMetadata(
+    ::google::protobuf::Arena* arena, const AppProtocolMetadata& from)
+    : AppProtocolMetadata(arena) {
+  MergeFrom(from);
+}
+inline PROTOBUF_NDEBUG_INLINE AppProtocolMetadata::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0} {}
+
+inline void AppProtocolMetadata::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.full_data_only_ = {};
+}
+AppProtocolMetadata::~AppProtocolMetadata() {
+  // @@protoc_insertion_point(destructor:kentik.dictionary.v20260604alpha1.AppProtocolMetadata)
+  SharedDtor(*this);
+}
+inline void AppProtocolMetadata::SharedDtor(MessageLite& self) {
+  AppProtocolMetadata& this_ = static_cast<AppProtocolMetadata&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.~Impl_();
+}
+
+inline void* AppProtocolMetadata::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) AppProtocolMetadata(arena);
+}
+constexpr auto AppProtocolMetadata::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::ZeroInit(sizeof(AppProtocolMetadata),
+                                            alignof(AppProtocolMetadata));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull AppProtocolMetadata::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_AppProtocolMetadata_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &AppProtocolMetadata::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<AppProtocolMetadata>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &AppProtocolMetadata::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<AppProtocolMetadata>(), &AppProtocolMetadata::ByteSizeLong,
+            &AppProtocolMetadata::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(AppProtocolMetadata, _impl_._cached_size_),
+        false,
+    },
+    &AppProtocolMetadata::kDescriptorMethods,
+    &descriptor_table_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* AppProtocolMetadata::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> AppProtocolMetadata::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(AppProtocolMetadata, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 0,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967293,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    1,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::dictionary::v20260604alpha1::AppProtocolMetadata>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // optional bool full_data_only = 2 [json_name = "fullDataOnly", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(AppProtocolMetadata, _impl_.full_data_only_), 0>(),
+     {16, 0, 0, PROTOBUF_FIELD_OFFSET(AppProtocolMetadata, _impl_.full_data_only_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // optional bool full_data_only = 2 [json_name = "fullDataOnly", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(AppProtocolMetadata, _impl_.full_data_only_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kBool)},
+  }},
+  // no aux_entries
+  {{
+  }},
+};
+
+PROTOBUF_NOINLINE void AppProtocolMetadata::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.dictionary.v20260604alpha1.AppProtocolMetadata)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.full_data_only_ = false;
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* AppProtocolMetadata::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const AppProtocolMetadata& this_ = static_cast<const AppProtocolMetadata&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* AppProtocolMetadata::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const AppProtocolMetadata& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.dictionary.v20260604alpha1.AppProtocolMetadata)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // optional bool full_data_only = 2 [json_name = "fullDataOnly", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000001u) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteBoolToArray(
+                2, this_._internal_full_data_only(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.dictionary.v20260604alpha1.AppProtocolMetadata)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t AppProtocolMetadata::ByteSizeLong(const MessageLite& base) {
+          const AppProtocolMetadata& this_ = static_cast<const AppProtocolMetadata&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t AppProtocolMetadata::ByteSizeLong() const {
+          const AppProtocolMetadata& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.dictionary.v20260604alpha1.AppProtocolMetadata)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+           {
+            // optional bool full_data_only = 2 [json_name = "fullDataOnly", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 2;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void AppProtocolMetadata::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<AppProtocolMetadata*>(&to_msg);
+  auto& from = static_cast<const AppProtocolMetadata&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.dictionary.v20260604alpha1.AppProtocolMetadata)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    _this->_impl_.full_data_only_ = from._impl_.full_data_only_;
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void AppProtocolMetadata::CopyFrom(const AppProtocolMetadata& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.dictionary.v20260604alpha1.AppProtocolMetadata)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void AppProtocolMetadata::InternalSwap(AppProtocolMetadata* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+        swap(_impl_.full_data_only_, other->_impl_.full_data_only_);
+}
+
+::google::protobuf::Metadata AppProtocolMetadata::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class AppProtocol::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<AppProtocol>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_._has_bits_);
+};
+
+AppProtocol::AppProtocol(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.dictionary.v20260604alpha1.AppProtocol)
+}
+inline PROTOBUF_NDEBUG_INLINE AppProtocol::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::dictionary::v20260604alpha1::AppProtocol& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        display_name_(arena, from.display_name_),
+        status_(arena, from.status_) {}
+
+AppProtocol::AppProtocol(
+    ::google::protobuf::Arena* arena,
+    const AppProtocol& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  AppProtocol* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.metadata_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::kentik::dictionary::v20260604alpha1::AppProtocolMetadata>(
+                              arena, *from._impl_.metadata_)
+                        : nullptr;
+  ::memcpy(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, id_),
+           reinterpret_cast<const char *>(&from._impl_) +
+               offsetof(Impl_, id_),
+           offsetof(Impl_, add_to_standard_fields_) -
+               offsetof(Impl_, id_) +
+               sizeof(Impl_::add_to_standard_fields_));
+
+  // @@protoc_insertion_point(copy_constructor:kentik.dictionary.v20260604alpha1.AppProtocol)
+}
+inline PROTOBUF_NDEBUG_INLINE AppProtocol::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        display_name_(arena),
+        status_(arena) {}
+
+inline void AppProtocol::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, metadata_),
+           0,
+           offsetof(Impl_, add_to_standard_fields_) -
+               offsetof(Impl_, metadata_) +
+               sizeof(Impl_::add_to_standard_fields_));
+}
+AppProtocol::~AppProtocol() {
+  // @@protoc_insertion_point(destructor:kentik.dictionary.v20260604alpha1.AppProtocol)
+  SharedDtor(*this);
+}
+inline void AppProtocol::SharedDtor(MessageLite& self) {
+  AppProtocol& this_ = static_cast<AppProtocol&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.display_name_.Destroy();
+  this_._impl_.status_.Destroy();
+  delete this_._impl_.metadata_;
+  this_._impl_.~Impl_();
+}
+
+inline void* AppProtocol::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) AppProtocol(arena);
+}
+constexpr auto AppProtocol::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(AppProtocol),
+                                            alignof(AppProtocol));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull AppProtocol::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_AppProtocol_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &AppProtocol::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<AppProtocol>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &AppProtocol::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<AppProtocol>(), &AppProtocol::ByteSizeLong,
+            &AppProtocol::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_._cached_size_),
+        false,
+    },
+    &AppProtocol::kDescriptorMethods,
+    &descriptor_table_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* AppProtocol::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<3, 5, 1, 72, 2> AppProtocol::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_._has_bits_),
+    0, // no _extensions_
+    5, 56,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967264,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    5,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::dictionary::v20260604alpha1::AppProtocol>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    {::_pbi::TcParser::MiniParse, {}},
+    // uint64 id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint64_t, offsetof(AppProtocol, _impl_.id_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_.id_)}},
+    // string display_name = 2 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_.display_name_)}},
+    // bool add_to_standard_fields = 3 [json_name = "addToStandardFields", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(AppProtocol, _impl_.add_to_standard_fields_), 63>(),
+     {24, 63, 0, PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_.add_to_standard_fields_)}},
+    // string status = 4 [json_name = "status", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastUS1,
+     {34, 63, 0, PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_.status_)}},
+    // .kentik.dictionary.v20260604alpha1.AppProtocolMetadata metadata = 5 [json_name = "metadata", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastMtS1,
+     {42, 0, 0, PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_.metadata_)}},
+    {::_pbi::TcParser::MiniParse, {}},
+    {::_pbi::TcParser::MiniParse, {}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // uint64 id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_.id_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUInt64)},
+    // string display_name = 2 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_.display_name_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool add_to_standard_fields = 3 [json_name = "addToStandardFields", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_.add_to_standard_fields_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // string status = 4 [json_name = "status", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_.status_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .kentik.dictionary.v20260604alpha1.AppProtocolMetadata metadata = 5 [json_name = "metadata", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_.metadata_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::kentik::dictionary::v20260604alpha1::AppProtocolMetadata>()},
+  }}, {{
+    "\55\0\14\0\6\0\0\0"
+    "kentik.dictionary.v20260604alpha1.AppProtocol"
+    "display_name"
+    "status"
+  }},
+};
+
+PROTOBUF_NOINLINE void AppProtocol::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.dictionary.v20260604alpha1.AppProtocol)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.display_name_.ClearToEmpty();
+  _impl_.status_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.metadata_ != nullptr);
+    _impl_.metadata_->Clear();
+  }
+  ::memset(&_impl_.id_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.add_to_standard_fields_) -
+      reinterpret_cast<char*>(&_impl_.id_)) + sizeof(_impl_.add_to_standard_fields_));
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* AppProtocol::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const AppProtocol& this_ = static_cast<const AppProtocol&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* AppProtocol::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const AppProtocol& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.dictionary.v20260604alpha1.AppProtocol)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // uint64 id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (this_._internal_id() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteUInt64ToArray(
+                1, this_._internal_id(), target);
+          }
+
+          // string display_name = 2 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_display_name().empty()) {
+            const std::string& _s = this_._internal_display_name();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.dictionary.v20260604alpha1.AppProtocol.display_name");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          // bool add_to_standard_fields = 3 [json_name = "addToStandardFields", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (this_._internal_add_to_standard_fields() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteBoolToArray(
+                3, this_._internal_add_to_standard_fields(), target);
+          }
+
+          // string status = 4 [json_name = "status", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_status().empty()) {
+            const std::string& _s = this_._internal_status();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.dictionary.v20260604alpha1.AppProtocol.status");
+            target = stream->WriteStringMaybeAliased(4, _s, target);
+          }
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .kentik.dictionary.v20260604alpha1.AppProtocolMetadata metadata = 5 [json_name = "metadata", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                5, *this_._impl_.metadata_, this_._impl_.metadata_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.dictionary.v20260604alpha1.AppProtocol)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t AppProtocol::ByteSizeLong(const MessageLite& base) {
+          const AppProtocol& this_ = static_cast<const AppProtocol&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t AppProtocol::ByteSizeLong() const {
+          const AppProtocol& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.dictionary.v20260604alpha1.AppProtocol)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string display_name = 2 [json_name = "displayName", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_display_name().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_display_name());
+            }
+            // string status = 4 [json_name = "status", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (!this_._internal_status().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_status());
+            }
+          }
+           {
+            // .kentik.dictionary.v20260604alpha1.AppProtocolMetadata metadata = 5 [json_name = "metadata", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.metadata_);
+            }
+          }
+           {
+            // uint64 id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (this_._internal_id() != 0) {
+              total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(
+                  this_._internal_id());
+            }
+            // bool add_to_standard_fields = 3 [json_name = "addToStandardFields", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (this_._internal_add_to_standard_fields() != 0) {
+              total_size += 2;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void AppProtocol::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<AppProtocol*>(&to_msg);
+  auto& from = static_cast<const AppProtocol&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.dictionary.v20260604alpha1.AppProtocol)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_display_name().empty()) {
+    _this->_internal_set_display_name(from._internal_display_name());
+  }
+  if (!from._internal_status().empty()) {
+    _this->_internal_set_status(from._internal_status());
+  }
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.metadata_ != nullptr);
+    if (_this->_impl_.metadata_ == nullptr) {
+      _this->_impl_.metadata_ =
+          ::google::protobuf::Message::CopyConstruct<::kentik::dictionary::v20260604alpha1::AppProtocolMetadata>(arena, *from._impl_.metadata_);
+    } else {
+      _this->_impl_.metadata_->MergeFrom(*from._impl_.metadata_);
+    }
+  }
+  if (from._internal_id() != 0) {
+    _this->_impl_.id_ = from._impl_.id_;
+  }
+  if (from._internal_add_to_standard_fields() != 0) {
+    _this->_impl_.add_to_standard_fields_ = from._impl_.add_to_standard_fields_;
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void AppProtocol::CopyFrom(const AppProtocol& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.dictionary.v20260604alpha1.AppProtocol)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void AppProtocol::InternalSwap(AppProtocol* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.display_name_, &other->_impl_.display_name_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.status_, &other->_impl_.status_, arena);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_.add_to_standard_fields_)
+      + sizeof(AppProtocol::_impl_.add_to_standard_fields_)
+      - PROTOBUF_FIELD_OFFSET(AppProtocol, _impl_.metadata_)>(
+          reinterpret_cast<char*>(&_impl_.metadata_),
+          reinterpret_cast<char*>(&other->_impl_.metadata_));
+}
+
+::google::protobuf::Metadata AppProtocol::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
 #if defined(PROTOBUF_CUSTOM_VTABLE)
               DimensionField_ValuesEntry_DoNotUse::DimensionField_ValuesEntry_DoNotUse() : SuperType(_class_data_.base()) {}
               DimensionField_ValuesEntry_DoNotUse::DimensionField_ValuesEntry_DoNotUse(::google::protobuf::Arena* arena)
@@ -1940,9 +3001,9 @@ DimensionField::DimensionField(
                offsetof(Impl_, data_type_),
            reinterpret_cast<const char *>(&from._impl_) +
                offsetof(Impl_, data_type_),
-           offsetof(Impl_, can_count_) -
+           offsetof(Impl_, shared_) -
                offsetof(Impl_, data_type_) +
-               sizeof(Impl_::can_count_));
+               sizeof(Impl_::shared_));
 
   // @@protoc_insertion_point(copy_constructor:kentik.dictionary.v20260604alpha1.DimensionField)
 }
@@ -1965,9 +3026,9 @@ inline void DimensionField::SharedCtor(::_pb::Arena* arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, data_type_),
            0,
-           offsetof(Impl_, can_count_) -
+           offsetof(Impl_, shared_) -
                offsetof(Impl_, data_type_) +
-               sizeof(Impl_::can_count_));
+               sizeof(Impl_::shared_));
 }
 DimensionField::~DimensionField() {
   // @@protoc_insertion_point(destructor:kentik.dictionary.v20260604alpha1.DimensionField)
@@ -2040,15 +3101,15 @@ const ::google::protobuf::internal::ClassData* DimensionField::GetClassData() co
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 14, 1, 134, 2> DimensionField::_table_ = {
+const ::_pbi::TcParseTable<4, 15, 1, 134, 2> DimensionField::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(DimensionField, _impl_._has_bits_),
     0, // no _extensions_
-    14, 120,  // max_field_number, fast_idx_mask
+    15, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294950912,  // skipmap
+    4294934528,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    14,  // num_field_entries
+    15,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -2099,7 +3160,9 @@ const ::_pbi::TcParseTable<4, 14, 1, 134, 2> DimensionField::_table_ = {
     // bool can_count = 14 [json_name = "canCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(DimensionField, _impl_.can_count_), 63>(),
      {112, 63, 0, PROTOBUF_FIELD_OFFSET(DimensionField, _impl_.can_count_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // bool shared = 15 [json_name = "shared", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(DimensionField, _impl_.shared_), 63>(),
+     {120, 63, 0, PROTOBUF_FIELD_OFFSET(DimensionField, _impl_.shared_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -2145,6 +3208,9 @@ const ::_pbi::TcParseTable<4, 14, 1, 134, 2> DimensionField::_table_ = {
     // bool can_count = 14 [json_name = "canCount", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(DimensionField, _impl_.can_count_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // bool shared = 15 [json_name = "shared", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(DimensionField, _impl_.shared_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }}, {{
     {::_pbi::TcParser::GetMapAuxInfo<
         decltype(DimensionField()._impl_.values_)>(
@@ -2185,8 +3251,8 @@ PROTOBUF_NOINLINE void DimensionField::Clear() {
   _impl_.filter_column_.ClearToEmpty();
   _impl_.query_column_.ClearToEmpty();
   ::memset(&_impl_.data_type_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.can_count_) -
-      reinterpret_cast<char*>(&_impl_.data_type_)) + sizeof(_impl_.can_count_));
+      reinterpret_cast<char*>(&_impl_.shared_) -
+      reinterpret_cast<char*>(&_impl_.data_type_)) + sizeof(_impl_.shared_));
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -2339,6 +3405,13 @@ PROTOBUF_NOINLINE void DimensionField::Clear() {
                 14, this_._internal_can_count(), target);
           }
 
+          // bool shared = 15 [json_name = "shared", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (this_._internal_shared() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteBoolToArray(
+                15, this_._internal_shared(), target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -2444,6 +3517,10 @@ PROTOBUF_NOINLINE void DimensionField::Clear() {
             if (this_._internal_can_count() != 0) {
               total_size += 2;
             }
+            // bool shared = 15 [json_name = "shared", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (this_._internal_shared() != 0) {
+              total_size += 2;
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -2498,6 +3575,9 @@ void DimensionField::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::
   if (from._internal_can_count() != 0) {
     _this->_impl_.can_count_ = from._impl_.can_count_;
   }
+  if (from._internal_shared() != 0) {
+    _this->_impl_.shared_ = from._impl_.shared_;
+  }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -2526,8 +3606,8 @@ void DimensionField::InternalSwap(DimensionField* PROTOBUF_RESTRICT other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.filter_column_, &other->_impl_.filter_column_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.query_column_, &other->_impl_.query_column_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(DimensionField, _impl_.can_count_)
-      + sizeof(DimensionField::_impl_.can_count_)
+      PROTOBUF_FIELD_OFFSET(DimensionField, _impl_.shared_)
+      + sizeof(DimensionField::_impl_.shared_)
       - PROTOBUF_FIELD_OFFSET(DimensionField, _impl_.data_type_)>(
           reinterpret_cast<char*>(&_impl_.data_type_),
           reinterpret_cast<char*>(&other->_impl_.data_type_));
@@ -2793,15 +3873,15 @@ const ::google::protobuf::internal::ClassData* MetricField::GetClassData() const
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<5, 18, 1, 178, 2> MetricField::_table_ = {
+const ::_pbi::TcParseTable<5, 19, 1, 178, 2> MetricField::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(MetricField, _impl_._has_bits_),
     0, // no _extensions_
-    18, 248,  // max_field_number, fast_idx_mask
+    19, 248,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294705152,  // skipmap
+    4294443008,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    18,  // num_field_entries
+    19,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -2864,7 +3944,9 @@ const ::_pbi::TcParseTable<5, 18, 1, 178, 2> MetricField::_table_ = {
     // .kentik.dictionary.v20260604alpha1.BaseUnit base_unit = 18 [json_name = "baseUnit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastV32S2,
      {400, 63, 0, PROTOBUF_FIELD_OFFSET(MetricField, _impl_.base_unit_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // bool shared = 19 [json_name = "shared", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastV8S2,
+     {408, 63, 0, PROTOBUF_FIELD_OFFSET(MetricField, _impl_.shared_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
@@ -2934,6 +4016,9 @@ const ::_pbi::TcParseTable<5, 18, 1, 178, 2> MetricField::_table_ = {
     // .kentik.dictionary.v20260604alpha1.BaseUnit base_unit = 18 [json_name = "baseUnit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(MetricField, _impl_.base_unit_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // bool shared = 19 [json_name = "shared", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(MetricField, _impl_.shared_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }}, {{
     {::_pbi::TcParser::GetMapAuxInfo<
         decltype(MetricField()._impl_.values_)>(
@@ -3168,6 +4253,13 @@ PROTOBUF_NOINLINE void MetricField::Clear() {
                 18, this_._internal_base_unit(), target);
           }
 
+          // bool shared = 19 [json_name = "shared", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (this_._internal_shared() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteBoolToArray(
+                19, this_._internal_shared(), target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -3292,6 +4384,10 @@ PROTOBUF_NOINLINE void MetricField::Clear() {
             if (this_._internal_rollup() != 0) {
               total_size += 2;
             }
+            // bool shared = 19 [json_name = "shared", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (this_._internal_shared() != 0) {
+              total_size += 3;
+            }
             // .kentik.dictionary.v20260604alpha1.BaseUnit base_unit = 18 [json_name = "baseUnit", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
             if (this_._internal_base_unit() != 0) {
               total_size += 2 +
@@ -3357,6 +4453,9 @@ void MetricField::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::goo
   }
   if (from._internal_rollup() != 0) {
     _this->_impl_.rollup_ = from._impl_.rollup_;
+  }
+  if (from._internal_shared() != 0) {
+    _this->_impl_.shared_ = from._impl_.shared_;
   }
   if (from._internal_base_unit() != 0) {
     _this->_impl_.base_unit_ = from._impl_.base_unit_;
@@ -3947,6 +5046,96 @@ const ::_pbi::TcParseTable<0, 0, 0, 0, 2> GetDictionaryRequest::_table_ = {
 }
 // ===================================================================
 
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+              GetDictionaryResponse_AppProtocolsEntry_DoNotUse::GetDictionaryResponse_AppProtocolsEntry_DoNotUse() : SuperType(_class_data_.base()) {}
+              GetDictionaryResponse_AppProtocolsEntry_DoNotUse::GetDictionaryResponse_AppProtocolsEntry_DoNotUse(::google::protobuf::Arena* arena)
+                  : SuperType(arena, _class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+              GetDictionaryResponse_AppProtocolsEntry_DoNotUse::GetDictionaryResponse_AppProtocolsEntry_DoNotUse() : SuperType() {}
+              GetDictionaryResponse_AppProtocolsEntry_DoNotUse::GetDictionaryResponse_AppProtocolsEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+              inline void* GetDictionaryResponse_AppProtocolsEntry_DoNotUse::PlacementNew_(const void*, void* mem,
+                                                      ::google::protobuf::Arena* arena) {
+                return ::new (mem) GetDictionaryResponse_AppProtocolsEntry_DoNotUse(arena);
+              }
+              constexpr auto GetDictionaryResponse_AppProtocolsEntry_DoNotUse::InternalNewImpl_() {
+                return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(GetDictionaryResponse_AppProtocolsEntry_DoNotUse),
+                                                          alignof(GetDictionaryResponse_AppProtocolsEntry_DoNotUse));
+              }
+              PROTOBUF_CONSTINIT
+              PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+              const ::google::protobuf::internal::ClassDataFull GetDictionaryResponse_AppProtocolsEntry_DoNotUse::_class_data_ = {
+                  ::google::protobuf::internal::ClassData{
+                      &_GetDictionaryResponse_AppProtocolsEntry_DoNotUse_default_instance_._instance,
+                      &_table_.header,
+                      nullptr,  // OnDemandRegisterArenaDtor
+                      nullptr,  // IsInitialized
+                      &GetDictionaryResponse_AppProtocolsEntry_DoNotUse::MergeImpl,
+                      ::google::protobuf::Message::GetNewImpl<GetDictionaryResponse_AppProtocolsEntry_DoNotUse>(),
+              #if defined(PROTOBUF_CUSTOM_VTABLE)
+                      &GetDictionaryResponse_AppProtocolsEntry_DoNotUse::SharedDtor,
+                      static_cast<void (::google::protobuf::MessageLite::*)()>(
+                          &GetDictionaryResponse_AppProtocolsEntry_DoNotUse::ClearImpl),
+                          ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+                          ,
+              #endif  // PROTOBUF_CUSTOM_VTABLE
+                      PROTOBUF_FIELD_OFFSET(GetDictionaryResponse_AppProtocolsEntry_DoNotUse, _impl_._cached_size_),
+                      false,
+                  },
+                  &GetDictionaryResponse_AppProtocolsEntry_DoNotUse::kDescriptorMethods,
+                  &descriptor_table_kentik_2fdictionary_2fv20260604alpha1_2fdictionary_2eproto,
+                  nullptr,  // tracker
+              };
+              const ::google::protobuf::internal::ClassData* GetDictionaryResponse_AppProtocolsEntry_DoNotUse::GetClassData() const {
+                ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+                ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+                return _class_data_.base();
+              }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 85, 2> GetDictionaryResponse_AppProtocolsEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(GetDictionaryResponse_AppProtocolsEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::dictionary::v20260604alpha1::GetDictionaryResponse_AppProtocolsEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .kentik.dictionary.v20260604alpha1.AppProtocol value = 2 [json_name = "value"];
+    {::_pbi::TcParser::FastMtS1,
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(GetDictionaryResponse_AppProtocolsEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1 [json_name = "key"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(GetDictionaryResponse_AppProtocolsEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1 [json_name = "key"];
+    {PROTOBUF_FIELD_OFFSET(GetDictionaryResponse_AppProtocolsEntry_DoNotUse, _impl_.key_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .kentik.dictionary.v20260604alpha1.AppProtocol value = 2 [json_name = "value"];
+    {PROTOBUF_FIELD_OFFSET(GetDictionaryResponse_AppProtocolsEntry_DoNotUse, _impl_.value_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::kentik::dictionary::v20260604alpha1::AppProtocol>()},
+  }}, {{
+    "\111\3\0\0\0\0\0\0"
+    "kentik.dictionary.v20260604alpha1.GetDictionaryResponse.AppProtocolsEntry"
+    "key"
+  }},
+};
+
+// ===================================================================
+
 class GetDictionaryResponse::_Internal {
  public:
 };
@@ -3966,6 +5155,8 @@ inline PROTOBUF_NDEBUG_INLINE GetDictionaryResponse::Impl_::Impl_(
       : measurements_{visibility, arena, from.measurements_},
         operator_sets_{visibility, arena, from.operator_sets_},
         metric_families_{visibility, arena, from.metric_families_},
+        asset_tags_{visibility, arena, from.asset_tags_},
+        app_protocols_{visibility, arena, from.app_protocols_},
         _cached_size_{0} {}
 
 GetDictionaryResponse::GetDictionaryResponse(
@@ -3990,6 +5181,8 @@ inline PROTOBUF_NDEBUG_INLINE GetDictionaryResponse::Impl_::Impl_(
       : measurements_{visibility, arena},
         operator_sets_{visibility, arena},
         metric_families_{visibility, arena},
+        asset_tags_{visibility, arena},
+        app_protocols_{visibility, arena},
         _cached_size_{0} {}
 
 inline void GetDictionaryResponse::SharedCtor(::_pb::Arena* arena) {
@@ -4024,9 +5217,21 @@ constexpr auto GetDictionaryResponse::InternalNewImpl_() {
           decltype(GetDictionaryResponse::_impl_.metric_families_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(GetDictionaryResponse, _impl_.asset_tags_) +
+          decltype(GetDictionaryResponse::_impl_.asset_tags_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(GetDictionaryResponse, _impl_.app_protocols_) +
+          decltype(GetDictionaryResponse::_impl_.app_protocols_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(GetDictionaryResponse, _impl_.app_protocols_) +
+          decltype(GetDictionaryResponse::_impl_.app_protocols_)::
+              InternalGetArenaOffsetAlt(
+                  ::google::protobuf::Message::internal_visibility()),
   });
   if (arena_bits.has_value()) {
-    return ::google::protobuf::internal::MessageCreator::ZeroInit(
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
         sizeof(GetDictionaryResponse), alignof(GetDictionaryResponse), *arena_bits);
   } else {
     return ::google::protobuf::internal::MessageCreator(&GetDictionaryResponse::PlacementNew_,
@@ -4062,16 +5267,16 @@ const ::google::protobuf::internal::ClassData* GetDictionaryResponse::GetClassDa
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<2, 3, 3, 0, 2> GetDictionaryResponse::_table_ = {
+const ::_pbi::TcParseTable<2, 5, 6, 77, 2> GetDictionaryResponse::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    3, 24,  // max_field_number, fast_idx_mask
+    5, 24,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967288,  // skipmap
+    4294967264,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    3,  // num_field_entries
-    3,  // num_aux_entries
+    5,  // num_field_entries
+    6,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -4080,7 +5285,9 @@ const ::_pbi::TcParseTable<2, 3, 3, 0, 2> GetDictionaryResponse::_table_ = {
     ::_pbi::TcParser::GetTable<::kentik::dictionary::v20260604alpha1::GetDictionaryResponse>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    {::_pbi::TcParser::MiniParse, {}},
+    // repeated .kentik.dictionary.v20260604alpha1.AssetTag asset_tags = 4 [json_name = "assetTags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::FastMtR1,
+     {34, 63, 3, PROTOBUF_FIELD_OFFSET(GetDictionaryResponse, _impl_.asset_tags_)}},
     // repeated .kentik.dictionary.v20260604alpha1.MeasurementDetail measurements = 1 [json_name = "measurements", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastMtR1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(GetDictionaryResponse, _impl_.measurements_)}},
@@ -4102,11 +5309,26 @@ const ::_pbi::TcParseTable<2, 3, 3, 0, 2> GetDictionaryResponse::_table_ = {
     // repeated .kentik.dictionary.v20260604alpha1.MetricFamilyDef metric_families = 3 [json_name = "metricFamilies", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(GetDictionaryResponse, _impl_.metric_families_), 0, 2,
     (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // repeated .kentik.dictionary.v20260604alpha1.AssetTag asset_tags = 4 [json_name = "assetTags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetDictionaryResponse, _impl_.asset_tags_), 0, 3,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // map<string, .kentik.dictionary.v20260604alpha1.AppProtocol> app_protocols = 5 [json_name = "appProtocols", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(GetDictionaryResponse, _impl_.app_protocols_), 0, 4,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::dictionary::v20260604alpha1::MeasurementDetail>()},
     {::_pbi::TcParser::GetTable<::kentik::dictionary::v20260604alpha1::OperatorSet>()},
     {::_pbi::TcParser::GetTable<::kentik::dictionary::v20260604alpha1::MetricFamilyDef>()},
+    {::_pbi::TcParser::GetTable<::kentik::dictionary::v20260604alpha1::AssetTag>()},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(GetDictionaryResponse()._impl_.app_protocols_)>(
+        1, 0, 0, 9,
+        11)},
+    {::_pbi::TcParser::GetTable<::kentik::dictionary::v20260604alpha1::AppProtocol>()},
   }}, {{
+    "\67\0\0\0\0\15\0\0"
+    "kentik.dictionary.v20260604alpha1.GetDictionaryResponse"
+    "app_protocols"
   }},
 };
 
@@ -4120,6 +5342,8 @@ PROTOBUF_NOINLINE void GetDictionaryResponse::Clear() {
   _impl_.measurements_.Clear();
   _impl_.operator_sets_.Clear();
   _impl_.metric_families_.Clear();
+  _impl_.asset_tags_.Clear();
+  _impl_.app_protocols_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -4171,6 +5395,44 @@ PROTOBUF_NOINLINE void GetDictionaryResponse::Clear() {
                     target, stream);
           }
 
+          // repeated .kentik.dictionary.v20260604alpha1.AssetTag asset_tags = 4 [json_name = "assetTags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_asset_tags_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_asset_tags().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    4, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
+          // map<string, .kentik.dictionary.v20260604alpha1.AppProtocol> app_protocols = 5 [json_name = "appProtocols", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (!this_._internal_app_protocols().empty()) {
+            using MapType = ::google::protobuf::Map<std::string, ::kentik::dictionary::v20260604alpha1::AppProtocol>;
+            using WireHelper = _pbi::MapEntryFuncs<std::string, ::kentik::dictionary::v20260604alpha1::AppProtocol,
+                                           _pbi::WireFormatLite::TYPE_STRING,
+                                           _pbi::WireFormatLite::TYPE_MESSAGE>;
+            const auto& field = this_._internal_app_protocols();
+
+            if (stream->IsSerializationDeterministic() && field.size() > 1) {
+              for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+                target = WireHelper::InternalSerialize(
+                    5, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.dictionary.v20260604alpha1.GetDictionaryResponse.app_protocols");
+              }
+            } else {
+              for (const auto& entry : field) {
+                target = WireHelper::InternalSerialize(
+                    5, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.dictionary.v20260604alpha1.GetDictionaryResponse.app_protocols");
+              }
+            }
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -4217,6 +5479,23 @@ PROTOBUF_NOINLINE void GetDictionaryResponse::Clear() {
                 total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
               }
             }
+            // repeated .kentik.dictionary.v20260604alpha1.AssetTag asset_tags = 4 [json_name = "assetTags", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size += 1UL * this_._internal_asset_tags_size();
+              for (const auto& msg : this_._internal_asset_tags()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+            // map<string, .kentik.dictionary.v20260604alpha1.AppProtocol> app_protocols = 5 [json_name = "appProtocols", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            {
+              total_size +=
+                  1 * ::google::protobuf::internal::FromIntSize(this_._internal_app_protocols_size());
+              for (const auto& entry : this_._internal_app_protocols()) {
+                total_size += _pbi::MapEntryFuncs<std::string, ::kentik::dictionary::v20260604alpha1::AppProtocol,
+                                               _pbi::WireFormatLite::TYPE_STRING,
+                                               _pbi::WireFormatLite::TYPE_MESSAGE>::ByteSizeLong(entry.first, entry.second);
+              }
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -4236,6 +5515,9 @@ void GetDictionaryResponse::MergeImpl(::google::protobuf::MessageLite& to_msg, c
       from._internal_operator_sets());
   _this->_internal_mutable_metric_families()->MergeFrom(
       from._internal_metric_families());
+  _this->_internal_mutable_asset_tags()->MergeFrom(
+      from._internal_asset_tags());
+  _this->_impl_.app_protocols_.MergeFrom(from._impl_.app_protocols_);
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -4253,6 +5535,8 @@ void GetDictionaryResponse::InternalSwap(GetDictionaryResponse* PROTOBUF_RESTRIC
   _impl_.measurements_.InternalSwap(&other->_impl_.measurements_);
   _impl_.operator_sets_.InternalSwap(&other->_impl_.operator_sets_);
   _impl_.metric_families_.InternalSwap(&other->_impl_.metric_families_);
+  _impl_.asset_tags_.InternalSwap(&other->_impl_.asset_tags_);
+  _impl_.app_protocols_.InternalSwap(&other->_impl_.app_protocols_);
 }
 
 ::google::protobuf::Metadata GetDictionaryResponse::GetMetadata() const {

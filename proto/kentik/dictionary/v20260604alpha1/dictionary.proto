@@ -185,6 +185,40 @@ message MetricFamilyDef {
   ];
 }
 
+// User defined tags that can be assigned to devices
+message AssetTag {
+  string name = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Unique identifier for the asset tag"}
+  ];
+  string display_name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Human-readable display name"}
+  ];
+}
+
+message AppProtocolMetadata {
+  optional bool full_data_only = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "If true, this AppProtocol can only be used with Full Data, not Fast Data"}
+  ];
+}
+
+message AppProtocol {
+  uint64 id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Unique identifier for the app protocol"}
+  ];
+  string display_name = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Human-readable display name"}
+  ];
+  bool add_to_standard_fields = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "When true, this AppProtocol is able to use shared fields"}
+  ];
+  string status = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Will always be 'A' for Active"}
+  ];
+  AppProtocolMetadata metadata = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "AppProtocol metadata"}
+  ];
+}
+
 // A field that can be used as a dimension/filter in a query.
 message DimensionField {
   string key = 1 [
@@ -229,6 +263,9 @@ message DimensionField {
   ];
   bool can_count = 14 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "When true, the field can be used with WINDOW_FUNCTION_COUNT"}
+  ];
+  bool shared = 15 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "When true, the field can be used in child measurements"}
   ];
 }
 
@@ -289,6 +326,9 @@ message MetricField {
   BaseUnit base_unit = 18 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Base unit for this metric, overriding the family default if set"}
   ];
+  bool shared = 19 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "When true, the metric can be used in child measurements"}
+  ];
 }
 
 // Full detail for a single measurement (e.g. a traffic flow table or NMS measurement).
@@ -332,6 +372,12 @@ message GetDictionaryResponse {
   ];
   repeated MetricFamilyDef metric_families = 3 [
     (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "All metric family definitions"}
+  ];
+  repeated AssetTag asset_tags = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "All asset tag definitions"}
+  ];
+  map<string, AppProtocol> app_protocols = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "All AppProtocol definitions"}
   ];
 }
 
