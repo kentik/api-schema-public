@@ -104,6 +104,41 @@ namespace protobuf {
 namespace kentik {
 namespace kagent {
 namespace v202401 {
+enum CapabilityPromotionState : int {
+  CAPABILITY_PROMOTION_STATE_UNSPECIFIED = 0,
+  CAPABILITY_PROMOTION_STATE_PROMOTED = 1,
+  CAPABILITY_PROMOTION_STATE_PENDING = 2,
+  CAPABILITY_PROMOTION_STATE_ROLLED_BACK = 3,
+  CapabilityPromotionState_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  CapabilityPromotionState_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool CapabilityPromotionState_IsValid(int value);
+extern const uint32_t CapabilityPromotionState_internal_data_[];
+constexpr CapabilityPromotionState CapabilityPromotionState_MIN = static_cast<CapabilityPromotionState>(0);
+constexpr CapabilityPromotionState CapabilityPromotionState_MAX = static_cast<CapabilityPromotionState>(3);
+constexpr int CapabilityPromotionState_ARRAYSIZE = 3 + 1;
+const ::google::protobuf::EnumDescriptor*
+CapabilityPromotionState_descriptor();
+template <typename T>
+const std::string& CapabilityPromotionState_Name(T value) {
+  static_assert(std::is_same<T, CapabilityPromotionState>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to CapabilityPromotionState_Name().");
+  return CapabilityPromotionState_Name(static_cast<CapabilityPromotionState>(value));
+}
+template <>
+inline const std::string& CapabilityPromotionState_Name(CapabilityPromotionState value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<CapabilityPromotionState_descriptor,
+                                                 0, 3>(
+      static_cast<int>(value));
+}
+inline bool CapabilityPromotionState_Parse(absl::string_view name, CapabilityPromotionState* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<CapabilityPromotionState>(
+      CapabilityPromotionState_descriptor(), name, value);
+}
 enum AgentHealthState : int {
   AGENT_HEALTH_STATE_UNSPECIFIED = 0,
   AGENT_HEALTH_STATE_HEALTHY = 1,
@@ -2058,6 +2093,7 @@ class CapabilityCurrentState final : public ::google::protobuf::Message
     kMemUsedBytesFieldNumber = 21,
     kHealthV2FieldNumber = 23,
     kRestartLoopCountFieldNumber = 24,
+    kPromotionStateFieldNumber = 25,
   };
   // string name = 1 [json_name = "name"];
   void clear_name() ;
@@ -2361,13 +2397,23 @@ class CapabilityCurrentState final : public ::google::protobuf::Message
   void _internal_set_restart_loop_count(::int32_t value);
 
   public:
+  // .kentik.kagent.v202401.CapabilityPromotionState promotion_state = 25 [json_name = "promotionState"];
+  void clear_promotion_state() ;
+  ::kentik::kagent::v202401::CapabilityPromotionState promotion_state() const;
+  void set_promotion_state(::kentik::kagent::v202401::CapabilityPromotionState value);
+
+  private:
+  ::kentik::kagent::v202401::CapabilityPromotionState _internal_promotion_state() const;
+  void _internal_set_promotion_state(::kentik::kagent::v202401::CapabilityPromotionState value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.kagent.v202401.CapabilityCurrentState)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      5, 23, 4,
-      140, 2>
+      5, 24, 4,
+      148, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -2409,6 +2455,7 @@ class CapabilityCurrentState final : public ::google::protobuf::Message
     ::uint64_t mem_used_bytes_;
     int health_v2_;
     ::int32_t restart_loop_count_;
+    int promotion_state_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -6260,6 +6307,28 @@ inline void CapabilityCurrentState::set_allocated_resources(::kentik::kagent::v2
   // @@protoc_insertion_point(field_set_allocated:kentik.kagent.v202401.CapabilityCurrentState.resources)
 }
 
+// .kentik.kagent.v202401.CapabilityPromotionState promotion_state = 25 [json_name = "promotionState"];
+inline void CapabilityCurrentState::clear_promotion_state() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.promotion_state_ = 0;
+}
+inline ::kentik::kagent::v202401::CapabilityPromotionState CapabilityCurrentState::promotion_state() const {
+  // @@protoc_insertion_point(field_get:kentik.kagent.v202401.CapabilityCurrentState.promotion_state)
+  return _internal_promotion_state();
+}
+inline void CapabilityCurrentState::set_promotion_state(::kentik::kagent::v202401::CapabilityPromotionState value) {
+  _internal_set_promotion_state(value);
+  // @@protoc_insertion_point(field_set:kentik.kagent.v202401.CapabilityCurrentState.promotion_state)
+}
+inline ::kentik::kagent::v202401::CapabilityPromotionState CapabilityCurrentState::_internal_promotion_state() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::kentik::kagent::v202401::CapabilityPromotionState>(_impl_.promotion_state_);
+}
+inline void CapabilityCurrentState::_internal_set_promotion_state(::kentik::kagent::v202401::CapabilityPromotionState value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.promotion_state_ = value;
+}
+
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif  // __GNUC__
@@ -6273,6 +6342,12 @@ inline void CapabilityCurrentState::set_allocated_resources(::kentik::kagent::v2
 namespace google {
 namespace protobuf {
 
+template <>
+struct is_proto_enum<::kentik::kagent::v202401::CapabilityPromotionState> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::kentik::kagent::v202401::CapabilityPromotionState>() {
+  return ::kentik::kagent::v202401::CapabilityPromotionState_descriptor();
+}
 template <>
 struct is_proto_enum<::kentik::kagent::v202401::AgentHealthState> : std::true_type {};
 template <>

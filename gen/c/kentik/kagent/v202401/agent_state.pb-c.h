@@ -38,6 +38,25 @@ typedef struct Kentik__Kagent__V202401__CapabilityCurrentState Kentik__Kagent__V
 
 /* --- enums --- */
 
+typedef enum _Kentik__Kagent__V202401__CapabilityPromotionState {
+  /*
+   * the agent does not know the desired version yet, or is older than this field
+   */
+  KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_UNSPECIFIED = 0,
+  /*
+   * the desired version runs and is promoted
+   */
+  KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_PROMOTED = 1,
+  /*
+   * the desired version downloads, installs, boots, or runs on trial
+   */
+  KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_PENDING = 2,
+  /*
+   * the desired version used all of its boot attempts, and the previous version runs
+   */
+  KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_ROLLED_BACK = 3
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE)
+} Kentik__Kagent__V202401__CapabilityPromotionState;
 typedef enum _Kentik__Kagent__V202401__AgentHealthState {
   KENTIK__KAGENT__V202401__AGENT_HEALTH_STATE__AGENT_HEALTH_STATE_UNSPECIFIED = 0,
   /*
@@ -394,6 +413,10 @@ struct  Kentik__Kagent__V202401__CapabilityCurrentState
    * resources used by the capability process
    */
   Kentik__Kagent__V202401__ProcessResources *resources;
+  /*
+   * state of the change to the desired version
+   */
+  Kentik__Kagent__V202401__CapabilityPromotionState promotion_state;
   Kentik__Kagent__V202401__CapabilityCurrentState__CrashLoopCountCase _crash_loop_count_case;
   union {
     /*
@@ -428,7 +451,7 @@ struct  Kentik__Kagent__V202401__CapabilityCurrentState
 };
 #define KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__kagent__v202401__capability_current_state__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, KENTIK__KAGENT__V202401__CAPABILITY_HEALTH_STATE__CAPABILITY_HEALTH_STATE_UNSPECIFIED, KENTIK__KAGENT__V202401__CAPABILITY_HEALTH_STATE_V2__CAPABILITY_HEALTH_STATE_V2_UNSPECIFIED, 0, NULL, NULL, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___CRASH_LOOP_COUNT__NOT_SET, {0}, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___RESTART_LOOP_COUNT__NOT_SET, {0}, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___CPU_USED_CORES__NOT_SET, {0}, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___MEM_USED_BYTES__NOT_SET, {0} }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, KENTIK__KAGENT__V202401__CAPABILITY_HEALTH_STATE__CAPABILITY_HEALTH_STATE_UNSPECIFIED, KENTIK__KAGENT__V202401__CAPABILITY_HEALTH_STATE_V2__CAPABILITY_HEALTH_STATE_V2_UNSPECIFIED, 0, NULL, NULL, KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_UNSPECIFIED, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___CRASH_LOOP_COUNT__NOT_SET, {0}, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___RESTART_LOOP_COUNT__NOT_SET, {0}, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___CPU_USED_CORES__NOT_SET, {0}, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___MEM_USED_BYTES__NOT_SET, {0} }
 
 
 /* Kentik__Kagent__V202401__AgentDesiredState__CapabilityState methods */
@@ -551,6 +574,7 @@ typedef void (*Kentik__Kagent__V202401__CapabilityCurrentState_Closure)
 
 /* --- descriptors --- */
 
+extern const ProtobufCEnumDescriptor    kentik__kagent__v202401__capability_promotion_state__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__kagent__v202401__agent_health_state__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__kagent__v202401__capability_health_state__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__kagent__v202401__agent_health_state_v2__descriptor;

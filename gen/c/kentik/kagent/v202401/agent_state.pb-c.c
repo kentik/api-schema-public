@@ -999,7 +999,7 @@ const ProtobufCMessageDescriptor kentik__kagent__v202401__osmetadata__descriptor
   (ProtobufCMessageInit) kentik__kagent__v202401__osmetadata__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__kagent__v202401__capability_current_state__field_descriptors[23] =
+static const ProtobufCFieldDescriptor kentik__kagent__v202401__capability_current_state__field_descriptors[24] =
 {
   {
     "name",
@@ -1277,6 +1277,18 @@ static const ProtobufCFieldDescriptor kentik__kagent__v202401__capability_curren
     PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "promotion_state",
+    25,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kagent__V202401__CapabilityCurrentState, promotion_state),
+    &kentik__kagent__v202401__capability_promotion_state__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__kagent__v202401__capability_current_state__field_indices_by_name[] = {
   4,   /* field[4] = bundle_id */
@@ -1294,6 +1306,7 @@ static const unsigned kentik__kagent__v202401__capability_current_state__field_i
   0,   /* field[0] = name */
   7,   /* field[7] = pid */
   16,   /* field[16] = privileges */
+  23,   /* field[23] = promotion_state */
   20,   /* field[20] = resources */
   22,   /* field[22] = restart_loop_count */
   5,   /* field[5] = restarts */
@@ -1307,7 +1320,7 @@ static const ProtobufCIntRange kentik__kagent__v202401__capability_current_state
 {
   { 1, 0 },
   { 20, 18 },
-  { 0, 23 }
+  { 0, 24 }
 };
 const ProtobufCMessageDescriptor kentik__kagent__v202401__capability_current_state__descriptor =
 {
@@ -1317,12 +1330,44 @@ const ProtobufCMessageDescriptor kentik__kagent__v202401__capability_current_sta
   "Kentik__Kagent__V202401__CapabilityCurrentState",
   "kentik.kagent.v202401",
   sizeof(Kentik__Kagent__V202401__CapabilityCurrentState),
-  23,
+  24,
   kentik__kagent__v202401__capability_current_state__field_descriptors,
   kentik__kagent__v202401__capability_current_state__field_indices_by_name,
   2,  kentik__kagent__v202401__capability_current_state__number_ranges,
   (ProtobufCMessageInit) kentik__kagent__v202401__capability_current_state__init,
   NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCEnumValue kentik__kagent__v202401__capability_promotion_state__enum_values_by_number[4] =
+{
+  { "CAPABILITY_PROMOTION_STATE_UNSPECIFIED", "KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_UNSPECIFIED", 0 },
+  { "CAPABILITY_PROMOTION_STATE_PROMOTED", "KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_PROMOTED", 1 },
+  { "CAPABILITY_PROMOTION_STATE_PENDING", "KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_PENDING", 2 },
+  { "CAPABILITY_PROMOTION_STATE_ROLLED_BACK", "KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_ROLLED_BACK", 3 },
+};
+static const ProtobufCIntRange kentik__kagent__v202401__capability_promotion_state__value_ranges[] = {
+{0, 0},{0, 4}
+};
+static const ProtobufCEnumValueIndex kentik__kagent__v202401__capability_promotion_state__enum_values_by_name[4] =
+{
+  { "CAPABILITY_PROMOTION_STATE_PENDING", 2 },
+  { "CAPABILITY_PROMOTION_STATE_PROMOTED", 1 },
+  { "CAPABILITY_PROMOTION_STATE_ROLLED_BACK", 3 },
+  { "CAPABILITY_PROMOTION_STATE_UNSPECIFIED", 0 },
+};
+const ProtobufCEnumDescriptor kentik__kagent__v202401__capability_promotion_state__descriptor =
+{
+  PROTOBUF_C__ENUM_DESCRIPTOR_MAGIC,
+  "kentik.kagent.v202401.CapabilityPromotionState",
+  "CapabilityPromotionState",
+  "Kentik__Kagent__V202401__CapabilityPromotionState",
+  "kentik.kagent.v202401",
+  4,
+  kentik__kagent__v202401__capability_promotion_state__enum_values_by_number,
+  4,
+  kentik__kagent__v202401__capability_promotion_state__enum_values_by_name,
+  1,
+  kentik__kagent__v202401__capability_promotion_state__value_ranges,
+  NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
 static const ProtobufCEnumValue kentik__kagent__v202401__agent_health_state__enum_values_by_number[5] =
 {

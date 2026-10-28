@@ -106,6 +106,14 @@ message CapabilityCurrentState {
   optional double cpu_used_cores = 20; // deprecated
   optional uint64 mem_used_bytes = 21; // deprecated
   ProcessResources resources = 22; // resources used by the capability process
+  CapabilityPromotionState promotion_state = 25; // state of the change to the desired version
+}
+
+enum CapabilityPromotionState {
+  CAPABILITY_PROMOTION_STATE_UNSPECIFIED = 0; // the agent does not know the desired version yet, or is older than this field
+  CAPABILITY_PROMOTION_STATE_PROMOTED = 1; // the desired version runs and is promoted
+  CAPABILITY_PROMOTION_STATE_PENDING = 2; // the desired version downloads, installs, boots, or runs on trial
+  CAPABILITY_PROMOTION_STATE_ROLLED_BACK = 3; // the desired version used all of its boot attempts, and the previous version runs
 }
 
 enum AgentHealthState {
