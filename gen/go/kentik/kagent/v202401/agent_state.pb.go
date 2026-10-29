@@ -889,31 +889,32 @@ func (x *AgentDesiredState_AgentState) GetConfig() *Config {
 }
 
 type AgentCurrentState_AgentState struct {
-	state             protoimpl.MessageState `protogen:"open.v1"`
-	Version           string                 `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"` // kentik agent version
-	BundleId          string                 `protobuf:"bytes,10,opt,name=bundle_id,json=bundleId,proto3" json:"bundle_id,omitempty"`
-	ConfigId          string                 `protobuf:"bytes,11,opt,name=config_id,json=configId,proto3" json:"config_id,omitempty"`
-	ConfigVersion     string                 `protobuf:"bytes,12,opt,name=config_version,json=configVersion,proto3" json:"config_version,omitempty"`
-	SupervisorVersion string                 `protobuf:"bytes,15,opt,name=supervisor_version,json=supervisorVersion,proto3" json:"supervisor_version,omitempty"`
-	LastSeen          *timestamppb.Timestamp `protobuf:"bytes,2,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`
-	ReconcileError    string                 `protobuf:"bytes,3,opt,name=reconcile_error,json=reconcileError,proto3" json:"reconcile_error,omitempty"`
-	ReconcileInterval *durationpb.Duration   `protobuf:"bytes,4,opt,name=reconcile_interval,json=reconcileInterval,proto3" json:"reconcile_interval,omitempty"`
-	LastError         string                 `protobuf:"bytes,5,opt,name=last_error,json=lastError,proto3" json:"last_error,omitempty"`
-	Pid               int64                  `protobuf:"varint,6,opt,name=pid,proto3" json:"pid,omitempty"`
-	StartedAt         *timestamppb.Timestamp `protobuf:"bytes,7,opt,name=started_at,json=startedAt,proto3" json:"started_at,omitempty"`
-	CurrentTime       *timestamppb.Timestamp `protobuf:"bytes,14,opt,name=current_time,json=currentTime,proto3" json:"current_time,omitempty"` // agent time when the state was created
-	Health            AgentHealthState       `protobuf:"varint,8,opt,name=health,proto3,enum=kentik.kagent.v202401.AgentHealthState" json:"health,omitempty"`
-	HealthV2          AgentHealthStateV2     `protobuf:"varint,32,opt,name=health_v2,json=healthV2,proto3,enum=kentik.kagent.v202401.AgentHealthStateV2" json:"health_v2,omitempty"`
-	OsDistribution    string                 `protobuf:"bytes,9,opt,name=os_distribution,json=osDistribution,proto3" json:"os_distribution,omitempty"`
-	Privileges        string                 `protobuf:"bytes,13,opt,name=privileges,proto3" json:"privileges,omitempty"`
-	Resources         *ProcessResources      `protobuf:"bytes,30,opt,name=resources,proto3" json:"resources,omitempty"`                                              // resources used by the agent process
-	HostResources     *HostResources         `protobuf:"bytes,31,opt,name=host_resources,json=hostResources,proto3" json:"host_resources,omitempty"`                 // system-wide resource availability / usage
-	MemUsedPercent    *float64               `protobuf:"fixed64,20,opt,name=mem_used_percent,json=memUsedPercent,proto3,oneof" json:"mem_used_percent,omitempty"`    // deprecated
-	MemFreeBytes      *uint64                `protobuf:"varint,24,opt,name=mem_free_bytes,json=memFreeBytes,proto3,oneof" json:"mem_free_bytes,omitempty"`           // deprecated
-	CpuTotalCores     *uint32                `protobuf:"varint,25,opt,name=cpu_total_cores,json=cpuTotalCores,proto3,oneof" json:"cpu_total_cores,omitempty"`        // deprecated
-	CpuUsedPercent    *float64               `protobuf:"fixed64,21,opt,name=cpu_used_percent,json=cpuUsedPercent,proto3,oneof" json:"cpu_used_percent,omitempty"`    // deprecated
-	DiskUsedPercent   *float64               `protobuf:"fixed64,22,opt,name=disk_used_percent,json=diskUsedPercent,proto3,oneof" json:"disk_used_percent,omitempty"` // deprecated
-	DiskFreeBytes     *uint64                `protobuf:"varint,23,opt,name=disk_free_bytes,json=diskFreeBytes,proto3,oneof" json:"disk_free_bytes,omitempty"`        // deprecated
+	state             protoimpl.MessageState   `protogen:"open.v1"`
+	Version           string                   `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"` // kentik agent version
+	BundleId          string                   `protobuf:"bytes,10,opt,name=bundle_id,json=bundleId,proto3" json:"bundle_id,omitempty"`
+	ConfigId          string                   `protobuf:"bytes,11,opt,name=config_id,json=configId,proto3" json:"config_id,omitempty"`
+	ConfigVersion     string                   `protobuf:"bytes,12,opt,name=config_version,json=configVersion,proto3" json:"config_version,omitempty"`
+	SupervisorVersion string                   `protobuf:"bytes,15,opt,name=supervisor_version,json=supervisorVersion,proto3" json:"supervisor_version,omitempty"`
+	LastSeen          *timestamppb.Timestamp   `protobuf:"bytes,2,opt,name=last_seen,json=lastSeen,proto3" json:"last_seen,omitempty"`
+	ReconcileError    string                   `protobuf:"bytes,3,opt,name=reconcile_error,json=reconcileError,proto3" json:"reconcile_error,omitempty"`
+	ReconcileInterval *durationpb.Duration     `protobuf:"bytes,4,opt,name=reconcile_interval,json=reconcileInterval,proto3" json:"reconcile_interval,omitempty"`
+	LastError         string                   `protobuf:"bytes,5,opt,name=last_error,json=lastError,proto3" json:"last_error,omitempty"`
+	Pid               int64                    `protobuf:"varint,6,opt,name=pid,proto3" json:"pid,omitempty"`
+	StartedAt         *timestamppb.Timestamp   `protobuf:"bytes,7,opt,name=started_at,json=startedAt,proto3" json:"started_at,omitempty"`
+	CurrentTime       *timestamppb.Timestamp   `protobuf:"bytes,14,opt,name=current_time,json=currentTime,proto3" json:"current_time,omitempty"` // agent time when the state was created
+	Health            AgentHealthState         `protobuf:"varint,8,opt,name=health,proto3,enum=kentik.kagent.v202401.AgentHealthState" json:"health,omitempty"`
+	HealthV2          AgentHealthStateV2       `protobuf:"varint,32,opt,name=health_v2,json=healthV2,proto3,enum=kentik.kagent.v202401.AgentHealthStateV2" json:"health_v2,omitempty"`
+	OsDistribution    string                   `protobuf:"bytes,9,opt,name=os_distribution,json=osDistribution,proto3" json:"os_distribution,omitempty"`
+	Privileges        string                   `protobuf:"bytes,13,opt,name=privileges,proto3" json:"privileges,omitempty"`
+	Resources         *ProcessResources        `protobuf:"bytes,30,opt,name=resources,proto3" json:"resources,omitempty"`                                                                                      // resources used by the agent process
+	HostResources     *HostResources           `protobuf:"bytes,31,opt,name=host_resources,json=hostResources,proto3" json:"host_resources,omitempty"`                                                         // system-wide resource availability / usage
+	PromotionState    CapabilityPromotionState `protobuf:"varint,33,opt,name=promotion_state,json=promotionState,proto3,enum=kentik.kagent.v202401.CapabilityPromotionState" json:"promotion_state,omitempty"` // state of the change to the desired kagent version, from the kagent capability
+	MemUsedPercent    *float64                 `protobuf:"fixed64,20,opt,name=mem_used_percent,json=memUsedPercent,proto3,oneof" json:"mem_used_percent,omitempty"`                                            // deprecated
+	MemFreeBytes      *uint64                  `protobuf:"varint,24,opt,name=mem_free_bytes,json=memFreeBytes,proto3,oneof" json:"mem_free_bytes,omitempty"`                                                   // deprecated
+	CpuTotalCores     *uint32                  `protobuf:"varint,25,opt,name=cpu_total_cores,json=cpuTotalCores,proto3,oneof" json:"cpu_total_cores,omitempty"`                                                // deprecated
+	CpuUsedPercent    *float64                 `protobuf:"fixed64,21,opt,name=cpu_used_percent,json=cpuUsedPercent,proto3,oneof" json:"cpu_used_percent,omitempty"`                                            // deprecated
+	DiskUsedPercent   *float64                 `protobuf:"fixed64,22,opt,name=disk_used_percent,json=diskUsedPercent,proto3,oneof" json:"disk_used_percent,omitempty"`                                         // deprecated
+	DiskFreeBytes     *uint64                  `protobuf:"varint,23,opt,name=disk_free_bytes,json=diskFreeBytes,proto3,oneof" json:"disk_free_bytes,omitempty"`                                                // deprecated
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
@@ -1074,6 +1075,13 @@ func (x *AgentCurrentState_AgentState) GetHostResources() *HostResources {
 	return nil
 }
 
+func (x *AgentCurrentState_AgentState) GetPromotionState() CapabilityPromotionState {
+	if x != nil {
+		return x.PromotionState
+	}
+	return CapabilityPromotionState_CAPABILITY_PROMOTION_STATE_UNSPECIFIED
+}
+
 func (x *AgentCurrentState_AgentState) GetMemUsedPercent() float64 {
 	if x != nil && x.MemUsedPercent != nil {
 		return *x.MemUsedPercent
@@ -1140,10 +1148,10 @@ const file_kentik_kagent_v202401_agent_state_proto_rawDesc = "" +
 	"\tbundle_id\x18\x04 \x01(\tR\bbundleId\x12\x1b\n" +
 	"\tconfig_id\x18\x06 \x01(\tR\bconfigId\x12B\n" +
 	"\arelease\x18\x03 \x01(\v2(.kentik.kagent.v202401.CapabilityReleaseR\arelease\x125\n" +
-	"\x06config\x18\x05 \x01(\v2\x1d.kentik.kagent.v202401.ConfigR\x06config\"\xc0\v\n" +
+	"\x06config\x18\x05 \x01(\v2\x1d.kentik.kagent.v202401.ConfigR\x06config\"\x9f\f\n" +
 	"\x11AgentCurrentState\x12I\n" +
 	"\x05agent\x18\x02 \x01(\v23.kentik.kagent.v202401.AgentCurrentState.AgentStateR\x05agent\x12Q\n" +
-	"\fcapabilities\x18\x03 \x03(\v2-.kentik.kagent.v202401.CapabilityCurrentStateR\fcapabilities\x1a\x8c\n" +
+	"\fcapabilities\x18\x03 \x03(\v2-.kentik.kagent.v202401.CapabilityCurrentStateR\fcapabilities\x1a\xeb\n" +
 	"\n" +
 	"\n" +
 	"AgentState\x12\x18\n" +
@@ -1169,7 +1177,8 @@ const file_kentik_kagent_v202401_agent_state_proto_rawDesc = "" +
 	"privileges\x18\r \x01(\tR\n" +
 	"privileges\x12E\n" +
 	"\tresources\x18\x1e \x01(\v2'.kentik.kagent.v202401.ProcessResourcesR\tresources\x12K\n" +
-	"\x0ehost_resources\x18\x1f \x01(\v2$.kentik.kagent.v202401.HostResourcesR\rhostResources\x12-\n" +
+	"\x0ehost_resources\x18\x1f \x01(\v2$.kentik.kagent.v202401.HostResourcesR\rhostResources\x12]\n" +
+	"\x0fpromotion_state\x18! \x01(\x0e2/.kentik.kagent.v202401.CapabilityPromotionStateB\x03\xe0A\x03R\x0epromotionState\x12-\n" +
 	"\x10mem_used_percent\x18\x14 \x01(\x01H\x00R\x0ememUsedPercent\x88\x01\x01\x12)\n" +
 	"\x0emem_free_bytes\x18\x18 \x01(\x04H\x01R\fmemFreeBytes\x88\x01\x01\x12+\n" +
 	"\x0fcpu_total_cores\x18\x19 \x01(\rH\x02R\rcpuTotalCores\x88\x01\x01\x12-\n" +
@@ -1326,11 +1335,12 @@ var file_kentik_kagent_v202401_agent_state_proto_depIdxs = []int32{
 	3,  // 24: kentik.kagent.v202401.AgentCurrentState.AgentState.health_v2:type_name -> kentik.kagent.v202401.AgentHealthStateV2
 	15, // 25: kentik.kagent.v202401.AgentCurrentState.AgentState.resources:type_name -> kentik.kagent.v202401.ProcessResources
 	21, // 26: kentik.kagent.v202401.AgentCurrentState.AgentState.host_resources:type_name -> kentik.kagent.v202401.HostResources
-	27, // [27:27] is the sub-list for method output_type
-	27, // [27:27] is the sub-list for method input_type
-	27, // [27:27] is the sub-list for extension type_name
-	27, // [27:27] is the sub-list for extension extendee
-	0,  // [0:27] is the sub-list for field type_name
+	0,  // 27: kentik.kagent.v202401.AgentCurrentState.AgentState.promotion_state:type_name -> kentik.kagent.v202401.CapabilityPromotionState
+	28, // [28:28] is the sub-list for method output_type
+	28, // [28:28] is the sub-list for method input_type
+	28, // [28:28] is the sub-list for extension type_name
+	28, // [28:28] is the sub-list for extension extendee
+	0,  // [0:28] is the sub-list for field type_name
 }
 
 func init() { file_kentik_kagent_v202401_agent_state_proto_init() }

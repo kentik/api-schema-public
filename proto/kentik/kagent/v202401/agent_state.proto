@@ -60,6 +60,7 @@ message AgentCurrentState {
     string privileges = 13;
     ProcessResources resources = 30; // resources used by the agent process
     HostResources host_resources = 31; // system-wide resource availability / usage
+    CapabilityPromotionState promotion_state = 33 [(google.api.field_behavior) = OUTPUT_ONLY]; // state of the change to the desired kagent version, from the kagent capability
     optional double mem_used_percent = 20; // deprecated
     optional uint64 mem_free_bytes = 24; // deprecated
     optional uint32 cpu_total_cores = 25; // deprecated

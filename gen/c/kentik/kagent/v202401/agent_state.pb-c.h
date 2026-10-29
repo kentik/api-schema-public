@@ -275,6 +275,10 @@ struct  Kentik__Kagent__V202401__AgentCurrentState__AgentState
    * system-wide resource availability / usage
    */
   Kentik__Kagent__V202401__HostResources *host_resources;
+  /*
+   * state of the change to the desired kagent version, from the kagent capability
+   */
+  Kentik__Kagent__V202401__CapabilityPromotionState promotion_state;
   Kentik__Kagent__V202401__AgentCurrentState__AgentState__MemUsedPercentCase _mem_used_percent_case;
   union {
     /*
@@ -320,7 +324,7 @@ struct  Kentik__Kagent__V202401__AgentCurrentState__AgentState
 };
 #define KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__kagent__v202401__agent_current_state__agent_state__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, 0, NULL, NULL, KENTIK__KAGENT__V202401__AGENT_HEALTH_STATE__AGENT_HEALTH_STATE_UNSPECIFIED, KENTIK__KAGENT__V202401__AGENT_HEALTH_STATE_V2__AGENT_HEALTH_STATE_V2_UNSPECIFIED, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___MEM_USED_PERCENT__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___MEM_FREE_BYTES__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___CPU_TOTAL_CORES__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___CPU_USED_PERCENT__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___DISK_USED_PERCENT__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___DISK_FREE_BYTES__NOT_SET, {0} }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, 0, NULL, NULL, KENTIK__KAGENT__V202401__AGENT_HEALTH_STATE__AGENT_HEALTH_STATE_UNSPECIFIED, KENTIK__KAGENT__V202401__AGENT_HEALTH_STATE_V2__AGENT_HEALTH_STATE_V2_UNSPECIFIED, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_UNSPECIFIED, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___MEM_USED_PERCENT__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___MEM_FREE_BYTES__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___CPU_TOTAL_CORES__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___CPU_USED_PERCENT__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___DISK_USED_PERCENT__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___DISK_FREE_BYTES__NOT_SET, {0} }
 
 
 struct  Kentik__Kagent__V202401__AgentCurrentState

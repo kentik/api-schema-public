@@ -127,7 +127,8 @@ inline constexpr AgentCurrentState_AgentState::Impl_::Impl_(
         disk_used_percent_{0},
         disk_free_bytes_{::uint64_t{0u}},
         mem_free_bytes_{::uint64_t{0u}},
-        health_v2_{static_cast< ::kentik::kagent::v202401::AgentHealthStateV2 >(0)} {}
+        health_v2_{static_cast< ::kentik::kagent::v202401::AgentHealthStateV2 >(0)},
+        promotion_state_{static_cast< ::kentik::kagent::v202401::CapabilityPromotionState >(0)} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR AgentCurrentState_AgentState::AgentCurrentState_AgentState(::_pbi::ConstantInitialized)
@@ -419,6 +420,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.privileges_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.resources_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.host_resources_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.promotion_state_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.mem_used_percent_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.mem_free_bytes_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.cpu_total_cores_),
@@ -443,6 +445,7 @@ const ::uint32_t
         ~0u,
         4,
         5,
+        ~0u,
         7,
         11,
         6,
@@ -549,11 +552,11 @@ static const ::_pbi::MigrationSchema
         {0, 12, -1, sizeof(::kentik::kagent::v202401::AgentDesiredState_CapabilityState)},
         {16, 30, -1, sizeof(::kentik::kagent::v202401::AgentDesiredState_AgentState)},
         {36, 48, -1, sizeof(::kentik::kagent::v202401::AgentDesiredState)},
-        {52, 84, -1, sizeof(::kentik::kagent::v202401::AgentCurrentState_AgentState)},
-        {108, 118, -1, sizeof(::kentik::kagent::v202401::AgentCurrentState)},
-        {120, 130, -1, sizeof(::kentik::kagent::v202401::OSMetadata_ReleaseMetadataEntry_DoNotUse)},
-        {132, -1, -1, sizeof(::kentik::kagent::v202401::OSMetadata)},
-        {145, 177, -1, sizeof(::kentik::kagent::v202401::CapabilityCurrentState)},
+        {52, 85, -1, sizeof(::kentik::kagent::v202401::AgentCurrentState_AgentState)},
+        {110, 120, -1, sizeof(::kentik::kagent::v202401::AgentCurrentState)},
+        {122, 132, -1, sizeof(::kentik::kagent::v202401::OSMetadata_ReleaseMetadataEntry_DoNotUse)},
+        {134, -1, -1, sizeof(::kentik::kagent::v202401::OSMetadata)},
+        {147, 179, -1, sizeof(::kentik::kagent::v202401::CapabilityCurrentState)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::kagent::v202401::_AgentDesiredState_CapabilityState_default_instance_._instance,
@@ -599,11 +602,11 @@ const char descriptor_table_protodef_kentik_2fkagent_2fv202401_2fagent_5fstate_2
     "igId\022B\n\007release\030\003 \001(\0132(.kentik.kagent.v2"
     "02401.CapabilityReleaseR\007release\0225\n\006conf"
     "ig\030\005 \001(\0132\035.kentik.kagent.v202401.ConfigR"
-    "\006config\"\300\013\n\021AgentCurrentState\022I\n\005agent\030\002"
+    "\006config\"\237\014\n\021AgentCurrentState\022I\n\005agent\030\002"
     " \001(\01323.kentik.kagent.v202401.AgentCurren"
     "tState.AgentStateR\005agent\022Q\n\014capabilities"
     "\030\003 \003(\0132-.kentik.kagent.v202401.Capabilit"
-    "yCurrentStateR\014capabilities\032\214\n\n\nAgentSta"
+    "yCurrentStateR\014capabilities\032\353\n\n\nAgentSta"
     "te\022\030\n\007version\030\001 \001(\tR\007version\022\033\n\tbundle_i"
     "d\030\n \001(\tR\010bundleId\022\033\n\tconfig_id\030\013 \001(\tR\010co"
     "nfigId\022%\n\016config_version\030\014 \001(\tR\rconfigVe"
@@ -626,83 +629,86 @@ const char descriptor_table_protodef_kentik_2fkagent_2fv202401_2fagent_5fstate_2
     "tik.kagent.v202401.ProcessResourcesR\tres"
     "ources\022K\n\016host_resources\030\037 \001(\0132$.kentik."
     "kagent.v202401.HostResourcesR\rhostResour"
-    "ces\022-\n\020mem_used_percent\030\024 \001(\001H\000R\016memUsed"
-    "Percent\210\001\001\022)\n\016mem_free_bytes\030\030 \001(\004H\001R\014me"
-    "mFreeBytes\210\001\001\022+\n\017cpu_total_cores\030\031 \001(\rH\002"
-    "R\rcpuTotalCores\210\001\001\022-\n\020cpu_used_percent\030\025"
-    " \001(\001H\003R\016cpuUsedPercent\210\001\001\022/\n\021disk_used_p"
-    "ercent\030\026 \001(\001H\004R\017diskUsedPercent\210\001\001\022+\n\017di"
-    "sk_free_bytes\030\027 \001(\004H\005R\rdiskFreeBytes\210\001\001B"
-    "\023\n\021_mem_used_percentB\021\n\017_mem_free_bytesB"
-    "\022\n\020_cpu_total_coresB\023\n\021_cpu_used_percent"
-    "B\024\n\022_disk_used_percentB\022\n\020_disk_free_byt"
-    "es\"\223\002\n\nOSMetadata\022\022\n\004name\030\001 \001(\tR\004name\022\026\n"
-    "\006vendor\030\002 \001(\tR\006vendor\022\030\n\007release\030\003 \001(\tR\007"
-    "release\022\030\n\007version\030\004 \001(\tR\007version\022a\n\020rel"
-    "ease_metadata\030\005 \003(\01326.kentik.kagent.v202"
-    "401.OSMetadata.ReleaseMetadataEntryR\017rel"
-    "easeMetadata\032B\n\024ReleaseMetadataEntry\022\020\n\003"
-    "key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001"
-    "\"\375\010\n\026CapabilityCurrentState\022\022\n\004name\030\001 \001("
-    "\tR\004name\022\030\n\007version\030\002 \001(\tR\007version\022\034\n\tins"
-    "talled\030\003 \001(\010R\tinstalled\022\030\n\007running\030\004 \001(\010"
-    "R\007running\022\033\n\tbundle_id\030\005 \001(\tR\010bundleId\022\032"
-    "\n\010restarts\030\006 \001(\005R\010restarts\022-\n\020crash_loop"
-    "_count\030\020 \001(\005H\000R\016crashLoopCount\210\001\001\0221\n\022res"
-    "tart_loop_count\030\030 \001(\005H\001R\020restartLoopCoun"
-    "t\210\001\001\022\035\n\nlast_error\030\007 \001(\tR\tlastError\022\020\n\003p"
-    "id\030\010 \001(\003R\003pid\022\033\n\tconfig_id\030\016 \001(\tR\010config"
-    "Id\022\031\n\010group_id\030\022 \001(\tR\007groupId\022%\n\016config_"
-    "version\030\017 \001(\tR\rconfigVersion\022\036\n\nprivileg"
-    "es\030\021 \001(\tR\nprivileges\0229\n\nstarted_at\030\t \001(\013"
-    "2\032.google.protobuf.TimestampR\tstartedAt\022"
-    "9\n\nstopped_at\030\n \001(\0132\032.google.protobuf.Ti"
-    "mestampR\tstoppedAt\022I\n\006health\030\013 \001(\0162,.ken"
-    "tik.kagent.v202401.CapabilityHealthState"
-    "B\003\340A\003R\006health\022P\n\thealth_v2\030\027 \001(\0162..kenti"
-    "k.kagent.v202401.CapabilityHealthStateV2"
-    "B\003\340A\003R\010healthV2\022\030\n\007enabled\030\014 \001(\010R\007enable"
-    "d\022<\n\005state\030\r \001(\0132&.kentik.kagent.v202312"
-    ".CapabilityStateR\005state\022)\n\016cpu_used_core"
-    "s\030\024 \001(\001H\002R\014cpuUsedCores\210\001\001\022)\n\016mem_used_b"
-    "ytes\030\025 \001(\004H\003R\014memUsedBytes\210\001\001\022E\n\tresourc"
-    "es\030\026 \001(\0132\'.kentik.kagent.v202401.Process"
-    "ResourcesR\tresources\022X\n\017promotion_state\030"
-    "\031 \001(\0162/.kentik.kagent.v202401.Capability"
-    "PromotionStateR\016promotionStateB\023\n\021_crash"
-    "_loop_countB\025\n\023_restart_loop_countB\021\n\017_c"
-    "pu_used_coresB\021\n\017_mem_used_bytes*\303\001\n\030Cap"
-    "abilityPromotionState\022*\n&CAPABILITY_PROM"
-    "OTION_STATE_UNSPECIFIED\020\000\022\'\n#CAPABILITY_"
-    "PROMOTION_STATE_PROMOTED\020\001\022&\n\"CAPABILITY"
-    "_PROMOTION_STATE_PENDING\020\002\022*\n&CAPABILITY"
-    "_PROMOTION_STATE_ROLLED_BACK\020\003*\271\001\n\020Agent"
-    "HealthState\022\"\n\036AGENT_HEALTH_STATE_UNSPEC"
-    "IFIED\020\000\022\036\n\032AGENT_HEALTH_STATE_HEALTHY\020\001\022"
-    "\037\n\033AGENT_HEALTH_STATE_DEGRADED\020\004\022 \n\034AGEN"
-    "T_HEALTH_STATE_UNHEALTHY\020\002\022\036\n\032AGENT_HEAL"
-    "TH_STATE_OFFLINE\020\003*\330\001\n\025CapabilityHealthS"
-    "tate\022\'\n#CAPABILITY_HEALTH_STATE_UNSPECIF"
-    "IED\020\000\022#\n\037CAPABILITY_HEALTH_STATE_HEALTHY"
-    "\020\001\022$\n CAPABILITY_HEALTH_STATE_DEGRADED\020\004"
-    "\022%\n!CAPABILITY_HEALTH_STATE_UNHEALTHY\020\002\022"
-    "$\n CAPABILITY_HEALTH_STATE_DISABLED\020\003*\355\001"
-    "\n\022AgentHealthStateV2\022%\n!AGENT_HEALTH_STA"
-    "TE_V2_UNSPECIFIED\020\000\022!\n\035AGENT_HEALTH_STAT"
-    "E_V2_HEALTHY\020d\022\"\n\035AGENT_HEALTH_STATE_V2_"
-    "WARNING\020\310\001\022#\n\036AGENT_HEALTH_STATE_V2_DEGR"
-    "ADED\020\254\002\022#\n\036AGENT_HEALTH_STATE_V2_CRITICA"
-    "L\020\220\003\022\037\n\032AGENT_HEALTH_STATE_V2_DOWN\020\364\003*\271\002"
-    "\n\027CapabilityHealthStateV2\022*\n&CAPABILITY_"
-    "HEALTH_STATE_V2_UNSPECIFIED\020\000\022\'\n#CAPABIL"
-    "ITY_HEALTH_STATE_V2_DISABLED\020\001\022&\n\"CAPABI"
-    "LITY_HEALTH_STATE_V2_HEALTHY\020d\022\'\n\"CAPABI"
-    "LITY_HEALTH_STATE_V2_WARNING\020\310\001\022(\n#CAPAB"
-    "ILITY_HEALTH_STATE_V2_DEGRADED\020\254\002\022(\n#CAP"
-    "ABILITY_HEALTH_STATE_V2_CRITICAL\020\220\003\022$\n\037C"
-    "APABILITY_HEALTH_STATE_V2_DOWN\020\364\003BIZGgit"
-    "hub.com/kentik/api-schema-public/gen/go/"
-    "kentik/kagent/v202401;kagentb\006proto3"
+    "ces\022]\n\017promotion_state\030! \001(\0162/.kentik.ka"
+    "gent.v202401.CapabilityPromotionStateB\003\340"
+    "A\003R\016promotionState\022-\n\020mem_used_percent\030\024"
+    " \001(\001H\000R\016memUsedPercent\210\001\001\022)\n\016mem_free_by"
+    "tes\030\030 \001(\004H\001R\014memFreeBytes\210\001\001\022+\n\017cpu_tota"
+    "l_cores\030\031 \001(\rH\002R\rcpuTotalCores\210\001\001\022-\n\020cpu"
+    "_used_percent\030\025 \001(\001H\003R\016cpuUsedPercent\210\001\001"
+    "\022/\n\021disk_used_percent\030\026 \001(\001H\004R\017diskUsedP"
+    "ercent\210\001\001\022+\n\017disk_free_bytes\030\027 \001(\004H\005R\rdi"
+    "skFreeBytes\210\001\001B\023\n\021_mem_used_percentB\021\n\017_"
+    "mem_free_bytesB\022\n\020_cpu_total_coresB\023\n\021_c"
+    "pu_used_percentB\024\n\022_disk_used_percentB\022\n"
+    "\020_disk_free_bytes\"\223\002\n\nOSMetadata\022\022\n\004name"
+    "\030\001 \001(\tR\004name\022\026\n\006vendor\030\002 \001(\tR\006vendor\022\030\n\007"
+    "release\030\003 \001(\tR\007release\022\030\n\007version\030\004 \001(\tR"
+    "\007version\022a\n\020release_metadata\030\005 \003(\01326.ken"
+    "tik.kagent.v202401.OSMetadata.ReleaseMet"
+    "adataEntryR\017releaseMetadata\032B\n\024ReleaseMe"
+    "tadataEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002"
+    " \001(\tR\005value:\0028\001\"\375\010\n\026CapabilityCurrentSta"
+    "te\022\022\n\004name\030\001 \001(\tR\004name\022\030\n\007version\030\002 \001(\tR"
+    "\007version\022\034\n\tinstalled\030\003 \001(\010R\tinstalled\022\030"
+    "\n\007running\030\004 \001(\010R\007running\022\033\n\tbundle_id\030\005 "
+    "\001(\tR\010bundleId\022\032\n\010restarts\030\006 \001(\005R\010restart"
+    "s\022-\n\020crash_loop_count\030\020 \001(\005H\000R\016crashLoop"
+    "Count\210\001\001\0221\n\022restart_loop_count\030\030 \001(\005H\001R\020"
+    "restartLoopCount\210\001\001\022\035\n\nlast_error\030\007 \001(\tR"
+    "\tlastError\022\020\n\003pid\030\010 \001(\003R\003pid\022\033\n\tconfig_i"
+    "d\030\016 \001(\tR\010configId\022\031\n\010group_id\030\022 \001(\tR\007gro"
+    "upId\022%\n\016config_version\030\017 \001(\tR\rconfigVers"
+    "ion\022\036\n\nprivileges\030\021 \001(\tR\nprivileges\0229\n\ns"
+    "tarted_at\030\t \001(\0132\032.google.protobuf.Timest"
+    "ampR\tstartedAt\0229\n\nstopped_at\030\n \001(\0132\032.goo"
+    "gle.protobuf.TimestampR\tstoppedAt\022I\n\006hea"
+    "lth\030\013 \001(\0162,.kentik.kagent.v202401.Capabi"
+    "lityHealthStateB\003\340A\003R\006health\022P\n\thealth_v"
+    "2\030\027 \001(\0162..kentik.kagent.v202401.Capabili"
+    "tyHealthStateV2B\003\340A\003R\010healthV2\022\030\n\007enable"
+    "d\030\014 \001(\010R\007enabled\022<\n\005state\030\r \001(\0132&.kentik"
+    ".kagent.v202312.CapabilityStateR\005state\022)"
+    "\n\016cpu_used_cores\030\024 \001(\001H\002R\014cpuUsedCores\210\001"
+    "\001\022)\n\016mem_used_bytes\030\025 \001(\004H\003R\014memUsedByte"
+    "s\210\001\001\022E\n\tresources\030\026 \001(\0132\'.kentik.kagent."
+    "v202401.ProcessResourcesR\tresources\022X\n\017p"
+    "romotion_state\030\031 \001(\0162/.kentik.kagent.v20"
+    "2401.CapabilityPromotionStateR\016promotion"
+    "StateB\023\n\021_crash_loop_countB\025\n\023_restart_l"
+    "oop_countB\021\n\017_cpu_used_coresB\021\n\017_mem_use"
+    "d_bytes*\303\001\n\030CapabilityPromotionState\022*\n&"
+    "CAPABILITY_PROMOTION_STATE_UNSPECIFIED\020\000"
+    "\022\'\n#CAPABILITY_PROMOTION_STATE_PROMOTED\020"
+    "\001\022&\n\"CAPABILITY_PROMOTION_STATE_PENDING\020"
+    "\002\022*\n&CAPABILITY_PROMOTION_STATE_ROLLED_B"
+    "ACK\020\003*\271\001\n\020AgentHealthState\022\"\n\036AGENT_HEAL"
+    "TH_STATE_UNSPECIFIED\020\000\022\036\n\032AGENT_HEALTH_S"
+    "TATE_HEALTHY\020\001\022\037\n\033AGENT_HEALTH_STATE_DEG"
+    "RADED\020\004\022 \n\034AGENT_HEALTH_STATE_UNHEALTHY\020"
+    "\002\022\036\n\032AGENT_HEALTH_STATE_OFFLINE\020\003*\330\001\n\025Ca"
+    "pabilityHealthState\022\'\n#CAPABILITY_HEALTH"
+    "_STATE_UNSPECIFIED\020\000\022#\n\037CAPABILITY_HEALT"
+    "H_STATE_HEALTHY\020\001\022$\n CAPABILITY_HEALTH_S"
+    "TATE_DEGRADED\020\004\022%\n!CAPABILITY_HEALTH_STA"
+    "TE_UNHEALTHY\020\002\022$\n CAPABILITY_HEALTH_STAT"
+    "E_DISABLED\020\003*\355\001\n\022AgentHealthStateV2\022%\n!A"
+    "GENT_HEALTH_STATE_V2_UNSPECIFIED\020\000\022!\n\035AG"
+    "ENT_HEALTH_STATE_V2_HEALTHY\020d\022\"\n\035AGENT_H"
+    "EALTH_STATE_V2_WARNING\020\310\001\022#\n\036AGENT_HEALT"
+    "H_STATE_V2_DEGRADED\020\254\002\022#\n\036AGENT_HEALTH_S"
+    "TATE_V2_CRITICAL\020\220\003\022\037\n\032AGENT_HEALTH_STAT"
+    "E_V2_DOWN\020\364\003*\271\002\n\027CapabilityHealthStateV2"
+    "\022*\n&CAPABILITY_HEALTH_STATE_V2_UNSPECIFI"
+    "ED\020\000\022\'\n#CAPABILITY_HEALTH_STATE_V2_DISAB"
+    "LED\020\001\022&\n\"CAPABILITY_HEALTH_STATE_V2_HEAL"
+    "THY\020d\022\'\n\"CAPABILITY_HEALTH_STATE_V2_WARN"
+    "ING\020\310\001\022(\n#CAPABILITY_HEALTH_STATE_V2_DEG"
+    "RADED\020\254\002\022(\n#CAPABILITY_HEALTH_STATE_V2_C"
+    "RITICAL\020\220\003\022$\n\037CAPABILITY_HEALTH_STATE_V2"
+    "_DOWN\020\364\003BIZGgithub.com/kentik/api-schema"
+    "-public/gen/go/kentik/kagent/v202401;kag"
+    "entb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto_deps[11] =
     {
@@ -722,7 +728,7 @@ static ::absl::once_flag descriptor_table_kentik_2fkagent_2fv202401_2fagent_5fst
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto = {
     false,
     false,
-    5436,
+    5531,
     descriptor_table_protodef_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto,
     "kentik/kagent/v202401/agent_state.proto",
     &descriptor_table_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto_once,
@@ -2083,9 +2089,9 @@ AgentCurrentState_AgentState::AgentCurrentState_AgentState(
                offsetof(Impl_, pid_),
            reinterpret_cast<const char *>(&from._impl_) +
                offsetof(Impl_, pid_),
-           offsetof(Impl_, health_v2_) -
+           offsetof(Impl_, promotion_state_) -
                offsetof(Impl_, pid_) +
-               sizeof(Impl_::health_v2_));
+               sizeof(Impl_::promotion_state_));
 
   // @@protoc_insertion_point(copy_constructor:kentik.kagent.v202401.AgentCurrentState.AgentState)
 }
@@ -2108,9 +2114,9 @@ inline void AgentCurrentState_AgentState::SharedCtor(::_pb::Arena* arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, last_seen_),
            0,
-           offsetof(Impl_, health_v2_) -
+           offsetof(Impl_, promotion_state_) -
                offsetof(Impl_, last_seen_) +
-               sizeof(Impl_::health_v2_));
+               sizeof(Impl_::promotion_state_));
 }
 AgentCurrentState_AgentState::~AgentCurrentState_AgentState() {
   // @@protoc_insertion_point(destructor:kentik.kagent.v202401.AgentCurrentState.AgentState)
@@ -2174,15 +2180,15 @@ const ::google::protobuf::internal::ClassData* AgentCurrentState_AgentState::Get
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<5, 24, 6, 190, 2> AgentCurrentState_AgentState::_table_ = {
+const ::_pbi::TcParseTable<5, 25, 6, 190, 7> AgentCurrentState_AgentState::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_._has_bits_),
     0, // no _extensions_
-    32, 248,  // max_field_number, fast_idx_mask
+    33, 248,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
     503808000,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    24,  // num_field_entries
+    25,  // num_field_entries
     6,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -2241,7 +2247,9 @@ const ::_pbi::TcParseTable<5, 24, 6, 190, 2> AgentCurrentState_AgentState::_tabl
     // .kentik.kagent.v202401.AgentHealthStateV2 health_v2 = 32 [json_name = "healthV2", (.google.api.field_behavior) = OUTPUT_ONLY];
     {::_pbi::TcParser::FastV32S2,
      {640, 63, 0, PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.health_v2_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // .kentik.kagent.v202401.CapabilityPromotionState promotion_state = 33 [json_name = "promotionState", (.google.api.field_behavior) = OUTPUT_ONLY];
+    {::_pbi::TcParser::FastV32S2,
+     {648, 63, 0, PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.promotion_state_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     // optional double mem_used_percent = 20 [json_name = "memUsedPercent"];
@@ -2273,6 +2281,8 @@ const ::_pbi::TcParseTable<5, 24, 6, 190, 2> AgentCurrentState_AgentState::_tabl
     {::_pbi::TcParser::FastMtS2,
      {506, 5, 5, PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.host_resources_)}},
   }}, {{
+    33, 0, 1,
+    65534, 24,
     65535, 65535
   }}, {{
     // string version = 1 [json_name = "version"];
@@ -2346,6 +2356,9 @@ const ::_pbi::TcParseTable<5, 24, 6, 190, 2> AgentCurrentState_AgentState::_tabl
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
     // .kentik.kagent.v202401.AgentHealthStateV2 health_v2 = 32 [json_name = "healthV2", (.google.api.field_behavior) = OUTPUT_ONLY];
     {PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.health_v2_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // .kentik.kagent.v202401.CapabilityPromotionState promotion_state = 33 [json_name = "promotionState", (.google.api.field_behavior) = OUTPUT_ONLY];
+    {PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.promotion_state_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
   }}, {{
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
@@ -2425,7 +2438,9 @@ PROTOBUF_NOINLINE void AgentCurrentState_AgentState::Clear() {
         reinterpret_cast<char*>(&_impl_.mem_free_bytes_) -
         reinterpret_cast<char*>(&_impl_.cpu_used_percent_)) + sizeof(_impl_.mem_free_bytes_));
   }
-  _impl_.health_v2_ = 0;
+  ::memset(&_impl_.health_v2_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.promotion_state_) -
+      reinterpret_cast<char*>(&_impl_.health_v2_)) + sizeof(_impl_.promotion_state_));
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -2623,6 +2638,13 @@ PROTOBUF_NOINLINE void AgentCurrentState_AgentState::Clear() {
                 32, this_._internal_health_v2(), target);
           }
 
+          // .kentik.kagent.v202401.CapabilityPromotionState promotion_state = 33 [json_name = "promotionState", (.google.api.field_behavior) = OUTPUT_ONLY];
+          if (this_._internal_promotion_state() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteEnumToArray(
+                33, this_._internal_promotion_state(), target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -2776,6 +2798,11 @@ PROTOBUF_NOINLINE void AgentCurrentState_AgentState::Clear() {
               total_size += 2 +
                             ::_pbi::WireFormatLite::EnumSize(this_._internal_health_v2());
             }
+            // .kentik.kagent.v202401.CapabilityPromotionState promotion_state = 33 [json_name = "promotionState", (.google.api.field_behavior) = OUTPUT_ONLY];
+            if (this_._internal_promotion_state() != 0) {
+              total_size += 2 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_promotion_state());
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -2905,6 +2932,9 @@ void AgentCurrentState_AgentState::MergeImpl(::google::protobuf::MessageLite& to
   if (from._internal_health_v2() != 0) {
     _this->_impl_.health_v2_ = from._impl_.health_v2_;
   }
+  if (from._internal_promotion_state() != 0) {
+    _this->_impl_.promotion_state_ = from._impl_.promotion_state_;
+  }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -2933,8 +2963,8 @@ void AgentCurrentState_AgentState::InternalSwap(AgentCurrentState_AgentState* PR
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.privileges_, &other->_impl_.privileges_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.supervisor_version_, &other->_impl_.supervisor_version_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.health_v2_)
-      + sizeof(AgentCurrentState_AgentState::_impl_.health_v2_)
+      PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.promotion_state_)
+      + sizeof(AgentCurrentState_AgentState::_impl_.promotion_state_)
       - PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.last_seen_)>(
           reinterpret_cast<char*>(&_impl_.last_seen_),
           reinterpret_cast<char*>(&other->_impl_.last_seen_));

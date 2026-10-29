@@ -468,7 +468,7 @@ const ProtobufCMessageDescriptor kentik__kagent__v202401__agent_desired_state__d
   (ProtobufCMessageInit) kentik__kagent__v202401__agent_desired_state__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__kagent__v202401__agent_current_state__agent_state__field_descriptors[24] =
+static const ProtobufCFieldDescriptor kentik__kagent__v202401__agent_current_state__agent_state__field_descriptors[25] =
 {
   {
     "version",
@@ -758,6 +758,18 @@ static const ProtobufCFieldDescriptor kentik__kagent__v202401__agent_current_sta
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "promotion_state",
+    33,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kagent__V202401__AgentCurrentState__AgentState, promotion_state),
+    &kentik__kagent__v202401__capability_promotion_state__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__kagent__v202401__agent_current_state__agent_state__field_indices_by_name[] = {
   9,   /* field[9] = bundle_id */
@@ -778,6 +790,7 @@ static const unsigned kentik__kagent__v202401__agent_current_state__agent_state_
   8,   /* field[8] = os_distribution */
   5,   /* field[5] = pid */
   12,   /* field[12] = privileges */
+  24,   /* field[24] = promotion_state */
   2,   /* field[2] = reconcile_error */
   3,   /* field[3] = reconcile_interval */
   21,   /* field[21] = resources */
@@ -790,7 +803,7 @@ static const ProtobufCIntRange kentik__kagent__v202401__agent_current_state__age
   { 1, 0 },
   { 20, 15 },
   { 30, 21 },
-  { 0, 24 }
+  { 0, 25 }
 };
 const ProtobufCMessageDescriptor kentik__kagent__v202401__agent_current_state__agent_state__descriptor =
 {
@@ -800,7 +813,7 @@ const ProtobufCMessageDescriptor kentik__kagent__v202401__agent_current_state__a
   "Kentik__Kagent__V202401__AgentCurrentState__AgentState",
   "kentik.kagent.v202401",
   sizeof(Kentik__Kagent__V202401__AgentCurrentState__AgentState),
-  24,
+  25,
   kentik__kagent__v202401__agent_current_state__agent_state__field_descriptors,
   kentik__kagent__v202401__agent_current_state__agent_state__field_indices_by_name,
   3,  kentik__kagent__v202401__agent_current_state__agent_state__number_ranges,

@@ -759,6 +759,7 @@ class AgentCurrentState_AgentState final : public ::google::protobuf::Message
     kDiskFreeBytesFieldNumber = 23,
     kMemFreeBytesFieldNumber = 24,
     kHealthV2FieldNumber = 32,
+    kPromotionStateFieldNumber = 33,
   };
   // string version = 1 [json_name = "version"];
   void clear_version() ;
@@ -1090,13 +1091,23 @@ class AgentCurrentState_AgentState final : public ::google::protobuf::Message
   void _internal_set_health_v2(::kentik::kagent::v202401::AgentHealthStateV2 value);
 
   public:
+  // .kentik.kagent.v202401.CapabilityPromotionState promotion_state = 33 [json_name = "promotionState", (.google.api.field_behavior) = OUTPUT_ONLY];
+  void clear_promotion_state() ;
+  ::kentik::kagent::v202401::CapabilityPromotionState promotion_state() const;
+  void set_promotion_state(::kentik::kagent::v202401::CapabilityPromotionState value);
+
+  private:
+  ::kentik::kagent::v202401::CapabilityPromotionState _internal_promotion_state() const;
+  void _internal_set_promotion_state(::kentik::kagent::v202401::CapabilityPromotionState value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.kagent.v202401.AgentCurrentState.AgentState)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      5, 24, 6,
-      190, 2>
+      5, 25, 6,
+      190, 7>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1139,6 +1150,7 @@ class AgentCurrentState_AgentState final : public ::google::protobuf::Message
     ::uint64_t disk_free_bytes_;
     ::uint64_t mem_free_bytes_;
     int health_v2_;
+    int promotion_state_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -4744,6 +4756,28 @@ inline void AgentCurrentState_AgentState::set_allocated_host_resources(::kentik:
 
   _impl_.host_resources_ = reinterpret_cast<::kentik::kagent::v202401::HostResources*>(value);
   // @@protoc_insertion_point(field_set_allocated:kentik.kagent.v202401.AgentCurrentState.AgentState.host_resources)
+}
+
+// .kentik.kagent.v202401.CapabilityPromotionState promotion_state = 33 [json_name = "promotionState", (.google.api.field_behavior) = OUTPUT_ONLY];
+inline void AgentCurrentState_AgentState::clear_promotion_state() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.promotion_state_ = 0;
+}
+inline ::kentik::kagent::v202401::CapabilityPromotionState AgentCurrentState_AgentState::promotion_state() const {
+  // @@protoc_insertion_point(field_get:kentik.kagent.v202401.AgentCurrentState.AgentState.promotion_state)
+  return _internal_promotion_state();
+}
+inline void AgentCurrentState_AgentState::set_promotion_state(::kentik::kagent::v202401::CapabilityPromotionState value) {
+  _internal_set_promotion_state(value);
+  // @@protoc_insertion_point(field_set:kentik.kagent.v202401.AgentCurrentState.AgentState.promotion_state)
+}
+inline ::kentik::kagent::v202401::CapabilityPromotionState AgentCurrentState_AgentState::_internal_promotion_state() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::kentik::kagent::v202401::CapabilityPromotionState>(_impl_.promotion_state_);
+}
+inline void AgentCurrentState_AgentState::_internal_set_promotion_state(::kentik::kagent::v202401::CapabilityPromotionState value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.promotion_state_ = value;
 }
 
 // optional double mem_used_percent = 20 [json_name = "memUsedPercent"];
