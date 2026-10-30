@@ -330,6 +330,7 @@ enum ComponentType {
   COMPONENT_TYPE_NETWORK = 403; // network interface or subsystem
   COMPONENT_TYPE_CPU = 404; // CPU or processor
   COMPONENT_TYPE_GPU = 405; // GPU or graphics processor
+  COMPONENT_TYPE_CLOCK = 406; // system clock or time source (monitor skew, drift)
 
   // Compute resource components (500-599)
   COMPONENT_TYPE_SERVER = 500; // physical server or bare metal machine
@@ -348,6 +349,7 @@ enum ComponentType {
   COMPONENT_TYPE_PHYSICAL_ROUTER = 604; // physical network router (distinct from application router)
   COMPONENT_TYPE_DNS = 605; // DNS server or service
   COMPONENT_TYPE_CDN = 606; // content delivery network node or edge location
+  COMPONENT_TYPE_TUNNEL = 607; // long-lived tunnel that carries requests between two systems
 
   // External dependencies (700-799)
   COMPONENT_TYPE_EXTERNAL_API = 700; // third-party API dependency
@@ -471,6 +473,18 @@ message Metric {
   // Single-series metrics have exactly one sample with empty labels.
   // Multi-series (Vec) metrics have one sample per label set.
   repeated MetricSample samples = 2;
+}
+
+// Audience says who the health of a component matters to.
+//
+// A process asks for the health of one audience. A parent then includes only the children
+// whose audience matches. UNSPECIFIED matches every audience. For example, kagent reports the
+// health for CUSTOMER, so an INTERNAL logging pipeline does not change the health of the agent
+// for customers. The monitor service includes the INTERNAL children again for Kentik engineers.
+enum Audience {
+  AUDIENCE_UNSPECIFIED = 0; // not set: the component matters to every audience
+  AUDIENCE_CUSTOMER = 1; // the customer who runs the component
+  AUDIENCE_INTERNAL = 2; // Kentik engineers and Kentik infrastructure
 }
 
 // LinkType classifies the kind of resource a link points to.
@@ -610,4 +624,9 @@ message ComponentState {
   // child only when that child was observed independently or at a meaningfully
   // different time than its parent.
   google.protobuf.Timestamp timestamp = 12;
+
+  // Who the health of this component matters to. A parent includes this component in its
+  // own health only when the audience of the query matches. The component is still in the
+  // snapshot with its own health, so a consumer can include it again (see Audience).
+  Audience audience = 13;
 }

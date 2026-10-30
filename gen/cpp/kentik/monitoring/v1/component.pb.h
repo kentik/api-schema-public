@@ -453,6 +453,7 @@ enum ComponentType : int {
   COMPONENT_TYPE_NETWORK = 403,
   COMPONENT_TYPE_CPU = 404,
   COMPONENT_TYPE_GPU = 405,
+  COMPONENT_TYPE_CLOCK = 406,
   COMPONENT_TYPE_SERVER = 500,
   COMPONENT_TYPE_VM = 501,
   COMPONENT_TYPE_CONTAINER = 502,
@@ -467,6 +468,7 @@ enum ComponentType : int {
   COMPONENT_TYPE_PHYSICAL_ROUTER = 604,
   COMPONENT_TYPE_DNS = 605,
   COMPONENT_TYPE_CDN = 606,
+  COMPONENT_TYPE_TUNNEL = 607,
   COMPONENT_TYPE_EXTERNAL_API = 700,
   COMPONENT_TYPE_CLOUD_SERVICE = 701,
   COMPONENT_TYPE_SAAS = 702,
@@ -497,6 +499,40 @@ const std::string& ComponentType_Name(T value) {
 inline bool ComponentType_Parse(absl::string_view name, ComponentType* value) {
   return ::google::protobuf::internal::ParseNamedEnum<ComponentType>(
       ComponentType_descriptor(), name, value);
+}
+enum Audience : int {
+  AUDIENCE_UNSPECIFIED = 0,
+  AUDIENCE_CUSTOMER = 1,
+  AUDIENCE_INTERNAL = 2,
+  Audience_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  Audience_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool Audience_IsValid(int value);
+extern const uint32_t Audience_internal_data_[];
+constexpr Audience Audience_MIN = static_cast<Audience>(0);
+constexpr Audience Audience_MAX = static_cast<Audience>(2);
+constexpr int Audience_ARRAYSIZE = 2 + 1;
+const ::google::protobuf::EnumDescriptor*
+Audience_descriptor();
+template <typename T>
+const std::string& Audience_Name(T value) {
+  static_assert(std::is_same<T, Audience>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to Audience_Name().");
+  return Audience_Name(static_cast<Audience>(value));
+}
+template <>
+inline const std::string& Audience_Name(Audience value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<Audience_descriptor,
+                                                 0, 2>(
+      static_cast<int>(value));
+}
+inline bool Audience_Parse(absl::string_view name, Audience* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<Audience>(
+      Audience_descriptor(), name, value);
 }
 enum LinkType : int {
   LINK_TYPE_UNSPECIFIED = 0,
@@ -3038,6 +3074,7 @@ class ComponentState final : public ::google::protobuf::Message
     kTimestampFieldNumber = 12,
     kTypeFieldNumber = 2,
     kLifecyclePhaseFieldNumber = 3,
+    kAudienceFieldNumber = 13,
   };
   // repeated .kentik.monitoring.v1.ComponentState children = 6 [json_name = "children"];
   int children_size() const;
@@ -3218,12 +3255,22 @@ class ComponentState final : public ::google::protobuf::Message
   void _internal_set_lifecycle_phase(::kentik::monitoring::v1::LifecyclePhase value);
 
   public:
+  // .kentik.monitoring.v1.Audience audience = 13 [json_name = "audience"];
+  void clear_audience() ;
+  ::kentik::monitoring::v1::Audience audience() const;
+  void set_audience(::kentik::monitoring::v1::Audience value);
+
+  private:
+  ::kentik::monitoring::v1::Audience _internal_audience() const;
+  void _internal_set_audience(::kentik::monitoring::v1::Audience value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.monitoring.v1.ComponentState)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 12, 8,
+      4, 13, 8,
       73, 2>
       _table_;
 
@@ -3258,6 +3305,7 @@ class ComponentState final : public ::google::protobuf::Message
     ::google::protobuf::Timestamp* timestamp_;
     int type_;
     int lifecycle_phase_;
+    int audience_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -5405,6 +5453,28 @@ inline void ComponentState::set_allocated_timestamp(::google::protobuf::Timestam
   // @@protoc_insertion_point(field_set_allocated:kentik.monitoring.v1.ComponentState.timestamp)
 }
 
+// .kentik.monitoring.v1.Audience audience = 13 [json_name = "audience"];
+inline void ComponentState::clear_audience() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.audience_ = 0;
+}
+inline ::kentik::monitoring::v1::Audience ComponentState::audience() const {
+  // @@protoc_insertion_point(field_get:kentik.monitoring.v1.ComponentState.audience)
+  return _internal_audience();
+}
+inline void ComponentState::set_audience(::kentik::monitoring::v1::Audience value) {
+  _internal_set_audience(value);
+  // @@protoc_insertion_point(field_set:kentik.monitoring.v1.ComponentState.audience)
+}
+inline ::kentik::monitoring::v1::Audience ComponentState::_internal_audience() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::kentik::monitoring::v1::Audience>(_impl_.audience_);
+}
+inline void ComponentState::_internal_set_audience(::kentik::monitoring::v1::Audience value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.audience_ = value;
+}
+
 #ifdef __GNUC__
 #pragma GCC diagnostic pop
 #endif  // __GNUC__
@@ -5471,6 +5541,12 @@ struct is_proto_enum<::kentik::monitoring::v1::ComponentType> : std::true_type {
 template <>
 inline const EnumDescriptor* GetEnumDescriptor<::kentik::monitoring::v1::ComponentType>() {
   return ::kentik::monitoring::v1::ComponentType_descriptor();
+}
+template <>
+struct is_proto_enum<::kentik::monitoring::v1::Audience> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::kentik::monitoring::v1::Audience>() {
+  return ::kentik::monitoring::v1::Audience_descriptor();
 }
 template <>
 struct is_proto_enum<::kentik::monitoring::v1::LinkType> : std::true_type {};

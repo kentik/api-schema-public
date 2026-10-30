@@ -1256,7 +1256,7 @@ const ProtobufCMessageDescriptor kentik__monitoring__v1__component_state__labels
   (ProtobufCMessageInit) kentik__monitoring__v1__component_state__labels_entry__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__monitoring__v1__component_state__field_descriptors[12] =
+static const ProtobufCFieldDescriptor kentik__monitoring__v1__component_state__field_descriptors[13] =
 {
   {
     "name",
@@ -1402,9 +1402,22 @@ static const ProtobufCFieldDescriptor kentik__monitoring__v1__component_state__f
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "audience",
+    13,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Monitoring__V1__ComponentState, audience),
+    &kentik__monitoring__v1__audience__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__monitoring__v1__component_state__field_indices_by_name[] = {
   10,   /* field[10] = annotations */
+  12,   /* field[12] = audience */
   5,   /* field[5] = children */
   9,   /* field[9] = description */
   4,   /* field[4] = health */
@@ -1420,7 +1433,7 @@ static const unsigned kentik__monitoring__v1__component_state__field_indices_by_
 static const ProtobufCIntRange kentik__monitoring__v1__component_state__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 12 }
+  { 0, 13 }
 };
 const ProtobufCMessageDescriptor kentik__monitoring__v1__component_state__descriptor =
 {
@@ -1430,7 +1443,7 @@ const ProtobufCMessageDescriptor kentik__monitoring__v1__component_state__descri
   "Kentik__Monitoring__V1__ComponentState",
   "kentik.monitoring.v1",
   sizeof(Kentik__Monitoring__V1__ComponentState),
-  12,
+  13,
   kentik__monitoring__v1__component_state__field_descriptors,
   kentik__monitoring__v1__component_state__field_indices_by_name,
   1,  kentik__monitoring__v1__component_state__number_ranges,
@@ -1769,7 +1782,7 @@ const ProtobufCEnumDescriptor kentik__monitoring__v1__metric_category__descripto
   kentik__monitoring__v1__metric_category__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
-static const ProtobufCEnumValue kentik__monitoring__v1__component_type__enum_values_by_number[63] =
+static const ProtobufCEnumValue kentik__monitoring__v1__component_type__enum_values_by_number[65] =
 {
   { "COMPONENT_TYPE_UNSPECIFIED", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_UNSPECIFIED", 0 },
   { "COMPONENT_TYPE_GENERIC", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_GENERIC", 1 },
@@ -1813,6 +1826,7 @@ static const ProtobufCEnumValue kentik__monitoring__v1__component_type__enum_val
   { "COMPONENT_TYPE_NETWORK", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_NETWORK", 403 },
   { "COMPONENT_TYPE_CPU", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_CPU", 404 },
   { "COMPONENT_TYPE_GPU", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_GPU", 405 },
+  { "COMPONENT_TYPE_CLOCK", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_CLOCK", 406 },
   { "COMPONENT_TYPE_SERVER", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_SERVER", 500 },
   { "COMPONENT_TYPE_VM", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_VM", 501 },
   { "COMPONENT_TYPE_CONTAINER", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_CONTAINER", 502 },
@@ -1827,6 +1841,7 @@ static const ProtobufCEnumValue kentik__monitoring__v1__component_type__enum_val
   { "COMPONENT_TYPE_PHYSICAL_ROUTER", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_PHYSICAL_ROUTER", 604 },
   { "COMPONENT_TYPE_DNS", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_DNS", 605 },
   { "COMPONENT_TYPE_CDN", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_CDN", 606 },
+  { "COMPONENT_TYPE_TUNNEL", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_TUNNEL", 607 },
   { "COMPONENT_TYPE_EXTERNAL_API", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_EXTERNAL_API", 700 },
   { "COMPONENT_TYPE_CLOUD_SERVICE", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_CLOUD_SERVICE", 701 },
   { "COMPONENT_TYPE_SAAS", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_SAAS", 702 },
@@ -1836,51 +1851,52 @@ static const ProtobufCEnumValue kentik__monitoring__v1__component_type__enum_val
   { "COMPONENT_TYPE_CREDENTIAL", "KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_CREDENTIAL", 803 },
 };
 static const ProtobufCIntRange kentik__monitoring__v1__component_type__value_ranges[] = {
-{0, 0},{100, 3},{200, 9},{300, 27},{400, 36},{500, 42},{600, 49},{700, 56},{800, 59},{0, 63}
+{0, 0},{100, 3},{200, 9},{300, 27},{400, 36},{500, 43},{600, 50},{700, 58},{800, 61},{0, 65}
 };
-static const ProtobufCEnumValueIndex kentik__monitoring__v1__component_type__enum_values_by_name[63] =
+static const ProtobufCEnumValueIndex kentik__monitoring__v1__component_type__enum_values_by_name[65] =
 {
   { "COMPONENT_TYPE_AGENT", 7 },
   { "COMPONENT_TYPE_BACKEND", 3 },
   { "COMPONENT_TYPE_BUFFER", 20 },
   { "COMPONENT_TYPE_CACHE", 27 },
   { "COMPONENT_TYPE_CAPABILITY", 8 },
-  { "COMPONENT_TYPE_CDN", 55 },
-  { "COMPONENT_TYPE_CERTIFICATE", 61 },
+  { "COMPONENT_TYPE_CDN", 56 },
+  { "COMPONENT_TYPE_CERTIFICATE", 63 },
   { "COMPONENT_TYPE_CHANNEL", 19 },
-  { "COMPONENT_TYPE_CLOUD_SERVICE", 57 },
+  { "COMPONENT_TYPE_CLOCK", 42 },
+  { "COMPONENT_TYPE_CLOUD_SERVICE", 59 },
   { "COMPONENT_TYPE_CLUSTER", 5 },
-  { "COMPONENT_TYPE_CONFIG", 59 },
+  { "COMPONENT_TYPE_CONFIG", 61 },
   { "COMPONENT_TYPE_CONFIG_MANAGER", 25 },
   { "COMPONENT_TYPE_CONNECTION", 22 },
-  { "COMPONENT_TYPE_CONTAINER", 44 },
+  { "COMPONENT_TYPE_CONTAINER", 45 },
   { "COMPONENT_TYPE_CPU", 40 },
-  { "COMPONENT_TYPE_CREDENTIAL", 62 },
+  { "COMPONENT_TYPE_CREDENTIAL", 64 },
   { "COMPONENT_TYPE_DATABASE", 29 },
   { "COMPONENT_TYPE_DISK", 37 },
-  { "COMPONENT_TYPE_DNS", 54 },
+  { "COMPONENT_TYPE_DNS", 55 },
   { "COMPONENT_TYPE_DOCUMENT_DATABASE", 33 },
   { "COMPONENT_TYPE_EVENT_LOOP", 24 },
-  { "COMPONENT_TYPE_EXTERNAL_API", 56 },
+  { "COMPONENT_TYPE_EXTERNAL_API", 58 },
   { "COMPONENT_TYPE_FILESYSTEM", 38 },
   { "COMPONENT_TYPE_FILTER", 10 },
-  { "COMPONENT_TYPE_FIREWALL", 50 },
+  { "COMPONENT_TYPE_FIREWALL", 51 },
   { "COMPONENT_TYPE_FRONTEND", 4 },
   { "COMPONENT_TYPE_GENERIC", 1 },
   { "COMPONENT_TYPE_GPU", 41 },
   { "COMPONENT_TYPE_GROUP", 2 },
-  { "COMPONENT_TYPE_JAIL", 47 },
+  { "COMPONENT_TYPE_JAIL", 48 },
   { "COMPONENT_TYPE_KEY_VALUE_STORE", 32 },
-  { "COMPONENT_TYPE_LAMBDA", 48 },
-  { "COMPONENT_TYPE_LOAD_BALANCER", 49 },
+  { "COMPONENT_TYPE_LAMBDA", 49 },
+  { "COMPONENT_TYPE_LOAD_BALANCER", 50 },
   { "COMPONENT_TYPE_MEMORY", 36 },
-  { "COMPONENT_TYPE_NAMESPACE", 46 },
+  { "COMPONENT_TYPE_NAMESPACE", 47 },
   { "COMPONENT_TYPE_NETWORK", 39 },
   { "COMPONENT_TYPE_NODE", 6 },
   { "COMPONENT_TYPE_OBJECT_STORAGE", 30 },
   { "COMPONENT_TYPE_ORCHESTRATOR", 14 },
-  { "COMPONENT_TYPE_PHYSICAL_ROUTER", 53 },
-  { "COMPONENT_TYPE_POD", 45 },
+  { "COMPONENT_TYPE_PHYSICAL_ROUTER", 54 },
+  { "COMPONENT_TYPE_POD", 46 },
   { "COMPONENT_TYPE_POLLER", 12 },
   { "COMPONENT_TYPE_PROCESSOR", 11 },
   { "COMPONENT_TYPE_PROXY", 16 },
@@ -1888,20 +1904,21 @@ static const ProtobufCEnumValueIndex kentik__monitoring__v1__component_type__enu
   { "COMPONENT_TYPE_RECEIVER", 9 },
   { "COMPONENT_TYPE_RECONCILER", 23 },
   { "COMPONENT_TYPE_ROUTER", 17 },
-  { "COMPONENT_TYPE_SAAS", 58 },
+  { "COMPONENT_TYPE_SAAS", 60 },
   { "COMPONENT_TYPE_SCHEDULER", 13 },
-  { "COMPONENT_TYPE_SCHEMA", 60 },
+  { "COMPONENT_TYPE_SCHEMA", 62 },
   { "COMPONENT_TYPE_SEARCH_INDEX", 34 },
   { "COMPONENT_TYPE_SENDER", 15 },
-  { "COMPONENT_TYPE_SERVER", 42 },
+  { "COMPONENT_TYPE_SERVER", 43 },
   { "COMPONENT_TYPE_SINK", 21 },
   { "COMPONENT_TYPE_STREAM", 35 },
   { "COMPONENT_TYPE_SUPERVISOR", 26 },
-  { "COMPONENT_TYPE_SWITCH", 52 },
+  { "COMPONENT_TYPE_SWITCH", 53 },
   { "COMPONENT_TYPE_TIMESERIES_DATABASE", 31 },
+  { "COMPONENT_TYPE_TUNNEL", 57 },
   { "COMPONENT_TYPE_UNSPECIFIED", 0 },
-  { "COMPONENT_TYPE_VM", 43 },
-  { "COMPONENT_TYPE_VPN", 51 },
+  { "COMPONENT_TYPE_VM", 44 },
+  { "COMPONENT_TYPE_VPN", 52 },
   { "COMPONENT_TYPE_WORKER", 18 },
 };
 const ProtobufCEnumDescriptor kentik__monitoring__v1__component_type__descriptor =
@@ -1911,12 +1928,42 @@ const ProtobufCEnumDescriptor kentik__monitoring__v1__component_type__descriptor
   "ComponentType",
   "Kentik__Monitoring__V1__ComponentType",
   "kentik.monitoring.v1",
-  63,
+  65,
   kentik__monitoring__v1__component_type__enum_values_by_number,
-  63,
+  65,
   kentik__monitoring__v1__component_type__enum_values_by_name,
   9,
   kentik__monitoring__v1__component_type__value_ranges,
+  NULL,NULL,NULL,NULL   /* reserved[1234] */
+};
+static const ProtobufCEnumValue kentik__monitoring__v1__audience__enum_values_by_number[3] =
+{
+  { "AUDIENCE_UNSPECIFIED", "KENTIK__MONITORING__V1__AUDIENCE__AUDIENCE_UNSPECIFIED", 0 },
+  { "AUDIENCE_CUSTOMER", "KENTIK__MONITORING__V1__AUDIENCE__AUDIENCE_CUSTOMER", 1 },
+  { "AUDIENCE_INTERNAL", "KENTIK__MONITORING__V1__AUDIENCE__AUDIENCE_INTERNAL", 2 },
+};
+static const ProtobufCIntRange kentik__monitoring__v1__audience__value_ranges[] = {
+{0, 0},{0, 3}
+};
+static const ProtobufCEnumValueIndex kentik__monitoring__v1__audience__enum_values_by_name[3] =
+{
+  { "AUDIENCE_CUSTOMER", 1 },
+  { "AUDIENCE_INTERNAL", 2 },
+  { "AUDIENCE_UNSPECIFIED", 0 },
+};
+const ProtobufCEnumDescriptor kentik__monitoring__v1__audience__descriptor =
+{
+  PROTOBUF_C__ENUM_DESCRIPTOR_MAGIC,
+  "kentik.monitoring.v1.Audience",
+  "Audience",
+  "Kentik__Monitoring__V1__Audience",
+  "kentik.monitoring.v1",
+  3,
+  kentik__monitoring__v1__audience__enum_values_by_number,
+  3,
+  kentik__monitoring__v1__audience__enum_values_by_name,
+  1,
+  kentik__monitoring__v1__audience__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
 static const ProtobufCEnumValue kentik__monitoring__v1__link_type__enum_values_by_number[10] =

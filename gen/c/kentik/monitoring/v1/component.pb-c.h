@@ -606,6 +606,10 @@ typedef enum _Kentik__Monitoring__V1__ComponentType {
    */
   KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_GPU = 405,
   /*
+   * system clock or time source (monitor skew, drift)
+   */
+  KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_CLOCK = 406,
+  /*
    * Compute resource components (500-599)
    */
   /*
@@ -668,6 +672,10 @@ typedef enum _Kentik__Monitoring__V1__ComponentType {
    */
   KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_CDN = 606,
   /*
+   * long-lived tunnel that carries requests between two systems
+   */
+  KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_TUNNEL = 607,
+  /*
    * External dependencies (700-799)
    */
   /*
@@ -704,6 +712,28 @@ typedef enum _Kentik__Monitoring__V1__ComponentType {
   KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_CREDENTIAL = 803
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__MONITORING__V1__COMPONENT_TYPE)
 } Kentik__Monitoring__V1__ComponentType;
+/*
+ * Audience says who the health of a component matters to.
+ * A process asks for the health of one audience. A parent then includes only the children
+ * whose audience matches. UNSPECIFIED matches every audience. For example, kagent reports the
+ * health for CUSTOMER, so an INTERNAL logging pipeline does not change the health of the agent
+ * for customers. The monitor service includes the INTERNAL children again for Kentik engineers.
+ */
+typedef enum _Kentik__Monitoring__V1__Audience {
+  /*
+   * not set: the component matters to every audience
+   */
+  KENTIK__MONITORING__V1__AUDIENCE__AUDIENCE_UNSPECIFIED = 0,
+  /*
+   * the customer who runs the component
+   */
+  KENTIK__MONITORING__V1__AUDIENCE__AUDIENCE_CUSTOMER = 1,
+  /*
+   * Kentik engineers and Kentik infrastructure
+   */
+  KENTIK__MONITORING__V1__AUDIENCE__AUDIENCE_INTERNAL = 2
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__MONITORING__V1__AUDIENCE)
+} Kentik__Monitoring__V1__Audience;
 /*
  * LinkType classifies the kind of resource a link points to.
  * This enables consumers to render or prioritize links contextually
@@ -1275,6 +1305,12 @@ struct  Kentik__Monitoring__V1__ComponentState
    * different time than its parent.
    */
   Google__Protobuf__Timestamp *timestamp;
+  /*
+   * Who the health of this component matters to. A parent includes this component in its
+   * own health only when the audience of the query matches. The component is still in the
+   * snapshot with its own health, so a consumer can include it again (see Audience).
+   */
+  Kentik__Monitoring__V1__Audience audience;
   Kentik__Monitoring__V1__ComponentState__DescriptionCase _description_case;
   union {
     /*
@@ -1289,7 +1325,7 @@ struct  Kentik__Monitoring__V1__ComponentState
 };
 #define KENTIK__MONITORING__V1__COMPONENT_STATE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__monitoring__v1__component_state__descriptor) \
-    , (char *)protobuf_c_empty_string, KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_UNSPECIFIED, KENTIK__MONITORING__V1__LIFECYCLE_PHASE__LIFECYCLE_PHASE_UNSPECIFIED, NULL, NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, NULL, NULL, KENTIK__MONITORING__V1__COMPONENT_STATE___DESCRIPTION__NOT_SET, {0} }
+    , (char *)protobuf_c_empty_string, KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_UNSPECIFIED, KENTIK__MONITORING__V1__LIFECYCLE_PHASE__LIFECYCLE_PHASE_UNSPECIFIED, NULL, NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, NULL, NULL, KENTIK__MONITORING__V1__AUDIENCE__AUDIENCE_UNSPECIFIED, KENTIK__MONITORING__V1__COMPONENT_STATE___DESCRIPTION__NOT_SET, {0} }
 
 
 /* Kentik__Monitoring__V1__Probe methods */
@@ -1563,6 +1599,7 @@ extern const ProtobufCEnumDescriptor    kentik__monitoring__v1__metric_duration_
 extern const ProtobufCEnumDescriptor    kentik__monitoring__v1__metric_rate_unit__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__monitoring__v1__metric_category__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__monitoring__v1__component_type__descriptor;
+extern const ProtobufCEnumDescriptor    kentik__monitoring__v1__audience__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__monitoring__v1__link_type__descriptor;
 extern const ProtobufCMessageDescriptor kentik__monitoring__v1__probe__descriptor;
 extern const ProtobufCMessageDescriptor kentik__monitoring__v1__probes__descriptor;

@@ -658,6 +658,7 @@ const (
 	ComponentType_COMPONENT_TYPE_NETWORK    ComponentType = 403 // network interface or subsystem
 	ComponentType_COMPONENT_TYPE_CPU        ComponentType = 404 // CPU or processor
 	ComponentType_COMPONENT_TYPE_GPU        ComponentType = 405 // GPU or graphics processor
+	ComponentType_COMPONENT_TYPE_CLOCK      ComponentType = 406 // system clock or time source (monitor skew, drift)
 	// Compute resource components (500-599)
 	ComponentType_COMPONENT_TYPE_SERVER    ComponentType = 500 // physical server or bare metal machine
 	ComponentType_COMPONENT_TYPE_VM        ComponentType = 501 // virtual machine or instance
@@ -674,6 +675,7 @@ const (
 	ComponentType_COMPONENT_TYPE_PHYSICAL_ROUTER ComponentType = 604 // physical network router (distinct from application router)
 	ComponentType_COMPONENT_TYPE_DNS             ComponentType = 605 // DNS server or service
 	ComponentType_COMPONENT_TYPE_CDN             ComponentType = 606 // content delivery network node or edge location
+	ComponentType_COMPONENT_TYPE_TUNNEL          ComponentType = 607 // long-lived tunnel that carries requests between two systems
 	// External dependencies (700-799)
 	ComponentType_COMPONENT_TYPE_EXTERNAL_API  ComponentType = 700 // third-party API dependency
 	ComponentType_COMPONENT_TYPE_CLOUD_SERVICE ComponentType = 701 // managed cloud service (e.g., AWS S3, Azure SQL, GCP services)
@@ -731,6 +733,7 @@ var (
 		403: "COMPONENT_TYPE_NETWORK",
 		404: "COMPONENT_TYPE_CPU",
 		405: "COMPONENT_TYPE_GPU",
+		406: "COMPONENT_TYPE_CLOCK",
 		500: "COMPONENT_TYPE_SERVER",
 		501: "COMPONENT_TYPE_VM",
 		502: "COMPONENT_TYPE_CONTAINER",
@@ -745,6 +748,7 @@ var (
 		604: "COMPONENT_TYPE_PHYSICAL_ROUTER",
 		605: "COMPONENT_TYPE_DNS",
 		606: "COMPONENT_TYPE_CDN",
+		607: "COMPONENT_TYPE_TUNNEL",
 		700: "COMPONENT_TYPE_EXTERNAL_API",
 		701: "COMPONENT_TYPE_CLOUD_SERVICE",
 		702: "COMPONENT_TYPE_SAAS",
@@ -796,6 +800,7 @@ var (
 		"COMPONENT_TYPE_NETWORK":             403,
 		"COMPONENT_TYPE_CPU":                 404,
 		"COMPONENT_TYPE_GPU":                 405,
+		"COMPONENT_TYPE_CLOCK":               406,
 		"COMPONENT_TYPE_SERVER":              500,
 		"COMPONENT_TYPE_VM":                  501,
 		"COMPONENT_TYPE_CONTAINER":           502,
@@ -810,6 +815,7 @@ var (
 		"COMPONENT_TYPE_PHYSICAL_ROUTER":     604,
 		"COMPONENT_TYPE_DNS":                 605,
 		"COMPONENT_TYPE_CDN":                 606,
+		"COMPONENT_TYPE_TUNNEL":              607,
 		"COMPONENT_TYPE_EXTERNAL_API":        700,
 		"COMPONENT_TYPE_CLOUD_SERVICE":       701,
 		"COMPONENT_TYPE_SAAS":                702,
@@ -845,6 +851,61 @@ func (x ComponentType) Number() protoreflect.EnumNumber {
 // Deprecated: Use ComponentType.Descriptor instead.
 func (ComponentType) EnumDescriptor() ([]byte, []int) {
 	return file_kentik_monitoring_v1_component_proto_rawDescGZIP(), []int{8}
+}
+
+// Audience says who the health of a component matters to.
+//
+// A process asks for the health of one audience. A parent then includes only the children
+// whose audience matches. UNSPECIFIED matches every audience. For example, kagent reports the
+// health for CUSTOMER, so an INTERNAL logging pipeline does not change the health of the agent
+// for customers. The monitor service includes the INTERNAL children again for Kentik engineers.
+type Audience int32
+
+const (
+	Audience_AUDIENCE_UNSPECIFIED Audience = 0 // not set: the component matters to every audience
+	Audience_AUDIENCE_CUSTOMER    Audience = 1 // the customer who runs the component
+	Audience_AUDIENCE_INTERNAL    Audience = 2 // Kentik engineers and Kentik infrastructure
+)
+
+// Enum value maps for Audience.
+var (
+	Audience_name = map[int32]string{
+		0: "AUDIENCE_UNSPECIFIED",
+		1: "AUDIENCE_CUSTOMER",
+		2: "AUDIENCE_INTERNAL",
+	}
+	Audience_value = map[string]int32{
+		"AUDIENCE_UNSPECIFIED": 0,
+		"AUDIENCE_CUSTOMER":    1,
+		"AUDIENCE_INTERNAL":    2,
+	}
+)
+
+func (x Audience) Enum() *Audience {
+	p := new(Audience)
+	*p = x
+	return p
+}
+
+func (x Audience) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (Audience) Descriptor() protoreflect.EnumDescriptor {
+	return file_kentik_monitoring_v1_component_proto_enumTypes[9].Descriptor()
+}
+
+func (Audience) Type() protoreflect.EnumType {
+	return &file_kentik_monitoring_v1_component_proto_enumTypes[9]
+}
+
+func (x Audience) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use Audience.Descriptor instead.
+func (Audience) EnumDescriptor() ([]byte, []int) {
+	return file_kentik_monitoring_v1_component_proto_rawDescGZIP(), []int{9}
 }
 
 // LinkType classifies the kind of resource a link points to.
@@ -904,11 +965,11 @@ func (x LinkType) String() string {
 }
 
 func (LinkType) Descriptor() protoreflect.EnumDescriptor {
-	return file_kentik_monitoring_v1_component_proto_enumTypes[9].Descriptor()
+	return file_kentik_monitoring_v1_component_proto_enumTypes[10].Descriptor()
 }
 
 func (LinkType) Type() protoreflect.EnumType {
-	return &file_kentik_monitoring_v1_component_proto_enumTypes[9]
+	return &file_kentik_monitoring_v1_component_proto_enumTypes[10]
 }
 
 func (x LinkType) Number() protoreflect.EnumNumber {
@@ -917,7 +978,7 @@ func (x LinkType) Number() protoreflect.EnumNumber {
 
 // Deprecated: Use LinkType.Descriptor instead.
 func (LinkType) EnumDescriptor() ([]byte, []int) {
-	return file_kentik_monitoring_v1_component_proto_rawDescGZIP(), []int{9}
+	return file_kentik_monitoring_v1_component_proto_rawDescGZIP(), []int{10}
 }
 
 // Probe represents the result of a single health check.
@@ -1807,7 +1868,11 @@ type ComponentState struct {
 	// enclosing snapshot and does not have a distinct capture time. Populate it on a
 	// child only when that child was observed independently or at a meaningfully
 	// different time than its parent.
-	Timestamp     *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	Timestamp *timestamppb.Timestamp `protobuf:"bytes,12,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
+	// Who the health of this component matters to. A parent includes this component in its
+	// own health only when the audience of the query matches. The component is still in the
+	// snapshot with its own health, so a consumer can include it again (see Audience).
+	Audience      Audience `protobuf:"varint,13,opt,name=audience,proto3,enum=kentik.monitoring.v1.Audience" json:"audience,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1926,6 +1991,13 @@ func (x *ComponentState) GetTimestamp() *timestamppb.Timestamp {
 	return nil
 }
 
+func (x *ComponentState) GetAudience() Audience {
+	if x != nil {
+		return x.Audience
+	}
+	return Audience_AUDIENCE_UNSPECIFIED
+}
+
 var File_kentik_monitoring_v1_component_proto protoreflect.FileDescriptor
 
 const file_kentik_monitoring_v1_component_proto_rawDesc = "" +
@@ -1983,7 +2055,7 @@ const file_kentik_monitoring_v1_component_proto_rawDesc = "" +
 	"\x04Link\x122\n" +
 	"\x04type\x18\x01 \x01(\x0e2\x1e.kentik.monitoring.v1.LinkTypeR\x04type\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x10\n" +
-	"\x03url\x18\x03 \x01(\tR\x03url\"\xf5\x05\n" +
+	"\x03url\x18\x03 \x01(\tR\x03url\"\xb1\x06\n" +
 	"\x0eComponentState\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x127\n" +
 	"\x04type\x18\x02 \x01(\x0e2#.kentik.monitoring.v1.ComponentTypeR\x04type\x12%\n" +
@@ -1997,7 +2069,8 @@ const file_kentik_monitoring_v1_component_proto_rawDesc = "" +
 	"\x06labels\x18\t \x03(\v20.kentik.monitoring.v1.ComponentState.LabelsEntryR\x06labels\x120\n" +
 	"\x05links\x18\b \x03(\v2\x1a.kentik.monitoring.v1.LinkR\x05links\x129\n" +
 	"\vannotations\x18\v \x01(\v2\x17.google.protobuf.StructR\vannotations\x128\n" +
-	"\ttimestamp\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x1a9\n" +
+	"\ttimestamp\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12:\n" +
+	"\baudience\x18\r \x01(\x0e2\x1e.kentik.monitoring.v1.AudienceR\baudience\x1a9\n" +
 	"\vLabelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\x0e\n" +
@@ -2081,7 +2154,7 @@ const file_kentik_monitoring_v1_component_proto_rawDesc = "" +
 	"\x16METRIC_CATEGORY_ERRORS\x10\x03\x12\x1b\n" +
 	"\x17METRIC_CATEGORY_LATENCY\x10\x04\x12\x1b\n" +
 	"\x17METRIC_CATEGORY_TRAFFIC\x10\x05\x12 \n" +
-	"\x1cMETRIC_CATEGORY_AVAILABILITY\x10\x06*\xde\x0e\n" +
+	"\x1cMETRIC_CATEGORY_AVAILABILITY\x10\x06*\x95\x0f\n" +
 	"\rComponentType\x12\x1e\n" +
 	"\x1aCOMPONENT_TYPE_UNSPECIFIED\x10\x00\x12\x1a\n" +
 	"\x16COMPONENT_TYPE_GENERIC\x10\x01\x12\x18\n" +
@@ -2124,7 +2197,8 @@ const file_kentik_monitoring_v1_component_proto_rawDesc = "" +
 	"\x19COMPONENT_TYPE_FILESYSTEM\x10\x92\x03\x12\x1b\n" +
 	"\x16COMPONENT_TYPE_NETWORK\x10\x93\x03\x12\x17\n" +
 	"\x12COMPONENT_TYPE_CPU\x10\x94\x03\x12\x17\n" +
-	"\x12COMPONENT_TYPE_GPU\x10\x95\x03\x12\x1a\n" +
+	"\x12COMPONENT_TYPE_GPU\x10\x95\x03\x12\x19\n" +
+	"\x14COMPONENT_TYPE_CLOCK\x10\x96\x03\x12\x1a\n" +
 	"\x15COMPONENT_TYPE_SERVER\x10\xf4\x03\x12\x16\n" +
 	"\x11COMPONENT_TYPE_VM\x10\xf5\x03\x12\x1d\n" +
 	"\x18COMPONENT_TYPE_CONTAINER\x10\xf6\x03\x12\x17\n" +
@@ -2138,14 +2212,19 @@ const file_kentik_monitoring_v1_component_proto_rawDesc = "" +
 	"\x15COMPONENT_TYPE_SWITCH\x10\xdb\x04\x12#\n" +
 	"\x1eCOMPONENT_TYPE_PHYSICAL_ROUTER\x10\xdc\x04\x12\x17\n" +
 	"\x12COMPONENT_TYPE_DNS\x10\xdd\x04\x12\x17\n" +
-	"\x12COMPONENT_TYPE_CDN\x10\xde\x04\x12 \n" +
+	"\x12COMPONENT_TYPE_CDN\x10\xde\x04\x12\x1a\n" +
+	"\x15COMPONENT_TYPE_TUNNEL\x10\xdf\x04\x12 \n" +
 	"\x1bCOMPONENT_TYPE_EXTERNAL_API\x10\xbc\x05\x12!\n" +
 	"\x1cCOMPONENT_TYPE_CLOUD_SERVICE\x10\xbd\x05\x12\x18\n" +
 	"\x13COMPONENT_TYPE_SAAS\x10\xbe\x05\x12\x1a\n" +
 	"\x15COMPONENT_TYPE_CONFIG\x10\xa0\x06\x12\x1a\n" +
 	"\x15COMPONENT_TYPE_SCHEMA\x10\xa1\x06\x12\x1f\n" +
 	"\x1aCOMPONENT_TYPE_CERTIFICATE\x10\xa2\x06\x12\x1e\n" +
-	"\x19COMPONENT_TYPE_CREDENTIAL\x10\xa3\x06*\xfd\x01\n" +
+	"\x19COMPONENT_TYPE_CREDENTIAL\x10\xa3\x06*R\n" +
+	"\bAudience\x12\x18\n" +
+	"\x14AUDIENCE_UNSPECIFIED\x10\x00\x12\x15\n" +
+	"\x11AUDIENCE_CUSTOMER\x10\x01\x12\x15\n" +
+	"\x11AUDIENCE_INTERNAL\x10\x02*\xfd\x01\n" +
 	"\bLinkType\x12\x19\n" +
 	"\x15LINK_TYPE_UNSPECIFIED\x10\x00\x12\x17\n" +
 	"\x13LINK_TYPE_DASHBOARD\x10\x01\x12\x12\n" +
@@ -2170,7 +2249,7 @@ func file_kentik_monitoring_v1_component_proto_rawDescGZIP() []byte {
 	return file_kentik_monitoring_v1_component_proto_rawDescData
 }
 
-var file_kentik_monitoring_v1_component_proto_enumTypes = make([]protoimpl.EnumInfo, 10)
+var file_kentik_monitoring_v1_component_proto_enumTypes = make([]protoimpl.EnumInfo, 11)
 var file_kentik_monitoring_v1_component_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_kentik_monitoring_v1_component_proto_goTypes = []any{
 	(LifecyclePhase)(0),           // 0: kentik.monitoring.v1.LifecyclePhase
@@ -2182,27 +2261,28 @@ var file_kentik_monitoring_v1_component_proto_goTypes = []any{
 	(MetricRateUnit)(0),           // 6: kentik.monitoring.v1.MetricRateUnit
 	(MetricCategory)(0),           // 7: kentik.monitoring.v1.MetricCategory
 	(ComponentType)(0),            // 8: kentik.monitoring.v1.ComponentType
-	(LinkType)(0),                 // 9: kentik.monitoring.v1.LinkType
-	(*Probe)(nil),                 // 10: kentik.monitoring.v1.Probe
-	(*Probes)(nil),                // 11: kentik.monitoring.v1.Probes
-	(*Health)(nil),                // 12: kentik.monitoring.v1.Health
-	(*MetricDefinition)(nil),      // 13: kentik.monitoring.v1.MetricDefinition
-	(*Percentile)(nil),            // 14: kentik.monitoring.v1.Percentile
-	(*HistogramValue)(nil),        // 15: kentik.monitoring.v1.HistogramValue
-	(*MetricValue)(nil),           // 16: kentik.monitoring.v1.MetricValue
-	(*MetricSample)(nil),          // 17: kentik.monitoring.v1.MetricSample
-	(*Metric)(nil),                // 18: kentik.monitoring.v1.Metric
-	(*Link)(nil),                  // 19: kentik.monitoring.v1.Link
-	(*ComponentState)(nil),        // 20: kentik.monitoring.v1.ComponentState
-	nil,                           // 21: kentik.monitoring.v1.MetricSample.LabelsEntry
-	nil,                           // 22: kentik.monitoring.v1.ComponentState.LabelsEntry
-	(*structpb.Struct)(nil),       // 23: google.protobuf.Struct
-	(*timestamppb.Timestamp)(nil), // 24: google.protobuf.Timestamp
+	(Audience)(0),                 // 9: kentik.monitoring.v1.Audience
+	(LinkType)(0),                 // 10: kentik.monitoring.v1.LinkType
+	(*Probe)(nil),                 // 11: kentik.monitoring.v1.Probe
+	(*Probes)(nil),                // 12: kentik.monitoring.v1.Probes
+	(*Health)(nil),                // 13: kentik.monitoring.v1.Health
+	(*MetricDefinition)(nil),      // 14: kentik.monitoring.v1.MetricDefinition
+	(*Percentile)(nil),            // 15: kentik.monitoring.v1.Percentile
+	(*HistogramValue)(nil),        // 16: kentik.monitoring.v1.HistogramValue
+	(*MetricValue)(nil),           // 17: kentik.monitoring.v1.MetricValue
+	(*MetricSample)(nil),          // 18: kentik.monitoring.v1.MetricSample
+	(*Metric)(nil),                // 19: kentik.monitoring.v1.Metric
+	(*Link)(nil),                  // 20: kentik.monitoring.v1.Link
+	(*ComponentState)(nil),        // 21: kentik.monitoring.v1.ComponentState
+	nil,                           // 22: kentik.monitoring.v1.MetricSample.LabelsEntry
+	nil,                           // 23: kentik.monitoring.v1.ComponentState.LabelsEntry
+	(*structpb.Struct)(nil),       // 24: google.protobuf.Struct
+	(*timestamppb.Timestamp)(nil), // 25: google.protobuf.Timestamp
 }
 var file_kentik_monitoring_v1_component_proto_depIdxs = []int32{
-	10, // 0: kentik.monitoring.v1.Probes.startup:type_name -> kentik.monitoring.v1.Probe
-	10, // 1: kentik.monitoring.v1.Probes.liveness:type_name -> kentik.monitoring.v1.Probe
-	10, // 2: kentik.monitoring.v1.Probes.readiness:type_name -> kentik.monitoring.v1.Probe
+	11, // 0: kentik.monitoring.v1.Probes.startup:type_name -> kentik.monitoring.v1.Probe
+	11, // 1: kentik.monitoring.v1.Probes.liveness:type_name -> kentik.monitoring.v1.Probe
+	11, // 2: kentik.monitoring.v1.Probes.readiness:type_name -> kentik.monitoring.v1.Probe
 	1,  // 3: kentik.monitoring.v1.Health.status:type_name -> kentik.monitoring.v1.HealthStatus
 	3,  // 4: kentik.monitoring.v1.MetricDefinition.entity:type_name -> kentik.monitoring.v1.MetricEntity
 	4,  // 5: kentik.monitoring.v1.MetricDefinition.measurement:type_name -> kentik.monitoring.v1.MetricMeasurement
@@ -2210,28 +2290,29 @@ var file_kentik_monitoring_v1_component_proto_depIdxs = []int32{
 	6,  // 7: kentik.monitoring.v1.MetricDefinition.rate_unit:type_name -> kentik.monitoring.v1.MetricRateUnit
 	2,  // 8: kentik.monitoring.v1.MetricDefinition.type:type_name -> kentik.monitoring.v1.MetricType
 	7,  // 9: kentik.monitoring.v1.MetricDefinition.category:type_name -> kentik.monitoring.v1.MetricCategory
-	14, // 10: kentik.monitoring.v1.HistogramValue.percentiles:type_name -> kentik.monitoring.v1.Percentile
-	15, // 11: kentik.monitoring.v1.MetricValue.histogram:type_name -> kentik.monitoring.v1.HistogramValue
-	21, // 12: kentik.monitoring.v1.MetricSample.labels:type_name -> kentik.monitoring.v1.MetricSample.LabelsEntry
-	16, // 13: kentik.monitoring.v1.MetricSample.value:type_name -> kentik.monitoring.v1.MetricValue
-	13, // 14: kentik.monitoring.v1.Metric.definition:type_name -> kentik.monitoring.v1.MetricDefinition
-	17, // 15: kentik.monitoring.v1.Metric.samples:type_name -> kentik.monitoring.v1.MetricSample
-	9,  // 16: kentik.monitoring.v1.Link.type:type_name -> kentik.monitoring.v1.LinkType
+	15, // 10: kentik.monitoring.v1.HistogramValue.percentiles:type_name -> kentik.monitoring.v1.Percentile
+	16, // 11: kentik.monitoring.v1.MetricValue.histogram:type_name -> kentik.monitoring.v1.HistogramValue
+	22, // 12: kentik.monitoring.v1.MetricSample.labels:type_name -> kentik.monitoring.v1.MetricSample.LabelsEntry
+	17, // 13: kentik.monitoring.v1.MetricSample.value:type_name -> kentik.monitoring.v1.MetricValue
+	14, // 14: kentik.monitoring.v1.Metric.definition:type_name -> kentik.monitoring.v1.MetricDefinition
+	18, // 15: kentik.monitoring.v1.Metric.samples:type_name -> kentik.monitoring.v1.MetricSample
+	10, // 16: kentik.monitoring.v1.Link.type:type_name -> kentik.monitoring.v1.LinkType
 	8,  // 17: kentik.monitoring.v1.ComponentState.type:type_name -> kentik.monitoring.v1.ComponentType
 	0,  // 18: kentik.monitoring.v1.ComponentState.lifecycle_phase:type_name -> kentik.monitoring.v1.LifecyclePhase
-	11, // 19: kentik.monitoring.v1.ComponentState.probes:type_name -> kentik.monitoring.v1.Probes
-	12, // 20: kentik.monitoring.v1.ComponentState.health:type_name -> kentik.monitoring.v1.Health
-	20, // 21: kentik.monitoring.v1.ComponentState.children:type_name -> kentik.monitoring.v1.ComponentState
-	18, // 22: kentik.monitoring.v1.ComponentState.metrics:type_name -> kentik.monitoring.v1.Metric
-	22, // 23: kentik.monitoring.v1.ComponentState.labels:type_name -> kentik.monitoring.v1.ComponentState.LabelsEntry
-	19, // 24: kentik.monitoring.v1.ComponentState.links:type_name -> kentik.monitoring.v1.Link
-	23, // 25: kentik.monitoring.v1.ComponentState.annotations:type_name -> google.protobuf.Struct
-	24, // 26: kentik.monitoring.v1.ComponentState.timestamp:type_name -> google.protobuf.Timestamp
-	27, // [27:27] is the sub-list for method output_type
-	27, // [27:27] is the sub-list for method input_type
-	27, // [27:27] is the sub-list for extension type_name
-	27, // [27:27] is the sub-list for extension extendee
-	0,  // [0:27] is the sub-list for field type_name
+	12, // 19: kentik.monitoring.v1.ComponentState.probes:type_name -> kentik.monitoring.v1.Probes
+	13, // 20: kentik.monitoring.v1.ComponentState.health:type_name -> kentik.monitoring.v1.Health
+	21, // 21: kentik.monitoring.v1.ComponentState.children:type_name -> kentik.monitoring.v1.ComponentState
+	19, // 22: kentik.monitoring.v1.ComponentState.metrics:type_name -> kentik.monitoring.v1.Metric
+	23, // 23: kentik.monitoring.v1.ComponentState.labels:type_name -> kentik.monitoring.v1.ComponentState.LabelsEntry
+	20, // 24: kentik.monitoring.v1.ComponentState.links:type_name -> kentik.monitoring.v1.Link
+	24, // 25: kentik.monitoring.v1.ComponentState.annotations:type_name -> google.protobuf.Struct
+	25, // 26: kentik.monitoring.v1.ComponentState.timestamp:type_name -> google.protobuf.Timestamp
+	9,  // 27: kentik.monitoring.v1.ComponentState.audience:type_name -> kentik.monitoring.v1.Audience
+	28, // [28:28] is the sub-list for method output_type
+	28, // [28:28] is the sub-list for method input_type
+	28, // [28:28] is the sub-list for extension type_name
+	28, // [28:28] is the sub-list for extension extendee
+	0,  // [0:28] is the sub-list for field type_name
 }
 
 func init() { file_kentik_monitoring_v1_component_proto_init() }
@@ -2251,7 +2332,7 @@ func file_kentik_monitoring_v1_component_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_monitoring_v1_component_proto_rawDesc), len(file_kentik_monitoring_v1_component_proto_rawDesc)),
-			NumEnums:      10,
+			NumEnums:      11,
 			NumMessages:   13,
 			NumExtensions: 0,
 			NumServices:   0,
