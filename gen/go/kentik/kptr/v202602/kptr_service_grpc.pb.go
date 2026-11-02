@@ -76,7 +76,7 @@ type KptrServiceClient interface {
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
-	ListResolvedAddresses(ctx context.Context, in *ListResolvedAddressesRequest, opts ...grpc.CallOption) (*ListResolvedAddressesResponse, error)
+	ListResolvedAddresses(ctx context.Context, in *ListResolvedAddressesRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ListResolvedAddressesResponse], error)
 }
 
 type kptrServiceClient struct {
@@ -117,15 +117,24 @@ func (c *kptrServiceClient) ResolveAddresses(ctx context.Context, in *ResolveAdd
 	return out, nil
 }
 
-func (c *kptrServiceClient) ListResolvedAddresses(ctx context.Context, in *ListResolvedAddressesRequest, opts ...grpc.CallOption) (*ListResolvedAddressesResponse, error) {
+func (c *kptrServiceClient) ListResolvedAddresses(ctx context.Context, in *ListResolvedAddressesRequest, opts ...grpc.CallOption) (grpc.ServerStreamingClient[ListResolvedAddressesResponse], error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ListResolvedAddressesResponse)
-	err := c.cc.Invoke(ctx, KptrService_ListResolvedAddresses_FullMethodName, in, out, cOpts...)
+	stream, err := c.cc.NewStream(ctx, &KptrService_ServiceDesc.Streams[0], KptrService_ListResolvedAddresses_FullMethodName, cOpts...)
 	if err != nil {
 		return nil, err
 	}
-	return out, nil
+	x := &grpc.GenericClientStream[ListResolvedAddressesRequest, ListResolvedAddressesResponse]{ClientStream: stream}
+	if err := x.ClientStream.SendMsg(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
 }
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type KptrService_ListResolvedAddressesClient = grpc.ServerStreamingClient[ListResolvedAddressesResponse]
 
 // KptrServiceServer is the server API for KptrService service.
 // All implementations should embed UnimplementedKptrServiceServer
@@ -178,7 +187,7 @@ type KptrServiceServer interface {
 	//
 	// Internal clients MUST set the following gRPC metadata:
 	// - x-kt-cid (Company ID)
-	ListResolvedAddresses(context.Context, *ListResolvedAddressesRequest) (*ListResolvedAddressesResponse, error)
+	ListResolvedAddresses(*ListResolvedAddressesRequest, grpc.ServerStreamingServer[ListResolvedAddressesResponse]) error
 }
 
 // UnimplementedKptrServiceServer should be embedded to have
@@ -197,8 +206,8 @@ func (UnimplementedKptrServiceServer) UpdateAddressNames(context.Context, *Updat
 func (UnimplementedKptrServiceServer) ResolveAddresses(context.Context, *ResolveAddressesRequest) (*ResolveAddressesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ResolveAddresses not implemented")
 }
-func (UnimplementedKptrServiceServer) ListResolvedAddresses(context.Context, *ListResolvedAddressesRequest) (*ListResolvedAddressesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ListResolvedAddresses not implemented")
+func (UnimplementedKptrServiceServer) ListResolvedAddresses(*ListResolvedAddressesRequest, grpc.ServerStreamingServer[ListResolvedAddressesResponse]) error {
+	return status.Errorf(codes.Unimplemented, "method ListResolvedAddresses not implemented")
 }
 func (UnimplementedKptrServiceServer) testEmbeddedByValue() {}
 
@@ -274,23 +283,16 @@ func _KptrService_ResolveAddresses_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _KptrService_ListResolvedAddresses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ListResolvedAddressesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
+func _KptrService_ListResolvedAddresses_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(ListResolvedAddressesRequest)
+	if err := stream.RecvMsg(m); err != nil {
+		return err
 	}
-	if interceptor == nil {
-		return srv.(KptrServiceServer).ListResolvedAddresses(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: KptrService_ListResolvedAddresses_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(KptrServiceServer).ListResolvedAddresses(ctx, req.(*ListResolvedAddressesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
+	return srv.(KptrServiceServer).ListResolvedAddresses(m, &grpc.GenericServerStream[ListResolvedAddressesRequest, ListResolvedAddressesResponse]{ServerStream: stream})
 }
+
+// This type alias is provided for backwards compatibility with existing code that references the prior non-generic stream type by name.
+type KptrService_ListResolvedAddressesServer = grpc.ServerStreamingServer[ListResolvedAddressesResponse]
 
 // KptrService_ServiceDesc is the grpc.ServiceDesc for KptrService service.
 // It's only intended for direct use with grpc.RegisterService,
@@ -311,11 +313,13 @@ var KptrService_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "ResolveAddresses",
 			Handler:    _KptrService_ResolveAddresses_Handler,
 		},
+	},
+	Streams: []grpc.StreamDesc{
 		{
-			MethodName: "ListResolvedAddresses",
-			Handler:    _KptrService_ListResolvedAddresses_Handler,
+			StreamName:    "ListResolvedAddresses",
+			Handler:       _KptrService_ListResolvedAddresses_Handler,
+			ServerStreams: true,
 		},
 	},
-	Streams:  []grpc.StreamDesc{},
 	Metadata: "kentik/kptr/v202602/kptr_service.proto",
 }

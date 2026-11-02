@@ -73,7 +73,7 @@ service KptrService {
   // Internal clients MUST set the following gRPC metadata:
   // - x-kt-cid (Company ID)
   //
-  rpc ListResolvedAddresses(ListResolvedAddressesRequest) returns (ListResolvedAddressesResponse) {
+  rpc ListResolvedAddresses(ListResolvedAddressesRequest) returns (stream ListResolvedAddressesResponse) {
     option (kentik.core.v202303.method_scope) = "kptr:read";
   }
 }
@@ -104,11 +104,10 @@ message ResolveAddressesResponse {
 }
 
 message ListResolvedAddressesRequest {
-  int32 page_size = 1;
-  string page_token = 2;
+  reserved 1, 2; reserved "page_size", "page_token";
 }
 
 message ListResolvedAddressesResponse {
   repeated PtrResult results = 1;
-  string next_page_token = 2;
+  reserved 2; reserved "next_page_token";
 }
