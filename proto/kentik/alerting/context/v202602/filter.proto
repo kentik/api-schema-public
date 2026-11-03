@@ -1,0 +1,202 @@
+syntax = "proto3";
+
+package kentik.alerting.context.v202602;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/context/v202602";
+
+import "kentik/core/v202303/annotations.proto";
+import "kentik/interface/v202108alpha1/interface.proto";
+
+// ContextFilter operates on materialized observation.subject attributes as
+// recorded in context inputs.
+//
+// Used by Alert Manager alarm search and suppressions (context_filter on list and
+// suppression config). Does not apply to ContextService List, which filters by
+// input_types and producer_types on stored rows instead.
+//
+// Subject is the only filterable part of ContextInput for now. Producer-based
+// filters (type, originating definition, API request metadata) are likely needed
+// later.
+//
+// Disjunctive normal form:
+//   - conjunctions are ORed
+//   - clauses within a conjunction are ANDed
+//   - predicate fields within a clause are ANDed
+//
+// Each ScopedClause evaluates all set predicate fields against the same NetworkEntity
+// context (see NetworkScope). For example, device_id and ip_address in a clause with
+// NETWORK_SCOPE_DESTINATION both refer to subject.network.destination.*.
+message ContextFilter {
+  // Example - (device_labels contains "prod" AND site_name = "NY") OR (device_id = "88903"):
+  //   conjunctions: [
+  //     { clauses: [{ predicates: { device_labels: { equals: "prod" }, site_name: { equals: "NY" } } }] },
+  //     { clauses: [{ predicates: { device_id: { equals: "88903" } } }] }
+  //   ]
+  //
+  // Example - root device AND destination IP in CIDR (different scopes, ANDed):
+  //   conjunctions: [{
+  //     clauses: [
+  //       { network_scope: [NETWORK_SCOPE_ROOT], predicates: { device_id: { equals: "88903" } } },
+  //       { network_scope: [NETWORK_SCOPE_DESTINATION], predicates: { ip_address: { within: "10.0.0.0/8" } } }
+  //     ]
+  //   }]
+  repeated Conjunction conjunctions = 1;
+
+  message Conjunction {
+    repeated ScopedClause clauses = 1;
+    optional ProducerPredicates producer_predicates = 2;
+  }
+}
+
+// A scoped AND-group: one or more NetworkEntity contexts plus field predicates.
+message ScopedClause {
+  // Which NetworkEntity context to evaluate predicates against.
+  //
+  // When empty, NETWORK_SCOPE_ANY is used. This evaluates the predicate against
+  // each supported subject scope (root, source, destination, and adjacent).
+  //
+  // When multiple values are set, the clause matches if any listed scope matches
+  // (OR across scopes, AND across predicate fields within the clause).
+  repeated NetworkScope network_scope = 1 [(kentik.core.v202303.display_name) = "Network Scope"];
+
+  // All set fields are ANDed and resolved under each selected network_scope.
+  SubjectPredicates predicates = 2;
+}
+
+message ProducerPredicates {
+  // --- originating definition can be for instance a policy or synthetic test
+  optional IdentityPredicate origin_id = 1 [(kentik.core.v202303.display_name) = "Origin"];
+  optional StringPredicate origin_name = 2 [(kentik.core.v202303.display_name) = "Origin Name"];
+  optional LabelPredicate origin_labels = 3 [(kentik.core.v202303.display_name) = "Origin Labels"];
+}
+
+// Field predicates resolved relative to the parent ScopedClause.network_scope.
+message SubjectPredicates {
+  // --- device (*.device.*) ---
+  optional IdentityPredicate device_id = 1 [(kentik.core.v202303.display_name) = "Device"];
+  optional StringPredicate device_name = 2 [(kentik.core.v202303.display_name) = "Device Name"];
+  optional LabelPredicate device_labels = 3 [(kentik.core.v202303.display_name) = "Device Labels"];
+
+  // in future:
+  // device_type
+  // device_roles
+  // device_tags
+  // device_importance
+  // device_manufacturer
+  // device_subtype
+
+  // --- site (*.site.*) ---
+  optional IdentityPredicate site_id = 10 [(kentik.core.v202303.display_name) = "Site"];
+  optional StringPredicate site_name = 11 [(kentik.core.v202303.display_name) = "Site Name"];
+  // in future:
+  // site_location
+  // site_country
+
+  // --- interface (*.interface.*) ---
+  optional IdentityPredicate interface_id = 20 [(kentik.core.v202303.display_name) = "Interface"];
+  optional StringPredicate interface_index = 21 [(kentik.core.v202303.display_name) = "Interface Index"];
+  optional StringPredicate interface_name = 22 [(kentik.core.v202303.display_name) = "Interface Name"];
+  optional StringPredicate interface_description = 23 [(kentik.core.v202303.display_name) = "Interface Description"];
+
+  // in future:
+  // interface_labels
+  // interface_tags
+  // interface_importance
+  // interface_capacity_mbps
+  // interface_connectivity_type
+  // interface_network_boundary
+  // interface_provider
+
+  // --- address (*.address.*) ---
+  optional IpPredicate ip_address = 40 [(kentik.core.v202303.display_name) = "IP Address"];
+  optional StringPredicate mac_address = 41 [(kentik.core.v202303.display_name) = "MAC Address"];
+  // in future:
+  // port
+  // asn
+}
+
+enum NetworkScope {
+  NETWORK_SCOPE_UNSPECIFIED = 0;
+
+  // matches any subject.{device,site,interface,address}
+  NETWORK_SCOPE_ANY = 1 [(kentik.core.v202303.enum_display_name) = "Any"];
+
+  // subject.{device,site,interface,address}
+  NETWORK_SCOPE_ROOT = 2 [(kentik.core.v202303.enum_display_name) = "Root"];
+
+  // subject.network.source.*
+  NETWORK_SCOPE_SOURCE = 3 [(kentik.core.v202303.enum_display_name) = "Source"];
+
+  // subject.network.destination.*
+  NETWORK_SCOPE_DESTINATION = 4 [(kentik.core.v202303.enum_display_name) = "Destination"];
+
+  // subject.neighbor.*
+  NETWORK_SCOPE_ADJACENT = 5 [(kentik.core.v202303.enum_display_name) = "Adjacent"];
+}
+
+message IdentityPredicate {
+  bool not = 1;
+
+  oneof operator {
+    string equals = 2 [(kentik.core.v202303.display_name) = "Equals"];
+    IdentityList in = 7 [(kentik.core.v202303.display_name) = "In"];
+  }
+
+  message IdentityList {
+    repeated string values = 1;
+  }
+}
+
+message StringPredicate {
+  bool not = 1;
+
+  oneof operator {
+    string equals = 2 [(kentik.core.v202303.display_name) = "Equals"];
+    string contains = 3 [(kentik.core.v202303.display_name) = "Contains"];
+    string starts_with = 4 [(kentik.core.v202303.display_name) = "Starts With"];
+    string ends_with = 5 [(kentik.core.v202303.display_name) = "Ends With"];
+    string matches_regex = 6 [(kentik.core.v202303.display_name) = "Matches Regex"];
+    StringList in = 7 [(kentik.core.v202303.display_name) = "In"];
+  }
+
+  message StringList {
+    repeated string values = 1;
+  }
+}
+
+// Matches repeated string fields such as device.labels and device.roles.
+message LabelPredicate {
+  bool not = 1;
+
+  oneof operator {
+    string equals = 2 [(kentik.core.v202303.display_name) = "Equals"];
+    StringList in = 3 [(kentik.core.v202303.display_name) = "In"];
+    StringList contains_all = 4 [(kentik.core.v202303.display_name) = "Contains All"];
+  }
+
+  message StringList {
+    repeated string values = 5;
+  }
+}
+
+// Will match map<string, string> fields such as device.tags and interface.tags.
+message TagPredicate {
+  StringPredicate key = 1 [(kentik.core.v202303.display_name) = "Key"];
+  StringPredicate value = 2 [(kentik.core.v202303.display_name) = "Value"];
+}
+
+// Matches address.ip using canonical IP strings (IPv4 dotted decimal or IPv6 RFC 5952).
+message IpPredicate {
+  bool not = 1;
+
+  oneof operator {
+    string equals = 2 [(kentik.core.v202303.display_name) = "Equals"];
+    StringList in = 3 [(kentik.core.v202303.display_name) = "In"];
+    // True when the subject IP is contained within the given prefix (PostgreSQL: ip << cidr).
+    string within = 4 [(kentik.core.v202303.display_name) = "Within"];
+    StringList within_any = 5 [(kentik.core.v202303.display_name) = "Within Any"];
+  }
+
+  message StringList {
+    repeated string values = 1;
+  }
+}

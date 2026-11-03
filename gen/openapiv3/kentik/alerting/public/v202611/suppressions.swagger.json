@@ -1,0 +1,1039 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Alerting Suppressions API",
+        "description": "# Overview\nThe Alerts Suppressions API configures alert suppressions, preventing alerts from being activated. This version supports multiple source policies, structured context filters, and timestamp commands. Replace requires the complete writable configuration; omitted matching constraints are cleared, not preserved.",
+        "version": "v202611",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "SuppressionService"
+        }
+    ],
+    "paths": {
+        "/v202611/suppressions": {
+            "post": {
+                "summary": "Create Suppression",
+                "description": "Creates a suppression configuration. At least one source, severity, key filter condition, or context filter condition is required.",
+                "operationId": "Create",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202611SuppressionServiceCreateResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202611SuppressionServiceCreateRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SuppressionService"
+                ]
+            }
+        },
+        "/v202611/suppressions/list": {
+            "post": {
+                "summary": "List Suppressions",
+                "description": "Returns suppression configurations, including all matching constraints and resolved timestamps. Timestamp commands are not returned.",
+                "operationId": "List",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202611SuppressionServiceListResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v202611SuppressionServiceListRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SuppressionService"
+                ]
+            }
+        },
+        "/v202611/suppressions/{id}": {
+            "get": {
+                "summary": "Get Suppression",
+                "description": "Returns a suppression configuration, including all matching constraints and resolved timestamps. Timestamp commands are not returned.",
+                "operationId": "Get",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202611SuppressionServiceGetResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "The ID of the suppression configuration to get.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "SuppressionService"
+                ]
+            },
+            "delete": {
+                "summary": "Delete Suppression",
+                "description": "Deletes a suppression configuration.",
+                "operationId": "Delete",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202611SuppressionServiceDeleteResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "The ID of the suppression configuration to delete.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "SuppressionService"
+                ]
+            },
+            "patch": {
+                "summary": "Replace Suppression",
+                "description": "Replaces the complete writable suppression configuration; this is not a partial update despite the PATCH HTTP method. Omitted matching constraints, display name, and comment are cleared. Output-only fields and server-managed metadata are not replaced. Use timestamp commands to preserve existing start or end times. Once active or starting too soon for changes to propagate, a suppression's start time and matching constraints cannot change; its end time, display name, and comment can change. Suppressions that have ended or are ending too soon cannot be replaced. Timing constraints still apply.",
+                "operationId": "Replace",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v202611SuppressionServiceReplaceResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "id",
+                        "description": "The ID of the suppression configuration. Required to identify the existing suppression on Replace; assigned by the server on Create.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SuppressionServiceReplaceBody"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SuppressionService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "Kentik Alerts documentation",
+        "url": "https://kb.kentik.com/docs/alerting"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "ContextFilterConjunction": {
+                "type": "object",
+                "properties": {
+                    "clauses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202602ScopedClause"
+                        }
+                    },
+                    "producerPredicates": {
+                        "$ref": "#/components/schemas/v202602ProducerPredicates"
+                    }
+                }
+            },
+            "FieldBy": {
+                "type": "string",
+                "enum": [
+                    "BY_UNSPECIFIED",
+                    "BY_ID",
+                    "BY_NAME",
+                    "BY_CREATED_AT",
+                    "BY_UPDATED_AT",
+                    "BY_SEVERITY",
+                    "BY_STATUS",
+                    "BY_POLICY_TYPE",
+                    "BY_START_TIME",
+                    "BY_END_TIME",
+                    "BY_ALARM_STATE",
+                    "BY_ALARM_POLICY_NAME",
+                    "BY_ALARM_PRIMARY_DIMENSION"
+                ],
+                "default": "BY_UNSPECIFIED"
+            },
+            "IdentityPredicateIdentityList": {
+                "type": "object",
+                "properties": {
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "SortingConfigField": {
+                "type": "object",
+                "properties": {
+                    "by": {
+                        "$ref": "#/components/schemas/FieldBy"
+                    },
+                    "order": {
+                        "$ref": "#/components/schemas/SortingConfigOrder"
+                    }
+                }
+            },
+            "SortingConfigOrder": {
+                "type": "string",
+                "enum": [
+                    "ORDER_UNSPECIFIED",
+                    "ORDER_ASCENDING",
+                    "ORDER_DESCENDING"
+                ],
+                "default": "ORDER_UNSPECIFIED"
+            },
+            "SuppressionServiceReplaceBody": {
+                "type": "object",
+                "properties": {
+                    "suppression": {
+                        "type": "object",
+                        "properties": {
+                            "displayName": {
+                                "type": "string",
+                                "description": "The name of the suppression configuration. Omission on Replace clears the name."
+                            },
+                            "comment": {
+                                "type": "string",
+                                "description": "The comment for the suppression configuration. Omission on Replace clears the comment."
+                            },
+                            "contextFilter": {
+                                "$ref": "#/components/schemas/v202602ContextFilter"
+                            },
+                            "sources": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/v202505Source"
+                                },
+                                "description": "The source policies whose alerts may be suppressed. IDs are public policy IDs, not internal Alert Manager rule IDs. Any listed source may match. Empty means all source policies, subject to the other matching constraints."
+                            },
+                            "severities": {
+                                "type": "array",
+                                "items": {
+                                    "$ref": "#/components/schemas/v202303Severity"
+                                },
+                                "description": "The alarm severities the suppression applies to. Any listed severity may match. Empty means all severities, subject to the other matching constraints."
+                            },
+                            "keyFilter": {
+                                "$ref": "#/components/schemas/v202303MultiAttributeFilter"
+                            },
+                            "startTimeAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The resolved start time when suppression becomes active. On Create or Replace, omission defaults to the earliest permitted start unless start_time_code overrides it. On Replace, use KEEP_UNCHANGED to retain the existing start time. Worker propagation may delay effectiveness."
+                            },
+                            "startTimeCode": {
+                                "$ref": "#/components/schemas/v202611TimestampSetting"
+                            },
+                            "endTimeAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The resolved time when suppression ceases to be active. Omission on Create or Replace means no expiration unless end_time_code overrides it. An explicit end must be after the start and after the current time, satisfy the minimum suppression window, and allow time for propagation."
+                            },
+                            "endTimeCode": {
+                                "$ref": "#/components/schemas/v202611TimestampSetting"
+                            },
+                            "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The time when the suppression configuration was created.",
+                                "readOnly": true
+                            },
+                            "modifiedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "description": "The time when the suppression configuration was last modified.",
+                                "readOnly": true
+                            }
+                        },
+                        "description": "Different matching constraints are ANDed. Values within sources\nand severities are alternatives. At least one non-empty matching constraint is\nrequired; a display name, comment, or strictness flag alone is insufficient."
+                    }
+                },
+                "required": [
+                    "suppression"
+                ]
+            },
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "typesv202506PaginationConfig": {
+                "type": "object",
+                "properties": {
+                    "limit": {
+                        "type": "string",
+                        "format": "uint64",
+                        "title": "limit is how many items to return at most"
+                    },
+                    "offset": {
+                        "type": "string",
+                        "format": "uint64",
+                        "title": "offset is the offset into the list of items"
+                    },
+                    "includeTotalCount": {
+                        "type": "boolean",
+                        "title": "include_total_count is a flag to enforce API service to include the total count of items in the response,\nwhich in some cases may be very expensive to fetch"
+                    }
+                }
+            },
+            "typesv202506PaginationInfo": {
+                "type": "object",
+                "properties": {
+                    "totalCount": {
+                        "type": "string",
+                        "format": "uint64",
+                        "description": "total_count is the total number of items in the list.\nIt may be provided optionally if include_total_count is set to false.\nIt will be provided always if include_total_count is set to true."
+                    },
+                    "hasMoreResults": {
+                        "type": "boolean",
+                        "title": "has_more_results is a flag to indicate if there are more results to fetch\nIt may be provided instead of total_count if include_total_count is set to false and it would be very expensive to fetch the total count"
+                    }
+                }
+            },
+            "typesv202506SortingConfig": {
+                "type": "object",
+                "properties": {
+                    "fields": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/SortingConfigField"
+                        }
+                    }
+                }
+            },
+            "v202303AttributeFilter": {
+                "type": "object",
+                "properties": {
+                    "not": {
+                        "type": "boolean",
+                        "title": "Please note attribute filter operates on strings or stringified values"
+                    },
+                    "empty": {
+                        "type": "boolean",
+                        "description": "Indicates that we want to check for an empty value.  To use empty this value MUST be set to\ntrue.  Setting not to true enables us to look for \"not-empty\"."
+                    },
+                    "equals": {
+                        "type": "string"
+                    },
+                    "startsWith": {
+                        "type": "string"
+                    },
+                    "endsWith": {
+                        "type": "string"
+                    },
+                    "contains": {
+                        "type": "string"
+                    },
+                    "in": {
+                        "$ref": "#/components/schemas/v202303AttributeFilterStringArray"
+                    },
+                    "matchesRegex": {
+                        "type": "string",
+                        "description": "Unanchored: the pattern may match anywhere in the value (`foo` matches\n`xfooy`). Use `^` / `$` to require the start or end of the string.\nCommon dialect for all use cases.\nSupported regex features: literals, `.`, `|`, `()` / `(?:)`, `*+?{n,m}`,\n`^$`, POSIX classes, `\\d \\D \\s \\S \\w \\W`.\nUnsupported regex features: `\\b \\B \\A \\z \\Q \\E \\p \\P`, and `(?` other than `(?:)`."
+                    },
+                    "any": {
+                        "type": "boolean",
+                        "description": "The equivalent of: value=\"*.  To use any this value MUST be set to true. Setting not to true\nenables us to look for \"not-anything\", but that predicate does not make much sense."
+                    }
+                }
+            },
+            "v202303AttributeFilterStringArray": {
+                "type": "object",
+                "properties": {
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202303KeyValueFilter": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "$ref": "#/components/schemas/v202303SimpleAttributeFilter"
+                    },
+                    "value": {
+                        "$ref": "#/components/schemas/v202303AttributeFilter"
+                    }
+                }
+            },
+            "v202303MultiAttributeFilter": {
+                "type": "object",
+                "properties": {
+                    "filter": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$ref": "#/components/schemas/v202303AttributeFilter"
+                        },
+                        "description": "Deprecated: Use MultiAttributeFilter.filters instead."
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202303KeyValueFilter"
+                        }
+                    },
+                    "strict": {
+                        "type": "boolean",
+                        "description": "Every filter must match at least one grouping-key attribute. When true,\nevery grouping-key attribute must also match at least one filter. A filter\nmay match multiple attributes.\n\nExample:\n  filters = [{ key: {equals: \"i_device_id\"}, value: {equals: \"1001\"} }]\n  strict = true\n\n  key i_device_id=1001                         - matches\n  key i_device_id=1001, inet_src=ipv4          - does not match"
+                    }
+                }
+            },
+            "v202303Severity": {
+                "type": "string",
+                "enum": [
+                    "SEVERITY_UNSPECIFIED",
+                    "SEVERITY_CLEAR",
+                    "SEVERITY_MINOR",
+                    "SEVERITY_WARNING",
+                    "SEVERITY_MAJOR",
+                    "SEVERITY_SEVERE",
+                    "SEVERITY_CRITICAL"
+                ],
+                "default": "SEVERITY_UNSPECIFIED"
+            },
+            "v202303SimpleAttributeFilter": {
+                "type": "object",
+                "properties": {
+                    "equals": {
+                        "type": "string"
+                    },
+                    "startsWith": {
+                        "type": "string"
+                    },
+                    "endsWith": {
+                        "type": "string"
+                    },
+                    "contains": {
+                        "type": "string"
+                    },
+                    "in": {
+                        "$ref": "#/components/schemas/v202303SimpleAttributeFilterStringArray"
+                    },
+                    "matchesRegex": {
+                        "type": "string",
+                        "description": "Unanchored: the pattern may match anywhere in the value (`foo` matches\n`xfooy`). Use `^` / `$` to require the start or end of the string.\nCommon dialect for all use cases.\nSupported regex features: literals, `.`, `|`, `()` / `(?:)`, `*+?{n,m}`,\n`^$`, POSIX classes, `\\d \\D \\s \\S \\w \\W`.\nUnsupported regex features: `\\b \\B \\A \\z \\Q \\E \\p \\P`, and `(?` other than `(?:)`."
+                    },
+                    "any": {
+                        "type": "boolean",
+                        "description": "The equivalent of: value=\"*.  To use any this value MUST be set to true."
+                    }
+                }
+            },
+            "v202303SimpleAttributeFilterStringArray": {
+                "type": "object",
+                "properties": {
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202303TimeRange": {
+                "type": "object",
+                "properties": {
+                    "start": {
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    "end": {
+                        "type": "string",
+                        "format": "date-time"
+                    }
+                }
+            },
+            "v202505PolicyType": {
+                "type": "string",
+                "enum": [
+                    "POLICY_TYPE_UNSPECIFIED",
+                    "POLICY_TYPE_AGENT",
+                    "POLICY_TYPE_COMPONENT",
+                    "POLICY_TYPE_DEVICE",
+                    "POLICY_TYPE_EVENT",
+                    "POLICY_TYPE_INTERFACE",
+                    "POLICY_TYPE_CUSTOM",
+                    "POLICY_TYPE_CLOUD",
+                    "POLICY_TYPE_PROTECT",
+                    "POLICY_TYPE_TRAFFIC",
+                    "POLICY_TYPE_KMETRICS"
+                ],
+                "default": "POLICY_TYPE_UNSPECIFIED",
+                "title": "- POLICY_TYPE_AGENT: NMS Agent Policy\n - POLICY_TYPE_COMPONENT: NMS Component Policy\n - POLICY_TYPE_DEVICE: NMS Device Policy\n - POLICY_TYPE_EVENT: NMS Event Policy\n - POLICY_TYPE_INTERFACE: NMS Interface Policy\n - POLICY_TYPE_CUSTOM: NMS Custom Policy\n - POLICY_TYPE_CLOUD: Flow Alerting Cloud Policy\n - POLICY_TYPE_PROTECT: Flow Alerting Protect Policy\n - POLICY_TYPE_TRAFFIC: Flow Alerting Traffic Policy\n - POLICY_TYPE_KMETRICS: Flow Alerting KMetrics Policy"
+            },
+            "v202505Source": {
+                "type": "object",
+                "properties": {
+                    "policyType": {
+                        "$ref": "#/components/schemas/v202505PolicyType"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the policy, can be integer ID, UUID or any other format."
+                    }
+                },
+                "required": [
+                    "policyType",
+                    "id"
+                ]
+            },
+            "v202602ContextFilter": {
+                "type": "object",
+                "properties": {
+                    "conjunctions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/ContextFilterConjunction"
+                        },
+                        "description": "Example - root device AND destination IP in CIDR (different scopes, ANDed):\n  conjunctions: [{\n    clauses: [\n      { network_scope: [NETWORK_SCOPE_ROOT], predicates: { device_id: { equals: \"88903\" } } },\n      { network_scope: [NETWORK_SCOPE_DESTINATION], predicates: { ip_address: { within: \"10.0.0.0/8\" } } }\n    ]\n  }]",
+                        "title": "Example - (device_labels contains \"prod\" AND site_name = \"NY\") OR (device_id = \"88903\"):\n  conjunctions: [\n    { clauses: [{ predicates: { device_labels: { equals: \"prod\" }, site_name: { equals: \"NY\" } } }] },\n    { clauses: [{ predicates: { device_id: { equals: \"88903\" } } }] }\n  ]"
+                    }
+                },
+                "description": "ContextFilter operates on materialized observation.subject attributes as\nrecorded in context inputs.\n\nUsed by Alert Manager alarm search and suppressions (context_filter on list and\nsuppression config). Does not apply to ContextService List, which filters by\ninput_types and producer_types on stored rows instead.\n\nSubject is the only filterable part of ContextInput for now. Producer-based\nfilters (type, originating definition, API request metadata) are likely needed\nlater.\n\nDisjunctive normal form:\n  - conjunctions are ORed\n  - clauses within a conjunction are ANDed\n  - predicate fields within a clause are ANDed\n\nEach ScopedClause evaluates all set predicate fields against the same NetworkEntity\ncontext (see NetworkScope). For example, device_id and ip_address in a clause with\nNETWORK_SCOPE_DESTINATION both refer to subject.network.destination.*."
+            },
+            "v202602IdentityPredicate": {
+                "type": "object",
+                "properties": {
+                    "not": {
+                        "type": "boolean"
+                    },
+                    "equals": {
+                        "type": "string"
+                    },
+                    "in": {
+                        "$ref": "#/components/schemas/IdentityPredicateIdentityList"
+                    }
+                }
+            },
+            "v202602IpPredicate": {
+                "type": "object",
+                "properties": {
+                    "not": {
+                        "type": "boolean"
+                    },
+                    "equals": {
+                        "type": "string"
+                    },
+                    "in": {
+                        "$ref": "#/components/schemas/v202602IpPredicateStringList"
+                    },
+                    "within": {
+                        "type": "string",
+                        "description": "True when the subject IP is contained within the given prefix (PostgreSQL: ip << cidr)."
+                    },
+                    "withinAny": {
+                        "$ref": "#/components/schemas/v202602IpPredicateStringList"
+                    }
+                },
+                "description": "Matches address.ip using canonical IP strings (IPv4 dotted decimal or IPv6 RFC 5952)."
+            },
+            "v202602IpPredicateStringList": {
+                "type": "object",
+                "properties": {
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202602LabelPredicate": {
+                "type": "object",
+                "properties": {
+                    "not": {
+                        "type": "boolean"
+                    },
+                    "equals": {
+                        "type": "string"
+                    },
+                    "in": {
+                        "$ref": "#/components/schemas/v202602LabelPredicateStringList"
+                    },
+                    "containsAll": {
+                        "$ref": "#/components/schemas/v202602LabelPredicateStringList"
+                    }
+                },
+                "description": "Matches repeated string fields such as device.labels and device.roles."
+            },
+            "v202602LabelPredicateStringList": {
+                "type": "object",
+                "properties": {
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202602NetworkScope": {
+                "type": "string",
+                "enum": [
+                    "NETWORK_SCOPE_UNSPECIFIED",
+                    "NETWORK_SCOPE_ANY",
+                    "NETWORK_SCOPE_ROOT",
+                    "NETWORK_SCOPE_SOURCE",
+                    "NETWORK_SCOPE_DESTINATION",
+                    "NETWORK_SCOPE_ADJACENT"
+                ],
+                "default": "NETWORK_SCOPE_UNSPECIFIED",
+                "title": "- NETWORK_SCOPE_ANY: matches any subject.{device,site,interface,address}\n - NETWORK_SCOPE_ROOT: subject.{device,site,interface,address}\n - NETWORK_SCOPE_SOURCE: subject.network.source.*\n - NETWORK_SCOPE_DESTINATION: subject.network.destination.*\n - NETWORK_SCOPE_ADJACENT: subject.neighbor.*"
+            },
+            "v202602ProducerPredicates": {
+                "type": "object",
+                "properties": {
+                    "originId": {
+                        "$ref": "#/components/schemas/v202602IdentityPredicate"
+                    },
+                    "originName": {
+                        "$ref": "#/components/schemas/v202602StringPredicate"
+                    },
+                    "originLabels": {
+                        "$ref": "#/components/schemas/v202602LabelPredicate"
+                    }
+                }
+            },
+            "v202602ScopedClause": {
+                "type": "object",
+                "properties": {
+                    "networkScope": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202602NetworkScope"
+                        },
+                        "description": "Which NetworkEntity context to evaluate predicates against.\n\nWhen empty, NETWORK_SCOPE_ANY is used. This evaluates the predicate against\neach supported subject scope (root, source, destination, and adjacent).\n\nWhen multiple values are set, the clause matches if any listed scope matches\n(OR across scopes, AND across predicate fields within the clause)."
+                    },
+                    "predicates": {
+                        "$ref": "#/components/schemas/v202602SubjectPredicates"
+                    }
+                },
+                "description": "A scoped AND-group: one or more NetworkEntity contexts plus field predicates."
+            },
+            "v202602StringPredicate": {
+                "type": "object",
+                "properties": {
+                    "not": {
+                        "type": "boolean"
+                    },
+                    "equals": {
+                        "type": "string"
+                    },
+                    "contains": {
+                        "type": "string"
+                    },
+                    "startsWith": {
+                        "type": "string"
+                    },
+                    "endsWith": {
+                        "type": "string"
+                    },
+                    "matchesRegex": {
+                        "type": "string"
+                    },
+                    "in": {
+                        "$ref": "#/components/schemas/v202602StringPredicateStringList"
+                    }
+                }
+            },
+            "v202602StringPredicateStringList": {
+                "type": "object",
+                "properties": {
+                    "values": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "v202602SubjectPredicates": {
+                "type": "object",
+                "properties": {
+                    "deviceId": {
+                        "$ref": "#/components/schemas/v202602IdentityPredicate"
+                    },
+                    "deviceName": {
+                        "$ref": "#/components/schemas/v202602StringPredicate"
+                    },
+                    "deviceLabels": {
+                        "$ref": "#/components/schemas/v202602LabelPredicate"
+                    },
+                    "siteId": {
+                        "$ref": "#/components/schemas/v202602IdentityPredicate"
+                    },
+                    "siteName": {
+                        "$ref": "#/components/schemas/v202602StringPredicate"
+                    },
+                    "interfaceId": {
+                        "$ref": "#/components/schemas/v202602IdentityPredicate"
+                    },
+                    "interfaceIndex": {
+                        "$ref": "#/components/schemas/v202602StringPredicate"
+                    },
+                    "interfaceName": {
+                        "$ref": "#/components/schemas/v202602StringPredicate"
+                    },
+                    "interfaceDescription": {
+                        "$ref": "#/components/schemas/v202602StringPredicate"
+                    },
+                    "ipAddress": {
+                        "$ref": "#/components/schemas/v202602IpPredicate"
+                    },
+                    "macAddress": {
+                        "$ref": "#/components/schemas/v202602StringPredicate"
+                    }
+                },
+                "description": "Field predicates resolved relative to the parent ScopedClause.network_scope."
+            },
+            "v202611Suppression": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the suppression configuration. Required to identify the existing suppression on Replace; assigned by the server on Create."
+                    },
+                    "displayName": {
+                        "type": "string",
+                        "description": "The name of the suppression configuration. Omission on Replace clears the name."
+                    },
+                    "comment": {
+                        "type": "string",
+                        "description": "The comment for the suppression configuration. Omission on Replace clears the comment."
+                    },
+                    "contextFilter": {
+                        "$ref": "#/components/schemas/v202602ContextFilter"
+                    },
+                    "sources": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505Source"
+                        },
+                        "description": "The source policies whose alerts may be suppressed. IDs are public policy IDs, not internal Alert Manager rule IDs. Any listed source may match. Empty means all source policies, subject to the other matching constraints."
+                    },
+                    "severities": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202303Severity"
+                        },
+                        "description": "The alarm severities the suppression applies to. Any listed severity may match. Empty means all severities, subject to the other matching constraints."
+                    },
+                    "keyFilter": {
+                        "$ref": "#/components/schemas/v202303MultiAttributeFilter"
+                    },
+                    "startTimeAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The resolved start time when suppression becomes active. On Create or Replace, omission defaults to the earliest permitted start unless start_time_code overrides it. On Replace, use KEEP_UNCHANGED to retain the existing start time. Worker propagation may delay effectiveness."
+                    },
+                    "startTimeCode": {
+                        "$ref": "#/components/schemas/v202611TimestampSetting"
+                    },
+                    "endTimeAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The resolved time when suppression ceases to be active. Omission on Create or Replace means no expiration unless end_time_code overrides it. An explicit end must be after the start and after the current time, satisfy the minimum suppression window, and allow time for propagation."
+                    },
+                    "endTimeCode": {
+                        "$ref": "#/components/schemas/v202611TimestampSetting"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The time when the suppression configuration was created.",
+                        "readOnly": true
+                    },
+                    "modifiedAt": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "The time when the suppression configuration was last modified.",
+                        "readOnly": true
+                    }
+                },
+                "description": "Different matching constraints are ANDed. Values within sources\nand severities are alternatives. At least one non-empty matching constraint is\nrequired; a display name, comment, or strictness flag alone is insufficient."
+            },
+            "v202611SuppressionFilters": {
+                "type": "object",
+                "properties": {
+                    "suppressionIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The IDs of the suppression configurations to list."
+                    },
+                    "sources": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202505Source"
+                        },
+                        "description": "Select suppressions explicitly associated with any of these source policies."
+                    },
+                    "userIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The IDs of the users who most recently updated the suppression configurations."
+                    },
+                    "createdAt": {
+                        "$ref": "#/components/schemas/v202303TimeRange"
+                    },
+                    "modifiedAt": {
+                        "$ref": "#/components/schemas/v202303TimeRange"
+                    },
+                    "startTimeAt": {
+                        "$ref": "#/components/schemas/v202303TimeRange"
+                    },
+                    "endTimeAt": {
+                        "$ref": "#/components/schemas/v202303TimeRange"
+                    }
+                }
+            },
+            "v202611SuppressionServiceCreateRequest": {
+                "type": "object",
+                "properties": {
+                    "suppression": {
+                        "$ref": "#/components/schemas/v202611Suppression"
+                    }
+                },
+                "required": [
+                    "suppression"
+                ]
+            },
+            "v202611SuppressionServiceCreateResponse": {
+                "type": "object",
+                "properties": {
+                    "suppression": {
+                        "$ref": "#/components/schemas/v202611Suppression"
+                    }
+                }
+            },
+            "v202611SuppressionServiceDeleteResponse": {
+                "type": "object"
+            },
+            "v202611SuppressionServiceGetResponse": {
+                "type": "object",
+                "properties": {
+                    "suppression": {
+                        "$ref": "#/components/schemas/v202611Suppression"
+                    }
+                }
+            },
+            "v202611SuppressionServiceListRequest": {
+                "type": "object",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/typesv202506PaginationConfig"
+                    },
+                    "sorting": {
+                        "$ref": "#/components/schemas/typesv202506SortingConfig"
+                    },
+                    "filters": {
+                        "$ref": "#/components/schemas/v202611SuppressionFilters"
+                    }
+                }
+            },
+            "v202611SuppressionServiceListResponse": {
+                "type": "object",
+                "properties": {
+                    "pagination": {
+                        "$ref": "#/components/schemas/typesv202506PaginationInfo"
+                    },
+                    "suppressions": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202611Suppression"
+                        },
+                        "description": "The matching suppression configurations, with resolved timestamps and without timestamp commands.",
+                        "readOnly": true
+                    }
+                }
+            },
+            "v202611SuppressionServiceReplaceResponse": {
+                "type": "object",
+                "properties": {
+                    "suppression": {
+                        "$ref": "#/components/schemas/v202611Suppression"
+                    }
+                }
+            },
+            "v202611TimestampSetting": {
+                "type": "string",
+                "enum": [
+                    "TIMESTAMP_SETTING_UNSPECIFIED",
+                    "TIMESTAMP_SETTING_KEEP_UNCHANGED",
+                    "TIMESTAMP_SETTING_AS_SOON_AS_POSSIBLE"
+                ],
+                "default": "TIMESTAMP_SETTING_UNSPECIFIED",
+                "description": "Timestamp commands are inputs, not persisted commands to replay on a later write.\nUnknown enum values are invalid.\n\n - TIMESTAMP_SETTING_UNSPECIFIED: Use the explicit timestamp, or its documented default when omitted.\n - TIMESTAMP_SETTING_KEEP_UNCHANGED: Preserve the stored timestamp, including an indefinite end. Replace only.\n - TIMESTAMP_SETTING_AS_SOON_AS_POSSIBLE: Request the earliest permitted time, subject to propagation and window constraints."
+            }
+        }
+    }
+}

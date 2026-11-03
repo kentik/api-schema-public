@@ -1,0 +1,315 @@
+syntax = "proto3";
+
+package kentik.alerting.public.v202611;
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/timestamp.proto";
+import "kentik/alerting/context/v202602/filter.proto";
+import "kentik/alerting/public/v202505/common.proto";
+import "kentik/alerting/types/v202303/types.proto";
+import "kentik/alerting/types/v202506/pagination.proto";
+import "kentik/alerting/types/v202506/sorting.proto";
+import "kentik/core/v202303/annotations.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/alerting/public/v202611";
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Alerting Suppressions API"
+    version: "v202611"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description:
+      "# Overview\n"
+      "The Alerts Suppressions API configures alert suppressions, preventing alerts from being activated. "
+      "This version supports multiple source policies, structured context filters, and timestamp commands. "
+      "Replace requires the complete writable configuration; omitted matching constraints are cleared, not preserved."
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/docs/alerting"
+    description: "Kentik Alerts documentation"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+service SuppressionService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.alerting";
+
+  rpc Create(SuppressionServiceCreateRequest) returns (SuppressionServiceCreateResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:write";
+    option (google.api.http) = {
+      post: "/v202611/suppressions"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Create"
+      summary: "Create Suppression"
+      description: "Creates a suppression configuration. At least one source, severity, key filter condition, or context filter condition is required."
+    };
+  }
+
+  rpc Get(SuppressionServiceGetRequest) returns (SuppressionServiceGetResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:read";
+    option (google.api.http) = {get: "/v202611/suppressions/{id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Get"
+      summary: "Get Suppression"
+      description: "Returns a suppression configuration, including all matching constraints and resolved timestamps. Timestamp commands are not returned."
+    };
+  }
+
+  rpc List(SuppressionServiceListRequest) returns (SuppressionServiceListResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:read";
+    option (google.api.http) = {
+      post: "/v202611/suppressions/list"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "List"
+      summary: "List Suppressions"
+      description: "Returns suppression configurations, including all matching constraints and resolved timestamps. Timestamp commands are not returned."
+    };
+  }
+
+  rpc Replace(SuppressionServiceReplaceRequest) returns (SuppressionServiceReplaceResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:write";
+    option (google.api.http) = {
+      patch: "/v202611/suppressions/{suppression.id}"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Replace"
+      summary: "Replace Suppression"
+      description:
+        "Replaces the complete writable suppression configuration; this is not a partial update despite the PATCH HTTP method. "
+        "Omitted matching constraints, display name, and comment are cleared. Output-only fields and server-managed metadata are not replaced. "
+        "Use timestamp commands to preserve existing start or end times. "
+        "Once active or starting too soon for changes to propagate, a suppression's start time and matching constraints cannot change; its end time, display name, and comment can change. "
+        "Suppressions that have ended or are ending too soon cannot be replaced. Timing constraints still apply."
+    };
+  }
+
+  rpc Delete(SuppressionServiceDeleteRequest) returns (SuppressionServiceDeleteResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.alerting:write";
+    option (google.api.http) = {delete: "/v202611/suppressions/{id}"};
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "Delete"
+      summary: "Delete Suppression"
+      description: "Deletes a suppression configuration."
+    };
+  }
+}
+
+// Different matching constraints are ANDed. Values within sources
+// and severities are alternatives. At least one non-empty matching constraint is
+// required; a display name, comment, or strictness flag alone is insufficient.
+message Suppression {
+  string id = 1 [
+    (google.api.field_behavior) = IDENTIFIER,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The ID of the suppression configuration. Required to identify the existing suppression on Replace; assigned by the server on Create."}
+  ];
+  string display_name = 2 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The name of the suppression configuration. Omission on Replace clears the name."}
+  ];
+  string comment = 3 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The comment for the suppression configuration. Omission on Replace clears the comment."}
+  ];
+  kentik.alerting.context.v202602.ContextFilter context_filter = 4 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Preferred structured filter on context recorded with the alert, not live inventory. Conjunctions are ORed; subject clauses and producer predicates within a conjunction are ANDed. Missing context does not match configured predicates, including negated predicates. If key_filter is also configured, both filters must match. Omission or an empty filter removes the context constraint."}
+  ];
+  repeated kentik.alerting.public.v202505.Source sources = 5 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The source policies whose alerts may be suppressed. IDs are public policy IDs, not internal Alert Manager rule IDs. Any listed source may match. Empty means all source policies, subject to the other matching constraints."}
+  ];
+  reserved 6; // Placeholder for Policy Types
+  repeated kentik.alerting.types.v202303.Severity severities = 7 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The alarm severities the suppression applies to. Any listed severity may match. Empty means all severities, subject to the other matching constraints."}
+  ];
+  kentik.alerting.types.v202303.MultiAttributeFilter key_filter = 8 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Filters producer-specific alert grouping keys. Prefer context_filter for structured filtering. If both filters are supplied, both must match. Set key_filter.strict to require every grouping-key dimension to match a filter; this strictness does not apply to context_filter."}
+  ];
+  google.protobuf.Timestamp start_time_at = 9 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The resolved start time when suppression becomes active. On Create or Replace, omission defaults to the earliest permitted start unless start_time_code overrides it. On Replace, use KEEP_UNCHANGED to retain the existing start time. Worker propagation may delay effectiveness."}
+  ];
+  TimestampSetting start_time_code = 10 [
+    (google.api.field_behavior) = INPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Input-only start-time command. A non-UNSPECIFIED command takes precedence over start_time_at. KEEP_UNCHANGED is valid only on Replace. ASAP requests the earliest permitted start, not immediate effectiveness. Responses omit this command and return the resolved start_time_at."}
+  ];
+  google.protobuf.Timestamp end_time_at = 11 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The resolved time when suppression ceases to be active. Omission on Create or Replace means no expiration unless end_time_code overrides it. An explicit end must be after the start and after the current time, satisfy the minimum suppression window, and allow time for propagation."}
+  ];
+  TimestampSetting end_time_code = 12 [
+    (google.api.field_behavior) = INPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Input-only end-time command. A non-UNSPECIFIED command takes precedence over end_time_at. KEEP_UNCHANGED and ASAP are valid only on Replace. ASAP requests the earliest permitted end but does not bypass minimum-window or lifecycle validation. Responses omit this command and return the resolved end_time_at, if any."}
+  ];
+  google.protobuf.Timestamp created_at = 13 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The time when the suppression configuration was created."}
+  ];
+  google.protobuf.Timestamp modified_at = 14 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The time when the suppression configuration was last modified."}
+  ];
+}
+
+// Timestamp commands are inputs, not persisted commands to replay on a later write.
+// Unknown enum values are invalid.
+enum TimestampSetting {
+  // Use the explicit timestamp, or its documented default when omitted.
+  TIMESTAMP_SETTING_UNSPECIFIED = 0;
+  // Preserve the stored timestamp, including an indefinite end. Replace only.
+  TIMESTAMP_SETTING_KEEP_UNCHANGED = 1;
+  // Request the earliest permitted time, subject to propagation and window constraints.
+  TIMESTAMP_SETTING_AS_SOON_AS_POSSIBLE = 2;
+}
+
+message SuppressionServiceCreateRequest {
+  Suppression suppression = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The suppression configuration to create."}
+  ];
+}
+
+message SuppressionServiceCreateResponse {
+  Suppression suppression = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The created suppression configuration, with resolved timestamps and without timestamp commands."}
+  ];
+}
+
+message SuppressionServiceGetRequest {
+  string id = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The ID of the suppression configuration to get."}
+  ];
+}
+
+message SuppressionServiceGetResponse {
+  Suppression suppression = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The retrieved suppression configuration, with resolved timestamps and without timestamp commands."}
+  ];
+}
+
+message SuppressionServiceListRequest {
+  kentik.alerting.types.v202506.PaginationConfig pagination = 1 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The pagination configuration for the list request."}
+  ];
+  kentik.alerting.types.v202506.SortingConfig sorting = 2 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The sorting configuration for the list request."}
+  ];
+  SuppressionFilters filters = 3 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Filters selecting stored suppression configurations, not conditions for matching alerts."}
+  ];
+}
+
+message SuppressionFilters {
+  repeated string suppression_ids = 1 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The IDs of the suppression configurations to list."}
+  ];
+  repeated kentik.alerting.public.v202505.Source sources = 2 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "Select suppressions explicitly associated with any of these source policies."}
+  ];
+  repeated string user_ids = 3 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The IDs of the users who most recently updated the suppression configurations."}
+  ];
+  kentik.alerting.types.v202303.TimeRange created_at = 4 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The time range for the creation time of the suppression configurations."}
+  ];
+  kentik.alerting.types.v202303.TimeRange modified_at = 5 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The time range for the modification time of the suppression configurations."}
+  ];
+  kentik.alerting.types.v202303.TimeRange start_time_at = 6 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The time range for suppression start times."}
+  ];
+  kentik.alerting.types.v202303.TimeRange end_time_at = 7 [
+    (google.api.field_behavior) = OPTIONAL,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The time range for suppression end times."}
+  ];
+}
+
+message SuppressionServiceListResponse {
+  kentik.alerting.types.v202506.PaginationInfo pagination = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The pagination information for the list response."}
+  ];
+  repeated Suppression suppressions = 2 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The matching suppression configurations, with resolved timestamps and without timestamp commands."}
+  ];
+}
+
+message SuppressionServiceReplaceRequest {
+  Suppression suppression = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The complete writable suppression configuration, including its existing ID. Omitted matching constraints, display name, and comment are cleared. Timestamp defaults apply unless overridden by timestamp commands."}
+  ];
+}
+
+message SuppressionServiceReplaceResponse {
+  Suppression suppression = 1 [
+    (google.api.field_behavior) = OUTPUT_ONLY,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The suppression configuration after replacement, with resolved timestamps and without timestamp commands."}
+  ];
+}
+
+message SuppressionServiceDeleteRequest {
+  string id = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: "The ID of the suppression configuration to delete."}
+  ];
+}
+
+message SuppressionServiceDeleteResponse {}

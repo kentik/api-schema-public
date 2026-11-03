@@ -4,7 +4,9 @@ package kentikall
 
 import (
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/ai_advisor/v202511"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/alerting/context/v202602"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/alerting/public/v202505"
+	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/alerting/public/v202611"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/alerting/types/v202303"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/alerting/types/v202506"
 	_ "github.com/kentik/api-artifacts/public/gen/go/kentik/as_group/v202212"
