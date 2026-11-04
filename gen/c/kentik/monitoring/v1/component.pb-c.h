@@ -1311,6 +1311,12 @@ struct  Kentik__Monitoring__V1__ComponentState
    * snapshot with its own health, so a consumer can include it again (see Audience).
    */
   Kentik__Monitoring__V1__Audience audience;
+  /*
+   * True when a new version cannot cause or fix the health of this component, for example the
+   * clock of the host. An upgrade or a promotion does not judge a new version by it, but the
+   * component stays in every health and every audience. Default: false, so upgrades count it.
+   */
+  protobuf_c_boolean version_independent;
   Kentik__Monitoring__V1__ComponentState__DescriptionCase _description_case;
   union {
     /*
@@ -1325,7 +1331,7 @@ struct  Kentik__Monitoring__V1__ComponentState
 };
 #define KENTIK__MONITORING__V1__COMPONENT_STATE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__monitoring__v1__component_state__descriptor) \
-    , (char *)protobuf_c_empty_string, KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_UNSPECIFIED, KENTIK__MONITORING__V1__LIFECYCLE_PHASE__LIFECYCLE_PHASE_UNSPECIFIED, NULL, NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, NULL, NULL, KENTIK__MONITORING__V1__AUDIENCE__AUDIENCE_UNSPECIFIED, KENTIK__MONITORING__V1__COMPONENT_STATE___DESCRIPTION__NOT_SET, {0} }
+    , (char *)protobuf_c_empty_string, KENTIK__MONITORING__V1__COMPONENT_TYPE__COMPONENT_TYPE_UNSPECIFIED, KENTIK__MONITORING__V1__LIFECYCLE_PHASE__LIFECYCLE_PHASE_UNSPECIFIED, NULL, NULL, 0,NULL, 0,NULL, 0,NULL, 0,NULL, NULL, NULL, KENTIK__MONITORING__V1__AUDIENCE__AUDIENCE_UNSPECIFIED, 0, KENTIK__MONITORING__V1__COMPONENT_STATE___DESCRIPTION__NOT_SET, {0} }
 
 
 /* Kentik__Monitoring__V1__Probe methods */

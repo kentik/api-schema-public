@@ -629,4 +629,9 @@ message ComponentState {
   // own health only when the audience of the query matches. The component is still in the
   // snapshot with its own health, so a consumer can include it again (see Audience).
   Audience audience = 13;
+
+  // True when a new version cannot cause or fix the health of this component, for example the
+  // clock of the host. An upgrade or a promotion does not judge a new version by it, but the
+  // component stays in every health and every audience. Default: false, so upgrades count it.
+  bool version_independent = 14;
 }

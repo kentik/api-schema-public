@@ -3075,6 +3075,7 @@ class ComponentState final : public ::google::protobuf::Message
     kTypeFieldNumber = 2,
     kLifecyclePhaseFieldNumber = 3,
     kAudienceFieldNumber = 13,
+    kVersionIndependentFieldNumber = 14,
   };
   // repeated .kentik.monitoring.v1.ComponentState children = 6 [json_name = "children"];
   int children_size() const;
@@ -3265,12 +3266,22 @@ class ComponentState final : public ::google::protobuf::Message
   void _internal_set_audience(::kentik::monitoring::v1::Audience value);
 
   public:
+  // bool version_independent = 14 [json_name = "versionIndependent"];
+  void clear_version_independent() ;
+  bool version_independent() const;
+  void set_version_independent(bool value);
+
+  private:
+  bool _internal_version_independent() const;
+  void _internal_set_version_independent(bool value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.monitoring.v1.ComponentState)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      4, 13, 8,
+      4, 14, 8,
       73, 2>
       _table_;
 
@@ -3306,6 +3317,7 @@ class ComponentState final : public ::google::protobuf::Message
     int type_;
     int lifecycle_phase_;
     int audience_;
+    bool version_independent_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -5473,6 +5485,28 @@ inline ::kentik::monitoring::v1::Audience ComponentState::_internal_audience() c
 inline void ComponentState::_internal_set_audience(::kentik::monitoring::v1::Audience value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.audience_ = value;
+}
+
+// bool version_independent = 14 [json_name = "versionIndependent"];
+inline void ComponentState::clear_version_independent() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.version_independent_ = false;
+}
+inline bool ComponentState::version_independent() const {
+  // @@protoc_insertion_point(field_get:kentik.monitoring.v1.ComponentState.version_independent)
+  return _internal_version_independent();
+}
+inline void ComponentState::set_version_independent(bool value) {
+  _internal_set_version_independent(value);
+  // @@protoc_insertion_point(field_set:kentik.monitoring.v1.ComponentState.version_independent)
+}
+inline bool ComponentState::_internal_version_independent() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.version_independent_;
+}
+inline void ComponentState::_internal_set_version_independent(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.version_independent_ = value;
 }
 
 #ifdef __GNUC__

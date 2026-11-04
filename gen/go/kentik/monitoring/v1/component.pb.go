@@ -1872,9 +1872,13 @@ type ComponentState struct {
 	// Who the health of this component matters to. A parent includes this component in its
 	// own health only when the audience of the query matches. The component is still in the
 	// snapshot with its own health, so a consumer can include it again (see Audience).
-	Audience      Audience `protobuf:"varint,13,opt,name=audience,proto3,enum=kentik.monitoring.v1.Audience" json:"audience,omitempty"`
-	unknownFields protoimpl.UnknownFields
-	sizeCache     protoimpl.SizeCache
+	Audience Audience `protobuf:"varint,13,opt,name=audience,proto3,enum=kentik.monitoring.v1.Audience" json:"audience,omitempty"`
+	// True when a new version cannot cause or fix the health of this component, for example the
+	// clock of the host. An upgrade or a promotion does not judge a new version by it, but the
+	// component stays in every health and every audience. Default: false, so upgrades count it.
+	VersionIndependent bool `protobuf:"varint,14,opt,name=version_independent,json=versionIndependent,proto3" json:"version_independent,omitempty"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
 }
 
 func (x *ComponentState) Reset() {
@@ -1998,6 +2002,13 @@ func (x *ComponentState) GetAudience() Audience {
 	return Audience_AUDIENCE_UNSPECIFIED
 }
 
+func (x *ComponentState) GetVersionIndependent() bool {
+	if x != nil {
+		return x.VersionIndependent
+	}
+	return false
+}
+
 var File_kentik_monitoring_v1_component_proto protoreflect.FileDescriptor
 
 const file_kentik_monitoring_v1_component_proto_rawDesc = "" +
@@ -2055,7 +2066,7 @@ const file_kentik_monitoring_v1_component_proto_rawDesc = "" +
 	"\x04Link\x122\n" +
 	"\x04type\x18\x01 \x01(\x0e2\x1e.kentik.monitoring.v1.LinkTypeR\x04type\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x10\n" +
-	"\x03url\x18\x03 \x01(\tR\x03url\"\xb1\x06\n" +
+	"\x03url\x18\x03 \x01(\tR\x03url\"\xe2\x06\n" +
 	"\x0eComponentState\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x127\n" +
 	"\x04type\x18\x02 \x01(\x0e2#.kentik.monitoring.v1.ComponentTypeR\x04type\x12%\n" +
@@ -2070,7 +2081,8 @@ const file_kentik_monitoring_v1_component_proto_rawDesc = "" +
 	"\x05links\x18\b \x03(\v2\x1a.kentik.monitoring.v1.LinkR\x05links\x129\n" +
 	"\vannotations\x18\v \x01(\v2\x17.google.protobuf.StructR\vannotations\x128\n" +
 	"\ttimestamp\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12:\n" +
-	"\baudience\x18\r \x01(\x0e2\x1e.kentik.monitoring.v1.AudienceR\baudience\x1a9\n" +
+	"\baudience\x18\r \x01(\x0e2\x1e.kentik.monitoring.v1.AudienceR\baudience\x12/\n" +
+	"\x13version_independent\x18\x0e \x01(\bR\x12versionIndependent\x1a9\n" +
 	"\vLabelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\x0e\n" +

@@ -365,7 +365,8 @@ inline constexpr ComponentState::Impl_::Impl_(
         timestamp_{nullptr},
         type_{static_cast< ::kentik::monitoring::v1::ComponentType >(0)},
         lifecycle_phase_{static_cast< ::kentik::monitoring::v1::LifecyclePhase >(0)},
-        audience_{static_cast< ::kentik::monitoring::v1::Audience >(0)} {}
+        audience_{static_cast< ::kentik::monitoring::v1::Audience >(0)},
+        version_independent_{false} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR ComponentState::ComponentState(::_pbi::ConstantInitialized)
@@ -563,6 +564,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState, _impl_.annotations_),
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState, _impl_.timestamp_),
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState, _impl_.audience_),
+        PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState, _impl_.version_independent_),
         ~0u,
         ~0u,
         0,
@@ -575,6 +577,7 @@ const ::uint32_t
         ~0u,
         3,
         4,
+        ~0u,
         ~0u,
 };
 
@@ -592,7 +595,7 @@ static const ::_pbi::MigrationSchema
         {112, 122, -1, sizeof(::kentik::monitoring::v1::Metric)},
         {124, -1, -1, sizeof(::kentik::monitoring::v1::Link)},
         {135, 145, -1, sizeof(::kentik::monitoring::v1::ComponentState_LabelsEntry_DoNotUse)},
-        {147, 168, -1, sizeof(::kentik::monitoring::v1::ComponentState)},
+        {147, 169, -1, sizeof(::kentik::monitoring::v1::ComponentState)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::monitoring::v1::_Probe_default_instance_._instance,
@@ -655,7 +658,7 @@ const char descriptor_table_protodef_kentik_2fmonitoring_2fv1_2fcomponent_2eprot
     "(\0132\".kentik.monitoring.v1.MetricSampleR\007"
     "samples\"b\n\004Link\0222\n\004type\030\001 \001(\0162\036.kentik.m"
     "onitoring.v1.LinkTypeR\004type\022\024\n\005title\030\002 \001"
-    "(\tR\005title\022\020\n\003url\030\003 \001(\tR\003url\"\261\006\n\016Componen"
+    "(\tR\005title\022\020\n\003url\030\003 \001(\tR\003url\"\342\006\n\016Componen"
     "tState\022\022\n\004name\030\001 \001(\tR\004name\0227\n\004type\030\002 \001(\016"
     "2#.kentik.monitoring.v1.ComponentTypeR\004t"
     "ype\022%\n\013description\030\n \001(\tH\000R\013description\210"
@@ -674,123 +677,124 @@ const char descriptor_table_protodef_kentik_2fmonitoring_2fv1_2fcomponent_2eprot
     "tR\013annotations\0228\n\ttimestamp\030\014 \001(\0132\032.goog"
     "le.protobuf.TimestampR\ttimestamp\022:\n\010audi"
     "ence\030\r \001(\0162\036.kentik.monitoring.v1.Audien"
-    "ceR\010audience\0329\n\013LabelsEntry\022\020\n\003key\030\001 \001(\t"
-    "R\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001B\016\n\014_desc"
-    "ription*\264\001\n\016LifecyclePhase\022\037\n\033LIFECYCLE_"
-    "PHASE_UNSPECIFIED\020\000\022 \n\034LIFECYCLE_PHASE_I"
-    "NITIALIZING\020d\022\034\n\027LIFECYCLE_PHASE_RUNNING"
-    "\020\310\001\022 \n\033LIFECYCLE_PHASE_TERMINATING\020\254\002\022\037\n"
-    "\032LIFECYCLE_PHASE_TERMINATED\020\220\003*\267\001\n\014Healt"
-    "hStatus\022\035\n\031HEALTH_STATUS_UNSPECIFIED\020\000\022\031"
-    "\n\025HEALTH_STATUS_HEALTHY\020d\022\032\n\025HEALTH_STAT"
-    "US_WARNING\020\310\001\022\033\n\026HEALTH_STATUS_DEGRADED\020"
-    "\254\002\022\033\n\026HEALTH_STATUS_CRITICAL\020\220\003\022\027\n\022HEALT"
-    "H_STATUS_DOWN\020\364\003*t\n\nMetricType\022\033\n\027METRIC"
-    "_TYPE_UNSPECIFIED\020\000\022\025\n\021METRIC_TYPE_GAUGE"
-    "\020\001\022\027\n\023METRIC_TYPE_COUNTER\020\002\022\031\n\025METRIC_TY"
-    "PE_HISTOGRAM\020\003*\356\006\n\014MetricEntity\022\035\n\031METRI"
-    "C_ENTITY_UNSPECIFIED\020\000\022\032\n\026METRIC_ENTITY_"
-    "REQUESTS\020\001\022\031\n\025METRIC_ENTITY_QUERIES\020\002\022\027\n"
-    "\023METRIC_ENTITY_FLOWS\020\n\022\035\n\031METRIC_ENTITY_"
-    "CONNECTIONS\020\013\022\031\n\025METRIC_ENTITY_PACKETS\020\014"
-    "\022\027\n\023METRIC_ENTITY_BYTES\020\r\022\027\n\023METRIC_ENTI"
-    "TY_READS\020\024\022\030\n\024METRIC_ENTITY_WRITES\020\025\022\036\n\032"
-    "METRIC_ENTITY_TRANSACTIONS\020\026\022\031\n\025METRIC_E"
-    "NTITY_RECORDS\020\027\022\032\n\026METRIC_ENTITY_MESSAGE"
-    "S\020\036\022\030\n\024METRIC_ENTITY_EVENTS\020\037\022\026\n\022METRIC_"
-    "ENTITY_LOGS\020 \022\027\n\023METRIC_ENTITY_TASKS\020(\022\034"
-    "\n\030METRIC_ENTITY_OPERATIONS\020)\022\031\n\025METRIC_E"
-    "NTITY_BATCHES\020*\022\027\n\023METRIC_ENTITY_ITEMS\0202"
-    "\022\026\n\022METRIC_ENTITY_DATA\0203\022\030\n\024METRIC_ENTIT"
-    "Y_BLOCKS\0204\022\032\n\026METRIC_ENTITY_REPLICAS\0205\022\033"
-    "\n\027METRIC_ENTITY_SNAPSHOTS\0206\022\031\n\025METRIC_EN"
-    "TITY_THREADS\020<\022\033\n\027METRIC_ENTITY_PROCESSE"
-    "S\020=\022\034\n\030METRIC_ENTITY_GOROUTINES\020>\022\027\n\023MET"
-    "RIC_ENTITY_LOCKS\020\?\022\032\n\026METRIC_ENTITY_SESS"
-    "IONS\020F\022\027\n\023METRIC_ENTITY_USERS\020G\022\031\n\025METRI"
-    "C_ENTITY_CLIENTS\020H\022\030\n\024METRIC_ENTITY_ERRO"
-    "RS\020P\022\027\n\023METRIC_ENTITY_SPANS\020Q\022\030\n\024METRIC_"
-    "ENTITY_ALERTS\020R*\261\001\n\021MetricMeasurement\022\"\n"
-    "\036METRIC_MEASUREMENT_UNSPECIFIED\020\000\022\034\n\030MET"
-    "RIC_MEASUREMENT_COUNT\020\001\022\037\n\033METRIC_MEASUR"
-    "EMENT_DURATION\020\002\022\033\n\027METRIC_MEASUREMENT_S"
-    "IZE\020\003\022\034\n\030METRIC_MEASUREMENT_RATIO\020\004*\222\002\n\022"
-    "MetricDurationUnit\022$\n METRIC_DURATION_UN"
-    "IT_UNSPECIFIED\020\000\022$\n METRIC_DURATION_UNIT"
-    "_NANOSECONDS\020\001\022%\n!METRIC_DURATION_UNIT_M"
-    "ICROSECONDS\020\002\022%\n!METRIC_DURATION_UNIT_MI"
-    "LLISECONDS\020\003\022 \n\034METRIC_DURATION_UNIT_SEC"
-    "ONDS\020\004\022 \n\034METRIC_DURATION_UNIT_MINUTES\020\005"
-    "\022\036\n\032METRIC_DURATION_UNIT_HOURS\020\006*\223\001\n\016Met"
-    "ricRateUnit\022 \n\034METRIC_RATE_UNIT_UNSPECIF"
-    "IED\020\000\022\037\n\033METRIC_RATE_UNIT_PER_SECOND\020\001\022\037"
-    "\n\033METRIC_RATE_UNIT_PER_MINUTE\020\002\022\035\n\031METRI"
-    "C_RATE_UNIT_PER_HOUR\020\003*\352\001\n\016MetricCategor"
-    "y\022\037\n\033METRIC_CATEGORY_UNSPECIFIED\020\000\022\037\n\033ME"
-    "TRIC_CATEGORY_UTILIZATION\020\001\022\036\n\032METRIC_CA"
-    "TEGORY_SATURATION\020\002\022\032\n\026METRIC_CATEGORY_E"
-    "RRORS\020\003\022\033\n\027METRIC_CATEGORY_LATENCY\020\004\022\033\n\027"
-    "METRIC_CATEGORY_TRAFFIC\020\005\022 \n\034METRIC_CATE"
-    "GORY_AVAILABILITY\020\006*\225\017\n\rComponentType\022\036\n"
-    "\032COMPONENT_TYPE_UNSPECIFIED\020\000\022\032\n\026COMPONE"
-    "NT_TYPE_GENERIC\020\001\022\030\n\024COMPONENT_TYPE_GROU"
-    "P\020\002\022\032\n\026COMPONENT_TYPE_BACKEND\020d\022\033\n\027COMPO"
-    "NENT_TYPE_FRONTEND\020e\022\032\n\026COMPONENT_TYPE_C"
-    "LUSTER\020f\022\027\n\023COMPONENT_TYPE_NODE\020g\022\030\n\024COM"
-    "PONENT_TYPE_AGENT\020h\022\035\n\031COMPONENT_TYPE_CA"
-    "PABILITY\020i\022\034\n\027COMPONENT_TYPE_RECEIVER\020\310\001"
-    "\022\032\n\025COMPONENT_TYPE_FILTER\020\311\001\022\035\n\030COMPONEN"
-    "T_TYPE_PROCESSOR\020\312\001\022\032\n\025COMPONENT_TYPE_PO"
-    "LLER\020\313\001\022\035\n\030COMPONENT_TYPE_SCHEDULER\020\314\001\022 "
-    "\n\033COMPONENT_TYPE_ORCHESTRATOR\020\315\001\022\032\n\025COMP"
-    "ONENT_TYPE_SENDER\020\316\001\022\031\n\024COMPONENT_TYPE_P"
-    "ROXY\020\317\001\022\032\n\025COMPONENT_TYPE_ROUTER\020\320\001\022\032\n\025C"
-    "OMPONENT_TYPE_WORKER\020\321\001\022\033\n\026COMPONENT_TYP"
-    "E_CHANNEL\020\322\001\022\032\n\025COMPONENT_TYPE_BUFFER\020\323\001"
-    "\022\030\n\023COMPONENT_TYPE_SINK\020\324\001\022\036\n\031COMPONENT_"
-    "TYPE_CONNECTION\020\325\001\022\036\n\031COMPONENT_TYPE_REC"
-    "ONCILER\020\326\001\022\036\n\031COMPONENT_TYPE_EVENT_LOOP\020"
-    "\327\001\022\"\n\035COMPONENT_TYPE_CONFIG_MANAGER\020\330\001\022\036"
-    "\n\031COMPONENT_TYPE_SUPERVISOR\020\331\001\022\031\n\024COMPON"
-    "ENT_TYPE_CACHE\020\254\002\022\031\n\024COMPONENT_TYPE_QUEU"
-    "E\020\255\002\022\034\n\027COMPONENT_TYPE_DATABASE\020\256\002\022\"\n\035CO"
-    "MPONENT_TYPE_OBJECT_STORAGE\020\257\002\022\'\n\"COMPON"
-    "ENT_TYPE_TIMESERIES_DATABASE\020\260\002\022#\n\036COMPO"
-    "NENT_TYPE_KEY_VALUE_STORE\020\261\002\022%\n COMPONEN"
-    "T_TYPE_DOCUMENT_DATABASE\020\262\002\022 \n\033COMPONENT"
-    "_TYPE_SEARCH_INDEX\020\263\002\022\032\n\025COMPONENT_TYPE_"
-    "STREAM\020\264\002\022\032\n\025COMPONENT_TYPE_MEMORY\020\220\003\022\030\n"
-    "\023COMPONENT_TYPE_DISK\020\221\003\022\036\n\031COMPONENT_TYP"
-    "E_FILESYSTEM\020\222\003\022\033\n\026COMPONENT_TYPE_NETWOR"
-    "K\020\223\003\022\027\n\022COMPONENT_TYPE_CPU\020\224\003\022\027\n\022COMPONE"
-    "NT_TYPE_GPU\020\225\003\022\031\n\024COMPONENT_TYPE_CLOCK\020\226"
-    "\003\022\032\n\025COMPONENT_TYPE_SERVER\020\364\003\022\026\n\021COMPONE"
-    "NT_TYPE_VM\020\365\003\022\035\n\030COMPONENT_TYPE_CONTAINE"
-    "R\020\366\003\022\027\n\022COMPONENT_TYPE_POD\020\367\003\022\035\n\030COMPONE"
-    "NT_TYPE_NAMESPACE\020\370\003\022\030\n\023COMPONENT_TYPE_J"
-    "AIL\020\371\003\022\032\n\025COMPONENT_TYPE_LAMBDA\020\372\003\022!\n\034CO"
-    "MPONENT_TYPE_LOAD_BALANCER\020\330\004\022\034\n\027COMPONE"
-    "NT_TYPE_FIREWALL\020\331\004\022\027\n\022COMPONENT_TYPE_VP"
-    "N\020\332\004\022\032\n\025COMPONENT_TYPE_SWITCH\020\333\004\022#\n\036COMP"
-    "ONENT_TYPE_PHYSICAL_ROUTER\020\334\004\022\027\n\022COMPONE"
-    "NT_TYPE_DNS\020\335\004\022\027\n\022COMPONENT_TYPE_CDN\020\336\004\022"
-    "\032\n\025COMPONENT_TYPE_TUNNEL\020\337\004\022 \n\033COMPONENT"
-    "_TYPE_EXTERNAL_API\020\274\005\022!\n\034COMPONENT_TYPE_"
-    "CLOUD_SERVICE\020\275\005\022\030\n\023COMPONENT_TYPE_SAAS\020"
-    "\276\005\022\032\n\025COMPONENT_TYPE_CONFIG\020\240\006\022\032\n\025COMPON"
-    "ENT_TYPE_SCHEMA\020\241\006\022\037\n\032COMPONENT_TYPE_CER"
-    "TIFICATE\020\242\006\022\036\n\031COMPONENT_TYPE_CREDENTIAL"
-    "\020\243\006*R\n\010Audience\022\030\n\024AUDIENCE_UNSPECIFIED\020"
-    "\000\022\025\n\021AUDIENCE_CUSTOMER\020\001\022\025\n\021AUDIENCE_INT"
-    "ERNAL\020\002*\375\001\n\010LinkType\022\031\n\025LINK_TYPE_UNSPEC"
-    "IFIED\020\000\022\027\n\023LINK_TYPE_DASHBOARD\020\001\022\022\n\016LINK"
-    "_TYPE_LOGS\020\002\022\024\n\020LINK_TYPE_TRACES\020\003\022\033\n\027LI"
-    "NK_TYPE_DOCUMENTATION\020\004\022\025\n\021LINK_TYPE_RUN"
-    "BOOK\020\005\022\031\n\025LINK_TYPE_SOURCE_CODE\020\006\022\024\n\020LIN"
-    "K_TYPE_TICKET\020\007\022\026\n\022LINK_TYPE_ALERTING\020\010\022"
-    "\026\n\022LINK_TYPE_EXTERNAL\020\tBLZJgithub.com/ke"
-    "ntik/api-schema-public/gen/go/kentik/mon"
-    "itoring/v1;monitoringb\006proto3"
+    "ceR\010audience\022/\n\023version_independent\030\016 \001("
+    "\010R\022versionIndependent\0329\n\013LabelsEntry\022\020\n\003"
+    "key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001"
+    "B\016\n\014_description*\264\001\n\016LifecyclePhase\022\037\n\033L"
+    "IFECYCLE_PHASE_UNSPECIFIED\020\000\022 \n\034LIFECYCL"
+    "E_PHASE_INITIALIZING\020d\022\034\n\027LIFECYCLE_PHAS"
+    "E_RUNNING\020\310\001\022 \n\033LIFECYCLE_PHASE_TERMINAT"
+    "ING\020\254\002\022\037\n\032LIFECYCLE_PHASE_TERMINATED\020\220\003*"
+    "\267\001\n\014HealthStatus\022\035\n\031HEALTH_STATUS_UNSPEC"
+    "IFIED\020\000\022\031\n\025HEALTH_STATUS_HEALTHY\020d\022\032\n\025HE"
+    "ALTH_STATUS_WARNING\020\310\001\022\033\n\026HEALTH_STATUS_"
+    "DEGRADED\020\254\002\022\033\n\026HEALTH_STATUS_CRITICAL\020\220\003"
+    "\022\027\n\022HEALTH_STATUS_DOWN\020\364\003*t\n\nMetricType\022"
+    "\033\n\027METRIC_TYPE_UNSPECIFIED\020\000\022\025\n\021METRIC_T"
+    "YPE_GAUGE\020\001\022\027\n\023METRIC_TYPE_COUNTER\020\002\022\031\n\025"
+    "METRIC_TYPE_HISTOGRAM\020\003*\356\006\n\014MetricEntity"
+    "\022\035\n\031METRIC_ENTITY_UNSPECIFIED\020\000\022\032\n\026METRI"
+    "C_ENTITY_REQUESTS\020\001\022\031\n\025METRIC_ENTITY_QUE"
+    "RIES\020\002\022\027\n\023METRIC_ENTITY_FLOWS\020\n\022\035\n\031METRI"
+    "C_ENTITY_CONNECTIONS\020\013\022\031\n\025METRIC_ENTITY_"
+    "PACKETS\020\014\022\027\n\023METRIC_ENTITY_BYTES\020\r\022\027\n\023ME"
+    "TRIC_ENTITY_READS\020\024\022\030\n\024METRIC_ENTITY_WRI"
+    "TES\020\025\022\036\n\032METRIC_ENTITY_TRANSACTIONS\020\026\022\031\n"
+    "\025METRIC_ENTITY_RECORDS\020\027\022\032\n\026METRIC_ENTIT"
+    "Y_MESSAGES\020\036\022\030\n\024METRIC_ENTITY_EVENTS\020\037\022\026"
+    "\n\022METRIC_ENTITY_LOGS\020 \022\027\n\023METRIC_ENTITY_"
+    "TASKS\020(\022\034\n\030METRIC_ENTITY_OPERATIONS\020)\022\031\n"
+    "\025METRIC_ENTITY_BATCHES\020*\022\027\n\023METRIC_ENTIT"
+    "Y_ITEMS\0202\022\026\n\022METRIC_ENTITY_DATA\0203\022\030\n\024MET"
+    "RIC_ENTITY_BLOCKS\0204\022\032\n\026METRIC_ENTITY_REP"
+    "LICAS\0205\022\033\n\027METRIC_ENTITY_SNAPSHOTS\0206\022\031\n\025"
+    "METRIC_ENTITY_THREADS\020<\022\033\n\027METRIC_ENTITY"
+    "_PROCESSES\020=\022\034\n\030METRIC_ENTITY_GOROUTINES"
+    "\020>\022\027\n\023METRIC_ENTITY_LOCKS\020\?\022\032\n\026METRIC_EN"
+    "TITY_SESSIONS\020F\022\027\n\023METRIC_ENTITY_USERS\020G"
+    "\022\031\n\025METRIC_ENTITY_CLIENTS\020H\022\030\n\024METRIC_EN"
+    "TITY_ERRORS\020P\022\027\n\023METRIC_ENTITY_SPANS\020Q\022\030"
+    "\n\024METRIC_ENTITY_ALERTS\020R*\261\001\n\021MetricMeasu"
+    "rement\022\"\n\036METRIC_MEASUREMENT_UNSPECIFIED"
+    "\020\000\022\034\n\030METRIC_MEASUREMENT_COUNT\020\001\022\037\n\033METR"
+    "IC_MEASUREMENT_DURATION\020\002\022\033\n\027METRIC_MEAS"
+    "UREMENT_SIZE\020\003\022\034\n\030METRIC_MEASUREMENT_RAT"
+    "IO\020\004*\222\002\n\022MetricDurationUnit\022$\n METRIC_DU"
+    "RATION_UNIT_UNSPECIFIED\020\000\022$\n METRIC_DURA"
+    "TION_UNIT_NANOSECONDS\020\001\022%\n!METRIC_DURATI"
+    "ON_UNIT_MICROSECONDS\020\002\022%\n!METRIC_DURATIO"
+    "N_UNIT_MILLISECONDS\020\003\022 \n\034METRIC_DURATION"
+    "_UNIT_SECONDS\020\004\022 \n\034METRIC_DURATION_UNIT_"
+    "MINUTES\020\005\022\036\n\032METRIC_DURATION_UNIT_HOURS\020"
+    "\006*\223\001\n\016MetricRateUnit\022 \n\034METRIC_RATE_UNIT"
+    "_UNSPECIFIED\020\000\022\037\n\033METRIC_RATE_UNIT_PER_S"
+    "ECOND\020\001\022\037\n\033METRIC_RATE_UNIT_PER_MINUTE\020\002"
+    "\022\035\n\031METRIC_RATE_UNIT_PER_HOUR\020\003*\352\001\n\016Metr"
+    "icCategory\022\037\n\033METRIC_CATEGORY_UNSPECIFIE"
+    "D\020\000\022\037\n\033METRIC_CATEGORY_UTILIZATION\020\001\022\036\n\032"
+    "METRIC_CATEGORY_SATURATION\020\002\022\032\n\026METRIC_C"
+    "ATEGORY_ERRORS\020\003\022\033\n\027METRIC_CATEGORY_LATE"
+    "NCY\020\004\022\033\n\027METRIC_CATEGORY_TRAFFIC\020\005\022 \n\034ME"
+    "TRIC_CATEGORY_AVAILABILITY\020\006*\225\017\n\rCompone"
+    "ntType\022\036\n\032COMPONENT_TYPE_UNSPECIFIED\020\000\022\032"
+    "\n\026COMPONENT_TYPE_GENERIC\020\001\022\030\n\024COMPONENT_"
+    "TYPE_GROUP\020\002\022\032\n\026COMPONENT_TYPE_BACKEND\020d"
+    "\022\033\n\027COMPONENT_TYPE_FRONTEND\020e\022\032\n\026COMPONE"
+    "NT_TYPE_CLUSTER\020f\022\027\n\023COMPONENT_TYPE_NODE"
+    "\020g\022\030\n\024COMPONENT_TYPE_AGENT\020h\022\035\n\031COMPONEN"
+    "T_TYPE_CAPABILITY\020i\022\034\n\027COMPONENT_TYPE_RE"
+    "CEIVER\020\310\001\022\032\n\025COMPONENT_TYPE_FILTER\020\311\001\022\035\n"
+    "\030COMPONENT_TYPE_PROCESSOR\020\312\001\022\032\n\025COMPONEN"
+    "T_TYPE_POLLER\020\313\001\022\035\n\030COMPONENT_TYPE_SCHED"
+    "ULER\020\314\001\022 \n\033COMPONENT_TYPE_ORCHESTRATOR\020\315"
+    "\001\022\032\n\025COMPONENT_TYPE_SENDER\020\316\001\022\031\n\024COMPONE"
+    "NT_TYPE_PROXY\020\317\001\022\032\n\025COMPONENT_TYPE_ROUTE"
+    "R\020\320\001\022\032\n\025COMPONENT_TYPE_WORKER\020\321\001\022\033\n\026COMP"
+    "ONENT_TYPE_CHANNEL\020\322\001\022\032\n\025COMPONENT_TYPE_"
+    "BUFFER\020\323\001\022\030\n\023COMPONENT_TYPE_SINK\020\324\001\022\036\n\031C"
+    "OMPONENT_TYPE_CONNECTION\020\325\001\022\036\n\031COMPONENT"
+    "_TYPE_RECONCILER\020\326\001\022\036\n\031COMPONENT_TYPE_EV"
+    "ENT_LOOP\020\327\001\022\"\n\035COMPONENT_TYPE_CONFIG_MAN"
+    "AGER\020\330\001\022\036\n\031COMPONENT_TYPE_SUPERVISOR\020\331\001\022"
+    "\031\n\024COMPONENT_TYPE_CACHE\020\254\002\022\031\n\024COMPONENT_"
+    "TYPE_QUEUE\020\255\002\022\034\n\027COMPONENT_TYPE_DATABASE"
+    "\020\256\002\022\"\n\035COMPONENT_TYPE_OBJECT_STORAGE\020\257\002\022"
+    "\'\n\"COMPONENT_TYPE_TIMESERIES_DATABASE\020\260\002"
+    "\022#\n\036COMPONENT_TYPE_KEY_VALUE_STORE\020\261\002\022%\n"
+    " COMPONENT_TYPE_DOCUMENT_DATABASE\020\262\002\022 \n\033"
+    "COMPONENT_TYPE_SEARCH_INDEX\020\263\002\022\032\n\025COMPON"
+    "ENT_TYPE_STREAM\020\264\002\022\032\n\025COMPONENT_TYPE_MEM"
+    "ORY\020\220\003\022\030\n\023COMPONENT_TYPE_DISK\020\221\003\022\036\n\031COMP"
+    "ONENT_TYPE_FILESYSTEM\020\222\003\022\033\n\026COMPONENT_TY"
+    "PE_NETWORK\020\223\003\022\027\n\022COMPONENT_TYPE_CPU\020\224\003\022\027"
+    "\n\022COMPONENT_TYPE_GPU\020\225\003\022\031\n\024COMPONENT_TYP"
+    "E_CLOCK\020\226\003\022\032\n\025COMPONENT_TYPE_SERVER\020\364\003\022\026"
+    "\n\021COMPONENT_TYPE_VM\020\365\003\022\035\n\030COMPONENT_TYPE"
+    "_CONTAINER\020\366\003\022\027\n\022COMPONENT_TYPE_POD\020\367\003\022\035"
+    "\n\030COMPONENT_TYPE_NAMESPACE\020\370\003\022\030\n\023COMPONE"
+    "NT_TYPE_JAIL\020\371\003\022\032\n\025COMPONENT_TYPE_LAMBDA"
+    "\020\372\003\022!\n\034COMPONENT_TYPE_LOAD_BALANCER\020\330\004\022\034"
+    "\n\027COMPONENT_TYPE_FIREWALL\020\331\004\022\027\n\022COMPONEN"
+    "T_TYPE_VPN\020\332\004\022\032\n\025COMPONENT_TYPE_SWITCH\020\333"
+    "\004\022#\n\036COMPONENT_TYPE_PHYSICAL_ROUTER\020\334\004\022\027"
+    "\n\022COMPONENT_TYPE_DNS\020\335\004\022\027\n\022COMPONENT_TYP"
+    "E_CDN\020\336\004\022\032\n\025COMPONENT_TYPE_TUNNEL\020\337\004\022 \n\033"
+    "COMPONENT_TYPE_EXTERNAL_API\020\274\005\022!\n\034COMPON"
+    "ENT_TYPE_CLOUD_SERVICE\020\275\005\022\030\n\023COMPONENT_T"
+    "YPE_SAAS\020\276\005\022\032\n\025COMPONENT_TYPE_CONFIG\020\240\006\022"
+    "\032\n\025COMPONENT_TYPE_SCHEMA\020\241\006\022\037\n\032COMPONENT"
+    "_TYPE_CERTIFICATE\020\242\006\022\036\n\031COMPONENT_TYPE_C"
+    "REDENTIAL\020\243\006*R\n\010Audience\022\030\n\024AUDIENCE_UNS"
+    "PECIFIED\020\000\022\025\n\021AUDIENCE_CUSTOMER\020\001\022\025\n\021AUD"
+    "IENCE_INTERNAL\020\002*\375\001\n\010LinkType\022\031\n\025LINK_TY"
+    "PE_UNSPECIFIED\020\000\022\027\n\023LINK_TYPE_DASHBOARD\020"
+    "\001\022\022\n\016LINK_TYPE_LOGS\020\002\022\024\n\020LINK_TYPE_TRACE"
+    "S\020\003\022\033\n\027LINK_TYPE_DOCUMENTATION\020\004\022\025\n\021LINK"
+    "_TYPE_RUNBOOK\020\005\022\031\n\025LINK_TYPE_SOURCE_CODE"
+    "\020\006\022\024\n\020LINK_TYPE_TICKET\020\007\022\026\n\022LINK_TYPE_AL"
+    "ERTING\020\010\022\026\n\022LINK_TYPE_EXTERNAL\020\tBLZJgith"
+    "ub.com/kentik/api-schema-public/gen/go/k"
+    "entik/monitoring/v1;monitoringb\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fmonitoring_2fv1_2fcomponent_2eproto_deps[2] =
     {
@@ -801,7 +805,7 @@ static ::absl::once_flag descriptor_table_kentik_2fmonitoring_2fv1_2fcomponent_2
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fmonitoring_2fv1_2fcomponent_2eproto = {
     false,
     false,
-    7189,
+    7238,
     descriptor_table_protodef_kentik_2fmonitoring_2fv1_2fcomponent_2eproto,
     "kentik/monitoring/v1/component.proto",
     &descriptor_table_kentik_2fmonitoring_2fv1_2fcomponent_2eproto_once,
@@ -4280,9 +4284,9 @@ ComponentState::ComponentState(
                offsetof(Impl_, type_),
            reinterpret_cast<const char *>(&from._impl_) +
                offsetof(Impl_, type_),
-           offsetof(Impl_, audience_) -
+           offsetof(Impl_, version_independent_) -
                offsetof(Impl_, type_) +
-               sizeof(Impl_::audience_));
+               sizeof(Impl_::version_independent_));
 
   // @@protoc_insertion_point(copy_constructor:kentik.monitoring.v1.ComponentState)
 }
@@ -4302,9 +4306,9 @@ inline void ComponentState::SharedCtor(::_pb::Arena* arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, probes_),
            0,
-           offsetof(Impl_, audience_) -
+           offsetof(Impl_, version_independent_) -
                offsetof(Impl_, probes_) +
-               sizeof(Impl_::audience_));
+               sizeof(Impl_::version_independent_));
 }
 ComponentState::~ComponentState() {
   // @@protoc_insertion_point(destructor:kentik.monitoring.v1.ComponentState)
@@ -4387,15 +4391,15 @@ const ::google::protobuf::internal::ClassData* ComponentState::GetClassData() co
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<4, 13, 8, 73, 2> ComponentState::_table_ = {
+const ::_pbi::TcParseTable<4, 14, 8, 73, 2> ComponentState::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(ComponentState, _impl_._has_bits_),
     0, // no _extensions_
-    13, 120,  // max_field_number, fast_idx_mask
+    14, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294959104,  // skipmap
+    4294950912,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    13,  // num_field_entries
+    14,  // num_field_entries
     8,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -4443,7 +4447,9 @@ const ::_pbi::TcParseTable<4, 13, 8, 73, 2> ComponentState::_table_ = {
     // .kentik.monitoring.v1.Audience audience = 13 [json_name = "audience"];
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ComponentState, _impl_.audience_), 63>(),
      {104, 63, 0, PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.audience_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // bool version_independent = 14 [json_name = "versionIndependent"];
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ComponentState, _impl_.version_independent_), 63>(),
+     {112, 63, 0, PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.version_independent_)}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
@@ -4487,6 +4493,9 @@ const ::_pbi::TcParseTable<4, 13, 8, 73, 2> ComponentState::_table_ = {
     // .kentik.monitoring.v1.Audience audience = 13 [json_name = "audience"];
     {PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.audience_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // bool version_independent = 14 [json_name = "versionIndependent"];
+    {PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.version_independent_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::monitoring::v1::Probes>()},
     {::_pbi::TcParser::GetTable<::kentik::monitoring::v1::Health>()},
@@ -4543,8 +4552,8 @@ PROTOBUF_NOINLINE void ComponentState::Clear() {
     }
   }
   ::memset(&_impl_.type_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.audience_) -
-      reinterpret_cast<char*>(&_impl_.type_)) + sizeof(_impl_.audience_));
+      reinterpret_cast<char*>(&_impl_.version_independent_) -
+      reinterpret_cast<char*>(&_impl_.type_)) + sizeof(_impl_.version_independent_));
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -4696,6 +4705,13 @@ PROTOBUF_NOINLINE void ComponentState::Clear() {
                 13, this_._internal_audience(), target);
           }
 
+          // bool version_independent = 14 [json_name = "versionIndependent"];
+          if (this_._internal_version_independent() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteBoolToArray(
+                14, this_._internal_version_independent(), target);
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -4804,6 +4820,10 @@ PROTOBUF_NOINLINE void ComponentState::Clear() {
               total_size += 1 +
                             ::_pbi::WireFormatLite::EnumSize(this_._internal_audience());
             }
+            // bool version_independent = 14 [json_name = "versionIndependent"];
+            if (this_._internal_version_independent() != 0) {
+              total_size += 2;
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -4879,6 +4899,9 @@ void ComponentState::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::
   if (from._internal_audience() != 0) {
     _this->_impl_.audience_ = from._impl_.audience_;
   }
+  if (from._internal_version_independent() != 0) {
+    _this->_impl_.version_independent_ = from._impl_.version_independent_;
+  }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -4904,8 +4927,8 @@ void ComponentState::InternalSwap(ComponentState* PROTOBUF_RESTRICT other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, &other->_impl_.description_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.audience_)
-      + sizeof(ComponentState::_impl_.audience_)
+      PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.version_independent_)
+      + sizeof(ComponentState::_impl_.version_independent_)
       - PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.probes_)>(
           reinterpret_cast<char*>(&_impl_.probes_),
           reinterpret_cast<char*>(&other->_impl_.probes_));

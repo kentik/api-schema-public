@@ -1256,7 +1256,7 @@ const ProtobufCMessageDescriptor kentik__monitoring__v1__component_state__labels
   (ProtobufCMessageInit) kentik__monitoring__v1__component_state__labels_entry__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__monitoring__v1__component_state__field_descriptors[13] =
+static const ProtobufCFieldDescriptor kentik__monitoring__v1__component_state__field_descriptors[14] =
 {
   {
     "name",
@@ -1414,6 +1414,18 @@ static const ProtobufCFieldDescriptor kentik__monitoring__v1__component_state__f
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "version_independent",
+    14,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Monitoring__V1__ComponentState, version_independent),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__monitoring__v1__component_state__field_indices_by_name[] = {
   10,   /* field[10] = annotations */
@@ -1429,11 +1441,12 @@ static const unsigned kentik__monitoring__v1__component_state__field_indices_by_
   3,   /* field[3] = probes */
   11,   /* field[11] = timestamp */
   1,   /* field[1] = type */
+  13,   /* field[13] = version_independent */
 };
 static const ProtobufCIntRange kentik__monitoring__v1__component_state__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 13 }
+  { 0, 14 }
 };
 const ProtobufCMessageDescriptor kentik__monitoring__v1__component_state__descriptor =
 {
@@ -1443,7 +1456,7 @@ const ProtobufCMessageDescriptor kentik__monitoring__v1__component_state__descri
   "Kentik__Monitoring__V1__ComponentState",
   "kentik.monitoring.v1",
   sizeof(Kentik__Monitoring__V1__ComponentState),
-  13,
+  14,
   kentik__monitoring__v1__component_state__field_descriptors,
   kentik__monitoring__v1__component_state__field_indices_by_name,
   1,  kentik__monitoring__v1__component_state__number_ranges,
