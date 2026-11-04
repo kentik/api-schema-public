@@ -1,0 +1,1189 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Synthetics Bulk Action API",
+        "description": "# Overview\nThe Synthetics Bulk Action API applies changes to many synthetic tests in one request. Bulk actions run asynchronously: each request returns a workflow ID that can be polled for status.\n\n### Key Features\n* Update attributes of multiple synthetic tests at once\n* Add or remove values on set-valued attributes instead of replacing them\n* Track per-test outcome of a bulk update\n\n### Protocols\nEach method can be called through any of these protocols:\n* REST: the HTTP paths documented below\n* gRPC and gRPC-Web\n* [Connect](https://connectrpc.com/docs/protocol): unary HTTP POST to `/kentik.synthetics.v20261005alpha1.SyntheticsBulkActionService/<Method>` with an `application/json` or `application/proto` body\n\n",
+        "version": "v20261005alpha1",
+        "contact": {
+            "name": "Kentik API Engineering",
+            "url": "https://github.com/kentik/api-schema-public"
+        }
+    },
+    "tags": [
+        {
+            "name": "SyntheticsBulkActionService"
+        }
+    ],
+    "paths": {
+        "/synthetics/v20261005alpha1/tests/bulk_update": {
+            "post": {
+                "summary": "Update multiple synthetic tests",
+                "description": "Applies the same attribute changes to up to 50 synthetic tests. Only some attributes can be bulk-updated, and some can be changed only on certain test types or only together with another attribute. Tests are validated first; by default, if any test fails validation no test is updated (see `allow_partial_batch`). Tests that pass are then updated asynchronously: the reply carries the initial status and, if anything was started, a `workflow_id` to pass to GetBulkUpdateTestsStatus. Fails with INVALID_ARGUMENT (HTTP 400) if the request is malformed, such as no IDs, more than 50 IDs, no attributes to update, an attribute that cannot be bulk-updated, or an attribute that does not apply to every selected test's type; RESOURCE_EXHAUSTED (HTTP 429) if the company lacks the synthetics credits for the change; and UNKNOWN (HTTP 500) if the update could not be confirmed as started. After UNKNOWN the update may still run, so check the tests before retrying.\n\n### Bulk-updatable attributes\nPaths are relative to `test` and shown in JSON (camelCase) form. snake_case is also accepted, and error messages report paths in snake_case.\n\n| Path | Notes |\n|------|-------|\n| `name` | |\n| `status` | `TEST_STATUS_ACTIVE` or `TEST_STATUS_PAUSED` |\n| `settings.period` | |\n| `settings.agentIds` | supports ADD and REMOVE |\n| `settings.healthSettings.activation.times` | |\n| `settings.healthSettings.activation.timeWindow` | |\n| `settings.healthSettings.activation.gracePeriod` | |\n| `settings.healthSettings.latencyCritical`, `latencyWarning` | set together |\n| `settings.healthSettings.latencyCriticalStddev`, `latencyWarningStddev` | set together; also sets `latencyCritical` and `latencyWarning` to 0 |\n| `settings.healthSettings.jitterCritical`, `jitterWarning` | set together |\n| `settings.healthSettings.jitterCriticalStddev`, `jitterWarningStddev` | set together; also sets `jitterCritical` and `jitterWarning` to 0 |\n| `settings.healthSettings.packetLossCritical`, `packetLossWarning` | set together |\n| `settings.ip.targets` | supports ADD and REMOVE |\n| `settings.networkGrid.targets` | supports ADD and REMOVE |\n| `settings.dns.servers` | supports ADD and REMOVE |\n| `settings.dns.target` | |\n| `settings.dnsGrid.servers` | supports ADD and REMOVE |\n| `settings.dnsGrid.target` | |\n| `settings.hostname.target` | |\n| `settings.url.target` | |\n| `settings.pageLoad.target` | |\n| `settings.agent.target` | |\n\nA threshold pair and its Stddev pair cannot be set in the same request.\n\n### Examples\nChange the period of several tests:\n```json\n{\"ids\": [\"101\", \"102\"], \"test\": {\"settings\": {\"period\": 300}}}\n```\nAdd an agent to each test, keeping the agents already assigned. In JSON, a field mask is a single comma-separated string:\n```json\n{\"ids\": [\"101\", \"102\"], \"test\": {\"settings\": {\"agentIds\": [\"55\"]}},\n \"ops\": [{\"mask\": \"settings.agentIds\", \"op\": \"BULK_FIELD_OP_ADD\"}]}\n```\nSet attributes to zero. A zero value cannot be told apart from an unset one, so `mask` must name it:\n```json\n{\"ids\": [\"101\"], \"test\": {\"settings\": {\"healthSettings\": {\"jitterCritical\": 0, \"jitterWarning\": 0}}},\n \"mask\": \"settings.healthSettings.jitterCritical,settings.healthSettings.jitterWarning\"}\n```",
+                "operationId": "BulkUpdateTests",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v20261005alpha1BulkUpdateTestsResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/v20261005alpha1BulkUpdateTestsRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "tags": [
+                    "SyntheticsBulkActionService"
+                ]
+            }
+        },
+        "/synthetics/v20261005alpha1/tests/bulk_update/{workflowId}": {
+            "get": {
+                "summary": "Get status of a bulk test update",
+                "description": "Returns the current state and per-test outcome of a bulk update started by BulkUpdateTests. When `end_time` is set, the bulk update has finished and its status will not change. Items skipped before the update started are reported only in the BulkUpdateTests reply. Status is kept for a limited time after a bulk update finishes, so read it soon after `end_time` is set. Fails with NOT_FOUND (HTTP 404) if the workflow ID is unknown, the bulk update was started by a different user, or its status is no longer kept.",
+                "operationId": "GetBulkUpdateTestsStatus",
+                "responses": {
+                    "200": {
+                        "description": "A successful response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/v20261005alpha1GetBulkUpdateTestsStatusResponse"
+                                }
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "An unexpected error response.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/rpcStatus"
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "workflowId",
+                        "description": "Bulk update to report on, as returned in `status.workflow_id` by BulkUpdateTests.",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "tags": [
+                    "SyntheticsBulkActionService"
+                ]
+            }
+        }
+    },
+    "security": [
+        {
+            "email": [],
+            "token": []
+        }
+    ],
+    "externalDocs": {
+        "description": "Kentik Knowledge Base",
+        "url": "https://kb.kentik.com/"
+    },
+    "components": {
+        "securitySchemes": {
+            "email": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-Email",
+                "in": "header"
+            },
+            "token": {
+                "type": "apiKey",
+                "name": "X-CH-Auth-API-Token",
+                "in": "header"
+            }
+        },
+        "schemas": {
+            "protobufAny": {
+                "type": "object",
+                "properties": {
+                    "@type": {
+                        "type": "string"
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "rpcStatus": {
+                "type": "object",
+                "properties": {
+                    "code": {
+                        "type": "integer",
+                        "format": "int32"
+                    },
+                    "message": {
+                        "type": "string"
+                    },
+                    "details": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/protobufAny"
+                        }
+                    }
+                }
+            },
+            "v202303UserInfo": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique system generated ID",
+                        "readOnly": true
+                    },
+                    "email": {
+                        "type": "string",
+                        "description": "E-mail address of the user",
+                        "readOnly": true
+                    },
+                    "fullName": {
+                        "type": "string",
+                        "description": "Full name of the user",
+                        "readOnly": true
+                    }
+                },
+                "title": "UserInfo"
+            },
+            "v202309ActivationSettings": {
+                "type": "object",
+                "properties": {
+                    "gracePeriod": {
+                        "type": "string",
+                        "description": "Period of healthy status in minutes within the time window not cancelling alarm activation"
+                    },
+                    "timeUnit": {
+                        "type": "string",
+                        "description": "Time unit for specifying time window (m | h)"
+                    },
+                    "timeWindow": {
+                        "type": "string",
+                        "description": "Time window for evaluating of test for alarm activation"
+                    },
+                    "times": {
+                        "type": "string",
+                        "description": "Number of occurrences of unhealthy test status within the time window triggering alarm activation"
+                    }
+                },
+                "title": "ActivationSettings"
+            },
+            "v202309AgentTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string",
+                        "description": "ID of the target agent"
+                    },
+                    "useLocalIp": {
+                        "type": "boolean",
+                        "description": "Boolean value indicating whether to use local (private) IP address of the target agent"
+                    },
+                    "reciprocal": {
+                        "type": "boolean",
+                        "description": "Boolean value indicating whether to make the test bidirectional"
+                    }
+                },
+                "title": "AgentTest"
+            },
+            "v202309AlertingSettings": {
+                "type": "object",
+                "properties": {
+                    "disableWarningNotifications": {
+                        "type": "boolean",
+                        "description": "Boolean indicating whether to disable warning-level alert notifications"
+                    },
+                    "alertingType": {
+                        "$ref": "#/components/schemas/v202309AlertingType"
+                    },
+                    "groupedAlertSettings": {
+                        "$ref": "#/components/schemas/v202309GroupedAlertSettings"
+                    }
+                },
+                "title": "AlertingSettings"
+            },
+            "v202309AlertingType": {
+                "type": "string",
+                "enum": [
+                    "ALERTING_TYPE_UNSPECIFIED",
+                    "ALERTING_TYPE_AGENT",
+                    "ALERTING_TYPE_GROUPED",
+                    "ALERTING_TYPE_SUBTEST"
+                ],
+                "default": "ALERTING_TYPE_UNSPECIFIED",
+                "description": "- ALERTING_TYPE_UNSPECIFIED: Invalid value.\n - ALERTING_TYPE_AGENT: Per-Agent - Generates alerts based on individual metric thresholds (This can be noisy)\n - ALERTING_TYPE_GROUPED: Grouped - Reduces the number of alert notifications for upstream issues by forcing alert conditions to exist across multiple network paths\n - ALERTING_TYPE_SUBTEST: All metrics - Calculates health and alerts for the test as a whole",
+                "title": "AlertingType"
+            },
+            "v202309DNSRecord": {
+                "type": "string",
+                "enum": [
+                    "DNS_RECORD_UNSPECIFIED",
+                    "DNS_RECORD_A",
+                    "DNS_RECORD_AAAA",
+                    "DNS_RECORD_CNAME",
+                    "DNS_RECORD_DNAME",
+                    "DNS_RECORD_NS",
+                    "DNS_RECORD_MX",
+                    "DNS_RECORD_PTR",
+                    "DNS_RECORD_SOA"
+                ],
+                "default": "DNS_RECORD_UNSPECIFIED",
+                "description": "- DNS_RECORD_UNSPECIFIED: Invalid value\n - DNS_RECORD_A: name to IPv4 address(es) mapping\n - DNS_RECORD_AAAA: name to IPv6 address(es) mapping\n - DNS_RECORD_CNAME: alternative resource name\n - DNS_RECORD_DNAME: alternative resource set name\n - DNS_RECORD_NS: domain to name server mapping\n - DNS_RECORD_MX: SMTP mail server record\n - DNS_RECORD_PTR: IPv4/6 address to name mapping\n - DNS_RECORD_SOA: domain meta-data",
+                "title": "DNSRecord"
+            },
+            "v202309DisabledMetrics": {
+                "type": "object",
+                "properties": {
+                    "pingLatency": {
+                        "type": "boolean"
+                    },
+                    "pingJitter": {
+                        "type": "boolean"
+                    },
+                    "pingPacketLoss": {
+                        "type": "boolean"
+                    },
+                    "httpLatency": {
+                        "type": "boolean"
+                    },
+                    "httpHeaders": {
+                        "type": "boolean"
+                    },
+                    "httpCodes": {
+                        "type": "boolean"
+                    },
+                    "httpCertExpiry": {
+                        "type": "boolean"
+                    },
+                    "transactionLatency": {
+                        "type": "boolean"
+                    },
+                    "dnsLatency": {
+                        "type": "boolean"
+                    },
+                    "dnsCodes": {
+                        "type": "boolean"
+                    },
+                    "dnsIps": {
+                        "type": "boolean"
+                    },
+                    "throughputBandwidth": {
+                        "type": "boolean"
+                    }
+                }
+            },
+            "v202309DnsTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string",
+                        "description": "Fully qualified DNS name to query"
+                    },
+                    "timeout": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "--- Deprecated: value is ignored. ---"
+                    },
+                    "recordType": {
+                        "$ref": "#/components/schemas/v202309DNSRecord"
+                    },
+                    "servers": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of IP addresses of DNS servers"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Target DNS server port"
+                    }
+                },
+                "title": "DnsTest"
+            },
+            "v202309FlowTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string",
+                        "description": "Target ASN, CDN, Country, Region of City for autonomous test (type of value depends on flow test sub-type)"
+                    },
+                    "targetRefreshIntervalMillis": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Period (in milliseconds) for refreshing list of targets based on available flow data"
+                    },
+                    "maxProviders": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Maximum number of IP providers to track autonomously"
+                    },
+                    "maxIpTargets": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Maximum number of target IP addresses to select based flow data query"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Autonomous test sub-type (asn | cdn | country | region | city)"
+                    },
+                    "inetDirection": {
+                        "type": "string",
+                        "description": "Selection of address from flow data (src = source address in inbound flows | dst = destination addresses in outbound flows)"
+                    },
+                    "direction": {
+                        "type": "string",
+                        "description": "Direction of flows to match target attribute for extraction of target addresses (src | dst)"
+                    }
+                },
+                "title": "FlowTest"
+            },
+            "v202309GroupedAlertSetting": {
+                "type": "object",
+                "properties": {
+                    "metric": {
+                        "type": "string",
+                        "description": "Metric"
+                    },
+                    "srcGroupBy": {
+                        "$ref": "#/components/schemas/v202309SrcGroupBy"
+                    },
+                    "percentOfSrcGroup": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Grouping percentage"
+                    },
+                    "filterIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "List of IDs to include in the group"
+                    }
+                },
+                "title": "GroupedAlertSetting"
+            },
+            "v202309GroupedAlertSettings": {
+                "type": "object",
+                "properties": {
+                    "default": {
+                        "$ref": "#/components/schemas/v202309GroupedAlertSetting"
+                    },
+                    "overrides": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v202309GroupedAlertSetting"
+                        },
+                        "description": "Overrides to default grouped alerting settings"
+                    }
+                },
+                "title": "GroupedAlertSettings"
+            },
+            "v202309HealthSettings": {
+                "type": "object",
+                "properties": {
+                    "latencyCritical": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for ping response latency (in microseconds) to trigger critical alarm"
+                    },
+                    "latencyWarning": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for ping response latency (in microseconds) to trigger warning alarm"
+                    },
+                    "packetLossCritical": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for ping packet loss (in %) to trigger critical alarm"
+                    },
+                    "packetLossWarning": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for ping packet loss (in %) to trigger warning alarm"
+                    },
+                    "jitterCritical": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for ping jitter (in microseconds) to trigger critical alarm"
+                    },
+                    "jitterWarning": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for ping jitter (in microseconds) to trigger critical alarm"
+                    },
+                    "httpLatencyCritical": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for HTTP response latency (in microseconds) to trigger critical alarm"
+                    },
+                    "httpLatencyWarning": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for HTTP response latency (in microseconds) to trigger warning alarm"
+                    },
+                    "httpValidCodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "List of HTTP status codes indicating healthy state"
+                    },
+                    "dnsValidCodes": {
+                        "type": "array",
+                        "items": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "description": "List of DNS status codes indicating healthy state"
+                    },
+                    "latencyCriticalStddev": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for standard deviation (in microseconds) of ping response latency to trigger critical alarm"
+                    },
+                    "latencyWarningStddev": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for standard deviation (in microseconds) of ping response latency to trigger warning alarm"
+                    },
+                    "jitterCriticalStddev": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for standard deviation of ping jitter (in microseconds) to trigger critical alarm"
+                    },
+                    "jitterWarningStddev": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for standard deviation of ping jitter (in microseconds) to trigger warning alarm"
+                    },
+                    "httpLatencyCriticalStddev": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for standard deviation of HTTP response latency (in microseconds) to trigger critical alarm"
+                    },
+                    "httpLatencyWarningStddev": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for standard deviation of HTTP response latency (in microseconds) to trigger warning alarm"
+                    },
+                    "unhealthySubtestThreshold": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of tasks (across all agents) that must report unhealthy status in order for alarm to be triggered"
+                    },
+                    "activation": {
+                        "$ref": "#/components/schemas/v202309ActivationSettings"
+                    },
+                    "certExpiryWarning": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Threshold for remaining validity of TLS certificate (in days) to trigger warning alarm"
+                    },
+                    "certExpiryCritical": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Threshold for remaining validity of TLS certificate (in days) to trigger critical alarm"
+                    },
+                    "dnsValidIps": {
+                        "type": "string",
+                        "description": "Comma separated list of IP addresses expected to be received in response to DNS A or AAAA query"
+                    },
+                    "dnsLatencyCritical": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for DNS response latency (in microseconds) to trigger critical alarm"
+                    },
+                    "dnsLatencyWarning": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for DNS response latency (in microseconds) to trigger warning alarm"
+                    },
+                    "dnsLatencyCriticalStddev": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for standard deviation (in microseconds) of DNS response latency to trigger critical alarm"
+                    },
+                    "dnsLatencyWarningStddev": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for standard deviation (in microseconds) of DNS response latency to trigger warning alarm"
+                    },
+                    "perAgentAlerting": {
+                        "type": "boolean",
+                        "description": "Boolean value indicating whether to use per-agent alerting"
+                    },
+                    "disabledMetrics": {
+                        "$ref": "#/components/schemas/v202309DisabledMetrics"
+                    },
+                    "healthDisabled": {
+                        "type": "boolean",
+                        "description": "Disable all health evaluation for this test"
+                    },
+                    "throughputCritical": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for throughput bandwidth (in mbps) to trigger critical alarm"
+                    },
+                    "throughputWarning": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for throughput bandwidth (in mbps) to trigger warning alarm"
+                    },
+                    "throughputCriticalStddev": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for standard deviation (in mbps) of throughput bandwidth to trigger critical alarm"
+                    },
+                    "throughputWarningStddev": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Threshold for standard deviation (in mbps) of throughput bandwidth to trigger warning alarm"
+                    },
+                    "disableAlerts": {
+                        "type": "boolean",
+                        "description": "Boolean value indicating whether to disable all alerts for this test"
+                    }
+                },
+                "title": "HealthSettings"
+            },
+            "v202309HostnameTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string",
+                        "description": "Fully qualified DNS name of the target host"
+                    }
+                },
+                "title": "HostnameTest"
+            },
+            "v202309IPFamily": {
+                "type": "string",
+                "enum": [
+                    "IP_FAMILY_UNSPECIFIED",
+                    "IP_FAMILY_V4",
+                    "IP_FAMILY_V6",
+                    "IP_FAMILY_DUAL"
+                ],
+                "default": "IP_FAMILY_UNSPECIFIED",
+                "description": "- IP_FAMILY_UNSPECIFIED: Invalid value.\n - IP_FAMILY_V4: IPv4 only\n - IP_FAMILY_V6: IPv6 only\n - IP_FAMILY_DUAL: IPv4 and IPv6 supported",
+                "title": "IPFamily"
+            },
+            "v202309IpTest": {
+                "type": "object",
+                "properties": {
+                    "targets": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of IP addresses of targets"
+                    },
+                    "useLocalIp": {
+                        "type": "boolean",
+                        "description": "Boolean value indicating whether to use local (private) IP address of the target agents"
+                    }
+                },
+                "title": "IpTest"
+            },
+            "v202309NetworkMeshTest": {
+                "type": "object",
+                "properties": {
+                    "useLocalIp": {
+                        "type": "boolean",
+                        "description": "Boolean value indicating whether to use local (private) IP address of the target agents"
+                    }
+                },
+                "title": "NetworkMeshTest"
+            },
+            "v202309PageLoadTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string",
+                        "description": "HTTP or HTTPS URL to request"
+                    },
+                    "timeout": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "HTTP transaction timeout (in milliseconds)"
+                    },
+                    "headers": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map of HTTP header values keyed by header names"
+                    },
+                    "ignoreTlsErrors": {
+                        "type": "boolean",
+                        "description": "Boolean indicating whether to ignore TLS certificate verification errors"
+                    },
+                    "cssSelectors": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map of CSS selector values keyed by selector name"
+                    }
+                },
+                "title": "PageLoadTest"
+            },
+            "v202309ScheduleSettings": {
+                "type": "object",
+                "properties": {
+                    "enabled": {
+                        "type": "boolean",
+                        "description": "Boolean indicating an (dis|en)abled schedule"
+                    },
+                    "start": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "UTC unix timestamps indicating the start of the schedule"
+                    },
+                    "end": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "UTC unix timestamp indicating the end of the schedule"
+                    }
+                },
+                "title": "ScheduleSettings"
+            },
+            "v202309SrcGroupBy": {
+                "type": "string",
+                "enum": [
+                    "SRC_GROUP_BY_UNSPECIFIED",
+                    "SRC_GROUP_BY_ALL_AGENTS",
+                    "SRC_GROUP_BY_LABEL",
+                    "SRC_GROUP_BY_SITE"
+                ],
+                "default": "SRC_GROUP_BY_UNSPECIFIED",
+                "description": "- SRC_GROUP_BY_UNSPECIFIED: Invalid value.\n - SRC_GROUP_BY_ALL_AGENTS: Grouped by all agents\n - SRC_GROUP_BY_LABEL: Grouped by label\n - SRC_GROUP_BY_SITE: Grouped by site",
+                "title": "SrcGroupBy"
+            },
+            "v202309Test": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "Unique ID of the test",
+                        "readOnly": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "User selected name of the test"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "Type of the test"
+                    },
+                    "status": {
+                        "$ref": "#/components/schemas/v202309TestStatus"
+                    },
+                    "settings": {
+                        "$ref": "#/components/schemas/v202309TestSettings"
+                    },
+                    "cdate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Creation timestamp (UTC)",
+                        "readOnly": true
+                    },
+                    "edate": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "Last modification timestamp (UTC)",
+                        "readOnly": true
+                    },
+                    "createdBy": {
+                        "$ref": "#/components/schemas/v202303UserInfo"
+                    },
+                    "lastUpdatedBy": {
+                        "$ref": "#/components/schemas/v202303UserInfo"
+                    },
+                    "labels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "Set of labels associated with the test"
+                    }
+                },
+                "title": "Test"
+            },
+            "v202309TestPingSettings": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of probe packets to send in one iteration"
+                    },
+                    "protocol": {
+                        "type": "string",
+                        "description": "Transport protocol to use (icmp | tcp)"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Target port for TCP probes (ignored for ICMP)"
+                    },
+                    "timeout": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Timeout in milliseconds for execution of the task"
+                    },
+                    "delay": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Inter-probe delay in milliseconds"
+                    },
+                    "dscp": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "DSCP code to be set in IP header of probe packets"
+                    }
+                },
+                "title": "TestPingSettings"
+            },
+            "v202309TestSettings": {
+                "type": "object",
+                "properties": {
+                    "hostname": {
+                        "$ref": "#/components/schemas/v202309HostnameTest"
+                    },
+                    "ip": {
+                        "$ref": "#/components/schemas/v202309IpTest"
+                    },
+                    "agent": {
+                        "$ref": "#/components/schemas/v202309AgentTest"
+                    },
+                    "flow": {
+                        "$ref": "#/components/schemas/v202309FlowTest"
+                    },
+                    "dns": {
+                        "$ref": "#/components/schemas/v202309DnsTest"
+                    },
+                    "url": {
+                        "$ref": "#/components/schemas/v202309UrlTest"
+                    },
+                    "networkGrid": {
+                        "$ref": "#/components/schemas/v202309IpTest"
+                    },
+                    "pageLoad": {
+                        "$ref": "#/components/schemas/v202309PageLoadTest"
+                    },
+                    "dnsGrid": {
+                        "$ref": "#/components/schemas/v202309DnsTest"
+                    },
+                    "networkMesh": {
+                        "$ref": "#/components/schemas/v202309NetworkMeshTest"
+                    },
+                    "agentIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "IDs of agents assigned to run tasks on behalf of the test"
+                    },
+                    "tasks": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of task names to run for the test"
+                    },
+                    "healthSettings": {
+                        "$ref": "#/components/schemas/v202309HealthSettings"
+                    },
+                    "ping": {
+                        "$ref": "#/components/schemas/v202309TestPingSettings"
+                    },
+                    "trace": {
+                        "$ref": "#/components/schemas/v202309TestTraceSettings"
+                    },
+                    "period": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Test evaluation period (in seconds)"
+                    },
+                    "family": {
+                        "$ref": "#/components/schemas/v202309IPFamily"
+                    },
+                    "notificationChannels": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of IDs of notification channels for alarms triggered by the test"
+                    },
+                    "notes": {
+                        "type": "string",
+                        "description": "Add a note or comment for this test"
+                    },
+                    "throughput": {
+                        "$ref": "#/components/schemas/v202309TestThroughputSettings"
+                    },
+                    "schedule": {
+                        "$ref": "#/components/schemas/v202309ScheduleSettings"
+                    },
+                    "alerting": {
+                        "$ref": "#/components/schemas/v202309AlertingSettings"
+                    }
+                },
+                "title": "TestSettings"
+            },
+            "v202309TestStatus": {
+                "type": "string",
+                "enum": [
+                    "TEST_STATUS_UNSPECIFIED",
+                    "TEST_STATUS_ACTIVE",
+                    "TEST_STATUS_PAUSED",
+                    "TEST_STATUS_DELETED",
+                    "TEST_STATUS_PREVIEW"
+                ],
+                "default": "TEST_STATUS_UNSPECIFIED",
+                "description": "- TEST_STATUS_UNSPECIFIED: Invalid value.\n - TEST_STATUS_ACTIVE: Test is active.\n - TEST_STATUS_PAUSED: Test is paused.\n - TEST_STATUS_DELETED: Test is deleted. Not user settable.\n - TEST_STATUS_PREVIEW: Test is preview",
+                "title": "TestStatus"
+            },
+            "v202309TestThroughputSettings": {
+                "type": "object",
+                "properties": {
+                    "port": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Target port for TCP or UDP throughput task (the port the target server is listening on)"
+                    },
+                    "omit": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "(optional) Number of seconds to omit from the start of the test"
+                    },
+                    "duration": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Duration of the test in seconds"
+                    },
+                    "bandwidth": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "(optional) Target bandwidth in Mbps, if no bandwidth is specified, the test will measure the maximum bandwidth for TCP and 10Mbps for UDP"
+                    },
+                    "protocol": {
+                        "type": "string",
+                        "description": "Transport protocol to use (tcp | udp)"
+                    }
+                },
+                "title": "TestThroughputSettings"
+            },
+            "v202309TestTraceSettings": {
+                "type": "object",
+                "properties": {
+                    "count": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of probe packets to send in one iteration"
+                    },
+                    "protocol": {
+                        "type": "string",
+                        "description": "Transport protocol to use (icmp | tcp | udp)"
+                    },
+                    "port": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Target port for TCP or UDP probes (ignored for ICMP)"
+                    },
+                    "timeout": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Timeout in milliseconds for execution of the task"
+                    },
+                    "limit": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Maximum number of hops to probe (i.e. maximum TTL)"
+                    },
+                    "delay": {
+                        "type": "number",
+                        "format": "float",
+                        "description": "Inter-probe delay in milliseconds"
+                    },
+                    "dscp": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "DSCP code to be set in IP header of probe packets"
+                    },
+                    "mtu": {
+                        "type": "boolean",
+                        "description": "Enable MTU in trace results"
+                    }
+                },
+                "title": "TestTraceSettings"
+            },
+            "v202309UrlTest": {
+                "type": "object",
+                "properties": {
+                    "target": {
+                        "type": "string",
+                        "description": "HTTP or HTTPS URL to request"
+                    },
+                    "timeout": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "HTTP transaction timeout (in milliseconds)"
+                    },
+                    "method": {
+                        "type": "string",
+                        "description": "HTTP method to use (GET | HEAD | PATCH | POST | PUT)"
+                    },
+                    "headers": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "string"
+                        },
+                        "description": "Map of HTTP header values keyed by header names"
+                    },
+                    "body": {
+                        "type": "string",
+                        "description": "HTTP request body"
+                    },
+                    "ignoreTlsErrors": {
+                        "type": "boolean",
+                        "description": "Boolean indicating whether to ignore TLS certificate verification errors"
+                    }
+                },
+                "title": "UrlTest"
+            },
+            "v20261005alpha1BulkActionItemState": {
+                "type": "string",
+                "enum": [
+                    "BULK_ACTION_ITEM_STATE_UNSPECIFIED",
+                    "BULK_ACTION_ITEM_STATE_PENDING",
+                    "BULK_ACTION_ITEM_STATE_PROCESSING",
+                    "BULK_ACTION_ITEM_STATE_SUCCEEDED",
+                    "BULK_ACTION_ITEM_STATE_FAILED"
+                ],
+                "default": "BULK_ACTION_ITEM_STATE_UNSPECIFIED",
+                "description": "- BULK_ACTION_ITEM_STATE_PENDING: Accepted and waiting to be processed.\n - BULK_ACTION_ITEM_STATE_PROCESSING: Being processed.\n - BULK_ACTION_ITEM_STATE_SUCCEEDED: Processed successfully.\n - BULK_ACTION_ITEM_STATE_FAILED: Not processed, or processing failed. See `error`.",
+                "title": "BulkActionItemState"
+            },
+            "v20261005alpha1BulkActionItemStatus": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "ID of the item, such as a test ID."
+                    },
+                    "state": {
+                        "$ref": "#/components/schemas/v20261005alpha1BulkActionItemState"
+                    },
+                    "error": {
+                        "type": "string",
+                        "description": "Why the item failed or was not processed. Empty unless `state` is FAILED."
+                    },
+                    "errorType": {
+                        "type": "string",
+                        "description": "Category of the error, when the item failed during processing. Empty for items rejected by request validation."
+                    },
+                    "field": {
+                        "type": "string",
+                        "description": "The field that failed validation, when the item was rejected by request validation. Empty for items that failed during processing."
+                    }
+                },
+                "title": "BulkActionItemStatus"
+            },
+            "v20261005alpha1BulkActionState": {
+                "type": "string",
+                "enum": [
+                    "BULK_ACTION_STATE_UNSPECIFIED",
+                    "BULK_ACTION_STATE_SUBMITTED",
+                    "BULK_ACTION_STATE_RUNNING",
+                    "BULK_ACTION_STATE_PAUSED",
+                    "BULK_ACTION_STATE_COMPLETED",
+                    "BULK_ACTION_STATE_FAILED",
+                    "BULK_ACTION_STATE_CANCELLED",
+                    "BULK_ACTION_STATE_TERMINATED",
+                    "BULK_ACTION_STATE_TIMED_OUT"
+                ],
+                "default": "BULK_ACTION_STATE_UNSPECIFIED",
+                "description": "- BULK_ACTION_STATE_SUBMITTED: Accepted and started. Reported only in the reply to the request that started the bulk action.\n - BULK_ACTION_STATE_RUNNING: In progress.\n - BULK_ACTION_STATE_PAUSED: Paused before it finished.\n - BULK_ACTION_STATE_COMPLETED: Finished. Individual items may still have failed; see `failed_count` and `items`.\n - BULK_ACTION_STATE_FAILED: Stopped because of an error that affects the whole bulk action, not just one item.\n - BULK_ACTION_STATE_CANCELLED: Cancelled before it finished.\n - BULK_ACTION_STATE_TERMINATED: Forcibly stopped before it finished.\n - BULK_ACTION_STATE_TIMED_OUT: Did not finish within the allowed time.",
+                "title": "BulkActionState"
+            },
+            "v20261005alpha1BulkActionStatus": {
+                "type": "object",
+                "properties": {
+                    "workflowId": {
+                        "type": "string",
+                        "description": "ID to use when requesting the status of the bulk action. Empty when nothing was started, for example because every item was rejected; there is then nothing to poll."
+                    },
+                    "state": {
+                        "$ref": "#/components/schemas/v20261005alpha1BulkActionState"
+                    },
+                    "startTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the bulk action started running (UTC). Not included in the reply to the request that started it."
+                    },
+                    "endTime": {
+                        "type": "string",
+                        "format": "date-time",
+                        "description": "When the bulk action finished (UTC). Set only after it has finished, so its presence means no further changes will occur."
+                    },
+                    "totalCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of distinct items in the request. Counts and `items` may be omitted after the bulk action has finished and per-item results are no longer available; an omitted count means unknown, while 0 means none."
+                    },
+                    "succeededCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of items processed successfully."
+                    },
+                    "failedCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of items that failed validation or processing."
+                    },
+                    "pendingCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of items not yet processed."
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v20261005alpha1BulkActionItemStatus"
+                        },
+                        "description": "Items that failed, with the reason for each. Items that succeeded or are still pending are not listed. An item may appear more than once if several of its fields failed validation."
+                    },
+                    "skippedCount": {
+                        "type": "integer",
+                        "format": "int64",
+                        "description": "Number of items in `skipped`. Reported only in the reply to the request that started the bulk action."
+                    },
+                    "skipped": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v20261005alpha1BulkActionItemStatus"
+                        },
+                        "description": "Items that were not processed, with the reason for each: for example, IDs that do not exist or that no requested change applies to, or valid items held back because the request was rejected. Reported only in the reply to the request that started the bulk action."
+                    }
+                },
+                "description": "absent when nothing was dispatched, so no workflow exists to poll",
+                "title": "BulkActionStatus"
+            },
+            "v20261005alpha1BulkFieldOp": {
+                "type": "string",
+                "enum": [
+                    "BULK_FIELD_OP_UNSPECIFIED",
+                    "BULK_FIELD_OP_REPLACE",
+                    "BULK_FIELD_OP_ADD",
+                    "BULK_FIELD_OP_REMOVE"
+                ],
+                "default": "BULK_FIELD_OP_UNSPECIFIED",
+                "description": "- BULK_FIELD_OP_REPLACE: Replace the existing value. This is the default for attributes that are not listed in `ops`.\n - BULK_FIELD_OP_ADD: Add the given values to the existing list.\n - BULK_FIELD_OP_REMOVE: Remove the given values from the existing list.",
+                "title": "BulkFieldOp"
+            },
+            "v20261005alpha1BulkFieldOpRule": {
+                "type": "object",
+                "properties": {
+                    "mask": {
+                        "type": "string",
+                        "description": "Set-valued attributes, relative to `test`, that this op applies to. Each must also be in the request's effective `mask`."
+                    },
+                    "op": {
+                        "$ref": "#/components/schemas/v20261005alpha1BulkFieldOp"
+                    }
+                },
+                "title": "BulkFieldOpRule",
+                "required": [
+                    "mask",
+                    "op"
+                ]
+            },
+            "v20261005alpha1BulkUpdateTestsRequest": {
+                "type": "object",
+                "properties": {
+                    "ids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "IDs of the tests to update, as decimal integers. Between 1 and 50 distinct IDs; duplicates are ignored. Deleted tests and IDs that do not exist are reported in `skipped`."
+                    },
+                    "test": {
+                        "$ref": "#/components/schemas/v202309Test"
+                    },
+                    "mask": {
+                        "type": "string",
+                        "description": "Attributes to be updated, relative to `test`. When empty, the populated attributes of `test` are updated; nothing else is replaced. Required only to set an attribute to its zero or empty value. Wildcard and non-leaf paths are rejected."
+                    },
+                    "ops": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/components/schemas/v20261005alpha1BulkFieldOpRule"
+                        },
+                        "description": "Add or remove values on set-valued attributes instead of replacing them. Attributes not listed are replaced. A path may appear in at most one rule; duplicates are rejected."
+                    },
+                    "allowPartialBatch": {
+                        "type": "boolean",
+                        "description": "When true, tests that pass validation are updated even if others fail it. When false (the default), no test is updated if any test fails validation. Does not apply to attributes limited to certain test types: if any selected test is of another type, the whole request is rejected either way."
+                    }
+                },
+                "title": "BulkUpdateTestsRequest",
+                "required": [
+                    "ids",
+                    "test"
+                ]
+            },
+            "v20261005alpha1BulkUpdateTestsResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/v20261005alpha1BulkActionStatus"
+                    }
+                },
+                "title": "BulkUpdateTestsResponse"
+            },
+            "v20261005alpha1GetBulkUpdateTestsStatusResponse": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "$ref": "#/components/schemas/v20261005alpha1BulkActionStatus"
+                    }
+                },
+                "title": "GetBulkUpdateTestsStatusResponse"
+            }
+        }
+    }
+}

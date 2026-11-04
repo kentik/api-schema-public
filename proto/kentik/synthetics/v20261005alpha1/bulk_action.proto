@@ -1,0 +1,441 @@
+// Synthetics bulk actions (alpha). Reuses kentik.synthetics.v202309.Test; only bulk-specific types live here.
+
+syntax = "proto3";
+
+package kentik.synthetics.v20261005alpha1;
+option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/synthetics/v20261005alpha1;synthetics";
+
+import "google/api/annotations.proto";
+import "google/api/client.proto";
+import "google/api/field_behavior.proto";
+import "google/protobuf/field_mask.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+import "kentik/core/v202303/annotations.proto";
+import "kentik/synthetics/v202309/synthetics.proto";
+
+option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_swagger) = {
+  info: {
+    title: "Synthetics Bulk Action API"
+    version: "v20261005alpha1"
+    contact: {
+      name: "Kentik API Engineering"
+      url: "https://github.com/kentik/api-schema-public"
+    }
+    description:
+        "# Overview\n"
+            "The Synthetics Bulk Action API applies changes to many synthetic tests in one request. "
+            "Bulk actions run asynchronously: each request returns a workflow ID that can be polled for status.\n"
+            "\n"
+            "### Key Features\n"
+            "* Update attributes of multiple synthetic tests at once\n"
+            "* Add or remove values on set-valued attributes instead of replacing them\n"
+            "* Track per-test outcome of a bulk update\n"
+            "\n"
+            "### Protocols\n"
+            "Each method can be called through any of these protocols:\n"
+            "* REST: the HTTP paths documented below\n"
+            "* gRPC and gRPC-Web\n"
+            "* [Connect](https://connectrpc.com/docs/protocol): unary HTTP POST to "
+            "`/kentik.synthetics.v20261005alpha1.SyntheticsBulkActionService/<Method>` with an "
+            "`application/json` or `application/proto` body\n"
+            "\n"
+  }
+  external_docs: {
+    url: "https://kb.kentik.com/"
+    description: "Kentik Knowledge Base"
+  }
+  schemes: HTTPS
+  consumes: "application/json"
+  produces: "application/json"
+  security_definitions: {
+    security: {
+      key: "email"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-Email"
+      }
+    }
+    security: {
+      key: "token"
+      value: {
+        type: TYPE_API_KEY
+        in: IN_HEADER
+        name: "X-CH-Auth-API-Token"
+      }
+    }
+  }
+  security: {
+    security_requirement: {
+      key: "email"
+      value: {}
+    }
+    security_requirement: {
+      key: "token"
+      value: {}
+    }
+  }
+};
+
+// Everything from here to BulkActionStatus describes the generic bulk action contract, not
+// synthetics, because that is what produces it: the report a dispatch reply and a status read both
+// carry, shared by any service that runs a bulk action. It is named accordingly and is a candidate
+// to move to kentik/core once the shape has settled. Nothing in this block may reference a
+// synthetics type. Request and response envelopes are deliberately NOT here: buf requires them to
+// be named for their rpc, and the rpc carries service-specific scope and permission options.
+// Throughout: `Status` is the report, `State` is the enum, and the field holding it is `state`.
+
+// {{.Name}}
+enum BulkActionItemState {
+  BULK_ACTION_ITEM_STATE_UNSPECIFIED = 0;
+  // Accepted and waiting to be processed.
+  BULK_ACTION_ITEM_STATE_PENDING = 1;
+  // Being processed.
+  BULK_ACTION_ITEM_STATE_PROCESSING = 2;
+  // Processed successfully.
+  BULK_ACTION_ITEM_STATE_SUCCEEDED = 3;
+  // Not processed, or processing failed. See `error`.
+  BULK_ACTION_ITEM_STATE_FAILED = 4;
+}
+
+// {{.Name}}
+enum BulkActionState {
+  BULK_ACTION_STATE_UNSPECIFIED = 0;
+  // Accepted and started. Reported only in the reply to the request that started the bulk action.
+  BULK_ACTION_STATE_SUBMITTED = 1;
+  // In progress.
+  BULK_ACTION_STATE_RUNNING = 2;
+  // Paused before it finished.
+  BULK_ACTION_STATE_PAUSED = 3;
+  // Finished. Individual items may still have failed; see `failed_count` and `items`.
+  BULK_ACTION_STATE_COMPLETED = 4;
+  // Stopped because of an error that affects the whole bulk action, not just one item.
+  BULK_ACTION_STATE_FAILED = 5;
+  // Cancelled before it finished.
+  BULK_ACTION_STATE_CANCELLED = 6;
+  // Forcibly stopped before it finished.
+  BULK_ACTION_STATE_TERMINATED = 7;
+  // Did not finish within the allowed time.
+  BULK_ACTION_STATE_TIMED_OUT = 8;
+}
+
+// One item's outcome. Also describes a pre-dispatch validation failure, which is just an item that
+// never reached the workflow: those carry `field`, in-flight failures carry `error_type`.
+
+// {{.Name}}
+message BulkActionItemStatus {
+  string id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID of the item, such as a test ID."
+    }
+  ];
+  BulkActionItemState state = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Processing state of the item."
+    }
+  ];
+  string error = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Why the item failed or was not processed. Empty unless `state` is FAILED."
+    }
+  ];
+  string error_type = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Category of the error, when the item failed during processing. Empty for items rejected by request validation."
+    }
+  ];
+  string field = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "The field that failed validation, when the item was rejected by request validation. Empty for items that failed during processing."
+    }
+  ];
+}
+
+// {{.Name}}
+message BulkActionStatus {
+  // absent when nothing was dispatched, so no workflow exists to poll
+
+  string workflow_id = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "ID to use when requesting the status of the bulk action. Empty when nothing was started, for example because every item was rejected; there is then nothing to poll."
+    }
+  ];
+
+  // The dispatch reply uses SUBMITTED; later reads report the execution's own state. An execution
+  // that continued as new resolves to its latest run and is not exposed.
+
+  BulkActionState state = 2 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Overall state of the bulk action. Empty when nothing was started."
+    }
+  ];
+
+  // read from the execution itself, so absent on the dispatch reply, which never describes the
+  // workflow it just started
+
+  google.protobuf.Timestamp start_time = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "When the bulk action started running (UTC). Not included in the reply to the request that started it."
+    }
+  ];
+
+  // set only once the execution closes, so its presence is what says the batch is finished
+
+  google.protobuf.Timestamp end_time = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "When the bulk action finished (UTC). Set only after it has finished, so its presence means no further changes will occur."
+    }
+  ];
+
+  // counts and items are absent together once the batch can no longer answer its status query,
+  // so an absent count means unknown and a present 0 means none
+
+  optional uint32 total_count = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of distinct items in the request. Counts and `items` may be omitted after the bulk action has finished and per-item results are no longer available; an omitted count means unknown, while 0 means none."
+    }
+  ];
+  optional uint32 succeeded_count = 6 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of items processed successfully."
+    }
+  ];
+  optional uint32 failed_count = 7 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of items that failed validation or processing."
+    }
+  ];
+  optional uint32 pending_count = 8 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of items not yet processed."
+    }
+  ];
+
+  // currently failures only; succeeded and still-pending ids are the caller's request
+  // minus these, disambiguated by the counts above
+
+  repeated BulkActionItemStatus items = 9 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Items that failed, with the reason for each. Items that succeeded or are still pending are not listed. An item may appear more than once if several of its fields failed validation."
+    }
+  ];
+
+  // ids that resolved to no actionable item. only the dispatching call knows these — the workflow
+  // is handed the valid items alone — so they are absent from every later status read
+
+  optional uint32 skipped_count = 10 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Number of items in `skipped`. Reported only in the reply to the request that started the bulk action."
+    }
+  ];
+  repeated BulkActionItemStatus skipped = 11 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Items that were not processed, with the reason for each: for example, IDs that do not exist or that no requested change applies to, or valid items held back because the request was rejected. Reported only in the reply to the request that started the bulk action."
+    }
+  ];
+}
+
+// Synthetics bulk test update. The only edges into the generic block above are the two response
+// types, which is the direction that keeps the block extractable. Each bulk action declares its own
+// status rpc rather than sharing one generic poller, so that scope and permission options can be
+// stated per action; the payload and the implementation behind them are shared.
+
+// Generically named because it describes the operation, not its caller, but deliberately not in the
+// block above: that block is the status report, and a field operation is no part of it.
+
+// {{.Name}}
+enum BulkFieldOp {
+  BULK_FIELD_OP_UNSPECIFIED = 0;
+  // Replace the existing value. This is the default for attributes that are not listed in `ops`.
+  BULK_FIELD_OP_REPLACE = 1;
+  // Add the given values to the existing list.
+  BULK_FIELD_OP_ADD = 2;
+  // Remove the given values from the existing list.
+  BULK_FIELD_OP_REMOVE = 3;
+}
+
+// {{.Name}}
+message BulkFieldOpRule {
+  google.protobuf.FieldMask mask = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Set-valued attributes, relative to `test`, that this op applies to. Each must also be in the request's effective `mask`."
+    }
+  ];
+  BulkFieldOp op = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "How the value in `test` is applied to each test's existing list."
+    }
+  ];
+}
+
+// {{.Name}}
+message BulkUpdateTestsRequest {
+  repeated string ids = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "IDs of the tests to update, as decimal integers. Between 1 and 50 distinct IDs; duplicates are ignored. Deleted tests and IDs that do not exist are reported in `skipped`."
+    }
+  ];
+  kentik.synthetics.v202309.Test test = 2 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "New values for the attributes being updated. Only the attributes listed in the BulkUpdateTests description can be bulk-updated; populating any other attribute rejects the request."
+    }
+  ];
+  google.protobuf.FieldMask mask = 3 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Attributes to be updated, relative to `test`. When empty, the populated attributes of `test` are updated; nothing else is replaced. Required only to set an attribute to its zero or empty value. Wildcard and non-leaf paths are rejected."
+    }
+  ];
+  repeated BulkFieldOpRule ops = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Add or remove values on set-valued attributes instead of replacing them. Attributes not listed are replaced. A path may appear in at most one rule; duplicates are rejected."
+    }
+  ];
+
+  // governs per-test validation failures only. A field that applies only to certain test types
+  // rejects the whole request if any selected test is of another type, regardless of this flag
+
+  bool allow_partial_batch = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "When true, tests that pass validation are updated even if others fail it. When false (the default), no test is updated if any test fails validation. Does not apply to attributes limited to certain test types: if any selected test is of another type, the whole request is rejected either way."
+    }
+  ];
+}
+
+// the dispatch reply is the batch's first status read, so it carries the same shape a poll does
+
+// {{.Name}}
+message BulkUpdateTestsResponse {
+  BulkActionStatus status = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Initial status of the bulk update: validation failures are already final, and tests to be updated are pending."
+    }
+  ];
+}
+
+// {{.Name}}
+message GetBulkUpdateTestsStatusRequest {
+  string workflow_id = 1 [
+    (google.api.field_behavior) = REQUIRED,
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Bulk update to report on, as returned in `status.workflow_id` by BulkUpdateTests."
+    }
+  ];
+}
+
+// {{.Name}}
+message GetBulkUpdateTestsStatusResponse {
+  BulkActionStatus status = 1 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Current status of the bulk update."
+    }
+  ];
+}
+
+// Served by a Connect backend (backend_type "grpc-connect"): besides REST and gRPC, the gateway
+// passes Connect and gRPC-Web requests through on each method's /package.Service/Method path.
+service SyntheticsBulkActionService {
+  option (google.api.default_host) = "grpc.api.kentik.com";
+  option (kentik.core.v202303.visibility) = SERVICE_VISIBILITY_PUBLIC;
+  option (kentik.core.v202303.service_scope) = "admin.synthetics";
+  option (kentik.core.v202303.backend_type) = "grpc-connect";
+
+  rpc BulkUpdateTests(BulkUpdateTestsRequest) returns (BulkUpdateTestsResponse) {
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:write";
+    option (kentik.core.v202303.method_permission) = "synthetics.test::update";
+    option (google.api.http) = {
+      post: "/synthetics/v20261005alpha1/tests/bulk_update"
+      body: "*"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "BulkUpdateTests"
+      summary: "Update multiple synthetic tests"
+      description:
+        "Applies the same attribute changes to up to 50 synthetic tests. Only some attributes can be"
+        " bulk-updated, and some can be changed only on certain test types or only together with"
+        " another attribute. Tests are validated first; by default, if any test fails validation no"
+        " test is updated (see `allow_partial_batch`). Tests that pass are then updated"
+        " asynchronously: the reply carries the initial status and, if anything was started, a"
+        " `workflow_id` to pass to GetBulkUpdateTestsStatus. Fails with INVALID_ARGUMENT (HTTP 400)"
+        " if the request is malformed, such as no IDs, more than 50 IDs, no attributes to update, an"
+        " attribute that cannot be bulk-updated, or an attribute that does not apply to every selected"
+        " test's type; RESOURCE_EXHAUSTED (HTTP 429) if the company lacks the synthetics credits for"
+        " the change; and UNKNOWN (HTTP 500) if the update could not be confirmed as started. After"
+        " UNKNOWN the update may still run, so check the tests before retrying.\n"
+        "\n"
+        "### Bulk-updatable attributes\n"
+        "Paths are relative to `test` and shown in JSON (camelCase) form. snake_case is also accepted, and"
+        " error messages report paths in snake_case.\n"
+        "\n"
+        "| Path | Notes |\n"
+        "|------|-------|\n"
+        "| `name` | |\n"
+        "| `status` | `TEST_STATUS_ACTIVE` or `TEST_STATUS_PAUSED` |\n"
+        "| `settings.period` | |\n"
+        "| `settings.agentIds` | supports ADD and REMOVE |\n"
+        "| `settings.healthSettings.activation.times` | |\n"
+        "| `settings.healthSettings.activation.timeWindow` | |\n"
+        "| `settings.healthSettings.activation.gracePeriod` | |\n"
+        "| `settings.healthSettings.latencyCritical`, `latencyWarning` | set together |\n"
+        "| `settings.healthSettings.latencyCriticalStddev`, `latencyWarningStddev` | set together; also sets `latencyCritical` and `latencyWarning` to 0 |\n"
+        "| `settings.healthSettings.jitterCritical`, `jitterWarning` | set together |\n"
+        "| `settings.healthSettings.jitterCriticalStddev`, `jitterWarningStddev` | set together; also sets `jitterCritical` and `jitterWarning` to 0 |\n"
+        "| `settings.healthSettings.packetLossCritical`, `packetLossWarning` | set together |\n"
+        "| `settings.ip.targets` | supports ADD and REMOVE |\n"
+        "| `settings.networkGrid.targets` | supports ADD and REMOVE |\n"
+        "| `settings.dns.servers` | supports ADD and REMOVE |\n"
+        "| `settings.dns.target` | |\n"
+        "| `settings.dnsGrid.servers` | supports ADD and REMOVE |\n"
+        "| `settings.dnsGrid.target` | |\n"
+        "| `settings.hostname.target` | |\n"
+        "| `settings.url.target` | |\n"
+        "| `settings.pageLoad.target` | |\n"
+        "| `settings.agent.target` | |\n"
+        "\n"
+        "A threshold pair and its Stddev pair cannot be set in the same request.\n"
+        "\n"
+        "### Examples\n"
+        "Change the period of several tests:\n"
+        "```json\n"
+        "{\"ids\": [\"101\", \"102\"], \"test\": {\"settings\": {\"period\": 300}}}\n"
+        "```\n"
+        "Add an agent to each test, keeping the agents already assigned. In JSON, a field mask is a single"
+        " comma-separated string:\n"
+        "```json\n"
+        "{\"ids\": [\"101\", \"102\"], \"test\": {\"settings\": {\"agentIds\": [\"55\"]}},\n"
+        " \"ops\": [{\"mask\": \"settings.agentIds\", \"op\": \"BULK_FIELD_OP_ADD\"}]}\n"
+        "```\n"
+        "Set attributes to zero. A zero value cannot be told apart from an unset one, so `mask` must name it:\n"
+        "```json\n"
+        "{\"ids\": [\"101\"], \"test\": {\"settings\": {\"healthSettings\": {\"jitterCritical\": 0, \"jitterWarning\": 0}}},\n"
+        " \"mask\": \"settings.healthSettings.jitterCritical,settings.healthSettings.jitterWarning\"}\n"
+        "```"
+    };
+  }
+
+  rpc GetBulkUpdateTestsStatus(GetBulkUpdateTestsStatusRequest) returns (GetBulkUpdateTestsStatusResponse) {
+    // read-only, so Connect clients may poll it over GET. Never cache it: the status changes while the batch runs
+    option idempotency_level = NO_SIDE_EFFECTS;
+    option (kentik.core.v202303.method_scope) = "admin.synthetics:read";
+    option (kentik.core.v202303.method_permission) = "synthetics.test::read";
+    option (google.api.http) = {
+      get: "/synthetics/v20261005alpha1/tests/bulk_update/{workflow_id}"
+    };
+    option (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_operation) = {
+      operation_id: "GetBulkUpdateTestsStatus"
+      summary: "Get status of a bulk test update"
+      description:
+        "Returns the current state and per-test outcome of a bulk update started by BulkUpdateTests."
+        " When `end_time` is set, the bulk update has finished and its status will not change. Items"
+        " skipped before the update started are reported only in the BulkUpdateTests reply. Status is"
+        " kept for a limited time after a bulk update finishes, so read it soon after `end_time` is set."
+        " Fails with NOT_FOUND (HTTP 404) if the workflow ID is unknown, the bulk update was started by a"
+        " different user, or its status is no longer kept."
+    };
+  }
+}
