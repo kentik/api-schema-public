@@ -195,6 +195,40 @@ struct HealthDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 HealthDefaultTypeInternal _Health_default_instance_;
+
+inline constexpr Fact::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : key_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        value_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        description_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        cohort_{false},
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR Fact::Fact(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct FactDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR FactDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~FactDefaultTypeInternal() {}
+  union {
+    Fact _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 FactDefaultTypeInternal _Fact_default_instance_;
               template <typename>
 PROTOBUF_CONSTEXPR ComponentState_LabelsEntry_DoNotUse::ComponentState_LabelsEntry_DoNotUse(::_pbi::ConstantInitialized)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
@@ -353,6 +387,7 @@ inline constexpr ComponentState::Impl_::Impl_(
         metrics_{},
         links_{},
         labels_{},
+        facts_{},
         name_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
@@ -361,7 +396,6 @@ inline constexpr ComponentState::Impl_::Impl_(
             ::_pbi::ConstantInitialized()),
         probes_{nullptr},
         health_{nullptr},
-        annotations_{nullptr},
         timestamp_{nullptr},
         type_{static_cast< ::kentik::monitoring::v1::ComponentType >(0)},
         lifecycle_phase_{static_cast< ::kentik::monitoring::v1::LifecyclePhase >(0)},
@@ -531,6 +565,18 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::Link, _impl_.type_),
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::Link, _impl_.title_),
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::Link, _impl_.url_),
+        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::Fact, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::Fact, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::Fact, _impl_.value_),
+        PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::Fact, _impl_.description_),
+        PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::Fact, _impl_.cohort_),
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState_LabelsEntry_DoNotUse, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState_LabelsEntry_DoNotUse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -561,7 +607,7 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState, _impl_.metrics_),
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState, _impl_.labels_),
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState, _impl_.links_),
-        PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState, _impl_.annotations_),
+        PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState, _impl_.facts_),
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState, _impl_.timestamp_),
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState, _impl_.audience_),
         PROTOBUF_FIELD_OFFSET(::kentik::monitoring::v1::ComponentState, _impl_.version_independent_),
@@ -575,8 +621,8 @@ const ::uint32_t
         ~0u,
         ~0u,
         ~0u,
+        ~0u,
         3,
-        4,
         ~0u,
         ~0u,
 };
@@ -594,8 +640,9 @@ static const ::_pbi::MigrationSchema
         {100, 110, -1, sizeof(::kentik::monitoring::v1::MetricSample)},
         {112, 122, -1, sizeof(::kentik::monitoring::v1::Metric)},
         {124, -1, -1, sizeof(::kentik::monitoring::v1::Link)},
-        {135, 145, -1, sizeof(::kentik::monitoring::v1::ComponentState_LabelsEntry_DoNotUse)},
-        {147, 169, -1, sizeof(::kentik::monitoring::v1::ComponentState)},
+        {135, -1, -1, sizeof(::kentik::monitoring::v1::Fact)},
+        {147, 157, -1, sizeof(::kentik::monitoring::v1::ComponentState_LabelsEntry_DoNotUse)},
+        {159, 181, -1, sizeof(::kentik::monitoring::v1::ComponentState)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::monitoring::v1::_Probe_default_instance_._instance,
@@ -609,209 +656,212 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::monitoring::v1::_MetricSample_default_instance_._instance,
     &::kentik::monitoring::v1::_Metric_default_instance_._instance,
     &::kentik::monitoring::v1::_Link_default_instance_._instance,
+    &::kentik::monitoring::v1::_Fact_default_instance_._instance,
     &::kentik::monitoring::v1::_ComponentState_LabelsEntry_DoNotUse_default_instance_._instance,
     &::kentik::monitoring::v1::_ComponentState_default_instance_._instance,
 };
 const char descriptor_table_protodef_kentik_2fmonitoring_2fv1_2fcomponent_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
     "\n$kentik/monitoring/v1/component.proto\022\024"
-    "kentik.monitoring.v1\032\034google/protobuf/st"
-    "ruct.proto\032\037google/protobuf/timestamp.pr"
-    "oto\"B\n\005Probe\022\016\n\002ok\030\001 \001(\010R\002ok\022\035\n\007message\030"
-    "\002 \001(\tH\000R\007message\210\001\001B\n\n\010_message\"\263\001\n\006Prob"
-    "es\0225\n\007startup\030\001 \001(\0132\033.kentik.monitoring."
-    "v1.ProbeR\007startup\0227\n\010liveness\030\002 \001(\0132\033.ke"
-    "ntik.monitoring.v1.ProbeR\010liveness\0229\n\tre"
-    "adiness\030\003 \001(\0132\033.kentik.monitoring.v1.Pro"
-    "beR\treadiness\"\224\001\n\006Health\022:\n\006status\030\001 \001(\016"
-    "2\".kentik.monitoring.v1.HealthStatusR\006st"
-    "atus\022\031\n\005score\030\002 \001(\002H\000R\005score\210\001\001\022\035\n\007messa"
-    "ge\030\003 \001(\tH\001R\007message\210\001\001B\010\n\006_scoreB\n\n\010_mes"
-    "sage\"\331\003\n\020MetricDefinition\022\022\n\004name\030\001 \001(\tR"
-    "\004name\022 \n\013description\030\002 \001(\tR\013description\022"
-    ":\n\006entity\030\003 \001(\0162\".kentik.monitoring.v1.M"
-    "etricEntityR\006entity\022I\n\013measurement\030\004 \001(\016"
-    "2\'.kentik.monitoring.v1.MetricMeasuremen"
-    "tR\013measurement\022M\n\rduration_unit\030\005 \001(\0162(."
-    "kentik.monitoring.v1.MetricDurationUnitR"
-    "\014durationUnit\022A\n\trate_unit\030\006 \001(\0162$.kenti"
-    "k.monitoring.v1.MetricRateUnitR\010rateUnit"
-    "\0224\n\004type\030\007 \001(\0162 .kentik.monitoring.v1.Me"
-    "tricTypeR\004type\022@\n\010category\030\010 \001(\0162$.kenti"
-    "k.monitoring.v1.MetricCategoryR\010category"
-    "\">\n\nPercentile\022\032\n\010quantile\030\001 \001(\001R\010quanti"
-    "le\022\024\n\005value\030\002 \001(\001R\005value\"\226\001\n\016HistogramVa"
-    "lue\022!\n\014sample_count\030\001 \001(\004R\013sampleCount\022\035"
-    "\n\nsample_sum\030\002 \001(\001R\tsampleSum\022B\n\013percent"
-    "iles\030\003 \003(\0132 .kentik.monitoring.v1.Percen"
-    "tileR\013percentiles\"v\n\013MetricValue\022\030\n\006scal"
-    "ar\030\001 \001(\001H\000R\006scalar\022D\n\thistogram\030\002 \001(\0132$."
-    "kentik.monitoring.v1.HistogramValueH\000R\th"
-    "istogramB\007\n\005value\"\312\001\n\014MetricSample\022F\n\006la"
-    "bels\030\001 \003(\0132..kentik.monitoring.v1.Metric"
-    "Sample.LabelsEntryR\006labels\0227\n\005value\030\002 \001("
-    "\0132!.kentik.monitoring.v1.MetricValueR\005va"
-    "lue\0329\n\013LabelsEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005"
-    "value\030\002 \001(\tR\005value:\0028\001\"\216\001\n\006Metric\022F\n\ndef"
-    "inition\030\001 \001(\0132&.kentik.monitoring.v1.Met"
-    "ricDefinitionR\ndefinition\022<\n\007samples\030\002 \003"
-    "(\0132\".kentik.monitoring.v1.MetricSampleR\007"
-    "samples\"b\n\004Link\0222\n\004type\030\001 \001(\0162\036.kentik.m"
-    "onitoring.v1.LinkTypeR\004type\022\024\n\005title\030\002 \001"
-    "(\tR\005title\022\020\n\003url\030\003 \001(\tR\003url\"\342\006\n\016Componen"
-    "tState\022\022\n\004name\030\001 \001(\tR\004name\0227\n\004type\030\002 \001(\016"
-    "2#.kentik.monitoring.v1.ComponentTypeR\004t"
-    "ype\022%\n\013description\030\n \001(\tH\000R\013description\210"
-    "\001\001\022M\n\017lifecycle_phase\030\003 \001(\0162$.kentik.mon"
-    "itoring.v1.LifecyclePhaseR\016lifecyclePhas"
-    "e\0224\n\006probes\030\004 \001(\0132\034.kentik.monitoring.v1"
-    ".ProbesR\006probes\0224\n\006health\030\005 \001(\0132\034.kentik"
-    ".monitoring.v1.HealthR\006health\022@\n\010childre"
-    "n\030\006 \003(\0132$.kentik.monitoring.v1.Component"
-    "StateR\010children\0226\n\007metrics\030\007 \003(\0132\034.kenti"
-    "k.monitoring.v1.MetricR\007metrics\022H\n\006label"
-    "s\030\t \003(\01320.kentik.monitoring.v1.Component"
-    "State.LabelsEntryR\006labels\0220\n\005links\030\010 \003(\013"
-    "2\032.kentik.monitoring.v1.LinkR\005links\0229\n\013a"
-    "nnotations\030\013 \001(\0132\027.google.protobuf.Struc"
-    "tR\013annotations\0228\n\ttimestamp\030\014 \001(\0132\032.goog"
-    "le.protobuf.TimestampR\ttimestamp\022:\n\010audi"
-    "ence\030\r \001(\0162\036.kentik.monitoring.v1.Audien"
-    "ceR\010audience\022/\n\023version_independent\030\016 \001("
-    "\010R\022versionIndependent\0329\n\013LabelsEntry\022\020\n\003"
-    "key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001"
-    "B\016\n\014_description*\264\001\n\016LifecyclePhase\022\037\n\033L"
-    "IFECYCLE_PHASE_UNSPECIFIED\020\000\022 \n\034LIFECYCL"
-    "E_PHASE_INITIALIZING\020d\022\034\n\027LIFECYCLE_PHAS"
-    "E_RUNNING\020\310\001\022 \n\033LIFECYCLE_PHASE_TERMINAT"
-    "ING\020\254\002\022\037\n\032LIFECYCLE_PHASE_TERMINATED\020\220\003*"
-    "\267\001\n\014HealthStatus\022\035\n\031HEALTH_STATUS_UNSPEC"
-    "IFIED\020\000\022\031\n\025HEALTH_STATUS_HEALTHY\020d\022\032\n\025HE"
-    "ALTH_STATUS_WARNING\020\310\001\022\033\n\026HEALTH_STATUS_"
-    "DEGRADED\020\254\002\022\033\n\026HEALTH_STATUS_CRITICAL\020\220\003"
-    "\022\027\n\022HEALTH_STATUS_DOWN\020\364\003*t\n\nMetricType\022"
-    "\033\n\027METRIC_TYPE_UNSPECIFIED\020\000\022\025\n\021METRIC_T"
-    "YPE_GAUGE\020\001\022\027\n\023METRIC_TYPE_COUNTER\020\002\022\031\n\025"
-    "METRIC_TYPE_HISTOGRAM\020\003*\356\006\n\014MetricEntity"
-    "\022\035\n\031METRIC_ENTITY_UNSPECIFIED\020\000\022\032\n\026METRI"
-    "C_ENTITY_REQUESTS\020\001\022\031\n\025METRIC_ENTITY_QUE"
-    "RIES\020\002\022\027\n\023METRIC_ENTITY_FLOWS\020\n\022\035\n\031METRI"
-    "C_ENTITY_CONNECTIONS\020\013\022\031\n\025METRIC_ENTITY_"
-    "PACKETS\020\014\022\027\n\023METRIC_ENTITY_BYTES\020\r\022\027\n\023ME"
-    "TRIC_ENTITY_READS\020\024\022\030\n\024METRIC_ENTITY_WRI"
-    "TES\020\025\022\036\n\032METRIC_ENTITY_TRANSACTIONS\020\026\022\031\n"
-    "\025METRIC_ENTITY_RECORDS\020\027\022\032\n\026METRIC_ENTIT"
-    "Y_MESSAGES\020\036\022\030\n\024METRIC_ENTITY_EVENTS\020\037\022\026"
-    "\n\022METRIC_ENTITY_LOGS\020 \022\027\n\023METRIC_ENTITY_"
-    "TASKS\020(\022\034\n\030METRIC_ENTITY_OPERATIONS\020)\022\031\n"
-    "\025METRIC_ENTITY_BATCHES\020*\022\027\n\023METRIC_ENTIT"
-    "Y_ITEMS\0202\022\026\n\022METRIC_ENTITY_DATA\0203\022\030\n\024MET"
-    "RIC_ENTITY_BLOCKS\0204\022\032\n\026METRIC_ENTITY_REP"
-    "LICAS\0205\022\033\n\027METRIC_ENTITY_SNAPSHOTS\0206\022\031\n\025"
-    "METRIC_ENTITY_THREADS\020<\022\033\n\027METRIC_ENTITY"
-    "_PROCESSES\020=\022\034\n\030METRIC_ENTITY_GOROUTINES"
-    "\020>\022\027\n\023METRIC_ENTITY_LOCKS\020\?\022\032\n\026METRIC_EN"
-    "TITY_SESSIONS\020F\022\027\n\023METRIC_ENTITY_USERS\020G"
-    "\022\031\n\025METRIC_ENTITY_CLIENTS\020H\022\030\n\024METRIC_EN"
-    "TITY_ERRORS\020P\022\027\n\023METRIC_ENTITY_SPANS\020Q\022\030"
-    "\n\024METRIC_ENTITY_ALERTS\020R*\261\001\n\021MetricMeasu"
-    "rement\022\"\n\036METRIC_MEASUREMENT_UNSPECIFIED"
-    "\020\000\022\034\n\030METRIC_MEASUREMENT_COUNT\020\001\022\037\n\033METR"
-    "IC_MEASUREMENT_DURATION\020\002\022\033\n\027METRIC_MEAS"
-    "UREMENT_SIZE\020\003\022\034\n\030METRIC_MEASUREMENT_RAT"
-    "IO\020\004*\222\002\n\022MetricDurationUnit\022$\n METRIC_DU"
-    "RATION_UNIT_UNSPECIFIED\020\000\022$\n METRIC_DURA"
-    "TION_UNIT_NANOSECONDS\020\001\022%\n!METRIC_DURATI"
-    "ON_UNIT_MICROSECONDS\020\002\022%\n!METRIC_DURATIO"
-    "N_UNIT_MILLISECONDS\020\003\022 \n\034METRIC_DURATION"
-    "_UNIT_SECONDS\020\004\022 \n\034METRIC_DURATION_UNIT_"
-    "MINUTES\020\005\022\036\n\032METRIC_DURATION_UNIT_HOURS\020"
-    "\006*\223\001\n\016MetricRateUnit\022 \n\034METRIC_RATE_UNIT"
-    "_UNSPECIFIED\020\000\022\037\n\033METRIC_RATE_UNIT_PER_S"
-    "ECOND\020\001\022\037\n\033METRIC_RATE_UNIT_PER_MINUTE\020\002"
-    "\022\035\n\031METRIC_RATE_UNIT_PER_HOUR\020\003*\352\001\n\016Metr"
-    "icCategory\022\037\n\033METRIC_CATEGORY_UNSPECIFIE"
-    "D\020\000\022\037\n\033METRIC_CATEGORY_UTILIZATION\020\001\022\036\n\032"
-    "METRIC_CATEGORY_SATURATION\020\002\022\032\n\026METRIC_C"
-    "ATEGORY_ERRORS\020\003\022\033\n\027METRIC_CATEGORY_LATE"
-    "NCY\020\004\022\033\n\027METRIC_CATEGORY_TRAFFIC\020\005\022 \n\034ME"
-    "TRIC_CATEGORY_AVAILABILITY\020\006*\225\017\n\rCompone"
-    "ntType\022\036\n\032COMPONENT_TYPE_UNSPECIFIED\020\000\022\032"
-    "\n\026COMPONENT_TYPE_GENERIC\020\001\022\030\n\024COMPONENT_"
-    "TYPE_GROUP\020\002\022\032\n\026COMPONENT_TYPE_BACKEND\020d"
-    "\022\033\n\027COMPONENT_TYPE_FRONTEND\020e\022\032\n\026COMPONE"
-    "NT_TYPE_CLUSTER\020f\022\027\n\023COMPONENT_TYPE_NODE"
-    "\020g\022\030\n\024COMPONENT_TYPE_AGENT\020h\022\035\n\031COMPONEN"
-    "T_TYPE_CAPABILITY\020i\022\034\n\027COMPONENT_TYPE_RE"
-    "CEIVER\020\310\001\022\032\n\025COMPONENT_TYPE_FILTER\020\311\001\022\035\n"
-    "\030COMPONENT_TYPE_PROCESSOR\020\312\001\022\032\n\025COMPONEN"
-    "T_TYPE_POLLER\020\313\001\022\035\n\030COMPONENT_TYPE_SCHED"
-    "ULER\020\314\001\022 \n\033COMPONENT_TYPE_ORCHESTRATOR\020\315"
-    "\001\022\032\n\025COMPONENT_TYPE_SENDER\020\316\001\022\031\n\024COMPONE"
-    "NT_TYPE_PROXY\020\317\001\022\032\n\025COMPONENT_TYPE_ROUTE"
-    "R\020\320\001\022\032\n\025COMPONENT_TYPE_WORKER\020\321\001\022\033\n\026COMP"
-    "ONENT_TYPE_CHANNEL\020\322\001\022\032\n\025COMPONENT_TYPE_"
-    "BUFFER\020\323\001\022\030\n\023COMPONENT_TYPE_SINK\020\324\001\022\036\n\031C"
-    "OMPONENT_TYPE_CONNECTION\020\325\001\022\036\n\031COMPONENT"
-    "_TYPE_RECONCILER\020\326\001\022\036\n\031COMPONENT_TYPE_EV"
-    "ENT_LOOP\020\327\001\022\"\n\035COMPONENT_TYPE_CONFIG_MAN"
-    "AGER\020\330\001\022\036\n\031COMPONENT_TYPE_SUPERVISOR\020\331\001\022"
-    "\031\n\024COMPONENT_TYPE_CACHE\020\254\002\022\031\n\024COMPONENT_"
-    "TYPE_QUEUE\020\255\002\022\034\n\027COMPONENT_TYPE_DATABASE"
-    "\020\256\002\022\"\n\035COMPONENT_TYPE_OBJECT_STORAGE\020\257\002\022"
-    "\'\n\"COMPONENT_TYPE_TIMESERIES_DATABASE\020\260\002"
-    "\022#\n\036COMPONENT_TYPE_KEY_VALUE_STORE\020\261\002\022%\n"
-    " COMPONENT_TYPE_DOCUMENT_DATABASE\020\262\002\022 \n\033"
-    "COMPONENT_TYPE_SEARCH_INDEX\020\263\002\022\032\n\025COMPON"
-    "ENT_TYPE_STREAM\020\264\002\022\032\n\025COMPONENT_TYPE_MEM"
-    "ORY\020\220\003\022\030\n\023COMPONENT_TYPE_DISK\020\221\003\022\036\n\031COMP"
-    "ONENT_TYPE_FILESYSTEM\020\222\003\022\033\n\026COMPONENT_TY"
-    "PE_NETWORK\020\223\003\022\027\n\022COMPONENT_TYPE_CPU\020\224\003\022\027"
-    "\n\022COMPONENT_TYPE_GPU\020\225\003\022\031\n\024COMPONENT_TYP"
-    "E_CLOCK\020\226\003\022\032\n\025COMPONENT_TYPE_SERVER\020\364\003\022\026"
-    "\n\021COMPONENT_TYPE_VM\020\365\003\022\035\n\030COMPONENT_TYPE"
-    "_CONTAINER\020\366\003\022\027\n\022COMPONENT_TYPE_POD\020\367\003\022\035"
-    "\n\030COMPONENT_TYPE_NAMESPACE\020\370\003\022\030\n\023COMPONE"
-    "NT_TYPE_JAIL\020\371\003\022\032\n\025COMPONENT_TYPE_LAMBDA"
-    "\020\372\003\022!\n\034COMPONENT_TYPE_LOAD_BALANCER\020\330\004\022\034"
-    "\n\027COMPONENT_TYPE_FIREWALL\020\331\004\022\027\n\022COMPONEN"
-    "T_TYPE_VPN\020\332\004\022\032\n\025COMPONENT_TYPE_SWITCH\020\333"
-    "\004\022#\n\036COMPONENT_TYPE_PHYSICAL_ROUTER\020\334\004\022\027"
-    "\n\022COMPONENT_TYPE_DNS\020\335\004\022\027\n\022COMPONENT_TYP"
-    "E_CDN\020\336\004\022\032\n\025COMPONENT_TYPE_TUNNEL\020\337\004\022 \n\033"
-    "COMPONENT_TYPE_EXTERNAL_API\020\274\005\022!\n\034COMPON"
-    "ENT_TYPE_CLOUD_SERVICE\020\275\005\022\030\n\023COMPONENT_T"
-    "YPE_SAAS\020\276\005\022\032\n\025COMPONENT_TYPE_CONFIG\020\240\006\022"
-    "\032\n\025COMPONENT_TYPE_SCHEMA\020\241\006\022\037\n\032COMPONENT"
-    "_TYPE_CERTIFICATE\020\242\006\022\036\n\031COMPONENT_TYPE_C"
-    "REDENTIAL\020\243\006*R\n\010Audience\022\030\n\024AUDIENCE_UNS"
-    "PECIFIED\020\000\022\025\n\021AUDIENCE_CUSTOMER\020\001\022\025\n\021AUD"
-    "IENCE_INTERNAL\020\002*\375\001\n\010LinkType\022\031\n\025LINK_TY"
-    "PE_UNSPECIFIED\020\000\022\027\n\023LINK_TYPE_DASHBOARD\020"
-    "\001\022\022\n\016LINK_TYPE_LOGS\020\002\022\024\n\020LINK_TYPE_TRACE"
-    "S\020\003\022\033\n\027LINK_TYPE_DOCUMENTATION\020\004\022\025\n\021LINK"
-    "_TYPE_RUNBOOK\020\005\022\031\n\025LINK_TYPE_SOURCE_CODE"
-    "\020\006\022\024\n\020LINK_TYPE_TICKET\020\007\022\026\n\022LINK_TYPE_AL"
-    "ERTING\020\010\022\026\n\022LINK_TYPE_EXTERNAL\020\tBLZJgith"
-    "ub.com/kentik/api-schema-public/gen/go/k"
-    "entik/monitoring/v1;monitoringb\006proto3"
+    "kentik.monitoring.v1\032\037google/protobuf/ti"
+    "mestamp.proto\"B\n\005Probe\022\016\n\002ok\030\001 \001(\010R\002ok\022\035"
+    "\n\007message\030\002 \001(\tH\000R\007message\210\001\001B\n\n\010_messag"
+    "e\"\263\001\n\006Probes\0225\n\007startup\030\001 \001(\0132\033.kentik.m"
+    "onitoring.v1.ProbeR\007startup\0227\n\010liveness\030"
+    "\002 \001(\0132\033.kentik.monitoring.v1.ProbeR\010live"
+    "ness\0229\n\treadiness\030\003 \001(\0132\033.kentik.monitor"
+    "ing.v1.ProbeR\treadiness\"\224\001\n\006Health\022:\n\006st"
+    "atus\030\001 \001(\0162\".kentik.monitoring.v1.Health"
+    "StatusR\006status\022\031\n\005score\030\002 \001(\002H\000R\005score\210\001"
+    "\001\022\035\n\007message\030\003 \001(\tH\001R\007message\210\001\001B\010\n\006_sco"
+    "reB\n\n\010_message\"\331\003\n\020MetricDefinition\022\022\n\004n"
+    "ame\030\001 \001(\tR\004name\022 \n\013description\030\002 \001(\tR\013de"
+    "scription\022:\n\006entity\030\003 \001(\0162\".kentik.monit"
+    "oring.v1.MetricEntityR\006entity\022I\n\013measure"
+    "ment\030\004 \001(\0162\'.kentik.monitoring.v1.Metric"
+    "MeasurementR\013measurement\022M\n\rduration_uni"
+    "t\030\005 \001(\0162(.kentik.monitoring.v1.MetricDur"
+    "ationUnitR\014durationUnit\022A\n\trate_unit\030\006 \001"
+    "(\0162$.kentik.monitoring.v1.MetricRateUnit"
+    "R\010rateUnit\0224\n\004type\030\007 \001(\0162 .kentik.monito"
+    "ring.v1.MetricTypeR\004type\022@\n\010category\030\010 \001"
+    "(\0162$.kentik.monitoring.v1.MetricCategory"
+    "R\010category\">\n\nPercentile\022\032\n\010quantile\030\001 \001"
+    "(\001R\010quantile\022\024\n\005value\030\002 \001(\001R\005value\"\226\001\n\016H"
+    "istogramValue\022!\n\014sample_count\030\001 \001(\004R\013sam"
+    "pleCount\022\035\n\nsample_sum\030\002 \001(\001R\tsampleSum\022"
+    "B\n\013percentiles\030\003 \003(\0132 .kentik.monitoring"
+    ".v1.PercentileR\013percentiles\"v\n\013MetricVal"
+    "ue\022\030\n\006scalar\030\001 \001(\001H\000R\006scalar\022D\n\thistogra"
+    "m\030\002 \001(\0132$.kentik.monitoring.v1.Histogram"
+    "ValueH\000R\thistogramB\007\n\005value\"\312\001\n\014MetricSa"
+    "mple\022F\n\006labels\030\001 \003(\0132..kentik.monitoring"
+    ".v1.MetricSample.LabelsEntryR\006labels\0227\n\005"
+    "value\030\002 \001(\0132!.kentik.monitoring.v1.Metri"
+    "cValueR\005value\0329\n\013LabelsEntry\022\020\n\003key\030\001 \001("
+    "\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\"\216\001\n\006Met"
+    "ric\022F\n\ndefinition\030\001 \001(\0132&.kentik.monitor"
+    "ing.v1.MetricDefinitionR\ndefinition\022<\n\007s"
+    "amples\030\002 \003(\0132\".kentik.monitoring.v1.Metr"
+    "icSampleR\007samples\"b\n\004Link\0222\n\004type\030\001 \001(\0162"
+    "\036.kentik.monitoring.v1.LinkTypeR\004type\022\024\n"
+    "\005title\030\002 \001(\tR\005title\022\020\n\003url\030\003 \001(\tR\003url\"h\n"
+    "\004Fact\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005"
+    "value\022 \n\013description\030\003 \001(\tR\013description\022"
+    "\026\n\006cohort\030\004 \001(\010R\006cohort\"\354\006\n\016ComponentSta"
+    "te\022\022\n\004name\030\001 \001(\tR\004name\0227\n\004type\030\002 \001(\0162#.k"
+    "entik.monitoring.v1.ComponentTypeR\004type\022"
+    "%\n\013description\030\n \001(\tH\000R\013description\210\001\001\022M"
+    "\n\017lifecycle_phase\030\003 \001(\0162$.kentik.monitor"
+    "ing.v1.LifecyclePhaseR\016lifecyclePhase\0224\n"
+    "\006probes\030\004 \001(\0132\034.kentik.monitoring.v1.Pro"
+    "besR\006probes\0224\n\006health\030\005 \001(\0132\034.kentik.mon"
+    "itoring.v1.HealthR\006health\022@\n\010children\030\006 "
+    "\003(\0132$.kentik.monitoring.v1.ComponentStat"
+    "eR\010children\0226\n\007metrics\030\007 \003(\0132\034.kentik.mo"
+    "nitoring.v1.MetricR\007metrics\022H\n\006labels\030\t "
+    "\003(\01320.kentik.monitoring.v1.ComponentStat"
+    "e.LabelsEntryR\006labels\0220\n\005links\030\010 \003(\0132\032.k"
+    "entik.monitoring.v1.LinkR\005links\0220\n\005facts"
+    "\030\017 \003(\0132\032.kentik.monitoring.v1.FactR\005fact"
+    "s\0228\n\ttimestamp\030\014 \001(\0132\032.google.protobuf.T"
+    "imestampR\ttimestamp\022:\n\010audience\030\r \001(\0162\036."
+    "kentik.monitoring.v1.AudienceR\010audience\022"
+    "/\n\023version_independent\030\016 \001(\010R\022versionInd"
+    "ependent\0329\n\013LabelsEntry\022\020\n\003key\030\001 \001(\tR\003ke"
+    "y\022\024\n\005value\030\002 \001(\tR\005value:\0028\001B\016\n\014_descript"
+    "ionJ\004\010\013\020\014R\013annotations*\264\001\n\016LifecyclePhas"
+    "e\022\037\n\033LIFECYCLE_PHASE_UNSPECIFIED\020\000\022 \n\034LI"
+    "FECYCLE_PHASE_INITIALIZING\020d\022\034\n\027LIFECYCL"
+    "E_PHASE_RUNNING\020\310\001\022 \n\033LIFECYCLE_PHASE_TE"
+    "RMINATING\020\254\002\022\037\n\032LIFECYCLE_PHASE_TERMINAT"
+    "ED\020\220\003*\267\001\n\014HealthStatus\022\035\n\031HEALTH_STATUS_"
+    "UNSPECIFIED\020\000\022\031\n\025HEALTH_STATUS_HEALTHY\020d"
+    "\022\032\n\025HEALTH_STATUS_WARNING\020\310\001\022\033\n\026HEALTH_S"
+    "TATUS_DEGRADED\020\254\002\022\033\n\026HEALTH_STATUS_CRITI"
+    "CAL\020\220\003\022\027\n\022HEALTH_STATUS_DOWN\020\364\003*t\n\nMetri"
+    "cType\022\033\n\027METRIC_TYPE_UNSPECIFIED\020\000\022\025\n\021ME"
+    "TRIC_TYPE_GAUGE\020\001\022\027\n\023METRIC_TYPE_COUNTER"
+    "\020\002\022\031\n\025METRIC_TYPE_HISTOGRAM\020\003*\356\006\n\014Metric"
+    "Entity\022\035\n\031METRIC_ENTITY_UNSPECIFIED\020\000\022\032\n"
+    "\026METRIC_ENTITY_REQUESTS\020\001\022\031\n\025METRIC_ENTI"
+    "TY_QUERIES\020\002\022\027\n\023METRIC_ENTITY_FLOWS\020\n\022\035\n"
+    "\031METRIC_ENTITY_CONNECTIONS\020\013\022\031\n\025METRIC_E"
+    "NTITY_PACKETS\020\014\022\027\n\023METRIC_ENTITY_BYTES\020\r"
+    "\022\027\n\023METRIC_ENTITY_READS\020\024\022\030\n\024METRIC_ENTI"
+    "TY_WRITES\020\025\022\036\n\032METRIC_ENTITY_TRANSACTION"
+    "S\020\026\022\031\n\025METRIC_ENTITY_RECORDS\020\027\022\032\n\026METRIC"
+    "_ENTITY_MESSAGES\020\036\022\030\n\024METRIC_ENTITY_EVEN"
+    "TS\020\037\022\026\n\022METRIC_ENTITY_LOGS\020 \022\027\n\023METRIC_E"
+    "NTITY_TASKS\020(\022\034\n\030METRIC_ENTITY_OPERATION"
+    "S\020)\022\031\n\025METRIC_ENTITY_BATCHES\020*\022\027\n\023METRIC"
+    "_ENTITY_ITEMS\0202\022\026\n\022METRIC_ENTITY_DATA\0203\022"
+    "\030\n\024METRIC_ENTITY_BLOCKS\0204\022\032\n\026METRIC_ENTI"
+    "TY_REPLICAS\0205\022\033\n\027METRIC_ENTITY_SNAPSHOTS"
+    "\0206\022\031\n\025METRIC_ENTITY_THREADS\020<\022\033\n\027METRIC_"
+    "ENTITY_PROCESSES\020=\022\034\n\030METRIC_ENTITY_GORO"
+    "UTINES\020>\022\027\n\023METRIC_ENTITY_LOCKS\020\?\022\032\n\026MET"
+    "RIC_ENTITY_SESSIONS\020F\022\027\n\023METRIC_ENTITY_U"
+    "SERS\020G\022\031\n\025METRIC_ENTITY_CLIENTS\020H\022\030\n\024MET"
+    "RIC_ENTITY_ERRORS\020P\022\027\n\023METRIC_ENTITY_SPA"
+    "NS\020Q\022\030\n\024METRIC_ENTITY_ALERTS\020R*\261\001\n\021Metri"
+    "cMeasurement\022\"\n\036METRIC_MEASUREMENT_UNSPE"
+    "CIFIED\020\000\022\034\n\030METRIC_MEASUREMENT_COUNT\020\001\022\037"
+    "\n\033METRIC_MEASUREMENT_DURATION\020\002\022\033\n\027METRI"
+    "C_MEASUREMENT_SIZE\020\003\022\034\n\030METRIC_MEASUREME"
+    "NT_RATIO\020\004*\222\002\n\022MetricDurationUnit\022$\n MET"
+    "RIC_DURATION_UNIT_UNSPECIFIED\020\000\022$\n METRI"
+    "C_DURATION_UNIT_NANOSECONDS\020\001\022%\n!METRIC_"
+    "DURATION_UNIT_MICROSECONDS\020\002\022%\n!METRIC_D"
+    "URATION_UNIT_MILLISECONDS\020\003\022 \n\034METRIC_DU"
+    "RATION_UNIT_SECONDS\020\004\022 \n\034METRIC_DURATION"
+    "_UNIT_MINUTES\020\005\022\036\n\032METRIC_DURATION_UNIT_"
+    "HOURS\020\006*\223\001\n\016MetricRateUnit\022 \n\034METRIC_RAT"
+    "E_UNIT_UNSPECIFIED\020\000\022\037\n\033METRIC_RATE_UNIT"
+    "_PER_SECOND\020\001\022\037\n\033METRIC_RATE_UNIT_PER_MI"
+    "NUTE\020\002\022\035\n\031METRIC_RATE_UNIT_PER_HOUR\020\003*\352\001"
+    "\n\016MetricCategory\022\037\n\033METRIC_CATEGORY_UNSP"
+    "ECIFIED\020\000\022\037\n\033METRIC_CATEGORY_UTILIZATION"
+    "\020\001\022\036\n\032METRIC_CATEGORY_SATURATION\020\002\022\032\n\026ME"
+    "TRIC_CATEGORY_ERRORS\020\003\022\033\n\027METRIC_CATEGOR"
+    "Y_LATENCY\020\004\022\033\n\027METRIC_CATEGORY_TRAFFIC\020\005"
+    "\022 \n\034METRIC_CATEGORY_AVAILABILITY\020\006*\225\017\n\rC"
+    "omponentType\022\036\n\032COMPONENT_TYPE_UNSPECIFI"
+    "ED\020\000\022\032\n\026COMPONENT_TYPE_GENERIC\020\001\022\030\n\024COMP"
+    "ONENT_TYPE_GROUP\020\002\022\032\n\026COMPONENT_TYPE_BAC"
+    "KEND\020d\022\033\n\027COMPONENT_TYPE_FRONTEND\020e\022\032\n\026C"
+    "OMPONENT_TYPE_CLUSTER\020f\022\027\n\023COMPONENT_TYP"
+    "E_NODE\020g\022\030\n\024COMPONENT_TYPE_AGENT\020h\022\035\n\031CO"
+    "MPONENT_TYPE_CAPABILITY\020i\022\034\n\027COMPONENT_T"
+    "YPE_RECEIVER\020\310\001\022\032\n\025COMPONENT_TYPE_FILTER"
+    "\020\311\001\022\035\n\030COMPONENT_TYPE_PROCESSOR\020\312\001\022\032\n\025CO"
+    "MPONENT_TYPE_POLLER\020\313\001\022\035\n\030COMPONENT_TYPE"
+    "_SCHEDULER\020\314\001\022 \n\033COMPONENT_TYPE_ORCHESTR"
+    "ATOR\020\315\001\022\032\n\025COMPONENT_TYPE_SENDER\020\316\001\022\031\n\024C"
+    "OMPONENT_TYPE_PROXY\020\317\001\022\032\n\025COMPONENT_TYPE"
+    "_ROUTER\020\320\001\022\032\n\025COMPONENT_TYPE_WORKER\020\321\001\022\033"
+    "\n\026COMPONENT_TYPE_CHANNEL\020\322\001\022\032\n\025COMPONENT"
+    "_TYPE_BUFFER\020\323\001\022\030\n\023COMPONENT_TYPE_SINK\020\324"
+    "\001\022\036\n\031COMPONENT_TYPE_CONNECTION\020\325\001\022\036\n\031COM"
+    "PONENT_TYPE_RECONCILER\020\326\001\022\036\n\031COMPONENT_T"
+    "YPE_EVENT_LOOP\020\327\001\022\"\n\035COMPONENT_TYPE_CONF"
+    "IG_MANAGER\020\330\001\022\036\n\031COMPONENT_TYPE_SUPERVIS"
+    "OR\020\331\001\022\031\n\024COMPONENT_TYPE_CACHE\020\254\002\022\031\n\024COMP"
+    "ONENT_TYPE_QUEUE\020\255\002\022\034\n\027COMPONENT_TYPE_DA"
+    "TABASE\020\256\002\022\"\n\035COMPONENT_TYPE_OBJECT_STORA"
+    "GE\020\257\002\022\'\n\"COMPONENT_TYPE_TIMESERIES_DATAB"
+    "ASE\020\260\002\022#\n\036COMPONENT_TYPE_KEY_VALUE_STORE"
+    "\020\261\002\022%\n COMPONENT_TYPE_DOCUMENT_DATABASE\020"
+    "\262\002\022 \n\033COMPONENT_TYPE_SEARCH_INDEX\020\263\002\022\032\n\025"
+    "COMPONENT_TYPE_STREAM\020\264\002\022\032\n\025COMPONENT_TY"
+    "PE_MEMORY\020\220\003\022\030\n\023COMPONENT_TYPE_DISK\020\221\003\022\036"
+    "\n\031COMPONENT_TYPE_FILESYSTEM\020\222\003\022\033\n\026COMPON"
+    "ENT_TYPE_NETWORK\020\223\003\022\027\n\022COMPONENT_TYPE_CP"
+    "U\020\224\003\022\027\n\022COMPONENT_TYPE_GPU\020\225\003\022\031\n\024COMPONE"
+    "NT_TYPE_CLOCK\020\226\003\022\032\n\025COMPONENT_TYPE_SERVE"
+    "R\020\364\003\022\026\n\021COMPONENT_TYPE_VM\020\365\003\022\035\n\030COMPONEN"
+    "T_TYPE_CONTAINER\020\366\003\022\027\n\022COMPONENT_TYPE_PO"
+    "D\020\367\003\022\035\n\030COMPONENT_TYPE_NAMESPACE\020\370\003\022\030\n\023C"
+    "OMPONENT_TYPE_JAIL\020\371\003\022\032\n\025COMPONENT_TYPE_"
+    "LAMBDA\020\372\003\022!\n\034COMPONENT_TYPE_LOAD_BALANCE"
+    "R\020\330\004\022\034\n\027COMPONENT_TYPE_FIREWALL\020\331\004\022\027\n\022CO"
+    "MPONENT_TYPE_VPN\020\332\004\022\032\n\025COMPONENT_TYPE_SW"
+    "ITCH\020\333\004\022#\n\036COMPONENT_TYPE_PHYSICAL_ROUTE"
+    "R\020\334\004\022\027\n\022COMPONENT_TYPE_DNS\020\335\004\022\027\n\022COMPONE"
+    "NT_TYPE_CDN\020\336\004\022\032\n\025COMPONENT_TYPE_TUNNEL\020"
+    "\337\004\022 \n\033COMPONENT_TYPE_EXTERNAL_API\020\274\005\022!\n\034"
+    "COMPONENT_TYPE_CLOUD_SERVICE\020\275\005\022\030\n\023COMPO"
+    "NENT_TYPE_SAAS\020\276\005\022\032\n\025COMPONENT_TYPE_CONF"
+    "IG\020\240\006\022\032\n\025COMPONENT_TYPE_SCHEMA\020\241\006\022\037\n\032COM"
+    "PONENT_TYPE_CERTIFICATE\020\242\006\022\036\n\031COMPONENT_"
+    "TYPE_CREDENTIAL\020\243\006*R\n\010Audience\022\030\n\024AUDIEN"
+    "CE_UNSPECIFIED\020\000\022\025\n\021AUDIENCE_CUSTOMER\020\001\022"
+    "\025\n\021AUDIENCE_INTERNAL\020\002*\375\001\n\010LinkType\022\031\n\025L"
+    "INK_TYPE_UNSPECIFIED\020\000\022\027\n\023LINK_TYPE_DASH"
+    "BOARD\020\001\022\022\n\016LINK_TYPE_LOGS\020\002\022\024\n\020LINK_TYPE"
+    "_TRACES\020\003\022\033\n\027LINK_TYPE_DOCUMENTATION\020\004\022\025"
+    "\n\021LINK_TYPE_RUNBOOK\020\005\022\031\n\025LINK_TYPE_SOURC"
+    "E_CODE\020\006\022\024\n\020LINK_TYPE_TICKET\020\007\022\026\n\022LINK_T"
+    "YPE_ALERTING\020\010\022\026\n\022LINK_TYPE_EXTERNAL\020\tBL"
+    "ZJgithub.com/kentik/api-schema-public/ge"
+    "n/go/kentik/monitoring/v1;monitoringb\006pr"
+    "oto3"
 };
-static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fmonitoring_2fv1_2fcomponent_2eproto_deps[2] =
+static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fmonitoring_2fv1_2fcomponent_2eproto_deps[1] =
     {
-        &::descriptor_table_google_2fprotobuf_2fstruct_2eproto,
         &::descriptor_table_google_2fprotobuf_2ftimestamp_2eproto,
 };
 static ::absl::once_flag descriptor_table_kentik_2fmonitoring_2fv1_2fcomponent_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fmonitoring_2fv1_2fcomponent_2eproto = {
     false,
     false,
-    7238,
+    7324,
     descriptor_table_protodef_kentik_2fmonitoring_2fv1_2fcomponent_2eproto,
     "kentik/monitoring/v1/component.proto",
     &descriptor_table_kentik_2fmonitoring_2fv1_2fcomponent_2eproto_once,
     descriptor_table_kentik_2fmonitoring_2fv1_2fcomponent_2eproto_deps,
-    2,
-    13,
+    1,
+    14,
     schemas,
     file_default_instances,
     TableStruct_kentik_2fmonitoring_2fv1_2fcomponent_2eproto::offsets,
@@ -4124,6 +4174,318 @@ void Link::InternalSwap(Link* PROTOBUF_RESTRICT other) {
 }
 // ===================================================================
 
+class Fact::_Internal {
+ public:
+};
+
+Fact::Fact(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.monitoring.v1.Fact)
+}
+inline PROTOBUF_NDEBUG_INLINE Fact::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::monitoring::v1::Fact& from_msg)
+      : key_(arena, from.key_),
+        value_(arena, from.value_),
+        description_(arena, from.description_),
+        _cached_size_{0} {}
+
+Fact::Fact(
+    ::google::protobuf::Arena* arena,
+    const Fact& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  Fact* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  _impl_.cohort_ = from._impl_.cohort_;
+
+  // @@protoc_insertion_point(copy_constructor:kentik.monitoring.v1.Fact)
+}
+inline PROTOBUF_NDEBUG_INLINE Fact::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : key_(arena),
+        value_(arena),
+        description_(arena),
+        _cached_size_{0} {}
+
+inline void Fact::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.cohort_ = {};
+}
+Fact::~Fact() {
+  // @@protoc_insertion_point(destructor:kentik.monitoring.v1.Fact)
+  SharedDtor(*this);
+}
+inline void Fact::SharedDtor(MessageLite& self) {
+  Fact& this_ = static_cast<Fact&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.key_.Destroy();
+  this_._impl_.value_.Destroy();
+  this_._impl_.description_.Destroy();
+  this_._impl_.~Impl_();
+}
+
+inline void* Fact::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) Fact(arena);
+}
+constexpr auto Fact::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(Fact),
+                                            alignof(Fact));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull Fact::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_Fact_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &Fact::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<Fact>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &Fact::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<Fact>(), &Fact::ByteSizeLong,
+            &Fact::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(Fact, _impl_._cached_size_),
+        false,
+    },
+    &Fact::kDescriptorMethods,
+    &descriptor_table_kentik_2fmonitoring_2fv1_2fcomponent_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* Fact::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<2, 4, 0, 53, 2> Fact::_table_ = {
+  {
+    0,  // no _has_bits_
+    0, // no _extensions_
+    4, 24,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967280,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    4,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::monitoring::v1::Fact>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // bool cohort = 4 [json_name = "cohort"];
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(Fact, _impl_.cohort_), 63>(),
+     {32, 63, 0, PROTOBUF_FIELD_OFFSET(Fact, _impl_.cohort_)}},
+    // string key = 1 [json_name = "key"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(Fact, _impl_.key_)}},
+    // string value = 2 [json_name = "value"];
+    {::_pbi::TcParser::FastUS1,
+     {18, 63, 0, PROTOBUF_FIELD_OFFSET(Fact, _impl_.value_)}},
+    // string description = 3 [json_name = "description"];
+    {::_pbi::TcParser::FastUS1,
+     {26, 63, 0, PROTOBUF_FIELD_OFFSET(Fact, _impl_.description_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1 [json_name = "key"];
+    {PROTOBUF_FIELD_OFFSET(Fact, _impl_.key_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string value = 2 [json_name = "value"];
+    {PROTOBUF_FIELD_OFFSET(Fact, _impl_.value_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // string description = 3 [json_name = "description"];
+    {PROTOBUF_FIELD_OFFSET(Fact, _impl_.description_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // bool cohort = 4 [json_name = "cohort"];
+    {PROTOBUF_FIELD_OFFSET(Fact, _impl_.cohort_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+  }},
+  // no aux_entries
+  {{
+    "\31\3\5\13\0\0\0\0"
+    "kentik.monitoring.v1.Fact"
+    "key"
+    "value"
+    "description"
+  }},
+};
+
+PROTOBUF_NOINLINE void Fact::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.monitoring.v1.Fact)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.key_.ClearToEmpty();
+  _impl_.value_.ClearToEmpty();
+  _impl_.description_.ClearToEmpty();
+  _impl_.cohort_ = false;
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* Fact::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const Fact& this_ = static_cast<const Fact&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* Fact::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const Fact& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.monitoring.v1.Fact)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string key = 1 [json_name = "key"];
+          if (!this_._internal_key().empty()) {
+            const std::string& _s = this_._internal_key();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.monitoring.v1.Fact.key");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          // string value = 2 [json_name = "value"];
+          if (!this_._internal_value().empty()) {
+            const std::string& _s = this_._internal_value();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.monitoring.v1.Fact.value");
+            target = stream->WriteStringMaybeAliased(2, _s, target);
+          }
+
+          // string description = 3 [json_name = "description"];
+          if (!this_._internal_description().empty()) {
+            const std::string& _s = this_._internal_description();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.monitoring.v1.Fact.description");
+            target = stream->WriteStringMaybeAliased(3, _s, target);
+          }
+
+          // bool cohort = 4 [json_name = "cohort"];
+          if (this_._internal_cohort() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteBoolToArray(
+                4, this_._internal_cohort(), target);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.monitoring.v1.Fact)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t Fact::ByteSizeLong(const MessageLite& base) {
+          const Fact& this_ = static_cast<const Fact&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t Fact::ByteSizeLong() const {
+          const Fact& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.monitoring.v1.Fact)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string key = 1 [json_name = "key"];
+            if (!this_._internal_key().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_key());
+            }
+            // string value = 2 [json_name = "value"];
+            if (!this_._internal_value().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_value());
+            }
+            // string description = 3 [json_name = "description"];
+            if (!this_._internal_description().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_description());
+            }
+            // bool cohort = 4 [json_name = "cohort"];
+            if (this_._internal_cohort() != 0) {
+              total_size += 2;
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void Fact::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<Fact*>(&to_msg);
+  auto& from = static_cast<const Fact&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.monitoring.v1.Fact)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_key().empty()) {
+    _this->_internal_set_key(from._internal_key());
+  }
+  if (!from._internal_value().empty()) {
+    _this->_internal_set_value(from._internal_value());
+  }
+  if (!from._internal_description().empty()) {
+    _this->_internal_set_description(from._internal_description());
+  }
+  if (from._internal_cohort() != 0) {
+    _this->_impl_.cohort_ = from._impl_.cohort_;
+  }
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Fact::CopyFrom(const Fact& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.monitoring.v1.Fact)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void Fact::InternalSwap(Fact* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.key_, &other->_impl_.key_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.value_, &other->_impl_.value_, arena);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, &other->_impl_.description_, arena);
+        swap(_impl_.cohort_, other->_impl_.cohort_);
+}
+
+::google::protobuf::Metadata Fact::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
 #if defined(PROTOBUF_CUSTOM_VTABLE)
               ComponentState_LabelsEntry_DoNotUse::ComponentState_LabelsEntry_DoNotUse() : SuperType(_class_data_.base()) {}
               ComponentState_LabelsEntry_DoNotUse::ComponentState_LabelsEntry_DoNotUse(::google::protobuf::Arena* arena)
@@ -4223,15 +4585,10 @@ class ComponentState::_Internal {
       8 * PROTOBUF_FIELD_OFFSET(ComponentState, _impl_._has_bits_);
 };
 
-void ComponentState::clear_annotations() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.annotations_ != nullptr) _impl_.annotations_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000008u;
-}
 void ComponentState::clear_timestamp() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   if (_impl_.timestamp_ != nullptr) _impl_.timestamp_->Clear();
-  _impl_._has_bits_[0] &= ~0x00000010u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
 }
 ComponentState::ComponentState(::google::protobuf::Arena* arena)
 #if defined(PROTOBUF_CUSTOM_VTABLE)
@@ -4251,6 +4608,7 @@ inline PROTOBUF_NDEBUG_INLINE ComponentState::Impl_::Impl_(
         metrics_{visibility, arena, from.metrics_},
         links_{visibility, arena, from.links_},
         labels_{visibility, arena, from.labels_},
+        facts_{visibility, arena, from.facts_},
         name_(arena, from.name_),
         description_(arena, from.description_) {}
 
@@ -4274,10 +4632,7 @@ ComponentState::ComponentState(
   _impl_.health_ = (cached_has_bits & 0x00000004u) ? ::google::protobuf::Message::CopyConstruct<::kentik::monitoring::v1::Health>(
                               arena, *from._impl_.health_)
                         : nullptr;
-  _impl_.annotations_ = (cached_has_bits & 0x00000008u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Struct>(
-                              arena, *from._impl_.annotations_)
-                        : nullptr;
-  _impl_.timestamp_ = (cached_has_bits & 0x00000010u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(
+  _impl_.timestamp_ = (cached_has_bits & 0x00000008u) ? ::google::protobuf::Message::CopyConstruct<::google::protobuf::Timestamp>(
                               arena, *from._impl_.timestamp_)
                         : nullptr;
   ::memcpy(reinterpret_cast<char *>(&_impl_) +
@@ -4298,6 +4653,7 @@ inline PROTOBUF_NDEBUG_INLINE ComponentState::Impl_::Impl_(
         metrics_{visibility, arena},
         links_{visibility, arena},
         labels_{visibility, arena},
+        facts_{visibility, arena},
         name_(arena),
         description_(arena) {}
 
@@ -4322,7 +4678,6 @@ inline void ComponentState::SharedDtor(MessageLite& self) {
   this_._impl_.description_.Destroy();
   delete this_._impl_.probes_;
   delete this_._impl_.health_;
-  delete this_._impl_.annotations_;
   delete this_._impl_.timestamp_;
   this_._impl_.~Impl_();
 }
@@ -4351,6 +4706,10 @@ constexpr auto ComponentState::InternalNewImpl_() {
                   ::google::protobuf::Message::internal_visibility()),
       PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.links_) +
           decltype(ComponentState::_impl_.links_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.facts_) +
+          decltype(ComponentState::_impl_.facts_)::
               InternalGetArenaOffset(
                   ::google::protobuf::Message::internal_visibility()),
   });
@@ -4395,9 +4754,9 @@ const ::_pbi::TcParseTable<4, 14, 8, 73, 2> ComponentState::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(ComponentState, _impl_._has_bits_),
     0, // no _extensions_
-    14, 120,  // max_field_number, fast_idx_mask
+    15, 120,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294950912,  // skipmap
+    4294935552,  // skipmap
     offsetof(decltype(_table_), field_entries),
     14,  // num_field_entries
     8,  // num_aux_entries
@@ -4438,19 +4797,19 @@ const ::_pbi::TcParseTable<4, 14, 8, 73, 2> ComponentState::_table_ = {
     // optional string description = 10 [json_name = "description"];
     {::_pbi::TcParser::FastUS1,
      {82, 0, 0, PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.description_)}},
-    // .google.protobuf.Struct annotations = 11 [json_name = "annotations"];
-    {::_pbi::TcParser::FastMtS1,
-     {90, 3, 5, PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.annotations_)}},
+    {::_pbi::TcParser::MiniParse, {}},
     // .google.protobuf.Timestamp timestamp = 12 [json_name = "timestamp"];
     {::_pbi::TcParser::FastMtS1,
-     {98, 4, 6, PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.timestamp_)}},
+     {98, 3, 5, PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.timestamp_)}},
     // .kentik.monitoring.v1.Audience audience = 13 [json_name = "audience"];
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(ComponentState, _impl_.audience_), 63>(),
      {104, 63, 0, PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.audience_)}},
     // bool version_independent = 14 [json_name = "versionIndependent"];
     {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(ComponentState, _impl_.version_independent_), 63>(),
      {112, 63, 0, PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.version_independent_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // repeated .kentik.monitoring.v1.Fact facts = 15 [json_name = "facts"];
+    {::_pbi::TcParser::FastMtR1,
+     {122, 63, 6, PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.facts_)}},
   }}, {{
     65535, 65535
   }}, {{
@@ -4484,11 +4843,8 @@ const ::_pbi::TcParseTable<4, 14, 8, 73, 2> ComponentState::_table_ = {
     // optional string description = 10 [json_name = "description"];
     {PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.description_), _Internal::kHasBitsOffset + 0, 0,
     (0 | ::_fl::kFcOptional | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // .google.protobuf.Struct annotations = 11 [json_name = "annotations"];
-    {PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.annotations_), _Internal::kHasBitsOffset + 3, 5,
-    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
     // .google.protobuf.Timestamp timestamp = 12 [json_name = "timestamp"];
-    {PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.timestamp_), _Internal::kHasBitsOffset + 4, 6,
+    {PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.timestamp_), _Internal::kHasBitsOffset + 3, 5,
     (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
     // .kentik.monitoring.v1.Audience audience = 13 [json_name = "audience"];
     {PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.audience_), -1, 0,
@@ -4496,14 +4852,17 @@ const ::_pbi::TcParseTable<4, 14, 8, 73, 2> ComponentState::_table_ = {
     // bool version_independent = 14 [json_name = "versionIndependent"];
     {PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.version_independent_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    // repeated .kentik.monitoring.v1.Fact facts = 15 [json_name = "facts"];
+    {PROTOBUF_FIELD_OFFSET(ComponentState, _impl_.facts_), -1, 6,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::monitoring::v1::Probes>()},
     {::_pbi::TcParser::GetTable<::kentik::monitoring::v1::Health>()},
     {::_pbi::TcParser::GetTable<::kentik::monitoring::v1::ComponentState>()},
     {::_pbi::TcParser::GetTable<::kentik::monitoring::v1::Metric>()},
     {::_pbi::TcParser::GetTable<::kentik::monitoring::v1::Link>()},
-    {::_pbi::TcParser::GetTable<::google::protobuf::Struct>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
+    {::_pbi::TcParser::GetTable<::kentik::monitoring::v1::Fact>()},
     {::_pbi::TcParser::GetMapAuxInfo<
         decltype(ComponentState()._impl_.labels_)>(
         1, 0, 0, 9,
@@ -4528,9 +4887,10 @@ PROTOBUF_NOINLINE void ComponentState::Clear() {
   _impl_.metrics_.Clear();
   _impl_.links_.Clear();
   _impl_.labels_.Clear();
+  _impl_.facts_.Clear();
   _impl_.name_.ClearToEmpty();
   cached_has_bits = _impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       _impl_.description_.ClearNonDefaultToEmpty();
     }
@@ -4543,10 +4903,6 @@ PROTOBUF_NOINLINE void ComponentState::Clear() {
       _impl_.health_->Clear();
     }
     if (cached_has_bits & 0x00000008u) {
-      ABSL_DCHECK(_impl_.annotations_ != nullptr);
-      _impl_.annotations_->Clear();
-    }
-    if (cached_has_bits & 0x00000010u) {
       ABSL_DCHECK(_impl_.timestamp_ != nullptr);
       _impl_.timestamp_->Clear();
     }
@@ -4684,15 +5040,8 @@ PROTOBUF_NOINLINE void ComponentState::Clear() {
             target = stream->WriteStringMaybeAliased(10, _s, target);
           }
 
-          // .google.protobuf.Struct annotations = 11 [json_name = "annotations"];
-          if (cached_has_bits & 0x00000008u) {
-            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
-                11, *this_._impl_.annotations_, this_._impl_.annotations_->GetCachedSize(), target,
-                stream);
-          }
-
           // .google.protobuf.Timestamp timestamp = 12 [json_name = "timestamp"];
-          if (cached_has_bits & 0x00000010u) {
+          if (cached_has_bits & 0x00000008u) {
             target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
                 12, *this_._impl_.timestamp_, this_._impl_.timestamp_->GetCachedSize(), target,
                 stream);
@@ -4710,6 +5059,17 @@ PROTOBUF_NOINLINE void ComponentState::Clear() {
             target = stream->EnsureSpace(target);
             target = ::_pbi::WireFormatLite::WriteBoolToArray(
                 14, this_._internal_version_independent(), target);
+          }
+
+          // repeated .kentik.monitoring.v1.Fact facts = 15 [json_name = "facts"];
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_facts_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_facts().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    15, repfield, repfield.GetCachedSize(),
+                    target, stream);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -4768,6 +5128,13 @@ PROTOBUF_NOINLINE void ComponentState::Clear() {
                                                _pbi::WireFormatLite::TYPE_STRING>::ByteSizeLong(entry.first, entry.second);
               }
             }
+            // repeated .kentik.monitoring.v1.Fact facts = 15 [json_name = "facts"];
+            {
+              total_size += 1UL * this_._internal_facts_size();
+              for (const auto& msg : this_._internal_facts()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
           }
            {
             // string name = 1 [json_name = "name"];
@@ -4777,7 +5144,7 @@ PROTOBUF_NOINLINE void ComponentState::Clear() {
             }
           }
           cached_has_bits = this_._impl_._has_bits_[0];
-          if (cached_has_bits & 0x0000001fu) {
+          if (cached_has_bits & 0x0000000fu) {
             // optional string description = 10 [json_name = "description"];
             if (cached_has_bits & 0x00000001u) {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -4793,13 +5160,8 @@ PROTOBUF_NOINLINE void ComponentState::Clear() {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.health_);
             }
-            // .google.protobuf.Struct annotations = 11 [json_name = "annotations"];
-            if (cached_has_bits & 0x00000008u) {
-              total_size += 1 +
-                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.annotations_);
-            }
             // .google.protobuf.Timestamp timestamp = 12 [json_name = "timestamp"];
-            if (cached_has_bits & 0x00000010u) {
+            if (cached_has_bits & 0x00000008u) {
               total_size += 1 +
                             ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.timestamp_);
             }
@@ -4845,11 +5207,13 @@ void ComponentState::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::
   _this->_internal_mutable_links()->MergeFrom(
       from._internal_links());
   _this->_impl_.labels_.MergeFrom(from._impl_.labels_);
+  _this->_internal_mutable_facts()->MergeFrom(
+      from._internal_facts());
   if (!from._internal_name().empty()) {
     _this->_internal_set_name(from._internal_name());
   }
   cached_has_bits = from._impl_._has_bits_[0];
-  if (cached_has_bits & 0x0000001fu) {
+  if (cached_has_bits & 0x0000000fu) {
     if (cached_has_bits & 0x00000001u) {
       _this->_internal_set_description(from._internal_description());
     }
@@ -4872,15 +5236,6 @@ void ComponentState::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::
       }
     }
     if (cached_has_bits & 0x00000008u) {
-      ABSL_DCHECK(from._impl_.annotations_ != nullptr);
-      if (_this->_impl_.annotations_ == nullptr) {
-        _this->_impl_.annotations_ =
-            ::google::protobuf::Message::CopyConstruct<::google::protobuf::Struct>(arena, *from._impl_.annotations_);
-      } else {
-        _this->_impl_.annotations_->MergeFrom(*from._impl_.annotations_);
-      }
-    }
-    if (cached_has_bits & 0x00000010u) {
       ABSL_DCHECK(from._impl_.timestamp_ != nullptr);
       if (_this->_impl_.timestamp_ == nullptr) {
         _this->_impl_.timestamp_ =
@@ -4924,6 +5279,7 @@ void ComponentState::InternalSwap(ComponentState* PROTOBUF_RESTRICT other) {
   _impl_.metrics_.InternalSwap(&other->_impl_.metrics_);
   _impl_.links_.InternalSwap(&other->_impl_.links_);
   _impl_.labels_.InternalSwap(&other->_impl_.labels_);
+  _impl_.facts_.InternalSwap(&other->_impl_.facts_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.description_, &other->_impl_.description_, arena);
   ::google::protobuf::internal::memswap<

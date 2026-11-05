@@ -33,7 +33,6 @@
 #include "google/protobuf/map_field_inl.h"
 #include "google/protobuf/generated_enum_reflection.h"
 #include "google/protobuf/unknown_field_set.h"
-#include "google/protobuf/struct.pb.h"
 #include "google/protobuf/timestamp.pb.h"
 // @@protoc_insertion_point(includes)
 
@@ -66,6 +65,9 @@ extern ComponentStateDefaultTypeInternal _ComponentState_default_instance_;
 class ComponentState_LabelsEntry_DoNotUse;
 struct ComponentState_LabelsEntry_DoNotUseDefaultTypeInternal;
 extern ComponentState_LabelsEntry_DoNotUseDefaultTypeInternal _ComponentState_LabelsEntry_DoNotUse_default_instance_;
+class Fact;
+struct FactDefaultTypeInternal;
+extern FactDefaultTypeInternal _Fact_default_instance_;
 class Health;
 struct HealthDefaultTypeInternal;
 extern HealthDefaultTypeInternal _Health_default_instance_;
@@ -1767,6 +1769,250 @@ class Health final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class Fact final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.monitoring.v1.Fact) */ {
+ public:
+  inline Fact() : Fact(nullptr) {}
+  ~Fact() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(Fact* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(Fact));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR Fact(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline Fact(const Fact& from) : Fact(nullptr, from) {}
+  inline Fact(Fact&& from) noexcept
+      : Fact(nullptr, std::move(from)) {}
+  inline Fact& operator=(const Fact& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Fact& operator=(Fact&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Fact& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Fact* internal_default_instance() {
+    return reinterpret_cast<const Fact*>(
+        &_Fact_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 11;
+  friend void swap(Fact& a, Fact& b) { a.Swap(&b); }
+  inline void Swap(Fact* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Fact* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Fact* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<Fact>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const Fact& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const Fact& from) { Fact::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(Fact* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.monitoring.v1.Fact"; }
+
+ protected:
+  explicit Fact(::google::protobuf::Arena* arena);
+  Fact(::google::protobuf::Arena* arena, const Fact& from);
+  Fact(::google::protobuf::Arena* arena, Fact&& from) noexcept
+      : Fact(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kKeyFieldNumber = 1,
+    kValueFieldNumber = 2,
+    kDescriptionFieldNumber = 3,
+    kCohortFieldNumber = 4,
+  };
+  // string key = 1 [json_name = "key"];
+  void clear_key() ;
+  const std::string& key() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_key(Arg_&& arg, Args_... args);
+  std::string* mutable_key();
+  PROTOBUF_NODISCARD std::string* release_key();
+  void set_allocated_key(std::string* value);
+
+  private:
+  const std::string& _internal_key() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_key(
+      const std::string& value);
+  std::string* _internal_mutable_key();
+
+  public:
+  // string value = 2 [json_name = "value"];
+  void clear_value() ;
+  const std::string& value() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_value(Arg_&& arg, Args_... args);
+  std::string* mutable_value();
+  PROTOBUF_NODISCARD std::string* release_value();
+  void set_allocated_value(std::string* value);
+
+  private:
+  const std::string& _internal_value() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_value(
+      const std::string& value);
+  std::string* _internal_mutable_value();
+
+  public:
+  // string description = 3 [json_name = "description"];
+  void clear_description() ;
+  const std::string& description() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_description(Arg_&& arg, Args_... args);
+  std::string* mutable_description();
+  PROTOBUF_NODISCARD std::string* release_description();
+  void set_allocated_description(std::string* value);
+
+  private:
+  const std::string& _internal_description() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_description(
+      const std::string& value);
+  std::string* _internal_mutable_description();
+
+  public:
+  // bool cohort = 4 [json_name = "cohort"];
+  void clear_cohort() ;
+  bool cohort() const;
+  void set_cohort(bool value);
+
+  private:
+  bool _internal_cohort() const;
+  void _internal_set_cohort(bool value);
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.monitoring.v1.Fact)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      2, 4, 0,
+      53, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const Fact& from_msg);
+    ::google::protobuf::internal::ArenaStringPtr key_;
+    ::google::protobuf::internal::ArenaStringPtr value_;
+    ::google::protobuf::internal::ArenaStringPtr description_;
+    bool cohort_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fmonitoring_2fv1_2fcomponent_2eproto;
+};
+// -------------------------------------------------------------------
+
 class ComponentState_LabelsEntry_DoNotUse final
     : public ::google::protobuf::internal::MapEntry<
           std::string, std::string,
@@ -2975,7 +3221,7 @@ class ComponentState final : public ::google::protobuf::Message
     return reinterpret_cast<const ComponentState*>(
         &_ComponentState_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 12;
+  static constexpr int kIndexInFileMessages = 13;
   friend void swap(ComponentState& a, ComponentState& b) { a.Swap(&b); }
   inline void Swap(ComponentState* other) {
     if (other == this) return;
@@ -3066,11 +3312,11 @@ class ComponentState final : public ::google::protobuf::Message
     kMetricsFieldNumber = 7,
     kLinksFieldNumber = 8,
     kLabelsFieldNumber = 9,
+    kFactsFieldNumber = 15,
     kNameFieldNumber = 1,
     kDescriptionFieldNumber = 10,
     kProbesFieldNumber = 4,
     kHealthFieldNumber = 5,
-    kAnnotationsFieldNumber = 11,
     kTimestampFieldNumber = 12,
     kTypeFieldNumber = 2,
     kLifecyclePhaseFieldNumber = 3,
@@ -3143,6 +3389,23 @@ class ComponentState final : public ::google::protobuf::Message
   ::google::protobuf::Map<std::string, std::string>* _internal_mutable_labels();
 
   public:
+  // repeated .kentik.monitoring.v1.Fact facts = 15 [json_name = "facts"];
+  int facts_size() const;
+  private:
+  int _internal_facts_size() const;
+
+  public:
+  void clear_facts() ;
+  ::kentik::monitoring::v1::Fact* mutable_facts(int index);
+  ::google::protobuf::RepeatedPtrField<::kentik::monitoring::v1::Fact>* mutable_facts();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::kentik::monitoring::v1::Fact>& _internal_facts() const;
+  ::google::protobuf::RepeatedPtrField<::kentik::monitoring::v1::Fact>* _internal_mutable_facts();
+  public:
+  const ::kentik::monitoring::v1::Fact& facts(int index) const;
+  ::kentik::monitoring::v1::Fact* add_facts();
+  const ::google::protobuf::RepeatedPtrField<::kentik::monitoring::v1::Fact>& facts() const;
   // string name = 1 [json_name = "name"];
   void clear_name() ;
   const std::string& name() const;
@@ -3204,21 +3467,6 @@ class ComponentState final : public ::google::protobuf::Message
   private:
   const ::kentik::monitoring::v1::Health& _internal_health() const;
   ::kentik::monitoring::v1::Health* _internal_mutable_health();
-
-  public:
-  // .google.protobuf.Struct annotations = 11 [json_name = "annotations"];
-  bool has_annotations() const;
-  void clear_annotations() ;
-  const ::google::protobuf::Struct& annotations() const;
-  PROTOBUF_NODISCARD ::google::protobuf::Struct* release_annotations();
-  ::google::protobuf::Struct* mutable_annotations();
-  void set_allocated_annotations(::google::protobuf::Struct* value);
-  void unsafe_arena_set_allocated_annotations(::google::protobuf::Struct* value);
-  ::google::protobuf::Struct* unsafe_arena_release_annotations();
-
-  private:
-  const ::google::protobuf::Struct& _internal_annotations() const;
-  ::google::protobuf::Struct* _internal_mutable_annotations();
 
   public:
   // .google.protobuf.Timestamp timestamp = 12 [json_name = "timestamp"];
@@ -3308,11 +3556,11 @@ class ComponentState final : public ::google::protobuf::Message
                       ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
                       ::google::protobuf::internal::WireFormatLite::TYPE_STRING>
         labels_;
+    ::google::protobuf::RepeatedPtrField< ::kentik::monitoring::v1::Fact > facts_;
     ::google::protobuf::internal::ArenaStringPtr name_;
     ::google::protobuf::internal::ArenaStringPtr description_;
     ::kentik::monitoring::v1::Probes* probes_;
     ::kentik::monitoring::v1::Health* health_;
-    ::google::protobuf::Struct* annotations_;
     ::google::protobuf::Timestamp* timestamp_;
     int type_;
     int lifecycle_phase_;
@@ -4751,6 +4999,176 @@ inline void Link::set_allocated_url(std::string* value) {
 
 // -------------------------------------------------------------------
 
+// Fact
+
+// string key = 1 [json_name = "key"];
+inline void Fact::clear_key() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.key_.ClearToEmpty();
+}
+inline const std::string& Fact::key() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.monitoring.v1.Fact.key)
+  return _internal_key();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Fact::set_key(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.key_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.monitoring.v1.Fact.key)
+}
+inline std::string* Fact::mutable_key() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_key();
+  // @@protoc_insertion_point(field_mutable:kentik.monitoring.v1.Fact.key)
+  return _s;
+}
+inline const std::string& Fact::_internal_key() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.key_.Get();
+}
+inline void Fact::_internal_set_key(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.key_.Set(value, GetArena());
+}
+inline std::string* Fact::_internal_mutable_key() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.key_.Mutable( GetArena());
+}
+inline std::string* Fact::release_key() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.monitoring.v1.Fact.key)
+  return _impl_.key_.Release();
+}
+inline void Fact::set_allocated_key(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.key_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.key_.IsDefault()) {
+    _impl_.key_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.monitoring.v1.Fact.key)
+}
+
+// string value = 2 [json_name = "value"];
+inline void Fact::clear_value() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.value_.ClearToEmpty();
+}
+inline const std::string& Fact::value() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.monitoring.v1.Fact.value)
+  return _internal_value();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Fact::set_value(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.value_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.monitoring.v1.Fact.value)
+}
+inline std::string* Fact::mutable_value() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_value();
+  // @@protoc_insertion_point(field_mutable:kentik.monitoring.v1.Fact.value)
+  return _s;
+}
+inline const std::string& Fact::_internal_value() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.value_.Get();
+}
+inline void Fact::_internal_set_value(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.value_.Set(value, GetArena());
+}
+inline std::string* Fact::_internal_mutable_value() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.value_.Mutable( GetArena());
+}
+inline std::string* Fact::release_value() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.monitoring.v1.Fact.value)
+  return _impl_.value_.Release();
+}
+inline void Fact::set_allocated_value(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.value_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.value_.IsDefault()) {
+    _impl_.value_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.monitoring.v1.Fact.value)
+}
+
+// string description = 3 [json_name = "description"];
+inline void Fact::clear_description() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.description_.ClearToEmpty();
+}
+inline const std::string& Fact::description() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.monitoring.v1.Fact.description)
+  return _internal_description();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void Fact::set_description(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.description_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.monitoring.v1.Fact.description)
+}
+inline std::string* Fact::mutable_description() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_description();
+  // @@protoc_insertion_point(field_mutable:kentik.monitoring.v1.Fact.description)
+  return _s;
+}
+inline const std::string& Fact::_internal_description() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.description_.Get();
+}
+inline void Fact::_internal_set_description(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.description_.Set(value, GetArena());
+}
+inline std::string* Fact::_internal_mutable_description() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.description_.Mutable( GetArena());
+}
+inline std::string* Fact::release_description() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.monitoring.v1.Fact.description)
+  return _impl_.description_.Release();
+}
+inline void Fact::set_allocated_description(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.description_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.description_.IsDefault()) {
+    _impl_.description_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.monitoring.v1.Fact.description)
+}
+
+// bool cohort = 4 [json_name = "cohort"];
+inline void Fact::clear_cohort() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.cohort_ = false;
+}
+inline bool Fact::cohort() const {
+  // @@protoc_insertion_point(field_get:kentik.monitoring.v1.Fact.cohort)
+  return _internal_cohort();
+}
+inline void Fact::set_cohort(bool value) {
+  _internal_set_cohort(value);
+  // @@protoc_insertion_point(field_set:kentik.monitoring.v1.Fact.cohort)
+}
+inline bool Fact::_internal_cohort() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.cohort_;
+}
+inline void Fact::_internal_set_cohort(bool value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.cohort_ = value;
+}
+
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // ComponentState
@@ -5283,100 +5701,58 @@ ComponentState::_internal_mutable_links() {
   return &_impl_.links_;
 }
 
-// .google.protobuf.Struct annotations = 11 [json_name = "annotations"];
-inline bool ComponentState::has_annotations() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
-  PROTOBUF_ASSUME(!value || _impl_.annotations_ != nullptr);
-  return value;
+// repeated .kentik.monitoring.v1.Fact facts = 15 [json_name = "facts"];
+inline int ComponentState::_internal_facts_size() const {
+  return _internal_facts().size();
 }
-inline const ::google::protobuf::Struct& ComponentState::_internal_annotations() const {
+inline int ComponentState::facts_size() const {
+  return _internal_facts_size();
+}
+inline void ComponentState::clear_facts() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.facts_.Clear();
+}
+inline ::kentik::monitoring::v1::Fact* ComponentState::mutable_facts(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.monitoring.v1.ComponentState.facts)
+  return _internal_mutable_facts()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::monitoring::v1::Fact>* ComponentState::mutable_facts()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.monitoring.v1.ComponentState.facts)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_facts();
+}
+inline const ::kentik::monitoring::v1::Fact& ComponentState::facts(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.monitoring.v1.ComponentState.facts)
+  return _internal_facts().Get(index);
+}
+inline ::kentik::monitoring::v1::Fact* ComponentState::add_facts() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::kentik::monitoring::v1::Fact* _add = _internal_mutable_facts()->Add();
+  // @@protoc_insertion_point(field_add:kentik.monitoring.v1.ComponentState.facts)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::monitoring::v1::Fact>& ComponentState::facts() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.monitoring.v1.ComponentState.facts)
+  return _internal_facts();
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::monitoring::v1::Fact>&
+ComponentState::_internal_facts() const {
   ::google::protobuf::internal::TSanRead(&_impl_);
-  const ::google::protobuf::Struct* p = _impl_.annotations_;
-  return p != nullptr ? *p : reinterpret_cast<const ::google::protobuf::Struct&>(::google::protobuf::_Struct_default_instance_);
+  return _impl_.facts_;
 }
-inline const ::google::protobuf::Struct& ComponentState::annotations() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:kentik.monitoring.v1.ComponentState.annotations)
-  return _internal_annotations();
-}
-inline void ComponentState::unsafe_arena_set_allocated_annotations(::google::protobuf::Struct* value) {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (GetArena() == nullptr) {
-    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.annotations_);
-  }
-  _impl_.annotations_ = reinterpret_cast<::google::protobuf::Struct*>(value);
-  if (value != nullptr) {
-    _impl_._has_bits_[0] |= 0x00000008u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000008u;
-  }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.monitoring.v1.ComponentState.annotations)
-}
-inline ::google::protobuf::Struct* ComponentState::release_annotations() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-
-  _impl_._has_bits_[0] &= ~0x00000008u;
-  ::google::protobuf::Struct* released = _impl_.annotations_;
-  _impl_.annotations_ = nullptr;
-  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
-    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
-    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
-    if (GetArena() == nullptr) {
-      delete old;
-    }
-  } else {
-    if (GetArena() != nullptr) {
-      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
-    }
-  }
-  return released;
-}
-inline ::google::protobuf::Struct* ComponentState::unsafe_arena_release_annotations() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  // @@protoc_insertion_point(field_release:kentik.monitoring.v1.ComponentState.annotations)
-
-  _impl_._has_bits_[0] &= ~0x00000008u;
-  ::google::protobuf::Struct* temp = _impl_.annotations_;
-  _impl_.annotations_ = nullptr;
-  return temp;
-}
-inline ::google::protobuf::Struct* ComponentState::_internal_mutable_annotations() {
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (_impl_.annotations_ == nullptr) {
-    auto* p = ::google::protobuf::Message::DefaultConstruct<::google::protobuf::Struct>(GetArena());
-    _impl_.annotations_ = reinterpret_cast<::google::protobuf::Struct*>(p);
-  }
-  return _impl_.annotations_;
-}
-inline ::google::protobuf::Struct* ComponentState::mutable_annotations() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  _impl_._has_bits_[0] |= 0x00000008u;
-  ::google::protobuf::Struct* _msg = _internal_mutable_annotations();
-  // @@protoc_insertion_point(field_mutable:kentik.monitoring.v1.ComponentState.annotations)
-  return _msg;
-}
-inline void ComponentState::set_allocated_annotations(::google::protobuf::Struct* value) {
-  ::google::protobuf::Arena* message_arena = GetArena();
-  ::google::protobuf::internal::TSanWrite(&_impl_);
-  if (message_arena == nullptr) {
-    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.annotations_);
-  }
-
-  if (value != nullptr) {
-    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(value)->GetArena();
-    if (message_arena != submessage_arena) {
-      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
-    }
-    _impl_._has_bits_[0] |= 0x00000008u;
-  } else {
-    _impl_._has_bits_[0] &= ~0x00000008u;
-  }
-
-  _impl_.annotations_ = reinterpret_cast<::google::protobuf::Struct*>(value);
-  // @@protoc_insertion_point(field_set_allocated:kentik.monitoring.v1.ComponentState.annotations)
+inline ::google::protobuf::RepeatedPtrField<::kentik::monitoring::v1::Fact>*
+ComponentState::_internal_mutable_facts() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.facts_;
 }
 
 // .google.protobuf.Timestamp timestamp = 12 [json_name = "timestamp"];
 inline bool ComponentState::has_timestamp() const {
-  bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
+  bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
   PROTOBUF_ASSUME(!value || _impl_.timestamp_ != nullptr);
   return value;
 }
@@ -5396,16 +5772,16 @@ inline void ComponentState::unsafe_arena_set_allocated_timestamp(::google::proto
   }
   _impl_.timestamp_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);
   if (value != nullptr) {
-    _impl_._has_bits_[0] |= 0x00000010u;
+    _impl_._has_bits_[0] |= 0x00000008u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000010u;
+    _impl_._has_bits_[0] &= ~0x00000008u;
   }
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.monitoring.v1.ComponentState.timestamp)
 }
 inline ::google::protobuf::Timestamp* ComponentState::release_timestamp() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
 
-  _impl_._has_bits_[0] &= ~0x00000010u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
   ::google::protobuf::Timestamp* released = _impl_.timestamp_;
   _impl_.timestamp_ = nullptr;
   if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
@@ -5425,7 +5801,7 @@ inline ::google::protobuf::Timestamp* ComponentState::unsafe_arena_release_times
   ::google::protobuf::internal::TSanWrite(&_impl_);
   // @@protoc_insertion_point(field_release:kentik.monitoring.v1.ComponentState.timestamp)
 
-  _impl_._has_bits_[0] &= ~0x00000010u;
+  _impl_._has_bits_[0] &= ~0x00000008u;
   ::google::protobuf::Timestamp* temp = _impl_.timestamp_;
   _impl_.timestamp_ = nullptr;
   return temp;
@@ -5439,7 +5815,7 @@ inline ::google::protobuf::Timestamp* ComponentState::_internal_mutable_timestam
   return _impl_.timestamp_;
 }
 inline ::google::protobuf::Timestamp* ComponentState::mutable_timestamp() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  _impl_._has_bits_[0] |= 0x00000010u;
+  _impl_._has_bits_[0] |= 0x00000008u;
   ::google::protobuf::Timestamp* _msg = _internal_mutable_timestamp();
   // @@protoc_insertion_point(field_mutable:kentik.monitoring.v1.ComponentState.timestamp)
   return _msg;
@@ -5456,9 +5832,9 @@ inline void ComponentState::set_allocated_timestamp(::google::protobuf::Timestam
     if (message_arena != submessage_arena) {
       value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
     }
-    _impl_._has_bits_[0] |= 0x00000010u;
+    _impl_._has_bits_[0] |= 0x00000008u;
   } else {
-    _impl_._has_bits_[0] &= ~0x00000010u;
+    _impl_._has_bits_[0] &= ~0x00000008u;
   }
 
   _impl_.timestamp_ = reinterpret_cast<::google::protobuf::Timestamp*>(value);

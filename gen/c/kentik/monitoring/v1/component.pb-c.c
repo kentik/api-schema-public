@@ -463,6 +463,51 @@ void   kentik__monitoring__v1__link__free_unpacked
   assert(message->base.descriptor == &kentik__monitoring__v1__link__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__monitoring__v1__fact__init
+                     (Kentik__Monitoring__V1__Fact         *message)
+{
+  static const Kentik__Monitoring__V1__Fact init_value = KENTIK__MONITORING__V1__FACT__INIT;
+  *message = init_value;
+}
+size_t kentik__monitoring__v1__fact__get_packed_size
+                     (const Kentik__Monitoring__V1__Fact *message)
+{
+  assert(message->base.descriptor == &kentik__monitoring__v1__fact__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__monitoring__v1__fact__pack
+                     (const Kentik__Monitoring__V1__Fact *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__monitoring__v1__fact__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__monitoring__v1__fact__pack_to_buffer
+                     (const Kentik__Monitoring__V1__Fact *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__monitoring__v1__fact__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Monitoring__V1__Fact *
+       kentik__monitoring__v1__fact__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Monitoring__V1__Fact *)
+     protobuf_c_message_unpack (&kentik__monitoring__v1__fact__descriptor,
+                                allocator, len, data);
+}
+void   kentik__monitoring__v1__fact__free_unpacked
+                     (Kentik__Monitoring__V1__Fact *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__monitoring__v1__fact__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 void   kentik__monitoring__v1__component_state__labels_entry__init
                      (Kentik__Monitoring__V1__ComponentState__LabelsEntry         *message)
 {
@@ -1205,6 +1250,83 @@ const ProtobufCMessageDescriptor kentik__monitoring__v1__link__descriptor =
   (ProtobufCMessageInit) kentik__monitoring__v1__link__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
+static const ProtobufCFieldDescriptor kentik__monitoring__v1__fact__field_descriptors[4] =
+{
+  {
+    "key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Monitoring__V1__Fact, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Monitoring__V1__Fact, value),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "description",
+    3,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Monitoring__V1__Fact, description),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "cohort",
+    4,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_BOOL,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Monitoring__V1__Fact, cohort),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__monitoring__v1__fact__field_indices_by_name[] = {
+  3,   /* field[3] = cohort */
+  2,   /* field[2] = description */
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
+};
+static const ProtobufCIntRange kentik__monitoring__v1__fact__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 4 }
+};
+const ProtobufCMessageDescriptor kentik__monitoring__v1__fact__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.monitoring.v1.Fact",
+  "Fact",
+  "Kentik__Monitoring__V1__Fact",
+  "kentik.monitoring.v1",
+  sizeof(Kentik__Monitoring__V1__Fact),
+  4,
+  kentik__monitoring__v1__fact__field_descriptors,
+  kentik__monitoring__v1__fact__field_indices_by_name,
+  1,  kentik__monitoring__v1__fact__number_ranges,
+  (ProtobufCMessageInit) kentik__monitoring__v1__fact__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
 static const ProtobufCFieldDescriptor kentik__monitoring__v1__component_state__labels_entry__field_descriptors[2] =
 {
   {
@@ -1379,18 +1501,6 @@ static const ProtobufCFieldDescriptor kentik__monitoring__v1__component_state__f
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "annotations",
-    11,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_MESSAGE,
-    0,   /* quantifier_offset */
-    offsetof(Kentik__Monitoring__V1__ComponentState, annotations),
-    &google__protobuf__struct__descriptor,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-  {
     "timestamp",
     12,
     PROTOBUF_C_LABEL_NONE,
@@ -1426,12 +1536,24 @@ static const ProtobufCFieldDescriptor kentik__monitoring__v1__component_state__f
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "facts",
+    15,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Monitoring__V1__ComponentState, n_facts),
+    offsetof(Kentik__Monitoring__V1__ComponentState, facts),
+    &kentik__monitoring__v1__fact__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__monitoring__v1__component_state__field_indices_by_name[] = {
-  10,   /* field[10] = annotations */
-  12,   /* field[12] = audience */
+  11,   /* field[11] = audience */
   5,   /* field[5] = children */
   9,   /* field[9] = description */
+  13,   /* field[13] = facts */
   4,   /* field[4] = health */
   8,   /* field[8] = labels */
   2,   /* field[2] = lifecycle_phase */
@@ -1439,13 +1561,14 @@ static const unsigned kentik__monitoring__v1__component_state__field_indices_by_
   6,   /* field[6] = metrics */
   0,   /* field[0] = name */
   3,   /* field[3] = probes */
-  11,   /* field[11] = timestamp */
+  10,   /* field[10] = timestamp */
   1,   /* field[1] = type */
-  13,   /* field[13] = version_independent */
+  12,   /* field[12] = version_independent */
 };
-static const ProtobufCIntRange kentik__monitoring__v1__component_state__number_ranges[1 + 1] =
+static const ProtobufCIntRange kentik__monitoring__v1__component_state__number_ranges[2 + 1] =
 {
   { 1, 0 },
+  { 12, 10 },
   { 0, 14 }
 };
 const ProtobufCMessageDescriptor kentik__monitoring__v1__component_state__descriptor =
@@ -1459,7 +1582,7 @@ const ProtobufCMessageDescriptor kentik__monitoring__v1__component_state__descri
   14,
   kentik__monitoring__v1__component_state__field_descriptors,
   kentik__monitoring__v1__component_state__field_indices_by_name,
-  1,  kentik__monitoring__v1__component_state__number_ranges,
+  2,  kentik__monitoring__v1__component_state__number_ranges,
   (ProtobufCMessageInit) kentik__monitoring__v1__component_state__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

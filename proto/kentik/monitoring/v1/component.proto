@@ -1,7 +1,6 @@
 syntax = "proto3";
 package kentik.monitoring.v1;
 
-import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
 
 option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/monitoring/v1;monitoring";
@@ -522,6 +521,38 @@ message Link {
   string url = 3;
 }
 
+// Fact is a key and a value that a component reports about itself, with a description of what
+// the value means. Each fact carries its own meaning, so a consumer can use a new fact without a
+// code change.
+//
+// Facts help an automated deployment, for example an agent upgrade, to decide what to do after a
+// failure. When agents fail after an upgrade, the deployment compares their facts:
+//   - Failed agents that share a value that healthy agents do not, for example
+//     "host.distro=rhel" or "conn.tls_intercepted=true", point to a cohort that the new version
+//     breaks. The deployment can pause or skip the cohort and continue with the other agents.
+//   - Failed agents with no shared value point to the host or the network, not to the version.
+//
+// Examples:
+//   { key: "host.kernel_version", value: "5.14.0-427.el9.x86_64", description: "Kernel version of the agent host." }
+//   { key: "conn.tls_intercepted", value: "true", description: "A proxy replaces the Kentik certificate.", cohort: true }
+message Fact {
+  // Key that is unique within one app, for example "conn.tls_issuer". Use a dotted prefix that
+  // names the subject, for example "host.", "conn." or the name of the capability.
+  string key = 1;
+
+  // The value as text. A list uses commas between the items.
+  string value = 2;
+
+  // What the fact means and why it can matter when the component fails.
+  // Written for LLMs and operators that decide what to do with a failing agent.
+  string description = 3;
+
+  // True when agents with the same value can fail in the same way after a change, so the value
+  // can group agents. Set it only on facts with few distinct values, for example a distro or an
+  // install type. Leave it false on values that are unique to one host, for example a host name.
+  bool cohort = 4;
+}
+
 // ComponentState represents the state of a component in a hierarchical system.
 // Designed for Kubernetes-native environments with first-class probe support.
 //
@@ -603,19 +634,12 @@ message ComponentState {
   // These help operators quickly navigate to relevant tools during incident response.
   repeated Link links = 8;
 
-  // Arbitrary non-identifying metadata attached to the component.
-  // Analogous to Kubernetes annotations: unlike labels (which are for identification
-  // and selection), annotations hold auxiliary data used by tools, automation, and
-  // external systems. The data is not used for filtering or grouping.
-  //
-  // Use annotations to attach information that:
-  //   - Drives notification templates and alerting context (e.g., team contacts, escalation tier)
-  //   - Enables autonomous systems to trigger custom workflows and actions
-  //   - Records tool-specific configuration or operational hints
-  //   - Stores data too large, structured, or non-identifying for labels
-  //
-  // Struct is used instead of map<string,string> to support nested and typed values.
-  google.protobuf.Struct annotations = 11;
+  // Facts that this component reports about itself, for example the kernel version of an agent host,
+  // or the certificate issuer that an agent sees on its connection to Kentik.
+  // An automated deployment, for example an agent upgrade, reads the facts of agents that fail
+  // after a change. It uses them to tell a failure caused by the change from a failure caused by
+  // the host or the customer network. Facts are not part of the health state.
+  repeated Fact facts = 15;
 
   // Optional time at which this component state was observed/captured.
   // For top-level snapshot payloads, producers should set this to the snapshot time.
@@ -634,4 +658,7 @@ message ComponentState {
   // clock of the host. An upgrade or a promotion does not judge a new version by it, but the
   // component stays in every health and every audience. Default: false, so upgrades count it.
   bool version_independent = 14;
+
+  reserved 11;
+  reserved "annotations";
 }

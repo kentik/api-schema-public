@@ -9,7 +9,6 @@ package monitoring
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
-	structpb "google.golang.org/protobuf/types/known/structpb"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 	reflect "reflect"
 	sync "sync"
@@ -1773,6 +1772,97 @@ func (x *Link) GetUrl() string {
 	return ""
 }
 
+// Fact is a key and a value that a component reports about itself, with a description of what
+// the value means. Each fact carries its own meaning, so a consumer can use a new fact without a
+// code change.
+//
+// Facts help an automated deployment, for example an agent upgrade, to decide what to do after a
+// failure. When agents fail after an upgrade, the deployment compares their facts:
+//   - Failed agents that share a value that healthy agents do not, for example
+//     "host.distro=rhel" or "conn.tls_intercepted=true", point to a cohort that the new version
+//     breaks. The deployment can pause or skip the cohort and continue with the other agents.
+//   - Failed agents with no shared value point to the host or the network, not to the version.
+//
+// Examples:
+//
+//	{ key: "host.kernel_version", value: "5.14.0-427.el9.x86_64", description: "Kernel version of the agent host." }
+//	{ key: "conn.tls_intercepted", value: "true", description: "A proxy replaces the Kentik certificate.", cohort: true }
+type Fact struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// Key that is unique within one app, for example "conn.tls_issuer". Use a dotted prefix that
+	// names the subject, for example "host.", "conn." or the name of the capability.
+	Key string `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	// The value as text. A list uses commas between the items.
+	Value string `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
+	// What the fact means and why it can matter when the component fails.
+	// Written for LLMs and operators that decide what to do with a failing agent.
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
+	// True when agents with the same value can fail in the same way after a change, so the value
+	// can group agents. Set it only on facts with few distinct values, for example a distro or an
+	// install type. Leave it false on values that are unique to one host, for example a host name.
+	Cohort        bool `protobuf:"varint,4,opt,name=cohort,proto3" json:"cohort,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Fact) Reset() {
+	*x = Fact{}
+	mi := &file_kentik_monitoring_v1_component_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Fact) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Fact) ProtoMessage() {}
+
+func (x *Fact) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_monitoring_v1_component_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Fact.ProtoReflect.Descriptor instead.
+func (*Fact) Descriptor() ([]byte, []int) {
+	return file_kentik_monitoring_v1_component_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *Fact) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
+func (x *Fact) GetValue() string {
+	if x != nil {
+		return x.Value
+	}
+	return ""
+}
+
+func (x *Fact) GetDescription() string {
+	if x != nil {
+		return x.Description
+	}
+	return ""
+}
+
+func (x *Fact) GetCohort() bool {
+	if x != nil {
+		return x.Cohort
+	}
+	return false
+}
+
 // ComponentState represents the state of a component in a hierarchical system.
 // Designed for Kubernetes-native environments with first-class probe support.
 //
@@ -1849,19 +1939,12 @@ type ComponentState struct {
 	// Examples: Grafana dashboards, log views, runbooks, source code, documentation.
 	// These help operators quickly navigate to relevant tools during incident response.
 	Links []*Link `protobuf:"bytes,8,rep,name=links,proto3" json:"links,omitempty"`
-	// Arbitrary non-identifying metadata attached to the component.
-	// Analogous to Kubernetes annotations: unlike labels (which are for identification
-	// and selection), annotations hold auxiliary data used by tools, automation, and
-	// external systems. The data is not used for filtering or grouping.
-	//
-	// Use annotations to attach information that:
-	//   - Drives notification templates and alerting context (e.g., team contacts, escalation tier)
-	//   - Enables autonomous systems to trigger custom workflows and actions
-	//   - Records tool-specific configuration or operational hints
-	//   - Stores data too large, structured, or non-identifying for labels
-	//
-	// Struct is used instead of map<string,string> to support nested and typed values.
-	Annotations *structpb.Struct `protobuf:"bytes,11,opt,name=annotations,proto3" json:"annotations,omitempty"`
+	// Facts that this component reports about itself, for example the kernel version of an agent host,
+	// or the certificate issuer that an agent sees on its connection to Kentik.
+	// An automated deployment, for example an agent upgrade, reads the facts of agents that fail
+	// after a change. It uses them to tell a failure caused by the change from a failure caused by
+	// the host or the customer network. Facts are not part of the health state.
+	Facts []*Fact `protobuf:"bytes,15,rep,name=facts,proto3" json:"facts,omitempty"`
 	// Optional time at which this component state was observed/captured.
 	// For top-level snapshot payloads, producers should set this to the snapshot time.
 	// For nested children, this may be omitted when the child state is part of the same
@@ -1883,7 +1966,7 @@ type ComponentState struct {
 
 func (x *ComponentState) Reset() {
 	*x = ComponentState{}
-	mi := &file_kentik_monitoring_v1_component_proto_msgTypes[10]
+	mi := &file_kentik_monitoring_v1_component_proto_msgTypes[11]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -1895,7 +1978,7 @@ func (x *ComponentState) String() string {
 func (*ComponentState) ProtoMessage() {}
 
 func (x *ComponentState) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_monitoring_v1_component_proto_msgTypes[10]
+	mi := &file_kentik_monitoring_v1_component_proto_msgTypes[11]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1908,7 +1991,7 @@ func (x *ComponentState) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use ComponentState.ProtoReflect.Descriptor instead.
 func (*ComponentState) Descriptor() ([]byte, []int) {
-	return file_kentik_monitoring_v1_component_proto_rawDescGZIP(), []int{10}
+	return file_kentik_monitoring_v1_component_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *ComponentState) GetName() string {
@@ -1981,9 +2064,9 @@ func (x *ComponentState) GetLinks() []*Link {
 	return nil
 }
 
-func (x *ComponentState) GetAnnotations() *structpb.Struct {
+func (x *ComponentState) GetFacts() []*Fact {
 	if x != nil {
-		return x.Annotations
+		return x.Facts
 	}
 	return nil
 }
@@ -2013,7 +2096,7 @@ var File_kentik_monitoring_v1_component_proto protoreflect.FileDescriptor
 
 const file_kentik_monitoring_v1_component_proto_rawDesc = "" +
 	"\n" +
-	"$kentik/monitoring/v1/component.proto\x12\x14kentik.monitoring.v1\x1a\x1cgoogle/protobuf/struct.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"B\n" +
+	"$kentik/monitoring/v1/component.proto\x12\x14kentik.monitoring.v1\x1a\x1fgoogle/protobuf/timestamp.proto\"B\n" +
 	"\x05Probe\x12\x0e\n" +
 	"\x02ok\x18\x01 \x01(\bR\x02ok\x12\x1d\n" +
 	"\amessage\x18\x02 \x01(\tH\x00R\amessage\x88\x01\x01B\n" +
@@ -2066,7 +2149,12 @@ const file_kentik_monitoring_v1_component_proto_rawDesc = "" +
 	"\x04Link\x122\n" +
 	"\x04type\x18\x01 \x01(\x0e2\x1e.kentik.monitoring.v1.LinkTypeR\x04type\x12\x14\n" +
 	"\x05title\x18\x02 \x01(\tR\x05title\x12\x10\n" +
-	"\x03url\x18\x03 \x01(\tR\x03url\"\xe2\x06\n" +
+	"\x03url\x18\x03 \x01(\tR\x03url\"h\n" +
+	"\x04Fact\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value\x12 \n" +
+	"\vdescription\x18\x03 \x01(\tR\vdescription\x12\x16\n" +
+	"\x06cohort\x18\x04 \x01(\bR\x06cohort\"\xec\x06\n" +
 	"\x0eComponentState\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x127\n" +
 	"\x04type\x18\x02 \x01(\x0e2#.kentik.monitoring.v1.ComponentTypeR\x04type\x12%\n" +
@@ -2078,15 +2166,15 @@ const file_kentik_monitoring_v1_component_proto_rawDesc = "" +
 	"\bchildren\x18\x06 \x03(\v2$.kentik.monitoring.v1.ComponentStateR\bchildren\x126\n" +
 	"\ametrics\x18\a \x03(\v2\x1c.kentik.monitoring.v1.MetricR\ametrics\x12H\n" +
 	"\x06labels\x18\t \x03(\v20.kentik.monitoring.v1.ComponentState.LabelsEntryR\x06labels\x120\n" +
-	"\x05links\x18\b \x03(\v2\x1a.kentik.monitoring.v1.LinkR\x05links\x129\n" +
-	"\vannotations\x18\v \x01(\v2\x17.google.protobuf.StructR\vannotations\x128\n" +
+	"\x05links\x18\b \x03(\v2\x1a.kentik.monitoring.v1.LinkR\x05links\x120\n" +
+	"\x05facts\x18\x0f \x03(\v2\x1a.kentik.monitoring.v1.FactR\x05facts\x128\n" +
 	"\ttimestamp\x18\f \x01(\v2\x1a.google.protobuf.TimestampR\ttimestamp\x12:\n" +
 	"\baudience\x18\r \x01(\x0e2\x1e.kentik.monitoring.v1.AudienceR\baudience\x12/\n" +
 	"\x13version_independent\x18\x0e \x01(\bR\x12versionIndependent\x1a9\n" +
 	"\vLabelsEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
 	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01B\x0e\n" +
-	"\f_description*\xb4\x01\n" +
+	"\f_descriptionJ\x04\b\v\x10\fR\vannotations*\xb4\x01\n" +
 	"\x0eLifecyclePhase\x12\x1f\n" +
 	"\x1bLIFECYCLE_PHASE_UNSPECIFIED\x10\x00\x12 \n" +
 	"\x1cLIFECYCLE_PHASE_INITIALIZING\x10d\x12\x1c\n" +
@@ -2262,7 +2350,7 @@ func file_kentik_monitoring_v1_component_proto_rawDescGZIP() []byte {
 }
 
 var file_kentik_monitoring_v1_component_proto_enumTypes = make([]protoimpl.EnumInfo, 11)
-var file_kentik_monitoring_v1_component_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
+var file_kentik_monitoring_v1_component_proto_msgTypes = make([]protoimpl.MessageInfo, 14)
 var file_kentik_monitoring_v1_component_proto_goTypes = []any{
 	(LifecyclePhase)(0),           // 0: kentik.monitoring.v1.LifecyclePhase
 	(HealthStatus)(0),             // 1: kentik.monitoring.v1.HealthStatus
@@ -2285,10 +2373,10 @@ var file_kentik_monitoring_v1_component_proto_goTypes = []any{
 	(*MetricSample)(nil),          // 18: kentik.monitoring.v1.MetricSample
 	(*Metric)(nil),                // 19: kentik.monitoring.v1.Metric
 	(*Link)(nil),                  // 20: kentik.monitoring.v1.Link
-	(*ComponentState)(nil),        // 21: kentik.monitoring.v1.ComponentState
-	nil,                           // 22: kentik.monitoring.v1.MetricSample.LabelsEntry
-	nil,                           // 23: kentik.monitoring.v1.ComponentState.LabelsEntry
-	(*structpb.Struct)(nil),       // 24: google.protobuf.Struct
+	(*Fact)(nil),                  // 21: kentik.monitoring.v1.Fact
+	(*ComponentState)(nil),        // 22: kentik.monitoring.v1.ComponentState
+	nil,                           // 23: kentik.monitoring.v1.MetricSample.LabelsEntry
+	nil,                           // 24: kentik.monitoring.v1.ComponentState.LabelsEntry
 	(*timestamppb.Timestamp)(nil), // 25: google.protobuf.Timestamp
 }
 var file_kentik_monitoring_v1_component_proto_depIdxs = []int32{
@@ -2304,7 +2392,7 @@ var file_kentik_monitoring_v1_component_proto_depIdxs = []int32{
 	7,  // 9: kentik.monitoring.v1.MetricDefinition.category:type_name -> kentik.monitoring.v1.MetricCategory
 	15, // 10: kentik.monitoring.v1.HistogramValue.percentiles:type_name -> kentik.monitoring.v1.Percentile
 	16, // 11: kentik.monitoring.v1.MetricValue.histogram:type_name -> kentik.monitoring.v1.HistogramValue
-	22, // 12: kentik.monitoring.v1.MetricSample.labels:type_name -> kentik.monitoring.v1.MetricSample.LabelsEntry
+	23, // 12: kentik.monitoring.v1.MetricSample.labels:type_name -> kentik.monitoring.v1.MetricSample.LabelsEntry
 	17, // 13: kentik.monitoring.v1.MetricSample.value:type_name -> kentik.monitoring.v1.MetricValue
 	14, // 14: kentik.monitoring.v1.Metric.definition:type_name -> kentik.monitoring.v1.MetricDefinition
 	18, // 15: kentik.monitoring.v1.Metric.samples:type_name -> kentik.monitoring.v1.MetricSample
@@ -2313,11 +2401,11 @@ var file_kentik_monitoring_v1_component_proto_depIdxs = []int32{
 	0,  // 18: kentik.monitoring.v1.ComponentState.lifecycle_phase:type_name -> kentik.monitoring.v1.LifecyclePhase
 	12, // 19: kentik.monitoring.v1.ComponentState.probes:type_name -> kentik.monitoring.v1.Probes
 	13, // 20: kentik.monitoring.v1.ComponentState.health:type_name -> kentik.monitoring.v1.Health
-	21, // 21: kentik.monitoring.v1.ComponentState.children:type_name -> kentik.monitoring.v1.ComponentState
+	22, // 21: kentik.monitoring.v1.ComponentState.children:type_name -> kentik.monitoring.v1.ComponentState
 	19, // 22: kentik.monitoring.v1.ComponentState.metrics:type_name -> kentik.monitoring.v1.Metric
-	23, // 23: kentik.monitoring.v1.ComponentState.labels:type_name -> kentik.monitoring.v1.ComponentState.LabelsEntry
+	24, // 23: kentik.monitoring.v1.ComponentState.labels:type_name -> kentik.monitoring.v1.ComponentState.LabelsEntry
 	20, // 24: kentik.monitoring.v1.ComponentState.links:type_name -> kentik.monitoring.v1.Link
-	24, // 25: kentik.monitoring.v1.ComponentState.annotations:type_name -> google.protobuf.Struct
+	21, // 25: kentik.monitoring.v1.ComponentState.facts:type_name -> kentik.monitoring.v1.Fact
 	25, // 26: kentik.monitoring.v1.ComponentState.timestamp:type_name -> google.protobuf.Timestamp
 	9,  // 27: kentik.monitoring.v1.ComponentState.audience:type_name -> kentik.monitoring.v1.Audience
 	28, // [28:28] is the sub-list for method output_type
@@ -2338,14 +2426,14 @@ func file_kentik_monitoring_v1_component_proto_init() {
 		(*MetricValue_Scalar)(nil),
 		(*MetricValue_Histogram)(nil),
 	}
-	file_kentik_monitoring_v1_component_proto_msgTypes[10].OneofWrappers = []any{}
+	file_kentik_monitoring_v1_component_proto_msgTypes[11].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_monitoring_v1_component_proto_rawDesc), len(file_kentik_monitoring_v1_component_proto_rawDesc)),
 			NumEnums:      11,
-			NumMessages:   13,
+			NumMessages:   14,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
