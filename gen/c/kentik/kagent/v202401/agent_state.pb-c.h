@@ -25,15 +25,19 @@ PROTOBUF_C__BEGIN_DECLS
 #include "kentik/kagent/v202401/config.pb-c.h"
 #include "kentik/kagent/v202401/capability.pb-c.h"
 #include "kentik/kagent/v202401/resources.pb-c.h"
+#include "kentik/monitoring/v1/component.pb-c.h"
 
 typedef struct Kentik__Kagent__V202401__AgentDesiredState Kentik__Kagent__V202401__AgentDesiredState;
 typedef struct Kentik__Kagent__V202401__AgentDesiredState__CapabilityState Kentik__Kagent__V202401__AgentDesiredState__CapabilityState;
 typedef struct Kentik__Kagent__V202401__AgentDesiredState__AgentState Kentik__Kagent__V202401__AgentDesiredState__AgentState;
 typedef struct Kentik__Kagent__V202401__AgentCurrentState Kentik__Kagent__V202401__AgentCurrentState;
 typedef struct Kentik__Kagent__V202401__AgentCurrentState__AgentState Kentik__Kagent__V202401__AgentCurrentState__AgentState;
+typedef struct Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry;
 typedef struct Kentik__Kagent__V202401__OSMetadata Kentik__Kagent__V202401__OSMetadata;
 typedef struct Kentik__Kagent__V202401__OSMetadata__ReleaseMetadataEntry Kentik__Kagent__V202401__OSMetadata__ReleaseMetadataEntry;
 typedef struct Kentik__Kagent__V202401__CapabilityCurrentState Kentik__Kagent__V202401__CapabilityCurrentState;
+typedef struct Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry;
+typedef struct Kentik__Kagent__V202401__CapabilityFact Kentik__Kagent__V202401__CapabilityFact;
 
 
 /* --- enums --- */
@@ -206,6 +210,17 @@ struct  Kentik__Kagent__V202401__AgentDesiredState
     , NULL, 0,NULL, 0, NULL }
 
 
+struct  Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry
+{
+  ProtobufCMessage base;
+  char *key;
+  Kentik__Monitoring__V1__HealthStatus value;
+};
+#define KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE__HEALTH_FINGERPRINT_ENTRY__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__kagent__v202401__agent_current_state__agent_state__health_fingerprint_entry__descriptor) \
+    , (char *)protobuf_c_empty_string, KENTIK__MONITORING__V1__HEALTH_STATUS__HEALTH_STATUS_UNSPECIFIED }
+
+
 typedef enum {
   KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___MEM_USED_PERCENT__NOT_SET = 0,
   KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___MEM_USED_PERCENT_MEM_USED_PERCENT = 20
@@ -279,6 +294,18 @@ struct  Kentik__Kagent__V202401__AgentCurrentState__AgentState
    * state of the change to the desired kagent version, from the kagent capability
    */
   Kentik__Kagent__V202401__CapabilityPromotionState promotion_state;
+  /*
+   * The facts of the kagent capability, for example the distribution of the host or the issuer of
+   * the Kentik certificate. Empty when kagent runs a version that reports no facts. See
+   * CapabilityCurrentState.facts.
+   */
+  size_t n_facts;
+  Kentik__Kagent__V202401__CapabilityFact **facts;
+  /*
+   * The unhealthy parts of the kagent capability. See CapabilityCurrentState.health_fingerprint.
+   */
+  size_t n_health_fingerprint;
+  Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry **health_fingerprint;
   Kentik__Kagent__V202401__AgentCurrentState__AgentState__MemUsedPercentCase _mem_used_percent_case;
   union {
     /*
@@ -324,7 +351,7 @@ struct  Kentik__Kagent__V202401__AgentCurrentState__AgentState
 };
 #define KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__kagent__v202401__agent_current_state__agent_state__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, 0, NULL, NULL, KENTIK__KAGENT__V202401__AGENT_HEALTH_STATE__AGENT_HEALTH_STATE_UNSPECIFIED, KENTIK__KAGENT__V202401__AGENT_HEALTH_STATE_V2__AGENT_HEALTH_STATE_V2_UNSPECIFIED, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_UNSPECIFIED, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___MEM_USED_PERCENT__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___MEM_FREE_BYTES__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___CPU_TOTAL_CORES__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___CPU_USED_PERCENT__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___DISK_USED_PERCENT__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___DISK_FREE_BYTES__NOT_SET, {0} }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, NULL, (char *)protobuf_c_empty_string, 0, NULL, NULL, KENTIK__KAGENT__V202401__AGENT_HEALTH_STATE__AGENT_HEALTH_STATE_UNSPECIFIED, KENTIK__KAGENT__V202401__AGENT_HEALTH_STATE_V2__AGENT_HEALTH_STATE_V2_UNSPECIFIED, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_UNSPECIFIED, 0,NULL, 0,NULL, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___MEM_USED_PERCENT__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___MEM_FREE_BYTES__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___CPU_TOTAL_CORES__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___CPU_USED_PERCENT__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___DISK_USED_PERCENT__NOT_SET, {0}, KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE___DISK_FREE_BYTES__NOT_SET, {0} }
 
 
 struct  Kentik__Kagent__V202401__AgentCurrentState
@@ -366,6 +393,17 @@ struct  Kentik__Kagent__V202401__OSMetadata
 #define KENTIK__KAGENT__V202401__OSMETADATA__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__kagent__v202401__osmetadata__descriptor) \
     , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0,NULL }
+
+
+struct  Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry
+{
+  ProtobufCMessage base;
+  char *key;
+  Kentik__Monitoring__V1__HealthStatus value;
+};
+#define KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE__HEALTH_FINGERPRINT_ENTRY__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__kagent__v202401__capability_current_state__health_fingerprint_entry__descriptor) \
+    , (char *)protobuf_c_empty_string, KENTIK__MONITORING__V1__HEALTH_STATUS__HEALTH_STATUS_UNSPECIFIED }
 
 
 typedef enum {
@@ -421,6 +459,22 @@ struct  Kentik__Kagent__V202401__CapabilityCurrentState
    * state of the change to the desired version
    */
   Kentik__Kagent__V202401__CapabilityPromotionState promotion_state;
+  /*
+   * The facts that the components of the capability report about themselves, from the last state
+   * that the agent sent. An automated upgrade compares them across the agents that fail after a
+   * change, to find what they have in common. Empty when the capability runs a version that
+   * reports no facts.
+   */
+  size_t n_facts;
+  Kentik__Kagent__V202401__CapabilityFact **facts;
+  /*
+   * The status of each unhealthy part of the capability, by its path, from the last state that the
+   * agent sent. It leaves out the parts that a new version cannot cause or fix, for example the
+   * clock of the host. An automated upgrade compares it with baseline_fingerprint of the upgrade
+   * result to see whether the health of an agent got back to what it was before the upgrade.
+   */
+  size_t n_health_fingerprint;
+  Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry **health_fingerprint;
   Kentik__Kagent__V202401__CapabilityCurrentState__CrashLoopCountCase _crash_loop_count_case;
   union {
     /*
@@ -455,7 +509,25 @@ struct  Kentik__Kagent__V202401__CapabilityCurrentState
 };
 #define KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__kagent__v202401__capability_current_state__descriptor) \
-    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, KENTIK__KAGENT__V202401__CAPABILITY_HEALTH_STATE__CAPABILITY_HEALTH_STATE_UNSPECIFIED, KENTIK__KAGENT__V202401__CAPABILITY_HEALTH_STATE_V2__CAPABILITY_HEALTH_STATE_V2_UNSPECIFIED, 0, NULL, NULL, KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_UNSPECIFIED, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___CRASH_LOOP_COUNT__NOT_SET, {0}, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___RESTART_LOOP_COUNT__NOT_SET, {0}, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___CPU_USED_CORES__NOT_SET, {0}, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___MEM_USED_BYTES__NOT_SET, {0} }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, 0, 0, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, 0, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string, NULL, NULL, KENTIK__KAGENT__V202401__CAPABILITY_HEALTH_STATE__CAPABILITY_HEALTH_STATE_UNSPECIFIED, KENTIK__KAGENT__V202401__CAPABILITY_HEALTH_STATE_V2__CAPABILITY_HEALTH_STATE_V2_UNSPECIFIED, 0, NULL, NULL, KENTIK__KAGENT__V202401__CAPABILITY_PROMOTION_STATE__CAPABILITY_PROMOTION_STATE_UNSPECIFIED, 0,NULL, 0,NULL, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___CRASH_LOOP_COUNT__NOT_SET, {0}, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___RESTART_LOOP_COUNT__NOT_SET, {0}, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___CPU_USED_CORES__NOT_SET, {0}, KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE___MEM_USED_BYTES__NOT_SET, {0} }
+
+
+/*
+ * CapabilityFact is a fact that one component of a capability reports about itself.
+ */
+struct  Kentik__Kagent__V202401__CapabilityFact
+{
+  ProtobufCMessage base;
+  /*
+   * The component, from the root of the capability tree, written as health fingerprint paths are,
+   * for example "kagent/grpc-conn".
+   */
+  char *path;
+  Kentik__Monitoring__V1__Fact *fact;
+};
+#define KENTIK__KAGENT__V202401__CAPABILITY_FACT__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&kentik__kagent__v202401__capability_fact__descriptor) \
+    , (char *)protobuf_c_empty_string, NULL }
 
 
 /* Kentik__Kagent__V202401__AgentDesiredState__CapabilityState methods */
@@ -483,6 +555,9 @@ Kentik__Kagent__V202401__AgentDesiredState *
 void   kentik__kagent__v202401__agent_desired_state__free_unpacked
                      (Kentik__Kagent__V202401__AgentDesiredState *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry methods */
+void   kentik__kagent__v202401__agent_current_state__agent_state__health_fingerprint_entry__init
+                     (Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry         *message);
 /* Kentik__Kagent__V202401__AgentCurrentState__AgentState methods */
 void   kentik__kagent__v202401__agent_current_state__agent_state__init
                      (Kentik__Kagent__V202401__AgentCurrentState__AgentState         *message);
@@ -527,6 +602,9 @@ Kentik__Kagent__V202401__OSMetadata *
 void   kentik__kagent__v202401__osmetadata__free_unpacked
                      (Kentik__Kagent__V202401__OSMetadata *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry methods */
+void   kentik__kagent__v202401__capability_current_state__health_fingerprint_entry__init
+                     (Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry         *message);
 /* Kentik__Kagent__V202401__CapabilityCurrentState methods */
 void   kentik__kagent__v202401__capability_current_state__init
                      (Kentik__Kagent__V202401__CapabilityCurrentState         *message);
@@ -546,6 +624,25 @@ Kentik__Kagent__V202401__CapabilityCurrentState *
 void   kentik__kagent__v202401__capability_current_state__free_unpacked
                      (Kentik__Kagent__V202401__CapabilityCurrentState *message,
                       ProtobufCAllocator *allocator);
+/* Kentik__Kagent__V202401__CapabilityFact methods */
+void   kentik__kagent__v202401__capability_fact__init
+                     (Kentik__Kagent__V202401__CapabilityFact         *message);
+size_t kentik__kagent__v202401__capability_fact__get_packed_size
+                     (const Kentik__Kagent__V202401__CapabilityFact   *message);
+size_t kentik__kagent__v202401__capability_fact__pack
+                     (const Kentik__Kagent__V202401__CapabilityFact   *message,
+                      uint8_t             *out);
+size_t kentik__kagent__v202401__capability_fact__pack_to_buffer
+                     (const Kentik__Kagent__V202401__CapabilityFact   *message,
+                      ProtobufCBuffer     *buffer);
+Kentik__Kagent__V202401__CapabilityFact *
+       kentik__kagent__v202401__capability_fact__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   kentik__kagent__v202401__capability_fact__free_unpacked
+                     (Kentik__Kagent__V202401__CapabilityFact *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*Kentik__Kagent__V202401__AgentDesiredState__CapabilityState_Closure)
@@ -556,6 +653,9 @@ typedef void (*Kentik__Kagent__V202401__AgentDesiredState__AgentState_Closure)
                   void *closure_data);
 typedef void (*Kentik__Kagent__V202401__AgentDesiredState_Closure)
                  (const Kentik__Kagent__V202401__AgentDesiredState *message,
+                  void *closure_data);
+typedef void (*Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry_Closure)
+                 (const Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry *message,
                   void *closure_data);
 typedef void (*Kentik__Kagent__V202401__AgentCurrentState__AgentState_Closure)
                  (const Kentik__Kagent__V202401__AgentCurrentState__AgentState *message,
@@ -569,8 +669,14 @@ typedef void (*Kentik__Kagent__V202401__OSMetadata__ReleaseMetadataEntry_Closure
 typedef void (*Kentik__Kagent__V202401__OSMetadata_Closure)
                  (const Kentik__Kagent__V202401__OSMetadata *message,
                   void *closure_data);
+typedef void (*Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry_Closure)
+                 (const Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry *message,
+                  void *closure_data);
 typedef void (*Kentik__Kagent__V202401__CapabilityCurrentState_Closure)
                  (const Kentik__Kagent__V202401__CapabilityCurrentState *message,
+                  void *closure_data);
+typedef void (*Kentik__Kagent__V202401__CapabilityFact_Closure)
+                 (const Kentik__Kagent__V202401__CapabilityFact *message,
                   void *closure_data);
 
 /* --- services --- */
@@ -588,9 +694,12 @@ extern const ProtobufCMessageDescriptor kentik__kagent__v202401__agent_desired_s
 extern const ProtobufCMessageDescriptor kentik__kagent__v202401__agent_desired_state__agent_state__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kagent__v202401__agent_current_state__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kagent__v202401__agent_current_state__agent_state__descriptor;
+extern const ProtobufCMessageDescriptor kentik__kagent__v202401__agent_current_state__agent_state__health_fingerprint_entry__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kagent__v202401__osmetadata__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kagent__v202401__osmetadata__release_metadata_entry__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kagent__v202401__capability_current_state__descriptor;
+extern const ProtobufCMessageDescriptor kentik__kagent__v202401__capability_current_state__health_fingerprint_entry__descriptor;
+extern const ProtobufCMessageDescriptor kentik__kagent__v202401__capability_fact__descriptor;
 
 PROTOBUF_C__END_DECLS
 

@@ -64,6 +64,12 @@ void   kentik__kagent__v202401__agent_desired_state__free_unpacked
   assert(message->base.descriptor == &kentik__kagent__v202401__agent_desired_state__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__kagent__v202401__agent_current_state__agent_state__health_fingerprint_entry__init
+                     (Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry         *message)
+{
+  static const Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry init_value = KENTIK__KAGENT__V202401__AGENT_CURRENT_STATE__AGENT_STATE__HEALTH_FINGERPRINT_ENTRY__INIT;
+  *message = init_value;
+}
 void   kentik__kagent__v202401__agent_current_state__agent_state__init
                      (Kentik__Kagent__V202401__AgentCurrentState__AgentState         *message)
 {
@@ -166,6 +172,12 @@ void   kentik__kagent__v202401__osmetadata__free_unpacked
   assert(message->base.descriptor == &kentik__kagent__v202401__osmetadata__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   kentik__kagent__v202401__capability_current_state__health_fingerprint_entry__init
+                     (Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry         *message)
+{
+  static const Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry init_value = KENTIK__KAGENT__V202401__CAPABILITY_CURRENT_STATE__HEALTH_FINGERPRINT_ENTRY__INIT;
+  *message = init_value;
+}
 void   kentik__kagent__v202401__capability_current_state__init
                      (Kentik__Kagent__V202401__CapabilityCurrentState         *message)
 {
@@ -209,6 +221,51 @@ void   kentik__kagent__v202401__capability_current_state__free_unpacked
   if(!message)
     return;
   assert(message->base.descriptor == &kentik__kagent__v202401__capability_current_state__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
+void   kentik__kagent__v202401__capability_fact__init
+                     (Kentik__Kagent__V202401__CapabilityFact         *message)
+{
+  static const Kentik__Kagent__V202401__CapabilityFact init_value = KENTIK__KAGENT__V202401__CAPABILITY_FACT__INIT;
+  *message = init_value;
+}
+size_t kentik__kagent__v202401__capability_fact__get_packed_size
+                     (const Kentik__Kagent__V202401__CapabilityFact *message)
+{
+  assert(message->base.descriptor == &kentik__kagent__v202401__capability_fact__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t kentik__kagent__v202401__capability_fact__pack
+                     (const Kentik__Kagent__V202401__CapabilityFact *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &kentik__kagent__v202401__capability_fact__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t kentik__kagent__v202401__capability_fact__pack_to_buffer
+                     (const Kentik__Kagent__V202401__CapabilityFact *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &kentik__kagent__v202401__capability_fact__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+Kentik__Kagent__V202401__CapabilityFact *
+       kentik__kagent__v202401__capability_fact__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (Kentik__Kagent__V202401__CapabilityFact *)
+     protobuf_c_message_unpack (&kentik__kagent__v202401__capability_fact__descriptor,
+                                allocator, len, data);
+}
+void   kentik__kagent__v202401__capability_fact__free_unpacked
+                     (Kentik__Kagent__V202401__CapabilityFact *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &kentik__kagent__v202401__capability_fact__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
 static const ProtobufCFieldDescriptor kentik__kagent__v202401__agent_desired_state__capability_state__field_descriptors[4] =
@@ -468,7 +525,58 @@ const ProtobufCMessageDescriptor kentik__kagent__v202401__agent_desired_state__d
   (ProtobufCMessageInit) kentik__kagent__v202401__agent_desired_state__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__kagent__v202401__agent_current_state__agent_state__field_descriptors[25] =
+static const ProtobufCFieldDescriptor kentik__kagent__v202401__agent_current_state__agent_state__health_fingerprint_entry__field_descriptors[2] =
+{
+  {
+    "key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry, value),
+    &kentik__monitoring__v1__health_status__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__kagent__v202401__agent_current_state__agent_state__health_fingerprint_entry__field_indices_by_name[] = {
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
+};
+static const ProtobufCIntRange kentik__kagent__v202401__agent_current_state__agent_state__health_fingerprint_entry__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__kagent__v202401__agent_current_state__agent_state__health_fingerprint_entry__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.kagent.v202401.AgentCurrentState.AgentState.HealthFingerprintEntry",
+  "HealthFingerprintEntry",
+  "Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry",
+  "kentik.kagent.v202401",
+  sizeof(Kentik__Kagent__V202401__AgentCurrentState__AgentState__HealthFingerprintEntry),
+  2,
+  kentik__kagent__v202401__agent_current_state__agent_state__health_fingerprint_entry__field_descriptors,
+  kentik__kagent__v202401__agent_current_state__agent_state__health_fingerprint_entry__field_indices_by_name,
+  1,  kentik__kagent__v202401__agent_current_state__agent_state__health_fingerprint_entry__number_ranges,
+  (ProtobufCMessageInit) kentik__kagent__v202401__agent_current_state__agent_state__health_fingerprint_entry__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__kagent__v202401__agent_current_state__agent_state__field_descriptors[27] =
 {
   {
     "version",
@@ -770,6 +878,30 @@ static const ProtobufCFieldDescriptor kentik__kagent__v202401__agent_current_sta
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "facts",
+    34,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Kagent__V202401__AgentCurrentState__AgentState, n_facts),
+    offsetof(Kentik__Kagent__V202401__AgentCurrentState__AgentState, facts),
+    &kentik__kagent__v202401__capability_fact__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "health_fingerprint",
+    35,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Kagent__V202401__AgentCurrentState__AgentState, n_health_fingerprint),
+    offsetof(Kentik__Kagent__V202401__AgentCurrentState__AgentState, health_fingerprint),
+    &kentik__kagent__v202401__agent_current_state__agent_state__health_fingerprint_entry__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__kagent__v202401__agent_current_state__agent_state__field_indices_by_name[] = {
   9,   /* field[9] = bundle_id */
@@ -780,7 +912,9 @@ static const unsigned kentik__kagent__v202401__agent_current_state__agent_state_
   13,   /* field[13] = current_time */
   18,   /* field[18] = disk_free_bytes */
   17,   /* field[17] = disk_used_percent */
+  25,   /* field[25] = facts */
   7,   /* field[7] = health */
+  26,   /* field[26] = health_fingerprint */
   23,   /* field[23] = health_v2 */
   22,   /* field[22] = host_resources */
   4,   /* field[4] = last_error */
@@ -803,7 +937,7 @@ static const ProtobufCIntRange kentik__kagent__v202401__agent_current_state__age
   { 1, 0 },
   { 20, 15 },
   { 30, 21 },
-  { 0, 25 }
+  { 0, 27 }
 };
 const ProtobufCMessageDescriptor kentik__kagent__v202401__agent_current_state__agent_state__descriptor =
 {
@@ -813,7 +947,7 @@ const ProtobufCMessageDescriptor kentik__kagent__v202401__agent_current_state__a
   "Kentik__Kagent__V202401__AgentCurrentState__AgentState",
   "kentik.kagent.v202401",
   sizeof(Kentik__Kagent__V202401__AgentCurrentState__AgentState),
-  25,
+  27,
   kentik__kagent__v202401__agent_current_state__agent_state__field_descriptors,
   kentik__kagent__v202401__agent_current_state__agent_state__field_indices_by_name,
   3,  kentik__kagent__v202401__agent_current_state__agent_state__number_ranges,
@@ -1012,7 +1146,58 @@ const ProtobufCMessageDescriptor kentik__kagent__v202401__osmetadata__descriptor
   (ProtobufCMessageInit) kentik__kagent__v202401__osmetadata__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__kagent__v202401__capability_current_state__field_descriptors[24] =
+static const ProtobufCFieldDescriptor kentik__kagent__v202401__capability_current_state__health_fingerprint_entry__field_descriptors[2] =
+{
+  {
+    "key",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry, value),
+    &kentik__monitoring__v1__health_status__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__kagent__v202401__capability_current_state__health_fingerprint_entry__field_indices_by_name[] = {
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
+};
+static const ProtobufCIntRange kentik__kagent__v202401__capability_current_state__health_fingerprint_entry__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__kagent__v202401__capability_current_state__health_fingerprint_entry__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.kagent.v202401.CapabilityCurrentState.HealthFingerprintEntry",
+  "HealthFingerprintEntry",
+  "Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry",
+  "kentik.kagent.v202401",
+  sizeof(Kentik__Kagent__V202401__CapabilityCurrentState__HealthFingerprintEntry),
+  2,
+  kentik__kagent__v202401__capability_current_state__health_fingerprint_entry__field_descriptors,
+  kentik__kagent__v202401__capability_current_state__health_fingerprint_entry__field_indices_by_name,
+  1,  kentik__kagent__v202401__capability_current_state__health_fingerprint_entry__number_ranges,
+  (ProtobufCMessageInit) kentik__kagent__v202401__capability_current_state__health_fingerprint_entry__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__kagent__v202401__capability_current_state__field_descriptors[26] =
 {
   {
     "name",
@@ -1302,6 +1487,30 @@ static const ProtobufCFieldDescriptor kentik__kagent__v202401__capability_curren
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "facts",
+    26,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Kagent__V202401__CapabilityCurrentState, n_facts),
+    offsetof(Kentik__Kagent__V202401__CapabilityCurrentState, facts),
+    &kentik__kagent__v202401__capability_fact__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "health_fingerprint",
+    27,
+    PROTOBUF_C_LABEL_REPEATED,
+    PROTOBUF_C_TYPE_MESSAGE,
+    offsetof(Kentik__Kagent__V202401__CapabilityCurrentState, n_health_fingerprint),
+    offsetof(Kentik__Kagent__V202401__CapabilityCurrentState, health_fingerprint),
+    &kentik__kagent__v202401__capability_current_state__health_fingerprint_entry__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__kagent__v202401__capability_current_state__field_indices_by_name[] = {
   4,   /* field[4] = bundle_id */
@@ -1310,8 +1519,10 @@ static const unsigned kentik__kagent__v202401__capability_current_state__field_i
   18,   /* field[18] = cpu_used_cores */
   15,   /* field[15] = crash_loop_count */
   11,   /* field[11] = enabled */
+  24,   /* field[24] = facts */
   17,   /* field[17] = group_id */
   10,   /* field[10] = health */
+  25,   /* field[25] = health_fingerprint */
   21,   /* field[21] = health_v2 */
   2,   /* field[2] = installed */
   6,   /* field[6] = last_error */
@@ -1333,7 +1544,7 @@ static const ProtobufCIntRange kentik__kagent__v202401__capability_current_state
 {
   { 1, 0 },
   { 20, 18 },
-  { 0, 24 }
+  { 0, 26 }
 };
 const ProtobufCMessageDescriptor kentik__kagent__v202401__capability_current_state__descriptor =
 {
@@ -1343,11 +1554,62 @@ const ProtobufCMessageDescriptor kentik__kagent__v202401__capability_current_sta
   "Kentik__Kagent__V202401__CapabilityCurrentState",
   "kentik.kagent.v202401",
   sizeof(Kentik__Kagent__V202401__CapabilityCurrentState),
-  24,
+  26,
   kentik__kagent__v202401__capability_current_state__field_descriptors,
   kentik__kagent__v202401__capability_current_state__field_indices_by_name,
   2,  kentik__kagent__v202401__capability_current_state__number_ranges,
   (ProtobufCMessageInit) kentik__kagent__v202401__capability_current_state__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor kentik__kagent__v202401__capability_fact__field_descriptors[2] =
+{
+  {
+    "path",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kagent__V202401__CapabilityFact, path),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "fact",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_MESSAGE,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kagent__V202401__CapabilityFact, fact),
+    &kentik__monitoring__v1__fact__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned kentik__kagent__v202401__capability_fact__field_indices_by_name[] = {
+  1,   /* field[1] = fact */
+  0,   /* field[0] = path */
+};
+static const ProtobufCIntRange kentik__kagent__v202401__capability_fact__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor kentik__kagent__v202401__capability_fact__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "kentik.kagent.v202401.CapabilityFact",
+  "CapabilityFact",
+  "Kentik__Kagent__V202401__CapabilityFact",
+  "kentik.kagent.v202401",
+  sizeof(Kentik__Kagent__V202401__CapabilityFact),
+  2,
+  kentik__kagent__v202401__capability_fact__field_descriptors,
+  kentik__kagent__v202401__capability_fact__field_indices_by_name,
+  1,  kentik__kagent__v202401__capability_fact__number_ranges,
+  (ProtobufCMessageInit) kentik__kagent__v202401__capability_fact__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
 static const ProtobufCEnumValue kentik__kagent__v202401__capability_promotion_state__enum_values_by_number[4] =

@@ -45,6 +45,42 @@ struct OSMetadata_ReleaseMetadataEntry_DoNotUseDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 OSMetadata_ReleaseMetadataEntry_DoNotUseDefaultTypeInternal _OSMetadata_ReleaseMetadataEntry_DoNotUse_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::CapabilityCurrentState_HealthFingerprintEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::MapEntry(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct CapabilityCurrentState_HealthFingerprintEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CapabilityCurrentState_HealthFingerprintEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CapabilityCurrentState_HealthFingerprintEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    CapabilityCurrentState_HealthFingerprintEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CapabilityCurrentState_HealthFingerprintEntry_DoNotUseDefaultTypeInternal _CapabilityCurrentState_HealthFingerprintEntry_DoNotUse_default_instance_;
+              template <typename>
+PROTOBUF_CONSTEXPR AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::MapEntry(_class_data_.base()){}
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::MapEntry() {
+}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+struct AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUseDefaultTypeInternal() {}
+  union {
+    AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUseDefaultTypeInternal _AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse_default_instance_;
 
 inline constexpr OSMetadata::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -83,9 +119,39 @@ struct OSMetadataDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 OSMetadataDefaultTypeInternal _OSMetadata_default_instance_;
 
+inline constexpr CapabilityFact::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : _cached_size_{0},
+        path_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        fact_{nullptr} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR CapabilityFact::CapabilityFact(::_pbi::ConstantInitialized)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(_class_data_.base()),
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(),
+#endif  // PROTOBUF_CUSTOM_VTABLE
+      _impl_(::_pbi::ConstantInitialized()) {
+}
+struct CapabilityFactDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR CapabilityFactDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~CapabilityFactDefaultTypeInternal() {}
+  union {
+    CapabilityFact _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 CapabilityFactDefaultTypeInternal _CapabilityFact_default_instance_;
+
 inline constexpr AgentCurrentState_AgentState::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
+        facts_{},
+        health_fingerprint_{},
         version_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
@@ -247,6 +313,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 inline constexpr CapabilityCurrentState::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : _cached_size_{0},
+        facts_{},
+        health_fingerprint_{},
         name_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
@@ -394,6 +462,18 @@ const ::uint32_t
         ~0u,
         ~0u,
         1,
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -421,6 +501,8 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.resources_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.host_resources_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.promotion_state_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.facts_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.health_fingerprint_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.mem_used_percent_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.mem_free_bytes_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::AgentCurrentState_AgentState, _impl_.cpu_total_cores_),
@@ -445,6 +527,8 @@ const ::uint32_t
         ~0u,
         4,
         5,
+        ~0u,
+        ~0u,
         ~0u,
         7,
         11,
@@ -489,6 +573,18 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::OSMetadata, _impl_.release_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::OSMetadata, _impl_.version_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::OSMetadata, _impl_.release_metadata_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityCurrentState_HealthFingerprintEntry_DoNotUse, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityCurrentState_HealthFingerprintEntry_DoNotUse, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityCurrentState_HealthFingerprintEntry_DoNotUse, _impl_.key_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityCurrentState_HealthFingerprintEntry_DoNotUse, _impl_.value_),
+        0,
+        1,
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityCurrentState, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityCurrentState, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -521,6 +617,8 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityCurrentState, _impl_.mem_used_bytes_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityCurrentState, _impl_.resources_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityCurrentState, _impl_.promotion_state_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityCurrentState, _impl_.facts_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityCurrentState, _impl_.health_fingerprint_),
         ~0u,
         ~0u,
         ~0u,
@@ -545,6 +643,20 @@ const ::uint32_t
         6,
         3,
         ~0u,
+        ~0u,
+        ~0u,
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityFact, _impl_._has_bits_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityFact, _internal_metadata_),
+        ~0u,  // no _extensions_
+        ~0u,  // no _oneof_case_
+        ~0u,  // no _weak_field_map_
+        ~0u,  // no _inlined_string_donated_
+        ~0u,  // no _split_
+        ~0u,  // no sizeof(Split)
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityFact, _impl_.path_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::CapabilityFact, _impl_.fact_),
+        ~0u,
+        0,
 };
 
 static const ::_pbi::MigrationSchema
@@ -552,21 +664,27 @@ static const ::_pbi::MigrationSchema
         {0, 12, -1, sizeof(::kentik::kagent::v202401::AgentDesiredState_CapabilityState)},
         {16, 30, -1, sizeof(::kentik::kagent::v202401::AgentDesiredState_AgentState)},
         {36, 48, -1, sizeof(::kentik::kagent::v202401::AgentDesiredState)},
-        {52, 85, -1, sizeof(::kentik::kagent::v202401::AgentCurrentState_AgentState)},
-        {110, 120, -1, sizeof(::kentik::kagent::v202401::AgentCurrentState)},
-        {122, 132, -1, sizeof(::kentik::kagent::v202401::OSMetadata_ReleaseMetadataEntry_DoNotUse)},
-        {134, -1, -1, sizeof(::kentik::kagent::v202401::OSMetadata)},
-        {147, 179, -1, sizeof(::kentik::kagent::v202401::CapabilityCurrentState)},
+        {52, 62, -1, sizeof(::kentik::kagent::v202401::AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse)},
+        {64, 99, -1, sizeof(::kentik::kagent::v202401::AgentCurrentState_AgentState)},
+        {126, 136, -1, sizeof(::kentik::kagent::v202401::AgentCurrentState)},
+        {138, 148, -1, sizeof(::kentik::kagent::v202401::OSMetadata_ReleaseMetadataEntry_DoNotUse)},
+        {150, -1, -1, sizeof(::kentik::kagent::v202401::OSMetadata)},
+        {163, 173, -1, sizeof(::kentik::kagent::v202401::CapabilityCurrentState_HealthFingerprintEntry_DoNotUse)},
+        {175, 209, -1, sizeof(::kentik::kagent::v202401::CapabilityCurrentState)},
+        {235, 245, -1, sizeof(::kentik::kagent::v202401::CapabilityFact)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::kagent::v202401::_AgentDesiredState_CapabilityState_default_instance_._instance,
     &::kentik::kagent::v202401::_AgentDesiredState_AgentState_default_instance_._instance,
     &::kentik::kagent::v202401::_AgentDesiredState_default_instance_._instance,
+    &::kentik::kagent::v202401::_AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse_default_instance_._instance,
     &::kentik::kagent::v202401::_AgentCurrentState_AgentState_default_instance_._instance,
     &::kentik::kagent::v202401::_AgentCurrentState_default_instance_._instance,
     &::kentik::kagent::v202401::_OSMetadata_ReleaseMetadataEntry_DoNotUse_default_instance_._instance,
     &::kentik::kagent::v202401::_OSMetadata_default_instance_._instance,
+    &::kentik::kagent::v202401::_CapabilityCurrentState_HealthFingerprintEntry_DoNotUse_default_instance_._instance,
     &::kentik::kagent::v202401::_CapabilityCurrentState_default_instance_._instance,
+    &::kentik::kagent::v202401::_CapabilityFact_default_instance_._instance,
 };
 const char descriptor_table_protodef_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto[] ABSL_ATTRIBUTE_SECTION_VARIABLE(
     protodesc_cold) = {
@@ -581,136 +699,154 @@ const char descriptor_table_protodef_kentik_2fkagent_2fv202401_2fagent_5fstate_2
     "\032(kentik/kagent/v202401/agent_config.pro"
     "to\032\"kentik/kagent/v202401/config.proto\032&"
     "kentik/kagent/v202401/capability.proto\032%"
-    "kentik/kagent/v202401/resources.proto\"\247\006"
-    "\n\021AgentDesiredState\022I\n\005agent\030\001 \001(\01323.ken"
-    "tik.kagent.v202401.AgentDesiredState.Age"
-    "ntStateR\005agent\022\\\n\014capabilities\030\002 \003(\01328.k"
-    "entik.kagent.v202401.AgentDesiredState.C"
-    "apabilityStateR\014capabilities\022\030\n\007version\030"
-    "\003 \001(\003R\007version\022=\n\014current_time\030\004 \001(\0132\032.g"
-    "oogle.protobuf.TimestampR\013currentTime\032\227\002"
-    "\n\017CapabilityState\022F\n\ncapability\030\001 \001(\0132&."
-    "kentik.kagent.v202401.AgentCapabilityR\nc"
-    "apability\022A\n\005group\030\004 \001(\0132+.kentik.kagent"
-    ".v202401.AgentCapabilityGroupR\005group\022B\n\007"
-    "release\030\002 \001(\0132(.kentik.kagent.v202401.Ca"
-    "pabilityReleaseR\007release\0225\n\006config\030\003 \001(\013"
-    "2\035.kentik.kagent.v202401.ConfigR\006config\032"
-    "\365\001\n\nAgentState\022\030\n\007version\030\001 \001(\tR\007version"
-    "\022\030\n\007channel\030\002 \001(\tR\007channel\022\033\n\tbundle_id\030"
-    "\004 \001(\tR\010bundleId\022\033\n\tconfig_id\030\006 \001(\tR\010conf"
-    "igId\022B\n\007release\030\003 \001(\0132(.kentik.kagent.v2"
-    "02401.CapabilityReleaseR\007release\0225\n\006conf"
-    "ig\030\005 \001(\0132\035.kentik.kagent.v202401.ConfigR"
-    "\006config\"\237\014\n\021AgentCurrentState\022I\n\005agent\030\002"
-    " \001(\01323.kentik.kagent.v202401.AgentCurren"
-    "tState.AgentStateR\005agent\022Q\n\014capabilities"
-    "\030\003 \003(\0132-.kentik.kagent.v202401.Capabilit"
-    "yCurrentStateR\014capabilities\032\353\n\n\nAgentSta"
-    "te\022\030\n\007version\030\001 \001(\tR\007version\022\033\n\tbundle_i"
-    "d\030\n \001(\tR\010bundleId\022\033\n\tconfig_id\030\013 \001(\tR\010co"
-    "nfigId\022%\n\016config_version\030\014 \001(\tR\rconfigVe"
-    "rsion\022-\n\022supervisor_version\030\017 \001(\tR\021super"
-    "visorVersion\0227\n\tlast_seen\030\002 \001(\0132\032.google"
-    ".protobuf.TimestampR\010lastSeen\022\'\n\017reconci"
-    "le_error\030\003 \001(\tR\016reconcileError\022H\n\022reconc"
-    "ile_interval\030\004 \001(\0132\031.google.protobuf.Dur"
-    "ationR\021reconcileInterval\022\035\n\nlast_error\030\005"
-    " \001(\tR\tlastError\022\020\n\003pid\030\006 \001(\003R\003pid\0229\n\nsta"
-    "rted_at\030\007 \001(\0132\032.google.protobuf.Timestam"
-    "pR\tstartedAt\022=\n\014current_time\030\016 \001(\0132\032.goo"
-    "gle.protobuf.TimestampR\013currentTime\022D\n\006h"
-    "ealth\030\010 \001(\0162\'.kentik.kagent.v202401.Agen"
-    "tHealthStateB\003\340A\003R\006health\022K\n\thealth_v2\030 "
-    " \001(\0162).kentik.kagent.v202401.AgentHealth"
-    "StateV2B\003\340A\003R\010healthV2\022\'\n\017os_distributio"
-    "n\030\t \001(\tR\016osDistribution\022\036\n\nprivileges\030\r "
-    "\001(\tR\nprivileges\022E\n\tresources\030\036 \001(\0132\'.ken"
-    "tik.kagent.v202401.ProcessResourcesR\tres"
-    "ources\022K\n\016host_resources\030\037 \001(\0132$.kentik."
-    "kagent.v202401.HostResourcesR\rhostResour"
-    "ces\022]\n\017promotion_state\030! \001(\0162/.kentik.ka"
-    "gent.v202401.CapabilityPromotionStateB\003\340"
-    "A\003R\016promotionState\022-\n\020mem_used_percent\030\024"
-    " \001(\001H\000R\016memUsedPercent\210\001\001\022)\n\016mem_free_by"
-    "tes\030\030 \001(\004H\001R\014memFreeBytes\210\001\001\022+\n\017cpu_tota"
-    "l_cores\030\031 \001(\rH\002R\rcpuTotalCores\210\001\001\022-\n\020cpu"
-    "_used_percent\030\025 \001(\001H\003R\016cpuUsedPercent\210\001\001"
-    "\022/\n\021disk_used_percent\030\026 \001(\001H\004R\017diskUsedP"
-    "ercent\210\001\001\022+\n\017disk_free_bytes\030\027 \001(\004H\005R\rdi"
-    "skFreeBytes\210\001\001B\023\n\021_mem_used_percentB\021\n\017_"
-    "mem_free_bytesB\022\n\020_cpu_total_coresB\023\n\021_c"
-    "pu_used_percentB\024\n\022_disk_used_percentB\022\n"
-    "\020_disk_free_bytes\"\223\002\n\nOSMetadata\022\022\n\004name"
-    "\030\001 \001(\tR\004name\022\026\n\006vendor\030\002 \001(\tR\006vendor\022\030\n\007"
-    "release\030\003 \001(\tR\007release\022\030\n\007version\030\004 \001(\tR"
-    "\007version\022a\n\020release_metadata\030\005 \003(\01326.ken"
-    "tik.kagent.v202401.OSMetadata.ReleaseMet"
-    "adataEntryR\017releaseMetadata\032B\n\024ReleaseMe"
-    "tadataEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002"
-    " \001(\tR\005value:\0028\001\"\375\010\n\026CapabilityCurrentSta"
-    "te\022\022\n\004name\030\001 \001(\tR\004name\022\030\n\007version\030\002 \001(\tR"
-    "\007version\022\034\n\tinstalled\030\003 \001(\010R\tinstalled\022\030"
-    "\n\007running\030\004 \001(\010R\007running\022\033\n\tbundle_id\030\005 "
-    "\001(\tR\010bundleId\022\032\n\010restarts\030\006 \001(\005R\010restart"
-    "s\022-\n\020crash_loop_count\030\020 \001(\005H\000R\016crashLoop"
-    "Count\210\001\001\0221\n\022restart_loop_count\030\030 \001(\005H\001R\020"
-    "restartLoopCount\210\001\001\022\035\n\nlast_error\030\007 \001(\tR"
-    "\tlastError\022\020\n\003pid\030\010 \001(\003R\003pid\022\033\n\tconfig_i"
-    "d\030\016 \001(\tR\010configId\022\031\n\010group_id\030\022 \001(\tR\007gro"
-    "upId\022%\n\016config_version\030\017 \001(\tR\rconfigVers"
-    "ion\022\036\n\nprivileges\030\021 \001(\tR\nprivileges\0229\n\ns"
-    "tarted_at\030\t \001(\0132\032.google.protobuf.Timest"
-    "ampR\tstartedAt\0229\n\nstopped_at\030\n \001(\0132\032.goo"
-    "gle.protobuf.TimestampR\tstoppedAt\022I\n\006hea"
-    "lth\030\013 \001(\0162,.kentik.kagent.v202401.Capabi"
-    "lityHealthStateB\003\340A\003R\006health\022P\n\thealth_v"
-    "2\030\027 \001(\0162..kentik.kagent.v202401.Capabili"
-    "tyHealthStateV2B\003\340A\003R\010healthV2\022\030\n\007enable"
-    "d\030\014 \001(\010R\007enabled\022<\n\005state\030\r \001(\0132&.kentik"
-    ".kagent.v202312.CapabilityStateR\005state\022)"
-    "\n\016cpu_used_cores\030\024 \001(\001H\002R\014cpuUsedCores\210\001"
-    "\001\022)\n\016mem_used_bytes\030\025 \001(\004H\003R\014memUsedByte"
-    "s\210\001\001\022E\n\tresources\030\026 \001(\0132\'.kentik.kagent."
-    "v202401.ProcessResourcesR\tresources\022X\n\017p"
-    "romotion_state\030\031 \001(\0162/.kentik.kagent.v20"
-    "2401.CapabilityPromotionStateR\016promotion"
-    "StateB\023\n\021_crash_loop_countB\025\n\023_restart_l"
-    "oop_countB\021\n\017_cpu_used_coresB\021\n\017_mem_use"
-    "d_bytes*\303\001\n\030CapabilityPromotionState\022*\n&"
-    "CAPABILITY_PROMOTION_STATE_UNSPECIFIED\020\000"
-    "\022\'\n#CAPABILITY_PROMOTION_STATE_PROMOTED\020"
-    "\001\022&\n\"CAPABILITY_PROMOTION_STATE_PENDING\020"
-    "\002\022*\n&CAPABILITY_PROMOTION_STATE_ROLLED_B"
-    "ACK\020\003*\271\001\n\020AgentHealthState\022\"\n\036AGENT_HEAL"
-    "TH_STATE_UNSPECIFIED\020\000\022\036\n\032AGENT_HEALTH_S"
-    "TATE_HEALTHY\020\001\022\037\n\033AGENT_HEALTH_STATE_DEG"
-    "RADED\020\004\022 \n\034AGENT_HEALTH_STATE_UNHEALTHY\020"
-    "\002\022\036\n\032AGENT_HEALTH_STATE_OFFLINE\020\003*\330\001\n\025Ca"
-    "pabilityHealthState\022\'\n#CAPABILITY_HEALTH"
-    "_STATE_UNSPECIFIED\020\000\022#\n\037CAPABILITY_HEALT"
-    "H_STATE_HEALTHY\020\001\022$\n CAPABILITY_HEALTH_S"
-    "TATE_DEGRADED\020\004\022%\n!CAPABILITY_HEALTH_STA"
-    "TE_UNHEALTHY\020\002\022$\n CAPABILITY_HEALTH_STAT"
-    "E_DISABLED\020\003*\355\001\n\022AgentHealthStateV2\022%\n!A"
-    "GENT_HEALTH_STATE_V2_UNSPECIFIED\020\000\022!\n\035AG"
-    "ENT_HEALTH_STATE_V2_HEALTHY\020d\022\"\n\035AGENT_H"
-    "EALTH_STATE_V2_WARNING\020\310\001\022#\n\036AGENT_HEALT"
-    "H_STATE_V2_DEGRADED\020\254\002\022#\n\036AGENT_HEALTH_S"
-    "TATE_V2_CRITICAL\020\220\003\022\037\n\032AGENT_HEALTH_STAT"
-    "E_V2_DOWN\020\364\003*\271\002\n\027CapabilityHealthStateV2"
-    "\022*\n&CAPABILITY_HEALTH_STATE_V2_UNSPECIFI"
-    "ED\020\000\022\'\n#CAPABILITY_HEALTH_STATE_V2_DISAB"
-    "LED\020\001\022&\n\"CAPABILITY_HEALTH_STATE_V2_HEAL"
-    "THY\020d\022\'\n\"CAPABILITY_HEALTH_STATE_V2_WARN"
-    "ING\020\310\001\022(\n#CAPABILITY_HEALTH_STATE_V2_DEG"
-    "RADED\020\254\002\022(\n#CAPABILITY_HEALTH_STATE_V2_C"
-    "RITICAL\020\220\003\022$\n\037CAPABILITY_HEALTH_STATE_V2"
-    "_DOWN\020\364\003BIZGgithub.com/kentik/api-schema"
-    "-public/gen/go/kentik/kagent/v202401;kag"
-    "entb\006proto3"
+    "kentik/kagent/v202401/resources.proto\032$k"
+    "entik/monitoring/v1/component.proto\"\247\006\n\021"
+    "AgentDesiredState\022I\n\005agent\030\001 \001(\01323.kenti"
+    "k.kagent.v202401.AgentDesiredState.Agent"
+    "StateR\005agent\022\\\n\014capabilities\030\002 \003(\01328.ken"
+    "tik.kagent.v202401.AgentDesiredState.Cap"
+    "abilityStateR\014capabilities\022\030\n\007version\030\003 "
+    "\001(\003R\007version\022=\n\014current_time\030\004 \001(\0132\032.goo"
+    "gle.protobuf.TimestampR\013currentTime\032\227\002\n\017"
+    "CapabilityState\022F\n\ncapability\030\001 \001(\0132&.ke"
+    "ntik.kagent.v202401.AgentCapabilityR\ncap"
+    "ability\022A\n\005group\030\004 \001(\0132+.kentik.kagent.v"
+    "202401.AgentCapabilityGroupR\005group\022B\n\007re"
+    "lease\030\002 \001(\0132(.kentik.kagent.v202401.Capa"
+    "bilityReleaseR\007release\0225\n\006config\030\003 \001(\0132\035"
+    ".kentik.kagent.v202401.ConfigR\006config\032\365\001"
+    "\n\nAgentState\022\030\n\007version\030\001 \001(\tR\007version\022\030"
+    "\n\007channel\030\002 \001(\tR\007channel\022\033\n\tbundle_id\030\004 "
+    "\001(\tR\010bundleId\022\033\n\tconfig_id\030\006 \001(\tR\010config"
+    "Id\022B\n\007release\030\003 \001(\0132(.kentik.kagent.v202"
+    "401.CapabilityReleaseR\007release\0225\n\006config"
+    "\030\005 \001(\0132\035.kentik.kagent.v202401.ConfigR\006c"
+    "onfig\"\313\016\n\021AgentCurrentState\022I\n\005agent\030\002 \001"
+    "(\01323.kentik.kagent.v202401.AgentCurrentS"
+    "tate.AgentStateR\005agent\022Q\n\014capabilities\030\003"
+    " \003(\0132-.kentik.kagent.v202401.CapabilityC"
+    "urrentStateR\014capabilities\032\227\r\n\nAgentState"
+    "\022\030\n\007version\030\001 \001(\tR\007version\022\033\n\tbundle_id\030"
+    "\n \001(\tR\010bundleId\022\033\n\tconfig_id\030\013 \001(\tR\010conf"
+    "igId\022%\n\016config_version\030\014 \001(\tR\rconfigVers"
+    "ion\022-\n\022supervisor_version\030\017 \001(\tR\021supervi"
+    "sorVersion\0227\n\tlast_seen\030\002 \001(\0132\032.google.p"
+    "rotobuf.TimestampR\010lastSeen\022\'\n\017reconcile"
+    "_error\030\003 \001(\tR\016reconcileError\022H\n\022reconcil"
+    "e_interval\030\004 \001(\0132\031.google.protobuf.Durat"
+    "ionR\021reconcileInterval\022\035\n\nlast_error\030\005 \001"
+    "(\tR\tlastError\022\020\n\003pid\030\006 \001(\003R\003pid\0229\n\nstart"
+    "ed_at\030\007 \001(\0132\032.google.protobuf.TimestampR"
+    "\tstartedAt\022=\n\014current_time\030\016 \001(\0132\032.googl"
+    "e.protobuf.TimestampR\013currentTime\022D\n\006hea"
+    "lth\030\010 \001(\0162\'.kentik.kagent.v202401.AgentH"
+    "ealthStateB\003\340A\003R\006health\022K\n\thealth_v2\030  \001"
+    "(\0162).kentik.kagent.v202401.AgentHealthSt"
+    "ateV2B\003\340A\003R\010healthV2\022\'\n\017os_distribution\030"
+    "\t \001(\tR\016osDistribution\022\036\n\nprivileges\030\r \001("
+    "\tR\nprivileges\022E\n\tresources\030\036 \001(\0132\'.kenti"
+    "k.kagent.v202401.ProcessResourcesR\tresou"
+    "rces\022K\n\016host_resources\030\037 \001(\0132$.kentik.ka"
+    "gent.v202401.HostResourcesR\rhostResource"
+    "s\022]\n\017promotion_state\030! \001(\0162/.kentik.kage"
+    "nt.v202401.CapabilityPromotionStateB\003\340A\003"
+    "R\016promotionState\022@\n\005facts\030\" \003(\0132%.kentik"
+    ".kagent.v202401.CapabilityFactB\003\340A\003R\005fac"
+    "ts\022~\n\022health_fingerprint\030# \003(\0132J.kentik."
+    "kagent.v202401.AgentCurrentState.AgentSt"
+    "ate.HealthFingerprintEntryB\003\340A\003R\021healthF"
+    "ingerprint\022-\n\020mem_used_percent\030\024 \001(\001H\000R\016"
+    "memUsedPercent\210\001\001\022)\n\016mem_free_bytes\030\030 \001("
+    "\004H\001R\014memFreeBytes\210\001\001\022+\n\017cpu_total_cores\030"
+    "\031 \001(\rH\002R\rcpuTotalCores\210\001\001\022-\n\020cpu_used_pe"
+    "rcent\030\025 \001(\001H\003R\016cpuUsedPercent\210\001\001\022/\n\021disk"
+    "_used_percent\030\026 \001(\001H\004R\017diskUsedPercent\210\001"
+    "\001\022+\n\017disk_free_bytes\030\027 \001(\004H\005R\rdiskFreeBy"
+    "tes\210\001\001\032h\n\026HealthFingerprintEntry\022\020\n\003key\030"
+    "\001 \001(\tR\003key\0228\n\005value\030\002 \001(\0162\".kentik.monit"
+    "oring.v1.HealthStatusR\005value:\0028\001B\023\n\021_mem"
+    "_used_percentB\021\n\017_mem_free_bytesB\022\n\020_cpu"
+    "_total_coresB\023\n\021_cpu_used_percentB\024\n\022_di"
+    "sk_used_percentB\022\n\020_disk_free_bytes\"\223\002\n\n"
+    "OSMetadata\022\022\n\004name\030\001 \001(\tR\004name\022\026\n\006vendor"
+    "\030\002 \001(\tR\006vendor\022\030\n\007release\030\003 \001(\tR\007release"
+    "\022\030\n\007version\030\004 \001(\tR\007version\022a\n\020release_me"
+    "tadata\030\005 \003(\01326.kentik.kagent.v202401.OSM"
+    "etadata.ReleaseMetadataEntryR\017releaseMet"
+    "adata\032B\n\024ReleaseMetadataEntry\022\020\n\003key\030\001 \001"
+    "(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\"\243\013\n\026Ca"
+    "pabilityCurrentState\022\022\n\004name\030\001 \001(\tR\004name"
+    "\022\030\n\007version\030\002 \001(\tR\007version\022\034\n\tinstalled\030"
+    "\003 \001(\010R\tinstalled\022\030\n\007running\030\004 \001(\010R\007runni"
+    "ng\022\033\n\tbundle_id\030\005 \001(\tR\010bundleId\022\032\n\010resta"
+    "rts\030\006 \001(\005R\010restarts\022-\n\020crash_loop_count\030"
+    "\020 \001(\005H\000R\016crashLoopCount\210\001\001\0221\n\022restart_lo"
+    "op_count\030\030 \001(\005H\001R\020restartLoopCount\210\001\001\022\035\n"
+    "\nlast_error\030\007 \001(\tR\tlastError\022\020\n\003pid\030\010 \001("
+    "\003R\003pid\022\033\n\tconfig_id\030\016 \001(\tR\010configId\022\031\n\010g"
+    "roup_id\030\022 \001(\tR\007groupId\022%\n\016config_version"
+    "\030\017 \001(\tR\rconfigVersion\022\036\n\nprivileges\030\021 \001("
+    "\tR\nprivileges\0229\n\nstarted_at\030\t \001(\0132\032.goog"
+    "le.protobuf.TimestampR\tstartedAt\0229\n\nstop"
+    "ped_at\030\n \001(\0132\032.google.protobuf.Timestamp"
+    "R\tstoppedAt\022I\n\006health\030\013 \001(\0162,.kentik.kag"
+    "ent.v202401.CapabilityHealthStateB\003\340A\003R\006"
+    "health\022P\n\thealth_v2\030\027 \001(\0162..kentik.kagen"
+    "t.v202401.CapabilityHealthStateV2B\003\340A\003R\010"
+    "healthV2\022\030\n\007enabled\030\014 \001(\010R\007enabled\022<\n\005st"
+    "ate\030\r \001(\0132&.kentik.kagent.v202312.Capabi"
+    "lityStateR\005state\022)\n\016cpu_used_cores\030\024 \001(\001"
+    "H\002R\014cpuUsedCores\210\001\001\022)\n\016mem_used_bytes\030\025 "
+    "\001(\004H\003R\014memUsedBytes\210\001\001\022E\n\tresources\030\026 \001("
+    "\0132\'.kentik.kagent.v202401.ProcessResourc"
+    "esR\tresources\022X\n\017promotion_state\030\031 \001(\0162/"
+    ".kentik.kagent.v202401.CapabilityPromoti"
+    "onStateR\016promotionState\022@\n\005facts\030\032 \003(\0132%"
+    ".kentik.kagent.v202401.CapabilityFactB\003\340"
+    "A\003R\005facts\022x\n\022health_fingerprint\030\033 \003(\0132D."
+    "kentik.kagent.v202401.CapabilityCurrentS"
+    "tate.HealthFingerprintEntryB\003\340A\003R\021health"
+    "Fingerprint\032h\n\026HealthFingerprintEntry\022\020\n"
+    "\003key\030\001 \001(\tR\003key\0228\n\005value\030\002 \001(\0162\".kentik."
+    "monitoring.v1.HealthStatusR\005value:\0028\001B\023\n"
+    "\021_crash_loop_countB\025\n\023_restart_loop_coun"
+    "tB\021\n\017_cpu_used_coresB\021\n\017_mem_used_bytes\""
+    "T\n\016CapabilityFact\022\022\n\004path\030\001 \001(\tR\004path\022.\n"
+    "\004fact\030\002 \001(\0132\032.kentik.monitoring.v1.FactR"
+    "\004fact*\303\001\n\030CapabilityPromotionState\022*\n&CA"
+    "PABILITY_PROMOTION_STATE_UNSPECIFIED\020\000\022\'"
+    "\n#CAPABILITY_PROMOTION_STATE_PROMOTED\020\001\022"
+    "&\n\"CAPABILITY_PROMOTION_STATE_PENDING\020\002\022"
+    "*\n&CAPABILITY_PROMOTION_STATE_ROLLED_BAC"
+    "K\020\003*\271\001\n\020AgentHealthState\022\"\n\036AGENT_HEALTH"
+    "_STATE_UNSPECIFIED\020\000\022\036\n\032AGENT_HEALTH_STA"
+    "TE_HEALTHY\020\001\022\037\n\033AGENT_HEALTH_STATE_DEGRA"
+    "DED\020\004\022 \n\034AGENT_HEALTH_STATE_UNHEALTHY\020\002\022"
+    "\036\n\032AGENT_HEALTH_STATE_OFFLINE\020\003*\330\001\n\025Capa"
+    "bilityHealthState\022\'\n#CAPABILITY_HEALTH_S"
+    "TATE_UNSPECIFIED\020\000\022#\n\037CAPABILITY_HEALTH_"
+    "STATE_HEALTHY\020\001\022$\n CAPABILITY_HEALTH_STA"
+    "TE_DEGRADED\020\004\022%\n!CAPABILITY_HEALTH_STATE"
+    "_UNHEALTHY\020\002\022$\n CAPABILITY_HEALTH_STATE_"
+    "DISABLED\020\003*\355\001\n\022AgentHealthStateV2\022%\n!AGE"
+    "NT_HEALTH_STATE_V2_UNSPECIFIED\020\000\022!\n\035AGEN"
+    "T_HEALTH_STATE_V2_HEALTHY\020d\022\"\n\035AGENT_HEA"
+    "LTH_STATE_V2_WARNING\020\310\001\022#\n\036AGENT_HEALTH_"
+    "STATE_V2_DEGRADED\020\254\002\022#\n\036AGENT_HEALTH_STA"
+    "TE_V2_CRITICAL\020\220\003\022\037\n\032AGENT_HEALTH_STATE_"
+    "V2_DOWN\020\364\003*\271\002\n\027CapabilityHealthStateV2\022*"
+    "\n&CAPABILITY_HEALTH_STATE_V2_UNSPECIFIED"
+    "\020\000\022\'\n#CAPABILITY_HEALTH_STATE_V2_DISABLE"
+    "D\020\001\022&\n\"CAPABILITY_HEALTH_STATE_V2_HEALTH"
+    "Y\020d\022\'\n\"CAPABILITY_HEALTH_STATE_V2_WARNIN"
+    "G\020\310\001\022(\n#CAPABILITY_HEALTH_STATE_V2_DEGRA"
+    "DED\020\254\002\022(\n#CAPABILITY_HEALTH_STATE_V2_CRI"
+    "TICAL\020\220\003\022$\n\037CAPABILITY_HEALTH_STATE_V2_D"
+    "OWN\020\364\003BIZGgithub.com/kentik/api-schema-p"
+    "ublic/gen/go/kentik/kagent/v202401;kagen"
+    "tb\006proto3"
 };
-static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto_deps[11] =
+static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto_deps[12] =
     {
         &::descriptor_table_google_2fapi_2fclient_2eproto,
         &::descriptor_table_google_2fapi_2ffield_5fbehavior_2eproto,
@@ -723,18 +859,19 @@ static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fkagent_2fv
         &::descriptor_table_kentik_2fkagent_2fv202401_2fcapability_2eproto,
         &::descriptor_table_kentik_2fkagent_2fv202401_2fconfig_2eproto,
         &::descriptor_table_kentik_2fkagent_2fv202401_2fresources_2eproto,
+        &::descriptor_table_kentik_2fmonitoring_2fv1_2fcomponent_2eproto,
 };
 static ::absl::once_flag descriptor_table_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto_once;
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto = {
     false,
     false,
-    5531,
+    6249,
     descriptor_table_protodef_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto,
     "kentik/kagent/v202401/agent_state.proto",
     &descriptor_table_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto_once,
     descriptor_table_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto_deps,
+    12,
     11,
-    8,
     schemas,
     file_default_instances,
     TableStruct_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto::offsets,
@@ -1991,6 +2128,96 @@ void AgentDesiredState::InternalSwap(AgentDesiredState* PROTOBUF_RESTRICT other)
 }
 // ===================================================================
 
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+              AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse() : SuperType(_class_data_.base()) {}
+              AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse(::google::protobuf::Arena* arena)
+                  : SuperType(arena, _class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+              AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse() : SuperType() {}
+              AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+              inline void* AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::PlacementNew_(const void*, void* mem,
+                                                      ::google::protobuf::Arena* arena) {
+                return ::new (mem) AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse(arena);
+              }
+              constexpr auto AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::InternalNewImpl_() {
+                return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse),
+                                                          alignof(AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse));
+              }
+              PROTOBUF_CONSTINIT
+              PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+              const ::google::protobuf::internal::ClassDataFull AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::_class_data_ = {
+                  ::google::protobuf::internal::ClassData{
+                      &_AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse_default_instance_._instance,
+                      &_table_.header,
+                      nullptr,  // OnDemandRegisterArenaDtor
+                      nullptr,  // IsInitialized
+                      &AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::MergeImpl,
+                      ::google::protobuf::Message::GetNewImpl<AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse>(),
+              #if defined(PROTOBUF_CUSTOM_VTABLE)
+                      &AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::SharedDtor,
+                      static_cast<void (::google::protobuf::MessageLite::*)()>(
+                          &AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::ClearImpl),
+                          ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+                          ,
+              #endif  // PROTOBUF_CUSTOM_VTABLE
+                      PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse, _impl_._cached_size_),
+                      false,
+                  },
+                  &AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::kDescriptorMethods,
+                  &descriptor_table_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto,
+                  nullptr,  // tracker
+              };
+              const ::google::protobuf::internal::ClassData* AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::GetClassData() const {
+                ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+                ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+                return _class_data_.base();
+              }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 85, 2> AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::kagent::v202401::AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .kentik.monitoring.v1.HealthStatus value = 2 [json_name = "value"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse, _impl_.value_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1 [json_name = "key"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1 [json_name = "key"];
+    {PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse, _impl_.key_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .kentik.monitoring.v1.HealthStatus value = 2 [json_name = "value"];
+    {PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse, _impl_.value_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+  }},
+  // no aux_entries
+  {{
+    "\111\3\0\0\0\0\0\0"
+    "kentik.kagent.v202401.AgentCurrentState.AgentState.HealthFingerprintEntry"
+    "key"
+  }},
+};
+
+// ===================================================================
+
 class AgentCurrentState_AgentState::_Internal {
  public:
   using HasBits =
@@ -2043,6 +2270,8 @@ inline PROTOBUF_NDEBUG_INLINE AgentCurrentState_AgentState::Impl_::Impl_(
     const Impl_& from, const ::kentik::kagent::v202401::AgentCurrentState_AgentState& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
+        facts_{visibility, arena, from.facts_},
+        health_fingerprint_{visibility, arena, from.health_fingerprint_},
         version_(arena, from.version_),
         reconcile_error_(arena, from.reconcile_error_),
         last_error_(arena, from.last_error_),
@@ -2099,6 +2328,8 @@ inline PROTOBUF_NDEBUG_INLINE AgentCurrentState_AgentState::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : _cached_size_{0},
+        facts_{visibility, arena},
+        health_fingerprint_{visibility, arena},
         version_(arena),
         reconcile_error_(arena),
         last_error_(arena),
@@ -2149,8 +2380,28 @@ inline void* AgentCurrentState_AgentState::PlacementNew_(const void*, void* mem,
   return ::new (mem) AgentCurrentState_AgentState(arena);
 }
 constexpr auto AgentCurrentState_AgentState::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(AgentCurrentState_AgentState),
-                                            alignof(AgentCurrentState_AgentState));
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.facts_) +
+          decltype(AgentCurrentState_AgentState::_impl_.facts_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.health_fingerprint_) +
+          decltype(AgentCurrentState_AgentState::_impl_.health_fingerprint_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.health_fingerprint_) +
+          decltype(AgentCurrentState_AgentState::_impl_.health_fingerprint_)::
+              InternalGetArenaOffsetAlt(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(AgentCurrentState_AgentState), alignof(AgentCurrentState_AgentState), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&AgentCurrentState_AgentState::PlacementNew_,
+                                 sizeof(AgentCurrentState_AgentState),
+                                 alignof(AgentCurrentState_AgentState));
+  }
 }
 PROTOBUF_CONSTINIT
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
@@ -2180,16 +2431,16 @@ const ::google::protobuf::internal::ClassData* AgentCurrentState_AgentState::Get
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<5, 25, 6, 190, 7> AgentCurrentState_AgentState::_table_ = {
+const ::_pbi::TcParseTable<5, 27, 8, 208, 7> AgentCurrentState_AgentState::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_._has_bits_),
     0, // no _extensions_
-    33, 248,  // max_field_number, fast_idx_mask
+    35, 248,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
     503808000,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    25,  // num_field_entries
-    6,  // num_aux_entries
+    27,  // num_field_entries
+    8,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -2250,7 +2501,9 @@ const ::_pbi::TcParseTable<5, 25, 6, 190, 7> AgentCurrentState_AgentState::_tabl
     // .kentik.kagent.v202401.CapabilityPromotionState promotion_state = 33 [json_name = "promotionState", (.google.api.field_behavior) = OUTPUT_ONLY];
     {::_pbi::TcParser::FastV32S2,
      {648, 63, 0, PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.promotion_state_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // repeated .kentik.kagent.v202401.CapabilityFact facts = 34 [json_name = "facts", (.google.api.field_behavior) = OUTPUT_ONLY];
+    {::_pbi::TcParser::FastMtR2,
+     {658, 63, 6, PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.facts_)}},
     {::_pbi::TcParser::MiniParse, {}},
     // optional double mem_used_percent = 20 [json_name = "memUsedPercent"];
     {::_pbi::TcParser::FastF64S2,
@@ -2282,7 +2535,7 @@ const ::_pbi::TcParseTable<5, 25, 6, 190, 7> AgentCurrentState_AgentState::_tabl
      {506, 5, 5, PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.host_resources_)}},
   }}, {{
     33, 0, 1,
-    65534, 24,
+    65528, 24,
     65535, 65535
   }}, {{
     // string version = 1 [json_name = "version"];
@@ -2360,6 +2613,12 @@ const ::_pbi::TcParseTable<5, 25, 6, 190, 7> AgentCurrentState_AgentState::_tabl
     // .kentik.kagent.v202401.CapabilityPromotionState promotion_state = 33 [json_name = "promotionState", (.google.api.field_behavior) = OUTPUT_ONLY];
     {PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.promotion_state_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // repeated .kentik.kagent.v202401.CapabilityFact facts = 34 [json_name = "facts", (.google.api.field_behavior) = OUTPUT_ONLY];
+    {PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.facts_), -1, 6,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // map<string, .kentik.monitoring.v1.HealthStatus> health_fingerprint = 35 [json_name = "healthFingerprint", (.google.api.field_behavior) = OUTPUT_ONLY];
+    {PROTOBUF_FIELD_OFFSET(AgentCurrentState_AgentState, _impl_.health_fingerprint_), -1, 7,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
   }}, {{
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Duration>()},
@@ -2367,8 +2626,13 @@ const ::_pbi::TcParseTable<5, 25, 6, 190, 7> AgentCurrentState_AgentState::_tabl
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
     {::_pbi::TcParser::GetTable<::kentik::kagent::v202401::ProcessResources>()},
     {::_pbi::TcParser::GetTable<::kentik::kagent::v202401::HostResources>()},
+    {::_pbi::TcParser::GetTable<::kentik::kagent::v202401::CapabilityFact>()},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(AgentCurrentState_AgentState()._impl_.health_fingerprint_)>(
+        1, 0, 0, 9,
+        14)},
   }}, {{
-    "\62\7\0\17\0\12\0\0\0\17\11\11\16\12\0\22\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    "\62\7\0\17\0\12\0\0\0\17\11\11\16\12\0\22\0\0\0\0\0\0\0\0\0\0\0\22\0\0\0\0"
     "kentik.kagent.v202401.AgentCurrentState.AgentState"
     "version"
     "reconcile_error"
@@ -2379,6 +2643,7 @@ const ::_pbi::TcParseTable<5, 25, 6, 190, 7> AgentCurrentState_AgentState::_tabl
     "config_version"
     "privileges"
     "supervisor_version"
+    "health_fingerprint"
   }},
 };
 
@@ -2389,6 +2654,8 @@ PROTOBUF_NOINLINE void AgentCurrentState_AgentState::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.facts_.Clear();
+  _impl_.health_fingerprint_.Clear();
   _impl_.version_.ClearToEmpty();
   _impl_.reconcile_error_.ClearToEmpty();
   _impl_.last_error_.ClearToEmpty();
@@ -2645,6 +2912,44 @@ PROTOBUF_NOINLINE void AgentCurrentState_AgentState::Clear() {
                 33, this_._internal_promotion_state(), target);
           }
 
+          // repeated .kentik.kagent.v202401.CapabilityFact facts = 34 [json_name = "facts", (.google.api.field_behavior) = OUTPUT_ONLY];
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_facts_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_facts().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    34, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
+          // map<string, .kentik.monitoring.v1.HealthStatus> health_fingerprint = 35 [json_name = "healthFingerprint", (.google.api.field_behavior) = OUTPUT_ONLY];
+          if (!this_._internal_health_fingerprint().empty()) {
+            using MapType = ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>;
+            using WireHelper = _pbi::MapEntryFuncs<std::string, ::kentik::monitoring::v1::HealthStatus,
+                                           _pbi::WireFormatLite::TYPE_STRING,
+                                           _pbi::WireFormatLite::TYPE_ENUM>;
+            const auto& field = this_._internal_health_fingerprint();
+
+            if (stream->IsSerializationDeterministic() && field.size() > 1) {
+              for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+                target = WireHelper::InternalSerialize(
+                    35, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kagent.v202401.AgentCurrentState.AgentState.health_fingerprint");
+              }
+            } else {
+              for (const auto& entry : field) {
+                target = WireHelper::InternalSerialize(
+                    35, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kagent.v202401.AgentCurrentState.AgentState.health_fingerprint");
+              }
+            }
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -2669,6 +2974,25 @@ PROTOBUF_NOINLINE void AgentCurrentState_AgentState::Clear() {
           (void)cached_has_bits;
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated .kentik.kagent.v202401.CapabilityFact facts = 34 [json_name = "facts", (.google.api.field_behavior) = OUTPUT_ONLY];
+            {
+              total_size += 2UL * this_._internal_facts_size();
+              for (const auto& msg : this_._internal_facts()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+            // map<string, .kentik.monitoring.v1.HealthStatus> health_fingerprint = 35 [json_name = "healthFingerprint", (.google.api.field_behavior) = OUTPUT_ONLY];
+            {
+              total_size +=
+                  2 * ::google::protobuf::internal::FromIntSize(this_._internal_health_fingerprint_size());
+              for (const auto& entry : this_._internal_health_fingerprint()) {
+                total_size += _pbi::MapEntryFuncs<std::string, ::kentik::monitoring::v1::HealthStatus,
+                                               _pbi::WireFormatLite::TYPE_STRING,
+                                               _pbi::WireFormatLite::TYPE_ENUM>::ByteSizeLong(entry.first, entry.second);
+              }
+            }
+          }
            {
             // string version = 1 [json_name = "version"];
             if (!this_._internal_version().empty()) {
@@ -2817,6 +3141,9 @@ void AgentCurrentState_AgentState::MergeImpl(::google::protobuf::MessageLite& to
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_internal_mutable_facts()->MergeFrom(
+      from._internal_facts());
+  _this->_impl_.health_fingerprint_.MergeFrom(from._impl_.health_fingerprint_);
   if (!from._internal_version().empty()) {
     _this->_internal_set_version(from._internal_version());
   }
@@ -2953,6 +3280,8 @@ void AgentCurrentState_AgentState::InternalSwap(AgentCurrentState_AgentState* PR
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.facts_.InternalSwap(&other->_impl_.facts_);
+  _impl_.health_fingerprint_.InternalSwap(&other->_impl_.health_fingerprint_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.version_, &other->_impl_.version_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.reconcile_error_, &other->_impl_.reconcile_error_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.last_error_, &other->_impl_.last_error_, arena);
@@ -3751,6 +4080,96 @@ void OSMetadata::InternalSwap(OSMetadata* PROTOBUF_RESTRICT other) {
 }
 // ===================================================================
 
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+              CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::CapabilityCurrentState_HealthFingerprintEntry_DoNotUse() : SuperType(_class_data_.base()) {}
+              CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::CapabilityCurrentState_HealthFingerprintEntry_DoNotUse(::google::protobuf::Arena* arena)
+                  : SuperType(arena, _class_data_.base()) {}
+#else   // PROTOBUF_CUSTOM_VTABLE
+              CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::CapabilityCurrentState_HealthFingerprintEntry_DoNotUse() : SuperType() {}
+              CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::CapabilityCurrentState_HealthFingerprintEntry_DoNotUse(::google::protobuf::Arena* arena) : SuperType(arena) {}
+#endif  // PROTOBUF_CUSTOM_VTABLE
+              inline void* CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::PlacementNew_(const void*, void* mem,
+                                                      ::google::protobuf::Arena* arena) {
+                return ::new (mem) CapabilityCurrentState_HealthFingerprintEntry_DoNotUse(arena);
+              }
+              constexpr auto CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::InternalNewImpl_() {
+                return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(CapabilityCurrentState_HealthFingerprintEntry_DoNotUse),
+                                                          alignof(CapabilityCurrentState_HealthFingerprintEntry_DoNotUse));
+              }
+              PROTOBUF_CONSTINIT
+              PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+              const ::google::protobuf::internal::ClassDataFull CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::_class_data_ = {
+                  ::google::protobuf::internal::ClassData{
+                      &_CapabilityCurrentState_HealthFingerprintEntry_DoNotUse_default_instance_._instance,
+                      &_table_.header,
+                      nullptr,  // OnDemandRegisterArenaDtor
+                      nullptr,  // IsInitialized
+                      &CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::MergeImpl,
+                      ::google::protobuf::Message::GetNewImpl<CapabilityCurrentState_HealthFingerprintEntry_DoNotUse>(),
+              #if defined(PROTOBUF_CUSTOM_VTABLE)
+                      &CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::SharedDtor,
+                      static_cast<void (::google::protobuf::MessageLite::*)()>(
+                          &CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::ClearImpl),
+                          ::google::protobuf::Message::ByteSizeLongImpl, ::google::protobuf::Message::_InternalSerializeImpl
+                          ,
+              #endif  // PROTOBUF_CUSTOM_VTABLE
+                      PROTOBUF_FIELD_OFFSET(CapabilityCurrentState_HealthFingerprintEntry_DoNotUse, _impl_._cached_size_),
+                      false,
+                  },
+                  &CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::kDescriptorMethods,
+                  &descriptor_table_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto,
+                  nullptr,  // tracker
+              };
+              const ::google::protobuf::internal::ClassData* CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::GetClassData() const {
+                ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+                ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+                return _class_data_.base();
+              }
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 0, 79, 2> CapabilityCurrentState_HealthFingerprintEntry_DoNotUse::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(CapabilityCurrentState_HealthFingerprintEntry_DoNotUse, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    0,  // num_aux_entries
+    offsetof(decltype(_table_), field_names),  // no aux_entries
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::DiscardEverythingFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::kagent::v202401::CapabilityCurrentState_HealthFingerprintEntry_DoNotUse>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .kentik.monitoring.v1.HealthStatus value = 2 [json_name = "value"];
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(CapabilityCurrentState_HealthFingerprintEntry_DoNotUse, _impl_.value_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(CapabilityCurrentState_HealthFingerprintEntry_DoNotUse, _impl_.value_)}},
+    // string key = 1 [json_name = "key"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(CapabilityCurrentState_HealthFingerprintEntry_DoNotUse, _impl_.key_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string key = 1 [json_name = "key"];
+    {PROTOBUF_FIELD_OFFSET(CapabilityCurrentState_HealthFingerprintEntry_DoNotUse, _impl_.key_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .kentik.monitoring.v1.HealthStatus value = 2 [json_name = "value"];
+    {PROTOBUF_FIELD_OFFSET(CapabilityCurrentState_HealthFingerprintEntry_DoNotUse, _impl_.value_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+  }},
+  // no aux_entries
+  {{
+    "\103\3\0\0\0\0\0\0"
+    "kentik.kagent.v202401.CapabilityCurrentState.HealthFingerprintEntry"
+    "key"
+  }},
+};
+
+// ===================================================================
+
 class CapabilityCurrentState::_Internal {
  public:
   using HasBits =
@@ -3793,6 +4212,8 @@ inline PROTOBUF_NDEBUG_INLINE CapabilityCurrentState::Impl_::Impl_(
     const Impl_& from, const ::kentik::kagent::v202401::CapabilityCurrentState& from_msg)
       : _has_bits_{from._has_bits_},
         _cached_size_{0},
+        facts_{visibility, arena, from.facts_},
+        health_fingerprint_{visibility, arena, from.health_fingerprint_},
         name_(arena, from.name_),
         version_(arena, from.version_),
         bundle_id_(arena, from.bundle_id_),
@@ -3842,6 +4263,8 @@ inline PROTOBUF_NDEBUG_INLINE CapabilityCurrentState::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : _cached_size_{0},
+        facts_{visibility, arena},
+        health_fingerprint_{visibility, arena},
         name_(arena),
         version_(arena),
         bundle_id_(arena),
@@ -3888,8 +4311,28 @@ inline void* CapabilityCurrentState::PlacementNew_(const void*, void* mem,
   return ::new (mem) CapabilityCurrentState(arena);
 }
 constexpr auto CapabilityCurrentState::InternalNewImpl_() {
-  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(CapabilityCurrentState),
-                                            alignof(CapabilityCurrentState));
+  constexpr auto arena_bits = ::google::protobuf::internal::EncodePlacementArenaOffsets({
+      PROTOBUF_FIELD_OFFSET(CapabilityCurrentState, _impl_.facts_) +
+          decltype(CapabilityCurrentState::_impl_.facts_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(CapabilityCurrentState, _impl_.health_fingerprint_) +
+          decltype(CapabilityCurrentState::_impl_.health_fingerprint_)::
+              InternalGetArenaOffset(
+                  ::google::protobuf::Message::internal_visibility()),
+      PROTOBUF_FIELD_OFFSET(CapabilityCurrentState, _impl_.health_fingerprint_) +
+          decltype(CapabilityCurrentState::_impl_.health_fingerprint_)::
+              InternalGetArenaOffsetAlt(
+                  ::google::protobuf::Message::internal_visibility()),
+  });
+  if (arena_bits.has_value()) {
+    return ::google::protobuf::internal::MessageCreator::CopyInit(
+        sizeof(CapabilityCurrentState), alignof(CapabilityCurrentState), *arena_bits);
+  } else {
+    return ::google::protobuf::internal::MessageCreator(&CapabilityCurrentState::PlacementNew_,
+                                 sizeof(CapabilityCurrentState),
+                                 alignof(CapabilityCurrentState));
+  }
 }
 PROTOBUF_CONSTINIT
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
@@ -3919,16 +4362,16 @@ const ::google::protobuf::internal::ClassData* CapabilityCurrentState::GetClassD
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<5, 24, 4, 148, 2> CapabilityCurrentState::_table_ = {
+const ::_pbi::TcParseTable<5, 26, 6, 166, 2> CapabilityCurrentState::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(CapabilityCurrentState, _impl_._has_bits_),
     0, // no _extensions_
-    25, 248,  // max_field_number, fast_idx_mask
+    27, 248,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4261675008,  // skipmap
+    4161011712,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    24,  // num_field_entries
-    4,  // num_aux_entries
+    26,  // num_field_entries
+    6,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
     nullptr,  // post_loop_handler
@@ -4011,7 +4454,9 @@ const ::_pbi::TcParseTable<5, 24, 4, 148, 2> CapabilityCurrentState::_table_ = {
     // .kentik.kagent.v202401.CapabilityPromotionState promotion_state = 25 [json_name = "promotionState"];
     {::_pbi::TcParser::FastV32S2,
      {456, 63, 0, PROTOBUF_FIELD_OFFSET(CapabilityCurrentState, _impl_.promotion_state_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // repeated .kentik.kagent.v202401.CapabilityFact facts = 26 [json_name = "facts", (.google.api.field_behavior) = OUTPUT_ONLY];
+    {::_pbi::TcParser::FastMtR2,
+     {466, 63, 4, PROTOBUF_FIELD_OFFSET(CapabilityCurrentState, _impl_.facts_)}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
     {::_pbi::TcParser::MiniParse, {}},
@@ -4092,13 +4537,24 @@ const ::_pbi::TcParseTable<5, 24, 4, 148, 2> CapabilityCurrentState::_table_ = {
     // .kentik.kagent.v202401.CapabilityPromotionState promotion_state = 25 [json_name = "promotionState"];
     {PROTOBUF_FIELD_OFFSET(CapabilityCurrentState, _impl_.promotion_state_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // repeated .kentik.kagent.v202401.CapabilityFact facts = 26 [json_name = "facts", (.google.api.field_behavior) = OUTPUT_ONLY];
+    {PROTOBUF_FIELD_OFFSET(CapabilityCurrentState, _impl_.facts_), -1, 4,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMessage | ::_fl::kTvTable)},
+    // map<string, .kentik.monitoring.v1.HealthStatus> health_fingerprint = 27 [json_name = "healthFingerprint", (.google.api.field_behavior) = OUTPUT_ONLY];
+    {PROTOBUF_FIELD_OFFSET(CapabilityCurrentState, _impl_.health_fingerprint_), -1, 5,
+    (0 | ::_fl::kFcRepeated | ::_fl::kMap)},
   }}, {{
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
     {::_pbi::TcParser::GetTable<::google::protobuf::Timestamp>()},
     {::_pbi::TcParser::GetTable<::kentik::kagent::v202312::CapabilityState>()},
     {::_pbi::TcParser::GetTable<::kentik::kagent::v202401::ProcessResources>()},
+    {::_pbi::TcParser::GetTable<::kentik::kagent::v202401::CapabilityFact>()},
+    {::_pbi::TcParser::GetMapAuxInfo<
+        decltype(CapabilityCurrentState()._impl_.health_fingerprint_)>(
+        1, 0, 0, 9,
+        14)},
   }}, {{
-    "\54\4\7\0\0\11\0\12\0\0\0\0\0\0\11\16\0\12\10\0\0\0\0\0\0\0\0\0\0\0\0\0"
+    "\54\4\7\0\0\11\0\12\0\0\0\0\0\0\11\16\0\12\10\0\0\0\0\0\0\0\22\0\0\0\0\0"
     "kentik.kagent.v202401.CapabilityCurrentState"
     "name"
     "version"
@@ -4108,6 +4564,7 @@ const ::_pbi::TcParseTable<5, 24, 4, 148, 2> CapabilityCurrentState::_table_ = {
     "config_version"
     "privileges"
     "group_id"
+    "health_fingerprint"
   }},
 };
 
@@ -4118,6 +4575,8 @@ PROTOBUF_NOINLINE void CapabilityCurrentState::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
+  _impl_.facts_.Clear();
+  _impl_.health_fingerprint_.Clear();
   _impl_.name_.ClearToEmpty();
   _impl_.version_.ClearToEmpty();
   _impl_.bundle_id_.ClearToEmpty();
@@ -4352,6 +4811,44 @@ PROTOBUF_NOINLINE void CapabilityCurrentState::Clear() {
                 25, this_._internal_promotion_state(), target);
           }
 
+          // repeated .kentik.kagent.v202401.CapabilityFact facts = 26 [json_name = "facts", (.google.api.field_behavior) = OUTPUT_ONLY];
+          for (unsigned i = 0, n = static_cast<unsigned>(
+                                   this_._internal_facts_size());
+               i < n; i++) {
+            const auto& repfield = this_._internal_facts().Get(i);
+            target =
+                ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                    26, repfield, repfield.GetCachedSize(),
+                    target, stream);
+          }
+
+          // map<string, .kentik.monitoring.v1.HealthStatus> health_fingerprint = 27 [json_name = "healthFingerprint", (.google.api.field_behavior) = OUTPUT_ONLY];
+          if (!this_._internal_health_fingerprint().empty()) {
+            using MapType = ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>;
+            using WireHelper = _pbi::MapEntryFuncs<std::string, ::kentik::monitoring::v1::HealthStatus,
+                                           _pbi::WireFormatLite::TYPE_STRING,
+                                           _pbi::WireFormatLite::TYPE_ENUM>;
+            const auto& field = this_._internal_health_fingerprint();
+
+            if (stream->IsSerializationDeterministic() && field.size() > 1) {
+              for (const auto& entry : ::google::protobuf::internal::MapSorterPtr<MapType>(field)) {
+                target = WireHelper::InternalSerialize(
+                    27, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kagent.v202401.CapabilityCurrentState.health_fingerprint");
+              }
+            } else {
+              for (const auto& entry : field) {
+                target = WireHelper::InternalSerialize(
+                    27, entry.first, entry.second, target, stream);
+                ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                    entry.first.data(), static_cast<int>(entry.first.length()),
+ ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kagent.v202401.CapabilityCurrentState.health_fingerprint");
+              }
+            }
+          }
+
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
             target =
                 ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
@@ -4376,6 +4873,25 @@ PROTOBUF_NOINLINE void CapabilityCurrentState::Clear() {
           (void)cached_has_bits;
 
           ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // repeated .kentik.kagent.v202401.CapabilityFact facts = 26 [json_name = "facts", (.google.api.field_behavior) = OUTPUT_ONLY];
+            {
+              total_size += 2UL * this_._internal_facts_size();
+              for (const auto& msg : this_._internal_facts()) {
+                total_size += ::google::protobuf::internal::WireFormatLite::MessageSize(msg);
+              }
+            }
+            // map<string, .kentik.monitoring.v1.HealthStatus> health_fingerprint = 27 [json_name = "healthFingerprint", (.google.api.field_behavior) = OUTPUT_ONLY];
+            {
+              total_size +=
+                  2 * ::google::protobuf::internal::FromIntSize(this_._internal_health_fingerprint_size());
+              for (const auto& entry : this_._internal_health_fingerprint()) {
+                total_size += _pbi::MapEntryFuncs<std::string, ::kentik::monitoring::v1::HealthStatus,
+                                               _pbi::WireFormatLite::TYPE_STRING,
+                                               _pbi::WireFormatLite::TYPE_ENUM>::ByteSizeLong(entry.first, entry.second);
+              }
+            }
+          }
            {
             // string name = 1 [json_name = "name"];
             if (!this_._internal_name().empty()) {
@@ -4520,6 +5036,9 @@ void CapabilityCurrentState::MergeImpl(::google::protobuf::MessageLite& to_msg, 
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
+  _this->_internal_mutable_facts()->MergeFrom(
+      from._internal_facts());
+  _this->_impl_.health_fingerprint_.MergeFrom(from._impl_.health_fingerprint_);
   if (!from._internal_name().empty()) {
     _this->_internal_set_name(from._internal_name());
   }
@@ -4639,6 +5158,8 @@ void CapabilityCurrentState::InternalSwap(CapabilityCurrentState* PROTOBUF_RESTR
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  _impl_.facts_.InternalSwap(&other->_impl_.facts_);
+  _impl_.health_fingerprint_.InternalSwap(&other->_impl_.health_fingerprint_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.version_, &other->_impl_.version_, arena);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.bundle_id_, &other->_impl_.bundle_id_, arena);
@@ -4656,6 +5177,296 @@ void CapabilityCurrentState::InternalSwap(CapabilityCurrentState* PROTOBUF_RESTR
 }
 
 ::google::protobuf::Metadata CapabilityCurrentState::GetMetadata() const {
+  return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
+}
+// ===================================================================
+
+class CapabilityFact::_Internal {
+ public:
+  using HasBits =
+      decltype(std::declval<CapabilityFact>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(CapabilityFact, _impl_._has_bits_);
+};
+
+void CapabilityFact::clear_fact() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.fact_ != nullptr) _impl_.fact_->Clear();
+  _impl_._has_bits_[0] &= ~0x00000001u;
+}
+CapabilityFact::CapabilityFact(::google::protobuf::Arena* arena)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  SharedCtor(arena);
+  // @@protoc_insertion_point(arena_constructor:kentik.kagent.v202401.CapabilityFact)
+}
+inline PROTOBUF_NDEBUG_INLINE CapabilityFact::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from, const ::kentik::kagent::v202401::CapabilityFact& from_msg)
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        path_(arena, from.path_) {}
+
+CapabilityFact::CapabilityFact(
+    ::google::protobuf::Arena* arena,
+    const CapabilityFact& from)
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+    : ::google::protobuf::Message(arena, _class_data_.base()) {
+#else   // PROTOBUF_CUSTOM_VTABLE
+    : ::google::protobuf::Message(arena) {
+#endif  // PROTOBUF_CUSTOM_VTABLE
+  CapabilityFact* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_, from);
+  ::uint32_t cached_has_bits = _impl_._has_bits_[0];
+  _impl_.fact_ = (cached_has_bits & 0x00000001u) ? ::google::protobuf::Message::CopyConstruct<::kentik::monitoring::v1::Fact>(
+                              arena, *from._impl_.fact_)
+                        : nullptr;
+
+  // @@protoc_insertion_point(copy_constructor:kentik.kagent.v202401.CapabilityFact)
+}
+inline PROTOBUF_NDEBUG_INLINE CapabilityFact::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility,
+    ::google::protobuf::Arena* arena)
+      : _cached_size_{0},
+        path_(arena) {}
+
+inline void CapabilityFact::SharedCtor(::_pb::Arena* arena) {
+  new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.fact_ = {};
+}
+CapabilityFact::~CapabilityFact() {
+  // @@protoc_insertion_point(destructor:kentik.kagent.v202401.CapabilityFact)
+  SharedDtor(*this);
+}
+inline void CapabilityFact::SharedDtor(MessageLite& self) {
+  CapabilityFact& this_ = static_cast<CapabilityFact&>(self);
+  this_._internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
+  ABSL_DCHECK(this_.GetArena() == nullptr);
+  this_._impl_.path_.Destroy();
+  delete this_._impl_.fact_;
+  this_._impl_.~Impl_();
+}
+
+inline void* CapabilityFact::PlacementNew_(const void*, void* mem,
+                                        ::google::protobuf::Arena* arena) {
+  return ::new (mem) CapabilityFact(arena);
+}
+constexpr auto CapabilityFact::InternalNewImpl_() {
+  return ::google::protobuf::internal::MessageCreator::CopyInit(sizeof(CapabilityFact),
+                                            alignof(CapabilityFact));
+}
+PROTOBUF_CONSTINIT
+PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::google::protobuf::internal::ClassDataFull CapabilityFact::_class_data_ = {
+    ::google::protobuf::internal::ClassData{
+        &_CapabilityFact_default_instance_._instance,
+        &_table_.header,
+        nullptr,  // OnDemandRegisterArenaDtor
+        nullptr,  // IsInitialized
+        &CapabilityFact::MergeImpl,
+        ::google::protobuf::Message::GetNewImpl<CapabilityFact>(),
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        &CapabilityFact::SharedDtor,
+        ::google::protobuf::Message::GetClearImpl<CapabilityFact>(), &CapabilityFact::ByteSizeLong,
+            &CapabilityFact::_InternalSerialize,
+#endif  // PROTOBUF_CUSTOM_VTABLE
+        PROTOBUF_FIELD_OFFSET(CapabilityFact, _impl_._cached_size_),
+        false,
+    },
+    &CapabilityFact::kDescriptorMethods,
+    &descriptor_table_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto,
+    nullptr,  // tracker
+};
+const ::google::protobuf::internal::ClassData* CapabilityFact::GetClassData() const {
+  ::google::protobuf::internal::PrefetchToLocalCache(&_class_data_);
+  ::google::protobuf::internal::PrefetchToLocalCache(_class_data_.tc_table);
+  return _class_data_.base();
+}
+PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
+const ::_pbi::TcParseTable<1, 2, 1, 49, 2> CapabilityFact::_table_ = {
+  {
+    PROTOBUF_FIELD_OFFSET(CapabilityFact, _impl_._has_bits_),
+    0, // no _extensions_
+    2, 8,  // max_field_number, fast_idx_mask
+    offsetof(decltype(_table_), field_lookup_table),
+    4294967292,  // skipmap
+    offsetof(decltype(_table_), field_entries),
+    2,  // num_field_entries
+    1,  // num_aux_entries
+    offsetof(decltype(_table_), aux_entries),
+    _class_data_.base(),
+    nullptr,  // post_loop_handler
+    ::_pbi::TcParser::GenericFallback,  // fallback
+    #ifdef PROTOBUF_PREFETCH_PARSE_TABLE
+    ::_pbi::TcParser::GetTable<::kentik::kagent::v202401::CapabilityFact>(),  // to_prefetch
+    #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
+  }, {{
+    // .kentik.monitoring.v1.Fact fact = 2 [json_name = "fact"];
+    {::_pbi::TcParser::FastMtS1,
+     {18, 0, 0, PROTOBUF_FIELD_OFFSET(CapabilityFact, _impl_.fact_)}},
+    // string path = 1 [json_name = "path"];
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(CapabilityFact, _impl_.path_)}},
+  }}, {{
+    65535, 65535
+  }}, {{
+    // string path = 1 [json_name = "path"];
+    {PROTOBUF_FIELD_OFFSET(CapabilityFact, _impl_.path_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // .kentik.monitoring.v1.Fact fact = 2 [json_name = "fact"];
+    {PROTOBUF_FIELD_OFFSET(CapabilityFact, _impl_.fact_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kMessage | ::_fl::kTvTable)},
+  }}, {{
+    {::_pbi::TcParser::GetTable<::kentik::monitoring::v1::Fact>()},
+  }}, {{
+    "\44\4\0\0\0\0\0\0"
+    "kentik.kagent.v202401.CapabilityFact"
+    "path"
+  }},
+};
+
+PROTOBUF_NOINLINE void CapabilityFact::Clear() {
+// @@protoc_insertion_point(message_clear_start:kentik.kagent.v202401.CapabilityFact)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::uint32_t cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  _impl_.path_.ClearToEmpty();
+  cached_has_bits = _impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(_impl_.fact_ != nullptr);
+    _impl_.fact_->Clear();
+  }
+  _impl_._has_bits_.Clear();
+  _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
+}
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::uint8_t* CapabilityFact::_InternalSerialize(
+            const MessageLite& base, ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) {
+          const CapabilityFact& this_ = static_cast<const CapabilityFact&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::uint8_t* CapabilityFact::_InternalSerialize(
+            ::uint8_t* target,
+            ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+          const CapabilityFact& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(serialize_to_array_start:kentik.kagent.v202401.CapabilityFact)
+          ::uint32_t cached_has_bits = 0;
+          (void)cached_has_bits;
+
+          // string path = 1 [json_name = "path"];
+          if (!this_._internal_path().empty()) {
+            const std::string& _s = this_._internal_path();
+            ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+                _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "kentik.kagent.v202401.CapabilityFact.path");
+            target = stream->WriteStringMaybeAliased(1, _s, target);
+          }
+
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // .kentik.monitoring.v1.Fact fact = 2 [json_name = "fact"];
+          if (cached_has_bits & 0x00000001u) {
+            target = ::google::protobuf::internal::WireFormatLite::InternalWriteMessage(
+                2, *this_._impl_.fact_, this_._impl_.fact_->GetCachedSize(), target,
+                stream);
+          }
+
+          if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
+            target =
+                ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
+                    this_._internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
+          }
+          // @@protoc_insertion_point(serialize_to_array_end:kentik.kagent.v202401.CapabilityFact)
+          return target;
+        }
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+        ::size_t CapabilityFact::ByteSizeLong(const MessageLite& base) {
+          const CapabilityFact& this_ = static_cast<const CapabilityFact&>(base);
+#else   // PROTOBUF_CUSTOM_VTABLE
+        ::size_t CapabilityFact::ByteSizeLong() const {
+          const CapabilityFact& this_ = *this;
+#endif  // PROTOBUF_CUSTOM_VTABLE
+          // @@protoc_insertion_point(message_byte_size_start:kentik.kagent.v202401.CapabilityFact)
+          ::size_t total_size = 0;
+
+          ::uint32_t cached_has_bits = 0;
+          // Prevent compiler warnings about cached_has_bits being unused
+          (void)cached_has_bits;
+
+          ::_pbi::Prefetch5LinesFrom7Lines(&this_);
+           {
+            // string path = 1 [json_name = "path"];
+            if (!this_._internal_path().empty()) {
+              total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                              this_._internal_path());
+            }
+          }
+           {
+            // .kentik.monitoring.v1.Fact fact = 2 [json_name = "fact"];
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
+              total_size += 1 +
+                            ::google::protobuf::internal::WireFormatLite::MessageSize(*this_._impl_.fact_);
+            }
+          }
+          return this_.MaybeComputeUnknownFieldsSize(total_size,
+                                                     &this_._impl_._cached_size_);
+        }
+
+void CapabilityFact::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::google::protobuf::MessageLite& from_msg) {
+  auto* const _this = static_cast<CapabilityFact*>(&to_msg);
+  auto& from = static_cast<const CapabilityFact&>(from_msg);
+  ::google::protobuf::Arena* arena = _this->GetArena();
+  // @@protoc_insertion_point(class_specific_merge_from_start:kentik.kagent.v202401.CapabilityFact)
+  ABSL_DCHECK_NE(&from, _this);
+  ::uint32_t cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!from._internal_path().empty()) {
+    _this->_internal_set_path(from._internal_path());
+  }
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
+    ABSL_DCHECK(from._impl_.fact_ != nullptr);
+    if (_this->_impl_.fact_ == nullptr) {
+      _this->_impl_.fact_ =
+          ::google::protobuf::Message::CopyConstruct<::kentik::monitoring::v1::Fact>(arena, *from._impl_.fact_);
+    } else {
+      _this->_impl_.fact_->MergeFrom(*from._impl_.fact_);
+    }
+  }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
+  _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void CapabilityFact::CopyFrom(const CapabilityFact& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:kentik.kagent.v202401.CapabilityFact)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+
+void CapabilityFact::InternalSwap(CapabilityFact* PROTOBUF_RESTRICT other) {
+  using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.path_, &other->_impl_.path_, arena);
+  swap(_impl_.fact_, other->_impl_.fact_);
+}
+
+::google::protobuf::Metadata CapabilityFact::GetMetadata() const {
   return ::google::protobuf::Message::GetMetadataImpl(GetClassData()->full());
 }
 // @@protoc_insertion_point(namespace_scope)

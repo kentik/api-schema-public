@@ -13,6 +13,7 @@ import "kentik/kagent/v202401/agent_config.proto";
 import "kentik/kagent/v202401/config.proto";
 import "kentik/kagent/v202401/capability.proto";
 import "kentik/kagent/v202401/resources.proto";
+import "kentik/monitoring/v1/component.proto";
 
 option go_package = "github.com/kentik/api-schema-public/gen/go/kentik/kagent/v202401;kagent";
 
@@ -61,6 +62,12 @@ message AgentCurrentState {
     ProcessResources resources = 30; // resources used by the agent process
     HostResources host_resources = 31; // system-wide resource availability / usage
     CapabilityPromotionState promotion_state = 33 [(google.api.field_behavior) = OUTPUT_ONLY]; // state of the change to the desired kagent version, from the kagent capability
+      // The facts of the kagent capability, for example the distribution of the host or the issuer of
+    // the Kentik certificate. Empty when kagent runs a version that reports no facts. See
+    // CapabilityCurrentState.facts.
+    repeated CapabilityFact facts = 34 [(google.api.field_behavior) = OUTPUT_ONLY];
+    // The unhealthy parts of the kagent capability. See CapabilityCurrentState.health_fingerprint.
+    map<string, kentik.monitoring.v1.HealthStatus> health_fingerprint = 35 [(google.api.field_behavior) = OUTPUT_ONLY];
     optional double mem_used_percent = 20; // deprecated
     optional uint64 mem_free_bytes = 24; // deprecated
     optional uint32 cpu_total_cores = 25; // deprecated
@@ -108,6 +115,24 @@ message CapabilityCurrentState {
   optional uint64 mem_used_bytes = 21; // deprecated
   ProcessResources resources = 22; // resources used by the capability process
   CapabilityPromotionState promotion_state = 25; // state of the change to the desired version
+  // The facts that the components of the capability report about themselves, from the last state
+  // that the agent sent. An automated upgrade compares them across the agents that fail after a
+  // change, to find what they have in common. Empty when the capability runs a version that
+  // reports no facts.
+  repeated CapabilityFact facts = 26 [(google.api.field_behavior) = OUTPUT_ONLY];
+  // The status of each unhealthy part of the capability, by its path, from the last state that the
+  // agent sent. It leaves out the parts that a new version cannot cause or fix, for example the
+  // clock of the host. An automated upgrade compares it with baseline_fingerprint of the upgrade
+  // result to see whether the health of an agent got back to what it was before the upgrade.
+  map<string, kentik.monitoring.v1.HealthStatus> health_fingerprint = 27 [(google.api.field_behavior) = OUTPUT_ONLY];
+}
+
+// CapabilityFact is a fact that one component of a capability reports about itself.
+message CapabilityFact {
+  // The component, from the root of the capability tree, written as health fingerprint paths are,
+  // for example "kagent/grpc-conn".
+  string path = 1;
+  kentik.monitoring.v1.Fact fact = 2;
 }
 
 enum CapabilityPromotionState {

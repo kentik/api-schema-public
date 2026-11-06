@@ -9,6 +9,7 @@ package kagent
 import (
 	_ "github.com/kentik/api-schema-public/gen/go/kentik/core/v202303"
 	v202312 "github.com/kentik/api-schema-public/gen/go/kentik/kagent/v202312"
+	v1 "github.com/kentik/api-schema-public/gen/go/kentik/monitoring/v1"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
@@ -534,8 +535,18 @@ type CapabilityCurrentState struct {
 	MemUsedBytes     *uint64                  `protobuf:"varint,21,opt,name=mem_used_bytes,json=memUsedBytes,proto3,oneof" json:"mem_used_bytes,omitempty"`                                                   // deprecated
 	Resources        *ProcessResources        `protobuf:"bytes,22,opt,name=resources,proto3" json:"resources,omitempty"`                                                                                      // resources used by the capability process
 	PromotionState   CapabilityPromotionState `protobuf:"varint,25,opt,name=promotion_state,json=promotionState,proto3,enum=kentik.kagent.v202401.CapabilityPromotionState" json:"promotion_state,omitempty"` // state of the change to the desired version
-	unknownFields    protoimpl.UnknownFields
-	sizeCache        protoimpl.SizeCache
+	// The facts that the components of the capability report about themselves, from the last state
+	// that the agent sent. An automated upgrade compares them across the agents that fail after a
+	// change, to find what they have in common. Empty when the capability runs a version that
+	// reports no facts.
+	Facts []*CapabilityFact `protobuf:"bytes,26,rep,name=facts,proto3" json:"facts,omitempty"`
+	// The status of each unhealthy part of the capability, by its path, from the last state that the
+	// agent sent. It leaves out the parts that a new version cannot cause or fix, for example the
+	// clock of the host. An automated upgrade compares it with baseline_fingerprint of the upgrade
+	// result to see whether the health of an agent got back to what it was before the upgrade.
+	HealthFingerprint map[string]v1.HealthStatus `protobuf:"bytes,27,rep,name=health_fingerprint,json=healthFingerprint,proto3" json:"health_fingerprint,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=kentik.monitoring.v1.HealthStatus"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
 }
 
 func (x *CapabilityCurrentState) Reset() {
@@ -736,6 +747,75 @@ func (x *CapabilityCurrentState) GetPromotionState() CapabilityPromotionState {
 	return CapabilityPromotionState_CAPABILITY_PROMOTION_STATE_UNSPECIFIED
 }
 
+func (x *CapabilityCurrentState) GetFacts() []*CapabilityFact {
+	if x != nil {
+		return x.Facts
+	}
+	return nil
+}
+
+func (x *CapabilityCurrentState) GetHealthFingerprint() map[string]v1.HealthStatus {
+	if x != nil {
+		return x.HealthFingerprint
+	}
+	return nil
+}
+
+// CapabilityFact is a fact that one component of a capability reports about itself.
+type CapabilityFact struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// The component, from the root of the capability tree, written as health fingerprint paths are,
+	// for example "kagent/grpc-conn".
+	Path          string   `protobuf:"bytes,1,opt,name=path,proto3" json:"path,omitempty"`
+	Fact          *v1.Fact `protobuf:"bytes,2,opt,name=fact,proto3" json:"fact,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *CapabilityFact) Reset() {
+	*x = CapabilityFact{}
+	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *CapabilityFact) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*CapabilityFact) ProtoMessage() {}
+
+func (x *CapabilityFact) ProtoReflect() protoreflect.Message {
+	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use CapabilityFact.ProtoReflect.Descriptor instead.
+func (*CapabilityFact) Descriptor() ([]byte, []int) {
+	return file_kentik_kagent_v202401_agent_state_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *CapabilityFact) GetPath() string {
+	if x != nil {
+		return x.Path
+	}
+	return ""
+}
+
+func (x *CapabilityFact) GetFact() *v1.Fact {
+	if x != nil {
+		return x.Fact
+	}
+	return nil
+}
+
 type AgentDesiredState_CapabilityState struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Capability    *AgentCapability       `protobuf:"bytes,1,opt,name=capability,proto3" json:"capability,omitempty"`
@@ -748,7 +828,7 @@ type AgentDesiredState_CapabilityState struct {
 
 func (x *AgentDesiredState_CapabilityState) Reset() {
 	*x = AgentDesiredState_CapabilityState{}
-	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[4]
+	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -760,7 +840,7 @@ func (x *AgentDesiredState_CapabilityState) String() string {
 func (*AgentDesiredState_CapabilityState) ProtoMessage() {}
 
 func (x *AgentDesiredState_CapabilityState) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[4]
+	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -818,7 +898,7 @@ type AgentDesiredState_AgentState struct {
 
 func (x *AgentDesiredState_AgentState) Reset() {
 	*x = AgentDesiredState_AgentState{}
-	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[5]
+	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[6]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -830,7 +910,7 @@ func (x *AgentDesiredState_AgentState) String() string {
 func (*AgentDesiredState_AgentState) ProtoMessage() {}
 
 func (x *AgentDesiredState_AgentState) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[5]
+	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[6]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -909,19 +989,25 @@ type AgentCurrentState_AgentState struct {
 	Resources         *ProcessResources        `protobuf:"bytes,30,opt,name=resources,proto3" json:"resources,omitempty"`                                                                                      // resources used by the agent process
 	HostResources     *HostResources           `protobuf:"bytes,31,opt,name=host_resources,json=hostResources,proto3" json:"host_resources,omitempty"`                                                         // system-wide resource availability / usage
 	PromotionState    CapabilityPromotionState `protobuf:"varint,33,opt,name=promotion_state,json=promotionState,proto3,enum=kentik.kagent.v202401.CapabilityPromotionState" json:"promotion_state,omitempty"` // state of the change to the desired kagent version, from the kagent capability
-	MemUsedPercent    *float64                 `protobuf:"fixed64,20,opt,name=mem_used_percent,json=memUsedPercent,proto3,oneof" json:"mem_used_percent,omitempty"`                                            // deprecated
-	MemFreeBytes      *uint64                  `protobuf:"varint,24,opt,name=mem_free_bytes,json=memFreeBytes,proto3,oneof" json:"mem_free_bytes,omitempty"`                                                   // deprecated
-	CpuTotalCores     *uint32                  `protobuf:"varint,25,opt,name=cpu_total_cores,json=cpuTotalCores,proto3,oneof" json:"cpu_total_cores,omitempty"`                                                // deprecated
-	CpuUsedPercent    *float64                 `protobuf:"fixed64,21,opt,name=cpu_used_percent,json=cpuUsedPercent,proto3,oneof" json:"cpu_used_percent,omitempty"`                                            // deprecated
-	DiskUsedPercent   *float64                 `protobuf:"fixed64,22,opt,name=disk_used_percent,json=diskUsedPercent,proto3,oneof" json:"disk_used_percent,omitempty"`                                         // deprecated
-	DiskFreeBytes     *uint64                  `protobuf:"varint,23,opt,name=disk_free_bytes,json=diskFreeBytes,proto3,oneof" json:"disk_free_bytes,omitempty"`                                                // deprecated
+	// The facts of the kagent capability, for example the distribution of the host or the issuer of
+	// the Kentik certificate. Empty when kagent runs a version that reports no facts. See
+	// CapabilityCurrentState.facts.
+	Facts []*CapabilityFact `protobuf:"bytes,34,rep,name=facts,proto3" json:"facts,omitempty"`
+	// The unhealthy parts of the kagent capability. See CapabilityCurrentState.health_fingerprint.
+	HealthFingerprint map[string]v1.HealthStatus `protobuf:"bytes,35,rep,name=health_fingerprint,json=healthFingerprint,proto3" json:"health_fingerprint,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"varint,2,opt,name=value,enum=kentik.monitoring.v1.HealthStatus"`
+	MemUsedPercent    *float64                   `protobuf:"fixed64,20,opt,name=mem_used_percent,json=memUsedPercent,proto3,oneof" json:"mem_used_percent,omitempty"`    // deprecated
+	MemFreeBytes      *uint64                    `protobuf:"varint,24,opt,name=mem_free_bytes,json=memFreeBytes,proto3,oneof" json:"mem_free_bytes,omitempty"`           // deprecated
+	CpuTotalCores     *uint32                    `protobuf:"varint,25,opt,name=cpu_total_cores,json=cpuTotalCores,proto3,oneof" json:"cpu_total_cores,omitempty"`        // deprecated
+	CpuUsedPercent    *float64                   `protobuf:"fixed64,21,opt,name=cpu_used_percent,json=cpuUsedPercent,proto3,oneof" json:"cpu_used_percent,omitempty"`    // deprecated
+	DiskUsedPercent   *float64                   `protobuf:"fixed64,22,opt,name=disk_used_percent,json=diskUsedPercent,proto3,oneof" json:"disk_used_percent,omitempty"` // deprecated
+	DiskFreeBytes     *uint64                    `protobuf:"varint,23,opt,name=disk_free_bytes,json=diskFreeBytes,proto3,oneof" json:"disk_free_bytes,omitempty"`        // deprecated
 	unknownFields     protoimpl.UnknownFields
 	sizeCache         protoimpl.SizeCache
 }
 
 func (x *AgentCurrentState_AgentState) Reset() {
 	*x = AgentCurrentState_AgentState{}
-	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[6]
+	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[7]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -933,7 +1019,7 @@ func (x *AgentCurrentState_AgentState) String() string {
 func (*AgentCurrentState_AgentState) ProtoMessage() {}
 
 func (x *AgentCurrentState_AgentState) ProtoReflect() protoreflect.Message {
-	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[6]
+	mi := &file_kentik_kagent_v202401_agent_state_proto_msgTypes[7]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -1082,6 +1168,20 @@ func (x *AgentCurrentState_AgentState) GetPromotionState() CapabilityPromotionSt
 	return CapabilityPromotionState_CAPABILITY_PROMOTION_STATE_UNSPECIFIED
 }
 
+func (x *AgentCurrentState_AgentState) GetFacts() []*CapabilityFact {
+	if x != nil {
+		return x.Facts
+	}
+	return nil
+}
+
+func (x *AgentCurrentState_AgentState) GetHealthFingerprint() map[string]v1.HealthStatus {
+	if x != nil {
+		return x.HealthFingerprint
+	}
+	return nil
+}
+
 func (x *AgentCurrentState_AgentState) GetMemUsedPercent() float64 {
 	if x != nil && x.MemUsedPercent != nil {
 		return *x.MemUsedPercent
@@ -1128,7 +1228,7 @@ var File_kentik_kagent_v202401_agent_state_proto protoreflect.FileDescriptor
 
 const file_kentik_kagent_v202401_agent_state_proto_rawDesc = "" +
 	"\n" +
-	"'kentik/kagent/v202401/agent_state.proto\x12\x15kentik.kagent.v202401\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a%kentik/core/v202303/annotations.proto\x1a,kentik/kagent/v202312/capability_state.proto\x1a.kentik/kagent/v202401/agent_capabilities.proto\x1a(kentik/kagent/v202401/agent_config.proto\x1a\"kentik/kagent/v202401/config.proto\x1a&kentik/kagent/v202401/capability.proto\x1a%kentik/kagent/v202401/resources.proto\"\xa7\x06\n" +
+	"'kentik/kagent/v202401/agent_state.proto\x12\x15kentik.kagent.v202401\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x1egoogle/protobuf/duration.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a%kentik/core/v202303/annotations.proto\x1a,kentik/kagent/v202312/capability_state.proto\x1a.kentik/kagent/v202401/agent_capabilities.proto\x1a(kentik/kagent/v202401/agent_config.proto\x1a\"kentik/kagent/v202401/config.proto\x1a&kentik/kagent/v202401/capability.proto\x1a%kentik/kagent/v202401/resources.proto\x1a$kentik/monitoring/v1/component.proto\"\xa7\x06\n" +
 	"\x11AgentDesiredState\x12I\n" +
 	"\x05agent\x18\x01 \x01(\v23.kentik.kagent.v202401.AgentDesiredState.AgentStateR\x05agent\x12\\\n" +
 	"\fcapabilities\x18\x02 \x03(\v28.kentik.kagent.v202401.AgentDesiredState.CapabilityStateR\fcapabilities\x12\x18\n" +
@@ -1148,11 +1248,10 @@ const file_kentik_kagent_v202401_agent_state_proto_rawDesc = "" +
 	"\tbundle_id\x18\x04 \x01(\tR\bbundleId\x12\x1b\n" +
 	"\tconfig_id\x18\x06 \x01(\tR\bconfigId\x12B\n" +
 	"\arelease\x18\x03 \x01(\v2(.kentik.kagent.v202401.CapabilityReleaseR\arelease\x125\n" +
-	"\x06config\x18\x05 \x01(\v2\x1d.kentik.kagent.v202401.ConfigR\x06config\"\x9f\f\n" +
+	"\x06config\x18\x05 \x01(\v2\x1d.kentik.kagent.v202401.ConfigR\x06config\"\xcb\x0e\n" +
 	"\x11AgentCurrentState\x12I\n" +
 	"\x05agent\x18\x02 \x01(\v23.kentik.kagent.v202401.AgentCurrentState.AgentStateR\x05agent\x12Q\n" +
-	"\fcapabilities\x18\x03 \x03(\v2-.kentik.kagent.v202401.CapabilityCurrentStateR\fcapabilities\x1a\xeb\n" +
-	"\n" +
+	"\fcapabilities\x18\x03 \x03(\v2-.kentik.kagent.v202401.CapabilityCurrentStateR\fcapabilities\x1a\x97\r\n" +
 	"\n" +
 	"AgentState\x12\x18\n" +
 	"\aversion\x18\x01 \x01(\tR\aversion\x12\x1b\n" +
@@ -1178,13 +1277,18 @@ const file_kentik_kagent_v202401_agent_state_proto_rawDesc = "" +
 	"privileges\x12E\n" +
 	"\tresources\x18\x1e \x01(\v2'.kentik.kagent.v202401.ProcessResourcesR\tresources\x12K\n" +
 	"\x0ehost_resources\x18\x1f \x01(\v2$.kentik.kagent.v202401.HostResourcesR\rhostResources\x12]\n" +
-	"\x0fpromotion_state\x18! \x01(\x0e2/.kentik.kagent.v202401.CapabilityPromotionStateB\x03\xe0A\x03R\x0epromotionState\x12-\n" +
+	"\x0fpromotion_state\x18! \x01(\x0e2/.kentik.kagent.v202401.CapabilityPromotionStateB\x03\xe0A\x03R\x0epromotionState\x12@\n" +
+	"\x05facts\x18\" \x03(\v2%.kentik.kagent.v202401.CapabilityFactB\x03\xe0A\x03R\x05facts\x12~\n" +
+	"\x12health_fingerprint\x18# \x03(\v2J.kentik.kagent.v202401.AgentCurrentState.AgentState.HealthFingerprintEntryB\x03\xe0A\x03R\x11healthFingerprint\x12-\n" +
 	"\x10mem_used_percent\x18\x14 \x01(\x01H\x00R\x0ememUsedPercent\x88\x01\x01\x12)\n" +
 	"\x0emem_free_bytes\x18\x18 \x01(\x04H\x01R\fmemFreeBytes\x88\x01\x01\x12+\n" +
 	"\x0fcpu_total_cores\x18\x19 \x01(\rH\x02R\rcpuTotalCores\x88\x01\x01\x12-\n" +
 	"\x10cpu_used_percent\x18\x15 \x01(\x01H\x03R\x0ecpuUsedPercent\x88\x01\x01\x12/\n" +
 	"\x11disk_used_percent\x18\x16 \x01(\x01H\x04R\x0fdiskUsedPercent\x88\x01\x01\x12+\n" +
-	"\x0fdisk_free_bytes\x18\x17 \x01(\x04H\x05R\rdiskFreeBytes\x88\x01\x01B\x13\n" +
+	"\x0fdisk_free_bytes\x18\x17 \x01(\x04H\x05R\rdiskFreeBytes\x88\x01\x01\x1ah\n" +
+	"\x16HealthFingerprintEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x128\n" +
+	"\x05value\x18\x02 \x01(\x0e2\".kentik.monitoring.v1.HealthStatusR\x05value:\x028\x01B\x13\n" +
 	"\x11_mem_used_percentB\x11\n" +
 	"\x0f_mem_free_bytesB\x12\n" +
 	"\x10_cpu_total_coresB\x13\n" +
@@ -1200,7 +1304,7 @@ const file_kentik_kagent_v202401_agent_state_proto_rawDesc = "" +
 	"\x10release_metadata\x18\x05 \x03(\v26.kentik.kagent.v202401.OSMetadata.ReleaseMetadataEntryR\x0freleaseMetadata\x1aB\n" +
 	"\x14ReleaseMetadataEntry\x12\x10\n" +
 	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
-	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xfd\b\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value:\x028\x01\"\xa3\v\n" +
 	"\x16CapabilityCurrentState\x12\x12\n" +
 	"\x04name\x18\x01 \x01(\tR\x04name\x12\x18\n" +
 	"\aversion\x18\x02 \x01(\tR\aversion\x12\x1c\n" +
@@ -1231,11 +1335,19 @@ const file_kentik_kagent_v202401_agent_state_proto_rawDesc = "" +
 	"\x0ecpu_used_cores\x18\x14 \x01(\x01H\x02R\fcpuUsedCores\x88\x01\x01\x12)\n" +
 	"\x0emem_used_bytes\x18\x15 \x01(\x04H\x03R\fmemUsedBytes\x88\x01\x01\x12E\n" +
 	"\tresources\x18\x16 \x01(\v2'.kentik.kagent.v202401.ProcessResourcesR\tresources\x12X\n" +
-	"\x0fpromotion_state\x18\x19 \x01(\x0e2/.kentik.kagent.v202401.CapabilityPromotionStateR\x0epromotionStateB\x13\n" +
+	"\x0fpromotion_state\x18\x19 \x01(\x0e2/.kentik.kagent.v202401.CapabilityPromotionStateR\x0epromotionState\x12@\n" +
+	"\x05facts\x18\x1a \x03(\v2%.kentik.kagent.v202401.CapabilityFactB\x03\xe0A\x03R\x05facts\x12x\n" +
+	"\x12health_fingerprint\x18\x1b \x03(\v2D.kentik.kagent.v202401.CapabilityCurrentState.HealthFingerprintEntryB\x03\xe0A\x03R\x11healthFingerprint\x1ah\n" +
+	"\x16HealthFingerprintEntry\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x128\n" +
+	"\x05value\x18\x02 \x01(\x0e2\".kentik.monitoring.v1.HealthStatusR\x05value:\x028\x01B\x13\n" +
 	"\x11_crash_loop_countB\x15\n" +
 	"\x13_restart_loop_countB\x11\n" +
 	"\x0f_cpu_used_coresB\x11\n" +
-	"\x0f_mem_used_bytes*\xc3\x01\n" +
+	"\x0f_mem_used_bytes\"T\n" +
+	"\x0eCapabilityFact\x12\x12\n" +
+	"\x04path\x18\x01 \x01(\tR\x04path\x12.\n" +
+	"\x04fact\x18\x02 \x01(\v2\x1a.kentik.monitoring.v1.FactR\x04fact*\xc3\x01\n" +
 	"\x18CapabilityPromotionState\x12*\n" +
 	"&CAPABILITY_PROMOTION_STATE_UNSPECIFIED\x10\x00\x12'\n" +
 	"#CAPABILITY_PROMOTION_STATE_PROMOTED\x10\x01\x12&\n" +
@@ -1282,7 +1394,7 @@ func file_kentik_kagent_v202401_agent_state_proto_rawDescGZIP() []byte {
 }
 
 var file_kentik_kagent_v202401_agent_state_proto_enumTypes = make([]protoimpl.EnumInfo, 5)
-var file_kentik_kagent_v202401_agent_state_proto_msgTypes = make([]protoimpl.MessageInfo, 8)
+var file_kentik_kagent_v202401_agent_state_proto_msgTypes = make([]protoimpl.MessageInfo, 11)
 var file_kentik_kagent_v202401_agent_state_proto_goTypes = []any{
 	(CapabilityPromotionState)(0),             // 0: kentik.kagent.v202401.CapabilityPromotionState
 	(AgentHealthState)(0),                     // 1: kentik.kagent.v202401.AgentHealthState
@@ -1293,54 +1405,66 @@ var file_kentik_kagent_v202401_agent_state_proto_goTypes = []any{
 	(*AgentCurrentState)(nil),                 // 6: kentik.kagent.v202401.AgentCurrentState
 	(*OSMetadata)(nil),                        // 7: kentik.kagent.v202401.OSMetadata
 	(*CapabilityCurrentState)(nil),            // 8: kentik.kagent.v202401.CapabilityCurrentState
-	(*AgentDesiredState_CapabilityState)(nil), // 9: kentik.kagent.v202401.AgentDesiredState.CapabilityState
-	(*AgentDesiredState_AgentState)(nil),      // 10: kentik.kagent.v202401.AgentDesiredState.AgentState
-	(*AgentCurrentState_AgentState)(nil),      // 11: kentik.kagent.v202401.AgentCurrentState.AgentState
-	nil,                                       // 12: kentik.kagent.v202401.OSMetadata.ReleaseMetadataEntry
-	(*timestamppb.Timestamp)(nil),             // 13: google.protobuf.Timestamp
-	(*v202312.CapabilityState)(nil),           // 14: kentik.kagent.v202312.CapabilityState
-	(*ProcessResources)(nil),                  // 15: kentik.kagent.v202401.ProcessResources
-	(*AgentCapability)(nil),                   // 16: kentik.kagent.v202401.AgentCapability
-	(*AgentCapabilityGroup)(nil),              // 17: kentik.kagent.v202401.AgentCapabilityGroup
-	(*CapabilityRelease)(nil),                 // 18: kentik.kagent.v202401.CapabilityRelease
-	(*Config)(nil),                            // 19: kentik.kagent.v202401.Config
-	(*durationpb.Duration)(nil),               // 20: google.protobuf.Duration
-	(*HostResources)(nil),                     // 21: kentik.kagent.v202401.HostResources
+	(*CapabilityFact)(nil),                    // 9: kentik.kagent.v202401.CapabilityFact
+	(*AgentDesiredState_CapabilityState)(nil), // 10: kentik.kagent.v202401.AgentDesiredState.CapabilityState
+	(*AgentDesiredState_AgentState)(nil),      // 11: kentik.kagent.v202401.AgentDesiredState.AgentState
+	(*AgentCurrentState_AgentState)(nil),      // 12: kentik.kagent.v202401.AgentCurrentState.AgentState
+	nil,                                       // 13: kentik.kagent.v202401.AgentCurrentState.AgentState.HealthFingerprintEntry
+	nil,                                       // 14: kentik.kagent.v202401.OSMetadata.ReleaseMetadataEntry
+	nil,                                       // 15: kentik.kagent.v202401.CapabilityCurrentState.HealthFingerprintEntry
+	(*timestamppb.Timestamp)(nil),             // 16: google.protobuf.Timestamp
+	(*v202312.CapabilityState)(nil),           // 17: kentik.kagent.v202312.CapabilityState
+	(*ProcessResources)(nil),                  // 18: kentik.kagent.v202401.ProcessResources
+	(*v1.Fact)(nil),                           // 19: kentik.monitoring.v1.Fact
+	(*AgentCapability)(nil),                   // 20: kentik.kagent.v202401.AgentCapability
+	(*AgentCapabilityGroup)(nil),              // 21: kentik.kagent.v202401.AgentCapabilityGroup
+	(*CapabilityRelease)(nil),                 // 22: kentik.kagent.v202401.CapabilityRelease
+	(*Config)(nil),                            // 23: kentik.kagent.v202401.Config
+	(*durationpb.Duration)(nil),               // 24: google.protobuf.Duration
+	(*HostResources)(nil),                     // 25: kentik.kagent.v202401.HostResources
+	(v1.HealthStatus)(0),                      // 26: kentik.monitoring.v1.HealthStatus
 }
 var file_kentik_kagent_v202401_agent_state_proto_depIdxs = []int32{
-	10, // 0: kentik.kagent.v202401.AgentDesiredState.agent:type_name -> kentik.kagent.v202401.AgentDesiredState.AgentState
-	9,  // 1: kentik.kagent.v202401.AgentDesiredState.capabilities:type_name -> kentik.kagent.v202401.AgentDesiredState.CapabilityState
-	13, // 2: kentik.kagent.v202401.AgentDesiredState.current_time:type_name -> google.protobuf.Timestamp
-	11, // 3: kentik.kagent.v202401.AgentCurrentState.agent:type_name -> kentik.kagent.v202401.AgentCurrentState.AgentState
+	11, // 0: kentik.kagent.v202401.AgentDesiredState.agent:type_name -> kentik.kagent.v202401.AgentDesiredState.AgentState
+	10, // 1: kentik.kagent.v202401.AgentDesiredState.capabilities:type_name -> kentik.kagent.v202401.AgentDesiredState.CapabilityState
+	16, // 2: kentik.kagent.v202401.AgentDesiredState.current_time:type_name -> google.protobuf.Timestamp
+	12, // 3: kentik.kagent.v202401.AgentCurrentState.agent:type_name -> kentik.kagent.v202401.AgentCurrentState.AgentState
 	8,  // 4: kentik.kagent.v202401.AgentCurrentState.capabilities:type_name -> kentik.kagent.v202401.CapabilityCurrentState
-	12, // 5: kentik.kagent.v202401.OSMetadata.release_metadata:type_name -> kentik.kagent.v202401.OSMetadata.ReleaseMetadataEntry
-	13, // 6: kentik.kagent.v202401.CapabilityCurrentState.started_at:type_name -> google.protobuf.Timestamp
-	13, // 7: kentik.kagent.v202401.CapabilityCurrentState.stopped_at:type_name -> google.protobuf.Timestamp
+	14, // 5: kentik.kagent.v202401.OSMetadata.release_metadata:type_name -> kentik.kagent.v202401.OSMetadata.ReleaseMetadataEntry
+	16, // 6: kentik.kagent.v202401.CapabilityCurrentState.started_at:type_name -> google.protobuf.Timestamp
+	16, // 7: kentik.kagent.v202401.CapabilityCurrentState.stopped_at:type_name -> google.protobuf.Timestamp
 	2,  // 8: kentik.kagent.v202401.CapabilityCurrentState.health:type_name -> kentik.kagent.v202401.CapabilityHealthState
 	4,  // 9: kentik.kagent.v202401.CapabilityCurrentState.health_v2:type_name -> kentik.kagent.v202401.CapabilityHealthStateV2
-	14, // 10: kentik.kagent.v202401.CapabilityCurrentState.state:type_name -> kentik.kagent.v202312.CapabilityState
-	15, // 11: kentik.kagent.v202401.CapabilityCurrentState.resources:type_name -> kentik.kagent.v202401.ProcessResources
+	17, // 10: kentik.kagent.v202401.CapabilityCurrentState.state:type_name -> kentik.kagent.v202312.CapabilityState
+	18, // 11: kentik.kagent.v202401.CapabilityCurrentState.resources:type_name -> kentik.kagent.v202401.ProcessResources
 	0,  // 12: kentik.kagent.v202401.CapabilityCurrentState.promotion_state:type_name -> kentik.kagent.v202401.CapabilityPromotionState
-	16, // 13: kentik.kagent.v202401.AgentDesiredState.CapabilityState.capability:type_name -> kentik.kagent.v202401.AgentCapability
-	17, // 14: kentik.kagent.v202401.AgentDesiredState.CapabilityState.group:type_name -> kentik.kagent.v202401.AgentCapabilityGroup
-	18, // 15: kentik.kagent.v202401.AgentDesiredState.CapabilityState.release:type_name -> kentik.kagent.v202401.CapabilityRelease
-	19, // 16: kentik.kagent.v202401.AgentDesiredState.CapabilityState.config:type_name -> kentik.kagent.v202401.Config
-	18, // 17: kentik.kagent.v202401.AgentDesiredState.AgentState.release:type_name -> kentik.kagent.v202401.CapabilityRelease
-	19, // 18: kentik.kagent.v202401.AgentDesiredState.AgentState.config:type_name -> kentik.kagent.v202401.Config
-	13, // 19: kentik.kagent.v202401.AgentCurrentState.AgentState.last_seen:type_name -> google.protobuf.Timestamp
-	20, // 20: kentik.kagent.v202401.AgentCurrentState.AgentState.reconcile_interval:type_name -> google.protobuf.Duration
-	13, // 21: kentik.kagent.v202401.AgentCurrentState.AgentState.started_at:type_name -> google.protobuf.Timestamp
-	13, // 22: kentik.kagent.v202401.AgentCurrentState.AgentState.current_time:type_name -> google.protobuf.Timestamp
-	1,  // 23: kentik.kagent.v202401.AgentCurrentState.AgentState.health:type_name -> kentik.kagent.v202401.AgentHealthState
-	3,  // 24: kentik.kagent.v202401.AgentCurrentState.AgentState.health_v2:type_name -> kentik.kagent.v202401.AgentHealthStateV2
-	15, // 25: kentik.kagent.v202401.AgentCurrentState.AgentState.resources:type_name -> kentik.kagent.v202401.ProcessResources
-	21, // 26: kentik.kagent.v202401.AgentCurrentState.AgentState.host_resources:type_name -> kentik.kagent.v202401.HostResources
-	0,  // 27: kentik.kagent.v202401.AgentCurrentState.AgentState.promotion_state:type_name -> kentik.kagent.v202401.CapabilityPromotionState
-	28, // [28:28] is the sub-list for method output_type
-	28, // [28:28] is the sub-list for method input_type
-	28, // [28:28] is the sub-list for extension type_name
-	28, // [28:28] is the sub-list for extension extendee
-	0,  // [0:28] is the sub-list for field type_name
+	9,  // 13: kentik.kagent.v202401.CapabilityCurrentState.facts:type_name -> kentik.kagent.v202401.CapabilityFact
+	15, // 14: kentik.kagent.v202401.CapabilityCurrentState.health_fingerprint:type_name -> kentik.kagent.v202401.CapabilityCurrentState.HealthFingerprintEntry
+	19, // 15: kentik.kagent.v202401.CapabilityFact.fact:type_name -> kentik.monitoring.v1.Fact
+	20, // 16: kentik.kagent.v202401.AgentDesiredState.CapabilityState.capability:type_name -> kentik.kagent.v202401.AgentCapability
+	21, // 17: kentik.kagent.v202401.AgentDesiredState.CapabilityState.group:type_name -> kentik.kagent.v202401.AgentCapabilityGroup
+	22, // 18: kentik.kagent.v202401.AgentDesiredState.CapabilityState.release:type_name -> kentik.kagent.v202401.CapabilityRelease
+	23, // 19: kentik.kagent.v202401.AgentDesiredState.CapabilityState.config:type_name -> kentik.kagent.v202401.Config
+	22, // 20: kentik.kagent.v202401.AgentDesiredState.AgentState.release:type_name -> kentik.kagent.v202401.CapabilityRelease
+	23, // 21: kentik.kagent.v202401.AgentDesiredState.AgentState.config:type_name -> kentik.kagent.v202401.Config
+	16, // 22: kentik.kagent.v202401.AgentCurrentState.AgentState.last_seen:type_name -> google.protobuf.Timestamp
+	24, // 23: kentik.kagent.v202401.AgentCurrentState.AgentState.reconcile_interval:type_name -> google.protobuf.Duration
+	16, // 24: kentik.kagent.v202401.AgentCurrentState.AgentState.started_at:type_name -> google.protobuf.Timestamp
+	16, // 25: kentik.kagent.v202401.AgentCurrentState.AgentState.current_time:type_name -> google.protobuf.Timestamp
+	1,  // 26: kentik.kagent.v202401.AgentCurrentState.AgentState.health:type_name -> kentik.kagent.v202401.AgentHealthState
+	3,  // 27: kentik.kagent.v202401.AgentCurrentState.AgentState.health_v2:type_name -> kentik.kagent.v202401.AgentHealthStateV2
+	18, // 28: kentik.kagent.v202401.AgentCurrentState.AgentState.resources:type_name -> kentik.kagent.v202401.ProcessResources
+	25, // 29: kentik.kagent.v202401.AgentCurrentState.AgentState.host_resources:type_name -> kentik.kagent.v202401.HostResources
+	0,  // 30: kentik.kagent.v202401.AgentCurrentState.AgentState.promotion_state:type_name -> kentik.kagent.v202401.CapabilityPromotionState
+	9,  // 31: kentik.kagent.v202401.AgentCurrentState.AgentState.facts:type_name -> kentik.kagent.v202401.CapabilityFact
+	13, // 32: kentik.kagent.v202401.AgentCurrentState.AgentState.health_fingerprint:type_name -> kentik.kagent.v202401.AgentCurrentState.AgentState.HealthFingerprintEntry
+	26, // 33: kentik.kagent.v202401.AgentCurrentState.AgentState.HealthFingerprintEntry.value:type_name -> kentik.monitoring.v1.HealthStatus
+	26, // 34: kentik.kagent.v202401.CapabilityCurrentState.HealthFingerprintEntry.value:type_name -> kentik.monitoring.v1.HealthStatus
+	35, // [35:35] is the sub-list for method output_type
+	35, // [35:35] is the sub-list for method input_type
+	35, // [35:35] is the sub-list for extension type_name
+	35, // [35:35] is the sub-list for extension extendee
+	0,  // [0:35] is the sub-list for field type_name
 }
 
 func init() { file_kentik_kagent_v202401_agent_state_proto_init() }
@@ -1354,14 +1478,14 @@ func file_kentik_kagent_v202401_agent_state_proto_init() {
 	file_kentik_kagent_v202401_capability_proto_init()
 	file_kentik_kagent_v202401_resources_proto_init()
 	file_kentik_kagent_v202401_agent_state_proto_msgTypes[3].OneofWrappers = []any{}
-	file_kentik_kagent_v202401_agent_state_proto_msgTypes[6].OneofWrappers = []any{}
+	file_kentik_kagent_v202401_agent_state_proto_msgTypes[7].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_kagent_v202401_agent_state_proto_rawDesc), len(file_kentik_kagent_v202401_agent_state_proto_rawDesc)),
 			NumEnums:      5,
-			NumMessages:   8,
+			NumMessages:   11,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

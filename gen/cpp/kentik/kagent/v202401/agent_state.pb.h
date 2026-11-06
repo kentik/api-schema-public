@@ -44,6 +44,7 @@
 #include "kentik/kagent/v202401/config.pb.h"
 #include "kentik/kagent/v202401/capability.pb.h"
 #include "kentik/kagent/v202401/resources.pb.h"
+#include "kentik/monitoring/v1/component.pb.h"
 // @@protoc_insertion_point(includes)
 
 // Must be included last.
@@ -75,6 +76,9 @@ extern AgentCurrentStateDefaultTypeInternal _AgentCurrentState_default_instance_
 class AgentCurrentState_AgentState;
 struct AgentCurrentState_AgentStateDefaultTypeInternal;
 extern AgentCurrentState_AgentStateDefaultTypeInternal _AgentCurrentState_AgentState_default_instance_;
+class AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse;
+struct AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUseDefaultTypeInternal;
+extern AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUseDefaultTypeInternal _AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse_default_instance_;
 class AgentDesiredState;
 struct AgentDesiredStateDefaultTypeInternal;
 extern AgentDesiredStateDefaultTypeInternal _AgentDesiredState_default_instance_;
@@ -87,6 +91,12 @@ extern AgentDesiredState_CapabilityStateDefaultTypeInternal _AgentDesiredState_C
 class CapabilityCurrentState;
 struct CapabilityCurrentStateDefaultTypeInternal;
 extern CapabilityCurrentStateDefaultTypeInternal _CapabilityCurrentState_default_instance_;
+class CapabilityCurrentState_HealthFingerprintEntry_DoNotUse;
+struct CapabilityCurrentState_HealthFingerprintEntry_DoNotUseDefaultTypeInternal;
+extern CapabilityCurrentState_HealthFingerprintEntry_DoNotUseDefaultTypeInternal _CapabilityCurrentState_HealthFingerprintEntry_DoNotUse_default_instance_;
+class CapabilityFact;
+struct CapabilityFactDefaultTypeInternal;
+extern CapabilityFactDefaultTypeInternal _CapabilityFact_default_instance_;
 class OSMetadata;
 struct OSMetadataDefaultTypeInternal;
 extern OSMetadataDefaultTypeInternal _OSMetadata_default_instance_;
@@ -319,6 +329,84 @@ class OSMetadata_ReleaseMetadataEntry_DoNotUse final
 };
 // -------------------------------------------------------------------
 
+class CapabilityCurrentState_HealthFingerprintEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          std::string, ::kentik::monitoring::v1::HealthStatus,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_ENUM> {
+ public:
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      std::string, ::kentik::monitoring::v1::HealthStatus,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>;
+  CapabilityCurrentState_HealthFingerprintEntry_DoNotUse();
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR CapabilityCurrentState_HealthFingerprintEntry_DoNotUse(
+      ::google::protobuf::internal::ConstantInitialized);
+  explicit CapabilityCurrentState_HealthFingerprintEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const CapabilityCurrentState_HealthFingerprintEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const CapabilityCurrentState_HealthFingerprintEntry_DoNotUse*>(
+        &_CapabilityCurrentState_HealthFingerprintEntry_DoNotUse_default_instance_);
+  }
+
+
+ private:
+  friend class ::google::protobuf::MessageLite;
+  friend struct ::TableStruct_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      79, 2>
+      _table_;
+
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+};
+// -------------------------------------------------------------------
+
+class AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse final
+    : public ::google::protobuf::internal::MapEntry<
+          std::string, ::kentik::monitoring::v1::HealthStatus,
+          ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+          ::google::protobuf::internal::WireFormatLite::TYPE_ENUM> {
+ public:
+  using SuperType = ::google::protobuf::internal::MapEntry<
+      std::string, ::kentik::monitoring::v1::HealthStatus,
+      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+      ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>;
+  AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse();
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse(
+      ::google::protobuf::internal::ConstantInitialized);
+  explicit AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse(::google::protobuf::Arena* arena);
+  static const AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse* internal_default_instance() {
+    return reinterpret_cast<const AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse*>(
+        &_AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse_default_instance_);
+  }
+
+
+ private:
+  friend class ::google::protobuf::MessageLite;
+  friend struct ::TableStruct_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto;
+
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 0,
+      85, 2>
+      _table_;
+
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+};
+// -------------------------------------------------------------------
+
 class OSMetadata final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.kagent.v202401.OSMetadata) */ {
  public:
@@ -378,7 +466,7 @@ class OSMetadata final : public ::google::protobuf::Message
     return reinterpret_cast<const OSMetadata*>(
         &_OSMetadata_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 6;
+  static constexpr int kIndexInFileMessages = 7;
   friend void swap(OSMetadata& a, OSMetadata& b) { a.Swap(&b); }
   inline void Swap(OSMetadata* other) {
     if (other == this) return;
@@ -589,6 +677,220 @@ class OSMetadata final : public ::google::protobuf::Message
 };
 // -------------------------------------------------------------------
 
+class CapabilityFact final : public ::google::protobuf::Message
+/* @@protoc_insertion_point(class_definition:kentik.kagent.v202401.CapabilityFact) */ {
+ public:
+  inline CapabilityFact() : CapabilityFact(nullptr) {}
+  ~CapabilityFact() PROTOBUF_FINAL;
+
+#if defined(PROTOBUF_CUSTOM_VTABLE)
+  void operator delete(CapabilityFact* msg, std::destroying_delete_t) {
+    SharedDtor(*msg);
+    ::google::protobuf::internal::SizedDelete(msg, sizeof(CapabilityFact));
+  }
+#endif
+
+  template <typename = void>
+  explicit PROTOBUF_CONSTEXPR CapabilityFact(
+      ::google::protobuf::internal::ConstantInitialized);
+
+  inline CapabilityFact(const CapabilityFact& from) : CapabilityFact(nullptr, from) {}
+  inline CapabilityFact(CapabilityFact&& from) noexcept
+      : CapabilityFact(nullptr, std::move(from)) {}
+  inline CapabilityFact& operator=(const CapabilityFact& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline CapabilityFact& operator=(CapabilityFact&& from) noexcept {
+    if (this == &from) return *this;
+    if (::google::protobuf::internal::CanMoveWithInternalSwap(GetArena(), from.GetArena())) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance);
+  }
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields()
+      ABSL_ATTRIBUTE_LIFETIME_BOUND {
+    return _internal_metadata_.mutable_unknown_fields<::google::protobuf::UnknownFieldSet>();
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::google::protobuf::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::google::protobuf::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const CapabilityFact& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const CapabilityFact* internal_default_instance() {
+    return reinterpret_cast<const CapabilityFact*>(
+        &_CapabilityFact_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages = 10;
+  friend void swap(CapabilityFact& a, CapabilityFact& b) { a.Swap(&b); }
+  inline void Swap(CapabilityFact* other) {
+    if (other == this) return;
+    if (::google::protobuf::internal::CanUseInternalSwap(GetArena(), other->GetArena())) {
+      InternalSwap(other);
+    } else {
+      ::google::protobuf::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(CapabilityFact* other) {
+    if (other == this) return;
+    ABSL_DCHECK(GetArena() == other->GetArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  CapabilityFact* New(::google::protobuf::Arena* arena = nullptr) const {
+    return ::google::protobuf::Message::DefaultConstruct<CapabilityFact>(arena);
+  }
+  using ::google::protobuf::Message::CopyFrom;
+  void CopyFrom(const CapabilityFact& from);
+  using ::google::protobuf::Message::MergeFrom;
+  void MergeFrom(const CapabilityFact& from) { CapabilityFact::MergeImpl(*this, from); }
+
+  private:
+  static void MergeImpl(
+      ::google::protobuf::MessageLite& to_msg,
+      const ::google::protobuf::MessageLite& from_msg);
+
+  public:
+  bool IsInitialized() const {
+    return true;
+  }
+  ABSL_ATTRIBUTE_REINITIALIZES void Clear() PROTOBUF_FINAL;
+  #if defined(PROTOBUF_CUSTOM_VTABLE)
+  private:
+  static ::size_t ByteSizeLong(const ::google::protobuf::MessageLite& msg);
+  static ::uint8_t* _InternalSerialize(
+      const MessageLite& msg, ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream);
+
+  public:
+  ::size_t ByteSizeLong() const { return ByteSizeLong(*this); }
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const {
+    return _InternalSerialize(*this, target, stream);
+  }
+  #else   // PROTOBUF_CUSTOM_VTABLE
+  ::size_t ByteSizeLong() const final;
+  ::uint8_t* _InternalSerialize(
+      ::uint8_t* target,
+      ::google::protobuf::io::EpsCopyOutputStream* stream) const final;
+  #endif  // PROTOBUF_CUSTOM_VTABLE
+  int GetCachedSize() const { return _impl_._cached_size_.Get(); }
+
+  private:
+  void SharedCtor(::google::protobuf::Arena* arena);
+  static void SharedDtor(MessageLite& self);
+  void InternalSwap(CapabilityFact* other);
+ private:
+  template <typename T>
+  friend ::absl::string_view(
+      ::google::protobuf::internal::GetAnyMessageName)();
+  static ::absl::string_view FullMessageName() { return "kentik.kagent.v202401.CapabilityFact"; }
+
+ protected:
+  explicit CapabilityFact(::google::protobuf::Arena* arena);
+  CapabilityFact(::google::protobuf::Arena* arena, const CapabilityFact& from);
+  CapabilityFact(::google::protobuf::Arena* arena, CapabilityFact&& from) noexcept
+      : CapabilityFact(arena) {
+    *this = ::std::move(from);
+  }
+  const ::google::protobuf::internal::ClassData* GetClassData() const PROTOBUF_FINAL;
+  static void* PlacementNew_(const void*, void* mem,
+                             ::google::protobuf::Arena* arena);
+  static constexpr auto InternalNewImpl_();
+  static const ::google::protobuf::internal::ClassDataFull _class_data_;
+
+ public:
+  ::google::protobuf::Metadata GetMetadata() const;
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+  enum : int {
+    kPathFieldNumber = 1,
+    kFactFieldNumber = 2,
+  };
+  // string path = 1 [json_name = "path"];
+  void clear_path() ;
+  const std::string& path() const;
+  template <typename Arg_ = const std::string&, typename... Args_>
+  void set_path(Arg_&& arg, Args_... args);
+  std::string* mutable_path();
+  PROTOBUF_NODISCARD std::string* release_path();
+  void set_allocated_path(std::string* value);
+
+  private:
+  const std::string& _internal_path() const;
+  inline PROTOBUF_ALWAYS_INLINE void _internal_set_path(
+      const std::string& value);
+  std::string* _internal_mutable_path();
+
+  public:
+  // .kentik.monitoring.v1.Fact fact = 2 [json_name = "fact"];
+  bool has_fact() const;
+  void clear_fact() ;
+  const ::kentik::monitoring::v1::Fact& fact() const;
+  PROTOBUF_NODISCARD ::kentik::monitoring::v1::Fact* release_fact();
+  ::kentik::monitoring::v1::Fact* mutable_fact();
+  void set_allocated_fact(::kentik::monitoring::v1::Fact* value);
+  void unsafe_arena_set_allocated_fact(::kentik::monitoring::v1::Fact* value);
+  ::kentik::monitoring::v1::Fact* unsafe_arena_release_fact();
+
+  private:
+  const ::kentik::monitoring::v1::Fact& _internal_fact() const;
+  ::kentik::monitoring::v1::Fact* _internal_mutable_fact();
+
+  public:
+  // @@protoc_insertion_point(class_scope:kentik.kagent.v202401.CapabilityFact)
+ private:
+  class _Internal;
+  friend class ::google::protobuf::internal::TcParser;
+  static const ::google::protobuf::internal::TcParseTable<
+      1, 2, 1,
+      49, 2>
+      _table_;
+
+  friend class ::google::protobuf::MessageLite;
+  friend class ::google::protobuf::Arena;
+  template <typename T>
+  friend class ::google::protobuf::Arena::InternalHelper;
+  using InternalArenaConstructable_ = void;
+  using DestructorSkippable_ = void;
+  struct Impl_ {
+    inline explicit constexpr Impl_(
+        ::google::protobuf::internal::ConstantInitialized) noexcept;
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena);
+    inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
+                          ::google::protobuf::Arena* arena, const Impl_& from,
+                          const CapabilityFact& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::internal::ArenaStringPtr path_;
+    ::kentik::monitoring::v1::Fact* fact_;
+    PROTOBUF_TSAN_DECLARE_MEMBER
+  };
+  union { Impl_ _impl_; };
+  friend struct ::TableStruct_kentik_2fkagent_2fv202401_2fagent_5fstate_2eproto;
+};
+// -------------------------------------------------------------------
+
 class AgentCurrentState_AgentState final : public ::google::protobuf::Message
 /* @@protoc_insertion_point(class_definition:kentik.kagent.v202401.AgentCurrentState.AgentState) */ {
  public:
@@ -648,7 +950,7 @@ class AgentCurrentState_AgentState final : public ::google::protobuf::Message
     return reinterpret_cast<const AgentCurrentState_AgentState*>(
         &_AgentCurrentState_AgentState_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 3;
+  static constexpr int kIndexInFileMessages = 4;
   friend void swap(AgentCurrentState_AgentState& a, AgentCurrentState_AgentState& b) { a.Swap(&b); }
   inline void Swap(AgentCurrentState_AgentState* other) {
     if (other == this) return;
@@ -735,6 +1037,8 @@ class AgentCurrentState_AgentState final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
+    kFactsFieldNumber = 34,
+    kHealthFingerprintFieldNumber = 35,
     kVersionFieldNumber = 1,
     kReconcileErrorFieldNumber = 3,
     kLastErrorFieldNumber = 5,
@@ -761,6 +1065,38 @@ class AgentCurrentState_AgentState final : public ::google::protobuf::Message
     kHealthV2FieldNumber = 32,
     kPromotionStateFieldNumber = 33,
   };
+  // repeated .kentik.kagent.v202401.CapabilityFact facts = 34 [json_name = "facts", (.google.api.field_behavior) = OUTPUT_ONLY];
+  int facts_size() const;
+  private:
+  int _internal_facts_size() const;
+
+  public:
+  void clear_facts() ;
+  ::kentik::kagent::v202401::CapabilityFact* mutable_facts(int index);
+  ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>* mutable_facts();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>& _internal_facts() const;
+  ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>* _internal_mutable_facts();
+  public:
+  const ::kentik::kagent::v202401::CapabilityFact& facts(int index) const;
+  ::kentik::kagent::v202401::CapabilityFact* add_facts();
+  const ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>& facts() const;
+  // map<string, .kentik.monitoring.v1.HealthStatus> health_fingerprint = 35 [json_name = "healthFingerprint", (.google.api.field_behavior) = OUTPUT_ONLY];
+  int health_fingerprint_size() const;
+  private:
+  int _internal_health_fingerprint_size() const;
+
+  public:
+  void clear_health_fingerprint() ;
+  const ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>& health_fingerprint() const;
+  ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>* mutable_health_fingerprint();
+
+  private:
+  const ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>& _internal_health_fingerprint() const;
+  ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>* _internal_mutable_health_fingerprint();
+
+  public:
   // string version = 1 [json_name = "version"];
   void clear_version() ;
   const std::string& version() const;
@@ -1106,8 +1442,8 @@ class AgentCurrentState_AgentState final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      5, 25, 6,
-      190, 7>
+      5, 27, 8,
+      208, 7>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -1126,6 +1462,11 @@ class AgentCurrentState_AgentState final : public ::google::protobuf::Message
                           const AgentCurrentState_AgentState& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedPtrField< ::kentik::kagent::v202401::CapabilityFact > facts_;
+    ::google::protobuf::internal::MapField<AgentCurrentState_AgentState_HealthFingerprintEntry_DoNotUse, std::string, ::kentik::monitoring::v1::HealthStatus,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>
+        health_fingerprint_;
     ::google::protobuf::internal::ArenaStringPtr version_;
     ::google::protobuf::internal::ArenaStringPtr reconcile_error_;
     ::google::protobuf::internal::ArenaStringPtr last_error_;
@@ -1995,7 +2336,7 @@ class CapabilityCurrentState final : public ::google::protobuf::Message
     return reinterpret_cast<const CapabilityCurrentState*>(
         &_CapabilityCurrentState_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 7;
+  static constexpr int kIndexInFileMessages = 9;
   friend void swap(CapabilityCurrentState& a, CapabilityCurrentState& b) { a.Swap(&b); }
   inline void Swap(CapabilityCurrentState* other) {
     if (other == this) return;
@@ -2082,6 +2423,8 @@ class CapabilityCurrentState final : public ::google::protobuf::Message
 
   // accessors -------------------------------------------------------
   enum : int {
+    kFactsFieldNumber = 26,
+    kHealthFingerprintFieldNumber = 27,
     kNameFieldNumber = 1,
     kVersionFieldNumber = 2,
     kBundleIdFieldNumber = 5,
@@ -2107,6 +2450,38 @@ class CapabilityCurrentState final : public ::google::protobuf::Message
     kRestartLoopCountFieldNumber = 24,
     kPromotionStateFieldNumber = 25,
   };
+  // repeated .kentik.kagent.v202401.CapabilityFact facts = 26 [json_name = "facts", (.google.api.field_behavior) = OUTPUT_ONLY];
+  int facts_size() const;
+  private:
+  int _internal_facts_size() const;
+
+  public:
+  void clear_facts() ;
+  ::kentik::kagent::v202401::CapabilityFact* mutable_facts(int index);
+  ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>* mutable_facts();
+
+  private:
+  const ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>& _internal_facts() const;
+  ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>* _internal_mutable_facts();
+  public:
+  const ::kentik::kagent::v202401::CapabilityFact& facts(int index) const;
+  ::kentik::kagent::v202401::CapabilityFact* add_facts();
+  const ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>& facts() const;
+  // map<string, .kentik.monitoring.v1.HealthStatus> health_fingerprint = 27 [json_name = "healthFingerprint", (.google.api.field_behavior) = OUTPUT_ONLY];
+  int health_fingerprint_size() const;
+  private:
+  int _internal_health_fingerprint_size() const;
+
+  public:
+  void clear_health_fingerprint() ;
+  const ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>& health_fingerprint() const;
+  ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>* mutable_health_fingerprint();
+
+  private:
+  const ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>& _internal_health_fingerprint() const;
+  ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>* _internal_mutable_health_fingerprint();
+
+  public:
   // string name = 1 [json_name = "name"];
   void clear_name() ;
   const std::string& name() const;
@@ -2424,8 +2799,8 @@ class CapabilityCurrentState final : public ::google::protobuf::Message
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      5, 24, 4,
-      148, 2>
+      5, 26, 6,
+      166, 2>
       _table_;
 
   friend class ::google::protobuf::MessageLite;
@@ -2444,6 +2819,11 @@ class CapabilityCurrentState final : public ::google::protobuf::Message
                           const CapabilityCurrentState& from_msg);
     ::google::protobuf::internal::HasBits<1> _has_bits_;
     ::google::protobuf::internal::CachedSize _cached_size_;
+    ::google::protobuf::RepeatedPtrField< ::kentik::kagent::v202401::CapabilityFact > facts_;
+    ::google::protobuf::internal::MapField<CapabilityCurrentState_HealthFingerprintEntry_DoNotUse, std::string, ::kentik::monitoring::v1::HealthStatus,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_STRING,
+                      ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>
+        health_fingerprint_;
     ::google::protobuf::internal::ArenaStringPtr name_;
     ::google::protobuf::internal::ArenaStringPtr version_;
     ::google::protobuf::internal::ArenaStringPtr bundle_id_;
@@ -2534,7 +2914,7 @@ class AgentCurrentState final : public ::google::protobuf::Message
     return reinterpret_cast<const AgentCurrentState*>(
         &_AgentCurrentState_default_instance_);
   }
-  static constexpr int kIndexInFileMessages = 4;
+  static constexpr int kIndexInFileMessages = 5;
   friend void swap(AgentCurrentState& a, AgentCurrentState& b) { a.Swap(&b); }
   inline void Swap(AgentCurrentState* other) {
     if (other == this) return;
@@ -3712,6 +4092,8 @@ inline void AgentDesiredState::set_allocated_current_time(::google::protobuf::Ti
 
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 // AgentCurrentState_AgentState
 
 // string version = 1 [json_name = "version"];
@@ -4780,6 +5162,83 @@ inline void AgentCurrentState_AgentState::_internal_set_promotion_state(::kentik
   _impl_.promotion_state_ = value;
 }
 
+// repeated .kentik.kagent.v202401.CapabilityFact facts = 34 [json_name = "facts", (.google.api.field_behavior) = OUTPUT_ONLY];
+inline int AgentCurrentState_AgentState::_internal_facts_size() const {
+  return _internal_facts().size();
+}
+inline int AgentCurrentState_AgentState::facts_size() const {
+  return _internal_facts_size();
+}
+inline void AgentCurrentState_AgentState::clear_facts() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.facts_.Clear();
+}
+inline ::kentik::kagent::v202401::CapabilityFact* AgentCurrentState_AgentState::mutable_facts(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.kagent.v202401.AgentCurrentState.AgentState.facts)
+  return _internal_mutable_facts()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>* AgentCurrentState_AgentState::mutable_facts()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.kagent.v202401.AgentCurrentState.AgentState.facts)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_facts();
+}
+inline const ::kentik::kagent::v202401::CapabilityFact& AgentCurrentState_AgentState::facts(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.kagent.v202401.AgentCurrentState.AgentState.facts)
+  return _internal_facts().Get(index);
+}
+inline ::kentik::kagent::v202401::CapabilityFact* AgentCurrentState_AgentState::add_facts() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::kentik::kagent::v202401::CapabilityFact* _add = _internal_mutable_facts()->Add();
+  // @@protoc_insertion_point(field_add:kentik.kagent.v202401.AgentCurrentState.AgentState.facts)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>& AgentCurrentState_AgentState::facts() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.kagent.v202401.AgentCurrentState.AgentState.facts)
+  return _internal_facts();
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>&
+AgentCurrentState_AgentState::_internal_facts() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.facts_;
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>*
+AgentCurrentState_AgentState::_internal_mutable_facts() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.facts_;
+}
+
+// map<string, .kentik.monitoring.v1.HealthStatus> health_fingerprint = 35 [json_name = "healthFingerprint", (.google.api.field_behavior) = OUTPUT_ONLY];
+inline int AgentCurrentState_AgentState::_internal_health_fingerprint_size() const {
+  return _internal_health_fingerprint().size();
+}
+inline int AgentCurrentState_AgentState::health_fingerprint_size() const {
+  return _internal_health_fingerprint_size();
+}
+inline void AgentCurrentState_AgentState::clear_health_fingerprint() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.health_fingerprint_.Clear();
+}
+inline const ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>& AgentCurrentState_AgentState::_internal_health_fingerprint() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.health_fingerprint_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>& AgentCurrentState_AgentState::health_fingerprint() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:kentik.kagent.v202401.AgentCurrentState.AgentState.health_fingerprint)
+  return _internal_health_fingerprint();
+}
+inline ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>* AgentCurrentState_AgentState::_internal_mutable_health_fingerprint() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.health_fingerprint_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>* AgentCurrentState_AgentState::mutable_health_fingerprint() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:kentik.kagent.v202401.AgentCurrentState.AgentState.health_fingerprint)
+  return _internal_mutable_health_fingerprint();
+}
+
 // optional double mem_used_percent = 20 [json_name = "memUsedPercent"];
 inline bool AgentCurrentState_AgentState::has_mem_used_percent() const {
   bool value = (_impl_._has_bits_[0] & 0x00000080u) != 0;
@@ -5322,6 +5781,8 @@ inline ::google::protobuf::Map<std::string, std::string>* OSMetadata::mutable_re
   // @@protoc_insertion_point(field_mutable_map:kentik.kagent.v202401.OSMetadata.release_metadata)
   return _internal_mutable_release_metadata();
 }
+
+// -------------------------------------------------------------------
 
 // -------------------------------------------------------------------
 
@@ -6361,6 +6822,226 @@ inline ::kentik::kagent::v202401::CapabilityPromotionState CapabilityCurrentStat
 inline void CapabilityCurrentState::_internal_set_promotion_state(::kentik::kagent::v202401::CapabilityPromotionState value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.promotion_state_ = value;
+}
+
+// repeated .kentik.kagent.v202401.CapabilityFact facts = 26 [json_name = "facts", (.google.api.field_behavior) = OUTPUT_ONLY];
+inline int CapabilityCurrentState::_internal_facts_size() const {
+  return _internal_facts().size();
+}
+inline int CapabilityCurrentState::facts_size() const {
+  return _internal_facts_size();
+}
+inline void CapabilityCurrentState::clear_facts() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.facts_.Clear();
+}
+inline ::kentik::kagent::v202401::CapabilityFact* CapabilityCurrentState::mutable_facts(int index)
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable:kentik.kagent.v202401.CapabilityCurrentState.facts)
+  return _internal_mutable_facts()->Mutable(index);
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>* CapabilityCurrentState::mutable_facts()
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_list:kentik.kagent.v202401.CapabilityCurrentState.facts)
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _internal_mutable_facts();
+}
+inline const ::kentik::kagent::v202401::CapabilityFact& CapabilityCurrentState::facts(int index) const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.kagent.v202401.CapabilityCurrentState.facts)
+  return _internal_facts().Get(index);
+}
+inline ::kentik::kagent::v202401::CapabilityFact* CapabilityCurrentState::add_facts() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  ::kentik::kagent::v202401::CapabilityFact* _add = _internal_mutable_facts()->Add();
+  // @@protoc_insertion_point(field_add:kentik.kagent.v202401.CapabilityCurrentState.facts)
+  return _add;
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>& CapabilityCurrentState::facts() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_list:kentik.kagent.v202401.CapabilityCurrentState.facts)
+  return _internal_facts();
+}
+inline const ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>&
+CapabilityCurrentState::_internal_facts() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.facts_;
+}
+inline ::google::protobuf::RepeatedPtrField<::kentik::kagent::v202401::CapabilityFact>*
+CapabilityCurrentState::_internal_mutable_facts() {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return &_impl_.facts_;
+}
+
+// map<string, .kentik.monitoring.v1.HealthStatus> health_fingerprint = 27 [json_name = "healthFingerprint", (.google.api.field_behavior) = OUTPUT_ONLY];
+inline int CapabilityCurrentState::_internal_health_fingerprint_size() const {
+  return _internal_health_fingerprint().size();
+}
+inline int CapabilityCurrentState::health_fingerprint_size() const {
+  return _internal_health_fingerprint_size();
+}
+inline void CapabilityCurrentState::clear_health_fingerprint() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.health_fingerprint_.Clear();
+}
+inline const ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>& CapabilityCurrentState::_internal_health_fingerprint() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.health_fingerprint_.GetMap();
+}
+inline const ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>& CapabilityCurrentState::health_fingerprint() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_map:kentik.kagent.v202401.CapabilityCurrentState.health_fingerprint)
+  return _internal_health_fingerprint();
+}
+inline ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>* CapabilityCurrentState::_internal_mutable_health_fingerprint() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.health_fingerprint_.MutableMap();
+}
+inline ::google::protobuf::Map<std::string, ::kentik::monitoring::v1::HealthStatus>* CapabilityCurrentState::mutable_health_fingerprint() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_mutable_map:kentik.kagent.v202401.CapabilityCurrentState.health_fingerprint)
+  return _internal_mutable_health_fingerprint();
+}
+
+// -------------------------------------------------------------------
+
+// CapabilityFact
+
+// string path = 1 [json_name = "path"];
+inline void CapabilityFact::clear_path() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.path_.ClearToEmpty();
+}
+inline const std::string& CapabilityFact::path() const
+    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.kagent.v202401.CapabilityFact.path)
+  return _internal_path();
+}
+template <typename Arg_, typename... Args_>
+inline PROTOBUF_ALWAYS_INLINE void CapabilityFact::set_path(Arg_&& arg,
+                                                     Args_... args) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.path_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+  // @@protoc_insertion_point(field_set:kentik.kagent.v202401.CapabilityFact.path)
+}
+inline std::string* CapabilityFact::mutable_path() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  std::string* _s = _internal_mutable_path();
+  // @@protoc_insertion_point(field_mutable:kentik.kagent.v202401.CapabilityFact.path)
+  return _s;
+}
+inline const std::string& CapabilityFact::_internal_path() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return _impl_.path_.Get();
+}
+inline void CapabilityFact::_internal_set_path(const std::string& value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.path_.Set(value, GetArena());
+}
+inline std::string* CapabilityFact::_internal_mutable_path() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  return _impl_.path_.Mutable( GetArena());
+}
+inline std::string* CapabilityFact::release_path() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.kagent.v202401.CapabilityFact.path)
+  return _impl_.path_.Release();
+}
+inline void CapabilityFact::set_allocated_path(std::string* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.path_.SetAllocated(value, GetArena());
+  if (::google::protobuf::internal::DebugHardenForceCopyDefaultString() && _impl_.path_.IsDefault()) {
+    _impl_.path_.Set("", GetArena());
+  }
+  // @@protoc_insertion_point(field_set_allocated:kentik.kagent.v202401.CapabilityFact.path)
+}
+
+// .kentik.monitoring.v1.Fact fact = 2 [json_name = "fact"];
+inline bool CapabilityFact::has_fact() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  PROTOBUF_ASSUME(!value || _impl_.fact_ != nullptr);
+  return value;
+}
+inline const ::kentik::monitoring::v1::Fact& CapabilityFact::_internal_fact() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  const ::kentik::monitoring::v1::Fact* p = _impl_.fact_;
+  return p != nullptr ? *p : reinterpret_cast<const ::kentik::monitoring::v1::Fact&>(::kentik::monitoring::v1::_Fact_default_instance_);
+}
+inline const ::kentik::monitoring::v1::Fact& CapabilityFact::fact() const ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  // @@protoc_insertion_point(field_get:kentik.kagent.v202401.CapabilityFact.fact)
+  return _internal_fact();
+}
+inline void CapabilityFact::unsafe_arena_set_allocated_fact(::kentik::monitoring::v1::Fact* value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (GetArena() == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.fact_);
+  }
+  _impl_.fact_ = reinterpret_cast<::kentik::monitoring::v1::Fact*>(value);
+  if (value != nullptr) {
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:kentik.kagent.v202401.CapabilityFact.fact)
+}
+inline ::kentik::monitoring::v1::Fact* CapabilityFact::release_fact() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::monitoring::v1::Fact* released = _impl_.fact_;
+  _impl_.fact_ = nullptr;
+  if (::google::protobuf::internal::DebugHardenForceCopyInRelease()) {
+    auto* old = reinterpret_cast<::google::protobuf::MessageLite*>(released);
+    released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    if (GetArena() == nullptr) {
+      delete old;
+    }
+  } else {
+    if (GetArena() != nullptr) {
+      released = ::google::protobuf::internal::DuplicateIfNonNull(released);
+    }
+  }
+  return released;
+}
+inline ::kentik::monitoring::v1::Fact* CapabilityFact::unsafe_arena_release_fact() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  // @@protoc_insertion_point(field_release:kentik.kagent.v202401.CapabilityFact.fact)
+
+  _impl_._has_bits_[0] &= ~0x00000001u;
+  ::kentik::monitoring::v1::Fact* temp = _impl_.fact_;
+  _impl_.fact_ = nullptr;
+  return temp;
+}
+inline ::kentik::monitoring::v1::Fact* CapabilityFact::_internal_mutable_fact() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (_impl_.fact_ == nullptr) {
+    auto* p = ::google::protobuf::Message::DefaultConstruct<::kentik::monitoring::v1::Fact>(GetArena());
+    _impl_.fact_ = reinterpret_cast<::kentik::monitoring::v1::Fact*>(p);
+  }
+  return _impl_.fact_;
+}
+inline ::kentik::monitoring::v1::Fact* CapabilityFact::mutable_fact() ABSL_ATTRIBUTE_LIFETIME_BOUND {
+  _impl_._has_bits_[0] |= 0x00000001u;
+  ::kentik::monitoring::v1::Fact* _msg = _internal_mutable_fact();
+  // @@protoc_insertion_point(field_mutable:kentik.kagent.v202401.CapabilityFact.fact)
+  return _msg;
+}
+inline void CapabilityFact::set_allocated_fact(::kentik::monitoring::v1::Fact* value) {
+  ::google::protobuf::Arena* message_arena = GetArena();
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  if (message_arena == nullptr) {
+    delete reinterpret_cast<::google::protobuf::MessageLite*>(_impl_.fact_);
+  }
+
+  if (value != nullptr) {
+    ::google::protobuf::Arena* submessage_arena = reinterpret_cast<::google::protobuf::MessageLite*>(value)->GetArena();
+    if (message_arena != submessage_arena) {
+      value = ::google::protobuf::internal::GetOwnedMessage(message_arena, value, submessage_arena);
+    }
+    _impl_._has_bits_[0] |= 0x00000001u;
+  } else {
+    _impl_._has_bits_[0] &= ~0x00000001u;
+  }
+
+  _impl_.fact_ = reinterpret_cast<::kentik::monitoring::v1::Fact*>(value);
+  // @@protoc_insertion_point(field_set_allocated:kentik.kagent.v202401.CapabilityFact.fact)
 }
 
 #ifdef __GNUC__
