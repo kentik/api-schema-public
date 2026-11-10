@@ -144,6 +144,8 @@ enum InstallerType : int {
   INSTALLER_TYPE_UNSPECIFIED = 0,
   INSTALLER_TYPE_LINUX = 1,
   INSTALLER_TYPE_DOCKER = 2,
+  INSTALLER_TYPE_RPM = 3,
+  INSTALLER_TYPE_DEB = 4,
   InstallerType_INT_MIN_SENTINEL_DO_NOT_USE_ =
       std::numeric_limits<::int32_t>::min(),
   InstallerType_INT_MAX_SENTINEL_DO_NOT_USE_ =
@@ -153,8 +155,8 @@ enum InstallerType : int {
 bool InstallerType_IsValid(int value);
 extern const uint32_t InstallerType_internal_data_[];
 constexpr InstallerType InstallerType_MIN = static_cast<InstallerType>(0);
-constexpr InstallerType InstallerType_MAX = static_cast<InstallerType>(2);
-constexpr int InstallerType_ARRAYSIZE = 2 + 1;
+constexpr InstallerType InstallerType_MAX = static_cast<InstallerType>(4);
+constexpr int InstallerType_ARRAYSIZE = 4 + 1;
 const ::google::protobuf::EnumDescriptor*
 InstallerType_descriptor();
 template <typename T>
@@ -167,12 +169,80 @@ const std::string& InstallerType_Name(T value) {
 template <>
 inline const std::string& InstallerType_Name(InstallerType value) {
   return ::google::protobuf::internal::NameOfDenseEnum<InstallerType_descriptor,
-                                                 0, 2>(
+                                                 0, 4>(
       static_cast<int>(value));
 }
 inline bool InstallerType_Parse(absl::string_view name, InstallerType* value) {
   return ::google::protobuf::internal::ParseNamedEnum<InstallerType>(
       InstallerType_descriptor(), name, value);
+}
+enum ReleaseSource : int {
+  RELEASE_SOURCE_UNSPECIFIED = 0,
+  RELEASE_SOURCE_MANAGED = 1,
+  RELEASE_SOURCE_LOCAL = 2,
+  ReleaseSource_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  ReleaseSource_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool ReleaseSource_IsValid(int value);
+extern const uint32_t ReleaseSource_internal_data_[];
+constexpr ReleaseSource ReleaseSource_MIN = static_cast<ReleaseSource>(0);
+constexpr ReleaseSource ReleaseSource_MAX = static_cast<ReleaseSource>(2);
+constexpr int ReleaseSource_ARRAYSIZE = 2 + 1;
+const ::google::protobuf::EnumDescriptor*
+ReleaseSource_descriptor();
+template <typename T>
+const std::string& ReleaseSource_Name(T value) {
+  static_assert(std::is_same<T, ReleaseSource>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to ReleaseSource_Name().");
+  return ReleaseSource_Name(static_cast<ReleaseSource>(value));
+}
+template <>
+inline const std::string& ReleaseSource_Name(ReleaseSource value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<ReleaseSource_descriptor,
+                                                 0, 2>(
+      static_cast<int>(value));
+}
+inline bool ReleaseSource_Parse(absl::string_view name, ReleaseSource* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ReleaseSource>(
+      ReleaseSource_descriptor(), name, value);
+}
+enum ConfigSource : int {
+  CONFIG_SOURCE_UNSPECIFIED = 0,
+  CONFIG_SOURCE_MANAGED = 1,
+  CONFIG_SOURCE_LOCAL = 2,
+  ConfigSource_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  ConfigSource_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool ConfigSource_IsValid(int value);
+extern const uint32_t ConfigSource_internal_data_[];
+constexpr ConfigSource ConfigSource_MIN = static_cast<ConfigSource>(0);
+constexpr ConfigSource ConfigSource_MAX = static_cast<ConfigSource>(2);
+constexpr int ConfigSource_ARRAYSIZE = 2 + 1;
+const ::google::protobuf::EnumDescriptor*
+ConfigSource_descriptor();
+template <typename T>
+const std::string& ConfigSource_Name(T value) {
+  static_assert(std::is_same<T, ConfigSource>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to ConfigSource_Name().");
+  return ConfigSource_Name(static_cast<ConfigSource>(value));
+}
+template <>
+inline const std::string& ConfigSource_Name(ConfigSource value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<ConfigSource_descriptor,
+                                                 0, 2>(
+      static_cast<int>(value));
+}
+inline bool ConfigSource_Parse(absl::string_view name, ConfigSource* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ConfigSource>(
+      ConfigSource_descriptor(), name, value);
 }
 
 // ===================================================================
@@ -2727,6 +2797,8 @@ class InstallConfig final : public ::google::protobuf::Message
     kIdFieldNumber = 1,
     kHostMetadataFieldNumber = 2,
     kTypeFieldNumber = 3,
+    kReleaseSourceFieldNumber = 4,
+    kConfigSourceFieldNumber = 5,
   };
   // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_id() ;
@@ -2769,12 +2841,32 @@ class InstallConfig final : public ::google::protobuf::Message
   void _internal_set_type(::kentik::kagent::v202401::InstallerType value);
 
   public:
+  // .kentik.kagent.v202401.ReleaseSource release_source = 4 [json_name = "releaseSource", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_release_source() ;
+  ::kentik::kagent::v202401::ReleaseSource release_source() const;
+  void set_release_source(::kentik::kagent::v202401::ReleaseSource value);
+
+  private:
+  ::kentik::kagent::v202401::ReleaseSource _internal_release_source() const;
+  void _internal_set_release_source(::kentik::kagent::v202401::ReleaseSource value);
+
+  public:
+  // .kentik.kagent.v202401.ConfigSource config_source = 5 [json_name = "configSource", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_config_source() ;
+  ::kentik::kagent::v202401::ConfigSource config_source() const;
+  void set_config_source(::kentik::kagent::v202401::ConfigSource value);
+
+  private:
+  ::kentik::kagent::v202401::ConfigSource _internal_config_source() const;
+  void _internal_set_config_source(::kentik::kagent::v202401::ConfigSource value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.kagent.v202401.InstallConfig)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      2, 3, 1,
+      3, 5, 1,
       46, 2>
       _table_;
 
@@ -2797,6 +2889,8 @@ class InstallConfig final : public ::google::protobuf::Message
     ::google::protobuf::internal::ArenaStringPtr id_;
     ::kentik::kagent::v202401::HostMetadata* host_metadata_;
     int type_;
+    int release_source_;
+    int config_source_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -5031,6 +5125,50 @@ inline void InstallConfig::set_allocated_host_metadata(::kentik::kagent::v202401
 
   _impl_.host_metadata_ = reinterpret_cast<::kentik::kagent::v202401::HostMetadata*>(value);
   // @@protoc_insertion_point(field_set_allocated:kentik.kagent.v202401.InstallConfig.host_metadata)
+}
+
+// .kentik.kagent.v202401.ReleaseSource release_source = 4 [json_name = "releaseSource", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void InstallConfig::clear_release_source() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.release_source_ = 0;
+}
+inline ::kentik::kagent::v202401::ReleaseSource InstallConfig::release_source() const {
+  // @@protoc_insertion_point(field_get:kentik.kagent.v202401.InstallConfig.release_source)
+  return _internal_release_source();
+}
+inline void InstallConfig::set_release_source(::kentik::kagent::v202401::ReleaseSource value) {
+  _internal_set_release_source(value);
+  // @@protoc_insertion_point(field_set:kentik.kagent.v202401.InstallConfig.release_source)
+}
+inline ::kentik::kagent::v202401::ReleaseSource InstallConfig::_internal_release_source() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::kentik::kagent::v202401::ReleaseSource>(_impl_.release_source_);
+}
+inline void InstallConfig::_internal_set_release_source(::kentik::kagent::v202401::ReleaseSource value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.release_source_ = value;
+}
+
+// .kentik.kagent.v202401.ConfigSource config_source = 5 [json_name = "configSource", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void InstallConfig::clear_config_source() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.config_source_ = 0;
+}
+inline ::kentik::kagent::v202401::ConfigSource InstallConfig::config_source() const {
+  // @@protoc_insertion_point(field_get:kentik.kagent.v202401.InstallConfig.config_source)
+  return _internal_config_source();
+}
+inline void InstallConfig::set_config_source(::kentik::kagent::v202401::ConfigSource value) {
+  _internal_set_config_source(value);
+  // @@protoc_insertion_point(field_set:kentik.kagent.v202401.InstallConfig.config_source)
+}
+inline ::kentik::kagent::v202401::ConfigSource InstallConfig::_internal_config_source() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::kentik::kagent::v202401::ConfigSource>(_impl_.config_source_);
+}
+inline void InstallConfig::_internal_set_config_source(::kentik::kagent::v202401::ConfigSource value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.config_source_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -7715,6 +7853,18 @@ struct is_proto_enum<::kentik::kagent::v202401::InstallerType> : std::true_type 
 template <>
 inline const EnumDescriptor* GetEnumDescriptor<::kentik::kagent::v202401::InstallerType>() {
   return ::kentik::kagent::v202401::InstallerType_descriptor();
+}
+template <>
+struct is_proto_enum<::kentik::kagent::v202401::ReleaseSource> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::kentik::kagent::v202401::ReleaseSource>() {
+  return ::kentik::kagent::v202401::ReleaseSource_descriptor();
+}
+template <>
+struct is_proto_enum<::kentik::kagent::v202401::ConfigSource> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::kentik::kagent::v202401::ConfigSource>() {
+  return ::kentik::kagent::v202401::ConfigSource_descriptor();
 }
 
 }  // namespace protobuf

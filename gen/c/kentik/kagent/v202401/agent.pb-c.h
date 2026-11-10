@@ -67,9 +67,60 @@ typedef enum _Kentik__Kagent__V202401__InstallerType {
   /*
    * Agent installed as a Docker container.
    */
-  KENTIK__KAGENT__V202401__INSTALLER_TYPE__INSTALLER_TYPE_DOCKER = 2
+  KENTIK__KAGENT__V202401__INSTALLER_TYPE__INSTALLER_TYPE_DOCKER = 2,
+  /*
+   * Agent installed from an RPM repository.
+   */
+  KENTIK__KAGENT__V202401__INSTALLER_TYPE__INSTALLER_TYPE_RPM = 3,
+  /*
+   * Agent installed from a DEB repository.
+   */
+  KENTIK__KAGENT__V202401__INSTALLER_TYPE__INSTALLER_TYPE_DEB = 4
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KAGENT__V202401__INSTALLER_TYPE)
 } Kentik__Kagent__V202401__InstallerType;
+/*
+ * {{.Name}}
+ * Says who owns the releases of the agent and of every capability: the Kentik control plane or the
+ * environment of the agent. One owner holds all releases of an agent.
+ */
+typedef enum _Kentik__Kagent__V202401__ReleaseSource {
+  /*
+   * Not reported, for example by an older agent. Read it as managed.
+   */
+  KENTIK__KAGENT__V202401__RELEASE_SOURCE__RELEASE_SOURCE_UNSPECIFIED = 0,
+  /*
+   * The Kentik control plane manages the releases: it chooses them, and the agent downloads and
+   * installs them.
+   */
+  KENTIK__KAGENT__V202401__RELEASE_SOURCE__RELEASE_SOURCE_MANAGED = 1,
+  /*
+   * The environment of the agent, such as a package manager or an image, puts the releases on the
+   * host, and the agent runs them.
+   */
+  KENTIK__KAGENT__V202401__RELEASE_SOURCE__RELEASE_SOURCE_LOCAL = 2
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KAGENT__V202401__RELEASE_SOURCE)
+} Kentik__Kagent__V202401__ReleaseSource;
+/*
+ * {{.Name}}
+ * Says who owns the configuration of the agent and of every capability: the Kentik control plane or
+ * the environment of the agent. A later value can combine two owners, for example values that the
+ * control plane manages with local overrides.
+ */
+typedef enum _Kentik__Kagent__V202401__ConfigSource {
+  /*
+   * Not reported, for example by an older agent. Read it as managed.
+   */
+  KENTIK__KAGENT__V202401__CONFIG_SOURCE__CONFIG_SOURCE_UNSPECIFIED = 0,
+  /*
+   * The Kentik control plane manages the configuration.
+   */
+  KENTIK__KAGENT__V202401__CONFIG_SOURCE__CONFIG_SOURCE_MANAGED = 1,
+  /*
+   * The environment of the agent, such as files on the host, owns the configuration.
+   */
+  KENTIK__KAGENT__V202401__CONFIG_SOURCE__CONFIG_SOURCE_LOCAL = 2
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KAGENT__V202401__CONFIG_SOURCE)
+} Kentik__Kagent__V202401__ConfigSource;
 
 /* --- messages --- */
 
@@ -108,10 +159,12 @@ struct  Kentik__Kagent__V202401__InstallConfig
   char *id;
   Kentik__Kagent__V202401__InstallerType type;
   Kentik__Kagent__V202401__HostMetadata *host_metadata;
+  Kentik__Kagent__V202401__ReleaseSource release_source;
+  Kentik__Kagent__V202401__ConfigSource config_source;
 };
 #define KENTIK__KAGENT__V202401__INSTALL_CONFIG__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__kagent__v202401__install_config__descriptor) \
-    , (char *)protobuf_c_empty_string, KENTIK__KAGENT__V202401__INSTALLER_TYPE__INSTALLER_TYPE_UNSPECIFIED, NULL }
+    , (char *)protobuf_c_empty_string, KENTIK__KAGENT__V202401__INSTALLER_TYPE__INSTALLER_TYPE_UNSPECIFIED, NULL, KENTIK__KAGENT__V202401__RELEASE_SOURCE__RELEASE_SOURCE_UNSPECIFIED, KENTIK__KAGENT__V202401__CONFIG_SOURCE__CONFIG_SOURCE_UNSPECIFIED }
 
 
 typedef enum {
@@ -968,6 +1021,8 @@ void kentik__kagent__v202401__agent_service__generate_install_commands(ProtobufC
 /* --- descriptors --- */
 
 extern const ProtobufCEnumDescriptor    kentik__kagent__v202401__installer_type__descriptor;
+extern const ProtobufCEnumDescriptor    kentik__kagent__v202401__release_source__descriptor;
+extern const ProtobufCEnumDescriptor    kentik__kagent__v202401__config_source__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kagent__v202401__host_metadata__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kagent__v202401__install_config__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kagent__v202401__agent__descriptor;

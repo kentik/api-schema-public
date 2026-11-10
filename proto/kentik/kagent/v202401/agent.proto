@@ -125,6 +125,16 @@ message InstallConfig {
       description: "Metadata of the host the agent was installed on."
     }
   ];
+  ReleaseSource release_source = 4 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Who owns the releases of the agent and of its capabilities."
+    }
+  ];
+  ConfigSource config_source = 5 [
+    (grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+      description: "Who owns the configuration of the agent and of its capabilities."
+    }
+  ];
 }
 
 // {{.Name}}
@@ -135,6 +145,37 @@ enum InstallerType {
   INSTALLER_TYPE_LINUX = 1;
   // Agent installed as a Docker container.
   INSTALLER_TYPE_DOCKER = 2;
+  // Agent installed from an RPM repository.
+  INSTALLER_TYPE_RPM = 3;
+  // Agent installed from a DEB repository.
+  INSTALLER_TYPE_DEB = 4;
+}
+
+// {{.Name}}
+// Says who owns the releases of the agent and of every capability: the Kentik control plane or the
+// environment of the agent. One owner holds all releases of an agent.
+enum ReleaseSource {
+  // Not reported, for example by an older agent. Read it as managed.
+  RELEASE_SOURCE_UNSPECIFIED = 0;
+  // The Kentik control plane manages the releases: it chooses them, and the agent downloads and
+  // installs them.
+  RELEASE_SOURCE_MANAGED = 1;
+  // The environment of the agent, such as a package manager or an image, puts the releases on the
+  // host, and the agent runs them.
+  RELEASE_SOURCE_LOCAL = 2;
+}
+
+// {{.Name}}
+// Says who owns the configuration of the agent and of every capability: the Kentik control plane or
+// the environment of the agent. A later value can combine two owners, for example values that the
+// control plane manages with local overrides.
+enum ConfigSource {
+  // Not reported, for example by an older agent. Read it as managed.
+  CONFIG_SOURCE_UNSPECIFIED = 0;
+  // The Kentik control plane manages the configuration.
+  CONFIG_SOURCE_MANAGED = 1;
+  // The environment of the agent, such as files on the host, owns the configuration.
+  CONFIG_SOURCE_LOCAL = 2;
 }
 
 // {{.Name}}

@@ -605,6 +605,16 @@
                 },
                 "title": "BootstrapInfo"
             },
+            "v202401ConfigSource": {
+                "type": "string",
+                "enum": [
+                    "CONFIG_SOURCE_UNSPECIFIED",
+                    "CONFIG_SOURCE_MANAGED",
+                    "CONFIG_SOURCE_LOCAL"
+                ],
+                "default": "CONFIG_SOURCE_UNSPECIFIED",
+                "description": "ConfigSource\nSays who owns the configuration of the agent and of every capability: the Kentik control plane or\nthe environment of the agent. A later value can combine two owners, for example values that the\ncontrol plane manages with local overrides.\n\n - CONFIG_SOURCE_UNSPECIFIED: Not reported, for example by an older agent. Read it as managed.\n - CONFIG_SOURCE_MANAGED: The Kentik control plane manages the configuration.\n - CONFIG_SOURCE_LOCAL: The environment of the agent, such as files on the host, owns the configuration."
+            },
             "v202401CreateAgentRequest": {
                 "type": "object",
                 "properties": {
@@ -699,6 +709,12 @@
                     },
                     "hostMetadata": {
                         "$ref": "#/components/schemas/v202401HostMetadata"
+                    },
+                    "releaseSource": {
+                        "$ref": "#/components/schemas/v202401ReleaseSource"
+                    },
+                    "configSource": {
+                        "$ref": "#/components/schemas/v202401ConfigSource"
                     }
                 },
                 "title": "InstallConfig\nDescribes an individual agent install configuration"
@@ -708,10 +724,12 @@
                 "enum": [
                     "INSTALLER_TYPE_UNSPECIFIED",
                     "INSTALLER_TYPE_LINUX",
-                    "INSTALLER_TYPE_DOCKER"
+                    "INSTALLER_TYPE_DOCKER",
+                    "INSTALLER_TYPE_RPM",
+                    "INSTALLER_TYPE_DEB"
                 ],
                 "default": "INSTALLER_TYPE_UNSPECIFIED",
-                "description": "- INSTALLER_TYPE_UNSPECIFIED: Invalid value.\n - INSTALLER_TYPE_LINUX: Agent installed directly on a Linux host.\n - INSTALLER_TYPE_DOCKER: Agent installed as a Docker container.",
+                "description": "- INSTALLER_TYPE_UNSPECIFIED: Invalid value.\n - INSTALLER_TYPE_LINUX: Agent installed directly on a Linux host.\n - INSTALLER_TYPE_DOCKER: Agent installed as a Docker container.\n - INSTALLER_TYPE_RPM: Agent installed from an RPM repository.\n - INSTALLER_TYPE_DEB: Agent installed from a DEB repository.",
                 "title": "InstallerType"
             },
             "v202401ListAgentsResponse": {
@@ -753,6 +771,16 @@
                     }
                 },
                 "title": "RegistrationConfig"
+            },
+            "v202401ReleaseSource": {
+                "type": "string",
+                "enum": [
+                    "RELEASE_SOURCE_UNSPECIFIED",
+                    "RELEASE_SOURCE_MANAGED",
+                    "RELEASE_SOURCE_LOCAL"
+                ],
+                "default": "RELEASE_SOURCE_UNSPECIFIED",
+                "description": "ReleaseSource\nSays who owns the releases of the agent and of every capability: the Kentik control plane or the\nenvironment of the agent. One owner holds all releases of an agent.\n\n - RELEASE_SOURCE_UNSPECIFIED: Not reported, for example by an older agent. Read it as managed.\n - RELEASE_SOURCE_MANAGED: The Kentik control plane manages the releases: it chooses them, and the agent downloads and\ninstalls them.\n - RELEASE_SOURCE_LOCAL: The environment of the agent, such as a package manager or an image, puts the releases on the\nhost, and the agent runs them."
             },
             "v202401UpdateAgentResponse": {
                 "type": "object",

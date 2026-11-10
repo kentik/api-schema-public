@@ -1342,7 +1342,7 @@ func (*DeleteCredentialGroupResponse) Descriptor() ([]byte, []int) {
 type DeleteCredentialRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Name          string                 `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`
-	Version       uint32                 `protobuf:"varint,2,opt,name=version,proto3" json:"version,omitempty"`
+	Version       *uint32                `protobuf:"varint,2,opt,name=version,proto3,oneof" json:"version,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1385,8 +1385,8 @@ func (x *DeleteCredentialRequest) GetName() string {
 }
 
 func (x *DeleteCredentialRequest) GetVersion() uint32 {
-	if x != nil {
-		return x.Version
+	if x != nil && x.Version != nil {
+		return *x.Version
 	}
 	return 0
 }
@@ -1613,10 +1613,12 @@ const file_kentik_credential_v20261020alpha1_credential_proto_rawDesc = "" +
 	"\x05group\x18\x01 \x01(\v22.kentik.credential.v20261020alpha1.CredentialGroupR\x05group\"Q\n" +
 	"\x1cDeleteCredentialGroupRequest\x121\n" +
 	"\x04name\x18\x01 \x01(\tB\x1d\x92A\x172\x15Credential group name\xe0A\x02R\x04name\"\x1f\n" +
-	"\x1dDeleteCredentialGroupResponse\"\xb2\x01\n" +
+	"\x1dDeleteCredentialGroupResponse\"\xc3\x01\n" +
 	"\x17DeleteCredentialRequest\x12L\n" +
-	"\x04name\x18\x01 \x01(\tB8\x92A220Fully qualified credential name, `<group>.<key>`\xe0A\x02R\x04name\x12I\n" +
-	"\aversion\x18\x02 \x01(\rB/\x92A)2'Credential version; versions start at 0\xe0A\x02R\aversion\"\x1a\n" +
+	"\x04name\x18\x01 \x01(\tB8\x92A220Fully qualified credential name, `<group>.<key>`\xe0A\x02R\x04name\x12N\n" +
+	"\aversion\x18\x02 \x01(\rB/\x92A)2'Credential version; versions start at 0\xe0A\x02H\x00R\aversion\x88\x01\x01B\n" +
+	"\n" +
+	"\b_version\"\x1a\n" +
 	"\x18DeleteCredentialResponse\"\xb3\x01\n" +
 	"\x15AssignConsumerRequest\x12L\n" +
 	"\x04name\x18\x01 \x01(\tB8\x92A220Fully qualified credential name, `<group>.<key>`\xe0A\x02R\x04name\x12L\n" +
@@ -1640,11 +1642,11 @@ const file_kentik_credential_v20261020alpha1_credential_proto_rawDesc = "" +
 	"\x12 \n" +
 	"\x1cCREDENTIAL_TYPE_AI_API_TOKEN\x10\v\x12$\n" +
 	" CREDENTIAL_TYPE_MCP_HTTP_HEADERS\x10\f\x12\x19\n" +
-	"\x15CREDENTIAL_TYPE_CLOUD\x10\r2\xc1\x1c\n" +
+	"\x15CREDENTIAL_TYPE_CLOUD\x10\r2\xc0\x1c\n" +
 	"\x11CredentialService\x12\xac\x02\n" +
 	"\x0fListCredentials\x129.kentik.credential.v20261020alpha1.ListCredentialsRequest\x1a:.kentik.credential.v20261020alpha1.ListCredentialsResponse\"\xa1\x01\x92AU\x12\x11List credentials.\x1a/Returns the latest version of every credential.*\x0fListCredentials\x92\xd8\x02\x16credential_vault::read\x82\xd3\xe4\x93\x02)\x12'/credential/v20261020alpha1/credentials\x12\xc5\x02\n" +
-	"\rGetCredential\x127.kentik.credential.v20261020alpha1.GetCredentialRequest\x1a8.kentik.credential.v20261020alpha1.GetCredentialResponse\"\xc0\x01\x92Am\x12\x19Get a credential by name.\x1aAReturns the latest, a specific, or every version of a credential.*\rGetCredential\x92\xd8\x02\x16credential_vault::read\x82\xd3\xe4\x93\x020\x12./credential/v20261020alpha1/credentials/{name}\x12\xf9\x02\n" +
-	"\x10DeleteCredential\x12:.kentik.credential.v20261020alpha1.DeleteCredentialRequest\x1a;.kentik.credential.v20261020alpha1.DeleteCredentialResponse\"\xeb\x01\x92A\x82\x01\x12\x1cDelete a credential version.\x1aPDeletes a single version of a credential. Fails if the credential has consumers.*\x10DeleteCredential\x92\xd8\x02\x18credential_vault::delete\x82\xd3\xe4\x93\x02C*A/credential/v20261020alpha1/credentials/{name}/versions/{version}\x12\xea\x02\n" +
+	"\rGetCredential\x127.kentik.credential.v20261020alpha1.GetCredentialRequest\x1a8.kentik.credential.v20261020alpha1.GetCredentialResponse\"\xc0\x01\x92Am\x12\x19Get a credential by name.\x1aAReturns the latest, a specific, or every version of a credential.*\rGetCredential\x92\xd8\x02\x16credential_vault::read\x82\xd3\xe4\x93\x020\x12./credential/v20261020alpha1/credentials/{name}\x12\xf8\x02\n" +
+	"\x10DeleteCredential\x12:.kentik.credential.v20261020alpha1.DeleteCredentialRequest\x1a;.kentik.credential.v20261020alpha1.DeleteCredentialResponse\"\xea\x01\x92A\x94\x01\x12\x1cDelete a credential version.\x1abDeletes a single version of a credential. Version Requires. Fails if the credential has consumers.*\x10DeleteCredential\x92\xd8\x02\x18credential_vault::delete\x82\xd3\xe4\x93\x020*./credential/v20261020alpha1/credentials/{name}\x12\xea\x02\n" +
 	"\x0eAssignConsumer\x128.kentik.credential.v20261020alpha1.AssignConsumerRequest\x1a9.kentik.credential.v20261020alpha1.AssignConsumerResponse\"\xe2\x01\x92A\x80\x01\x12\"Assign a consumer to a credential.\x1aJRecords that an entity (synthetic test, device, etc.) uses the credential.*\x0eAssignConsumer\x92\xd8\x02\x18credential_vault::update\x82\xd3\xe4\x93\x02<:\x01*\x1a7/credential/v20261020alpha1/credentials/{name}/consumer\x12\xdc\x02\n" +
 	"\x14ListCredentialGroups\x12>.kentik.credential.v20261020alpha1.ListCredentialGroupsRequest\x1a?.kentik.credential.v20261020alpha1.ListCredentialGroupsResponse\"\xc2\x01\x92A{\x12\x17List credential groups.\x1aJReturns every credential group with the latest version of its credentials.*\x14ListCredentialGroups\x92\xd8\x02\x16credential_vault::read\x82\xd3\xe4\x93\x02$\x12\"/credential/v20261020alpha1/groups\x12\x84\x03\n" +
 	"\x17ListCredentialOverviews\x12A.kentik.credential.v20261020alpha1.ListCredentialOverviewsRequest\x1aB.kentik.credential.v20261020alpha1.ListCredentialOverviewsResponse\"\xe1\x01\x92A\x96\x01\x12&List credential group names and types.\x1aSReturns a lightweight name and type listing of every credential group, for lookups.*\x17ListCredentialOverviews\x92\xd8\x02\x16credential_vault::read\x82\xd3\xe4\x93\x02'\x12%/credential/v20261020alpha1/overviews\x12\xbb\x02\n" +
@@ -1775,6 +1777,7 @@ func file_kentik_credential_v20261020alpha1_credential_proto_init() {
 		return
 	}
 	file_kentik_credential_v20261020alpha1_credential_proto_msgTypes[14].OneofWrappers = []any{}
+	file_kentik_credential_v20261020alpha1_credential_proto_msgTypes[22].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

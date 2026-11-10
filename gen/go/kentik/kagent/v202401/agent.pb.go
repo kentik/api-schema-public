@@ -38,6 +38,10 @@ const (
 	InstallerType_INSTALLER_TYPE_LINUX InstallerType = 1
 	// Agent installed as a Docker container.
 	InstallerType_INSTALLER_TYPE_DOCKER InstallerType = 2
+	// Agent installed from an RPM repository.
+	InstallerType_INSTALLER_TYPE_RPM InstallerType = 3
+	// Agent installed from a DEB repository.
+	InstallerType_INSTALLER_TYPE_DEB InstallerType = 4
 )
 
 // Enum value maps for InstallerType.
@@ -46,11 +50,15 @@ var (
 		0: "INSTALLER_TYPE_UNSPECIFIED",
 		1: "INSTALLER_TYPE_LINUX",
 		2: "INSTALLER_TYPE_DOCKER",
+		3: "INSTALLER_TYPE_RPM",
+		4: "INSTALLER_TYPE_DEB",
 	}
 	InstallerType_value = map[string]int32{
 		"INSTALLER_TYPE_UNSPECIFIED": 0,
 		"INSTALLER_TYPE_LINUX":       1,
 		"INSTALLER_TYPE_DOCKER":      2,
+		"INSTALLER_TYPE_RPM":         3,
+		"INSTALLER_TYPE_DEB":         4,
 	}
 )
 
@@ -79,6 +87,119 @@ func (x InstallerType) Number() protoreflect.EnumNumber {
 // Deprecated: Use InstallerType.Descriptor instead.
 func (InstallerType) EnumDescriptor() ([]byte, []int) {
 	return file_kentik_kagent_v202401_agent_proto_rawDescGZIP(), []int{0}
+}
+
+// {{.Name}}
+// Says who owns the releases of the agent and of every capability: the Kentik control plane or the
+// environment of the agent. One owner holds all releases of an agent.
+type ReleaseSource int32
+
+const (
+	// Not reported, for example by an older agent. Read it as managed.
+	ReleaseSource_RELEASE_SOURCE_UNSPECIFIED ReleaseSource = 0
+	// The Kentik control plane manages the releases: it chooses them, and the agent downloads and
+	// installs them.
+	ReleaseSource_RELEASE_SOURCE_MANAGED ReleaseSource = 1
+	// The environment of the agent, such as a package manager or an image, puts the releases on the
+	// host, and the agent runs them.
+	ReleaseSource_RELEASE_SOURCE_LOCAL ReleaseSource = 2
+)
+
+// Enum value maps for ReleaseSource.
+var (
+	ReleaseSource_name = map[int32]string{
+		0: "RELEASE_SOURCE_UNSPECIFIED",
+		1: "RELEASE_SOURCE_MANAGED",
+		2: "RELEASE_SOURCE_LOCAL",
+	}
+	ReleaseSource_value = map[string]int32{
+		"RELEASE_SOURCE_UNSPECIFIED": 0,
+		"RELEASE_SOURCE_MANAGED":     1,
+		"RELEASE_SOURCE_LOCAL":       2,
+	}
+)
+
+func (x ReleaseSource) Enum() *ReleaseSource {
+	p := new(ReleaseSource)
+	*p = x
+	return p
+}
+
+func (x ReleaseSource) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ReleaseSource) Descriptor() protoreflect.EnumDescriptor {
+	return file_kentik_kagent_v202401_agent_proto_enumTypes[1].Descriptor()
+}
+
+func (ReleaseSource) Type() protoreflect.EnumType {
+	return &file_kentik_kagent_v202401_agent_proto_enumTypes[1]
+}
+
+func (x ReleaseSource) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ReleaseSource.Descriptor instead.
+func (ReleaseSource) EnumDescriptor() ([]byte, []int) {
+	return file_kentik_kagent_v202401_agent_proto_rawDescGZIP(), []int{1}
+}
+
+// {{.Name}}
+// Says who owns the configuration of the agent and of every capability: the Kentik control plane or
+// the environment of the agent. A later value can combine two owners, for example values that the
+// control plane manages with local overrides.
+type ConfigSource int32
+
+const (
+	// Not reported, for example by an older agent. Read it as managed.
+	ConfigSource_CONFIG_SOURCE_UNSPECIFIED ConfigSource = 0
+	// The Kentik control plane manages the configuration.
+	ConfigSource_CONFIG_SOURCE_MANAGED ConfigSource = 1
+	// The environment of the agent, such as files on the host, owns the configuration.
+	ConfigSource_CONFIG_SOURCE_LOCAL ConfigSource = 2
+)
+
+// Enum value maps for ConfigSource.
+var (
+	ConfigSource_name = map[int32]string{
+		0: "CONFIG_SOURCE_UNSPECIFIED",
+		1: "CONFIG_SOURCE_MANAGED",
+		2: "CONFIG_SOURCE_LOCAL",
+	}
+	ConfigSource_value = map[string]int32{
+		"CONFIG_SOURCE_UNSPECIFIED": 0,
+		"CONFIG_SOURCE_MANAGED":     1,
+		"CONFIG_SOURCE_LOCAL":       2,
+	}
+)
+
+func (x ConfigSource) Enum() *ConfigSource {
+	p := new(ConfigSource)
+	*p = x
+	return p
+}
+
+func (x ConfigSource) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (ConfigSource) Descriptor() protoreflect.EnumDescriptor {
+	return file_kentik_kagent_v202401_agent_proto_enumTypes[2].Descriptor()
+}
+
+func (ConfigSource) Type() protoreflect.EnumType {
+	return &file_kentik_kagent_v202401_agent_proto_enumTypes[2]
+}
+
+func (x ConfigSource) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use ConfigSource.Descriptor instead.
+func (ConfigSource) EnumDescriptor() ([]byte, []int) {
+	return file_kentik_kagent_v202401_agent_proto_rawDescGZIP(), []int{2}
 }
 
 // {{.Name}}
@@ -176,6 +297,8 @@ type InstallConfig struct {
 	Id            string                 `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
 	Type          InstallerType          `protobuf:"varint,3,opt,name=type,proto3,enum=kentik.kagent.v202401.InstallerType" json:"type,omitempty"`
 	HostMetadata  *HostMetadata          `protobuf:"bytes,2,opt,name=host_metadata,json=hostMetadata,proto3" json:"host_metadata,omitempty"`
+	ReleaseSource ReleaseSource          `protobuf:"varint,4,opt,name=release_source,json=releaseSource,proto3,enum=kentik.kagent.v202401.ReleaseSource" json:"release_source,omitempty"`
+	ConfigSource  ConfigSource           `protobuf:"varint,5,opt,name=config_source,json=configSource,proto3,enum=kentik.kagent.v202401.ConfigSource" json:"config_source,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -229,6 +352,20 @@ func (x *InstallConfig) GetHostMetadata() *HostMetadata {
 		return x.HostMetadata
 	}
 	return nil
+}
+
+func (x *InstallConfig) GetReleaseSource() ReleaseSource {
+	if x != nil {
+		return x.ReleaseSource
+	}
+	return ReleaseSource_RELEASE_SOURCE_UNSPECIFIED
+}
+
+func (x *InstallConfig) GetConfigSource() ConfigSource {
+	if x != nil {
+		return x.ConfigSource
+	}
+	return ConfigSource_CONFIG_SOURCE_UNSPECIFIED
 }
 
 // {{.Name}}
@@ -1256,11 +1393,13 @@ const file_kentik_kagent_v202401_agent_proto_rawDesc = "" +
 	"\n" +
 	"private_ip\x18\x04 \x01(\tB6\x92A321Private IP address of the host the agent runs on.R\tprivateIp\x12Y\n" +
 	"\x02os\x18\x05 \x01(\tBI\x92AF2DOperating system of the host. One of `linux`, `darwin` or `windows`.R\x02os\x12V\n" +
-	"\x04arch\x18\x06 \x01(\tBB\x92A?2=CPU architecture of the host, for example `amd64` or `arm64`.R\x04arch\"\xb6\x02\n" +
+	"\x04arch\x18\x06 \x01(\tBB\x92A?2=CPU architecture of the host, for example `amd64` or `arm64`.R\x04arch\"\xd8\x04\n" +
 	"\rInstallConfig\x126\n" +
 	"\x02id\x18\x01 \x01(\tB&\x92A#2!Unique identifier of the install.R\x02id\x12l\n" +
 	"\x04type\x18\x03 \x01(\x0e2$.kentik.kagent.v202401.InstallerTypeB2\x92A/2-Installation method used to deploy the agent.R\x04type\x12\x7f\n" +
-	"\rhost_metadata\x18\x02 \x01(\v2#.kentik.kagent.v202401.HostMetadataB5\x92A220Metadata of the host the agent was installed on.R\fhostMetadata\"\xd7\a\n" +
+	"\rhost_metadata\x18\x02 \x01(\v2#.kentik.kagent.v202401.HostMetadataB5\x92A220Metadata of the host the agent was installed on.R\fhostMetadata\x12\x8d\x01\n" +
+	"\x0erelease_source\x18\x04 \x01(\x0e2$.kentik.kagent.v202401.ReleaseSourceB@\x92A=2;Who owns the releases of the agent and of its capabilities.R\rreleaseSource\x12\x8f\x01\n" +
+	"\rconfig_source\x18\x05 \x01(\x0e2#.kentik.kagent.v202401.ConfigSourceBE\x92AB2@Who owns the configuration of the agent and of its capabilities.R\fconfigSource\"\xd7\a\n" +
 	"\x05Agent\x127\n" +
 	"\x02id\x18\x01 \x01(\tB'\x92A!2\x1fUnique identifier of the agent.\xe0A\x03R\x02id\x12^\n" +
 	"\arunning\x18\x06 \x01(\bBD\x92A>2<Indication whether the agent is actively sending heartbeats.\xe0A\x03R\arunning\x12S\n" +
@@ -1329,11 +1468,21 @@ const file_kentik_kagent_v202401_agent_proto_rawDesc = "" +
 	"\tbootstrap\x18\x02 \x01(\v2$.kentik.kagent.v202401.BootstrapInfoB:\x92A725Commands for installing the agent on the target host.R\tbootstrap\" \n" +
 	"\x1eGenerateInstallCommandsRequest\"\x9e\x01\n" +
 	"\x1fGenerateInstallCommandsResponse\x12{\n" +
-	"\tbootstrap\x18\x01 \x01(\v2$.kentik.kagent.v202401.BootstrapInfoB7\x92A422Commands for installing an agent on a target host.R\tbootstrap*d\n" +
+	"\tbootstrap\x18\x01 \x01(\v2$.kentik.kagent.v202401.BootstrapInfoB7\x92A422Commands for installing an agent on a target host.R\tbootstrap*\x94\x01\n" +
 	"\rInstallerType\x12\x1e\n" +
 	"\x1aINSTALLER_TYPE_UNSPECIFIED\x10\x00\x12\x18\n" +
 	"\x14INSTALLER_TYPE_LINUX\x10\x01\x12\x19\n" +
-	"\x15INSTALLER_TYPE_DOCKER\x10\x022\x98\x11\n" +
+	"\x15INSTALLER_TYPE_DOCKER\x10\x02\x12\x16\n" +
+	"\x12INSTALLER_TYPE_RPM\x10\x03\x12\x16\n" +
+	"\x12INSTALLER_TYPE_DEB\x10\x04*e\n" +
+	"\rReleaseSource\x12\x1e\n" +
+	"\x1aRELEASE_SOURCE_UNSPECIFIED\x10\x00\x12\x1a\n" +
+	"\x16RELEASE_SOURCE_MANAGED\x10\x01\x12\x18\n" +
+	"\x14RELEASE_SOURCE_LOCAL\x10\x02*a\n" +
+	"\fConfigSource\x12\x1d\n" +
+	"\x19CONFIG_SOURCE_UNSPECIFIED\x10\x00\x12\x19\n" +
+	"\x15CONFIG_SOURCE_MANAGED\x10\x01\x12\x17\n" +
+	"\x13CONFIG_SOURCE_LOCAL\x10\x022\x98\x11\n" +
 	"\fAgentService\x12\xcb\x02\n" +
 	"\vCreateAgent\x12).kentik.kagent.v202401.CreateAgentRequest\x1a*.kentik.kagent.v202401.CreateAgentResponse\"\xe4\x01\x92A\xad\x01\x12\x10Create an agent.\x1a\x8b\x01Registers a new agent based on configuration in the request and returns it together with the commands for installing it on the target host.*\vCreateAgent\xf2\xd7\x02\x0eua-admin:write\x82\xd3\xe4\x93\x02\x1b:\x01*\"\x16/kagent/v202401/agents\x12\x88\x02\n" +
 	"\bGetAgent\x12&.kentik.kagent.v202401.GetAgentRequest\x1a'.kentik.kagent.v202401.GetAgentResponse\"\xaa\x01\x92As\x12\"Get agent configuration and state.\x1aCReturns configuration and state of the agent with the specified ID.*\bGetAgent\xf2\xd7\x02\rua-admin:read\x82\xd3\xe4\x93\x02\x1d\x12\x1b/kagent/v202401/agents/{id}\x12\x9b\x02\n" +
@@ -1369,73 +1518,77 @@ func file_kentik_kagent_v202401_agent_proto_rawDescGZIP() []byte {
 	return file_kentik_kagent_v202401_agent_proto_rawDescData
 }
 
-var file_kentik_kagent_v202401_agent_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
+var file_kentik_kagent_v202401_agent_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
 var file_kentik_kagent_v202401_agent_proto_msgTypes = make([]protoimpl.MessageInfo, 20)
 var file_kentik_kagent_v202401_agent_proto_goTypes = []any{
 	(InstallerType)(0),                      // 0: kentik.kagent.v202401.InstallerType
-	(*HostMetadata)(nil),                    // 1: kentik.kagent.v202401.HostMetadata
-	(*InstallConfig)(nil),                   // 2: kentik.kagent.v202401.InstallConfig
-	(*Agent)(nil),                           // 3: kentik.kagent.v202401.Agent
-	(*GetAgentRequest)(nil),                 // 4: kentik.kagent.v202401.GetAgentRequest
-	(*GetAgentResponse)(nil),                // 5: kentik.kagent.v202401.GetAgentResponse
-	(*ListAgentsRequest)(nil),               // 6: kentik.kagent.v202401.ListAgentsRequest
-	(*ListAgentsResponse)(nil),              // 7: kentik.kagent.v202401.ListAgentsResponse
-	(*UpdateAgentRequest)(nil),              // 8: kentik.kagent.v202401.UpdateAgentRequest
-	(*UpdateAgentResponse)(nil),             // 9: kentik.kagent.v202401.UpdateAgentResponse
-	(*DeleteAgentRequest)(nil),              // 10: kentik.kagent.v202401.DeleteAgentRequest
-	(*DeleteAgentResponse)(nil),             // 11: kentik.kagent.v202401.DeleteAgentResponse
-	(*AuthorizeRequest)(nil),                // 12: kentik.kagent.v202401.AuthorizeRequest
-	(*AuthorizeResponse)(nil),               // 13: kentik.kagent.v202401.AuthorizeResponse
-	(*AgentRegistration)(nil),               // 14: kentik.kagent.v202401.AgentRegistration
-	(*RegistrationConfig)(nil),              // 15: kentik.kagent.v202401.RegistrationConfig
-	(*CreateAgentRequest)(nil),              // 16: kentik.kagent.v202401.CreateAgentRequest
-	(*BootstrapInfo)(nil),                   // 17: kentik.kagent.v202401.BootstrapInfo
-	(*CreateAgentResponse)(nil),             // 18: kentik.kagent.v202401.CreateAgentResponse
-	(*GenerateInstallCommandsRequest)(nil),  // 19: kentik.kagent.v202401.GenerateInstallCommandsRequest
-	(*GenerateInstallCommandsResponse)(nil), // 20: kentik.kagent.v202401.GenerateInstallCommandsResponse
-	(*AgentConfig)(nil),                     // 21: kentik.kagent.v202401.AgentConfig
-	(*AgentDesiredState)(nil),               // 22: kentik.kagent.v202401.AgentDesiredState
-	(*AgentCurrentState)(nil),               // 23: kentik.kagent.v202401.AgentCurrentState
-	(*fieldmaskpb.FieldMask)(nil),           // 24: google.protobuf.FieldMask
-	(*timestamppb.Timestamp)(nil),           // 25: google.protobuf.Timestamp
+	(ReleaseSource)(0),                      // 1: kentik.kagent.v202401.ReleaseSource
+	(ConfigSource)(0),                       // 2: kentik.kagent.v202401.ConfigSource
+	(*HostMetadata)(nil),                    // 3: kentik.kagent.v202401.HostMetadata
+	(*InstallConfig)(nil),                   // 4: kentik.kagent.v202401.InstallConfig
+	(*Agent)(nil),                           // 5: kentik.kagent.v202401.Agent
+	(*GetAgentRequest)(nil),                 // 6: kentik.kagent.v202401.GetAgentRequest
+	(*GetAgentResponse)(nil),                // 7: kentik.kagent.v202401.GetAgentResponse
+	(*ListAgentsRequest)(nil),               // 8: kentik.kagent.v202401.ListAgentsRequest
+	(*ListAgentsResponse)(nil),              // 9: kentik.kagent.v202401.ListAgentsResponse
+	(*UpdateAgentRequest)(nil),              // 10: kentik.kagent.v202401.UpdateAgentRequest
+	(*UpdateAgentResponse)(nil),             // 11: kentik.kagent.v202401.UpdateAgentResponse
+	(*DeleteAgentRequest)(nil),              // 12: kentik.kagent.v202401.DeleteAgentRequest
+	(*DeleteAgentResponse)(nil),             // 13: kentik.kagent.v202401.DeleteAgentResponse
+	(*AuthorizeRequest)(nil),                // 14: kentik.kagent.v202401.AuthorizeRequest
+	(*AuthorizeResponse)(nil),               // 15: kentik.kagent.v202401.AuthorizeResponse
+	(*AgentRegistration)(nil),               // 16: kentik.kagent.v202401.AgentRegistration
+	(*RegistrationConfig)(nil),              // 17: kentik.kagent.v202401.RegistrationConfig
+	(*CreateAgentRequest)(nil),              // 18: kentik.kagent.v202401.CreateAgentRequest
+	(*BootstrapInfo)(nil),                   // 19: kentik.kagent.v202401.BootstrapInfo
+	(*CreateAgentResponse)(nil),             // 20: kentik.kagent.v202401.CreateAgentResponse
+	(*GenerateInstallCommandsRequest)(nil),  // 21: kentik.kagent.v202401.GenerateInstallCommandsRequest
+	(*GenerateInstallCommandsResponse)(nil), // 22: kentik.kagent.v202401.GenerateInstallCommandsResponse
+	(*AgentConfig)(nil),                     // 23: kentik.kagent.v202401.AgentConfig
+	(*AgentDesiredState)(nil),               // 24: kentik.kagent.v202401.AgentDesiredState
+	(*AgentCurrentState)(nil),               // 25: kentik.kagent.v202401.AgentCurrentState
+	(*fieldmaskpb.FieldMask)(nil),           // 26: google.protobuf.FieldMask
+	(*timestamppb.Timestamp)(nil),           // 27: google.protobuf.Timestamp
 }
 var file_kentik_kagent_v202401_agent_proto_depIdxs = []int32{
 	0,  // 0: kentik.kagent.v202401.InstallConfig.type:type_name -> kentik.kagent.v202401.InstallerType
-	1,  // 1: kentik.kagent.v202401.InstallConfig.host_metadata:type_name -> kentik.kagent.v202401.HostMetadata
-	21, // 2: kentik.kagent.v202401.Agent.config:type_name -> kentik.kagent.v202401.AgentConfig
-	2,  // 3: kentik.kagent.v202401.Agent.install:type_name -> kentik.kagent.v202401.InstallConfig
-	22, // 4: kentik.kagent.v202401.Agent.desired_state:type_name -> kentik.kagent.v202401.AgentDesiredState
-	23, // 5: kentik.kagent.v202401.Agent.current_state:type_name -> kentik.kagent.v202401.AgentCurrentState
-	3,  // 6: kentik.kagent.v202401.GetAgentResponse.agent:type_name -> kentik.kagent.v202401.Agent
-	3,  // 7: kentik.kagent.v202401.ListAgentsResponse.agents:type_name -> kentik.kagent.v202401.Agent
-	3,  // 8: kentik.kagent.v202401.UpdateAgentRequest.agent:type_name -> kentik.kagent.v202401.Agent
-	24, // 9: kentik.kagent.v202401.UpdateAgentRequest.mask:type_name -> google.protobuf.FieldMask
-	3,  // 10: kentik.kagent.v202401.UpdateAgentResponse.agent:type_name -> kentik.kagent.v202401.Agent
-	25, // 11: kentik.kagent.v202401.RegistrationConfig.expires_at:type_name -> google.protobuf.Timestamp
-	14, // 12: kentik.kagent.v202401.CreateAgentRequest.agent:type_name -> kentik.kagent.v202401.AgentRegistration
-	15, // 13: kentik.kagent.v202401.CreateAgentRequest.config:type_name -> kentik.kagent.v202401.RegistrationConfig
-	3,  // 14: kentik.kagent.v202401.CreateAgentResponse.agent:type_name -> kentik.kagent.v202401.Agent
-	17, // 15: kentik.kagent.v202401.CreateAgentResponse.bootstrap:type_name -> kentik.kagent.v202401.BootstrapInfo
-	17, // 16: kentik.kagent.v202401.GenerateInstallCommandsResponse.bootstrap:type_name -> kentik.kagent.v202401.BootstrapInfo
-	16, // 17: kentik.kagent.v202401.AgentService.CreateAgent:input_type -> kentik.kagent.v202401.CreateAgentRequest
-	4,  // 18: kentik.kagent.v202401.AgentService.GetAgent:input_type -> kentik.kagent.v202401.GetAgentRequest
-	6,  // 19: kentik.kagent.v202401.AgentService.ListAgents:input_type -> kentik.kagent.v202401.ListAgentsRequest
-	8,  // 20: kentik.kagent.v202401.AgentService.UpdateAgent:input_type -> kentik.kagent.v202401.UpdateAgentRequest
-	10, // 21: kentik.kagent.v202401.AgentService.DeleteAgent:input_type -> kentik.kagent.v202401.DeleteAgentRequest
-	12, // 22: kentik.kagent.v202401.AgentService.Authorize:input_type -> kentik.kagent.v202401.AuthorizeRequest
-	19, // 23: kentik.kagent.v202401.AgentService.GenerateInstallCommands:input_type -> kentik.kagent.v202401.GenerateInstallCommandsRequest
-	18, // 24: kentik.kagent.v202401.AgentService.CreateAgent:output_type -> kentik.kagent.v202401.CreateAgentResponse
-	5,  // 25: kentik.kagent.v202401.AgentService.GetAgent:output_type -> kentik.kagent.v202401.GetAgentResponse
-	7,  // 26: kentik.kagent.v202401.AgentService.ListAgents:output_type -> kentik.kagent.v202401.ListAgentsResponse
-	9,  // 27: kentik.kagent.v202401.AgentService.UpdateAgent:output_type -> kentik.kagent.v202401.UpdateAgentResponse
-	11, // 28: kentik.kagent.v202401.AgentService.DeleteAgent:output_type -> kentik.kagent.v202401.DeleteAgentResponse
-	13, // 29: kentik.kagent.v202401.AgentService.Authorize:output_type -> kentik.kagent.v202401.AuthorizeResponse
-	20, // 30: kentik.kagent.v202401.AgentService.GenerateInstallCommands:output_type -> kentik.kagent.v202401.GenerateInstallCommandsResponse
-	24, // [24:31] is the sub-list for method output_type
-	17, // [17:24] is the sub-list for method input_type
-	17, // [17:17] is the sub-list for extension type_name
-	17, // [17:17] is the sub-list for extension extendee
-	0,  // [0:17] is the sub-list for field type_name
+	3,  // 1: kentik.kagent.v202401.InstallConfig.host_metadata:type_name -> kentik.kagent.v202401.HostMetadata
+	1,  // 2: kentik.kagent.v202401.InstallConfig.release_source:type_name -> kentik.kagent.v202401.ReleaseSource
+	2,  // 3: kentik.kagent.v202401.InstallConfig.config_source:type_name -> kentik.kagent.v202401.ConfigSource
+	23, // 4: kentik.kagent.v202401.Agent.config:type_name -> kentik.kagent.v202401.AgentConfig
+	4,  // 5: kentik.kagent.v202401.Agent.install:type_name -> kentik.kagent.v202401.InstallConfig
+	24, // 6: kentik.kagent.v202401.Agent.desired_state:type_name -> kentik.kagent.v202401.AgentDesiredState
+	25, // 7: kentik.kagent.v202401.Agent.current_state:type_name -> kentik.kagent.v202401.AgentCurrentState
+	5,  // 8: kentik.kagent.v202401.GetAgentResponse.agent:type_name -> kentik.kagent.v202401.Agent
+	5,  // 9: kentik.kagent.v202401.ListAgentsResponse.agents:type_name -> kentik.kagent.v202401.Agent
+	5,  // 10: kentik.kagent.v202401.UpdateAgentRequest.agent:type_name -> kentik.kagent.v202401.Agent
+	26, // 11: kentik.kagent.v202401.UpdateAgentRequest.mask:type_name -> google.protobuf.FieldMask
+	5,  // 12: kentik.kagent.v202401.UpdateAgentResponse.agent:type_name -> kentik.kagent.v202401.Agent
+	27, // 13: kentik.kagent.v202401.RegistrationConfig.expires_at:type_name -> google.protobuf.Timestamp
+	16, // 14: kentik.kagent.v202401.CreateAgentRequest.agent:type_name -> kentik.kagent.v202401.AgentRegistration
+	17, // 15: kentik.kagent.v202401.CreateAgentRequest.config:type_name -> kentik.kagent.v202401.RegistrationConfig
+	5,  // 16: kentik.kagent.v202401.CreateAgentResponse.agent:type_name -> kentik.kagent.v202401.Agent
+	19, // 17: kentik.kagent.v202401.CreateAgentResponse.bootstrap:type_name -> kentik.kagent.v202401.BootstrapInfo
+	19, // 18: kentik.kagent.v202401.GenerateInstallCommandsResponse.bootstrap:type_name -> kentik.kagent.v202401.BootstrapInfo
+	18, // 19: kentik.kagent.v202401.AgentService.CreateAgent:input_type -> kentik.kagent.v202401.CreateAgentRequest
+	6,  // 20: kentik.kagent.v202401.AgentService.GetAgent:input_type -> kentik.kagent.v202401.GetAgentRequest
+	8,  // 21: kentik.kagent.v202401.AgentService.ListAgents:input_type -> kentik.kagent.v202401.ListAgentsRequest
+	10, // 22: kentik.kagent.v202401.AgentService.UpdateAgent:input_type -> kentik.kagent.v202401.UpdateAgentRequest
+	12, // 23: kentik.kagent.v202401.AgentService.DeleteAgent:input_type -> kentik.kagent.v202401.DeleteAgentRequest
+	14, // 24: kentik.kagent.v202401.AgentService.Authorize:input_type -> kentik.kagent.v202401.AuthorizeRequest
+	21, // 25: kentik.kagent.v202401.AgentService.GenerateInstallCommands:input_type -> kentik.kagent.v202401.GenerateInstallCommandsRequest
+	20, // 26: kentik.kagent.v202401.AgentService.CreateAgent:output_type -> kentik.kagent.v202401.CreateAgentResponse
+	7,  // 27: kentik.kagent.v202401.AgentService.GetAgent:output_type -> kentik.kagent.v202401.GetAgentResponse
+	9,  // 28: kentik.kagent.v202401.AgentService.ListAgents:output_type -> kentik.kagent.v202401.ListAgentsResponse
+	11, // 29: kentik.kagent.v202401.AgentService.UpdateAgent:output_type -> kentik.kagent.v202401.UpdateAgentResponse
+	13, // 30: kentik.kagent.v202401.AgentService.DeleteAgent:output_type -> kentik.kagent.v202401.DeleteAgentResponse
+	15, // 31: kentik.kagent.v202401.AgentService.Authorize:output_type -> kentik.kagent.v202401.AuthorizeResponse
+	22, // 32: kentik.kagent.v202401.AgentService.GenerateInstallCommands:output_type -> kentik.kagent.v202401.GenerateInstallCommandsResponse
+	26, // [26:33] is the sub-list for method output_type
+	19, // [19:26] is the sub-list for method input_type
+	19, // [19:19] is the sub-list for extension type_name
+	19, // [19:19] is the sub-list for extension extendee
+	0,  // [0:19] is the sub-list for field type_name
 }
 
 func init() { file_kentik_kagent_v202401_agent_proto_init() }
@@ -1454,7 +1607,7 @@ func file_kentik_kagent_v202401_agent_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_kentik_kagent_v202401_agent_proto_rawDesc), len(file_kentik_kagent_v202401_agent_proto_rawDesc)),
-			NumEnums:      1,
+			NumEnums:      3,
 			NumMessages:   20,
 			NumExtensions: 0,
 			NumServices:   1,

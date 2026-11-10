@@ -2394,11 +2394,11 @@ static const ProtobufCFieldDescriptor kentik__credential__v20261020alpha1__delet
     2,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_UINT32,
-    0,   /* quantifier_offset */
+    offsetof(Kentik__Credential__V20261020alpha1__DeleteCredentialRequest, _version_case),
     offsetof(Kentik__Credential__V20261020alpha1__DeleteCredentialRequest, version),
     NULL,
     NULL,
-    0,             /* flags */
+    PROTOBUF_C_FIELD_FLAG_ONEOF,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
 };

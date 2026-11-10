@@ -188,11 +188,11 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr DeleteCredentialRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : name_(
+      : _cached_size_{0},
+        name_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        version_{0u},
-        _cached_size_{0} {}
+        version_{0u} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR DeleteCredentialRequest::DeleteCredentialRequest(::_pbi::ConstantInitialized)
@@ -988,7 +988,7 @@ const ::uint32_t
         ~0u,  // no _inlined_string_donated_
         ~0u,  // no _split_
         ~0u,  // no sizeof(Split)
-        ~0u,  // no _has_bits_
+        PROTOBUF_FIELD_OFFSET(::kentik::credential::v20261020alpha1::DeleteCredentialRequest, _impl_._has_bits_),
         PROTOBUF_FIELD_OFFSET(::kentik::credential::v20261020alpha1::DeleteCredentialRequest, _internal_metadata_),
         ~0u,  // no _extensions_
         ~0u,  // no _oneof_case_
@@ -998,6 +998,8 @@ const ::uint32_t
         ~0u,  // no sizeof(Split)
         PROTOBUF_FIELD_OFFSET(::kentik::credential::v20261020alpha1::DeleteCredentialRequest, _impl_.name_),
         PROTOBUF_FIELD_OFFSET(::kentik::credential::v20261020alpha1::DeleteCredentialRequest, _impl_.version_),
+        ~0u,
+        0,
         ~0u,  // no _has_bits_
         PROTOBUF_FIELD_OFFSET(::kentik::credential::v20261020alpha1::DeleteCredentialResponse, _internal_metadata_),
         ~0u,  // no _extensions_
@@ -1054,10 +1056,10 @@ static const ::_pbi::MigrationSchema
         {228, 237, -1, sizeof(::kentik::credential::v20261020alpha1::UpdateCredentialGroupResponse)},
         {238, -1, -1, sizeof(::kentik::credential::v20261020alpha1::DeleteCredentialGroupRequest)},
         {247, -1, -1, sizeof(::kentik::credential::v20261020alpha1::DeleteCredentialGroupResponse)},
-        {255, -1, -1, sizeof(::kentik::credential::v20261020alpha1::DeleteCredentialRequest)},
-        {265, -1, -1, sizeof(::kentik::credential::v20261020alpha1::DeleteCredentialResponse)},
-        {273, 283, -1, sizeof(::kentik::credential::v20261020alpha1::AssignConsumerRequest)},
-        {285, 294, -1, sizeof(::kentik::credential::v20261020alpha1::AssignConsumerResponse)},
+        {255, 265, -1, sizeof(::kentik::credential::v20261020alpha1::DeleteCredentialRequest)},
+        {267, -1, -1, sizeof(::kentik::credential::v20261020alpha1::DeleteCredentialResponse)},
+        {275, 285, -1, sizeof(::kentik::credential::v20261020alpha1::AssignConsumerRequest)},
+        {287, 296, -1, sizeof(::kentik::credential::v20261020alpha1::AssignConsumerResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::credential::v20261020alpha1::_CreatedBy_default_instance_._instance,
@@ -1196,143 +1198,143 @@ const char descriptor_table_protodef_kentik_2fcredential_2fv20261020alpha1_2fcre
     "0alpha1.CredentialGroupR\005group\"Q\n\034Delete"
     "CredentialGroupRequest\0221\n\004name\030\001 \001(\tB\035\222A"
     "\0272\025Credential group name\340A\002R\004name\"\037\n\035Del"
-    "eteCredentialGroupResponse\"\262\001\n\027DeleteCre"
+    "eteCredentialGroupResponse\"\303\001\n\027DeleteCre"
     "dentialRequest\022L\n\004name\030\001 \001(\tB8\222A220Fully"
     " qualified credential name, `<group>.<ke"
-    "y>`\340A\002R\004name\022I\n\007version\030\002 \001(\rB/\222A)2\'Cred"
-    "ential version; versions start at 0\340A\002R\007"
-    "version\"\032\n\030DeleteCredentialResponse\"\263\001\n\025"
-    "AssignConsumerRequest\022L\n\004name\030\001 \001(\tB8\222A2"
-    "20Fully qualified credential name, `<gro"
-    "up>.<key>`\340A\002R\004name\022L\n\010consumer\030\002 \001(\0132+."
-    "kentik.credential.v20261020alpha1.Consum"
-    "erB\003\340A\002R\010consumer\"g\n\026AssignConsumerRespo"
-    "nse\022M\n\ncredential\030\001 \001(\0132-.kentik.credent"
-    "ial.v20261020alpha1.CredentialR\ncredenti"
-    "al*\313\003\n\016CredentialType\022\037\n\033CREDENTIAL_TYPE"
-    "_UNSPECIFIED\020\000\022\036\n\032CREDENTIAL_TYPE_BASIC_"
-    "AUTH\020\001\022\033\n\027CREDENTIAL_TYPE_SNMP_V1\020\002\022\034\n\030C"
-    "REDENTIAL_TYPE_SNMP_V2C\020\003\022\033\n\027CREDENTIAL_"
-    "TYPE_SNMP_V3\020\004\022\'\n#CREDENTIAL_TYPE_STREAM"
-    "ING_TELEMETRY\020\005\022\033\n\027CREDENTIAL_TYPE_BGP_M"
-    "D5\020\006\022\035\n\031CREDENTIAL_TYPE_API_TOKEN\020\007\022\031\n\025C"
-    "REDENTIAL_TYPE_OTHER\020\010\022\033\n\027CREDENTIAL_TYP"
-    "E_SSH_KEY\020\t\022 \n\034CREDENTIAL_TYPE_SSH_PASSW"
-    "ORD\020\n\022 \n\034CREDENTIAL_TYPE_AI_API_TOKEN\020\013\022"
-    "$\n CREDENTIAL_TYPE_MCP_HTTP_HEADERS\020\014\022\031\n"
-    "\025CREDENTIAL_TYPE_CLOUD\020\r2\301\034\n\021CredentialS"
-    "ervice\022\254\002\n\017ListCredentials\0229.kentik.cred"
-    "ential.v20261020alpha1.ListCredentialsRe"
-    "quest\032:.kentik.credential.v20261020alpha"
-    "1.ListCredentialsResponse\"\241\001\222AU\022\021List cr"
-    "edentials.\032/Returns the latest version o"
-    "f every credential.*\017ListCredentials\222\330\002\026"
-    "credential_vault::read\202\323\344\223\002)\022\'/credentia"
-    "l/v20261020alpha1/credentials\022\305\002\n\rGetCre"
-    "dential\0227.kentik.credential.v20261020alp"
-    "ha1.GetCredentialRequest\0328.kentik.creden"
-    "tial.v20261020alpha1.GetCredentialRespon"
-    "se\"\300\001\222Am\022\031Get a credential by name.\032ARet"
-    "urns the latest, a specific, or every ve"
-    "rsion of a credential.*\rGetCredential\222\330\002"
-    "\026credential_vault::read\202\323\344\223\0020\022./credenti"
-    "al/v20261020alpha1/credentials/{name}\022\371\002"
-    "\n\020DeleteCredential\022:.kentik.credential.v"
-    "20261020alpha1.DeleteCredentialRequest\032;"
-    ".kentik.credential.v20261020alpha1.Delet"
-    "eCredentialResponse\"\353\001\222A\202\001\022\034Delete a cre"
-    "dential version.\032PDeletes a single versi"
-    "on of a credential. Fails if the credent"
-    "ial has consumers.*\020DeleteCredential\222\330\002\030"
-    "credential_vault::delete\202\323\344\223\002C*A/credent"
-    "ial/v20261020alpha1/credentials/{name}/v"
-    "ersions/{version}\022\352\002\n\016AssignConsumer\0228.k"
-    "entik.credential.v20261020alpha1.AssignC"
-    "onsumerRequest\0329.kentik.credential.v2026"
-    "1020alpha1.AssignConsumerResponse\"\342\001\222A\200\001"
-    "\022\"Assign a consumer to a credential.\032JRe"
-    "cords that an entity (synthetic test, de"
-    "vice, etc.) uses the credential.*\016Assign"
-    "Consumer\222\330\002\030credential_vault::update\202\323\344\223"
-    "\002<\0327/credential/v20261020alpha1/credenti"
-    "als/{name}/consumer:\001*\022\334\002\n\024ListCredentia"
-    "lGroups\022>.kentik.credential.v20261020alp"
-    "ha1.ListCredentialGroupsRequest\032\?.kentik"
-    ".credential.v20261020alpha1.ListCredenti"
-    "alGroupsResponse\"\302\001\222A{\022\027List credential "
-    "groups.\032JReturns every credential group "
-    "with the latest version of its credentia"
-    "ls.*\024ListCredentialGroups\222\330\002\026credential_"
-    "vault::read\202\323\344\223\002$\022\"/credential/v20261020"
-    "alpha1/groups\022\204\003\n\027ListCredentialOverview"
-    "s\022A.kentik.credential.v20261020alpha1.Li"
-    "stCredentialOverviewsRequest\032B.kentik.cr"
-    "edential.v20261020alpha1.ListCredentialO"
-    "verviewsResponse\"\341\001\222A\226\001\022&List credential"
-    " group names and types.\032SReturns a light"
-    "weight name and type listing of every cr"
-    "edential group, for lookups.*\027ListCreden"
-    "tialOverviews\222\330\002\026credential_vault::read\202"
-    "\323\344\223\002\'\022%/credential/v20261020alpha1/overv"
-    "iews\022\273\002\n\022GetCredentialGroup\022<.kentik.cre"
-    "dential.v20261020alpha1.GetCredentialGro"
-    "upRequest\032=.kentik.credential.v20261020a"
-    "lpha1.GetCredentialGroupResponse\"\247\001\222AY\022\037"
-    "Get a credential group by name.\032\"Returns"
-    " a single credential group.*\022GetCredenti"
-    "alGroup\222\330\002\026credential_vault::read\202\323\344\223\002+\022"
-    ")/credential/v20261020alpha1/groups/{nam"
-    "e}\022\335\002\n\025CreateCredentialGroup\022\?.kentik.cr"
-    "edential.v20261020alpha1.CreateCredentia"
-    "lGroupRequest\032@.kentik.credential.v20261"
-    "020alpha1.CreateCredentialGroupResponse\""
-    "\300\001\222At\022\032Create a credential group.\032\?Creat"
-    "es one credential per token and returns "
-    "the created group.*\025CreateCredentialGrou"
-    "p\222\330\002\030credential_vault::create\202\323\344\223\002\'\"\"/cr"
-    "edential/v20261020alpha1/groups:\001*\022\203\003\n\025U"
-    "pdateCredentialGroup\022\?.kentik.credential"
-    ".v20261020alpha1.UpdateCredentialGroupRe"
-    "quest\032@.kentik.credential.v20261020alpha"
-    "1.UpdateCredentialGroupResponse\"\346\001\222A\222\001\022\032"
-    "Update a credential group.\032]Tokens with "
-    "a value create a new credential version;"
-    " tokens without one only update metadata"
-    ".*\025UpdateCredentialGroup\222\330\002\030credential_v"
-    "ault::update\202\323\344\223\002.\032)/credential/v2026102"
-    "0alpha1/groups/{name}:\001*\022\201\003\n\025DeleteCrede"
-    "ntialGroup\022\?.kentik.credential.v20261020"
-    "alpha1.DeleteCredentialGroupRequest\032@.ke"
+    "y>`\340A\002R\004name\022N\n\007version\030\002 \001(\rB/\222A)2\'Cred"
+    "ential version; versions start at 0\340A\002H\000"
+    "R\007version\210\001\001B\n\n\010_version\"\032\n\030DeleteCreden"
+    "tialResponse\"\263\001\n\025AssignConsumerRequest\022L"
+    "\n\004name\030\001 \001(\tB8\222A220Fully qualified crede"
+    "ntial name, `<group>.<key>`\340A\002R\004name\022L\n\010"
+    "consumer\030\002 \001(\0132+.kentik.credential.v2026"
+    "1020alpha1.ConsumerB\003\340A\002R\010consumer\"g\n\026As"
+    "signConsumerResponse\022M\n\ncredential\030\001 \001(\013"
+    "2-.kentik.credential.v20261020alpha1.Cre"
+    "dentialR\ncredential*\313\003\n\016CredentialType\022\037"
+    "\n\033CREDENTIAL_TYPE_UNSPECIFIED\020\000\022\036\n\032CREDE"
+    "NTIAL_TYPE_BASIC_AUTH\020\001\022\033\n\027CREDENTIAL_TY"
+    "PE_SNMP_V1\020\002\022\034\n\030CREDENTIAL_TYPE_SNMP_V2C"
+    "\020\003\022\033\n\027CREDENTIAL_TYPE_SNMP_V3\020\004\022\'\n#CREDE"
+    "NTIAL_TYPE_STREAMING_TELEMETRY\020\005\022\033\n\027CRED"
+    "ENTIAL_TYPE_BGP_MD5\020\006\022\035\n\031CREDENTIAL_TYPE"
+    "_API_TOKEN\020\007\022\031\n\025CREDENTIAL_TYPE_OTHER\020\010\022"
+    "\033\n\027CREDENTIAL_TYPE_SSH_KEY\020\t\022 \n\034CREDENTI"
+    "AL_TYPE_SSH_PASSWORD\020\n\022 \n\034CREDENTIAL_TYP"
+    "E_AI_API_TOKEN\020\013\022$\n CREDENTIAL_TYPE_MCP_"
+    "HTTP_HEADERS\020\014\022\031\n\025CREDENTIAL_TYPE_CLOUD\020"
+    "\r2\300\034\n\021CredentialService\022\254\002\n\017ListCredenti"
+    "als\0229.kentik.credential.v20261020alpha1."
+    "ListCredentialsRequest\032:.kentik.credenti"
+    "al.v20261020alpha1.ListCredentialsRespon"
+    "se\"\241\001\222AU\022\021List credentials.\032/Returns the"
+    " latest version of every credential.*\017Li"
+    "stCredentials\222\330\002\026credential_vault::read\202"
+    "\323\344\223\002)\022\'/credential/v20261020alpha1/crede"
+    "ntials\022\305\002\n\rGetCredential\0227.kentik.creden"
+    "tial.v20261020alpha1.GetCredentialReques"
+    "t\0328.kentik.credential.v20261020alpha1.Ge"
+    "tCredentialResponse\"\300\001\222Am\022\031Get a credent"
+    "ial by name.\032AReturns the latest, a spec"
+    "ific, or every version of a credential.*"
+    "\rGetCredential\222\330\002\026credential_vault::read"
+    "\202\323\344\223\0020\022./credential/v20261020alpha1/cred"
+    "entials/{name}\022\370\002\n\020DeleteCredential\022:.ke"
     "ntik.credential.v20261020alpha1.DeleteCr"
-    "edentialGroupResponse\"\344\001\222A\223\001\022\032Delete a c"
-    "redential group.\032^Deletes every version "
-    "of every credential in the group. Fails "
-    "if any credential has consumers.*\025Delete"
-    "CredentialGroup\222\330\002\030credential_vault::del"
-    "ete\202\323\344\223\002+*)/credential/v20261020alpha1/g"
-    "roups/{name}\032>\312A\023grpc.api.kentik.com\352\327\002\020"
-    "admin.credential\220\330\002\003\232\330\002\014grpc-connectB\256\006Z"
-    "Wgithub.com/kentik/api-schema-public/gen"
-    "/go/kentik/credential/v20261020alpha1;cr"
-    "edential\222A\321\005\022\230\004\n\025Credentials Vault API\022\246"
-    "\003# Overview\nThe Credentials Vault API en"
-    "ables programmatic lifecycle management "
-    "of credentials stored in Kentik Credenti"
-    "al Vault.\n### Key Features\n* Create, rea"
-    "d, update, and delete of credential grou"
-    "ps\n* Lookup and deletion of individual c"
-    "redential versions\n* Assignment of consu"
-    "mers (synthetic tests, devices, etc.) to"
-    " credentials\n\nSecret values are write-on"
-    "ly: they are accepted on create and upda"
-    "te but never returned.\n\"E\n\026Kentik API En"
-    "gineering\022+https://github.com/kentik/api"
-    "-schema-public2\017v20261020alpha1*\001\0022\020appl"
-    "ication/json:\020application/jsonZD\n\036\n\005emai"
-    "l\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005token\022\031\010\002\032\023X"
-    "-CH-Auth-API-Token \002b\026\n\t\n\005email\022\000\n\t\n\005tok"
-    "en\022\000r/\n\025Kentik Knowledge Base\022\026https://k"
-    "b.kentik.com/b\006proto3"
+    "edentialRequest\032;.kentik.credential.v202"
+    "61020alpha1.DeleteCredentialResponse\"\352\001\222"
+    "A\224\001\022\034Delete a credential version.\032bDelet"
+    "es a single version of a credential. Ver"
+    "sion Requires. Fails if the credential h"
+    "as consumers.*\020DeleteCredential\222\330\002\030crede"
+    "ntial_vault::delete\202\323\344\223\0020*./credential/v"
+    "20261020alpha1/credentials/{name}\022\352\002\n\016As"
+    "signConsumer\0228.kentik.credential.v202610"
+    "20alpha1.AssignConsumerRequest\0329.kentik."
+    "credential.v20261020alpha1.AssignConsume"
+    "rResponse\"\342\001\222A\200\001\022\"Assign a consumer to a"
+    " credential.\032JRecords that an entity (sy"
+    "nthetic test, device, etc.) uses the cre"
+    "dential.*\016AssignConsumer\222\330\002\030credential_v"
+    "ault::update\202\323\344\223\002<\0327/credential/v2026102"
+    "0alpha1/credentials/{name}/consumer:\001*\022\334"
+    "\002\n\024ListCredentialGroups\022>.kentik.credent"
+    "ial.v20261020alpha1.ListCredentialGroups"
+    "Request\032\?.kentik.credential.v20261020alp"
+    "ha1.ListCredentialGroupsResponse\"\302\001\222A{\022\027"
+    "List credential groups.\032JReturns every c"
+    "redential group with the latest version "
+    "of its credentials.*\024ListCredentialGroup"
+    "s\222\330\002\026credential_vault::read\202\323\344\223\002$\022\"/cred"
+    "ential/v20261020alpha1/groups\022\204\003\n\027ListCr"
+    "edentialOverviews\022A.kentik.credential.v2"
+    "0261020alpha1.ListCredentialOverviewsReq"
+    "uest\032B.kentik.credential.v20261020alpha1"
+    ".ListCredentialOverviewsResponse\"\341\001\222A\226\001\022"
+    "&List credential group names and types.\032"
+    "SReturns a lightweight name and type lis"
+    "ting of every credential group, for look"
+    "ups.*\027ListCredentialOverviews\222\330\002\026credent"
+    "ial_vault::read\202\323\344\223\002\'\022%/credential/v2026"
+    "1020alpha1/overviews\022\273\002\n\022GetCredentialGr"
+    "oup\022<.kentik.credential.v20261020alpha1."
+    "GetCredentialGroupRequest\032=.kentik.crede"
+    "ntial.v20261020alpha1.GetCredentialGroup"
+    "Response\"\247\001\222AY\022\037Get a credential group b"
+    "y name.\032\"Returns a single credential gro"
+    "up.*\022GetCredentialGroup\222\330\002\026credential_va"
+    "ult::read\202\323\344\223\002+\022)/credential/v20261020al"
+    "pha1/groups/{name}\022\335\002\n\025CreateCredentialG"
+    "roup\022\?.kentik.credential.v20261020alpha1"
+    ".CreateCredentialGroupRequest\032@.kentik.c"
+    "redential.v20261020alpha1.CreateCredenti"
+    "alGroupResponse\"\300\001\222At\022\032Create a credenti"
+    "al group.\032\?Creates one credential per to"
+    "ken and returns the created group.*\025Crea"
+    "teCredentialGroup\222\330\002\030credential_vault::c"
+    "reate\202\323\344\223\002\'\"\"/credential/v20261020alpha1"
+    "/groups:\001*\022\203\003\n\025UpdateCredentialGroup\022\?.k"
+    "entik.credential.v20261020alpha1.UpdateC"
+    "redentialGroupRequest\032@.kentik.credentia"
+    "l.v20261020alpha1.UpdateCredentialGroupR"
+    "esponse\"\346\001\222A\222\001\022\032Update a credential grou"
+    "p.\032]Tokens with a value create a new cre"
+    "dential version; tokens without one only"
+    " update metadata.*\025UpdateCredentialGroup"
+    "\222\330\002\030credential_vault::update\202\323\344\223\002.\032)/cre"
+    "dential/v20261020alpha1/groups/{name}:\001*"
+    "\022\201\003\n\025DeleteCredentialGroup\022\?.kentik.cred"
+    "ential.v20261020alpha1.DeleteCredentialG"
+    "roupRequest\032@.kentik.credential.v2026102"
+    "0alpha1.DeleteCredentialGroupResponse\"\344\001"
+    "\222A\223\001\022\032Delete a credential group.\032^Delete"
+    "s every version of every credential in t"
+    "he group. Fails if any credential has co"
+    "nsumers.*\025DeleteCredentialGroup\222\330\002\030crede"
+    "ntial_vault::delete\202\323\344\223\002+*)/credential/v"
+    "20261020alpha1/groups/{name}\032>\312A\023grpc.ap"
+    "i.kentik.com\352\327\002\020admin.credential\220\330\002\003\232\330\002\014"
+    "grpc-connectB\256\006ZWgithub.com/kentik/api-s"
+    "chema-public/gen/go/kentik/credential/v2"
+    "0261020alpha1;credential\222A\321\005\022\230\004\n\025Credent"
+    "ials Vault API\022\246\003# Overview\nThe Credenti"
+    "als Vault API enables programmatic lifec"
+    "ycle management of credentials stored in"
+    " Kentik Credential Vault.\n### Key Featur"
+    "es\n* Create, read, update, and delete of"
+    " credential groups\n* Lookup and deletion"
+    " of individual credential versions\n* Ass"
+    "ignment of consumers (synthetic tests, d"
+    "evices, etc.) to credentials\n\nSecret val"
+    "ues are write-only: they are accepted on"
+    " create and update but never returned.\n\""
+    "E\n\026Kentik API Engineering\022+https://githu"
+    "b.com/kentik/api-schema-public2\017v2026102"
+    "0alpha1*\001\0022\020application/json:\020applicatio"
+    "n/jsonZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002"
+    "\n\"\n\005token\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t"
+    "\n\005email\022\000\n\t\n\005token\022\000r/\n\025Kentik Knowledge"
+    " Base\022\026https://kb.kentik.com/b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fcredential_2fv20261020alpha1_2fcredential_2eproto_deps[6] =
     {
@@ -1347,7 +1349,7 @@ static ::absl::once_flag descriptor_table_kentik_2fcredential_2fv20261020alpha1_
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fcredential_2fv20261020alpha1_2fcredential_2eproto = {
     false,
     false,
-    9741,
+    9757,
     descriptor_table_protodef_kentik_2fcredential_2fv20261020alpha1_2fcredential_2eproto,
     "kentik/credential/v20261020alpha1/credential.proto",
     &descriptor_table_kentik_2fcredential_2fv20261020alpha1_2fcredential_2eproto_once,
@@ -7258,6 +7260,10 @@ const ::_pbi::TcParseTable<0, 0, 0, 0, 2> DeleteCredentialGroupResponse::_table_
 
 class DeleteCredentialRequest::_Internal {
  public:
+  using HasBits =
+      decltype(std::declval<DeleteCredentialRequest>()._impl_._has_bits_);
+  static constexpr ::int32_t kHasBitsOffset =
+      8 * PROTOBUF_FIELD_OFFSET(DeleteCredentialRequest, _impl_._has_bits_);
 };
 
 DeleteCredentialRequest::DeleteCredentialRequest(::google::protobuf::Arena* arena)
@@ -7272,8 +7278,9 @@ DeleteCredentialRequest::DeleteCredentialRequest(::google::protobuf::Arena* aren
 inline PROTOBUF_NDEBUG_INLINE DeleteCredentialRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from, const ::kentik::credential::v20261020alpha1::DeleteCredentialRequest& from_msg)
-      : name_(arena, from.name_),
-        _cached_size_{0} {}
+      : _has_bits_{from._has_bits_},
+        _cached_size_{0},
+        name_(arena, from.name_) {}
 
 DeleteCredentialRequest::DeleteCredentialRequest(
     ::google::protobuf::Arena* arena,
@@ -7295,8 +7302,8 @@ DeleteCredentialRequest::DeleteCredentialRequest(
 inline PROTOBUF_NDEBUG_INLINE DeleteCredentialRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : name_(arena),
-        _cached_size_{0} {}
+      : _cached_size_{0},
+        name_(arena) {}
 
 inline void DeleteCredentialRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
@@ -7352,7 +7359,7 @@ const ::google::protobuf::internal::ClassData* DeleteCredentialRequest::GetClass
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
 const ::_pbi::TcParseTable<1, 2, 0, 70, 2> DeleteCredentialRequest::_table_ = {
   {
-    0,  // no _has_bits_
+    PROTOBUF_FIELD_OFFSET(DeleteCredentialRequest, _impl_._has_bits_),
     0, // no _extensions_
     2, 8,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
@@ -7368,9 +7375,9 @@ const ::_pbi::TcParseTable<1, 2, 0, 70, 2> DeleteCredentialRequest::_table_ = {
     ::_pbi::TcParser::GetTable<::kentik::credential::v20261020alpha1::DeleteCredentialRequest>(),  // to_prefetch
     #endif  // PROTOBUF_PREFETCH_PARSE_TABLE
   }, {{
-    // uint32 version = 2 [json_name = "version", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DeleteCredentialRequest, _impl_.version_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(DeleteCredentialRequest, _impl_.version_)}},
+    // optional uint32 version = 2 [json_name = "version", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(DeleteCredentialRequest, _impl_.version_), 0>(),
+     {16, 0, 0, PROTOBUF_FIELD_OFFSET(DeleteCredentialRequest, _impl_.version_)}},
     // string name = 1 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::FastUS1,
      {10, 63, 0, PROTOBUF_FIELD_OFFSET(DeleteCredentialRequest, _impl_.name_)}},
@@ -7378,11 +7385,11 @@ const ::_pbi::TcParseTable<1, 2, 0, 70, 2> DeleteCredentialRequest::_table_ = {
     65535, 65535
   }}, {{
     // string name = 1 [json_name = "name", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(DeleteCredentialRequest, _impl_.name_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(DeleteCredentialRequest, _impl_.name_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // uint32 version = 2 [json_name = "version", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-    {PROTOBUF_FIELD_OFFSET(DeleteCredentialRequest, _impl_.version_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUInt32)},
+    // optional uint32 version = 2 [json_name = "version", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(DeleteCredentialRequest, _impl_.version_), _Internal::kHasBitsOffset + 0, 0,
+    (0 | ::_fl::kFcOptional | ::_fl::kUInt32)},
   }},
   // no aux_entries
   {{
@@ -7401,6 +7408,7 @@ PROTOBUF_NOINLINE void DeleteCredentialRequest::Clear() {
 
   _impl_.name_.ClearToEmpty();
   _impl_.version_ = 0u;
+  _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -7427,8 +7435,9 @@ PROTOBUF_NOINLINE void DeleteCredentialRequest::Clear() {
             target = stream->WriteStringMaybeAliased(1, _s, target);
           }
 
-          // uint32 version = 2 [json_name = "version", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-          if (this_._internal_version() != 0) {
+          cached_has_bits = this_._impl_._has_bits_[0];
+          // optional uint32 version = 2 [json_name = "version", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (cached_has_bits & 0x00000001u) {
             target = stream->EnsureSpace(target);
             target = ::_pbi::WireFormatLite::WriteUInt32ToArray(
                 2, this_._internal_version(), target);
@@ -7464,8 +7473,11 @@ PROTOBUF_NOINLINE void DeleteCredentialRequest::Clear() {
               total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
                                               this_._internal_name());
             }
-            // uint32 version = 2 [json_name = "version", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
-            if (this_._internal_version() != 0) {
+          }
+           {
+            // optional uint32 version = 2 [json_name = "version", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            cached_has_bits = this_._impl_._has_bits_[0];
+            if (cached_has_bits & 0x00000001u) {
               total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(
                   this_._internal_version());
             }
@@ -7485,9 +7497,11 @@ void DeleteCredentialRequest::MergeImpl(::google::protobuf::MessageLite& to_msg,
   if (!from._internal_name().empty()) {
     _this->_internal_set_name(from._internal_name());
   }
-  if (from._internal_version() != 0) {
+  cached_has_bits = from._impl_._has_bits_[0];
+  if (cached_has_bits & 0x00000001u) {
     _this->_impl_.version_ = from._impl_.version_;
   }
+  _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
@@ -7504,6 +7518,7 @@ void DeleteCredentialRequest::InternalSwap(DeleteCredentialRequest* PROTOBUF_RES
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.name_, &other->_impl_.name_, arena);
         swap(_impl_.version_, other->_impl_.version_);
 }

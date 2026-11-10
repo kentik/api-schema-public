@@ -412,6 +412,12 @@ struct  Kentik__Credential__V20261020alpha1__DeleteCredentialGroupResponse
      }
 
 
+typedef enum {
+  KENTIK__CREDENTIAL__V20261020ALPHA1__DELETE_CREDENTIAL_REQUEST___VERSION__NOT_SET = 0,
+  KENTIK__CREDENTIAL__V20261020ALPHA1__DELETE_CREDENTIAL_REQUEST___VERSION_VERSION = 2
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__CREDENTIAL__V20261020ALPHA1__DELETE_CREDENTIAL_REQUEST___VERSION__CASE)
+} Kentik__Credential__V20261020alpha1__DeleteCredentialRequest__VersionCase;
+
 /*
  * {{.Name}}
  */
@@ -419,11 +425,14 @@ struct  Kentik__Credential__V20261020alpha1__DeleteCredentialRequest
 {
   ProtobufCMessage base;
   char *name;
-  uint32_t version;
+  Kentik__Credential__V20261020alpha1__DeleteCredentialRequest__VersionCase _version_case;
+  union {
+    uint32_t version;
+  };
 };
 #define KENTIK__CREDENTIAL__V20261020ALPHA1__DELETE_CREDENTIAL_REQUEST__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__credential__v20261020alpha1__delete_credential_request__descriptor) \
-    , (char *)protobuf_c_empty_string, 0 }
+    , (char *)protobuf_c_empty_string, KENTIK__CREDENTIAL__V20261020ALPHA1__DELETE_CREDENTIAL_REQUEST___VERSION__NOT_SET, {0} }
 
 
 /*

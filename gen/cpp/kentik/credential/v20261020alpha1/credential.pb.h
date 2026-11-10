@@ -1579,7 +1579,8 @@ class DeleteCredentialRequest final : public ::google::protobuf::Message
   std::string* _internal_mutable_name();
 
   public:
-  // uint32 version = 2 [json_name = "version", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  // optional uint32 version = 2 [json_name = "version", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  bool has_version() const;
   void clear_version() ;
   ::uint32_t version() const;
   void set_version(::uint32_t value);
@@ -1612,9 +1613,10 @@ class DeleteCredentialRequest final : public ::google::protobuf::Message
     inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                           ::google::protobuf::Arena* arena, const Impl_& from,
                           const DeleteCredentialRequest& from_msg);
+    ::google::protobuf::internal::HasBits<1> _has_bits_;
+    ::google::protobuf::internal::CachedSize _cached_size_;
     ::google::protobuf::internal::ArenaStringPtr name_;
     ::uint32_t version_;
-    ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -8566,10 +8568,15 @@ inline void DeleteCredentialRequest::set_allocated_name(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:kentik.credential.v20261020alpha1.DeleteCredentialRequest.name)
 }
 
-// uint32 version = 2 [json_name = "version", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+// optional uint32 version = 2 [json_name = "version", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline bool DeleteCredentialRequest::has_version() const {
+  bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
 inline void DeleteCredentialRequest::clear_version() {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.version_ = 0u;
+  _impl_._has_bits_[0] &= ~0x00000001u;
 }
 inline ::uint32_t DeleteCredentialRequest::version() const {
   // @@protoc_insertion_point(field_get:kentik.credential.v20261020alpha1.DeleteCredentialRequest.version)
@@ -8577,6 +8584,7 @@ inline ::uint32_t DeleteCredentialRequest::version() const {
 }
 inline void DeleteCredentialRequest::set_version(::uint32_t value) {
   _internal_set_version(value);
+  _impl_._has_bits_[0] |= 0x00000001u;
   // @@protoc_insertion_point(field_set:kentik.credential.v20261020alpha1.DeleteCredentialRequest.version)
 }
 inline ::uint32_t DeleteCredentialRequest::_internal_version() const {
