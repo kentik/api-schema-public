@@ -1010,7 +1010,7 @@ const ProtobufCMessageDescriptor kentik__kagent__v202401__host_metadata__descrip
   (ProtobufCMessageInit) kentik__kagent__v202401__host_metadata__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor kentik__kagent__v202401__install_config__field_descriptors[5] =
+static const ProtobufCFieldDescriptor kentik__kagent__v202401__install_config__field_descriptors[6] =
 {
   {
     "id",
@@ -1072,8 +1072,21 @@ static const ProtobufCFieldDescriptor kentik__kagent__v202401__install_config__f
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
+  {
+    "bundle_source",
+    6,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_ENUM,
+    0,   /* quantifier_offset */
+    offsetof(Kentik__Kagent__V202401__InstallConfig, bundle_source),
+    &kentik__kagent__v202401__bundle_source__descriptor,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
 };
 static const unsigned kentik__kagent__v202401__install_config__field_indices_by_name[] = {
+  5,   /* field[5] = bundle_source */
   4,   /* field[4] = config_source */
   1,   /* field[1] = host_metadata */
   0,   /* field[0] = id */
@@ -1083,7 +1096,7 @@ static const unsigned kentik__kagent__v202401__install_config__field_indices_by_
 static const ProtobufCIntRange kentik__kagent__v202401__install_config__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 5 }
+  { 0, 6 }
 };
 const ProtobufCMessageDescriptor kentik__kagent__v202401__install_config__descriptor =
 {
@@ -1093,7 +1106,7 @@ const ProtobufCMessageDescriptor kentik__kagent__v202401__install_config__descri
   "Kentik__Kagent__V202401__InstallConfig",
   "kentik.kagent.v202401",
   sizeof(Kentik__Kagent__V202401__InstallConfig),
-  5,
+  6,
   kentik__kagent__v202401__install_config__field_descriptors,
   kentik__kagent__v202401__install_config__field_indices_by_name,
   1,  kentik__kagent__v202401__install_config__number_ranges,
@@ -2166,6 +2179,36 @@ const ProtobufCEnumDescriptor kentik__kagent__v202401__config_source__descriptor
   kentik__kagent__v202401__config_source__enum_values_by_name,
   1,
   kentik__kagent__v202401__config_source__value_ranges,
+  NULL,NULL,NULL,NULL   /* reserved[1234] */
+};
+static const ProtobufCEnumValue kentik__kagent__v202401__bundle_source__enum_values_by_number[3] =
+{
+  { "BUNDLE_SOURCE_UNSPECIFIED", "KENTIK__KAGENT__V202401__BUNDLE_SOURCE__BUNDLE_SOURCE_UNSPECIFIED", 0 },
+  { "BUNDLE_SOURCE_MANAGED", "KENTIK__KAGENT__V202401__BUNDLE_SOURCE__BUNDLE_SOURCE_MANAGED", 1 },
+  { "BUNDLE_SOURCE_LOCAL", "KENTIK__KAGENT__V202401__BUNDLE_SOURCE__BUNDLE_SOURCE_LOCAL", 2 },
+};
+static const ProtobufCIntRange kentik__kagent__v202401__bundle_source__value_ranges[] = {
+{0, 0},{0, 3}
+};
+static const ProtobufCEnumValueIndex kentik__kagent__v202401__bundle_source__enum_values_by_name[3] =
+{
+  { "BUNDLE_SOURCE_LOCAL", 2 },
+  { "BUNDLE_SOURCE_MANAGED", 1 },
+  { "BUNDLE_SOURCE_UNSPECIFIED", 0 },
+};
+const ProtobufCEnumDescriptor kentik__kagent__v202401__bundle_source__descriptor =
+{
+  PROTOBUF_C__ENUM_DESCRIPTOR_MAGIC,
+  "kentik.kagent.v202401.BundleSource",
+  "BundleSource",
+  "Kentik__Kagent__V202401__BundleSource",
+  "kentik.kagent.v202401",
+  3,
+  kentik__kagent__v202401__bundle_source__enum_values_by_number,
+  3,
+  kentik__kagent__v202401__bundle_source__enum_values_by_name,
+  1,
+  kentik__kagent__v202401__bundle_source__value_ranges,
   NULL,NULL,NULL,NULL   /* reserved[1234] */
 };
 static const ProtobufCMethodDescriptor kentik__kagent__v202401__agent_service__method_descriptors[7] =

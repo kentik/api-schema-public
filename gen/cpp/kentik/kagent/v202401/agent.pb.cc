@@ -355,7 +355,8 @@ inline constexpr InstallConfig::Impl_::Impl_(
         host_metadata_{nullptr},
         type_{static_cast< ::kentik::kagent::v202401::InstallerType >(0)},
         release_source_{static_cast< ::kentik::kagent::v202401::ReleaseSource >(0)},
-        config_source_{static_cast< ::kentik::kagent::v202401::ConfigSource >(0)} {}
+        config_source_{static_cast< ::kentik::kagent::v202401::ConfigSource >(0)},
+        bundle_source_{static_cast< ::kentik::kagent::v202401::BundleSource >(0)} {}
 
 template <typename>
 PROTOBUF_CONSTEXPR InstallConfig::InstallConfig(::_pbi::ConstantInitialized)
@@ -598,7 +599,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 }  // namespace v202401
 }  // namespace kagent
 }  // namespace kentik
-static const ::_pb::EnumDescriptor* file_level_enum_descriptors_kentik_2fkagent_2fv202401_2fagent_2eproto[3];
+static const ::_pb::EnumDescriptor* file_level_enum_descriptors_kentik_2fkagent_2fv202401_2fagent_2eproto[4];
 static constexpr const ::_pb::ServiceDescriptor**
     file_level_service_descriptors_kentik_2fkagent_2fv202401_2fagent_2eproto = nullptr;
 const ::uint32_t
@@ -631,9 +632,11 @@ const ::uint32_t
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::InstallConfig, _impl_.host_metadata_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::InstallConfig, _impl_.release_source_),
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::InstallConfig, _impl_.config_source_),
+        PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::InstallConfig, _impl_.bundle_source_),
         ~0u,
         ~0u,
         0,
+        ~0u,
         ~0u,
         ~0u,
         PROTOBUF_FIELD_OFFSET(::kentik::kagent::v202401::Agent, _impl_._has_bits_),
@@ -853,25 +856,25 @@ const ::uint32_t
 static const ::_pbi::MigrationSchema
     schemas[] ABSL_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
         {0, -1, -1, sizeof(::kentik::kagent::v202401::HostMetadata)},
-        {14, 27, -1, sizeof(::kentik::kagent::v202401::InstallConfig)},
-        {32, 49, -1, sizeof(::kentik::kagent::v202401::Agent)},
-        {58, -1, -1, sizeof(::kentik::kagent::v202401::GetAgentRequest)},
-        {68, 77, -1, sizeof(::kentik::kagent::v202401::GetAgentResponse)},
-        {78, -1, -1, sizeof(::kentik::kagent::v202401::ListAgentsRequest)},
-        {90, -1, -1, sizeof(::kentik::kagent::v202401::ListAgentsResponse)},
-        {99, 109, -1, sizeof(::kentik::kagent::v202401::UpdateAgentRequest)},
-        {111, 120, -1, sizeof(::kentik::kagent::v202401::UpdateAgentResponse)},
-        {121, -1, -1, sizeof(::kentik::kagent::v202401::DeleteAgentRequest)},
-        {131, -1, -1, sizeof(::kentik::kagent::v202401::DeleteAgentResponse)},
-        {139, -1, -1, sizeof(::kentik::kagent::v202401::AuthorizeRequest)},
-        {148, -1, -1, sizeof(::kentik::kagent::v202401::AuthorizeResponse)},
-        {157, 171, -1, sizeof(::kentik::kagent::v202401::AgentRegistration)},
-        {177, 188, -1, sizeof(::kentik::kagent::v202401::RegistrationConfig)},
-        {191, 201, -1, sizeof(::kentik::kagent::v202401::CreateAgentRequest)},
-        {203, -1, -1, sizeof(::kentik::kagent::v202401::BootstrapInfo)},
-        {214, 224, -1, sizeof(::kentik::kagent::v202401::CreateAgentResponse)},
-        {226, -1, -1, sizeof(::kentik::kagent::v202401::GenerateInstallCommandsRequest)},
-        {234, 243, -1, sizeof(::kentik::kagent::v202401::GenerateInstallCommandsResponse)},
+        {14, 28, -1, sizeof(::kentik::kagent::v202401::InstallConfig)},
+        {34, 51, -1, sizeof(::kentik::kagent::v202401::Agent)},
+        {60, -1, -1, sizeof(::kentik::kagent::v202401::GetAgentRequest)},
+        {70, 79, -1, sizeof(::kentik::kagent::v202401::GetAgentResponse)},
+        {80, -1, -1, sizeof(::kentik::kagent::v202401::ListAgentsRequest)},
+        {92, -1, -1, sizeof(::kentik::kagent::v202401::ListAgentsResponse)},
+        {101, 111, -1, sizeof(::kentik::kagent::v202401::UpdateAgentRequest)},
+        {113, 122, -1, sizeof(::kentik::kagent::v202401::UpdateAgentResponse)},
+        {123, -1, -1, sizeof(::kentik::kagent::v202401::DeleteAgentRequest)},
+        {133, -1, -1, sizeof(::kentik::kagent::v202401::DeleteAgentResponse)},
+        {141, -1, -1, sizeof(::kentik::kagent::v202401::AuthorizeRequest)},
+        {150, -1, -1, sizeof(::kentik::kagent::v202401::AuthorizeResponse)},
+        {159, 173, -1, sizeof(::kentik::kagent::v202401::AgentRegistration)},
+        {179, 190, -1, sizeof(::kentik::kagent::v202401::RegistrationConfig)},
+        {193, 203, -1, sizeof(::kentik::kagent::v202401::CreateAgentRequest)},
+        {205, -1, -1, sizeof(::kentik::kagent::v202401::BootstrapInfo)},
+        {216, 226, -1, sizeof(::kentik::kagent::v202401::CreateAgentResponse)},
+        {228, -1, -1, sizeof(::kentik::kagent::v202401::GenerateInstallCommandsRequest)},
+        {236, 245, -1, sizeof(::kentik::kagent::v202401::GenerateInstallCommandsResponse)},
 };
 static const ::_pb::Message* const file_default_instances[] = {
     &::kentik::kagent::v202401::_HostMetadata_default_instance_._instance,
@@ -923,7 +926,7 @@ const char descriptor_table_protodef_kentik_2fkagent_2fv202401_2fagent_2eproto[]
     "the host. One of `linux`, `darwin` or `w"
     "indows`.R\002os\022V\n\004arch\030\006 \001(\tBB\222A\?2=CPU arc"
     "hitecture of the host, for example `amd6"
-    "4` or `arm64`.R\004arch\"\330\004\n\rInstallConfig\0226"
+    "4` or `arm64`.R\004arch\"\344\005\n\rInstallConfig\0226"
     "\n\002id\030\001 \001(\tB&\222A#2!Unique identifier of th"
     "e install.R\002id\022l\n\004type\030\003 \001(\0162$.kentik.ka"
     "gent.v202401.InstallerTypeB2\222A/2-Install"
@@ -938,203 +941,209 @@ const char descriptor_table_protodef_kentik_2fkagent_2fv202401_2fagent_2eproto[]
     "\n\rconfig_source\030\005 \001(\0162#.kentik.kagent.v2"
     "02401.ConfigSourceBE\222AB2@Who owns the co"
     "nfiguration of the agent and of its capa"
-    "bilities.R\014configSource\"\327\007\n\005Agent\0227\n\002id\030"
-    "\001 \001(\tB\'\222A!2\037Unique identifier of the age"
-    "nt.\340A\003R\002id\022^\n\007running\030\006 \001(\010BD\222A>2<Indica"
-    "tion whether the agent is actively sendi"
-    "ng heartbeats.\340A\003R\007running\022S\n\ncluster_id"
-    "\030\007 \001(\tB/\222A)2\'ID of the cluster the agent"
-    " belongs to.\340A\003H\000R\tclusterId\210\001\001\022X\n\npubli"
-    "c_key\030\010 \001(\tB9\222A624PEM-encoded public key"
-    " the agent authenticates with.R\tpublicKe"
-    "y\022d\n\022provisioning_token\030\t \001(\tB5\222A/2-Prov"
-    "isioning token the agent registered with"
-    ".\340A\003R\021provisioningToken\022j\n\006config\030\024 \001(\0132"
-    "\".kentik.kagent.v202401.AgentConfigB.\222A+"
-    "2)User-supplied configuration of the age"
-    "nt.R\006config\022y\n\007install\030\036 \001(\0132$.kentik.ka"
-    "gent.v202401.InstallConfigB9\222A321Details"
-    " of how and where the agent was installe"
-    "d.\340A\003R\007install\022\225\001\n\rdesired_state\030( \001(\0132("
-    ".kentik.kagent.v202401.AgentDesiredState"
-    "BF\222A02.State Kentik intends the agent to"
-    " converge on.\340A\003\372\322\344\223\002\n\022\010INTERNALR\014desire"
-    "dState\022\221\001\n\rcurrent_state\0302 \001(\0132(.kentik."
-    "kagent.v202401.AgentCurrentStateBB\222A,2*S"
-    "tate most recently reported by the agent"
-    ".\340A\003\372\322\344\223\002\n\022\010INTERNALR\014currentStateB\r\n\013_c"
-    "luster_id\"\273\001\n\017GetAgentRequest\0225\n\002id\030\001 \001("
-    "\tB%\222A\"2 ID of the agent to be retrieved."
-    "R\002id\022q\n\014unregistered\030\002 \001(\010BM\222AJ2HIndicat"
-    "ion whether the ID refers to an agent th"
-    "at is not yet registered.R\014unregistered\""
-    "Z\n\020GetAgentResponse\022F\n\005agent\030\001 \001(\0132\034.ken"
-    "tik.kagent.v202401.AgentB\022\222A\0172\rAgent obj"
-    "ect.R\005agent\"\365\003\n\021ListAgentsRequest\022l\n\014unr"
-    "egistered\030\001 \001(\010BH\222AE2CIndication whether"
-    " to list only agents that are not yet re"
-    "gistered.R\014unregistered\022[\n\003ids\030\002 \003(\tBI\222A"
-    "F2DIDs of the agents to filter by. When "
-    "empty, all agents are returned.R\003ids\022\212\001\n"
-    "\014capabilities\030\003 \003(\tBf\222Ac2aCapabilities t"
-    "o filter by. Agents having at least one "
-    "of the specified capabilities are return"
-    "ed.R\014capabilities\022\207\001\n\025include_desired_st"
-    "ate\030\004 \001(\010BS\222AP2NIndication whether to in"
-    "clude the desired state of each agent in"
-    " the response.R\023includeDesiredState\"g\n\022L"
-    "istAgentsResponse\022Q\n\006agents\030\001 \003(\0132\034.kent"
-    "ik.kagent.v202401.AgentB\033\222A\0302\026List of ag"
-    "ent objects.R\006agents\"\237\002\n\022UpdateAgentRequ"
-    "est\022\207\001\n\005agent\030\002 \001(\0132\034.kentik.kagent.v202"
-    "401.AgentBS\222AM2KAgent configuration. The"
-    " `id` attribute identifies the agent to "
-    "be updated.\340A\002R\005agent\022\177\n\004mask\030\003 \001(\0132\032.go"
-    "ogle.protobuf.FieldMaskBO\222AL2JAttributes"
-    " to be updated. When empty, all mutable "
-    "attributes are replaced.R\004mask\"e\n\023Update"
-    "AgentResponse\022N\n\005agent\030\001 \001(\0132\034.kentik.ka"
-    "gent.v202401.AgentB\032\222A\0272\025Updated agent o"
-    "bject.R\005agent\"\274\001\n\022DeleteAgentRequest\0223\n\002"
-    "id\030\001 \001(\tB#\222A 2\036ID of the agent to be del"
-    "eted.R\002id\022q\n\014unregistered\030\002 \001(\010BM\222AJ2HIn"
-    "dication whether the ID refers to an age"
-    "nt that is not yet registered.R\014unregist"
-    "ered\"\025\n\023DeleteAgentResponse\"[\n\020Authorize"
-    "Request\022G\n\ninstall_id\030\001 \001(\tB(\222A%2#ID of "
-    "the install to be authorized.R\tinstallId"
-    "\"N\n\021AuthorizeResponse\0229\n\002id\030\001 \001(\tB)\222A&2$"
-    "ID assigned to the authorized agent.R\002id"
-    "\"\371\003\n\021AgentRegistration\022X\n\npublic_key\030\001 \001"
-    "(\tB9\222A624PEM-encoded public key the agen"
-    "t authenticates with.R\tpublicKey\022D\n\007site"
-    "_id\030\002 \001(\tB+\222A(2&ID of the site to assign"
-    " the agent to.R\006siteId\0229\n\004name\030\003 \001(\tB%\222A"
-    "\"2 User-friendly name of the agent.R\004nam"
-    "e\022@\n\013description\030\004 \001(\tB\036\222A\0332\031Description"
-    " of the agent.R\013description\022d\n\017release_c"
-    "hannel\030\005 \001(\tB;\222A826Release channel the a"
-    "gent takes software updates from.R\016relea"
-    "seChannel\022R\n\ncluster_id\030\006 \001(\tB.\222A+2)ID o"
-    "f the cluster to assign the agent to.H\000R"
-    "\tclusterId\210\001\001B\r\n\013_cluster_id\"\324\003\n\022Registr"
-    "ationConfig\022\221\001\n\nexpires_at\030\001 \001(\0132\032.googl"
-    "e.protobuf.TimestampBV\222AS2QTime at which"
-    " the registration becomes invalid (defau"
-    "lt one hour after creation).R\texpiresAt\022"
-    "\225\001\n\025allowed_private_cidrs\030\002 \003(\tBa\222A^2\\Pr"
-    "ivate IP CIDR blocks allowed to register"
-    " the agent. When empty, any private IP i"
-    "s allowed.R\023allowedPrivateCidrs\022\221\001\n\024allo"
-    "wed_public_cidrs\030\003 \003(\tB_\222A\\2ZPublic IP C"
-    "IDR blocks allowed to register the agent"
-    ". When empty, any public IP is allowed.R"
-    "\022allowedPublicCidrs\"\374\001\n\022CreateAgentReque"
-    "st\022q\n\005agent\030\001 \001(\0132(.kentik.kagent.v20240"
-    "1.AgentRegistrationB1\222A.2,Configuration "
-    "of the agent to be registered.R\005agent\022s\n"
-    "\006config\030\002 \001(\0132).kentik.kagent.v202401.Re"
-    "gistrationConfigB0\222A-2+Constraints that "
-    "apply to the registration.R\006config\"\275\003\n\rB"
-    "ootstrapInfo\022\216\001\n\025linux_install_command\030\001"
-    " \001(\tBZ\222AW2UCommand installing the agent "
-    "directly on a Linux host. Contains a pro"
-    "visioning token.R\023linuxInstallCommand\022\215\001"
-    "\n\026docker_install_command\030\002 \001(\tBW\222AT2RCom"
-    "mand installing the agent as a Docker co"
-    "ntainer. Contains a provisioning token.R"
-    "\024dockerInstallCommand\022\212\001\n\022provisioning_t"
-    "oken\030\003 \001(\tB[\222AX2VProvisioning token embe"
-    "dded in the install commands. Treat this"
-    " value as a credential.R\021provisioningTok"
-    "en\"\345\001\n\023CreateAgentResponse\022N\n\005agent\030\001 \001("
-    "\0132\034.kentik.kagent.v202401.AgentB\032\222A\0272\025Cr"
-    "eated agent object.R\005agent\022~\n\tbootstrap\030"
-    "\002 \001(\0132$.kentik.kagent.v202401.BootstrapI"
-    "nfoB:\222A725Commands for installing the ag"
-    "ent on the target host.R\tbootstrap\" \n\036Ge"
-    "nerateInstallCommandsRequest\"\236\001\n\037Generat"
-    "eInstallCommandsResponse\022{\n\tbootstrap\030\001 "
-    "\001(\0132$.kentik.kagent.v202401.BootstrapInf"
-    "oB7\222A422Commands for installing an agent"
-    " on a target host.R\tbootstrap*\224\001\n\rInstal"
-    "lerType\022\036\n\032INSTALLER_TYPE_UNSPECIFIED\020\000\022"
-    "\030\n\024INSTALLER_TYPE_LINUX\020\001\022\031\n\025INSTALLER_T"
-    "YPE_DOCKER\020\002\022\026\n\022INSTALLER_TYPE_RPM\020\003\022\026\n\022"
-    "INSTALLER_TYPE_DEB\020\004*e\n\rReleaseSource\022\036\n"
-    "\032RELEASE_SOURCE_UNSPECIFIED\020\000\022\032\n\026RELEASE"
-    "_SOURCE_MANAGED\020\001\022\030\n\024RELEASE_SOURCE_LOCA"
-    "L\020\002*a\n\014ConfigSource\022\035\n\031CONFIG_SOURCE_UNS"
-    "PECIFIED\020\000\022\031\n\025CONFIG_SOURCE_MANAGED\020\001\022\027\n"
-    "\023CONFIG_SOURCE_LOCAL\020\0022\230\021\n\014AgentService\022"
-    "\313\002\n\013CreateAgent\022).kentik.kagent.v202401."
-    "CreateAgentRequest\032*.kentik.kagent.v2024"
-    "01.CreateAgentResponse\"\344\001\222A\255\001\022\020Create an"
-    " agent.\032\213\001Registers a new agent based on"
-    " configuration in the request and return"
-    "s it together with the commands for inst"
-    "alling it on the target host.*\013CreateAge"
-    "nt\362\327\002\016ua-admin:write\202\323\344\223\002\033\"\026/kagent/v202"
-    "401/agents:\001*\022\210\002\n\010GetAgent\022&.kentik.kage"
-    "nt.v202401.GetAgentRequest\032\'.kentik.kage"
-    "nt.v202401.GetAgentResponse\"\252\001\222As\022\"Get a"
-    "gent configuration and state.\032CReturns c"
-    "onfiguration and state of the agent with"
-    " the specified ID.*\010GetAgent\362\327\002\rua-admin"
-    ":read\202\323\344\223\002\035\022\033/kagent/v202401/agents/{id}"
-    "\022\233\002\n\nListAgents\022(.kentik.kagent.v202401."
-    "ListAgentsRequest\032).kentik.kagent.v20240"
-    "1.ListAgentsResponse\"\267\001\222A\204\001\022\014List agents"
-    ".\032hReturns a list of agents in the accou"
-    "nt, optionally filtered by registration "
-    "state, IDs or capabilities.*\nListAgents\362"
-    "\327\002\rua-admin:read\202\323\344\223\002\030\022\026/kagent/v202401/"
-    "agents\022\253\002\n\013UpdateAgent\022).kentik.kagent.v"
-    "202401.UpdateAgentRequest\032*.kentik.kagen"
-    "t.v202401.UpdateAgentResponse\"\304\001\222A\177\022!Upd"
-    "ate configuration of an agent.\032MUpdates "
-    "the attributes of an agent selected by t"
-    "he field mask in the request.*\013UpdateAge"
-    "nt\362\327\002\016ua-admin:write\202\323\344\223\002*2!/kagent/v202"
-    "401/agents/{agent.id}:\005agent\022\350\001\n\013DeleteA"
-    "gent\022).kentik.kagent.v202401.DeleteAgent"
-    "Request\032*.kentik.kagent.v202401.DeleteAg"
-    "entResponse\"\201\001\222AI\022\020Delete an agent.\032(Del"
-    "etes the agent with the specified ID.*\013D"
-    "eleteAgent\362\327\002\016ua-admin:write\202\323\344\223\002\035*\033/kag"
-    "ent/v202401/agents/{id}\022\271\002\n\tAuthorize\022\'."
-    "kentik.kagent.v202401.AuthorizeRequest\032("
-    ".kentik.kagent.v202401.AuthorizeResponse"
-    "\"\330\001\222A\215\001\022 Authorize an unregistered agent"
-    ".\032^Approves the agent installed under th"
-    "e specified install ID and returns the I"
-    "D assigned to it.*\tAuthorize\362\327\002\016ua-admin"
-    ":write\202\323\344\223\002/\032-/kagent/v202401/agents/aut"
-    "horize/{install_id}\022\215\003\n\027GenerateInstallC"
-    "ommands\0225.kentik.kagent.v202401.Generate"
-    "InstallCommandsRequest\0326.kentik.kagent.v"
-    "202401.GenerateInstallCommandsResponse\"\202"
-    "\002\222A\272\001\022 Generate agent install commands.\032"
-    "}Returns commands for deploying an agent"
-    ". The commands embed a provisioning toke"
-    "n and are ready to execute on the target"
-    " host.*\027GenerateInstallCommands\362\327\002\016ua-ad"
-    "min:write\202\323\344\223\002,\"\'/kagent/v202401/agents/"
-    "install-commands:\001*\032,\312A\023grpc.api.kentik."
-    "com\352\327\002\016ua-admin:write\220\330\002\003B\203\004ZGgithub.com"
-    "/kentik/api-schema-public/gen/go/kentik/"
-    "kagent/v202401;kagent\222A\266\003\022\375\001\n\020KAgent Age"
-    "nt API\022\230\001Management of Kentik Agents: re"
-    "gistration, retrieval, modification, del"
-    "etion, authorization of unregistered age"
-    "nts, and generation of install commands."
-    "\n\"E\n\026Kentik API Engineering\022+https://git"
-    "hub.com/kentik/api-schema-public2\007v20240"
-    "1*\001\0022\020application/json:\020application/json"
-    "ZD\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005to"
-    "ken\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005emai"
-    "l\022\000\n\t\n\005token\022\000r/\n\025Kentik Knowledge Base\022"
-    "\026https://kb.kentik.com/b\006proto3"
+    "bilities.R\014configSource\022\211\001\n\rbundle_sourc"
+    "e\030\006 \001(\0162#.kentik.kagent.v202401.BundleSo"
+    "urceB\?\222A<2:Who owns the bundles of the a"
+    "gent and of its capabilities.R\014bundleSou"
+    "rce\"\327\007\n\005Agent\0227\n\002id\030\001 \001(\tB\'\222A!2\037Unique i"
+    "dentifier of the agent.\340A\003R\002id\022^\n\007runnin"
+    "g\030\006 \001(\010BD\222A>2<Indication whether the age"
+    "nt is actively sending heartbeats.\340A\003R\007r"
+    "unning\022S\n\ncluster_id\030\007 \001(\tB/\222A)2\'ID of t"
+    "he cluster the agent belongs to.\340A\003H\000R\tc"
+    "lusterId\210\001\001\022X\n\npublic_key\030\010 \001(\tB9\222A624PE"
+    "M-encoded public key the agent authentic"
+    "ates with.R\tpublicKey\022d\n\022provisioning_to"
+    "ken\030\t \001(\tB5\222A/2-Provisioning token the a"
+    "gent registered with.\340A\003R\021provisioningTo"
+    "ken\022j\n\006config\030\024 \001(\0132\".kentik.kagent.v202"
+    "401.AgentConfigB.\222A+2)User-supplied conf"
+    "iguration of the agent.R\006config\022y\n\007insta"
+    "ll\030\036 \001(\0132$.kentik.kagent.v202401.Install"
+    "ConfigB9\222A321Details of how and where th"
+    "e agent was installed.\340A\003R\007install\022\225\001\n\rd"
+    "esired_state\030( \001(\0132(.kentik.kagent.v2024"
+    "01.AgentDesiredStateBF\222A02.State Kentik "
+    "intends the agent to converge on.\340A\003\372\322\344\223"
+    "\002\n\022\010INTERNALR\014desiredState\022\221\001\n\rcurrent_s"
+    "tate\0302 \001(\0132(.kentik.kagent.v202401.Agent"
+    "CurrentStateBB\222A,2*State most recently r"
+    "eported by the agent.\340A\003\372\322\344\223\002\n\022\010INTERNAL"
+    "R\014currentStateB\r\n\013_cluster_id\"\273\001\n\017GetAge"
+    "ntRequest\0225\n\002id\030\001 \001(\tB%\222A\"2 ID of the ag"
+    "ent to be retrieved.R\002id\022q\n\014unregistered"
+    "\030\002 \001(\010BM\222AJ2HIndication whether the ID r"
+    "efers to an agent that is not yet regist"
+    "ered.R\014unregistered\"Z\n\020GetAgentResponse\022"
+    "F\n\005agent\030\001 \001(\0132\034.kentik.kagent.v202401.A"
+    "gentB\022\222A\0172\rAgent object.R\005agent\"\365\003\n\021List"
+    "AgentsRequest\022l\n\014unregistered\030\001 \001(\010BH\222AE"
+    "2CIndication whether to list only agents"
+    " that are not yet registered.R\014unregiste"
+    "red\022[\n\003ids\030\002 \003(\tBI\222AF2DIDs of the agents"
+    " to filter by. When empty, all agents ar"
+    "e returned.R\003ids\022\212\001\n\014capabilities\030\003 \003(\tB"
+    "f\222Ac2aCapabilities to filter by. Agents "
+    "having at least one of the specified cap"
+    "abilities are returned.R\014capabilities\022\207\001"
+    "\n\025include_desired_state\030\004 \001(\010BS\222AP2NIndi"
+    "cation whether to include the desired st"
+    "ate of each agent in the response.R\023incl"
+    "udeDesiredState\"g\n\022ListAgentsResponse\022Q\n"
+    "\006agents\030\001 \003(\0132\034.kentik.kagent.v202401.Ag"
+    "entB\033\222A\0302\026List of agent objects.R\006agents"
+    "\"\237\002\n\022UpdateAgentRequest\022\207\001\n\005agent\030\002 \001(\0132"
+    "\034.kentik.kagent.v202401.AgentBS\222AM2KAgen"
+    "t configuration. The `id` attribute iden"
+    "tifies the agent to be updated.\340A\002R\005agen"
+    "t\022\177\n\004mask\030\003 \001(\0132\032.google.protobuf.FieldM"
+    "askBO\222AL2JAttributes to be updated. When"
+    " empty, all mutable attributes are repla"
+    "ced.R\004mask\"e\n\023UpdateAgentResponse\022N\n\005age"
+    "nt\030\001 \001(\0132\034.kentik.kagent.v202401.AgentB\032"
+    "\222A\0272\025Updated agent object.R\005agent\"\274\001\n\022De"
+    "leteAgentRequest\0223\n\002id\030\001 \001(\tB#\222A 2\036ID of"
+    " the agent to be deleted.R\002id\022q\n\014unregis"
+    "tered\030\002 \001(\010BM\222AJ2HIndication whether the"
+    " ID refers to an agent that is not yet r"
+    "egistered.R\014unregistered\"\025\n\023DeleteAgentR"
+    "esponse\"[\n\020AuthorizeRequest\022G\n\ninstall_i"
+    "d\030\001 \001(\tB(\222A%2#ID of the install to be au"
+    "thorized.R\tinstallId\"N\n\021AuthorizeRespons"
+    "e\0229\n\002id\030\001 \001(\tB)\222A&2$ID assigned to the a"
+    "uthorized agent.R\002id\"\371\003\n\021AgentRegistrati"
+    "on\022X\n\npublic_key\030\001 \001(\tB9\222A624PEM-encoded"
+    " public key the agent authenticates with"
+    ".R\tpublicKey\022D\n\007site_id\030\002 \001(\tB+\222A(2&ID o"
+    "f the site to assign the agent to.R\006site"
+    "Id\0229\n\004name\030\003 \001(\tB%\222A\"2 User-friendly nam"
+    "e of the agent.R\004name\022@\n\013description\030\004 \001"
+    "(\tB\036\222A\0332\031Description of the agent.R\013desc"
+    "ription\022d\n\017release_channel\030\005 \001(\tB;\222A826R"
+    "elease channel the agent takes software "
+    "updates from.R\016releaseChannel\022R\n\ncluster"
+    "_id\030\006 \001(\tB.\222A+2)ID of the cluster to ass"
+    "ign the agent to.H\000R\tclusterId\210\001\001B\r\n\013_cl"
+    "uster_id\"\324\003\n\022RegistrationConfig\022\221\001\n\nexpi"
+    "res_at\030\001 \001(\0132\032.google.protobuf.Timestamp"
+    "BV\222AS2QTime at which the registration be"
+    "comes invalid (default one hour after cr"
+    "eation).R\texpiresAt\022\225\001\n\025allowed_private_"
+    "cidrs\030\002 \003(\tBa\222A^2\\Private IP CIDR blocks"
+    " allowed to register the agent. When emp"
+    "ty, any private IP is allowed.R\023allowedP"
+    "rivateCidrs\022\221\001\n\024allowed_public_cidrs\030\003 \003"
+    "(\tB_\222A\\2ZPublic IP CIDR blocks allowed t"
+    "o register the agent. When empty, any pu"
+    "blic IP is allowed.R\022allowedPublicCidrs\""
+    "\374\001\n\022CreateAgentRequest\022q\n\005agent\030\001 \001(\0132(."
+    "kentik.kagent.v202401.AgentRegistrationB"
+    "1\222A.2,Configuration of the agent to be r"
+    "egistered.R\005agent\022s\n\006config\030\002 \001(\0132).kent"
+    "ik.kagent.v202401.RegistrationConfigB0\222A"
+    "-2+Constraints that apply to the registr"
+    "ation.R\006config\"\275\003\n\rBootstrapInfo\022\216\001\n\025lin"
+    "ux_install_command\030\001 \001(\tBZ\222AW2UCommand i"
+    "nstalling the agent directly on a Linux "
+    "host. Contains a provisioning token.R\023li"
+    "nuxInstallCommand\022\215\001\n\026docker_install_com"
+    "mand\030\002 \001(\tBW\222AT2RCommand installing the "
+    "agent as a Docker container. Contains a "
+    "provisioning token.R\024dockerInstallComman"
+    "d\022\212\001\n\022provisioning_token\030\003 \001(\tB[\222AX2VPro"
+    "visioning token embedded in the install "
+    "commands. Treat this value as a credenti"
+    "al.R\021provisioningToken\"\345\001\n\023CreateAgentRe"
+    "sponse\022N\n\005agent\030\001 \001(\0132\034.kentik.kagent.v2"
+    "02401.AgentB\032\222A\0272\025Created agent object.R"
+    "\005agent\022~\n\tbootstrap\030\002 \001(\0132$.kentik.kagen"
+    "t.v202401.BootstrapInfoB:\222A725Commands f"
+    "or installing the agent on the target ho"
+    "st.R\tbootstrap\" \n\036GenerateInstallCommand"
+    "sRequest\"\236\001\n\037GenerateInstallCommandsResp"
+    "onse\022{\n\tbootstrap\030\001 \001(\0132$.kentik.kagent."
+    "v202401.BootstrapInfoB7\222A422Commands for"
+    " installing an agent on a target host.R\t"
+    "bootstrap*\224\001\n\rInstallerType\022\036\n\032INSTALLER"
+    "_TYPE_UNSPECIFIED\020\000\022\030\n\024INSTALLER_TYPE_LI"
+    "NUX\020\001\022\031\n\025INSTALLER_TYPE_DOCKER\020\002\022\026\n\022INST"
+    "ALLER_TYPE_RPM\020\003\022\026\n\022INSTALLER_TYPE_DEB\020\004"
+    "*e\n\rReleaseSource\022\036\n\032RELEASE_SOURCE_UNSP"
+    "ECIFIED\020\000\022\032\n\026RELEASE_SOURCE_MANAGED\020\001\022\030\n"
+    "\024RELEASE_SOURCE_LOCAL\020\002*a\n\014ConfigSource\022"
+    "\035\n\031CONFIG_SOURCE_UNSPECIFIED\020\000\022\031\n\025CONFIG"
+    "_SOURCE_MANAGED\020\001\022\027\n\023CONFIG_SOURCE_LOCAL"
+    "\020\002*a\n\014BundleSource\022\035\n\031BUNDLE_SOURCE_UNSP"
+    "ECIFIED\020\000\022\031\n\025BUNDLE_SOURCE_MANAGED\020\001\022\027\n\023"
+    "BUNDLE_SOURCE_LOCAL\020\0022\230\021\n\014AgentService\022\313"
+    "\002\n\013CreateAgent\022).kentik.kagent.v202401.C"
+    "reateAgentRequest\032*.kentik.kagent.v20240"
+    "1.CreateAgentResponse\"\344\001\222A\255\001\022\020Create an "
+    "agent.\032\213\001Registers a new agent based on "
+    "configuration in the request and returns"
+    " it together with the commands for insta"
+    "lling it on the target host.*\013CreateAgen"
+    "t\362\327\002\016ua-admin:write\202\323\344\223\002\033\"\026/kagent/v2024"
+    "01/agents:\001*\022\210\002\n\010GetAgent\022&.kentik.kagen"
+    "t.v202401.GetAgentRequest\032\'.kentik.kagen"
+    "t.v202401.GetAgentResponse\"\252\001\222As\022\"Get ag"
+    "ent configuration and state.\032CReturns co"
+    "nfiguration and state of the agent with "
+    "the specified ID.*\010GetAgent\362\327\002\rua-admin:"
+    "read\202\323\344\223\002\035\022\033/kagent/v202401/agents/{id}\022"
+    "\233\002\n\nListAgents\022(.kentik.kagent.v202401.L"
+    "istAgentsRequest\032).kentik.kagent.v202401"
+    ".ListAgentsResponse\"\267\001\222A\204\001\022\014List agents."
+    "\032hReturns a list of agents in the accoun"
+    "t, optionally filtered by registration s"
+    "tate, IDs or capabilities.*\nListAgents\362\327"
+    "\002\rua-admin:read\202\323\344\223\002\030\022\026/kagent/v202401/a"
+    "gents\022\253\002\n\013UpdateAgent\022).kentik.kagent.v2"
+    "02401.UpdateAgentRequest\032*.kentik.kagent"
+    ".v202401.UpdateAgentResponse\"\304\001\222A\177\022!Upda"
+    "te configuration of an agent.\032MUpdates t"
+    "he attributes of an agent selected by th"
+    "e field mask in the request.*\013UpdateAgen"
+    "t\362\327\002\016ua-admin:write\202\323\344\223\002*2!/kagent/v2024"
+    "01/agents/{agent.id}:\005agent\022\350\001\n\013DeleteAg"
+    "ent\022).kentik.kagent.v202401.DeleteAgentR"
+    "equest\032*.kentik.kagent.v202401.DeleteAge"
+    "ntResponse\"\201\001\222AI\022\020Delete an agent.\032(Dele"
+    "tes the agent with the specified ID.*\013De"
+    "leteAgent\362\327\002\016ua-admin:write\202\323\344\223\002\035*\033/kage"
+    "nt/v202401/agents/{id}\022\271\002\n\tAuthorize\022\'.k"
+    "entik.kagent.v202401.AuthorizeRequest\032(."
+    "kentik.kagent.v202401.AuthorizeResponse\""
+    "\330\001\222A\215\001\022 Authorize an unregistered agent."
+    "\032^Approves the agent installed under the"
+    " specified install ID and returns the ID"
+    " assigned to it.*\tAuthorize\362\327\002\016ua-admin:"
+    "write\202\323\344\223\002/\032-/kagent/v202401/agents/auth"
+    "orize/{install_id}\022\215\003\n\027GenerateInstallCo"
+    "mmands\0225.kentik.kagent.v202401.GenerateI"
+    "nstallCommandsRequest\0326.kentik.kagent.v2"
+    "02401.GenerateInstallCommandsResponse\"\202\002"
+    "\222A\272\001\022 Generate agent install commands.\032}"
+    "Returns commands for deploying an agent."
+    " The commands embed a provisioning token"
+    " and are ready to execute on the target "
+    "host.*\027GenerateInstallCommands\362\327\002\016ua-adm"
+    "in:write\202\323\344\223\002,\"\'/kagent/v202401/agents/i"
+    "nstall-commands:\001*\032,\312A\023grpc.api.kentik.c"
+    "om\352\327\002\016ua-admin:write\220\330\002\003B\203\004ZGgithub.com/"
+    "kentik/api-schema-public/gen/go/kentik/k"
+    "agent/v202401;kagent\222A\266\003\022\375\001\n\020KAgent Agen"
+    "t API\022\230\001Management of Kentik Agents: reg"
+    "istration, retrieval, modification, dele"
+    "tion, authorization of unregistered agen"
+    "ts, and generation of install commands.\n"
+    "\"E\n\026Kentik API Engineering\022+https://gith"
+    "ub.com/kentik/api-schema-public2\007v202401"
+    "*\001\0022\020application/json:\020application/jsonZ"
+    "D\n\036\n\005email\022\025\010\002\032\017X-CH-Auth-Email \002\n\"\n\005tok"
+    "en\022\031\010\002\032\023X-CH-Auth-API-Token \002b\026\n\t\n\005email"
+    "\022\000\n\t\n\005token\022\000r/\n\025Kentik Knowledge Base\022\026"
+    "https://kb.kentik.com/b\006proto3"
 };
 static const ::_pbi::DescriptorTable* const descriptor_table_kentik_2fkagent_2fv202401_2fagent_2eproto_deps[13] =
     {
@@ -1156,7 +1165,7 @@ static ::absl::once_flag descriptor_table_kentik_2fkagent_2fv202401_2fagent_2epr
 PROTOBUF_CONSTINIT const ::_pbi::DescriptorTable descriptor_table_kentik_2fkagent_2fv202401_2fagent_2eproto = {
     false,
     false,
-    9511,
+    9750,
     descriptor_table_protodef_kentik_2fkagent_2fv202401_2fagent_2eproto,
     "kentik/kagent/v202401/agent.proto",
     &descriptor_table_kentik_2fkagent_2fv202401_2fagent_2eproto_once,
@@ -1197,6 +1206,15 @@ const ::google::protobuf::EnumDescriptor* ConfigSource_descriptor() {
 PROTOBUF_CONSTINIT const uint32_t ConfigSource_internal_data_[] = {
     196608u, 0u, };
 bool ConfigSource_IsValid(int value) {
+  return 0 <= value && value <= 2;
+}
+const ::google::protobuf::EnumDescriptor* BundleSource_descriptor() {
+  ::google::protobuf::internal::AssignDescriptors(&descriptor_table_kentik_2fkagent_2fv202401_2fagent_2eproto);
+  return file_level_enum_descriptors_kentik_2fkagent_2fv202401_2fagent_2eproto[3];
+}
+PROTOBUF_CONSTINIT const uint32_t BundleSource_internal_data_[] = {
+    196608u, 0u, };
+bool BundleSource_IsValid(int value) {
   return 0 <= value && value <= 2;
 }
 // ===================================================================
@@ -1620,9 +1638,9 @@ InstallConfig::InstallConfig(
                offsetof(Impl_, type_),
            reinterpret_cast<const char *>(&from._impl_) +
                offsetof(Impl_, type_),
-           offsetof(Impl_, config_source_) -
+           offsetof(Impl_, bundle_source_) -
                offsetof(Impl_, type_) +
-               sizeof(Impl_::config_source_));
+               sizeof(Impl_::bundle_source_));
 
   // @@protoc_insertion_point(copy_constructor:kentik.kagent.v202401.InstallConfig)
 }
@@ -1637,9 +1655,9 @@ inline void InstallConfig::SharedCtor(::_pb::Arena* arena) {
   ::memset(reinterpret_cast<char *>(&_impl_) +
                offsetof(Impl_, host_metadata_),
            0,
-           offsetof(Impl_, config_source_) -
+           offsetof(Impl_, bundle_source_) -
                offsetof(Impl_, host_metadata_) +
-               sizeof(Impl_::config_source_));
+               sizeof(Impl_::bundle_source_));
 }
 InstallConfig::~InstallConfig() {
   // @@protoc_insertion_point(destructor:kentik.kagent.v202401.InstallConfig)
@@ -1690,15 +1708,15 @@ const ::google::protobuf::internal::ClassData* InstallConfig::GetClassData() con
   return _class_data_.base();
 }
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<3, 5, 1, 46, 2> InstallConfig::_table_ = {
+const ::_pbi::TcParseTable<3, 6, 1, 46, 2> InstallConfig::_table_ = {
   {
     PROTOBUF_FIELD_OFFSET(InstallConfig, _impl_._has_bits_),
     0, // no _extensions_
-    5, 56,  // max_field_number, fast_idx_mask
+    6, 56,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967264,  // skipmap
+    4294967232,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    5,  // num_field_entries
+    6,  // num_field_entries
     1,  // num_aux_entries
     offsetof(decltype(_table_), aux_entries),
     _class_data_.base(),
@@ -1724,7 +1742,9 @@ const ::_pbi::TcParseTable<3, 5, 1, 46, 2> InstallConfig::_table_ = {
     // .kentik.kagent.v202401.ConfigSource config_source = 5 [json_name = "configSource", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(InstallConfig, _impl_.config_source_), 63>(),
      {40, 63, 0, PROTOBUF_FIELD_OFFSET(InstallConfig, _impl_.config_source_)}},
-    {::_pbi::TcParser::MiniParse, {}},
+    // .kentik.kagent.v202401.BundleSource bundle_source = 6 [json_name = "bundleSource", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(InstallConfig, _impl_.bundle_source_), 63>(),
+     {48, 63, 0, PROTOBUF_FIELD_OFFSET(InstallConfig, _impl_.bundle_source_)}},
     {::_pbi::TcParser::MiniParse, {}},
   }}, {{
     65535, 65535
@@ -1743,6 +1763,9 @@ const ::_pbi::TcParseTable<3, 5, 1, 46, 2> InstallConfig::_table_ = {
     (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
     // .kentik.kagent.v202401.ConfigSource config_source = 5 [json_name = "configSource", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
     {PROTOBUF_FIELD_OFFSET(InstallConfig, _impl_.config_source_), -1, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
+    // .kentik.kagent.v202401.BundleSource bundle_source = 6 [json_name = "bundleSource", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+    {PROTOBUF_FIELD_OFFSET(InstallConfig, _impl_.bundle_source_), -1, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kOpenEnum)},
   }}, {{
     {::_pbi::TcParser::GetTable<::kentik::kagent::v202401::HostMetadata>()},
@@ -1767,8 +1790,8 @@ PROTOBUF_NOINLINE void InstallConfig::Clear() {
     _impl_.host_metadata_->Clear();
   }
   ::memset(&_impl_.type_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.config_source_) -
-      reinterpret_cast<char*>(&_impl_.type_)) + sizeof(_impl_.config_source_));
+      reinterpret_cast<char*>(&_impl_.bundle_source_) -
+      reinterpret_cast<char*>(&_impl_.type_)) + sizeof(_impl_.bundle_source_));
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -1823,6 +1846,13 @@ PROTOBUF_NOINLINE void InstallConfig::Clear() {
             target = stream->EnsureSpace(target);
             target = ::_pbi::WireFormatLite::WriteEnumToArray(
                 5, this_._internal_config_source(), target);
+          }
+
+          // .kentik.kagent.v202401.BundleSource bundle_source = 6 [json_name = "bundleSource", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+          if (this_._internal_bundle_source() != 0) {
+            target = stream->EnsureSpace(target);
+            target = ::_pbi::WireFormatLite::WriteEnumToArray(
+                6, this_._internal_bundle_source(), target);
           }
 
           if (PROTOBUF_PREDICT_FALSE(this_._internal_metadata_.have_unknown_fields())) {
@@ -1880,6 +1910,11 @@ PROTOBUF_NOINLINE void InstallConfig::Clear() {
               total_size += 1 +
                             ::_pbi::WireFormatLite::EnumSize(this_._internal_config_source());
             }
+            // .kentik.kagent.v202401.BundleSource bundle_source = 6 [json_name = "bundleSource", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+            if (this_._internal_bundle_source() != 0) {
+              total_size += 1 +
+                            ::_pbi::WireFormatLite::EnumSize(this_._internal_bundle_source());
+            }
           }
           return this_.MaybeComputeUnknownFieldsSize(total_size,
                                                      &this_._impl_._cached_size_);
@@ -1916,6 +1951,9 @@ void InstallConfig::MergeImpl(::google::protobuf::MessageLite& to_msg, const ::g
   if (from._internal_config_source() != 0) {
     _this->_impl_.config_source_ = from._impl_.config_source_;
   }
+  if (from._internal_bundle_source() != 0) {
+    _this->_impl_.bundle_source_ = from._impl_.bundle_source_;
+  }
   _this->_impl_._has_bits_[0] |= cached_has_bits;
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1936,8 +1974,8 @@ void InstallConfig::InternalSwap(InstallConfig* PROTOBUF_RESTRICT other) {
   swap(_impl_._has_bits_[0], other->_impl_._has_bits_[0]);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.id_, &other->_impl_.id_, arena);
   ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(InstallConfig, _impl_.config_source_)
-      + sizeof(InstallConfig::_impl_.config_source_)
+      PROTOBUF_FIELD_OFFSET(InstallConfig, _impl_.bundle_source_)
+      + sizeof(InstallConfig::_impl_.bundle_source_)
       - PROTOBUF_FIELD_OFFSET(InstallConfig, _impl_.host_metadata_)>(
           reinterpret_cast<char*>(&_impl_.host_metadata_),
           reinterpret_cast<char*>(&other->_impl_.host_metadata_));

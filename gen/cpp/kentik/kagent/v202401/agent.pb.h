@@ -244,6 +244,40 @@ inline bool ConfigSource_Parse(absl::string_view name, ConfigSource* value) {
   return ::google::protobuf::internal::ParseNamedEnum<ConfigSource>(
       ConfigSource_descriptor(), name, value);
 }
+enum BundleSource : int {
+  BUNDLE_SOURCE_UNSPECIFIED = 0,
+  BUNDLE_SOURCE_MANAGED = 1,
+  BUNDLE_SOURCE_LOCAL = 2,
+  BundleSource_INT_MIN_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::min(),
+  BundleSource_INT_MAX_SENTINEL_DO_NOT_USE_ =
+      std::numeric_limits<::int32_t>::max(),
+};
+
+bool BundleSource_IsValid(int value);
+extern const uint32_t BundleSource_internal_data_[];
+constexpr BundleSource BundleSource_MIN = static_cast<BundleSource>(0);
+constexpr BundleSource BundleSource_MAX = static_cast<BundleSource>(2);
+constexpr int BundleSource_ARRAYSIZE = 2 + 1;
+const ::google::protobuf::EnumDescriptor*
+BundleSource_descriptor();
+template <typename T>
+const std::string& BundleSource_Name(T value) {
+  static_assert(std::is_same<T, BundleSource>::value ||
+                    std::is_integral<T>::value,
+                "Incorrect type passed to BundleSource_Name().");
+  return BundleSource_Name(static_cast<BundleSource>(value));
+}
+template <>
+inline const std::string& BundleSource_Name(BundleSource value) {
+  return ::google::protobuf::internal::NameOfDenseEnum<BundleSource_descriptor,
+                                                 0, 2>(
+      static_cast<int>(value));
+}
+inline bool BundleSource_Parse(absl::string_view name, BundleSource* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<BundleSource>(
+      BundleSource_descriptor(), name, value);
+}
 
 // ===================================================================
 
@@ -2799,6 +2833,7 @@ class InstallConfig final : public ::google::protobuf::Message
     kTypeFieldNumber = 3,
     kReleaseSourceFieldNumber = 4,
     kConfigSourceFieldNumber = 5,
+    kBundleSourceFieldNumber = 6,
   };
   // string id = 1 [json_name = "id", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
   void clear_id() ;
@@ -2861,12 +2896,22 @@ class InstallConfig final : public ::google::protobuf::Message
   void _internal_set_config_source(::kentik::kagent::v202401::ConfigSource value);
 
   public:
+  // .kentik.kagent.v202401.BundleSource bundle_source = 6 [json_name = "bundleSource", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+  void clear_bundle_source() ;
+  ::kentik::kagent::v202401::BundleSource bundle_source() const;
+  void set_bundle_source(::kentik::kagent::v202401::BundleSource value);
+
+  private:
+  ::kentik::kagent::v202401::BundleSource _internal_bundle_source() const;
+  void _internal_set_bundle_source(::kentik::kagent::v202401::BundleSource value);
+
+  public:
   // @@protoc_insertion_point(class_scope:kentik.kagent.v202401.InstallConfig)
  private:
   class _Internal;
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      3, 5, 1,
+      3, 6, 1,
       46, 2>
       _table_;
 
@@ -2891,6 +2936,7 @@ class InstallConfig final : public ::google::protobuf::Message
     int type_;
     int release_source_;
     int config_source_;
+    int bundle_source_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
   union { Impl_ _impl_; };
@@ -5169,6 +5215,28 @@ inline ::kentik::kagent::v202401::ConfigSource InstallConfig::_internal_config_s
 inline void InstallConfig::_internal_set_config_source(::kentik::kagent::v202401::ConfigSource value) {
   ::google::protobuf::internal::TSanWrite(&_impl_);
   _impl_.config_source_ = value;
+}
+
+// .kentik.kagent.v202401.BundleSource bundle_source = 6 [json_name = "bundleSource", (.grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {
+inline void InstallConfig::clear_bundle_source() {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.bundle_source_ = 0;
+}
+inline ::kentik::kagent::v202401::BundleSource InstallConfig::bundle_source() const {
+  // @@protoc_insertion_point(field_get:kentik.kagent.v202401.InstallConfig.bundle_source)
+  return _internal_bundle_source();
+}
+inline void InstallConfig::set_bundle_source(::kentik::kagent::v202401::BundleSource value) {
+  _internal_set_bundle_source(value);
+  // @@protoc_insertion_point(field_set:kentik.kagent.v202401.InstallConfig.bundle_source)
+}
+inline ::kentik::kagent::v202401::BundleSource InstallConfig::_internal_bundle_source() const {
+  ::google::protobuf::internal::TSanRead(&_impl_);
+  return static_cast<::kentik::kagent::v202401::BundleSource>(_impl_.bundle_source_);
+}
+inline void InstallConfig::_internal_set_bundle_source(::kentik::kagent::v202401::BundleSource value) {
+  ::google::protobuf::internal::TSanWrite(&_impl_);
+  _impl_.bundle_source_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -7865,6 +7933,12 @@ struct is_proto_enum<::kentik::kagent::v202401::ConfigSource> : std::true_type {
 template <>
 inline const EnumDescriptor* GetEnumDescriptor<::kentik::kagent::v202401::ConfigSource>() {
   return ::kentik::kagent::v202401::ConfigSource_descriptor();
+}
+template <>
+struct is_proto_enum<::kentik::kagent::v202401::BundleSource> : std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor<::kentik::kagent::v202401::BundleSource>() {
+  return ::kentik::kagent::v202401::BundleSource_descriptor();
 }
 
 }  // namespace protobuf

@@ -605,6 +605,16 @@
                 },
                 "title": "BootstrapInfo"
             },
+            "v202401BundleSource": {
+                "type": "string",
+                "enum": [
+                    "BUNDLE_SOURCE_UNSPECIFIED",
+                    "BUNDLE_SOURCE_MANAGED",
+                    "BUNDLE_SOURCE_LOCAL"
+                ],
+                "default": "BUNDLE_SOURCE_UNSPECIFIED",
+                "description": "BundleSource\nSays who owns the bundles of the agent and of every capability: the Kentik control plane or the\nenvironment of the agent. A bundle is not part of the configuration, so a local configuration\ncan still get its bundles from the control plane.\n\n - BUNDLE_SOURCE_UNSPECIFIED: Not reported, for example by an older agent. Read it as managed.\n - BUNDLE_SOURCE_MANAGED: The Kentik control plane assigns the bundles, and the agent downloads them.\n - BUNDLE_SOURCE_LOCAL: The environment of the agent, such as files on the host, owns the bundles."
+            },
             "v202401ConfigSource": {
                 "type": "string",
                 "enum": [
@@ -715,6 +725,9 @@
                     },
                     "configSource": {
                         "$ref": "#/components/schemas/v202401ConfigSource"
+                    },
+                    "bundleSource": {
+                        "$ref": "#/components/schemas/v202401BundleSource"
                     }
                 },
                 "title": "InstallConfig\nDescribes an individual agent install configuration"

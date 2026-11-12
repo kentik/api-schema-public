@@ -121,6 +121,27 @@ typedef enum _Kentik__Kagent__V202401__ConfigSource {
   KENTIK__KAGENT__V202401__CONFIG_SOURCE__CONFIG_SOURCE_LOCAL = 2
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KAGENT__V202401__CONFIG_SOURCE)
 } Kentik__Kagent__V202401__ConfigSource;
+/*
+ * {{.Name}}
+ * Says who owns the bundles of the agent and of every capability: the Kentik control plane or the
+ * environment of the agent. A bundle is not part of the configuration, so a local configuration
+ * can still get its bundles from the control plane.
+ */
+typedef enum _Kentik__Kagent__V202401__BundleSource {
+  /*
+   * Not reported, for example by an older agent. Read it as managed.
+   */
+  KENTIK__KAGENT__V202401__BUNDLE_SOURCE__BUNDLE_SOURCE_UNSPECIFIED = 0,
+  /*
+   * The Kentik control plane assigns the bundles, and the agent downloads them.
+   */
+  KENTIK__KAGENT__V202401__BUNDLE_SOURCE__BUNDLE_SOURCE_MANAGED = 1,
+  /*
+   * The environment of the agent, such as files on the host, owns the bundles.
+   */
+  KENTIK__KAGENT__V202401__BUNDLE_SOURCE__BUNDLE_SOURCE_LOCAL = 2
+    PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(KENTIK__KAGENT__V202401__BUNDLE_SOURCE)
+} Kentik__Kagent__V202401__BundleSource;
 
 /* --- messages --- */
 
@@ -161,10 +182,11 @@ struct  Kentik__Kagent__V202401__InstallConfig
   Kentik__Kagent__V202401__HostMetadata *host_metadata;
   Kentik__Kagent__V202401__ReleaseSource release_source;
   Kentik__Kagent__V202401__ConfigSource config_source;
+  Kentik__Kagent__V202401__BundleSource bundle_source;
 };
 #define KENTIK__KAGENT__V202401__INSTALL_CONFIG__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&kentik__kagent__v202401__install_config__descriptor) \
-    , (char *)protobuf_c_empty_string, KENTIK__KAGENT__V202401__INSTALLER_TYPE__INSTALLER_TYPE_UNSPECIFIED, NULL, KENTIK__KAGENT__V202401__RELEASE_SOURCE__RELEASE_SOURCE_UNSPECIFIED, KENTIK__KAGENT__V202401__CONFIG_SOURCE__CONFIG_SOURCE_UNSPECIFIED }
+    , (char *)protobuf_c_empty_string, KENTIK__KAGENT__V202401__INSTALLER_TYPE__INSTALLER_TYPE_UNSPECIFIED, NULL, KENTIK__KAGENT__V202401__RELEASE_SOURCE__RELEASE_SOURCE_UNSPECIFIED, KENTIK__KAGENT__V202401__CONFIG_SOURCE__CONFIG_SOURCE_UNSPECIFIED, KENTIK__KAGENT__V202401__BUNDLE_SOURCE__BUNDLE_SOURCE_UNSPECIFIED }
 
 
 typedef enum {
@@ -1023,6 +1045,7 @@ void kentik__kagent__v202401__agent_service__generate_install_commands(ProtobufC
 extern const ProtobufCEnumDescriptor    kentik__kagent__v202401__installer_type__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__kagent__v202401__release_source__descriptor;
 extern const ProtobufCEnumDescriptor    kentik__kagent__v202401__config_source__descriptor;
+extern const ProtobufCEnumDescriptor    kentik__kagent__v202401__bundle_source__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kagent__v202401__host_metadata__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kagent__v202401__install_config__descriptor;
 extern const ProtobufCMessageDescriptor kentik__kagent__v202401__agent__descriptor;
